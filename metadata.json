@@ -1,0 +1,6 @@
+{
+  "name": "Luyện Thi Chứng Chỉ GH-300",
+  "description": "Ứng dụng thực hành trắc nghiệm chuyên sâu cho chứng chỉ GH-300 GitHub Copilot, tối ưu hóa giao diện di động và máy tính.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

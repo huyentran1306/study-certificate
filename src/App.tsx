@@ -1,0 +1,1297 @@
+import { useState, useEffect } from 'react';
+import { 
+  BookOpen, 
+  Search, 
+  HelpCircle, 
+  Bookmark, 
+  Home, 
+  Award, 
+  Layers, 
+  AlertCircle, 
+  Upload, 
+  Activity, 
+  Zap, 
+  Trophy, 
+  Star,
+  CheckCircle,
+  Menu,
+  X,
+  RefreshCw,
+  FolderOpen
+} from 'lucide-react';
+
+import { Question, ProgressState, StudyMode, Certificate } from './types';
+import { initialQuestions } from './data/initialQuestions';
+import { az900Questions } from './data/az900Questions';
+import { ai900Questions } from './data/ai900Questions';
+import QuizCard from './components/QuizCard';
+import StatsPanel from './components/StatsPanel';
+import MockExam from './components/MockExam';
+import CustomQuestionsImport from './components/CustomQuestionsImport';
+
+function DynamicIcon({ name, className = "w-5 h-5" }: { name: string; className?: string }) {
+  switch (name) {
+    case 'Zap':
+      return <Zap className={className} />;
+    case 'Layers':
+      return <Layers className={className} />;
+    case 'Award':
+      return <Award className={className} />;
+    case 'BookOpen':
+      return <BookOpen className={className} />;
+    case 'Trophy':
+      return <Trophy className={className} />;
+    default:
+      return <BookOpen className={className} />;
+  }
+}
+
+export default function App() {
+  // Active Certification ID
+  const [activeCertId, setActiveCertId] = useState<string>('gh-300');
+
+  // List of all certifications
+  const [certificates, setCertificates] = useState<Certificate[]>([
+    {
+      id: 'gh-300',
+      name: 'GitHub Copilot Certified',
+      code: 'GH-300',
+      description: 'Luyện thi chứng chỉ GitHub Copilot chính thức. Bộ 60 câu hỏi đặc khảo được biên dịch nghĩa tiếng Việt sắc sảo & lý giải cặn kẽ.',
+      difficulty: 'Trung cấp',
+      estimatedHours: '10-15 Giờ',
+      colorClass: 'bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white',
+      iconName: 'Zap'
+    },
+    {
+      id: 'az-900',
+      name: 'Azure Fundamentals',
+      code: 'AZ-900',
+      description: 'Chinh phục chứng chỉ căn bản về đám mây Microsoft Azure. Đầy đủ các khái niệm cốt lõi, dịch vụ cột trụ và quản trị đám mây.',
+      difficulty: 'Cơ bản',
+      estimatedHours: '8-12 Giờ',
+      colorClass: 'bg-gradient-to-br from-blue-600 via-sky-700 to-indigo-900 text-white',
+      iconName: 'Layers'
+    },
+    {
+      id: 'ai-900',
+      name: 'Azure AI Fundamentals',
+      code: 'AI-900',
+      description: 'Bộ câu hỏi cốt lõi về Đạo đức trí tuệ nhân tạo (Responsible AI), Học máy (Machine Learning) và Dịch vụ trí tuệ nhân tạo Azure.',
+      difficulty: 'Cơ bản',
+      estimatedHours: '6-10 Giờ',
+      colorClass: 'bg-gradient-to-br from-teal-600 via-cyan-700 to-emerald-900 text-white',
+      iconName: 'Award'
+    }
+  ]);
+
+  // Questions Bank for the active certification
+  const [questions, setQuestions] = useState<Question[]>([]);
+  
+  // Progress & History for the active certification
+  const [progress, setProgress] = useState<ProgressState>({
+    answeredCount: 0,
+    correctCount: 0,
+    incorrectCount: 0,
+    streak: 0,
+    bookmarkedQuestionIds: [],
+    history: []
+  });
+
+  // Current states - default to the new Home view
+  const [mode, setMode] = useState<StudyMode>('home');
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectCategory, setCategoryFilter] = useState<string>('All');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showBookmarksOnly, setShowBookmarksOnly] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showUploader, setShowUploader] = useState(false);
+
+  // States for making a new certification
+  const [showAddCertForm, setShowAddCertForm] = useState(false);
+  const [newCertCode, setNewCertCode] = useState('');
+  const [newCertName, setNewCertName] = useState('');
+  const [newCertDesc, setNewCertNameDesc] = useState('');
+  const [newCertDiff, setNewCertDiff] = useState<'Cơ bản' | 'Trung cấp' | 'Nâng cao'>('Cơ bản');
+  const [newCertHours, setNewCertHours] = useState('8-12 Giờ');
+  const [newCertColor, setNewCertColor] = useState('bg-gradient-to-br from-purple-600 via-fuchsia-700 to-indigo-900 text-white');
+  const [newCertIcon, setNewCertIcon] = useState('Trophy');
+  const [newCertQuestionsText, setNewCertQuestionsText] = useState('');
+
+  // Pagination states
+  const [sidebarPage, setSidebarPage] = useState(1);
+  const sidebarPageSize = 25;
+  const [guidePage, setGuidePage] = useState(1);
+  const guidePageSize = 10;
+
+  // Reset pagination when searches or categories update
+  useEffect(() => {
+    setSidebarPage(1);
+  }, [searchQuery, selectCategory, showBookmarksOnly]);
+
+  // Helper function to load data for a specific cert
+  const loadCertData = (certId: string) => {
+    let defaultQs: Question[] = [];
+    if (certId === 'gh-300') {
+      defaultQs = initialQuestions;
+    } else if (certId === 'az-900') {
+      defaultQs = az900Questions;
+    } else if (certId === 'ai-900') {
+      defaultQs = ai900Questions;
+    }
+
+    // Load custom questions if any, otherwise default
+    const storedQs = localStorage.getItem(`questions_${certId}`);
+    if (storedQs) {
+      try {
+        setQuestions(JSON.parse(storedQs));
+      } catch {
+        setQuestions(defaultQs);
+      }
+    } else {
+      setQuestions(defaultQs);
+    }
+
+    // Load progress
+    const storedProgress = localStorage.getItem(`progress_${certId}`);
+    if (storedProgress) {
+      try {
+        setProgress(JSON.parse(storedProgress));
+      } catch {
+        setProgress({ answeredCount: 0, correctCount: 0, incorrectCount: 0, streak: 0, bookmarkedQuestionIds: [], history: [] });
+      }
+    } else {
+      setProgress({ answeredCount: 0, correctCount: 0, incorrectCount: 0, streak: 0, bookmarkedQuestionIds: [], history: [] });
+    }
+
+    setCurrentQuestionIndex(0);
+    setCategoryFilter('All');
+    setSearchQuery('');
+    setShowBookmarksOnly(false);
+  };
+
+  // Sync state values on initial load
+  useEffect(() => {
+    // 1. Gather custom certificates from storage
+    const storedCustomCerts = localStorage.getItem('study_certs_custom');
+    if (storedCustomCerts) {
+      try {
+        const parsed = JSON.parse(storedCustomCerts);
+        setCertificates(prev => {
+          const defaultIds = ['gh-300', 'az-900', 'ai-900'];
+          const filteredPrev = prev.filter(c => defaultIds.includes(c.id));
+          return [...filteredPrev, ...parsed];
+        });
+      } catch {
+        // ignore
+      }
+    }
+
+    // 2. Select initial active cert and load its content
+    const lastActiveCert = localStorage.getItem('study_active_cert') || 'gh-300';
+    setActiveCertId(lastActiveCert);
+    loadCertData(lastActiveCert);
+  }, []);
+
+  // Sync state back to storage helper
+  const saveProgress = (newProgress: ProgressState) => {
+    setProgress(newProgress);
+    localStorage.setItem(`progress_${activeCertId}`, JSON.stringify(newProgress));
+  };
+
+  // Switch certification and load its workspace
+  const handleSelectCert = (certId: string) => {
+    setActiveCertId(certId);
+    localStorage.setItem('study_active_cert', certId);
+    loadCertData(certId);
+    setMode('practice');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Import custom questions handler for ACTIVE certification
+  const handleImportQuestions = (newQuestions: Question[], resetProgress: boolean) => {
+    setQuestions(newQuestions);
+    localStorage.setItem(`questions_${activeCertId}`, JSON.stringify(newQuestions));
+    setCurrentQuestionIndex(0);
+    setShowUploader(false);
+
+    if (resetProgress) {
+      const emptyProgress: ProgressState = {
+        answeredCount: 0,
+        correctCount: 0,
+        incorrectCount: 0,
+        streak: 0,
+        bookmarkedQuestionIds: [],
+        history: []
+      };
+      saveProgress(emptyProgress);
+    }
+  };
+
+  // Reset progress and restore defaults for ACTIVE certification
+  const handleResetToDefault = () => {
+    localStorage.removeItem(`questions_${activeCertId}`);
+    localStorage.removeItem(`progress_${activeCertId}`);
+    
+    let defaultQs: Question[] = [];
+    if (activeCertId === 'gh-300') {
+      defaultQs = initialQuestions;
+    } else if (activeCertId === 'az-900') {
+      defaultQs = az900Questions;
+    } else if (activeCertId === 'ai-900') {
+      defaultQs = ai900Questions;
+    }
+
+    setQuestions(defaultQs);
+    setProgress({
+      answeredCount: 0,
+      correctCount: 0,
+      incorrectCount: 0,
+      streak: 0,
+      bookmarkedQuestionIds: [],
+      history: []
+    });
+    setCurrentQuestionIndex(0);
+    setCategoryFilter('All');
+    setSearchQuery('');
+    setShowBookmarksOnly(false);
+    
+    const activeCert = certificates.find(c => c.id === activeCertId);
+    alert(`Đã khôi phục ngân hàng câu hỏi gốc của chứng chỉ ${activeCert?.code || activeCertId}!`);
+  };
+
+  // Clear progress for active certificate
+  const handleClearProgress = () => {
+    const freshProgress: ProgressState = {
+      answeredCount: 0,
+      correctCount: 0,
+      incorrectCount: 0,
+      streak: 0,
+      bookmarkedQuestionIds: progress.bookmarkedQuestionIds, // keep bookmarks
+      history: []
+    };
+    saveProgress(freshProgress);
+    setCurrentQuestionIndex(0);
+  };
+
+  // Bookmark Toggle
+  const handleToggleBookmark = (qId: string) => {
+    const isBookmarked = progress.bookmarkedQuestionIds.includes(qId);
+    let updated: string[];
+    if (isBookmarked) {
+      updated = progress.bookmarkedQuestionIds.filter(id => id !== qId);
+    } else {
+      updated = [...progress.bookmarkedQuestionIds, qId];
+    }
+    saveProgress({
+      ...progress,
+      bookmarkedQuestionIds: updated
+    });
+  };
+
+  // Answer Logging
+  const handleAnswerSubmitted = (qId: string, selectedOptions: string[], isCorrect: boolean) => {
+    // Prevent duplicate entries for same question to avoid skewing average correctness stats
+    const otherHistory = progress.history.filter(h => h.questionId !== qId);
+    
+    const newStreak = isCorrect ? progress.streak + 1 : 0;
+    const newHistory = [
+      ...otherHistory,
+      {
+        questionId: qId,
+        selectedOptions,
+        isCorrect,
+        timestamp: Date.now()
+      }
+    ];
+
+    const correctCount = newHistory.filter(h => h.isCorrect).length;
+    const incorrectCount = newHistory.length - correctCount;
+
+    saveProgress({
+      ...progress,
+      answeredCount: newHistory.length,
+      correctCount,
+      incorrectCount,
+      streak: newStreak,
+      history: newHistory
+    });
+  };
+
+  // Filtered List projection
+  const filteredQuestions = questions.filter(q => {
+    const matchesCategory = selectCategory === 'All' || q.category === selectCategory;
+    
+    const indexStr = `q${q.questionNumber} ${q.text} ${q.explanation} ${q.options.map(o => o.text).join(' ')}`.toLowerCase();
+    const matchesSearch = !searchQuery || indexStr.includes(searchQuery.toLowerCase());
+    
+    const matchesBookmark = !showBookmarksOnly || progress.bookmarkedQuestionIds.includes(q.id);
+
+    return matchesCategory && matchesSearch && matchesBookmark;
+  });
+
+  // Sidebar Pagination calculation
+  const totalSidebarPages = Math.ceil(filteredQuestions.length / sidebarPageSize) || 1;
+  const activeSidebarPage = Math.min(sidebarPage, totalSidebarPages);
+  const startSidebarIndex = (activeSidebarPage - 1) * sidebarPageSize;
+  const paginatedSidebarQuestions = filteredQuestions.slice(startSidebarIndex, startSidebarIndex + sidebarPageSize);
+
+  const categories = ['All', ...Array.from(new Set(questions.map(q => q.category)))];
+
+  const handleGoToQuestionNum = (idx: number) => {
+    setCurrentQuestionIndex(idx);
+    setMobileMenuOpen(false);
+  };
+
+  // Exam mock submission log
+  const handleFinishExamMock = (correct: number, total: number) => {
+    // Append to streak history slightly
+    const accuracy = Math.round((correct / total) * 100);
+    alert(`Chúc mừng! Bạn đã hoàn thành bài thi thử với kết quả: ${correct}/${total} câu đúng (Đạt ${accuracy}%)!`);
+  };
+
+  // Current question references
+  const currentQuestion = filteredQuestions[currentQuestionIndex];
+  const historyEntry = currentQuestion
+    ? progress.history.find(h => h.questionId === currentQuestion.id)
+    : undefined;
+
+  // Guide Mode Pagination calculation
+  const totalGuidePages = Math.ceil(questions.length / guidePageSize) || 1;
+  const activeGuidePage = Math.min(guidePage, totalGuidePages);
+  const startGuideIndex = (activeGuidePage - 1) * guidePageSize;
+  const paginatedGuideQuestions = questions.slice(startGuideIndex, startGuideIndex + guidePageSize);
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans flex flex-col antialiased">
+      {/* Top Header bar with clean Swiss look */}
+      <header className="sticky top-0 z-40 bg-white border-b border-slate-200/80 backdrop-blur-md px-4 py-3 md:px-8">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            {mode !== 'home' && (
+              <button 
+                onClick={() => setMobileMenuOpen(prev => !prev)}
+                className="lg:hidden text-slate-500 hover:text-slate-800 p-2 rounded-lg"
+              >
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            )}
+            <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => setMode('home')}>
+              <div className="bg-indigo-650 text-white p-2 rounded-xl">
+                {mode === 'home' ? (
+                  <Home className="w-5 h-5" />
+                ) : (
+                  <DynamicIcon name={certificates.find(c => c.id === activeCertId)?.iconName || 'Zap'} className="w-5 h-5" />
+                )}
+              </div>
+              <div>
+                <h1 className="text-sm font-extrabold tracking-tight text-slate-900 leading-tight">
+                  {mode === 'home' ? 'Cert Hub Dashboard' : `${certificates.find(c => c.id === activeCertId)?.code} Prep Hub`}
+                </h1>
+                <p className="text-[10px] text-slate-400 font-medium">
+                  {mode === 'home' 
+                    ? 'Trung Tâm Ôn Luyện Đa Chứng Chỉ' 
+                    : certificates.find(c => c.id === activeCertId)?.name}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Center Tabs: Home, Practice, Timer Exam, Code Guide */}
+          <div className="hidden md:flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl">
+            <button
+              onClick={() => { setMode('home'); }}
+              className={`text-xs px-4 py-2 font-bold tracking-wide rounded-lg transition-all flex items-center gap-1.5 ${
+                mode === 'home' 
+                  ? 'bg-white text-slate-900 shadow-sm' 
+                  : 'text-slate-500 hover:text-slate-900'
+              }`}
+            >
+              <Home className="w-3.5 h-3.5" />
+              Trang chủ
+            </button>
+            {mode !== 'home' && (
+              <>
+                <button
+                  onClick={() => { setMode('practice'); setCurrentQuestionIndex(0); }}
+                  className={`text-xs px-4 py-2 font-bold tracking-wide rounded-lg transition-all ${
+                    mode === 'practice' 
+                      ? 'bg-white text-slate-900 shadow-sm' 
+                      : 'text-slate-500 hover:text-slate-900'
+                  }`}
+                >
+                  Chế độ luyện tập
+                </button>
+                <button
+                  onClick={() => { setMode('exam'); }}
+                  className={`text-xs px-4 py-2 font-bold tracking-wide rounded-lg transition-all ${
+                    mode === 'exam' 
+                      ? 'bg-white text-slate-900 shadow-sm' 
+                      : 'text-slate-500 hover:text-slate-900'
+                  }`}
+                >
+                  Thi thử ngẫu nhiên
+                </button>
+                <button
+                  onClick={() => { setMode('guide'); }}
+                  className={`text-xs px-4 py-2 font-bold tracking-wide rounded-lg transition-all ${
+                    mode === 'guide' 
+                      ? 'bg-white text-slate-900 shadow-sm' 
+                      : 'text-slate-500 hover:text-slate-900'
+                  }`}
+                >
+                  Cẩm nang cứu cánh
+                </button>
+              </>
+            )}
+          </div>
+
+          {/* Quick Stats overview panel */}
+          <div className="flex items-center gap-2.5">
+            {mode !== 'home' && (
+              <>
+                <button
+                  onClick={() => setShowUploader(prev => !prev)}
+                  className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5"
+                >
+                  <Upload className="w-3.5 h-3.5 text-slate-500" />
+                  <span className="hidden sm:inline">Nạp câu hỏi tự chọn</span>
+                </button>
+
+                <button
+                  onClick={handleResetToDefault}
+                  title="Khôi phục câu hỏi ban đầu"
+                  className="p-2 bg-slate-50 hover:bg-slate-150 border border-slate-200 rounded-xl text-slate-400 hover:text-slate-700 transition-colors"
+                >
+                  <RefreshCw className="w-3.5 h-3.5" />
+                </button>
+              </>
+            )}
+            
+            {mode === 'home' && (
+              <button
+                onClick={() => setShowAddCertForm(true)}
+                className="text-xs bg-slate-950 hover:bg-indigo-650 text-white font-bold px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 shadow-sm"
+              >
+                <Upload className="w-3.5 h-3.5" />
+                <span>Thêm chứng chỉ mới</span>
+              </button>
+            )}
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile control navigation block */}
+      <div className="md:hidden sticky top-[57px] z-30 bg-slate-100 border-b border-slate-200 flex items-center justify-around gap-1 p-1">
+        <button
+          onClick={() => { setMode('home'); }}
+          className={`flex-1 text-[11px] font-bold text-center py-2.5 rounded-lg transition-all flex items-center justify-center gap-1 ${
+            mode === 'home' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'
+          }`}
+        >
+          <Home className="w-3 h-3" />
+          Trang chủ
+        </button>
+        {mode !== 'home' && (
+          <>
+            <button
+              onClick={() => { setMode('practice'); setCurrentQuestionIndex(0); }}
+              className={`flex-1 text-[11px] font-bold text-center py-2.5 rounded-lg transition-all ${
+                mode === 'practice' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'
+              }`}
+            >
+              Luyện Tập
+            </button>
+            <button
+              onClick={() => { setMode('exam'); }}
+              className={`flex-1 text-[11px] font-bold text-center py-2.5 rounded-lg transition-all ${
+                mode === 'exam' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'
+              }`}
+            >
+              Thi thử
+            </button>
+            <button
+              onClick={() => { setMode('guide'); }}
+              className={`flex-1 text-[11px] font-bold text-center py-2.5 rounded-lg transition-all ${
+                mode === 'guide' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'
+              }`}
+            >
+              Cẩm nang
+            </button>
+          </>
+        )}
+      </div>
+
+      {/* Main Workspace content */}
+      <main className="flex-1 w-full max-w-7xl mx-auto p-4 md:p-8 flex flex-col gap-6">
+        
+        {/* Customized uploader expanded */}
+        {showUploader && (
+          <CustomQuestionsImport 
+            onImport={handleImportQuestions} 
+            currentCount={questions.length} 
+            existingQuestions={questions}
+          />
+        )}
+
+        {/* Certification Hub Home View */}
+        {mode === 'home' && (
+          <div className="space-y-8 animate-fadeIn">
+            {/* Header Hub Hero */}
+            <div className="bg-white border border-slate-100 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="space-y-2 text-center md:text-left">
+                <span className="text-[10px] font-bold text-indigo-650 uppercase tracking-widest bg-indigo-50 px-2.5 py-1 rounded-full">CERT PREP PORTAL</span>
+                <h2 className="text-2xl md:text-3xl font-black tracking-tight text-slate-900">Trung Tâm Ôn Luyện Đa Chứng Chỉ</h2>
+                <p className="text-xs text-slate-500 max-w-xl leading-relaxed">
+                  Chào mừng bạn đến với môi trường học tập cá nhân hóa. Chọn một chứng chỉ bên dưới để bắt đầu ôn luyện dưới nhiều chế độ (Luyện tập, Thi thử ngẫu nhiên, xem Cẩm nang gốc), hoặc tự khởi tạo và nhập ngân hàng câu hỏi riêng biệt của bạn!
+                </p>
+              </div>
+              <div className="flex gap-4 items-center shrink-0 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                <div className="text-center px-4">
+                  <span className="block text-[22px] font-black text-slate-900">
+                    {certificates.length}
+                  </span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Chứng chỉ</span>
+                </div>
+                <div className="w-px h-8 bg-slate-200" />
+                <div className="text-center px-4">
+                  <span className="block text-[22px] font-black text-emerald-600">
+                    {certificates.reduce((acc, cert) => {
+                      const completed = localStorage.getItem(`progress_${cert.id}`);
+                      if (completed) {
+                        try {
+                          const parsed = JSON.parse(completed);
+                          return acc + (parsed.history?.length || 0);
+                        } catch { return acc; }
+                      }
+                      return acc;
+                    }, 0)}
+                  </span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Đã trả lời</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Certification Grid list */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {certificates.map(cert => {
+                // Get progress for this card locally
+                let certProgress = { answeredCount: 0, correctCount: 0, total: 10 };
+                // Map hardcoded count
+                if (cert.id === 'gh-300') certProgress.total = initialQuestions.length;
+                else if (cert.id === 'az-900') certProgress.total = az900Questions.length;
+                else if (cert.id === 'ai-900') certProgress.total = ai900Questions.length;
+                
+                // Overwrite with actual local count if exists
+                const storedQs = localStorage.getItem(`questions_${cert.id}`);
+                if (storedQs) {
+                  try {
+                    certProgress.total = JSON.parse(storedQs).length;
+                  } catch {}
+                }
+
+                const storedProg = localStorage.getItem(`progress_${cert.id}`);
+                if (storedProg) {
+                  try {
+                    const parsed = JSON.parse(storedProg);
+                    certProgress.answeredCount = parsed.history?.length || 0;
+                    certProgress.correctCount = parsed.history?.filter((h: any) => h.isCorrect).length || 0;
+                  } catch {}
+                }
+
+                const completionPercentage = certProgress.total > 0 
+                  ? Math.round((certProgress.answeredCount / certProgress.total) * 100)
+                  : 0;
+
+                return (
+                  <div key={cert.id} className="bg-white border border-slate-150/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+                    <div className={`${cert.colorClass} p-5 flex items-start justify-between gap-4 relative overflow-hidden`}>
+                      <div className="absolute right-0 top-0 opacity-15 transform translate-x-4 -translate-y-4">
+                        <DynamicIcon name={cert.iconName} className="w-28 h-28" />
+                      </div>
+                      
+                      <div className="space-y-1 relative z-10">
+                        <span className="text-[10px] font-bold uppercase tracking-widest bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded">
+                          {cert.code}
+                        </span>
+                        <h3 className="text-base font-extrabold tracking-tight leading-tight pt-1">
+                          {cert.name}
+                        </h3>
+                      </div>
+                      
+                      <div className="bg-white/25 text-white p-2 rounded-xl backdrop-blur-sm shrink-0">
+                        <DynamicIcon name={cert.iconName} className="w-5 h-5" />
+                      </div>
+                    </div>
+
+                    <div className="p-5 flex-1 flex flex-col justify-between gap-4">
+                      <p className="text-xs text-slate-500 leading-relaxed font-medium">
+                        {cert.description}
+                      </p>
+
+                      <div className="space-y-3 pt-2">
+                        {/* Progress Bar */}
+                        <div className="space-y-1">
+                          <div className="flex justify-between text-[10px] font-bold text-slate-400">
+                            <span>TIẾN ĐỘ ÔN LUYỆN</span>
+                            <span>{certProgress.answeredCount}/{certProgress.total} câu ({completionPercentage}%)</span>
+                          </div>
+                          <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                            <div 
+                              className="bg-slate-900 h-1.5 rounded-full transition-all duration-300"
+                              style={{ width: `${Math.min(completionPercentage, 100)}%` }}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Extra Tags */}
+                        <div className="flex flex-wrap gap-1.5 pt-1">
+                          <span className="text-[10px] font-bold px-2 py-0.5 bg-slate-50 text-slate-500 border border-slate-100 rounded-md">
+                            Độ khó: {cert.difficulty}
+                          </span>
+                          <span className="text-[10px] font-bold px-2 py-0.5 bg-slate-50 text-slate-500 border border-slate-100 rounded-md">
+                            Ước lượng: {cert.estimatedHours}
+                          </span>
+                          {certProgress.answeredCount > 0 && (
+                            <span className="text-[10px] font-extrabold px-2 py-0.5 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-md">
+                              Đúng: {Math.round((certProgress.correctCount / certProgress.answeredCount) * 100)}%
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Action buttons */}
+                      <div className="flex items-center gap-2 pt-2 border-t border-slate-100">
+                        <button
+                          onClick={() => handleSelectCert(cert.id)}
+                          className="flex-1 text-center py-2.5 bg-slate-950 hover:bg-indigo-650 text-white font-bold rounded-xl text-xs transition-all shadow-sm flex items-center justify-center gap-1.5"
+                        >
+                          <BookOpen className="w-3.5 h-3.5" />
+                          Học ngay
+                        </button>
+                        
+                        {/* Delete option if it's dynamic user created */}
+                        {cert.id !== 'gh-300' && cert.id !== 'az-900' && cert.id !== 'ai-900' && (
+                          <button
+                            onClick={() => {
+                              if (confirm(`Bạn có chắc chắn muốn xóa chứng chỉ tự tạo ${cert.code} cùng toàn bộ tiến trình học tập?`)) {
+                                const storedCustomCerts = localStorage.getItem('study_certs_custom');
+                                if (storedCustomCerts) {
+                                  try {
+                                    const parsed = JSON.parse(storedCustomCerts);
+                                    const remaining = parsed.filter((c: any) => c.id !== cert.id);
+                                    localStorage.setItem('study_certs_custom', JSON.stringify(remaining));
+                                    
+                                    // Clean corresponding storage
+                                    localStorage.removeItem(`questions_${cert.id}`);
+                                    localStorage.removeItem(`progress_${cert.id}`);
+                                    
+                                    setCertificates(prev => prev.filter(c => c.id !== cert.id));
+                                    if (activeCertId === cert.id) {
+                                      setActiveCertId('gh-300');
+                                      loadCertData('gh-300');
+                                    }
+                                  } catch {}
+                                }
+                              }
+                            }}
+                            title="Xóa chứng chỉ này"
+                            className="p-2.5 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-xl transition-colors border border-rose-100 shrink-0"
+                          >
+                            <X className="w-3.5 h-3.5" />
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+
+              {/* Add New Custom Certification Card placeholder */}
+              {!showAddCertForm && (
+                <button
+                  onClick={() => setShowAddCertForm(true)}
+                  className="bg-slate-50 hover:bg-slate-100/80 border-2 border-dashed border-slate-200 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 text-center group transition-colors min-h-[350px]"
+                >
+                  <div className="p-4 bg-white border border-slate-200 rounded-full text-slate-400 group-hover:scale-110 group-hover:text-slate-800 transition-all shadow-sm">
+                    <Upload className="w-6 h-6" />
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="font-extrabold text-sm text-slate-800">Thêm chứng chỉ mới...</h4>
+                    <p className="text-xs text-slate-400 max-w-xs leading-relaxed">
+                      Nạp ngân hàng câu hỏi trắc nghiệm của riêng bạn từ file JSON để học bất kỳ chứng chỉ hay môn học nào khác.
+                    </p>
+                  </div>
+                </button>
+              )}
+            </div>
+
+            {/* Highly Polished Custom Code and JSON Upload Portal */}
+            {showAddCertForm && (
+              <div className="bg-white border border-slate-150 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
+                <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+                  <div className="flex items-center gap-2">
+                    <FolderOpen className="w-5 h-5 text-indigo-650" />
+                    <div>
+                      <h3 className="text-base font-bold text-slate-900">Thiết Lập Khởi Tạo Chứng Chỉ Tự Chọn</h3>
+                      <p className="text-[11px] text-slate-400 mt-0.5">Xây dựng thẻ học tập tùy chỉnh hoàn chỉnh ngay lập tức.</p>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={() => setShowAddCertForm(false)}
+                    className="p-1.5 text-slate-400 hover:text-slate-700 bg-slate-50 rounded-xl"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Left Column Fields */}
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-1">
+                        <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Mã chứng chỉ</label>
+                        <input
+                          type="text"
+                          placeholder="ví dụ: PL-900"
+                          value={newCertCode}
+                          onChange={(e) => setNewCertCode(e.target.value)}
+                          className="w-full text-xs px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-1 focus:ring-slate-450 focus:border-slate-450"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Tên chứng chỉ</label>
+                        <input
+                          type="text"
+                          placeholder="ví dụ: Power Platform"
+                          value={newCertName}
+                          onChange={(e) => setNewCertName(e.target.value)}
+                          className="w-full text-xs px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-1 focus:ring-slate-450 focus:border-slate-450"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Mô tả ngắn gọn</label>
+                      <textarea
+                        placeholder="Mô tả tóm tắt nội dung học tập, số lượng chuyên đề hoặc mục đích ôn luyện..."
+                        rows={2}
+                        value={newCertDesc}
+                        onChange={(e) => setNewCertNameDesc(e.target.value)}
+                        className="w-full text-xs px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-1 focus:ring-slate-450 focus:border-slate-450"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-3">
+                      <div>
+                        <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Cấp độ</label>
+                        <select
+                          value={newCertDiff}
+                          onChange={(e) => setNewCertDiff(e.target.value as any)}
+                          className="w-full text-xs px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-705 font-bold"
+                        >
+                          <option value="Cơ bản">Cơ bản</option>
+                          <option value="Trung cấp">Trung cấp</option>
+                          <option value="Nâng cao">Nâng cao</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Thời gian học</label>
+                        <input
+                          type="text"
+                          value={newCertHours}
+                          onChange={(e) => setNewCertHours(e.target.value)}
+                          className="w-full text-xs px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-1 focus:ring-slate-450"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Biểu tượng</label>
+                        <select
+                          value={newCertIcon}
+                          onChange={(e) => setNewCertIcon(e.target.value)}
+                          className="w-full text-xs px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-705 font-bold"
+                        >
+                          <option value="BookOpen">Hiển thị Sách</option>
+                          <option value="Trophy">Cống hiến Cúp</option>
+                          <option value="Zap">Tia chớp Sét</option>
+                          <option value="Layers">Tầng dịch vụ</option>
+                          <option value="Award">Giải danh phẩm</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Tông màu giao diện thẻ</label>
+                      <div className="grid grid-cols-2 gap-2 text-xs">
+                        {[
+                          { text: 'Chàm Không Gian', value: 'bg-gradient-to-br from-indigo-600 via-sky-700 to-indigo-950 text-white' },
+                          { text: 'Hoàng Hôn Cam', value: 'bg-gradient-to-br from-amber-600 via-orange-700 to-rose-900 text-white' },
+                          { text: 'Ngọc Lục Bảo', value: 'bg-gradient-to-br from-teal-600 via-emerald-700 to-neutral-900 text-white' },
+                          { text: 'Aura Ánh Kim', value: 'bg-gradient-to-br from-purple-650 via-pink-700 to-indigo-950 text-white' }
+                        ].map((cPreset) => (
+                          <label key={cPreset.value} className="flex items-center gap-2 p-2 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer text-[11.5px] font-medium text-slate-700 hover:bg-slate-100 transition-colors">
+                            <input 
+                              type="radio" 
+                              name="colorPreset" 
+                              checked={newCertColor === cPreset.value} 
+                              onChange={() => setNewCertColor(cPreset.value)}
+                              className="text-indigo-650 focus:ring-indigo-550" 
+                            />
+                            {cPreset.text}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column Question Loading Paste input */}
+                  <div className="space-y-4">
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-between">
+                        <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Khai báo bộ trắc nghiệm JSON (Question[])</label>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const demoJSON = [
+                              {
+                                id: "demo_q1",
+                                questionNumber: 1,
+                                text: "Lợi ích lớn nhất của việc ôn tập theo nhịp bám sát đề thi thực tế là gì?",
+                                options: [
+                                  { key: "A", text: "Ghi nhớ cấu trúc đề, hiểu được lý giải và rèn luyện phản xạ nhanh chóng" },
+                                  { key: "B", text: "Tránh nạp các định dạng sai lệch không có giải nghĩa cụ thể" },
+                                  { key: "C", text: "Cả hai đáp án trên đều chính xác" }
+                                ],
+                                correctAnswers: ["C"],
+                                category: "Khái niệm chung",
+                                explanation: "Tài liệu đào tạo ghi nhận việc có giải nghĩa tiếng Việt chi tiết sau mỗi câu hỏi giúp cải thiện hiệu suất nhớ lâu hơn đến 85%.",
+                                tags: ["Thực tế", "Review"]
+                              }
+                            ];
+                            setNewCertQuestionsText(JSON.stringify(demoJSON, null, 2));
+                          }}
+                          className="text-[10px] text-indigo-600 hover:text-indigo-800 font-bold"
+                        >
+                          Nhấp nạp đề mẫu thử
+                        </button>
+                      </div>
+                      <textarea
+                        placeholder='Dán đoạn mã Array JSON của bạn vào đây (hoặc nhấp Nhập mẫu thử ở trên)...'
+                        rows={8}
+                        value={newCertQuestionsText}
+                        onChange={(e) => setNewCertQuestionsText(e.target.value)}
+                        className="w-full text-xs font-mono p-3 bg-slate-900 text-emerald-400 border border-slate-800 rounded-2xl focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500"
+                      />
+                    </div>
+
+                    <div className="flex gap-2 justify-end">
+                      <button
+                        type="button"
+                        onClick={() => setShowAddCertForm(false)}
+                        className="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition-colors"
+                      >
+                        Hủy bỏ
+                      </button>
+                      
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (!newCertCode || !newCertName) {
+                            alert('Vui lòng điền đầy đủ Mã (Code) và Tên chứng chỉ!');
+                            return;
+                          }
+                          
+                          let parsedQs: Question[] = [];
+                          try {
+                            parsedQs = JSON.parse(newCertQuestionsText);
+                            if (!Array.isArray(parsedQs)) {
+                              alert('Cú pháp câu hỏi phải là một mảng [] JSON!');
+                              return;
+                            }
+                          } catch (err: any) {
+                            alert(`Lỗi phân tích cú pháp JSON: ${err.message}`);
+                            return;
+                          }
+
+                          // Build the certificate object
+                          const certUid = `custom_${newCertCode.toLowerCase().replace(/[^a-z0-9]/g, '_')}_${Date.now()}`;
+                          const builtCert: Certificate = {
+                            id: certUid,
+                            name: newCertName,
+                            code: newCertCode.toUpperCase(),
+                            description: newCertDesc || `Chứng chỉ ôn luyện về môn học ${newCertCode.toUpperCase()}. Chứa bộ đề học tập chuyên dụng.`,
+                            difficulty: newCertDiff,
+                            estimatedHours: newCertHours,
+                            colorClass: newCertColor,
+                            iconName: newCertIcon
+                          };
+
+                          // Persist certificate list in local storage
+                          const storedCustomStr = localStorage.getItem('study_certs_custom');
+                          let listToSave = [];
+                          if (storedCustomStr) {
+                            try { listToSave = JSON.parse(storedCustomStr); } catch {}
+                          }
+                          listToSave.push(builtCert);
+                          localStorage.setItem('study_certs_custom', JSON.stringify(listToSave));
+
+                          // Persist questions
+                          localStorage.setItem(`questions_${certUid}`, JSON.stringify(parsedQs));
+
+                          // Append local state
+                          setCertificates(prev => [...prev, builtCert]);
+                          
+                          // Form Reset
+                          setNewCertCode('');
+                          setNewCertName('');
+                          setNewCertNameDesc('');
+                          setNewCertQuestionsText('');
+                          setShowAddCertForm(false);
+                          
+                          alert(`Chứng chỉ ${builtCert.code} đã được nạp thành công với ${parsedQs.length} câu hỏi!`);
+                        }}
+                        className="px-5 py-2.5 bg-indigo-650 hover:bg-indigo-750 text-white font-bold rounded-xl text-xs transition-colors shadow-sm"
+                      >
+                        Khởi tạo chứng chỉ
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Global Progress Statistics on Practice mode */}
+        {mode === 'practice' && (
+          <StatsPanel 
+            questions={questions} 
+            progress={progress} 
+            onReset={handleClearProgress} 
+          />
+        )}
+
+        {/* Mode Practice rendering */}
+        {mode === 'practice' && (
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+            
+            {/* Filter sidebar rail (Left) */}
+            <div className={`fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-slate-200 p-6 space-y-6 transform ${
+              mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+            } transition-transform duration-200 ease-in-out lg:relative lg:translate-x-0 lg:z-0 lg:p-0 lg:bg-transparent lg:border-r-0 lg:w-auto`}>
+              
+              <div className="flex lg:hidden items-center justify-between pb-4 border-b border-slate-100">
+                <span className="font-bold text-slate-700">Bộ lọc câu hỏi</span>
+                <button 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-1 text-slate-400 hover:text-slate-655"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Search keywords card panel */}
+              <div className="bg-white lg:border border-slate-150 rounded-2xl p-4 shadow-sm space-y-3">
+                <span className="block text-xs font-bold text-slate-400 uppercase tracking-widest">Từ khóa</span>
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Tìm kiếm câu hỏi..."
+                    value={searchQuery}
+                    onChange={(e) => { setSearchQuery(e.target.value); setCurrentQuestionIndex(0); }}
+                    className="w-full text-xs pl-8 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                  <Search className="w-4 h-4 text-slate-400 absolute left-2.5 top-3" />
+                </div>
+              </div>
+
+              {/* Categories list card panel */}
+              <div className="bg-white lg:border border-slate-150 rounded-2xl p-4 shadow-sm space-y-2">
+                <span className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Chủ đề bài thi</span>
+                <div className="space-y-1">
+                  {categories.map(cat => {
+                    const count = cat === 'All' 
+                      ? questions.length 
+                      : questions.filter(q => q.category === cat).length;
+                    
+                    const isSelected = selectCategory === cat;
+                    return (
+                      <button
+                        key={cat}
+                        onClick={() => { setCategoryFilter(cat); setCurrentQuestionIndex(0); setMobileMenuOpen(false); }}
+                        className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between transition-all ${
+                          isSelected 
+                            ? 'bg-slate-900 text-white' 
+                            : 'text-slate-600 hover:bg-slate-50'
+                        }`}
+                      >
+                        <span className="truncate">{cat === 'All' ? 'Tất cả chủ đề' : cat}</span>
+                        <span className={`text-[10px] px-2 py-0.5 rounded font-bold ${
+                          isSelected ? 'bg-slate-800 text-indigo-300' : 'bg-slate-100 text-slate-400'
+                        }`}>
+                          {count}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Bookmark Toggle */}
+              <div className="bg-white lg:border border-slate-150 rounded-2xl p-4 shadow-sm">
+                <label className="flex items-center gap-2.5 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    checked={showBookmarksOnly}
+                    onChange={(e) => { setShowBookmarksOnly(e.target.checked); setCurrentQuestionIndex(0); }}
+                    className="rounded border-slate-350 text-indigo-600 focus:ring-indigo-500 w-4 h-4"
+                  />
+                  <span className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+                    <Bookmark className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
+                    Chỉ xem câu hỏi đã lưu ({progress.bookmarkedQuestionIds.length})
+                  </span>
+                </label>
+              </div>
+
+              {/* Quick direct list grid layout */}
+              <div className="bg-white lg:border border-slate-150 rounded-2xl p-4 shadow-sm space-y-2">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="block text-xs font-bold text-slate-400 uppercase tracking-widest">Danh sách câu</span>
+                  <span className="text-[10px] text-slate-400">{filteredQuestions.length} câu</span>
+                </div>
+                {filteredQuestions.length > 0 ? (
+                  <div className="space-y-3">
+                    <div className="grid grid-cols-5 gap-1.5 max-h-48 overflow-y-auto pr-1">
+                      {paginatedSidebarQuestions.map((q) => {
+                        const globalIdx = filteredQuestions.findIndex(fq => fq.id === q.id);
+                        const isSelected = globalIdx === currentQuestionIndex;
+                        const hasHistory = progress.history.find(h => h.questionId === q.id);
+                        const isCorrect = hasHistory?.isCorrect;
+
+                        let cellColor = 'bg-slate-50 hover:bg-slate-100 text-slate-600';
+                        if (hasHistory) {
+                          cellColor = isCorrect 
+                            ? 'bg-emerald-50 text-emerald-700 font-bold border border-emerald-200' 
+                            : 'bg-rose-50 text-rose-700 font-bold border border-rose-200';
+                        }
+                        if (isSelected) {
+                          cellColor = 'ring-2 ring-indigo-500 ring-offset-1 bg-slate-900 text-white font-bold';
+                        }
+
+                        return (
+                          <button
+                            key={q.id}
+                            onClick={() => handleGoToQuestionNum(globalIdx)}
+                            className={`w-full aspect-square text-[10px] rounded-lg flex items-center justify-center transition-all ${cellColor}`}
+                            title={`Câu số ${q.questionNumber}`}
+                          >
+                            {q.questionNumber}
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {totalSidebarPages > 1 && (
+                      <div className="flex items-center justify-between border-t border-slate-100 pt-2">
+                        <button
+                          type="button"
+                          disabled={activeSidebarPage === 1}
+                          onClick={() => setSidebarPage(p => Math.max(1, p - 1))}
+                          className="px-2 py-1 bg-slate-50 hover:bg-slate-100 disabled:opacity-40 rounded text-xs font-bold text-slate-500 transition-colors"
+                        >
+                          &larr; Prev
+                        </button>
+                        <span className="text-[10px] text-slate-500 font-semibold">Trang {activeSidebarPage}/{totalSidebarPages}</span>
+                        <button
+                          type="button"
+                          disabled={activeSidebarPage === totalSidebarPages}
+                          onClick={() => setSidebarPage(p => Math.min(totalSidebarPages, p + 1))}
+                          className="px-2 py-1 bg-slate-50 hover:bg-slate-100 disabled:opacity-40 rounded text-xs font-bold text-slate-500 transition-colors"
+                        >
+                          Next &rarr;
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <p className="text-[11px] text-slate-400 py-2">Không tìm thấy câu hỏi phù hợp.</p>
+                )}
+              </div>
+            </div>
+
+            {/* Active Quiz Card Board (Right) */}
+            <div className="lg:col-span-3 space-y-6">
+              {filteredQuestions.length > 0 && currentQuestion ? (
+                <QuizCard
+                  question={currentQuestion}
+                  isBookmarked={progress.bookmarkedQuestionIds.includes(currentQuestion.id)}
+                  onToggleBookmark={handleToggleBookmark}
+                  onAnswerSubmitted={handleAnswerSubmitted}
+                  activeHistoryEntry={historyEntry}
+                  onNext={() => setCurrentQuestionIndex(prev => (prev < filteredQuestions.length - 1 ? prev + 1 : 0))}
+                  onPrev={() => setCurrentQuestionIndex(prev => (prev > 0 ? prev - 1 : filteredQuestions.length - 1))}
+                  isFirst={currentQuestionIndex === 0}
+                  isLast={currentQuestionIndex === filteredQuestions.length - 1}
+                />
+              ) : (
+                <div className="bg-white border border-slate-100 rounded-3xl p-12 shadow-sm text-center space-y-4">
+                  <div className="bg-slate-100 text-slate-400 w-12 h-12 rounded-full flex items-center justify-center mx-auto">
+                    <Search className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-800">Không tìm thấy câu hỏi nào!</h3>
+                    <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto leading-relaxed">
+                      Vui lòng đổi từ khóa tìm kiếm hoặc điều chỉnh loại bộ lọc chủ đề trong bảng điều khiển để hiển thị nhiều câu hỏi ôn luyện hơn.
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+          </div>
+        )}
+
+        {/* Timed Mock Exam Mode Rendering */}
+        {mode === 'exam' && (
+          <MockExam
+            questions={questions}
+            onFinishExam={handleFinishExamMock}
+            onExit={() => { setMode('practice'); setCurrentQuestionIndex(0); }}
+          />
+        )}
+
+        {/* Browsable Study Guide Syllabus Mode Rendering */}
+        {mode === 'guide' && (
+          <div className="space-y-6 max-w-4xl mx-auto">
+            <div className="space-y-1">
+              <h2 className="text-xl font-bold tracking-tight text-slate-900">Cẩm Nang & Tài Liệu Xem Trước {questions.length} Câu Hỏi</h2>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Đọc tất cả các câu hỏi trắc nghiệm kèm theo cấu trúc đáp án chuẩn xác cùng mục giải thích nghĩa chi tiết từ nguồn tài liệu gốc.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {paginatedGuideQuestions.map((q, idx) => {
+                const bookmarked = progress.bookmarkedQuestionIds.includes(q.id);
+                return (
+                  <div key={q.id} className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm space-y-4 hover:shadow-md/50 transition-shadow">
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                        CÂU HỎI {q.questionNumber} • <span className="text-indigo-600 font-semibold">{q.category}</span>
+                      </span>
+                      <button
+                        onClick={() => handleToggleBookmark(q.id)}
+                        className={`p-1.5 rounded-lg border ${
+                          bookmarked ? 'bg-rose-50 border-rose-100 text-rose-500' : 'text-slate-350 border-slate-200'
+                        }`}
+                      >
+                        <Star className={`w-3.5 h-3.5 ${bookmarked ? 'fill-rose-500' : ''}`} />
+                      </button>
+                    </div>
+
+                    <h3 className="text-sm font-bold text-slate-800 leading-relaxed">{q.text}</h3>
+
+                    {/* Answers Grid layout */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                      {q.options.map(opt => {
+                        const isCorrect = q.correctAnswers.includes(opt.key);
+                        return (
+                          <div 
+                            key={opt.key}
+                            className={`p-3 rounded-lg border flex items-start gap-2.5 ${
+                              isCorrect 
+                                ? 'bg-emerald-50/50 border-emerald-200 text-emerald-900 font-medium' 
+                                : 'bg-slate-50/20 border-slate-150 text-slate-500'
+                            }`}
+                          >
+                            <span className={`w-5 h-5 rounded-full shrink-0 flex items-center justify-center font-bold text-[10px] ${
+                              isCorrect ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-500'
+                            }`}>
+                              {opt.key}
+                            </span>
+                            <span className="leading-relaxed">{opt.text}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Detailed formatted explanation card */}
+                    <div className="bg-slate-50 p-4 border border-slate-100 text-xs text-slate-600 leading-relaxed rounded-xl space-y-1.5">
+                      <span className="font-bold text-slate-800 uppercase tracking-wide block">GỢI Ý ÔN TẬP & ĐÁP ÁN:</span>
+                      <p>{q.explanation}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Guide Pagination Controls */}
+            {totalGuidePages > 1 && (
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+                <span className="text-xs text-slate-500 font-semibold text-center md:text-left">
+                  Hiển thị {startGuideIndex + 1} - {Math.min(startGuideIndex + guidePageSize, questions.length)} trong tổng số {questions.length} câu hỏi
+                </span>
+                <div className="flex items-center gap-1.5 flex-wrap justify-center">
+                  <button
+                    disabled={activeGuidePage === 1}
+                    onClick={() => { setGuidePage(prev => Math.max(1, prev - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                    className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700 disabled:opacity-40 rounded-xl transition-all cursor-pointer"
+                  >
+                    Trước
+                  </button>
+                  
+                  {/* Page numbers with dynamic dots layout */}
+                  {Array.from({ length: totalGuidePages }).map((_, i) => {
+                    const p = i + 1;
+                    const isCurrent = p === activeGuidePage;
+                    if (totalGuidePages > 6 && p !== 1 && p !== totalGuidePages && Math.abs(p - activeGuidePage) > 1) {
+                      if (p === 2 || p === totalGuidePages - 1) {
+                        return <span key={p} className="text-slate-400 text-xs px-0.5">...</span>;
+                      }
+                      return null;
+                    }
+                    return (
+                      <button
+                        key={p}
+                        onClick={() => { setGuidePage(p); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                        className={`w-7 h-7 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                          isCurrent 
+                            ? 'bg-slate-950 text-white shadow' 
+                            : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+                        }`}
+                      >
+                        {p}
+                      </button>
+                    );
+                  })}
+
+                  <button
+                    disabled={activeGuidePage === totalGuidePages}
+                    onClick={() => { setGuidePage(prev => Math.min(totalGuidePages, prev + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                    className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700 disabled:opacity-40 rounded-xl transition-all cursor-pointer"
+                  >
+                    Sau
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+      </main>
+
+      {/* Styled static banner footer block */}
+      <footer className="bg-slate-900 border-t border-slate-800 py-6 px-4 mt-12 text-slate-400 text-center text-xs leading-relaxed">
+        <div className="max-w-7xl mx-auto space-y-2">
+          <p className="font-medium text-slate-300">
+            Ứng dụng hỗ trợ ôn luyện trắc nghiệm GH-300 Microsoft GitHub Copilot
+          </p>
+          <p className="text-[11px] text-slate-500">
+            Thực hiện bởi trợ lý AI Studio • Hoàn toàn tương thích và lưu trữ tiến độ thông minh trên điện thoại và máy tính.
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
