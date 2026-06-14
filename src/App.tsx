@@ -17,7 +17,12 @@ import {
   Menu,
   X,
   RefreshCw,
-  FolderOpen
+  FolderOpen,
+  User,
+  LogOut,
+  Database,
+  Check,
+  Loader2
 } from 'lucide-react';
 
 import { Question, ProgressState, StudyMode, Certificate } from './types';
@@ -28,6 +33,16 @@ import QuizCard from './components/QuizCard';
 import StatsPanel from './components/StatsPanel';
 import MockExam from './components/MockExam';
 import CustomQuestionsImport from './components/CustomQuestionsImport';
+
+// Supabase synchronization functions
+import { 
+  fetchQuestionsFromDb, 
+  uploadQuestionsToDb, 
+  fetchUserProgressFromDb, 
+  syncUserProgressStateToDb, 
+  syncSingleHistoryEntryToDb, 
+  syncBulkHistoryToDb 
+} from './lib/sync';
 
 function DynamicIcon({ name, className = "w-5 h-5" }: { name: string; className?: string }) {
   switch (name) {
@@ -97,6 +112,12 @@ export default function App() {
     history: []
   });
 
+  // Supabase Auth and Sync States
+  const [username, setUsername] = useState<string>(() => localStorage.getItem('study_username') || '');
+  const [dbSyncStatus, setDbSyncStatus] = useState<'idle' | 'syncing' | 'success' | 'error'>('idle');
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authInputUsername, setAuthInputUsername] = useState('');
+
   // Current states - default to the new Home view
   const [mode, setMode] = useState<StudyMode>('home');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -128,8 +149,11 @@ export default function App() {
     setSidebarPage(1);
   }, [searchQuery, selectCategory, showBookmarksOnly]);
 
-  // Helper function to load data for a specific cert
-  const loadCertData = (certId: string) => {
+  // Advanced sync state and loader for Supabase + LocalStorage fallback
+  const loadCertData = async (certId: string, currentUsername: string = username) => {
+    setDbSyncStatus('syncing');
+    
+    // 1. Load basic local questions
     let defaultQs: Question[] = [];
     if (certId === 'gh-300') {
       defaultQs = initialQuestions;
@@ -137,32 +161,83 @@ export default function App() {
       defaultQs = az900Questions;
     } else if (certId === 'ai-900') {
       defaultQs = ai900Questions;
+    } else {
+      const storedQs = localStorage.getItem(`questions_${certId}`);
+      if (storedQs) {
+        try { defaultQs = JSON.parse(storedQs); } catch {}
+      }
     }
 
-    // Load custom questions if any, otherwise default
-    const storedQs = localStorage.getItem(`questions_${certId}`);
-    if (storedQs) {
+    let activeQuestions = defaultQs;
+
+    // Try fetching from database first
+    try {
+      const dbQs = await fetchQuestionsFromDb(certId);
+      if (dbQs && dbQs.length > 0) {
+        activeQuestions = dbQs;
+      } else if (defaultQs.length > 0) {
+        // If Database is empty but we have local questions, automatically populate DB in background
+        await uploadQuestionsToDb(certId, defaultQs);
+      }
+    } catch (err) {
+      console.error('Questions sync error:', err);
+    }
+
+    setQuestions(activeQuestions);
+
+    // 2. Load progress & history
+    let activeProgress: ProgressState = {
+      answeredCount: 0,
+      correctCount: 0,
+      incorrectCount: 0,
+      streak: 0,
+      bookmarkedQuestionIds: [],
+      history: []
+    };
+
+    if (currentUsername) {
+      // Connect and query from Supabase
       try {
-        setQuestions(JSON.parse(storedQs));
-      } catch {
-        setQuestions(defaultQs);
+        const dbProgress = await fetchUserProgressFromDb(currentUsername, certId);
+        if (dbProgress) {
+          activeProgress = dbProgress;
+          // Store locally as fallback cache
+          localStorage.setItem(`progress_${certId}`, JSON.stringify(dbProgress));
+          setDbSyncStatus('success');
+        } else {
+          // New account with no database record. See if they have offline progress to migrate
+          const storedLocalProgress = localStorage.getItem(`progress_${certId}`);
+          if (storedLocalProgress) {
+            try {
+              const parsed = JSON.parse(storedLocalProgress);
+              activeProgress = parsed;
+              // Sync offline data directly to cloud
+              await syncUserProgressStateToDb(currentUsername, certId, parsed);
+              await syncBulkHistoryToDb(currentUsername, certId, parsed.history || []);
+              setDbSyncStatus('success');
+            } catch {
+              setDbSyncStatus('idle');
+            }
+          } else {
+            setDbSyncStatus('idle');
+          }
+        }
+      } catch (err) {
+        console.error('Progress sync error:', err);
+        setDbSyncStatus('error');
       }
     } else {
-      setQuestions(defaultQs);
-    }
-
-    // Load progress
-    const storedProgress = localStorage.getItem(`progress_${certId}`);
-    if (storedProgress) {
-      try {
-        setProgress(JSON.parse(storedProgress));
-      } catch {
-        setProgress({ answeredCount: 0, correctCount: 0, incorrectCount: 0, streak: 0, bookmarkedQuestionIds: [], history: [] });
+      // Purely offline local fallback
+      const storedProgress = localStorage.getItem(`progress_${certId}`);
+      if (storedProgress) {
+        try {
+          activeProgress = JSON.parse(storedProgress);
+        } catch {}
       }
-    } else {
-      setProgress({ answeredCount: 0, correctCount: 0, incorrectCount: 0, streak: 0, bookmarkedQuestionIds: [], history: [] });
+      setDbSyncStatus('idle');
     }
 
+    setProgress(activeProgress);
     setCurrentQuestionIndex(0);
     setCategoryFilter('All');
     setSearchQuery('');
@@ -189,30 +264,68 @@ export default function App() {
     // 2. Select initial active cert and load its content
     const lastActiveCert = localStorage.getItem('study_active_cert') || 'gh-300';
     setActiveCertId(lastActiveCert);
-    loadCertData(lastActiveCert);
+    loadCertData(lastActiveCert, username);
   }, []);
 
   // Sync state back to storage helper
-  const saveProgress = (newProgress: ProgressState) => {
+  const saveProgress = async (newProgress: ProgressState, currentUsername: string = username) => {
     setProgress(newProgress);
     localStorage.setItem(`progress_${activeCertId}`, JSON.stringify(newProgress));
+
+    if (currentUsername) {
+      try {
+        await syncUserProgressStateToDb(currentUsername, activeCertId, newProgress);
+      } catch (err) {
+        console.error('Async database syncer failed:', err);
+      }
+    }
+  };
+
+  const handleLogin = async (inputName: string) => {
+    const trimmed = inputName.trim();
+    if (!trimmed) {
+      alert('Vui lòng nhập họ tên hoặc biệt danh hợp lý!');
+      return;
+    }
+    setUsername(trimmed);
+    localStorage.setItem('study_username', trimmed);
+    setShowAuthModal(false);
+    
+    // Hot reload Workspace using new username identification profile
+    await loadCertData(activeCertId, trimmed);
+    alert(`Đã liên kết tài khoản "${trimmed}" và đồng bộ Cloud hoàn tất!`);
+  };
+
+  const handleLogout = () => {
+    if (confirm('Bạn có chắc muốn thoát tài khoản hiện tại về chế độ luyện tập ngoại tuyến (Offline)?')) {
+      setUsername('');
+      localStorage.removeItem('study_username');
+      loadCertData(activeCertId, '');
+    }
   };
 
   // Switch certification and load its workspace
   const handleSelectCert = (certId: string) => {
     setActiveCertId(certId);
     localStorage.setItem('study_active_cert', certId);
-    loadCertData(certId);
+    loadCertData(certId, username);
     setMode('practice');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Import custom questions handler for ACTIVE certification
-  const handleImportQuestions = (newQuestions: Question[], resetProgress: boolean) => {
+  const handleImportQuestions = async (newQuestions: Question[], resetProgress: boolean) => {
     setQuestions(newQuestions);
     localStorage.setItem(`questions_${activeCertId}`, JSON.stringify(newQuestions));
     setCurrentQuestionIndex(0);
     setShowUploader(false);
+
+    // Sync imported question bank to cloud custom_questions table
+    try {
+      await uploadQuestionsToDb(activeCertId, newQuestions);
+    } catch (err) {
+      console.error('Failed to upload custom questions to DB:', err);
+    }
 
     if (resetProgress) {
       const emptyProgress: ProgressState = {
@@ -223,7 +336,7 @@ export default function App() {
         bookmarkedQuestionIds: [],
         history: []
       };
-      saveProgress(emptyProgress);
+      await saveProgress(emptyProgress);
     }
   };
 
@@ -242,14 +355,17 @@ export default function App() {
     }
 
     setQuestions(defaultQs);
-    setProgress({
+    const emptyProgress = {
       answeredCount: 0,
       correctCount: 0,
       incorrectCount: 0,
       streak: 0,
       bookmarkedQuestionIds: [],
       history: []
-    });
+    };
+    setProgress(emptyProgress);
+    saveProgress(emptyProgress);
+    
     setCurrentQuestionIndex(0);
     setCategoryFilter('All');
     setSearchQuery('');
@@ -274,7 +390,7 @@ export default function App() {
   };
 
   // Bookmark Toggle
-  const handleToggleBookmark = (qId: string) => {
+  const handleToggleBookmark = async (qId: string) => {
     const isBookmarked = progress.bookmarkedQuestionIds.includes(qId);
     let updated: string[];
     if (isBookmarked) {
@@ -282,14 +398,15 @@ export default function App() {
     } else {
       updated = [...progress.bookmarkedQuestionIds, qId];
     }
-    saveProgress({
+    const newProgress = {
       ...progress,
       bookmarkedQuestionIds: updated
-    });
+    };
+    await saveProgress(newProgress);
   };
 
   // Answer Logging
-  const handleAnswerSubmitted = (qId: string, selectedOptions: string[], isCorrect: boolean) => {
+  const handleAnswerSubmitted = async (qId: string, selectedOptions: string[], isCorrect: boolean) => {
     // Prevent duplicate entries for same question to avoid skewing average correctness stats
     const otherHistory = progress.history.filter(h => h.questionId !== qId);
     
@@ -307,14 +424,24 @@ export default function App() {
     const correctCount = newHistory.filter(h => h.isCorrect).length;
     const incorrectCount = newHistory.length - correctCount;
 
-    saveProgress({
+    const newProgress: ProgressState = {
       ...progress,
       answeredCount: newHistory.length,
       correctCount,
       incorrectCount,
       streak: newStreak,
       history: newHistory
-    });
+    };
+
+    await saveProgress(newProgress);
+
+    if (username) {
+      try {
+        await syncSingleHistoryEntryToDb(username, activeCertId, qId, selectedOptions, isCorrect);
+      } catch (err) {
+        console.error('Logging syncing error:', err);
+      }
+    }
   };
 
   // Filtered List projection
@@ -447,11 +574,60 @@ export default function App() {
 
           {/* Quick Stats overview panel */}
           <div className="flex items-center gap-2.5">
+            {/* Cloud User Profile & Sync Indicator */}
+            <div className="flex items-center gap-1.5">
+              {username ? (
+                <div className="flex items-center gap-2 bg-slate-100 pl-3 pr-2.5 py-1.5 rounded-xl border border-slate-200/80 shadow-sm max-w-[200px]">
+                  <div className="flex flex-col items-start leading-none">
+                    <span className="text-[8px] text-slate-400 font-bold uppercase tracking-wider block">Tài khoản</span>
+                    <span className="text-xs font-black text-slate-800 tracking-tight truncate max-w-[80px] sm:max-w-[110px]" title={username}>
+                      {username}
+                    </span>
+                  </div>
+                  
+                  {/* Status Indicator */}
+                  <div className="flex items-center justify-center pl-0.5">
+                    {dbSyncStatus === 'syncing' && (
+                      <Loader2 className="w-3.5 h-3.5 text-indigo-500 animate-spin" title="Đang đồng bộ..." />
+                    )}
+                    {dbSyncStatus === 'success' && (
+                      <Check className="w-3.5 h-3.5 text-emerald-500 font-extrabold" title="Đã đồng bộ Cloud" />
+                    )}
+                    {dbSyncStatus === 'error' && (
+                      <AlertCircle className="w-3.5 h-3.5 text-rose-500 animate-pulse" title="Lỗi đồng bộ Cloud" />
+                    )}
+                    {dbSyncStatus === 'idle' && (
+                      <Database className="w-3.5 h-3.5 text-slate-400" title="Đang lưu offline" />
+                    )}
+                  </div>
+                  
+                  <div className="w-px h-5 bg-slate-200 mx-0.5" />
+                  
+                  <button
+                    onClick={handleLogout}
+                    title="Đăng xuất"
+                    className="p-1 text-slate-400 hover:text-rose-500 rounded-md hover:bg-white transition-all cursor-pointer"
+                  >
+                    <LogOut className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => { setAuthInputUsername(''); setShowAuthModal(true); }}
+                  className="bg-indigo-600 hover:bg-slate-900 text-white font-bold text-xs px-3.5 py-2 rounded-xl border border-indigo-700 shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
+                  title="Kết nối tài khoản nhóm"
+                >
+                  <User className="w-3.5 h-3.5 animate-pulse" />
+                  <span className="hidden sm:inline">Lưu lịch sử Team</span>
+                </button>
+              )}
+            </div>
+
             {mode !== 'home' && (
               <>
                 <button
                   onClick={() => setShowUploader(prev => !prev)}
-                  className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5"
+                  className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer"
                 >
                   <Upload className="w-3.5 h-3.5 text-slate-500" />
                   <span className="hidden sm:inline">Nạp câu hỏi tự chọn</span>
@@ -460,7 +636,7 @@ export default function App() {
                 <button
                   onClick={handleResetToDefault}
                   title="Khôi phục câu hỏi ban đầu"
-                  className="p-2 bg-slate-50 hover:bg-slate-150 border border-slate-200 rounded-xl text-slate-400 hover:text-slate-700 transition-colors"
+                  className="p-2 bg-slate-50 hover:bg-slate-150 border border-slate-200 rounded-xl text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
                 </button>
@@ -470,7 +646,7 @@ export default function App() {
             {mode === 'home' && (
               <button
                 onClick={() => setShowAddCertForm(true)}
-                className="text-xs bg-slate-950 hover:bg-indigo-650 text-white font-bold px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 shadow-sm"
+                className="text-xs bg-slate-950 hover:bg-indigo-650 text-white font-bold px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
               >
                 <Upload className="w-3.5 h-3.5" />
                 <span>Thêm chứng chỉ mới</span>
@@ -536,6 +712,40 @@ export default function App() {
         {/* Certification Hub Home View */}
         {mode === 'home' && (
           <div className="space-y-8 animate-fadeIn">
+            {!username && (
+              <div id="welcome-team-sync-banner" className="bg-gradient-to-r from-indigo-50/70 to-blue-50/50 border border-indigo-100 rounded-3xl p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 animate-fadeIn">
+                <div className="space-y-1.5 text-center md:text-left">
+                  <span className="text-[9px] font-black text-indigo-700 uppercase tracking-widest bg-white border border-indigo-150 px-3 py-1 rounded-full shadow-xs">Tính năng Team Sync 👥</span>
+                  <h3 className="text-lg font-black text-slate-900 tracking-tight">Học nhóm & Đồng bộ đám mây (Cloud Database)</h3>
+                  <p className="text-xs text-slate-500 max-w-xl leading-relaxed">
+                    Nhập biệt danh của bạn để tự động liên kết và lưu lịch sử làm bài, các câu khó đã đánh dấu lên hệ thống database chung của Team. Không cần đăng ký tài khoản rườm rà!
+                  </p>
+                </div>
+                <div className="w-full md:w-auto shrink-0 flex flex-col sm:flex-row gap-2.5 items-stretch sm:items-center">
+                  <input
+                    type="text"
+                    placeholder="Nhập tên của bạn (vd: HuyenTran)..."
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        handleLogin((e.target as HTMLInputElement).value);
+                      }
+                    }}
+                    id="dashboard-username-input"
+                    className="px-4 py-3 bg-white text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-bold text-slate-850 min-w-[180px]"
+                  />
+                  <button
+                    onClick={() => {
+                      const input = document.getElementById('dashboard-username-input') as HTMLInputElement;
+                      if (input) handleLogin(input.value);
+                    }}
+                    className="bg-indigo-650 hover:bg-slate-950 text-white font-black text-xs px-5 py-3 rounded-xl border border-indigo-700 shadow-md transition-all cursor-pointer whitespace-nowrap active:scale-95"
+                  >
+                    Đồng bộ ngay
+                  </button>
+                </div>
+              </div>
+            )}
+
             {/* Header Hub Hero */}
             <div className="bg-white border border-slate-100 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="space-y-2 text-center md:text-left">
@@ -960,6 +1170,8 @@ export default function App() {
                 </div>
               </div>
             )}
+
+
           </div>
         )}
 
@@ -1292,6 +1504,69 @@ export default function App() {
           </p>
         </div>
       </footer>
+
+      {/* Account / Team login connection Modal */}
+      {showAuthModal && (
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 shadow-2xl border border-slate-100 max-w-md w-full animate-in fade-in zoom-in duration-200">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <div className="bg-indigo-50 text-indigo-650 p-2.5 rounded-2xl">
+                  <Database className="w-5 h-5 flex-shrink-0" />
+                </div>
+                <div>
+                  <h3 className="text-base font-extrabold text-slate-900 leading-tight">Kết nối Team DB</h3>
+                  <p className="text-[10px] text-slate-400 font-medium">Lưu lịch sử và tiến độ học tập lên đám mây</p>
+                </div>
+              </div>
+              <button 
+                onClick={() => setShowAuthModal(false)}
+                className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <p className="text-xs text-slate-550 leading-relaxed">
+                Nhập tên tài khoản của bạn (ví dụ: <strong className="text-indigo-600">HuyenTran</strong>, <strong className="text-indigo-600">Admin</strong>, <strong className="text-indigo-600">DevTeam</strong>) để hệ thống đồng bộ lịch sử làm bài, chuỗi sấm sét, và danh sách câu hỏi đã lưu. Bạn có thể sử dụng chung database và chia sẻ tiến trình với đồng đội!
+              </p>
+
+              <div>
+                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                  Tên tài khoản (Họ tên / Nickname)
+                </label>
+                <input
+                  type="text"
+                  placeholder="Nhập tên tài khoản của bạn..."
+                  value={authInputUsername}
+                  onChange={(e) => setAuthInputUsername(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') handleLogin(authInputUsername);
+                  }}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-semibold text-slate-800"
+                  autoFocus
+                />
+              </div>
+
+              <div className="flex gap-2.5 justify-end pt-2">
+                <button
+                  onClick={() => setShowAuthModal(false)}
+                  className="px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 rounded-xl transition-colors cursor-pointer"
+                >
+                  Bỏ qua
+                </button>
+                <button
+                  onClick={() => handleLogin(authInputUsername)}
+                  className="px-5 py-2.5 text-xs font-extrabold text-white bg-indigo-650 hover:bg-slate-950 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer"
+                >
+                  Đồng bộ ngay
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
