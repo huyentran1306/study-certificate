@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   BookOpen, 
   Search, 
@@ -22,7 +23,8 @@ import {
   LogOut,
   Database,
   Check,
-  Loader2
+  Loader2,
+  Asterisk
 } from 'lucide-react';
 
 import { Question, ProgressState, StudyMode, Certificate } from './types';
@@ -33,6 +35,7 @@ import QuizCard from './components/QuizCard';
 import StatsPanel from './components/StatsPanel';
 import MockExam from './components/MockExam';
 import CustomQuestionsImport from './components/CustomQuestionsImport';
+import AdminPanel from './components/AdminPanel';
 
 // Supabase synchronization functions
 import { 
@@ -118,8 +121,56 @@ export default function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authInputUsername, setAuthInputUsername] = useState('');
 
+  // Toast, Logout & Deletion confirmation states
+  const [appToast, setAppToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const [certToDelete, setCertToDelete] = useState<Certificate | null>(null);
+
+  const showAppToast = (message: string, type: 'success' | 'error' | 'info' = 'success') => {
+    setAppToast({ message, type });
+  };
+
+  useEffect(() => {
+    if (appToast) {
+      const timer = setTimeout(() => setAppToast(null), 3500);
+      return () => clearTimeout(timer);
+    }
+  }, [appToast]);
+
   // Current states - default to the new Home view
   const [mode, setMode] = useState<StudyMode>('home');
+  const [asteriskClicks, setAsteriskClicks] = useState(0);
+
+  // Auto reset click counter after 4 seconds of inactivity
+  useEffect(() => {
+    if (asteriskClicks > 0) {
+      const timer = setTimeout(() => {
+        setAsteriskClicks(0);
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [asteriskClicks]);
+
+  const handleAsteriskClick = () => {
+    setAsteriskClicks(prev => {
+      const next = prev + 1;
+      if (next === 1) {
+        showAppToast('Bấm thêm 2 lần nữa vào biểu tượng hoa thị để mở Chế độ Admin 🛠️', 'info');
+      } else if (next === 2) {
+        showAppToast('Bấm thêm 1 lần nữa để kích hoạt...', 'info');
+      } else if (next >= 3) {
+        setMode(mode === 'admin' ? 'home' : 'admin');
+        showAppToast(
+          mode === 'admin' 
+            ? 'Đã tắt và rời khỏi Chế độ Admin' 
+            : 'Chào mừng! Bạn đã chuyển sang Chế độ Admin thành công 🎉', 
+          'success'
+        );
+        return 0; // reset
+      }
+      return next;
+    });
+  };
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectCategory, setCategoryFilter] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
@@ -284,7 +335,7 @@ export default function App() {
   const handleLogin = async (inputName: string) => {
     const trimmed = inputName.trim();
     if (!trimmed) {
-      alert('Vui lòng nhập họ tên hoặc biệt danh hợp lý!');
+      showAppToast('Vui lòng nhập họ tên hoặc biệt danh hợp lệ!', 'error');
       return;
     }
     setUsername(trimmed);
@@ -293,15 +344,46 @@ export default function App() {
     
     // Hot reload Workspace using new username identification profile
     await loadCertData(activeCertId, trimmed);
-    alert(`Đã liên kết tài khoản "${trimmed}" và đồng bộ Cloud hoàn tất!`);
+    showAppToast(`Đã liên kết tài khoản "${trimmed}" và đồng bộ Cloud hoàn tất!`, 'success');
   };
 
   const handleLogout = () => {
-    if (confirm('Bạn có chắc muốn thoát tài khoản hiện tại về chế độ luyện tập ngoại tuyến (Offline)?')) {
-      setUsername('');
-      localStorage.removeItem('study_username');
-      loadCertData(activeCertId, '');
+    setShowLogoutConfirm(true);
+  };
+
+  const confirmLogout = () => {
+    setUsername('');
+    localStorage.removeItem('study_username');
+    loadCertData(activeCertId, '');
+    setShowLogoutConfirm(false);
+    showAppToast('Đã đăng xuất tài khoản và chuyển về chế độ Offline!', 'info');
+  };
+
+  const confirmDeleteCert = () => {
+    if (!certToDelete) return;
+    const cert = certToDelete;
+    const storedCustomCerts = localStorage.getItem('study_certs_custom');
+    if (storedCustomCerts) {
+      try {
+        const parsed = JSON.parse(storedCustomCerts);
+        const remaining = parsed.filter((c: any) => c.id !== cert.id);
+        localStorage.setItem('study_certs_custom', JSON.stringify(remaining));
+        
+        // Clean corresponding storage
+        localStorage.removeItem(`questions_${cert.id}`);
+        localStorage.removeItem(`progress_${cert.id}`);
+        
+        setCertificates(prev => prev.filter(c => c.id !== cert.id));
+        if (activeCertId === cert.id) {
+          setActiveCertId('gh-300');
+          loadCertData('gh-300');
+        }
+        showAppToast(`Đã xóa thành công chứng chỉ tự tạo ${cert.code}!`, 'success');
+      } catch (err) {
+        console.error(err);
+      }
     }
+    setCertToDelete(null);
   };
 
   // Switch certification and load its workspace
@@ -372,7 +454,7 @@ export default function App() {
     setShowBookmarksOnly(false);
     
     const activeCert = certificates.find(c => c.id === activeCertId);
-    alert(`Đã khôi phục ngân hàng câu hỏi gốc của chứng chỉ ${activeCert?.code || activeCertId}!`);
+    showAppToast(`Đã khôi phục ngân hàng câu hỏi gốc của chứng chỉ ${activeCert?.code || activeCertId}!`, 'success');
   };
 
   // Clear progress for active certificate
@@ -473,7 +555,7 @@ export default function App() {
   const handleFinishExamMock = (correct: number, total: number) => {
     // Append to streak history slightly
     const accuracy = Math.round((correct / total) * 100);
-    alert(`Chúc mừng! Bạn đã hoàn thành bài thi thử với kết quả: ${correct}/${total} câu đúng (Đạt ${accuracy}%)!`);
+    showAppToast(`Chúc mừng! Bạn đã hoàn thành bài thi thử với kết quả: ${correct}/${total} câu đúng (Đạt ${accuracy}%)!`, 'success');
   };
 
   // Current question references
@@ -494,7 +576,7 @@ export default function App() {
       <header className="sticky top-0 z-40 bg-white border-b border-slate-200/80 backdrop-blur-md px-4 py-3 md:px-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            {mode !== 'home' && (
+            {mode !== 'home' && mode !== 'admin' && (
               <button 
                 onClick={() => setMobileMenuOpen(prev => !prev)}
                 className="lg:hidden text-slate-500 hover:text-slate-800 p-2 rounded-lg"
@@ -503,24 +585,39 @@ export default function App() {
               </button>
             )}
             <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => setMode('home')}>
-              <div className="bg-indigo-650 text-white p-2 rounded-xl">
+              <div className="bg-indigo-600 text-white p-2 rounded-xl">
                 {mode === 'home' ? (
                   <Home className="w-5 h-5" />
+                ) : mode === 'admin' ? (
+                  <Asterisk className="w-5 h-5 animate-spin text-rose-300" />
                 ) : (
                   <DynamicIcon name={certificates.find(c => c.id === activeCertId)?.iconName || 'Zap'} className="w-5 h-5" />
                 )}
               </div>
               <div>
                 <h1 className="text-sm font-extrabold tracking-tight text-slate-900 leading-tight">
-                  {mode === 'home' ? 'Cert Hub Dashboard' : `${certificates.find(c => c.id === activeCertId)?.code} Prep Hub`}
+                  {mode === 'home' ? 'Cert Hub Dashboard' : mode === 'admin' ? 'Admin Hub Panel' : `${certificates.find(c => c.id === activeCertId)?.code} Prep Hub`}
                 </h1>
                 <p className="text-[10px] text-slate-400 font-medium">
                   {mode === 'home' 
                     ? 'Trung Tâm Ôn Luyện Đa Chứng Chỉ' 
-                    : certificates.find(c => c.id === activeCertId)?.name}
+                    : mode === 'admin'
+                      ? 'Thiết lập & Cấu hình đề thi'
+                      : certificates.find(c => c.id === activeCertId)?.name}
                 </p>
               </div>
             </div>
+
+            {/* Hidden admin click tracker asterisk */}
+            <button
+              onClick={handleAsteriskClick}
+              className={`p-1 px-1.5 rounded-lg text-slate-300 hover:text-rose-600 hover:bg-rose-50/50 transition-colors cursor-pointer ${
+                mode === 'admin' ? 'text-rose-600 bg-rose-50' : ''
+              }`}
+              title="Cơ chế bảo mật mở Chế độ Admin (Click 3 lần)"
+            >
+              <Asterisk className={`w-4 h-4 ${mode === 'admin' ? 'animate-spin' : ''}`} />
+            </button>
           </div>
 
           {/* Center Tabs: Home, Practice, Timer Exam, Code Guide */}
@@ -536,7 +633,15 @@ export default function App() {
               <Home className="w-3.5 h-3.5" />
               Trang chủ
             </button>
-            {mode !== 'home' && (
+            {mode === 'admin' && (
+              <button
+                className="text-xs px-4 py-2 font-black text-rose-700 bg-white shadow-sm rounded-lg flex items-center gap-1.5"
+              >
+                <Asterisk className="w-3.5 h-3.5 text-rose-600 animate-spin" />
+                Chế độ Admin 🛠️
+              </button>
+            )}
+            {mode !== 'home' && mode !== 'admin' && (
               <>
                 <button
                   onClick={() => { setMode('practice'); setCurrentQuestionIndex(0); }}
@@ -646,7 +751,7 @@ export default function App() {
             {mode === 'home' && (
               <button
                 onClick={() => setShowAddCertForm(true)}
-                className="text-xs bg-slate-950 hover:bg-indigo-650 text-white font-bold px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
+                className="text-xs bg-slate-950 hover:bg-indigo-600 text-white font-bold px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
               >
                 <Upload className="w-3.5 h-3.5" />
                 <span>Thêm chứng chỉ mới</span>
@@ -738,7 +843,7 @@ export default function App() {
                       const input = document.getElementById('dashboard-username-input') as HTMLInputElement;
                       if (input) handleLogin(input.value);
                     }}
-                    className="bg-indigo-650 hover:bg-slate-950 text-white font-black text-xs px-5 py-3 rounded-xl border border-indigo-700 shadow-md transition-all cursor-pointer whitespace-nowrap active:scale-95"
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs px-5 py-3 rounded-xl border border-indigo-700 shadow-md transition-all cursor-pointer whitespace-nowrap active:scale-95"
                   >
                     Đồng bộ ngay
                   </button>
@@ -749,7 +854,7 @@ export default function App() {
             {/* Header Hub Hero */}
             <div className="bg-white border border-slate-100 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="space-y-2 text-center md:text-left">
-                <span className="text-[10px] font-bold text-indigo-650 uppercase tracking-widest bg-indigo-50 px-2.5 py-1 rounded-full">CERT PREP PORTAL</span>
+                <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-2.5 py-1 rounded-full">CERT PREP PORTAL</span>
                 <h2 className="text-2xl md:text-3xl font-black tracking-tight text-slate-900">Trung Tâm Ôn Luyện Đa Chứng Chỉ</h2>
                 <p className="text-xs text-slate-500 max-w-xl leading-relaxed">
                   Chào mừng bạn đến với môi trường học tập cá nhân hóa. Chọn một chứng chỉ bên dưới để bắt đầu ôn luyện dưới nhiều chế độ (Luyện tập, Thi thử ngẫu nhiên, xem Cẩm nang gốc), hoặc tự khởi tạo và nhập ngân hàng câu hỏi riêng biệt của bạn!
@@ -873,7 +978,7 @@ export default function App() {
                       <div className="flex items-center gap-2 pt-2 border-t border-slate-100">
                         <button
                           onClick={() => handleSelectCert(cert.id)}
-                          className="flex-1 text-center py-2.5 bg-slate-950 hover:bg-indigo-650 text-white font-bold rounded-xl text-xs transition-all shadow-sm flex items-center justify-center gap-1.5"
+                          className="flex-1 text-center py-2.5 bg-slate-950 hover:bg-indigo-600 text-white font-bold rounded-xl text-xs transition-all shadow-sm flex items-center justify-center gap-1.5"
                         >
                           <BookOpen className="w-3.5 h-3.5" />
                           Học ngay
@@ -883,26 +988,7 @@ export default function App() {
                         {cert.id !== 'gh-300' && cert.id !== 'az-900' && cert.id !== 'ai-900' && (
                           <button
                             onClick={() => {
-                              if (confirm(`Bạn có chắc chắn muốn xóa chứng chỉ tự tạo ${cert.code} cùng toàn bộ tiến trình học tập?`)) {
-                                const storedCustomCerts = localStorage.getItem('study_certs_custom');
-                                if (storedCustomCerts) {
-                                  try {
-                                    const parsed = JSON.parse(storedCustomCerts);
-                                    const remaining = parsed.filter((c: any) => c.id !== cert.id);
-                                    localStorage.setItem('study_certs_custom', JSON.stringify(remaining));
-                                    
-                                    // Clean corresponding storage
-                                    localStorage.removeItem(`questions_${cert.id}`);
-                                    localStorage.removeItem(`progress_${cert.id}`);
-                                    
-                                    setCertificates(prev => prev.filter(c => c.id !== cert.id));
-                                    if (activeCertId === cert.id) {
-                                      setActiveCertId('gh-300');
-                                      loadCertData('gh-300');
-                                    }
-                                  } catch {}
-                                }
-                              }
+                              setCertToDelete(cert);
                             }}
                             title="Xóa chứng chỉ này"
                             className="p-2.5 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-xl transition-colors border border-rose-100 shrink-0"
@@ -940,7 +1026,7 @@ export default function App() {
               <div className="bg-white border border-slate-150 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
                 <div className="flex items-center justify-between pb-4 border-b border-slate-100">
                   <div className="flex items-center gap-2">
-                    <FolderOpen className="w-5 h-5 text-indigo-650" />
+                    <FolderOpen className="w-5 h-5 text-indigo-600" />
                     <div>
                       <h3 className="text-base font-bold text-slate-900">Thiết Lập Khởi Tạo Chứng Chỉ Tự Chọn</h3>
                       <p className="text-[11px] text-slate-400 mt-0.5">Xây dựng thẻ học tập tùy chỉnh hoàn chỉnh ngay lập tức.</p>
@@ -1046,7 +1132,7 @@ export default function App() {
                               name="colorPreset" 
                               checked={newCertColor === cPreset.value} 
                               onChange={() => setNewCertColor(cPreset.value)}
-                              className="text-indigo-650 focus:ring-indigo-550" 
+                              className="text-indigo-600 focus:ring-indigo-500" 
                             />
                             {cPreset.text}
                           </label>
@@ -1108,7 +1194,7 @@ export default function App() {
                         type="button"
                         onClick={() => {
                           if (!newCertCode || !newCertName) {
-                            alert('Vui lòng điền đầy đủ Mã (Code) và Tên chứng chỉ!');
+                            showAppToast('Vui lòng điền đầy đủ Mã (Code) và Tên chứng chỉ!', 'error');
                             return;
                           }
                           
@@ -1116,11 +1202,11 @@ export default function App() {
                           try {
                             parsedQs = JSON.parse(newCertQuestionsText);
                             if (!Array.isArray(parsedQs)) {
-                              alert('Cú pháp câu hỏi phải là một mảng [] JSON!');
+                              showAppToast('Cú pháp câu hỏi phải là một mảng [] JSON!', 'error');
                               return;
                             }
                           } catch (err: any) {
-                            alert(`Lỗi phân tích cú pháp JSON: ${err.message}`);
+                            showAppToast(`Lỗi phân tích cú pháp JSON: ${err.message}`, 'error');
                             return;
                           }
 
@@ -1159,9 +1245,9 @@ export default function App() {
                           setNewCertQuestionsText('');
                           setShowAddCertForm(false);
                           
-                          alert(`Chứng chỉ ${builtCert.code} đã được nạp thành công với ${parsedQs.length} câu hỏi!`);
+                          showAppToast(`Chứng chỉ ${builtCert.code} đã được nạp thành công với ${parsedQs.length} câu hỏi!`, 'success');
                         }}
-                        className="px-5 py-2.5 bg-indigo-650 hover:bg-indigo-750 text-white font-bold rounded-xl text-xs transition-colors shadow-sm"
+                        className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs transition-colors shadow-sm"
                       >
                         Khởi tạo chứng chỉ
                       </button>
@@ -1491,16 +1577,66 @@ export default function App() {
           </div>
         )}
 
+        {/* Admin Dashboard Workspace Mode Rendering */}
+        {mode === 'admin' && (
+          <AdminPanel
+            certificates={certificates}
+            activeCertId={activeCertId}
+            onSelectCert={(certId) => {
+              setActiveCertId(certId);
+              localStorage.setItem('study_active_cert', certId);
+              loadCertData(certId, username);
+            }}
+            onUpdateQuestions={(certId, updatedQs) => {
+              if (certId === activeCertId) {
+                setQuestions(updatedQs);
+                setCurrentQuestionIndex(0);
+              }
+            }}
+            onAddCertificate={(newCert, initialQs) => {
+              // Save certificate metadata list
+              const storedCustomStr = localStorage.getItem('study_certs_custom');
+              let listToSave = [];
+              if (storedCustomStr) {
+                try { listToSave = JSON.parse(storedCustomStr); } catch {}
+              }
+              listToSave.push(newCert);
+              localStorage.setItem('study_certs_custom', JSON.stringify(listToSave));
+
+              // Save actual questions
+              localStorage.setItem(`questions_${newCert.id}`, JSON.stringify(initialQs));
+
+              // Update state
+              setCertificates(prev => [...prev, newCert]);
+              setActiveCertId(newCert.id);
+              localStorage.setItem('study_active_cert', newCert.id);
+
+              // Set active questions state directly
+              setQuestions(initialQs);
+              setCurrentQuestionIndex(0);
+
+              // Upload to Supabase questions table if we have questions
+              if (initialQs.length > 0) {
+                uploadQuestionsToDb(newCert.id, initialQs);
+              }
+            }}
+            onDeleteCertificate={(certId) => {
+              const targetCert = certificates.find(c => c.id === certId);
+              if (targetCert) {
+                setCertToDelete(targetCert);
+              }
+            }}
+            showAppToast={showAppToast}
+          />
+        )}
+
       </main>
 
       {/* Styled static banner footer block */}
       <footer className="bg-slate-900 border-t border-slate-800 py-6 px-4 mt-12 text-slate-400 text-center text-xs leading-relaxed">
         <div className="max-w-7xl mx-auto space-y-2">
           <p className="font-medium text-slate-300">
-            Ứng dụng hỗ trợ ôn luyện trắc nghiệm GH-300 Microsoft GitHub Copilot
-          </p>
-          <p className="text-[11px] text-slate-500">
-            Thực hiện bởi trợ lý AI Studio • Hoàn toàn tương thích và lưu trữ tiến độ thông minh trên điện thoại và máy tính.
+            Ứng dụng hỗ trợ ôn luyện đa chứng chỉ trực tuyến
           </p>
         </div>
       </footer>
@@ -1511,7 +1647,7 @@ export default function App() {
           <div className="bg-white rounded-3xl p-6 shadow-2xl border border-slate-100 max-w-md w-full animate-in fade-in zoom-in duration-200">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <div className="bg-indigo-50 text-indigo-650 p-2.5 rounded-2xl">
+                <div className="bg-indigo-50 text-indigo-600 p-2.5 rounded-2xl">
                   <Database className="w-5 h-5 flex-shrink-0" />
                 </div>
                 <div>
@@ -1558,11 +1694,120 @@ export default function App() {
                 </button>
                 <button
                   onClick={() => handleLogin(authInputUsername)}
-                  className="px-5 py-2.5 text-xs font-extrabold text-white bg-indigo-650 hover:bg-slate-950 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer"
+                  className="px-5 py-2.5 text-xs font-extrabold text-white bg-indigo-600 hover:bg-slate-950 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer"
                 >
                   Đồng bộ ngay
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Dynamic Animated Floating Toasts */}
+      <AnimatePresence>
+        {appToast && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: -10 }}
+            className="fixed bottom-6 right-6 z-[60] max-w-sm"
+          >
+            <div className={`flex items-center gap-3 px-4.5 py-3.5 rounded-2xl shadow-xl border text-xs font-bold leading-relaxed bg-white/95 backdrop-blur-md ${
+              appToast.type === 'success'
+                ? 'border-emerald-100 text-emerald-800 shadow-emerald-500/10'
+                : appToast.type === 'error'
+                  ? 'border-rose-100 text-rose-800 shadow-rose-500/10'
+                  : 'border-indigo-100 text-indigo-800 shadow-indigo-500/10'
+            }`}>
+              {appToast.type === 'success' && (
+                <div className="bg-emerald-50 text-emerald-500 p-1.5 rounded-lg shrink-0">
+                  <Check className="w-4 h-4" />
+                </div>
+              )}
+              {appToast.type === 'error' && (
+                <div className="bg-rose-50 text-rose-500 p-1.5 rounded-lg shrink-0">
+                  <AlertCircle className="w-4 h-4" />
+                </div>
+              )}
+              {appToast.type === 'info' && (
+                <div className="bg-indigo-50 text-indigo-500 p-1.5 rounded-lg shrink-0">
+                  <Database className="w-4 h-4" />
+                </div>
+              )}
+              <span className="flex-1 pr-1">{appToast.message}</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Logout Confirmation Modal */}
+      {showLogoutConfirm && (
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 shadow-2xl border border-slate-100 max-w-sm w-full animate-in fade-in zoom-in duration-200">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="bg-rose-50 text-rose-600 p-2.5 rounded-2xl">
+                <LogOut className="w-5 h-5 flex-shrink-0" />
+              </div>
+              <div>
+                <h3 className="text-base font-extrabold text-slate-900 leading-tight">Đăng xuất tài khoản?</h3>
+                <p className="text-[10px] text-slate-400 font-medium">Chuyển phần làm bài về thiết bị hiện tại</p>
+              </div>
+            </div>
+
+            <p className="text-xs text-slate-550 leading-relaxed mb-5">
+              Bạn có chắc chắn muốn thoát tài khoản hiện tại <strong className="text-slate-800">"{username}"</strong> về chế độ luyện tập ngoại tuyến (Offline)? Tiến trình trên Cloud vẫn được bảo lưu an toàn.
+            </p>
+
+            <div className="flex gap-2.5 justify-end">
+              <button
+                onClick={() => setShowLogoutConfirm(false)}
+                className="px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-50 rounded-xl transition-all cursor-pointer"
+              >
+                Hủy bỏ
+              </button>
+              <button
+                onClick={confirmLogout}
+                className="px-5 py-2.5 text-xs font-extrabold text-white bg-rose-600 hover:bg-rose-700 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer"
+              >
+                Xác nhận thoát
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Custom Certificate deletion Confirmation Modal */}
+      {certToDelete && (
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 shadow-2xl border border-slate-100 max-w-md w-full animate-in fade-in zoom-in duration-200">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="bg-rose-50 text-rose-600 p-2.5 rounded-2xl">
+                <X className="w-5 h-5 flex-shrink-0" />
+              </div>
+              <div>
+                <h3 className="text-base font-extrabold text-slate-900 leading-tight">Xóa chứng chỉ tự tạo?</h3>
+                <p className="text-[10px] text-slate-400 font-medium">Hành động này không thể hoàn tác</p>
+              </div>
+            </div>
+
+            <p className="text-xs text-slate-550 leading-relaxed mb-5">
+              Bạn có chắc chắn muốn xóa chứng chỉ tự tạo <strong className="text-rose-600 font-extrabold">"{certToDelete.code}"</strong> cùng toàn bộ dữ liệu lịch sử và tiến độ học tập?
+            </p>
+
+            <div className="flex gap-2.5 justify-end">
+              <button
+                onClick={() => setCertToDelete(null)}
+                className="px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-50 rounded-xl transition-all cursor-pointer"
+              >
+                Hủy bỏ
+              </button>
+              <button
+                onClick={confirmDeleteCert}
+                className="px-5 py-2.5 text-xs font-extrabold text-white bg-rose-600 hover:bg-rose-700 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer"
+              >
+                Xác nhận xóa
+              </button>
             </div>
           </div>
         </div>

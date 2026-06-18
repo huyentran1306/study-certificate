@@ -1,6 +1,6 @@
 {
-  "name": "Luyện Thi Chứng Chỉ GH-300",
-  "description": "Ứng dụng thực hành trắc nghiệm chuyên sâu cho chứng chỉ GH-300 GitHub Copilot, tối ưu hóa giao diện di động và máy tính.",
+  "name": "Ôn Luyện Chứng Chỉ",
+  "description": "Hệ thống luyện thi đa chứng chỉ trực tuyến (GH-300, AZ-900, AI-900) với câu hỏi cập nhật giải nghĩa tiếng Việt chi tiết.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

@@ -12,7 +12,7 @@ export interface Question {
   tags?: string[];
 }
 
-export type StudyMode = 'home' | 'practice' | 'exam' | 'guide';
+export type StudyMode = 'home' | 'practice' | 'exam' | 'guide' | 'admin';
 
 export interface Certificate {
   id: string;
