@@ -10,6 +10,7 @@ import {
   Check, 
   X, 
   FileJson, 
+  FileSpreadsheet, 
   BookOpen, 
   Settings, 
   PlusCircle,
@@ -18,10 +19,22 @@ import {
   Tag,
   Sparkles,
   RefreshCw,
-  Info
+  Info,
+  Award,
+  History,
+  User,
+  Calendar,
+  Clock,
+  AlertTriangle
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-import { uploadQuestionsToDb } from '../lib/sync';
+import { 
+  uploadQuestionsToDb,
+  fetchAllExamResultsFromDb,
+  deleteExamResultFromDb,
+  clearAllExamResultsFromDb,
+  ExamHistoryRecord
+} from '../lib/sync';
 import { Question, Certificate } from '../types';
 
 interface AdminPanelProps {
@@ -82,6 +95,157 @@ export default function AdminPanel({
 
   // Collapsed questions registry (to avoid massive pages on large sets)
   const [expandedQuestionId, setExpandedQuestionId] = useState<string | null>(null);
+
+  // Exam history states & logic
+  const [adminTab, setAdminTab] = useState<'questions' | 'exam_history'>('questions');
+  const [examResults, setExamResults] = useState<ExamHistoryRecord[]>([]);
+  const [isHistoryLoading, setIsHistoryLoading] = useState(false);
+  const [historySearchQuery, setHistorySearchQuery] = useState('');
+  const [historyCertFilter, setHistoryCertFilter] = useState('All');
+  const [historySyncMode, setHistorySyncMode] = useState<'both' | 'local_only'>('both');
+
+  const loadExamResults = async () => {
+    setIsHistoryLoading(true);
+    try {
+      // 1. Get from localStorage as baseline
+      const localRaw = localStorage.getItem('local_exam_results');
+      let localResults: ExamHistoryRecord[] = [];
+      if (localRaw) {
+        try { localResults = JSON.parse(localRaw); } catch (e) { console.error(e); }
+      }
+
+      // 2. Get from database if sync active
+      if (historySyncMode === 'both') {
+        const dbResults = await fetchAllExamResultsFromDb();
+        if (dbResults) {
+          // Merge lists, avoid duplicates, sort by timestamp DESC
+          const mergedMap = new Map<string, ExamHistoryRecord>();
+          localResults.forEach(r => {
+            const key = `${r.username}_${r.cert_id}_${r.score}_${Math.floor(r.timestamp / 1000)}`;
+            mergedMap.set(key, r);
+          });
+          dbResults.forEach(r => {
+            const key = `${r.username}_${r.cert_id}_${r.score}_${Math.floor(r.timestamp / 1000)}`;
+            mergedMap.set(key, r);
+          });
+          const sorted = Array.from(mergedMap.values()).sort((a, b) => b.timestamp - a.timestamp);
+          setExamResults(sorted);
+        } else {
+          setExamResults(localResults.sort((a, b) => b.timestamp - a.timestamp));
+        }
+      } else {
+        setExamResults(localResults.sort((a, b) => b.timestamp - a.timestamp));
+      }
+    } catch (err) {
+      console.error('Failed to load exam results:', err);
+    } finally {
+      setIsHistoryLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (adminTab === 'exam_history') {
+      loadExamResults();
+    }
+  }, [adminTab, historySyncMode]);
+
+  const handleDeleteExamResult = async (record: ExamHistoryRecord) => {
+    if (confirm(`Bạn có chắc chắn muốn xóa kết quả thi của "${record.username}"?`)) {
+      // Delete locally
+      try {
+        const localRaw = localStorage.getItem('local_exam_results');
+        if (localRaw) {
+          const localResults: ExamHistoryRecord[] = JSON.parse(localRaw);
+          const filtered = localResults.filter(r => r.id !== record.id && !(r.username === record.username && r.timestamp === record.timestamp));
+          localStorage.setItem('local_exam_results', JSON.stringify(filtered));
+        }
+      } catch (e) {
+        console.error(e);
+      }
+
+      // Delete from Db
+      if (historySyncMode === 'both') {
+        try {
+          await deleteExamResultFromDb(record.id);
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
+      showAppToast('Đã xóa kết quả thi thành công!', 'success');
+      loadExamResults();
+    }
+  };
+
+  const handleClearAllExamResults = async () => {
+    if (confirm('CẢNH BÁO: Bạn có chắc chắn muốn XÓA TOÀN BỘ lịch sử thi của tất cả người dùng? Hành động này không thể hoàn tác!')) {
+      localStorage.removeItem('local_exam_results');
+
+      if (historySyncMode === 'both') {
+        try {
+          await clearAllExamResultsFromDb();
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
+      showAppToast('Đã xóa sạch toàn bộ lịch sử thi!', 'success');
+      setExamResults([]);
+    }
+  };
+
+  const filteredExamResults = examResults.filter(r => {
+    const usernameMatch = r.username.toLowerCase().includes(historySearchQuery.toLowerCase());
+    const certMatch = historyCertFilter === 'All' || r.cert_id === historyCertFilter || r.cert_code === historyCertFilter;
+    return usernameMatch && certMatch;
+  });
+
+  const handleExportHistoryToCsv = () => {
+    if (filteredExamResults.length === 0) {
+      showAppToast('Không có lịch sử nào để xuất!', 'error');
+      return;
+    }
+
+    const headers = ['Học viên', 'Mã chứng chỉ', 'Số câu đúng', 'Tổng số câu', 'Tỷ lệ đạt (%)', 'Thời gian làm bài', 'Ngày hoàn thành'];
+    
+    const escapeCsv = (str: string) => {
+      if (!str) return '""';
+      const escaped = str.toString().replace(/"/g, '""');
+      return `"${escaped}"`;
+    };
+
+    const rows = filteredExamResults.map(r => {
+      const minutes = Math.floor(r.elapsed_seconds / 60);
+      const seconds = r.elapsed_seconds % 60;
+      const durationStr = `${minutes}m ${seconds}s`;
+      const dateStr = new Date(r.timestamp).toLocaleString('vi-VN');
+      
+      return [
+        escapeCsv(r.username),
+        escapeCsv(r.cert_code),
+        r.score,
+        r.total_questions,
+        `${r.accuracy}%`,
+        escapeCsv(durationStr),
+        escapeCsv(dateStr)
+      ].join(',');
+    });
+
+    const csvContent = [headers.join(','), ...rows].join('\n');
+    const filename = `exam_history_export_${new Date().toISOString().slice(0, 10)}.csv`;
+    
+    const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", url);
+    downloadAnchor.setAttribute("download", filename);
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+    URL.revokeObjectURL(url);
+    showAppToast(`Đã xuất ${filteredExamResults.length} dòng lịch sử thi ra file CSV!`, 'success');
+  };
 
   // Load questions for the selected certificate
   const loadQuestions = async () => {
@@ -355,6 +519,82 @@ export default function AdminPanel({
     showAppToast('Đã tải xuống file cấu trúc câu hỏi JSON mẫu!', 'success');
   };
 
+  // Export questions to JSON format
+  const handleExportJson = () => {
+    if (questions.length === 0) {
+      showAppToast('Không có câu hỏi nào để xuất!', 'error');
+      return;
+    }
+    const filename = `${activeCert?.code || 'questions'}_export.json`;
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(questions, null, 2));
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", dataStr);
+    downloadAnchor.setAttribute("download", filename);
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+    showAppToast(`Đã xuất ${questions.length} câu hỏi thành file JSON!`, 'success');
+  };
+
+  // Export questions to CSV format
+  const handleExportCsv = () => {
+    if (questions.length === 0) {
+      showAppToast('Không có câu hỏi nào để xuất!', 'error');
+      return;
+    }
+    
+    // Header
+    const headers = ['Question Number', 'Category', 'Question Text', 'Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F', 'Correct Answers', 'Explanation', 'Tags'];
+    
+    // Escape CSV cell value
+    const escapeCsv = (str: string) => {
+      if (!str) return '""';
+      const escaped = str.toString().replace(/"/g, '""');
+      return `"${escaped}"`;
+    };
+
+    const rows = questions.map(q => {
+      // Find options text
+      const optA = q.options.find(o => o.key === 'A')?.text || '';
+      const optB = q.options.find(o => o.key === 'B')?.text || '';
+      const optC = q.options.find(o => o.key === 'C')?.text || '';
+      const optD = q.options.find(o => o.key === 'D')?.text || '';
+      const optE = q.options.find(o => o.key === 'E')?.text || '';
+      const optF = q.options.find(o => o.key === 'F')?.text || '';
+      
+      return [
+        q.questionNumber,
+        escapeCsv(q.category || ''),
+        escapeCsv(q.text),
+        escapeCsv(optA),
+        escapeCsv(optB),
+        escapeCsv(optC),
+        escapeCsv(optD),
+        escapeCsv(optE),
+        escapeCsv(optF),
+        escapeCsv(q.correctAnswers.join(', ')),
+        escapeCsv(q.explanation || ''),
+        escapeCsv(q.tags ? q.tags.join(', ') : '')
+      ].join(',');
+    });
+
+    const csvContent = [headers.join(','), ...rows].join('\n');
+    const filename = `${activeCert?.code || 'questions'}_export.csv`;
+    
+    // Support UTF-8 BOM so Excel opens Vietnamese characters correctly
+    const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", url);
+    downloadAnchor.setAttribute("download", filename);
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+    URL.revokeObjectURL(url);
+    showAppToast(`Đã xuất ${questions.length} câu hỏi thành file CSV (hỗ trợ Excel UTF-8)!`, 'success');
+  };
+
   // Create customized certificates
   const handleCreateNewCert = () => {
     if (!newCertCode || !newCertName) {
@@ -430,18 +670,37 @@ export default function AdminPanel({
             Cho phép chỉnh sửa, tạo mới hoặc loại bỏ câu hỏi trực tiếp, lưu tức thời về trình duyệt và tự động đồng bộ đám mây Supabase cho các tài khoản liên kết.
           </p>
         </div>
-        <div className="shrink-0 flex gap-2 w-full md:w-auto">
+        <div className="shrink-0 flex flex-wrap gap-2 w-full md:w-auto justify-end">
           <button
             onClick={handleDownloadSampleJson}
-            className="flex-1 md:flex-initial text-xs bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold px-4 py-3 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-sm border border-slate-200"
+            className="text-xs bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold px-3 py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-slate-200 shadow-xs"
+            title="Tải tệp câu hỏi JSON mẫu để tham khảo"
           >
-            <Download className="w-3.5 h-3.5" />
-            Tải File JSON Mẫu
+            <Download className="w-3.5 h-3.5 text-slate-550" />
+            JSON Mẫu
+          </button>
+          
+          <button
+            onClick={handleExportJson}
+            className="text-xs bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-extrabold px-3 py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-indigo-200"
+            title="Xuất toàn bộ câu hỏi của môn học hiện tại ra file JSON"
+          >
+            <FileJson className="w-3.5 h-3.5 text-indigo-600" />
+            Xuất JSON
+          </button>
+
+          <button
+            onClick={handleExportCsv}
+            className="text-xs bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-extrabold px-3 py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-emerald-250"
+            title="Xuất toàn bộ câu hỏi của môn học hiện tại ra file CSV"
+          >
+            <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
+            Xuất CSV
           </button>
           
           <button
             onClick={() => setIsNewCertFormOpen(prev => !prev)}
-            className="flex-1 md:flex-initial text-xs bg-slate-900 hover:bg-indigo-600 text-white font-black px-5 py-3 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
+            className="text-xs bg-slate-900 hover:bg-indigo-600 text-white font-black px-4 py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
           >
             <FolderOpen className="w-3.5 h-3.5" />
             Tạo Chứng Chỉ Mới
@@ -449,7 +708,34 @@ export default function AdminPanel({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
+      {/* Admin Panel Sub-Tabs Navigation */}
+      <div className="flex border-b border-slate-200">
+        <button
+          onClick={() => setAdminTab('questions')}
+          className={`px-6 py-3.5 text-xs font-black tracking-wide border-b-2 transition-all flex items-center gap-2 ${
+            adminTab === 'questions'
+              ? 'border-indigo-650 text-indigo-700'
+              : 'border-transparent text-slate-500 hover:text-slate-800'
+          }`}
+        >
+          <BookOpen className="w-4 h-4" />
+          QUẢN LÝ ĐỀ THI & CÂU HỎI
+        </button>
+        <button
+          onClick={() => setAdminTab('exam_history')}
+          className={`px-6 py-3.5 text-xs font-black tracking-wide border-b-2 transition-all flex items-center gap-2 ${
+            adminTab === 'exam_history'
+              ? 'border-indigo-650 text-indigo-700'
+              : 'border-transparent text-slate-500 hover:text-slate-800'
+          }`}
+        >
+          <Award className="w-4 h-4" />
+          LỊCH SỬ THI CỦA HỌC VIÊN
+        </button>
+      </div>
+
+      {adminTab === 'questions' && (
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
         
         {/* LEFT COLUMN: Course selection rail & statistics */}
         <div className="lg:col-span-1 space-y-4">
@@ -982,6 +1268,262 @@ export default function AdminPanel({
 
         </div>
       </div>
+      )}
+
+      {/* Admin Panel Exam History management panel */}
+      {adminTab === 'exam_history' && (
+        <div className="space-y-6 animate-fadeIn">
+          {/* Status summary cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-xs">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Tổng số lượt thi</span>
+              <span className="text-2xl font-black text-slate-900 block mt-1">{filteredExamResults.length} lượt</span>
+              <span className="text-[10px] text-slate-400 mt-2 block font-medium">Từ dữ liệu đồng bộ của các học viên</span>
+            </div>
+            
+            <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-xs">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Tỷ lệ đạt trung bình</span>
+              <span className="text-2xl font-black text-emerald-600 block mt-1">
+                {filteredExamResults.length > 0 
+                  ? `${Math.round(filteredExamResults.reduce((acc, r) => acc + r.accuracy, 0) / filteredExamResults.length)}%`
+                  : '0%'}
+              </span>
+              <span className="text-[10px] text-slate-400 mt-2 block font-medium">Điểm trung bình của tất cả lượt thi</span>
+            </div>
+
+            <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-xs">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Tỷ lệ đỗ {"(>=70%)"}</span>
+              <span className="text-2xl font-black text-indigo-600 block mt-1">
+                {filteredExamResults.length > 0
+                  ? `${Math.round((filteredExamResults.filter(r => r.accuracy >= 70).length / filteredExamResults.length) * 100)}%`
+                  : '0%'}
+              </span>
+              <span className="text-[10px] text-slate-400 mt-2 block font-medium">Lượt thi có kết quả đạt yêu cầu</span>
+            </div>
+
+            <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-xs">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Điểm cao nhất</span>
+              <span className="text-2xl font-black text-rose-600 block mt-1">
+                {filteredExamResults.length > 0
+                  ? `${Math.max(...filteredExamResults.map(r => r.accuracy))}%`
+                  : '0%'}
+              </span>
+              <span className="text-[10px] text-slate-400 mt-2 block font-medium">Kỷ lục điểm số cao nhất đạt được</span>
+            </div>
+          </div>
+
+          {/* Filtering bar and action buttons */}
+          <div className="bg-white border border-slate-150 rounded-2xl p-4.5 shadow-sm space-y-4">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+              
+              {/* Left filters */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-1">
+                <div className="relative flex-1">
+                  <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    placeholder="Tìm theo tên học viên..."
+                    value={historySearchQuery}
+                    onChange={(e) => setHistorySearchQuery(e.target.value)}
+                    className="w-full text-xs pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-100 focus:outline-none font-medium"
+                  />
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest font-mono shrink-0">Môn thi:</span>
+                  <select
+                    value={historyCertFilter}
+                    onChange={(e) => setHistoryCertFilter(e.target.value)}
+                    className="text-xs font-bold py-2 bg-slate-100 border border-slate-200 rounded-xl px-2.5 max-w-[150px] focus:outline-none"
+                  >
+                    <option value="All">Tất cả môn</option>
+                    {certificates.map(c => (
+                      <option key={c.id} value={c.id}>{c.code}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest font-mono shrink-0">Bộ nhớ:</span>
+                  <select
+                    value={historySyncMode}
+                    onChange={(e) => setHistorySyncMode(e.target.value as 'both' | 'local_only')}
+                    className="text-xs font-bold py-2 bg-slate-100 border border-slate-200 rounded-xl px-2.5 focus:outline-none text-slate-700"
+                    title="Đồng bộ Supabase hoặc chỉ tải dữ liệu trình duyệt cục bộ"
+                  >
+                    <option value="both">Cloud & Trình duyệt</option>
+                    <option value="local_only">Chỉ Trình duyệt</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Right actions */}
+              <div className="flex items-center gap-2 self-end lg:self-auto">
+                <button
+                  onClick={loadExamResults}
+                  disabled={isHistoryLoading}
+                  className="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition-all cursor-pointer border border-slate-200"
+                  title="Tải lại dữ liệu"
+                >
+                  <RefreshCw className={`w-4 h-4 ${isHistoryLoading ? 'animate-spin' : ''}`} />
+                </button>
+
+                <button
+                  onClick={handleExportHistoryToCsv}
+                  className="text-xs bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-extrabold px-4 py-2.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer border border-emerald-250 shadow-xs"
+                  title="Xuất toàn bộ lịch sử thi ra tệp Excel CSV"
+                >
+                  <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
+                  Xuất Excel CSV
+                </button>
+
+                <button
+                  onClick={handleClearAllExamResults}
+                  className="text-xs bg-rose-50 hover:bg-rose-100 text-rose-700 font-extrabold px-4 py-2.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer border border-rose-200 shadow-xs"
+                  title="Xóa toàn bộ lịch sử"
+                >
+                  <Trash2 className="w-3.5 h-3.5 text-rose-600" />
+                  Xóa Hết Lịch Sử
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Table display */}
+          <div className="bg-white border border-slate-150 rounded-3xl overflow-hidden shadow-sm">
+            {isHistoryLoading ? (
+              <div className="flex flex-col items-center justify-center py-20 gap-3">
+                <RefreshCw className="w-8 h-8 text-indigo-600 animate-spin" />
+                <span className="text-xs font-semibold text-slate-500">Đang đồng bộ dữ liệu thi thử...</span>
+              </div>
+            ) : filteredExamResults.length === 0 ? (
+              <div className="text-center py-20 space-y-4 max-w-lg mx-auto px-4">
+                <div className="bg-slate-50 text-slate-400 p-4 rounded-full w-14 h-14 mx-auto flex items-center justify-center border border-slate-100 shadow-xs">
+                  <Award className="w-7 h-7 text-indigo-500" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-black text-slate-800">Không tìm thấy lịch sử thi thử nào</h4>
+                  <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                    Hệ thống chưa ghi nhận lượt thi thử nào khớp với bộ lọc. Hãy tham gia thi thử ở tab thi thử ngoài trang chính để tạo dữ liệu.
+                  </p>
+                </div>
+                {historySyncMode === 'both' && (
+                  <div className="bg-amber-50/50 border border-amber-100 rounded-2xl p-4 text-[11px] text-amber-800 space-y-1 text-left shadow-xs">
+                    <div className="flex items-center gap-1.5 font-bold text-amber-900">
+                      <AlertTriangle className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                      <span>Hướng dẫn kích hoạt Cloud Sync:</span>
+                    </div>
+                    <p className="leading-relaxed text-slate-600 font-medium">
+                      Nếu bảng <code className="bg-amber-100/60 px-1 rounded font-mono font-bold text-amber-900">exam_results</code> chưa được tạo trong Supabase SQL Editor của bạn, vui lòng sao chép câu lệnh khởi tạo bảng ở cuối tệp <code className="font-mono bg-amber-100/60 px-1 rounded font-bold text-amber-900">supabase_setup.sql</code> và thực thi trên Supabase dashboard để lịch sử thi được lưu trữ vĩnh viễn trên đám mây.
+                    </p>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-slate-50 border-b border-slate-100 text-slate-400 font-mono text-[10px] uppercase tracking-wider font-semibold">
+                      <th className="py-4 px-6">Học Viên</th>
+                      <th className="py-4 px-6">Môn Luyện Thi</th>
+                      <th className="py-4 px-6">Kết Quả Điểm Số</th>
+                      <th className="py-4 px-6">Thời Gian Làm Bài</th>
+                      <th className="py-4 px-6">Thời Gian Hoàn Thành</th>
+                      <th className="py-4 px-6">Đánh Giá</th>
+                      <th className="py-4 px-6 text-right">Thao Tác</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {filteredExamResults.map((r, idx) => {
+                      const minutes = Math.floor(r.elapsed_seconds / 60);
+                      const seconds = r.elapsed_seconds % 60;
+                      const durationStr = `${minutes} phút ${seconds} giây`;
+                      const isPassed = r.accuracy >= 70;
+                      
+                      return (
+                        <tr key={r.id || idx} className="hover:bg-slate-50/50 transition-colors">
+                          {/* Username avatar cell */}
+                          <td className="py-3.5 px-6 font-semibold text-slate-800">
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 text-indigo-700 flex items-center justify-center font-bold text-xs uppercase shadow-xs">
+                                {r.username.slice(0, 2)}
+                              </div>
+                              <span className="font-black text-slate-900 tracking-tight">{r.username}</span>
+                            </div>
+                          </td>
+                          
+                          {/* Exam code cell */}
+                          <td className="py-3.5 px-6 font-bold">
+                            <span className="inline-block px-2.5 py-1 rounded-lg bg-indigo-50 border border-indigo-150 text-indigo-700 font-mono text-[11px] uppercase">
+                              {r.cert_code}
+                            </span>
+                          </td>
+                          
+                          {/* Score progress bar cell */}
+                          <td className="py-3.5 px-6 font-bold text-slate-800">
+                            <div className="space-y-1.5">
+                              <div className="flex items-center gap-2">
+                                <span className="text-[13px] font-black">{r.accuracy}%</span>
+                                <span className="text-[10px] text-slate-400 font-semibold">({r.score}/{r.total_questions} đúng)</span>
+                              </div>
+                              <div className="w-24 bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                                <div 
+                                  className={`h-full rounded-full ${isPassed ? 'bg-emerald-500' : 'bg-amber-500'}`}
+                                  style={{ width: `${r.accuracy}%` }}
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          
+                          {/* Duration cell */}
+                          <td className="py-3.5 px-6 text-slate-500 font-medium">
+                            <div className="flex items-center gap-1.5">
+                              <Clock className="w-3.5 h-3.5 text-slate-400" />
+                              <span>{durationStr}</span>
+                            </div>
+                          </td>
+                          
+                          {/* Date timestamp cell */}
+                          <td className="py-3.5 px-6 text-slate-400 font-semibold">
+                            <div className="flex items-center gap-1.5">
+                              <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                              <span>{new Date(r.timestamp).toLocaleString('vi-VN')}</span>
+                            </div>
+                          </td>
+                          
+                          {/* Evaluation tag cell */}
+                          <td className="py-3.5 px-6">
+                            {isPassed ? (
+                              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-black border border-emerald-150">
+                                <Check className="w-3 h-3" /> ĐẠT YÊU CẦU
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 text-[10px] font-black border border-rose-150">
+                                <X className="w-3 h-3" /> CHƯA ĐẠT
+                              </span>
+                            )}
+                          </td>
+                          
+                          {/* Action cell */}
+                          <td className="py-3.5 px-6 text-right">
+                            <button
+                              onClick={() => handleDeleteExamResult(r)}
+                              className="p-1.5 hover:bg-rose-50 text-slate-400 hover:text-rose-600 rounded-lg transition-all cursor-pointer"
+                              title="Xóa bản ghi này"
+                            >
+                              <Trash2 className="w-3.5 h-3.5" />
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
     </div>
   );

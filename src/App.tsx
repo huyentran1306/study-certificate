@@ -44,7 +44,9 @@ import {
   fetchUserProgressFromDb, 
   syncUserProgressStateToDb, 
   syncSingleHistoryEntryToDb, 
-  syncBulkHistoryToDb 
+  syncBulkHistoryToDb,
+  saveExamResultToDb,
+  ExamHistoryRecord
 } from './lib/sync';
 
 function DynamicIcon({ name, className = "w-5 h-5" }: { name: string; className?: string }) {
@@ -552,9 +554,44 @@ export default function App() {
   };
 
   // Exam mock submission log
-  const handleFinishExamMock = (correct: number, total: number) => {
-    // Append to streak history slightly
+  const handleFinishExamMock = async (correct: number, total: number, elapsedSeconds?: number) => {
     const accuracy = Math.round((correct / total) * 100);
+    const seconds = elapsedSeconds || 0;
+    
+    const record: Omit<ExamHistoryRecord, 'id'> = {
+      username: username || 'Offline User',
+      cert_id: activeCertId,
+      cert_code: certificates.find(c => c.id === activeCertId)?.code || activeCertId,
+      score: correct,
+      total_questions: total,
+      accuracy,
+      elapsed_seconds: seconds,
+      timestamp: Date.now()
+    };
+    
+    // Save locally
+    try {
+      const existingLocalRaw = localStorage.getItem('local_exam_results');
+      const existingLocal = existingLocalRaw ? JSON.parse(existingLocalRaw) : [];
+      const newRecordWithId = {
+        ...record,
+        id: Math.random().toString(36).substring(2, 9)
+      };
+      existingLocal.unshift(newRecordWithId);
+      localStorage.setItem('local_exam_results', JSON.stringify(existingLocal));
+    } catch (e) {
+      console.error('Error saving exam result locally:', e);
+    }
+    
+    // Save to database if logged in
+    if (username) {
+      try {
+        await saveExamResultToDb(record);
+      } catch (err) {
+        console.error('Failed to sync exam result to database:', err);
+      }
+    }
+    
     showAppToast(`Chúc mừng! Bạn đã hoàn thành bài thi thử với kết quả: ${correct}/${total} câu đúng (Đạt ${accuracy}%)!`, 'success');
   };
 

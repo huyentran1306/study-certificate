@@ -38,6 +38,19 @@ CREATE TABLE IF NOT EXISTS study_history (
     PRIMARY KEY (username, cert_id, question_id)
 );
 
+-- 4. Create table for mock exam results history
+CREATE TABLE IF NOT EXISTS exam_results (
+    id BIGSERIAL PRIMARY KEY,
+    username TEXT NOT NULL,
+    cert_id TEXT NOT NULL,
+    cert_code TEXT NOT NULL,
+    score INTEGER NOT NULL,
+    total_questions INTEGER NOT NULL,
+    accuracy INTEGER NOT NULL,
+    elapsed_seconds INTEGER DEFAULT 0,
+    timestamp TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
+);
+
 -- Clean up existing data to avoid conflict, or just upsert
 TRUNCATE TABLE questions CASCADE;
 

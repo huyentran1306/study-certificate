@@ -4,7 +4,7 @@ import { Question } from '../types';
 
 interface MockExamProps {
   questions: Question[];
-  onFinishExam: (correctCount: number, totalCount: number) => void;
+  onFinishExam: (correctCount: number, totalCount: number, elapsedSeconds?: number) => void;
   onExit: () => void;
 }
 
@@ -16,10 +16,23 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
   const [timeLeft, setTimeLeft] = useState(600); // 10 minutes default
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
+  const selectedAnswersRef = useRef(selectedAnswers);
+  const examQuestionsRef = useRef(examQuestions);
+
+  useEffect(() => {
+    selectedAnswersRef.current = selectedAnswers;
+  }, [selectedAnswers]);
+
+  useEffect(() => {
+    examQuestionsRef.current = examQuestions;
+  }, [examQuestions]);
+
   useEffect(() => {
     // Select up to 10 random questions for this exam mock session
     const shuffled = [...questions].sort(() => 0.5 - Math.random());
-    setExamQuestions(shuffled.slice(0, 10));
+    const selected = shuffled.slice(0, 10);
+    setExamQuestions(selected);
+    examQuestionsRef.current = selected;
 
     // Start timer
     timerRef.current = setInterval(() => {
@@ -27,6 +40,19 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
         if (prev <= 1) {
           clearInterval(timerRef.current!);
           setSubmitted(true);
+          
+          // Calculate score from ref values to avoid stale closures
+          let correct = 0;
+          examQuestionsRef.current.forEach(q => {
+            const userAnswers = selectedAnswersRef.current[q.id] || [];
+            const correctAnswers = q.correctAnswers;
+            const isCorrect = 
+              userAnswers.length === correctAnswers.length &&
+              userAnswers.every(ans => correctAnswers.includes(ans));
+            if (isCorrect) correct++;
+          });
+          
+          onFinishExam(correct, examQuestionsRef.current.length, 600);
           return 0;
         }
         return prev - 1;
@@ -79,7 +105,8 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
       if (timerRef.current) clearInterval(timerRef.current);
       setSubmitted(true);
       const score = calculateScore();
-      onFinishExam(score, examQuestions.length);
+      const elapsed = 600 - timeLeft;
+      onFinishExam(score, examQuestions.length, elapsed);
     }
   };
 
