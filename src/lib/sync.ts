@@ -356,3 +356,85 @@ export async function clearAllExamResultsFromDb(): Promise<boolean> {
     return false;
   }
 }
+
+// ----------------- USER PROGRESS TRACKING FOR ADMIN -----------------
+
+export interface UserProgressRecord {
+  username: string;
+  cert_id: string;
+  answered_count: number;
+  correct_count: number;
+  incorrect_count: number;
+  streak: number;
+  bookmarked_question_ids: string[];
+  last_updated: string;
+}
+
+// Fetch all student learning progress records
+export async function fetchAllUserProgressFromDb(): Promise<UserProgressRecord[] | null> {
+  try {
+    const { data, error } = await supabase
+      .from('user_progress')
+      .select('*')
+      .order('last_updated', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching all user progress:', error);
+      return null;
+    }
+
+    return (data || []).map((row: any) => ({
+      username: row.username,
+      cert_id: row.cert_id,
+      answered_count: row.answered_count || 0,
+      correct_count: row.correct_count || 0,
+      incorrect_count: row.incorrect_count || 0,
+      streak: row.streak || 0,
+      bookmarked_question_ids: Array.isArray(row.bookmarked_question_ids) ? row.bookmarked_question_ids : [],
+      last_updated: row.last_updated
+    }));
+  } catch (err) {
+    console.error('Failed to fetch user progress from DB:', err);
+    return null;
+  }
+}
+
+// Delete single student progress record
+export async function deleteUserProgressFromDb(username: string, certId: string): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('user_progress')
+      .delete()
+      .eq('username', username)
+      .eq('cert_id', certId);
+
+    if (error) {
+      console.error('Error deleting user progress:', error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Failed to delete user progress:', err);
+    return false;
+  }
+}
+
+// Clear all student progress records
+export async function clearAllUserProgressFromDb(): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('user_progress')
+      .delete()
+      .neq('username', 'non_existent_placeholder_wildcard_to_match_all_records');
+
+    if (error) {
+      console.error('Error clearing all user progress:', error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Failed to clear user progress:', err);
+    return false;
+  }
+}
+

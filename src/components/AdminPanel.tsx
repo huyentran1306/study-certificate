@@ -6,6 +6,8 @@ import {
   Search, 
   ChevronDown, 
   ChevronUp, 
+  ChevronLeft,
+  ChevronRight,
   Download, 
   Check, 
   X, 
@@ -33,7 +35,11 @@ import {
   fetchAllExamResultsFromDb,
   deleteExamResultFromDb,
   clearAllExamResultsFromDb,
-  ExamHistoryRecord
+  ExamHistoryRecord,
+  fetchAllUserProgressFromDb,
+  deleteUserProgressFromDb,
+  clearAllUserProgressFromDb,
+  UserProgressRecord
 } from '../lib/sync';
 import { Question, Certificate } from '../types';
 
@@ -96,8 +102,128 @@ export default function AdminPanel({
   // Collapsed questions registry (to avoid massive pages on large sets)
   const [expandedQuestionId, setExpandedQuestionId] = useState<string | null>(null);
 
+  // Questions list pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const questionsPerPage = 15;
+
+  // Admin Panel states & logic
+  const [adminTab, setAdminTab] = useState<'questions' | 'user_progress' | 'exam_history'>('questions');
+  
+  // Student Study Progress states
+  const [userProgressList, setUserProgressList] = useState<UserProgressRecord[]>([]);
+  const [isProgressLoading, setIsProgressLoading] = useState(false);
+  const [progressSearchQuery, setProgressSearchQuery] = useState('');
+  const [progressCertFilter, setProgressCertFilter] = useState('All');
+
+  const loadUserProgress = async () => {
+    setIsProgressLoading(true);
+    try {
+      const dbProgress = await fetchAllUserProgressFromDb();
+      if (dbProgress) {
+        setUserProgressList(dbProgress);
+      } else {
+        setUserProgressList([]);
+      }
+    } catch (err) {
+      console.error('Failed to load user progress:', err);
+    } finally {
+      setIsProgressLoading(false);
+    }
+  };
+
+  const handleDeleteUserProgress = async (record: UserProgressRecord) => {
+    if (confirm(`Bạn có chắc chắn muốn xóa tiến trình học tập của "${record.username}" cho môn này?`)) {
+      try {
+        const success = await deleteUserProgressFromDb(record.username, record.cert_id);
+        if (success) {
+          showAppToast('Đã xóa tiến trình học viên thành công!', 'success');
+          loadUserProgress();
+        } else {
+          showAppToast('Không thể xóa tiến trình học viên!', 'error');
+        }
+      } catch (err) {
+        console.error(err);
+        showAppToast('Lỗi khi xóa tiến trình học tập!', 'error');
+      }
+    }
+  };
+
+  const handleClearAllUserProgress = async () => {
+    if (confirm('CẢNH BÁO: Bạn có chắc chắn muốn XÓA SẠCH toàn bộ tiến trình học tập của mọi học viên? Tất cả số câu đúng/sai, số câu lưu và chuỗi ngày học của người dùng sẽ bị xóa hoàn toàn khỏi cơ sở dữ liệu!')) {
+      try {
+        const success = await clearAllUserProgressFromDb();
+        if (success) {
+          showAppToast('Đã xóa sạch toàn bộ tiến trình học tập thành công!', 'success');
+          setUserProgressList([]);
+        } else {
+          showAppToast('Lỗi xóa sạch tiến trình học tập!', 'error');
+        }
+      } catch (err) {
+        console.error(err);
+        showAppToast('Lỗi khi xóa sạch tiến trình!', 'error');
+      }
+    }
+  };
+
+  const filteredUserProgress = userProgressList.filter(p => {
+    const usernameMatch = p.username.toLowerCase().includes(progressSearchQuery.toLowerCase());
+    const cert = certificates.find(c => c.id === p.cert_id);
+    const certCode = cert ? cert.code : p.cert_id;
+    const certMatch = progressCertFilter === 'All' || p.cert_id === progressCertFilter || certCode === progressCertFilter;
+    return usernameMatch && certMatch;
+  });
+
+  const handleExportProgressToCsv = () => {
+    if (filteredUserProgress.length === 0) {
+      showAppToast('Không có tiến trình nào để xuất!', 'error');
+      return;
+    }
+
+    const headers = ['Học viên', 'Mã môn học', 'Số câu đã làm', 'Số câu đúng', 'Số câu sai', 'Tỷ lệ chính xác (%)', 'Chuỗi ngày học', 'Số câu đã lưu', 'Cập nhật cuối'];
+    
+    const escapeCsv = (str: string) => {
+      if (!str) return '""';
+      const escaped = str.toString().replace(/"/g, '""');
+      return `"${escaped}"`;
+    };
+
+    const rows = filteredUserProgress.map(p => {
+      const cert = certificates.find(c => c.id === p.cert_id);
+      const certCode = cert ? cert.code : p.cert_id;
+      const total = p.answered_count || 0;
+      const accuracy = total > 0 ? Math.round((p.correct_count / total) * 100) : 0;
+      const dateStr = p.last_updated ? new Date(p.last_updated).toLocaleString('vi-VN') : 'N/A';
+      
+      return [
+        escapeCsv(p.username),
+        escapeCsv(certCode),
+        p.answered_count,
+        p.correct_count,
+        p.incorrect_count,
+        `${accuracy}%`,
+        p.streak,
+        p.bookmarked_question_ids ? p.bookmarked_question_ids.length : 0,
+        escapeCsv(dateStr)
+      ].join(',');
+    });
+
+    const csvContent = [headers.join(','), ...rows].join('\n');
+    const filename = `student_progress_export_${new Date().toISOString().slice(0, 10)}.csv`;
+    
+    const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", url);
+    downloadAnchor.setAttribute("download", filename);
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+    URL.revokeObjectURL(url);
+    showAppToast(`Đã xuất ${filteredUserProgress.length} dòng tiến trình học tập ra file CSV!`, 'success');
+  };
+
   // Exam history states & logic
-  const [adminTab, setAdminTab] = useState<'questions' | 'exam_history'>('questions');
   const [examResults, setExamResults] = useState<ExamHistoryRecord[]>([]);
   const [isHistoryLoading, setIsHistoryLoading] = useState(false);
   const [historySearchQuery, setHistorySearchQuery] = useState('');
@@ -146,6 +272,8 @@ export default function AdminPanel({
   useEffect(() => {
     if (adminTab === 'exam_history') {
       loadExamResults();
+    } else if (adminTab === 'user_progress') {
+      loadUserProgress();
     }
   }, [adminTab, historySyncMode]);
 
@@ -295,6 +423,10 @@ export default function AdminPanel({
   useEffect(() => {
     loadQuestions();
   }, [activeCertId]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, categoryFilter, activeCertId]);
 
   // Open form to add question
   const handleOpenAddQuestion = () => {
@@ -722,6 +854,17 @@ export default function AdminPanel({
           QUẢN LÝ ĐỀ THI & CÂU HỎI
         </button>
         <button
+          onClick={() => setAdminTab('user_progress')}
+          className={`px-6 py-3.5 text-xs font-black tracking-wide border-b-2 transition-all flex items-center gap-2 ${
+            adminTab === 'user_progress'
+              ? 'border-indigo-650 text-indigo-700'
+              : 'border-transparent text-slate-500 hover:text-slate-800'
+          }`}
+        >
+          <History className="w-4 h-4" />
+          TIẾN ĐỘ LUYỆN TẬP CỦA HỌC VIÊN
+        </button>
+        <button
           onClick={() => setAdminTab('exam_history')}
           className={`px-6 py-3.5 text-xs font-black tracking-wide border-b-2 transition-all flex items-center gap-2 ${
             adminTab === 'exam_history'
@@ -730,7 +873,7 @@ export default function AdminPanel({
           }`}
         >
           <Award className="w-4 h-4" />
-          LỊCH SỬ THI CỦA HỌC VIÊN
+          LỊCH SỬ THI THỬ HỌC VIÊN
         </button>
       </div>
 
@@ -981,166 +1124,168 @@ export default function AdminPanel({
             </div>
           </div>
 
-          {/* Question Form Dialog / Form Expandable */}
+          {/* Question Form Dialog / Modal Overlay */}
           {isQuestionFormOpen && (
-            <div className="bg-white border-2 border-indigo-200/80 rounded-3xl p-6.5 shadow-xl space-y-5 animate-in fade-in duration-200">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-                <div className="flex items-center gap-1.5">
-                  <div className="p-1 px-1.5 bg-indigo-50 text-indigo-600 rounded-lg text-xs font-black">Question Form</div>
-                  <h3 className="text-sm font-extrabold text-slate-900">
-                    {editingQuestion ? `SỬA CÂU HỎI #${editingQuestion.questionNumber}` : 'THÊM MỘT CÂU HỎI MỚI'}
-                  </h3>
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn overflow-y-auto">
+              <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-2xl space-y-5 w-full max-w-2xl my-8 animate-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+                  <div className="flex items-center gap-1.5">
+                    <div className="p-1 px-1.5 bg-indigo-50 text-indigo-600 rounded-lg text-xs font-black">Question Form</div>
+                    <h3 className="text-sm font-extrabold text-slate-900">
+                      {editingQuestion ? `SỬA CÂU HỎI #${editingQuestion.questionNumber}` : 'THÊM MỘT CÂU HỎI MỚI'}
+                    </h3>
+                  </div>
+                  <button 
+                    onClick={() => setIsQuestionFormOpen(false)}
+                    className="p-1.5 text-slate-400 hover:text-slate-700 rounded-xl hover:bg-slate-100"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
                 </div>
-                <button 
-                  onClick={() => setIsQuestionFormOpen(false)}
-                  className="p-1.5 text-slate-400 hover:text-slate-700 rounded-xl"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
 
-              <div className="space-y-4">
-                
-                {/* Number & Category */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="space-y-4">
+                  
+                  {/* Number & Category */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-[9.5px] font-black text-slate-400 uppercase tracking-wider block">Thứ tự câu số (*)</label>
+                      <input
+                        type="number"
+                        value={qNum}
+                        onChange={(e) => setQNum(parseInt(e.target.value) || 0)}
+                        className="w-full text-xs px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-1 focus:ring-indigo-400 font-bold"
+                      />
+                    </div>
+                    <div className="space-y-1 sm:col-span-2">
+                      <label className="text-[9.5px] font-black text-slate-400 uppercase tracking-wider block">Chuyên đề / Danh mục (*)</label>
+                      <input
+                        type="text"
+                        placeholder="ví dụ: Cloud Security Concepts, Features & Settings..."
+                        value={qCategory}
+                        onChange={(e) => setQCategory(e.target.value)}
+                        className="w-full text-xs px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-1"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Question Text */}
                   <div className="space-y-1">
-                    <label className="text-[9.5px] font-black text-slate-400 uppercase tracking-wider block">Thứ tự câu số (*)</label>
-                    <input
-                      type="number"
-                      value={qNum}
-                      onChange={(e) => setQNum(parseInt(e.target.value) || 0)}
-                      className="w-full text-xs px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-1 focus:ring-indigo-400 font-bold"
+                    <label className="text-[9.5px] font-black text-slate-400 uppercase tracking-wider block">Nội dung câu hỏi (*)</label>
+                    <textarea
+                      rows={4}
+                      placeholder="Nhập nội dung đầy đủ câu hỏi ôn thi..."
+                      value={qText}
+                      onChange={(e) => setQText(e.target.value)}
+                      className="w-full text-xs p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-1 focus:ring-indigo-400"
                     />
                   </div>
-                  <div className="space-y-1 sm:col-span-2">
-                    <label className="text-[9.5px] font-black text-slate-400 uppercase tracking-wider block">Chuyên đề / Danh mục (*)</label>
+
+                  {/* Options Creator */}
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                      <label className="text-[9.5px] font-black text-slate-400 uppercase tracking-wider block">Thiết lập các Phương án & Đáp án đúng (*)</label>
+                      <button
+                        type="button"
+                        onClick={addOptionField}
+                        className="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all"
+                      >
+                        <PlusCircle className="w-3.5 h-3.5" />
+                        Thêm phương án
+                      </button>
+                    </div>
+
+                    <div className="space-y-2.5">
+                      {qOptions.map((opt, i) => {
+                        const isCorrect = qCorrectAnswers.includes(opt.key);
+                        return (
+                          <div key={opt.key} className="flex items-center gap-2.5">
+                            {/* Toggle Key representation indicator */}
+                            <button
+                              type="button"
+                              onClick={() => toggleCorrectAnswer(opt.key)}
+                              title={isCorrect ? 'Click để bỏ tích đáp án đúng' : 'Click để tích thành đáp án đúng'}
+                              className={`w-9 h-9 flex items-center justify-center rounded-xl text-xs font-black transition-all border ${
+                                isCorrect 
+                                  ? 'bg-emerald-500 text-white border-emerald-600 shadow-sm shadow-emerald-500/20' 
+                                  : 'bg-slate-50 hover:bg-slate-100 text-slate-500 border-slate-200'
+                              }`}
+                            >
+                              {opt.key}
+                            </button>
+                            
+                            {/* Option text input */}
+                            <input
+                              type="text"
+                              placeholder={`Nội dung phương án ${opt.key}...`}
+                              value={opt.text}
+                              onChange={(e) => {
+                                const txt = e.target.value;
+                                setQOptions(prev => prev.map(o => o.key === opt.key ? { ...o, text: txt } : o));
+                              }}
+                              className="flex-1 text-xs px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl"
+                            />
+
+                            {/* Delete option */}
+                            {qOptions.length > 2 && (
+                              <button
+                                type="button"
+                                onClick={() => removeOptionField(opt.key)}
+                                className="p-2 text-slate-300 hover:text-rose-500 rounded-lg hover:bg-rose-50"
+                                title="Loại bỏ phương án này"
+                              >
+                                <X className="w-4 h-4" />
+                              </button>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <p className="text-[10.5px] text-slate-400 font-medium">💡 Mẹo: Nhấp vào ký tự tròn <strong className="text-slate-600 font-black">A, B, C, D...</strong> để thiết lập hoặc đánh dấu đó là đáp án đúng (có thể chọn nhiều đáp án cho câu hỏi Multi-select).</p>
+                  </div>
+
+                  {/* Explanation text */}
+                  <div className="space-y-1">
+                    <label className="text-[9.5px] font-black text-slate-400 uppercase tracking-wider block">Giải nghĩa chi tiết tiếng Việt</label>
+                    <textarea
+                      rows={3}
+                      placeholder="Giải thích vì sao phương án đó chính xác..."
+                      value={qExplanation}
+                      onChange={(e) => setQExplanation(e.target.value)}
+                      className="w-full text-xs p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-1 focus:ring-indigo-400"
+                    />
+                  </div>
+
+                  {/* Tags input */}
+                  <div className="space-y-1">
+                    <label className="text-[9.5px] font-black text-slate-400 uppercase tracking-wider block">Thẻ từ khóa / Tags (Phân cách bởi dấu phẩy)</label>
                     <input
                       type="text"
-                      placeholder="ví dụ: Cloud Security Concepts, Features & Settings..."
-                      value={qCategory}
-                      onChange={(e) => setQCategory(e.target.value)}
+                      placeholder="ví dụ: Power Platform, AI Builder, Copilot..."
+                      value={qTagsString}
+                      onChange={(e) => setQTagsString(e.target.value)}
                       className="w-full text-xs px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-1"
                     />
                   </div>
                 </div>
 
-                {/* Question Text */}
-                <div className="space-y-1">
-                  <label className="text-[9.5px] font-black text-slate-400 uppercase tracking-wider block">Nội dung câu hỏi (*)</label>
-                  <textarea
-                    rows={4}
-                    placeholder="Nhập nội dung đầy đủ câu hỏi ôn thi..."
-                    value={qText}
-                    onChange={(e) => setQText(e.target.value)}
-                    className="w-full text-xs p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-1 focus:ring-indigo-400"
-                  />
+                {/* Actions submit */}
+                <div className="flex gap-2.5 justify-end pt-3">
+                  <button
+                    type="button"
+                    onClick={() => setIsQuestionFormOpen(false)}
+                    className="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold rounded-xl text-xs transition-colors"
+                  >
+                    Hủy bỏ
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleSaveQuestion}
+                    disabled={isLoading}
+                    className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 text-white font-black rounded-xl text-xs transition-all shadow-md active:scale-95 cursor-pointer"
+                  >
+                    {isLoading ? 'Đang lưu...' : 'Lưu Thay Đổi'}
+                  </button>
                 </div>
-
-                {/* Options Creator */}
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-                    <label className="text-[9.5px] font-black text-slate-400 uppercase tracking-wider block">Thiết lập các Phương án & Đáp án đúng (*)</label>
-                    <button
-                      type="button"
-                      onClick={addOptionField}
-                      className="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all"
-                    >
-                      <PlusCircle className="w-3.5 h-3.5" />
-                      Thêm phương án
-                    </button>
-                  </div>
-
-                  <div className="space-y-2.5">
-                    {qOptions.map((opt, i) => {
-                      const isCorrect = qCorrectAnswers.includes(opt.key);
-                      return (
-                        <div key={opt.key} className="flex items-center gap-2.5">
-                          {/* Toggle Key representation indicator */}
-                          <button
-                            type="button"
-                            onClick={() => toggleCorrectAnswer(opt.key)}
-                            title={isCorrect ? 'Click để bỏ tích đáp án đúng' : 'Click để tích thành đáp án đúng'}
-                            className={`w-9 h-9 flex items-center justify-center rounded-xl text-xs font-black transition-all border ${
-                              isCorrect 
-                                ? 'bg-emerald-500 text-white border-emerald-600 shadow-sm shadow-emerald-500/20' 
-                                : 'bg-slate-50 hover:bg-slate-100 text-slate-500 border-slate-200'
-                            }`}
-                          >
-                            {opt.key}
-                          </button>
-                          
-                          {/* Option text input */}
-                          <input
-                            type="text"
-                            placeholder={`Nội dung phương án ${opt.key}...`}
-                            value={opt.text}
-                            onChange={(e) => {
-                              const txt = e.target.value;
-                              setQOptions(prev => prev.map(o => o.key === opt.key ? { ...o, text: txt } : o));
-                            }}
-                            className="flex-1 text-xs px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl"
-                          />
-
-                          {/* Delete option */}
-                          {qOptions.length > 2 && (
-                            <button
-                              type="button"
-                              onClick={() => removeOptionField(opt.key)}
-                              className="p-2 text-slate-300 hover:text-rose-500 rounded-lg hover:bg-rose-50"
-                              title="Loại bỏ phương án này"
-                            >
-                              <X className="w-4 h-4" />
-                            </button>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
-                  <p className="text-[10.5px] text-slate-400 font-medium">💡 Mẹo: Nhấp vào ký tự tròn <strong className="text-slate-600 font-black">A, B, C, D...</strong> để thiết lập hoặc đánh dấu đó là đáp án đúng (có thể chọn nhiều đáp án cho câu hỏi Multi-select).</p>
-                </div>
-
-                {/* Explanation text */}
-                <div className="space-y-1">
-                  <label className="text-[9.5px] font-black text-slate-400 uppercase tracking-wider block">Giải nghĩa chi tiết tiếng Việt</label>
-                  <textarea
-                    rows={3}
-                    placeholder="Giải thích vì sao phương án đó chính xác..."
-                    value={qExplanation}
-                    onChange={(e) => setQExplanation(e.target.value)}
-                    className="w-full text-xs p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-1 focus:ring-indigo-400"
-                  />
-                </div>
-
-                {/* Tags input */}
-                <div className="space-y-1">
-                  <label className="text-[9.5px] font-black text-slate-400 uppercase tracking-wider block">Thẻ từ khóa / Tags (Phân cách bởi dấu phẩy)</label>
-                  <input
-                    type="text"
-                    placeholder="ví dụ: Power Platform, AI Builder, Copilot..."
-                    value={qTagsString}
-                    onChange={(e) => setQTagsString(e.target.value)}
-                    className="w-full text-xs px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-1"
-                  />
-                </div>
-              </div>
-
-              {/* Actions submit */}
-              <div className="flex gap-2.5 justify-end pt-3">
-                <button
-                  type="button"
-                  onClick={() => setIsQuestionFormOpen(false)}
-                  className="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold rounded-xl text-xs transition-colors"
-                >
-                  Hủy bỏ
-                </button>
-                <button
-                  type="button"
-                  onClick={handleSaveQuestion}
-                  disabled={isLoading}
-                  className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 text-white font-black rounded-xl text-xs transition-all shadow-md active:scale-95 cursor-pointer"
-                >
-                  {isLoading ? 'Đang lưu...' : 'Lưu Thay Đổi'}
-                </button>
               </div>
             </div>
           )}
@@ -1158,116 +1303,447 @@ export default function AdminPanel({
               <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">Vui lòng thử gõ từ khóa khác hoặc click "Tạo Câu Hỏi Mới" để thiết lập.</p>
             </div>
           ) : (
-            <div className="space-y-3">
-              {filteredQuestions.map((q) => {
-                const isExpanded = expandedQuestionId === q.id;
-                return (
-                  <div 
-                    key={q.id} 
-                    className="bg-white border border-slate-150 rounded-2xl shadow-xs overflow-hidden transition-all hover:border-slate-300"
-                  >
-                    {/* Header bar click to expand/collapse */}
+            <div className="space-y-4">
+              {/* Pagination Stats bar */}
+              <div className="bg-slate-50 border border-slate-150 rounded-2xl p-3 px-4.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-500">
+                <div className="font-medium">
+                  Hiển thị <span className="font-black text-slate-800">{(currentPage - 1) * questionsPerPage + 1}</span> - <span className="font-black text-slate-800">{Math.min(currentPage * questionsPerPage, filteredQuestions.length)}</span> trong số <span className="font-black text-slate-800">{filteredQuestions.length}</span> câu hỏi được lọc
+                </div>
+                <div className="font-mono text-[11px] font-bold bg-white border border-slate-100 rounded-lg px-2.5 py-1 shadow-xs">
+                  Trang <span className="text-indigo-650 font-black">{currentPage}</span> / {Math.ceil(filteredQuestions.length / questionsPerPage) || 1}
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                {filteredQuestions.slice((currentPage - 1) * questionsPerPage, currentPage * questionsPerPage).map((q) => {
+                  const isExpanded = expandedQuestionId === q.id;
+                  return (
                     <div 
-                      onClick={() => setExpandedQuestionId(isExpanded ? null : q.id)}
-                      className="p-4 flex items-start justify-between gap-4 cursor-pointer select-none"
+                      key={q.id} 
+                      className="bg-white border border-slate-150 rounded-2xl shadow-xs overflow-hidden transition-all hover:border-slate-300"
                     >
-                      <div className="flex-1 min-w-0 pr-2">
-                        <div className="flex items-center gap-2 flex-wrap mb-1">
-                          <span className="p-1 px-1.5 bg-slate-100 text-slate-700 font-mono text-[10px] font-black rounded-md leading-none">
-                            Câu {q.questionNumber}
-                          </span>
-                          <span className="bg-indigo-50 text-indigo-650 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                            {q.category}
-                          </span>
-                          {q.tags && q.tags.map(t => (
-                            <span key={t} className="bg-slate-100 text-slate-550 text-[9.5px] px-1.5 py-0.5 rounded flex items-center gap-0.5">
-                              <Tag className="w-2.5 h-2.5 opacity-55" />
-                              {t}
+                      {/* Header bar click to expand/collapse */}
+                      <div 
+                        onClick={() => setExpandedQuestionId(isExpanded ? null : q.id)}
+                        className="p-4 flex items-start justify-between gap-4 cursor-pointer select-none"
+                      >
+                        <div className="flex-1 min-w-0 pr-2">
+                          <div className="flex items-center gap-2 flex-wrap mb-1">
+                            <span className="p-1 px-1.5 bg-slate-100 text-slate-700 font-mono text-[10px] font-black rounded-md leading-none">
+                              Câu {q.questionNumber}
                             </span>
-                          ))}
+                            <span className="bg-indigo-50 text-indigo-650 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                              {q.category}
+                            </span>
+                            {q.tags && q.tags.map(t => (
+                              <span key={t} className="bg-slate-100 text-slate-550 text-[9.5px] px-1.5 py-0.5 rounded flex items-center gap-0.5">
+                                <Tag className="w-2.5 h-2.5 opacity-55" />
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                          <h4 className="text-xs font-bold text-slate-800 mt-1.5 leading-relaxed truncate-3-lines">
+                            {q.text}
+                          </h4>
                         </div>
-                        <h4 className="text-xs font-bold text-slate-800 mt-1.5 leading-relaxed truncate-3-lines">
-                          {q.text}
-                        </h4>
+
+                        <div className="flex items-center gap-2 shrink-0 self-center">
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleOpenEditQuestion(q);
+                            }}
+                            className="p-2 border border-slate-200 text-slate-500 hover:text-indigo-600 hover:bg-indigo-50/50 rounded-xl transition-colors cursor-pointer"
+                            title="Chỉnh sửa câu hỏi"
+                          >
+                            <Edit3 className="w-3.5 h-3.5" />
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleDeleteQuestion(q.id);
+                            }}
+                            className="p-2 border border-slate-200 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors cursor-pointer"
+                            title="Xóa câu hỏi"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                          <div className="text-slate-400 p-1">
+                            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                          </div>
+                        </div>
                       </div>
 
-                      <div className="flex items-center gap-2 shrink-0 self-center">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleOpenEditQuestion(q);
-                          }}
-                          className="p-2 border border-slate-200 text-slate-500 hover:text-indigo-600 hover:bg-indigo-50/50 rounded-xl transition-colors cursor-pointer"
-                          title="Chỉnh sửa câu hỏi"
-                        >
-                          <Edit3 className="w-3.5 h-3.5" />
-                        </button>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleDeleteQuestion(q.id);
-                          }}
-                          className="p-2 border border-slate-200 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors cursor-pointer"
-                          title="Xóa câu hỏi"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                        <div className="text-slate-400 p-1">
-                          {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      {/* Expandable options details */}
+                      {isExpanded && (
+                        <div className="px-5 pb-5 pt-1.5 border-t border-slate-100 bg-slate-50/45 space-y-4">
+                          
+                          {/* Options display with bold colors indicating correct ones */}
+                          <div className="space-y-2">
+                            <span className="block text-[10px] uppercase font-black tracking-wider text-slate-400">Các lựa chọn:</span>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                              {q.options.map(opt => {
+                                const isCorrect = q.correctAnswers.includes(opt.key);
+                                return (
+                                  <div 
+                                    key={opt.key}
+                                    className={`p-3 rounded-xl border flex items-start gap-2.5 ${
+                                      isCorrect 
+                                        ? 'bg-emerald-50 border-emerald-250 text-emerald-900 font-medium font-bold' 
+                                        : 'bg-white border-slate-150 text-slate-500'
+                                    }`}
+                                  >
+                                    <span className={`w-5 h-5 flex items-center justify-center rounded-lg text-[10px] font-black shrink-0 ${
+                                      isCorrect ? 'bg-emerald-500 text-white' : 'bg-slate-100 text-slate-400'
+                                    }`}>
+                                      {opt.key}
+                                    </span>
+                                    <span className="leading-relaxed">{opt.text}</span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+
+                          {/* Explanation display block */}
+                          {q.explanation && (
+                            <div className="space-y-1.5 bg-white border border-slate-150 rounded-xl p-3.5">
+                              <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider block">Giải nghĩa chi tiết:</span>
+                              <p className="text-xs leading-relaxed text-slate-655 font-semibold">
+                                {q.explanation}
+                              </p>
+                            </div>
+                          )}
                         </div>
-                      </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Dynamic Pagination Controls bar with Ellipsis support */}
+              {(() => {
+                const totalPages = Math.ceil(filteredQuestions.length / questionsPerPage);
+                if (totalPages <= 1) return null;
+
+                const pages: (number | string)[] = [];
+                for (let i = 1; i <= totalPages; i++) {
+                  if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+                    pages.push(i);
+                  } else if (pages[pages.length - 1] !== '...') {
+                    pages.push('...');
+                  }
+                }
+
+                return (
+                  <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                    <button
+                      onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                      disabled={currentPage === 1}
+                      className="px-3.5 py-2 bg-slate-50 hover:bg-slate-100 disabled:opacity-40 border border-slate-200 text-slate-700 disabled:hover:bg-slate-50 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
+                    >
+                      <ChevronLeft className="w-3.5 h-3.5" />
+                      Trước
+                    </button>
+
+                    <div className="hidden sm:flex items-center gap-1.5">
+                      {pages.map((p, idx) => {
+                        if (p === '...') {
+                          return (
+                            <span key={`ell-${idx}`} className="px-2.5 text-slate-400 font-bold text-xs select-none">
+                              ...
+                            </span>
+                          );
+                        }
+
+                        const isCurrent = p === currentPage;
+                        return (
+                          <button
+                            key={`page-${p}`}
+                            onClick={() => setCurrentPage(Number(p))}
+                            className={`w-8.5 h-8.5 flex items-center justify-center rounded-xl text-xs font-black transition-all border cursor-pointer ${
+                              isCurrent
+                                ? 'bg-indigo-600 border-indigo-650 text-white shadow-sm shadow-indigo-500/10'
+                                : 'bg-white border-slate-150 text-slate-600 hover:bg-slate-50 hover:border-slate-300'
+                            }`}
+                          >
+                            {p}
+                          </button>
+                        );
+                      })}
                     </div>
 
-                    {/* Expandable options details */}
-                    {isExpanded && (
-                      <div className="px-5 pb-5 pt-1.5 border-t border-slate-100 bg-slate-50/45 space-y-4">
-                        
-                        {/* Options display with bold colors indicating correct ones */}
-                        <div className="space-y-2">
-                          <span className="block text-[10px] uppercase font-black tracking-wider text-slate-400">Các lựa chọn:</span>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                            {q.options.map(opt => {
-                              const isCorrect = q.correctAnswers.includes(opt.key);
-                              return (
-                                <div 
-                                  key={opt.key}
-                                  className={`p-3 rounded-xl border flex items-start gap-2.5 ${
-                                    isCorrect 
-                                      ? 'bg-emerald-50 border-emerald-250 text-emerald-900 font-medium font-bold' 
-                                      : 'bg-white border-slate-150 text-slate-500'
-                                  }`}
-                                >
-                                  <span className={`w-5 h-5 flex items-center justify-center rounded-lg text-[10px] font-black shrink-0 ${
-                                    isCorrect ? 'bg-emerald-500 text-white' : 'bg-slate-100 text-slate-400'
-                                  }`}>
-                                    {opt.key}
-                                  </span>
-                                  <span className="leading-relaxed">{opt.text}</span>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-
-                        {/* Explanation display block */}
-                        {q.explanation && (
-                          <div className="space-y-1.5 bg-white border border-slate-150 rounded-xl p-3.5">
-                            <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider block">Giải nghĩa chi tiết:</span>
-                            <p className="text-xs leading-relaxed text-slate-655 font-semibold">
-                              {q.explanation}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    )}
+                    <button
+                      onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                      disabled={currentPage === totalPages}
+                      className="px-3.5 py-2 bg-slate-50 hover:bg-slate-100 disabled:opacity-40 border border-slate-200 text-slate-700 disabled:hover:bg-slate-50 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
+                    >
+                      Sau
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
                   </div>
                 );
-              })}
+              })()}
             </div>
           )}
 
         </div>
       </div>
+      )}
+
+      {/* Admin Panel User Progress management panel */}
+      {adminTab === 'user_progress' && (
+        <div className="space-y-6 animate-fadeIn">
+          {/* Status summary cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-xs">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Tổng số bản ghi tiến trình</span>
+              <span className="text-2xl font-black text-slate-900 block mt-1">{filteredUserProgress.length} môn</span>
+              <span className="text-[10px] text-slate-400 mt-2 block font-medium">Bản ghi theo dõi môn học của học viên</span>
+            </div>
+            
+            <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-xs">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Tổng số câu trả lời</span>
+              <span className="text-2xl font-black text-indigo-600 block mt-1">
+                {filteredUserProgress.reduce((acc, p) => acc + (p.answered_count || 0), 0)} câu
+              </span>
+              <span className="text-[10px] text-slate-400 mt-2 block font-medium">Tổng số lượt trả lời của học viên</span>
+            </div>
+
+            <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-xs">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Độ chính xác trung bình</span>
+              <span className="text-2xl font-black text-emerald-600 block mt-1">
+                {(() => {
+                  const totalAnswered = filteredUserProgress.reduce((acc, p) => acc + (p.answered_count || 0), 0);
+                  const totalCorrect = filteredUserProgress.reduce((acc, p) => acc + (p.correct_count || 0), 0);
+                  return totalAnswered > 0 ? `${Math.round((totalCorrect / totalAnswered) * 100)}%` : '0%';
+                })()}
+              </span>
+              <span className="text-[10px] text-slate-400 mt-2 block font-medium">Tỷ lệ trả lời đúng tích lũy</span>
+            </div>
+
+            <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-xs">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Chuỗi liên tục cao nhất</span>
+              <span className="text-2xl font-black text-rose-600 block mt-1">
+                {filteredUserProgress.length > 0
+                  ? `${Math.max(...filteredUserProgress.map(p => p.streak || 0))} ngày`
+                  : '0 ngày'}
+              </span>
+              <span className="text-[10px] text-slate-400 mt-2 block font-medium">Chuỗi học tập kỷ lục của học viên</span>
+            </div>
+          </div>
+
+          {/* Filtering bar and action buttons */}
+          <div className="bg-white border border-slate-150 rounded-2xl p-4.5 shadow-sm space-y-4">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+              
+              {/* Left filters */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-1">
+                <div className="relative flex-1">
+                  <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    placeholder="Tìm theo tên học viên..."
+                    value={progressSearchQuery}
+                    onChange={(e) => setProgressSearchQuery(e.target.value)}
+                    className="w-full text-xs pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-100 focus:outline-none font-medium"
+                  />
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest font-mono shrink-0">Môn học:</span>
+                  <select
+                    value={progressCertFilter}
+                    onChange={(e) => setProgressCertFilter(e.target.value)}
+                    className="text-xs font-bold py-2 bg-slate-100 border border-slate-200 rounded-xl px-2.5 max-w-[150px] focus:outline-none"
+                  >
+                    <option value="All">Tất cả môn</option>
+                    {certificates.map(c => (
+                      <option key={c.id} value={c.id}>{c.code}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Right actions */}
+              <div className="flex items-center gap-2 self-end lg:self-auto">
+                <button
+                  onClick={loadUserProgress}
+                  disabled={isProgressLoading}
+                  className="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition-all cursor-pointer border border-slate-200"
+                  title="Tải lại dữ liệu"
+                >
+                  <RefreshCw className={`w-4 h-4 ${isProgressLoading ? 'animate-spin' : ''}`} />
+                </button>
+
+                <button
+                  onClick={handleExportProgressToCsv}
+                  className="text-xs bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-extrabold px-4 py-2.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer border border-emerald-250 shadow-xs"
+                  title="Xuất toàn bộ tiến trình học viên ra tệp CSV"
+                >
+                  <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
+                  Xuất Excel CSV
+                </button>
+
+                <button
+                  onClick={handleClearAllUserProgress}
+                  className="text-xs bg-rose-50 hover:bg-rose-100 text-rose-700 font-extrabold px-4 py-2.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer border border-rose-200 shadow-xs"
+                  title="Xóa toàn bộ tiến trình học tập"
+                >
+                  <Trash2 className="w-3.5 h-3.5 text-rose-600" />
+                  Xóa Hết Tiến Trình
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Table display */}
+          <div className="bg-white border border-slate-150 rounded-3xl overflow-hidden shadow-sm">
+            {isProgressLoading ? (
+              <div className="flex flex-col items-center justify-center py-20 gap-3">
+                <RefreshCw className="w-8 h-8 text-indigo-600 animate-spin" />
+                <span className="text-xs font-semibold text-slate-500">Đang đồng bộ tiến độ học viên...</span>
+              </div>
+            ) : filteredUserProgress.length === 0 ? (
+              <div className="text-center py-20 space-y-4 max-w-lg mx-auto px-4">
+                <div className="bg-slate-50 text-slate-400 p-4 rounded-full w-14 h-14 mx-auto flex items-center justify-center border border-slate-100 shadow-xs">
+                  <History className="w-7 h-7 text-indigo-500" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-black text-slate-800">Không tìm thấy bản ghi tiến độ nào</h4>
+                  <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                    Hệ thống chưa ghi nhận học viên nào có tiến trình luyện tập phù hợp với bộ lọc tìm kiếm.
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-slate-50 border-b border-slate-100 text-slate-400 font-mono text-[10px] uppercase tracking-wider font-semibold">
+                      <th className="py-4 px-6">Học Viên</th>
+                      <th className="py-4 px-6">Môn Luyện Tập</th>
+                      <th className="py-4 px-6">Tiến Độ Làm Bài</th>
+                      <th className="py-4 px-6">Đúng / Sai</th>
+                      <th className="py-4 px-6">Tỷ Lệ Chính Xác</th>
+                      <th className="py-4 px-6">Chuỗi Học Tập</th>
+                      <th className="py-4 px-6">Đã Lưu</th>
+                      <th className="py-4 px-6">Cập Nhật Cuối</th>
+                      <th className="py-4 px-6 text-right">Thao Tác</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {filteredUserProgress.map((p, idx) => {
+                      const cert = certificates.find(c => c.id === p.cert_id);
+                      const certCode = cert ? cert.code : p.cert_id;
+                      
+                      // Calculate total questions dynamically from stored questions or default to 50
+                      const storedQs = localStorage.getItem(`questions_${p.cert_id}`);
+                      let totalQuestionsCount = 50;
+                      if (storedQs) {
+                        try {
+                          const parsedList = JSON.parse(storedQs);
+                          if (Array.isArray(parsedList) && parsedList.length > 0) {
+                            totalQuestionsCount = parsedList.length;
+                          }
+                        } catch (e) {}
+                      }
+
+                      const completionPercent = Math.min(Math.round(((p.answered_count || 0) / totalQuestionsCount) * 100), 100);
+                      const accuracyPercent = p.answered_count > 0 
+                        ? Math.round((p.correct_count / p.answered_count) * 100)
+                        : 0;
+                      
+                      return (
+                        <tr key={`${p.username}_${p.cert_id}_${idx}`} className="hover:bg-slate-50/50 transition-colors">
+                          <td className="py-3.5 px-6 font-semibold text-slate-800">
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 text-indigo-700 flex items-center justify-center font-bold text-xs uppercase shadow-xs">
+                                {p.username.slice(0, 2)}
+                              </div>
+                              <span className="font-black text-slate-900 tracking-tight">{p.username}</span>
+                            </div>
+                          </td>
+                          
+                          <td className="py-3.5 px-6 font-bold">
+                            <span className="inline-block px-2.5 py-1 rounded-lg bg-indigo-50 border border-indigo-150 text-indigo-700 font-mono text-[11px] uppercase">
+                              {certCode}
+                            </span>
+                          </td>
+                          
+                          <td className="py-3.5 px-6 font-bold text-slate-800">
+                            <div className="space-y-1.5">
+                              <div className="flex items-center gap-2">
+                                <span className="text-[12px] font-black">{completionPercent}%</span>
+                                <span className="text-[10px] text-slate-400 font-semibold">({p.answered_count || 0}/{totalQuestionsCount} câu)</span>
+                              </div>
+                              <div className="w-24 bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                                <div 
+                                  className="h-full rounded-full bg-indigo-500"
+                                  style={{ width: `${completionPercent}%` }}
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          
+                          <td className="py-3.5 px-6 text-slate-500 font-medium">
+                            <div className="flex items-center gap-1.5 font-mono text-[11px]">
+                              <span className="text-emerald-600 font-black">+{p.correct_count || 0}</span>
+                              <span className="text-slate-300">/</span>
+                              <span className="text-rose-500 font-black">-{p.incorrect_count || 0}</span>
+                            </div>
+                          </td>
+
+                          <td className="py-3.5 px-6 text-slate-800 font-bold">
+                            <span className={`inline-block px-2 py-0.5 rounded-md font-mono font-black text-xs ${
+                              accuracyPercent >= 80 
+                                ? 'bg-emerald-50 text-emerald-700 border border-emerald-150' 
+                                : accuracyPercent >= 60 
+                                  ? 'bg-indigo-50 text-indigo-700 border border-indigo-150' 
+                                  : 'bg-amber-50 text-amber-700 border border-amber-150'
+                            }`}>
+                              {accuracyPercent}%
+                            </span>
+                          </td>
+
+                          <td className="py-3.5 px-6 text-slate-600 font-semibold">
+                            <div className="flex items-center gap-1">
+                              <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                              <span className="font-bold font-mono">{p.streak || 0} ngày</span>
+                            </div>
+                          </td>
+
+                          <td className="py-3.5 px-6 text-slate-500 font-medium">
+                            <span className="font-mono bg-slate-100 border border-slate-200 text-slate-600 px-2 py-0.5 rounded-md font-semibold">
+                              {p.bookmarked_question_ids ? p.bookmarked_question_ids.length : 0} câu
+                            </span>
+                          </td>
+                          
+                          <td className="py-3.5 px-6 text-slate-400 font-semibold">
+                            <div className="flex items-center gap-1.5">
+                              <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                              <span>{p.last_updated ? new Date(p.last_updated).toLocaleString('vi-VN') : 'N/A'}</span>
+                            </div>
+                          </td>
+                          
+                          <td className="py-3.5 px-6 text-right">
+                            <button
+                              onClick={() => handleDeleteUserProgress(p)}
+                              className="p-1.5 hover:bg-rose-50 text-slate-400 hover:text-rose-600 rounded-lg transition-all cursor-pointer"
+                              title="Xóa tiến trình môn này của học viên"
+                            >
+                              <Trash2 className="w-3.5 h-3.5" />
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </div>
       )}
 
       {/* Admin Panel Exam History management panel */}
