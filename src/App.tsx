@@ -713,11 +713,11 @@ export default function App() {
                   <DynamicIcon name={certificates.find(c => c.id === activeCertId)?.iconName || 'Zap'} className="w-5 h-5" />
                 )}
               </div>
-              <div>
-                <h1 className="text-sm font-extrabold tracking-tight text-slate-900 leading-tight">
+              <div className="min-w-0">
+                <h1 className="text-xs sm:text-sm font-extrabold tracking-tight text-slate-900 leading-tight whitespace-nowrap truncate">
                   {mode === 'home' ? 'Cert Hub Dashboard' : mode === 'admin' ? 'Admin Hub Panel' : `${certificates.find(c => c.id === activeCertId)?.code} Prep Hub`}
                 </h1>
-                <p className="text-[10px] text-slate-400 font-medium">
+                <p className="text-[10px] text-slate-400 font-medium hidden sm:block truncate">
                   {mode === 'home' 
                     ? 'Trung Tâm Ôn Luyện Đa Chứng Chỉ' 
                     : mode === 'admin'
@@ -797,61 +797,66 @@ export default function App() {
           </div>
 
           {/* Quick Stats overview panel */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2 sm:gap-2.5">
             {/* Quick Look-up Button */}
             <button
               onClick={() => {
                 setLookupQuery('');
+                if (mode !== 'home' && mode !== 'admin' && activeCertId) {
+                  setLookupCertId(activeCertId);
+                } else {
+                  setLookupCertId('all');
+                }
                 setIsLookupOpen(true);
               }}
-              className="text-xs bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200/80 font-bold px-3 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-xs shrink-0"
+              className="text-xs bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200/80 font-bold px-3 py-2 rounded-xl transition-all items-center gap-1.5 cursor-pointer shadow-xs shrink-0 hidden sm:flex"
               title="Tra cứu nhanh câu hỏi và đáp án"
             >
               <Search className="w-3.5 h-3.5 text-amber-600 animate-pulse" />
-              <span className="hidden sm:inline">Tra cứu đáp án</span>
+              <span>Tra cứu đáp án</span>
             </button>
 
             {/* Cloud User Profile & Sync Indicator */}
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 shrink-0">
               {username ? (
-                <div className="flex items-center gap-2 bg-slate-100 pl-3 pr-2.5 py-1.5 rounded-xl border border-slate-200/80 shadow-sm max-w-[200px]">
-                  <div className="flex flex-col items-start leading-none">
-                    <span className="text-[8px] text-slate-400 font-bold uppercase tracking-wider block">Tài khoản</span>
-                    <span className="text-xs font-black text-slate-800 tracking-tight truncate max-w-[80px] sm:max-w-[110px]" title={username}>
+                <div className="flex items-center gap-1.5 sm:gap-2 bg-slate-100 pl-2 sm:pl-3 pr-1.5 sm:pr-2.5 py-1 sm:py-1.5 rounded-xl border border-slate-200/80 shadow-sm max-w-[130px] sm:max-w-[200px] shrink-0">
+                  <div className="flex flex-col items-start leading-none min-w-0 flex-1">
+                    <span className="text-[8px] text-slate-400 font-bold uppercase tracking-wider hidden sm:block">Tài khoản</span>
+                    <span className="text-[11px] sm:text-xs font-black text-slate-800 tracking-tight truncate max-w-[55px] sm:max-w-[110px]" title={username}>
                       {username}
                     </span>
                   </div>
                   
                   {/* Status Indicator */}
-                  <div className="flex items-center justify-center pl-0.5">
+                  <div className="flex items-center justify-center pl-0.5 shrink-0">
                     {dbSyncStatus === 'syncing' && (
-                      <Loader2 className="w-3.5 h-3.5 text-indigo-500 animate-spin" title="Đang đồng bộ..." />
+                      <Loader2 className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-indigo-500 animate-spin" title="Đang đồng bộ..." />
                     )}
                     {dbSyncStatus === 'success' && (
-                      <Check className="w-3.5 h-3.5 text-emerald-500 font-extrabold" title="Đã đồng bộ Cloud" />
+                      <Check className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-emerald-500 font-extrabold" title="Đã đồng bộ Cloud" />
                     )}
                     {dbSyncStatus === 'error' && (
-                      <AlertCircle className="w-3.5 h-3.5 text-rose-500 animate-pulse" title="Lỗi đồng bộ Cloud" />
+                      <AlertCircle className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-rose-500 animate-pulse" title="Lỗi đồng bộ Cloud" />
                     )}
                     {dbSyncStatus === 'idle' && (
-                      <Database className="w-3.5 h-3.5 text-slate-400" title="Đang lưu offline" />
+                      <Database className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-slate-400" title="Đang lưu offline" />
                     )}
                   </div>
                   
-                  <div className="w-px h-5 bg-slate-200 mx-0.5" />
+                  <div className="w-px h-4 sm:h-5 bg-slate-200 mx-0.5 shrink-0" />
                   
                   <button
                     onClick={handleLogout}
                     title="Đăng xuất"
-                    className="p-1 text-slate-400 hover:text-rose-500 rounded-md hover:bg-white transition-all cursor-pointer"
+                    className="p-1 text-slate-400 hover:text-rose-500 rounded-md hover:bg-white transition-all cursor-pointer shrink-0"
                   >
-                    <LogOut className="w-3.5 h-3.5" />
+                    <LogOut className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
                   </button>
                 </div>
               ) : (
                 <button
                   onClick={() => { setAuthInputUsername(''); setShowAuthModal(true); }}
-                  className="bg-indigo-600 hover:bg-slate-900 text-white font-bold text-xs px-3.5 py-2 rounded-xl border border-indigo-700 shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
+                  className="bg-indigo-600 hover:bg-slate-900 text-white font-bold text-xs px-2.5 sm:px-3.5 py-2 rounded-xl border border-indigo-700 shadow-sm transition-all flex items-center gap-1.5 cursor-pointer shrink-0"
                   title="Kết nối tài khoản nhóm"
                 >
                   <User className="w-3.5 h-3.5 animate-pulse" />
@@ -864,16 +869,16 @@ export default function App() {
               <>
                 <button
                   onClick={() => setShowUploader(prev => !prev)}
-                  className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer"
+                  className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-3.5 py-2 rounded-xl transition-all items-center gap-1.5 cursor-pointer hidden sm:flex"
                 >
                   <Upload className="w-3.5 h-3.5 text-slate-500" />
-                  <span className="hidden sm:inline">Nạp câu hỏi tự chọn</span>
+                  <span>Nạp câu hỏi tự chọn</span>
                 </button>
 
                 <button
                   onClick={handleResetToDefault}
                   title="Khôi phục câu hỏi ban đầu"
-                  className="p-2 bg-slate-50 hover:bg-slate-150 border border-slate-200 rounded-xl text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
+                  className="p-2 bg-slate-50 hover:bg-slate-150 border border-slate-200 rounded-xl text-slate-400 hover:text-slate-700 transition-colors cursor-pointer hidden sm:flex"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
                 </button>
@@ -883,7 +888,7 @@ export default function App() {
             {mode === 'home' && (
               <button
                 onClick={() => setShowAddCertForm(true)}
-                className="text-xs bg-slate-950 hover:bg-indigo-600 text-white font-bold px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
+                className="text-xs bg-slate-950 hover:bg-indigo-600 text-white font-bold px-3.5 py-2 rounded-xl transition-all items-center gap-1.5 shadow-sm cursor-pointer hidden sm:flex"
               >
                 <Upload className="w-3.5 h-3.5" />
                 <span>Thêm chứng chỉ mới</span>
@@ -935,6 +940,11 @@ export default function App() {
         <button
           onClick={() => {
             setLookupQuery('');
+            if (mode !== 'home' && mode !== 'admin' && activeCertId) {
+              setLookupCertId(activeCertId);
+            } else {
+              setLookupCertId('all');
+            }
             setIsLookupOpen(true);
           }}
           className="flex-1 text-[11px] font-bold text-center py-2.5 rounded-lg transition-all flex items-center justify-center gap-1 text-slate-500 active:text-amber-700 active:bg-amber-50/50"
