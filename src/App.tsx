@@ -1895,8 +1895,8 @@ export default function App() {
 
       {/* Quick Lookup (Tra cứu nhanh) Modal Overlay */}
       {isLookupOpen && (
-        <div className="fixed inset-0 z-[100] bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-hidden">
-          <div className="bg-white border border-slate-200 rounded-3xl w-full max-w-2xl flex flex-col max-h-[85vh] shadow-2xl animate-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-[100] bg-slate-900/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden">
+          <div className="bg-white border-t sm:border border-slate-200 rounded-t-[2rem] sm:rounded-3xl rounded-b-none sm:rounded-b-3xl w-full max-w-2xl flex flex-col h-[88dvh] sm:h-auto sm:max-h-[85dvh] shadow-2xl animate-in slide-in-from-bottom sm:slide-in-from-bottom-0 sm:zoom-in-95 duration-200">
             {/* Header */}
             <div className="p-5 pb-4 border-b border-slate-100 flex items-start justify-between gap-4">
               <div>
@@ -1926,7 +1926,7 @@ export default function App() {
                   value={lookupQuery}
                   onChange={(e) => setLookupQuery(e.target.value)}
                   autoFocus
-                  className="w-full text-xs pl-9 pr-8 py-2.5 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-100 focus:border-amber-400 focus:outline-none font-medium shadow-2xs"
+                  className="w-full text-base sm:text-xs pl-9 pr-8 py-2.5 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-100 focus:border-amber-400 focus:outline-none font-medium shadow-2xs"
                 />
                 <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                 {lookupQuery && (
@@ -1944,7 +1944,7 @@ export default function App() {
                 <select
                   value={lookupCertId}
                   onChange={(e) => setLookupCertId(e.target.value)}
-                  className="w-full text-xs font-bold py-2.5 bg-white border border-slate-200 rounded-xl px-2.5 focus:outline-none focus:ring-2 focus:ring-amber-100"
+                  className="w-full text-base sm:text-xs font-bold py-2.5 bg-white border border-slate-200 rounded-xl px-2.5 focus:outline-none focus:ring-2 focus:ring-amber-100"
                 >
                   <option value="all">Tất cả môn học</option>
                   {certificates.map(c => (
@@ -2071,13 +2071,13 @@ export default function App() {
             </div>
 
             {/* Footer */}
-            <div className="p-4 border-t border-slate-100 flex items-center justify-between bg-slate-50 rounded-b-3xl">
+            <div className="p-4 border-t border-slate-100 flex items-center justify-between bg-slate-50 rounded-b-none sm:rounded-b-3xl pb-safe">
               <span className="hidden sm:inline text-[10px] text-slate-400 font-semibold">
                 💡 Nhập ký tự bất kỳ để lọc nhanh tức thì.
               </span>
               <button
                 onClick={() => setIsLookupOpen(false)}
-                className="w-full sm:w-auto px-5 py-2 bg-slate-900 hover:bg-indigo-650 text-white font-black rounded-xl text-xs transition-colors cursor-pointer"
+                className="w-full sm:w-auto px-5 py-3 sm:py-2 bg-slate-900 hover:bg-indigo-650 text-white font-black rounded-xl text-xs transition-colors cursor-pointer"
               >
                 Đóng Tra Cứu
               </button>
