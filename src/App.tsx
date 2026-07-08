@@ -462,6 +462,11 @@ export default function App() {
   const confirmDeleteCert = () => {
     if (!certToDelete) return;
     const cert = certToDelete;
+    if (['gh-300', 'az-900', 'ai-900', 'cca-f'].includes(cert.id)) {
+      showAppToast(`Không thể xóa chứng chỉ hệ thống ${cert.code}!`, 'error');
+      setCertToDelete(null);
+      return;
+    }
     const storedCustomCerts = localStorage.getItem('study_certs_custom');
     if (storedCustomCerts) {
       try {
@@ -1152,19 +1157,6 @@ export default function App() {
                           <BookOpen className="w-3.5 h-3.5" />
                           Học ngay
                         </button>
-                        
-                        {/* Delete option if it's dynamic user created */}
-                        {cert.id !== 'gh-300' && cert.id !== 'az-900' && cert.id !== 'ai-900' && (
-                          <button
-                            onClick={() => {
-                              setCertToDelete(cert);
-                            }}
-                            title="Xóa chứng chỉ này"
-                            className="p-2.5 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-xl transition-colors border border-rose-100 shrink-0"
-                          >
-                            <X className="w-3.5 h-3.5" />
-                          </button>
-                        )}
                       </div>
                     </div>
                   </div>

@@ -908,7 +908,7 @@ export default function AdminPanel({
                     {isActive ? (
                       <Check className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
                     ) : (
-                      cert.id !== 'gh-300' && cert.id !== 'az-900' && cert.id !== 'ai-900' && (
+                      cert.id !== 'gh-300' && cert.id !== 'az-900' && cert.id !== 'ai-900' && cert.id !== 'cca-f' && (
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
