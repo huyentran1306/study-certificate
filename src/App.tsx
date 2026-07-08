@@ -31,6 +31,7 @@ import { Question, ProgressState, StudyMode, Certificate } from './types';
 import { initialQuestions } from './data/initialQuestions';
 import { az900Questions } from './data/az900Questions';
 import { ai900Questions } from './data/ai900Questions';
+import { ccaQuestions } from './data/ccaQuestions';
 import QuizCard from './components/QuizCard';
 import StatsPanel from './components/StatsPanel';
 import MockExam from './components/MockExam';
@@ -101,6 +102,16 @@ export default function App() {
       estimatedHours: '6-10 Giờ',
       colorClass: 'bg-gradient-to-br from-teal-600 via-cyan-700 to-emerald-900 text-white',
       iconName: 'Award'
+    },
+    {
+      id: 'cca-f',
+      name: 'Claude Certified Architect — Foundations',
+      code: 'CCA-F',
+      description: 'Chinh phục chứng chỉ Kiến trúc sư Claude được ủy quyền bởi Anthropic. Bao quát thiết kế prompt, kiến trúc tác nhân, MCP, và rào chắn an toàn.',
+      difficulty: 'Trung cấp',
+      estimatedHours: '12-18 Giờ',
+      colorClass: 'bg-gradient-to-br from-amber-600 via-orange-700 to-amber-950 text-white',
+      iconName: 'Trophy'
     }
   ]);
 
@@ -219,6 +230,8 @@ export default function App() {
       defaultQs = az900Questions;
     } else if (certId === 'ai-900') {
       defaultQs = ai900Questions;
+    } else if (certId === 'cca-f') {
+      defaultQs = ccaQuestions;
     } else {
       const storedQs = localStorage.getItem(`questions_${certId}`);
       if (storedQs) {
@@ -231,10 +244,11 @@ export default function App() {
     // Try fetching from database first
     try {
       const dbQs = await fetchQuestionsFromDb(certId);
-      if (dbQs && dbQs.length > 0) {
+      if (dbQs && dbQs.length >= defaultQs.length) {
         activeQuestions = dbQs;
       } else if (defaultQs.length > 0) {
-        // If Database is empty but we have local questions, automatically populate DB in background
+        // If Database has fewer/no questions than our default list, use local list and populate/update DB in background
+        activeQuestions = defaultQs;
         await uploadQuestionsToDb(certId, defaultQs);
       }
     } catch (err) {
@@ -310,7 +324,7 @@ export default function App() {
       try {
         const parsed = JSON.parse(storedCustomCerts);
         setCertificates(prev => {
-          const defaultIds = ['gh-300', 'az-900', 'ai-900'];
+          const defaultIds = ['gh-300', 'az-900', 'ai-900', 'cca-f'];
           const filteredPrev = prev.filter(c => defaultIds.includes(c.id));
           return [...filteredPrev, ...parsed];
         });
@@ -385,6 +399,8 @@ export default function App() {
           certQs = az900Questions;
         } else if (cert.id === 'ai-900') {
           certQs = ai900Questions;
+        } else if (cert.id === 'cca-f') {
+          certQs = ccaQuestions;
         } else {
           const storedQs = localStorage.getItem(`questions_${cert.id}`);
           if (storedQs) {
@@ -1047,6 +1063,7 @@ export default function App() {
                 if (cert.id === 'gh-300') certProgress.total = initialQuestions.length;
                 else if (cert.id === 'az-900') certProgress.total = az900Questions.length;
                 else if (cert.id === 'ai-900') certProgress.total = ai900Questions.length;
+                else if (cert.id === 'cca-f') certProgress.total = ccaQuestions.length;
                 
                 // Overwrite with actual local count if exists
                 const storedQs = localStorage.getItem(`questions_${cert.id}`);
