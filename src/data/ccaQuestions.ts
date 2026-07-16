@@ -900,5 +900,85 @@ export const ccaQuestions: Question[] = [
     category: "Claude Code CLI",
     explanation: "Lệnh '/memory' là lệnh chẩn đoán tối ưu để xác minh xem tác nhân có đang nạp đúng và đủ các tệp cấu hình của dự án (như CLAUDE.md hoặc .claude/rules/) trên máy hiện tại hay không.",
     tags: ["/memory", "Diagnostics", "Claude Code"]
+  },
+  {
+    id: "cca61",
+    questionNumber: 61,
+    text: "Based on the prompt caching architecture shown in the diagram, how should you structure your API requests to Claude 3.5 Sonnet to maximize cache hit rates and reduce overall API latency?",
+    imageUrl: "/assets/cca_q61.jpg",
+    options: [
+      { key: "A", text: "Place frequently changing dynamic user messages at the beginning of the prompt, and the static system prompt and tools at the very end." },
+      { key: "B", text: "Keep the system prompt, tools, and heavy reference documents static at the beginning of the request, and mark the end of the static segment with 'cache_control': {'type': 'ephemeral'}." },
+      { key: "C", text: "Randomize the ordering of messages in each API call to allow the cache server to dynamically re-index all blocks." },
+      { key: "D", text: "Prompt caching is automatically managed by the API gateway on any arbitrary message layout, requiring no explicit payload design." }
+    ],
+    correctAnswers: ["B"],
+    category: "Architecture & Optimization",
+    explanation: "Để tận dụng tối đa Prompt Caching của Anthropic, các khối dữ liệu tĩnh, kích thước lớn (như system prompt, định nghĩa tools, tài liệu hướng dẫn hoặc lịch sử hội thoại ổn định) phải được xếp ở đầu yêu cầu và được đánh dấu bộ nhớ đệm (ví dụ: 'cache_control': {'type': 'ephemeral'}). Bất kỳ thay đổi nhỏ nào ở phần trước điểm cache cũng sẽ làm mất hiệu lực bộ nhớ đệm (cache invalidation).",
+    tags: ["Prompt Caching", "API Design", "Optimization"]
+  },
+  {
+    id: "cca62",
+    questionNumber: 62,
+    text: "You are designing an enterprise desktop application that integrates Claude Code with multiple distinct data sources (local files, a relational database, and an external API). Based on the Model Context Protocol (MCP) architecture shown in the diagram, what is the correct protocol flow for tool invocation?",
+    imageUrl: "/assets/cca_q62.jpg",
+    options: [
+      { key: "A", text: "The MCP Servers directly fetch user instructions from the LLM via webhooks, execute them, and return the output directly to the end-user UI." },
+      { key: "B", text: "The client application communicates with the LLM. When the LLM decides to use a tool, it returns a tool use block to the Client. The Client routes this call to the respective MCP Server via standard JSON-RPC, receives the tool output, and sends it back to the LLM." },
+      { key: "C", text: "Each MCP Server contains a localized instance of Claude that independently synthesizes user prompts before syncing via peer-to-peer WebSockets." },
+      { key: "D", text: "The Client bypasses the LLM entirely, using local heuristic models to map user queries to MCP Server endpoints." }
+    ],
+    correctAnswers: ["B"],
+    category: "Model Context Protocol",
+    explanation: "MCP hoạt động theo mô hình Client-Server trong đó Client (như Claude Code, Claude Desktop) giữ vai trò trung gian điều phối. Server không bao giờ tự ý nói chuyện trực tiếp với LLM; thay vào đó, LLM trả về yêu cầu 'tool use' cho Client, Client gọi MCP Server tương ứng qua JSON-RPC (qua stdio/SSE) rồi gửi lại kết quả của công cụ về cho LLM.",
+    tags: ["MCP Architecture", "JSON-RPC", "Tool Invocation"]
+  },
+  {
+    id: "cca63",
+    questionNumber: 63,
+    text: "You are implementing a multi-agent workflow in an editor application using Claude 3.5 Sonnet. Based on the Orchestrator-Workers design pattern illustrated in the diagram, how should the Router/Supervisor agent coordinate the sub-agents to compile a comprehensive documentation portal?",
+    imageUrl: "/assets/cca_q63.jpg",
+    options: [
+      { key: "A", text: "Provide all sub-agents with full read/write access to a shared global state, and let them execute concurrently without a supervisor." },
+      { key: "B", text: "The Router agent analyzes the high-level task, breaks it down into structured sub-tasks, dynamically delegates each sub-task to specialized, isolated worker agents, gathers their individual outputs, and synthesizes the final comprehensive portal." },
+      { key: "C", text: "Configure a single agent instance to run in a continuous loop, progressively mutating the same system prompt to simulate different personas." },
+      { key: "D", text: "Force a strict circular chain workflow where each sub-agent must wait for the output of the previous agent regardless of task relevance." }
+    ],
+    correctAnswers: ["B"],
+    category: "Agent Architecture",
+    explanation: "Mô hình Orchestrator-Workers (hay Supervisor-Subagents) cực kỳ tối ưu cho các tác vụ phức tạp cần chia nhỏ. Tác nhân Router đóng vai trò phân rã bài toán lớn, giao việc cho các Sub-agents chuyên trách (được thiết kế prompts và tools riêng biệt để đạt độ chính xác cao), sau đó tổng hợp kết quả để tránh hiện tượng loãng ngữ cảnh và giảm sai sót.",
+    tags: ["Multi-Agent", "Orchestrator Pattern", "Workflows"]
+  },
+  {
+    id: "cca64",
+    questionNumber: 64,
+    text: "You are designing an AI customer support platform using Claude. To ensure enterprise compliance and prevent prompt injection or hallucinated policy violations, you implement safety guardrails as shown in the diagram. Which statement accurately describes the processing pipeline?",
+    imageUrl: "/assets/cca_q64.jpg",
+    options: [
+      { key: "A", text: "Input guardrails classify user prompts for safety before sending them to Claude; output guardrails run synchronously on Claude's generated text to validate compliance before final rendering." },
+      { key: "B", text: "Input guardrails dynamically rewrite user queries to include pre-approved responses, bypassing Claude entirely for any complex query." },
+      { key: "C", text: "Output guardrails are executed asynchronously after the response is delivered to the user to avoid introducing latency." },
+      { key: "D", text: "Guardrails replace Claude's core neural network weights dynamically during inference depending on the user's role." }
+    ],
+    correctAnswers: ["A"],
+    category: "Evaluation & Bias",
+    explanation: "Một đường ống Guardrails an toàn, toàn diện bao gồm: 1) Input Guardrails chặn lọc mã độc, prompt injection và nội dung độc hại ngay trước khi gửi tới LLM, và 2) Output Guardrails kiểm tra đồng bộ câu trả lời sinh ra từ LLM (về độ chính xác, chính sách bảo mật, thông tin nhạy cảm) trước khi hiển thị cho người dùng cuối.",
+    tags: ["Guardrails", "AI Safety", "Compliance"]
+  },
+  {
+    id: "cca65",
+    questionNumber: 65,
+    text: "You are building an advanced Retrieval-Augmented Generation (RAG) system for corporate policy documents using Claude. Based on the processing pipeline shown in the diagram, how does the integration of Hybrid Search and a Reranking model optimize the generation quality?",
+    imageUrl: "/assets/cca_q65.jpg",
+    options: [
+      { key: "A", text: "Hybrid Search combines vector similarity (dense) with keyword matching (sparse) to capture both semantic meaning and exact jargon. The Reranker then filters and re-orders the top results, ensuring only the most relevant, high-signal contexts are injected into Claude's prompt." },
+      { key: "B", text: "Hybrid Search replaces the vector database entirely, while the Reranker dynamically modifies Claude's system temperature settings." },
+      { key: "C", text: "The Reranker translates user queries into multiple languages, while Hybrid Search performs parallel web lookups." },
+      { key: "D", text: "The pipeline relies solely on keyword search, using the Reranker to randomly shuffle documents to introduce response variety." }
+    ],
+    correctAnswers: ["A"],
+    category: "Architecture & Optimization",
+    explanation: "Tìm kiếm lai (Hybrid Search) phối hợp sức mạnh của Dense Retrieval (tìm kiếm ngữ nghĩa bằng vector embeddings) và Sparse Retrieval (tìm kiếm từ khóa chính xác BM25). Bộ tái sắp xếp (Reranker) đánh giá lại mức độ khớp thông tin thực tế, chỉ lọc và đẩy các tài liệu có độ tương quan cao nhất vào prompt gửi đến Claude, giảm thiểu nhiễu thông tin và ngăn ngừa hiện tượng ảo tưởng (hallucination).",
+    tags: ["RAG", "Hybrid Search", "Reranker", "Claude Context"]
   }
 ];

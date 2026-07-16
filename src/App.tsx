@@ -261,7 +261,14 @@ export default function App() {
     try {
       const dbQs = await fetchQuestionsFromDb(certId);
       if (dbQs && dbQs.length >= defaultQs.length) {
-        activeQuestions = dbQs;
+        // Fallback imageUrl if it's missing in the DB questions but exists in defaultQs
+        activeQuestions = dbQs.map(dbQ => {
+          const localQ = defaultQs.find(q => q.id === dbQ.id || q.questionNumber === dbQ.questionNumber);
+          return {
+            ...dbQ,
+            imageUrl: dbQ.imageUrl || localQ?.imageUrl
+          };
+        });
       } else if (defaultQs.length > 0) {
         // If Database has fewer/no questions than our default list, use local list and populate/update DB in background
         activeQuestions = defaultQs;

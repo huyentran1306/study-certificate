@@ -610,3 +610,198 @@ INSERT INTO questions (id, cert_id, question_number, text, options, correct_answ
   ARRAY['DP-800', 'Credential', 'Managed Identity', 'SECRET']::text[]
 ) ON CONFLICT (id) DO NOTHING;
 
+INSERT INTO questions (id, cert_id, question_number, text, options, correct_answers, explanation, category, tags, image_url) VALUES (
+  'dp51',
+  'dp-800',
+  51,
+  'You are designing a high-availability and disaster recovery solution for an Azure SQL database. You configure Active Geo-Replication as shown in the diagram. A failover group is configured with a read-write grace period of 2 hours. If a primary region outage occurs, what happens to the database connections and data replication?',
+  '[{"key":"A","text":"Read-write connections are automatically routed to the secondary database after 2 hours. Data replication is asynchronous, which may result in data loss."},{"key":"B","text":"Read-write connections fail over immediately, and synchronous replication guarantees zero data loss."},{"key":"C","text":"Read-only connections fail over, but read-write connections must be manually failed over using Azure CLI."},{"key":"D","text":"The database enters a read-only state, and replication is suspended until the primary region recovers."}]'::jsonb,
+  ARRAY['A']::text[],
+  'Khi cấu hình failover group với tham số read-write grace period (ở đây là 2 giờ), hệ thống sẽ tự động chuyển hướng kết nối ghi (read-write) sang vùng Secondary sau thời gian chờ nếu vùng Primary bị sập hoàn toàn. Vì Geo-Replication hoạt động theo chế độ bất đồng bộ (asynchronous), có thể xảy ra mất mát dữ liệu (data loss) đối với các giao dịch chưa kịp đồng bộ.',
+  'High Availability & Disaster Recovery',
+  ARRAY['DP-800', 'Geo-Replication', 'Failover Group', 'High Availability']::text[],
+  '/assets/dp800_q51.jpg'
+) ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO questions (id, cert_id, question_number, text, options, correct_answers, explanation, category, tags, image_url) VALUES (
+  'dp52',
+  'dp-800',
+  52,
+  'You have a JSON document stored in a table column as shown in the diagram. You need to write a Transact-SQL query using the JSON_TABLE function introduced in SQL Server 2025 to extract and flatten the nested ''items'' array into relational columns. Which query is correct?',
+  '[{"key":"A","text":"SELECT * FROM dbo.Orders CROSS APPLY JSON_TABLE(OrderJson, ''$.items'' COLUMNS (ProductId INT PATH ''$.id'', Qty INT PATH ''$.quantity'')) AS jt;"},{"key":"B","text":"SELECT * FROM dbo.Orders JOIN OPENJSON(OrderJson, ''$.items'') WITH (ProductId INT ''$.id'', Qty INT ''$.quantity'');"},{"key":"C","text":"SELECT * FROM JSON_VALUE(OrderJson, ''$.items'') AS jt;"},{"key":"D","text":"SELECT * FROM dbo.Orders CROSS APPLY OPENJSON(OrderJson) AS jt;"}]'::jsonb,
+  ARRAY['A']::text[],
+  'Hàm JSON_TABLE mới trong SQL Server 2025 cho phép phân tách mảng JSON phức tạp và chuyển đổi thành dạng bảng quan hệ trực tiếp trong truy vấn bằng cú pháp JSON_TABLE(expression, path COLUMNS (...)). Đây là cách chuẩn SQL/JSON để flatten dữ liệu hiệu quả cao mà không cần dùng OPENJSON lồng nhau.',
+  'SQL AI Querying & JSON',
+  ARRAY['DP-800', 'JSON_TABLE', 'SQL Server 2025', 'JSON Parsing']::text[],
+  '/assets/dp800_q52.jpg'
+) ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO questions (id, cert_id, question_number, text, options, correct_answers, explanation, category, tags, image_url) VALUES (
+  'dp53',
+  'dp-800',
+  53,
+  'You are designing a generative AI search feature on an Azure SQL Database. You create a vector index using the DiskANN algorithm on a table of embeddings. Based on the index navigation graph shown in the diagram, how does DiskANN optimize the trade-off between search recall accuracy and query latency during a vector similarity query?',
+  '[{"key":"A","text":"It constructs a Compressed Graph (Vamana graph) that resides on disk, and uses an in-memory cache for high-degree nodes to minimize costly disk I/O operations."},{"key":"B","text":"It forces the entire high-dimensional vector dataset to remain strictly in-memory during search."},{"key":"C","text":"It converts vectors into low-dimensional binary hashes using locality-sensitive hashing (LSH)."},{"key":"D","text":"It performs a brute-force cosine similarity scan across all rows but runs them in parallel."}]'::jsonb,
+  ARRAY['A']::text[],
+  'DiskANN là thuật toán tìm kiếm vector láng giềng gần nhất (ANN) được tối ưu hóa cho ổ đĩa SSD. Nó xây dựng một đồ thị nén Vamana lưu trữ trên ổ đĩa và chỉ giữ các node có bậc cao (high-degree nodes/hubs) cùng với thông tin nén vector trong bộ nhớ RAM để làm cache, giúp tăng tốc độ tìm kiếm mà không tốn dung lượng RAM khổng lồ.',
+  'Vector Search & DiskANN',
+  ARRAY['DP-800', 'DiskANN', 'Vector Index', 'Vamana Graph']::text[],
+  '/assets/dp800_q53.jpg'
+) ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO questions (id, cert_id, question_number, text, options, correct_answers, explanation, category, tags, image_url) VALUES (
+  'dp54',
+  'dp-800',
+  54,
+  'You are implementing an automated chat analysis solution using T-SQL. The database must call an Azure OpenAI completions model using a secure stored procedure. Based on the sequence diagram shown, which T-SQL function and security configuration must be implemented to authorize and invoke the Azure OpenAI service securely?',
+  '[{"key":"A","text":"Create a DATABASE SCOPED CREDENTIAL using a Managed Identity, then execute sp_invoke_external_rest_endpoint passing the credential and REST parameters."},{"key":"B","text":"Store the API key directly inside a plain T-SQL variable and use sys.xp_cmdshell to execute a curl request."},{"key":"C","text":"Use sp_addlinkedserver to create a link to cognitive.azure.com and run a distributed query."},{"key":"D","text":"Create a CLR assembly in C# to establish a HTTPS connection to the endpoint."}]'::jsonb,
+  ARRAY['A']::text[],
+  'Để gọi Azure OpenAI từ SQL Server hoặc Azure SQL một cách an toàn và tối ưu, phương pháp tốt nhất là sử dụng thủ tục hệ thống sys.sp_invoke_external_rest_endpoint. Để bảo mật, ta gán quyền truy cập thông qua DATABASE SCOPED CREDENTIAL liên kết với Managed Identity của Azure SQL Database, tránh lộ API key dưới dạng clear text.',
+  'Database Security & Triggers',
+  ARRAY['DP-800', 'Azure OpenAI', 'sp_invoke_external_rest_endpoint', 'Managed Identity']::text[],
+  '/assets/dp800_q54.jpg'
+) ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO questions (id, cert_id, question_number, text, options, correct_answers, explanation, category, tags, image_url) VALUES (
+  'dp55',
+  'dp-800',
+  55,
+  'You need to implement Row-Level Security (RLS) on a sales transaction table in Azure SQL. Based on the security policy execution plan shown in the diagram, how should you define the security predicate function to ensure a salesperson can only see records belonging to their assigned territory, while maintaining high query performance?',
+  '[{"key":"A","text":"Create an inline table-valued function (iTVF) that joins the territory table, and bind it as a FILTER PREDICATE on the Sales table."},{"key":"B","text":"Create a scalar function that queries the security mapping table and returns 1 or 0, and bind it as a BLOCK PREDICATE."},{"key":"C","text":"Write a multi-statement table-valued function (mTVF) to filter the rows, and bind it as a filter."},{"key":"D","text":"Create a trigger on the table that checks SUSER_SNAME() and deletes unauthorized rows."}]'::jsonb,
+  ARRAY['A']::text[],
+  'Trong Row-Level Security (RLS), hàm predicate bắt buộc phải là loại Inline Table-Valued Function (iTVF). Việc sử dụng iTVF cho phép SQL Server tích hợp trực tiếp điều kiện lọc vào trong cây thực thi truy vấn chính (Query Execution Plan), tối ưu hóa chỉ mục hiệu quả hơn nhiều so với hàm vô hướng (Scalar Function) hay Multi-statement TVF vốn làm sụt giảm nghiêm trọng hiệu suất.',
+  'Database Security & Triggers',
+  ARRAY['DP-800', 'Row-Level Security', 'RLS', 'iTVF']::text[],
+  '/assets/dp800_q55.jpg'
+) ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO questions (id, cert_id, question_number, text, options, correct_answers, explanation, category, tags, image_url) VALUES (
+  'dp56',
+  'dp-800',
+  56,
+  'You are writing a semantic search query in Azure SQL Database using the new vector search extensions. Based on the vector distance metrics compared in the diagram, when should you choose Cosine Distance over Euclidean Distance for measuring document similarity?',
+  '[{"key":"A","text":"When document lengths vary significantly and you want to measure semantic orientation regardless of document size/magnitude."},{"key":"B","text":"When you want to prioritize exact search coordinate matching on a fixed, normalized coordinate system."},{"key":"C","text":"When the database requires the distance metric to be computed purely in-memory using a B-tree clustered index."},{"key":"D","text":"When the high-dimensional vectors must be compressed into 1-bit binary representations to fit in SSD cache."}]'::jsonb,
+  ARRAY['A']::text[],
+  'Khoảng cách Cosine (Cosine Distance) đo góc giữa hai vector bất kể độ dài (magnitude) của chúng, do đó cực kỳ phù hợp cho các bài toán tìm kiếm ngữ nghĩa văn bản (semantic search) nơi độ dài của các bài viết hoặc đoạn văn bản khác nhau đáng kể. Trong khi đó, Khoảng cách Euclidean (Euclidean Distance) bị ảnh hưởng trực tiếp bởi độ dài của các vector.',
+  'Vector Search & DiskANN',
+  ARRAY['DP-800', 'Cosine Distance', 'Vector Search', 'Embeddings']::text[],
+  '/assets/dp800_q56.jpg'
+) ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO questions (id, cert_id, question_number, text, options, correct_answers, explanation, category, tags, image_url) VALUES (
+  'dp57',
+  'dp-800',
+  57,
+  'You are comparing index structures for a large-scale vector similarity database containing over 10 million high-dimensional embeddings. Based on the index characteristics shown in the diagram, what is a primary operational advantage of choosing the DiskANN-based index over IVFFlat?',
+  '[{"key":"A","text":"DiskANN achieves a significantly higher search recall with much lower RAM requirements by utilizing SSD storage for the Vamana index graph."},{"key":"B","text":"DiskANN performs a fully synchronous parallel brute-force scan, guaranteeing 100% recall."},{"key":"C","text":"DiskANN automatically converts dense high-dimensional vectors into relational JSON documents to avoid index rebuilds."},{"key":"D","text":"DiskANN stores the complete vector dataset inside the SQL transaction log, which simplifies transactional recovery."}]'::jsonb,
+  ARRAY['A']::text[],
+  'DiskANN được tối ưu hoá đặc biệt để giảm tải bộ nhớ RAM bằng cách lưu trữ đồ thị chỉ mục (Vamana) trực tiếp trên ổ đĩa SSD tốc độ cao và chỉ lưu các node bậc cao (hubs) làm bộ đệm trong bộ nhớ RAM. Nhờ đó, nó giúp đạt độ thu hồi (recall) rất cao mà không tốn chi phí bộ nhớ RAM khổng lồ như IVFFlat (yêu cầu giữ toàn bộ chỉ mục trong RAM).',
+  'Vector Search & DiskANN',
+  ARRAY['DP-800', 'DiskANN', 'IVFFlat', 'Index Comparison']::text[],
+  '/assets/dp800_q57.jpg'
+) ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO questions (id, cert_id, question_number, text, options, correct_answers, explanation, category, tags, image_url) VALUES (
+  'dp58',
+  'dp-800',
+  58,
+  'You are configuring Always Encrypted with secure enclaves in Azure SQL Database. Based on the security architecture shown in the diagram, how is confidential computation achieved when running an aggregation query on an encrypted column?',
+  '[{"key":"A","text":"The client driver decrypts the entire table locally and performs the aggregation in the application memory tier."},{"key":"B","text":"SQL Server executes the query within a secure enclave—a protected region of memory where data is safely decrypted and computed, preventing database administrators (DBAs) from viewing the plaintext."},{"key":"C","text":"The database uses homomorphic encryption to perform mathematical operations directly on the ciphertexts without ever decrypting them."},{"key":"D","text":"The security policy dynamically downgrades column encryption to deterministic encryption during periods of high query execution."}]'::jsonb,
+  ARRAY['B']::text[],
+  'Tính năng Always Encrypted with Secure Enclaves cho phép thực hiện các phép toán phức tạp (như so sánh khớp mẫu, tìm kiếm dải, gom nhóm) trực tiếp trên máy chủ cơ sở dữ liệu. Việc giải mã và tính toán được diễn ra hoàn toàn bên trong vùng nhớ bảo mật (Secure Enclave - e.g., Intel SGX hoặc VBS). Vùng này hoàn toàn cô lập, ngăn chặn cả hệ điều hành lẫn quản trị viên hệ thống (DBAs) can thiệp hay nhìn thấy dữ liệu thô (plaintext).',
+  'Database Security & Triggers',
+  ARRAY['DP-800', 'Always Encrypted', 'Secure Enclaves', 'Security']::text[],
+  '/assets/dp800_q58.jpg'
+) ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO questions (id, cert_id, question_number, text, options, correct_answers, explanation, category, tags, image_url) VALUES (
+  'dp59',
+  'dp-800',
+  59,
+  'You are setting up a system-versioned temporal table in Azure SQL Database as shown in the diagram. When updating a row in the main table, how does SQL Server handle the temporal metadata and history logging?',
+  '[{"key":"A","text":"The old version of the row is automatically written to the History Table, setting SysEndTime of the history row and SysStartTime of the new main row to the transaction commit time (UTC)."},{"key":"B","text":"A database trigger runs asynchronously to copy the modified row to a JSON-formatted transaction log table."},{"key":"C","text":"The main table is truncated, and the complete historical change tracking log is appended to a Fabric Delta Lake parquet file."},{"key":"D","text":"The updated row is immediately sent to the Secondary database, where the history is compiled during read-write failovers."}]'::jsonb,
+  ARRAY['A']::text[],
+  'Bảng Temporal hoạt động tự động ở mức nhân cơ sở dữ liệu. Khi có một câu lệnh UPDATE, dòng dữ liệu cũ sẽ được lưu chuyển xuống bảng Lịch sử (History Table), thời gian SysEndTime của dòng lịch sử này và SysStartTime của dòng mới tại bảng chính sẽ được gán khớp chính xác bằng thời gian bắt đầu của giao dịch hiện tại (tính theo múi giờ chuẩn UTC).',
+  'Performance Tuning',
+  ARRAY['DP-800', 'Temporal Tables', 'System-Versioned', 'History Logging']::text[],
+  '/assets/dp800_q59.jpg'
+) ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO questions (id, cert_id, question_number, text, options, correct_answers, explanation, category, tags, image_url) VALUES (
+  'dp60',
+  'dp-800',
+  60,
+  'You are writing a T-SQL query to parse user profiles in JSON format. Based on the path mode behaviors shown in the diagram, what is the consequence of query execution when using the ''strict'' path mode versus the default ''lax'' path mode on a missing property?',
+  '[{"key":"A","text":"Strict mode raises an execution error immediately when the specified path does not exist, whereas lax mode silently returns NULL."},{"key":"B","text":"Strict mode automatically creates the missing JSON path and inserts default values, whereas lax mode suspends the query."},{"key":"C","text":"Strict mode converts the JSON document into XML, whereas lax mode forces a full-table table-valued scan."},{"key":"D","text":"Strict mode bypasses RLS rules, whereas lax mode is evaluated after security filters are applied."}]'::jsonb,
+  ARRAY['A']::text[],
+  'Trong cú pháp truy xuất JSON của SQL Server/Azure SQL, chế độ ''lax'' (mặc định) sẽ bỏ qua các lỗi không tồn tại đường dẫn và trả về giá trị NULL một cách êm đẹp. Ngược lại, chế độ ''strict'' sẽ ném ra lỗi thực thi (execution error) lập tức nếu đường dẫn JSON được chỉ định không thể tìm thấy trong tài liệu JSON, giúp lập trình viên phát hiện sớm các sai lệch về cấu trúc dữ liệu.',
+  'SQL AI Querying & JSON',
+  ARRAY['DP-800', 'JSON Path', 'Lax vs Strict', 'JSON Parsing']::text[],
+  '/assets/dp800_q60.jpg'
+) ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO questions (id, cert_id, question_number, text, options, correct_answers, explanation, category, tags, image_url) VALUES (
+  'dp61',
+  'dp-800',
+  61,
+  'You are implementing JSON search optimizations in Azure SQL Database. You need to create an index on a JSON property that is frequently queried. How should you define this index for optimal query performance?',
+  '[{"key":"A","text":"Create a computed column using JSON_VALUE pointing to the property, persist the computed column, and then build a non-clustered index on it."},{"key":"B","text":"Create a clustered index directly on the NVARCHAR(MAX) column containing the raw JSON document."},{"key":"C","text":"Create a vector index with DiskANN topology using the JSON path as the distance metric."},{"key":"D","text":"Configure a database scoped credential pointing to an external JSON schema repository."}]'::jsonb,
+  ARRAY['A']::text[],
+  'Do SQL Server không hỗ trợ tạo chỉ mục trực tiếp trên thuộc tính con của cột chứa chuỗi JSON, giải pháp tối ưu hiệu năng là tạo một cột tính toán (Computed Column) trích xuất giá trị qua hàm JSON_VALUE, đặt thuộc tính PERSISTED (lưu trữ vật lý), sau đó xây dựng chỉ mục phi cụm (Non-clustered Index) trên cột tính toán này.',
+  'SQL AI Querying & JSON',
+  ARRAY['DP-800', 'JSON Indexing', 'Computed Column', 'Performance Optimization']::text[],
+  '/assets/dp800_q61.jpg'
+) ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO questions (id, cert_id, question_number, text, options, correct_answers, explanation, category, tags, image_url) VALUES (
+  'dp62',
+  'dp-800',
+  62,
+  'You are planning the database migration of an AI-enabled retail database to Azure SQL Database. The application requires high availability with zero-data-loss failover capability. Which tier and configuration of Azure SQL Database should you recommend?',
+  '[{"key":"A","text":"Business Critical or Premium tier configured with Zone Redundancy and synchronous replica synchronization."},{"key":"B","text":"General Purpose tier with standard LRS (Locally Redundant Storage) and asynchronous geofencing."},{"key":"C","text":"Basic tier with auto-sync backups configured every 15 minutes to an external Azure Blob storage account."},{"key":"D","text":"Hyperscale tier configured with a single read-scale replica in a remote continent."}]'::jsonb,
+  ARRAY['A']::text[],
+  'Nhóm dịch vụ Business Critical hoặc Premium của Azure SQL Database hỗ trợ tính năng Zone Redundancy (Dự phòng vùng), sử dụng cơ chế đồng bộ hóa bản sao đồng thời (synchronous replication) giữa các Availability Zones trong cùng một khu vực. Điều này giúp đảm bảo khả năng chuyển mạch tự động tức thì khi có sự cố và đạt mức RPO = 0 (không mất mát dữ liệu).',
+  'High Availability & Disaster Recovery',
+  ARRAY['DP-800', 'High Availability', 'Zone Redundancy', 'Business Critical']::text[],
+  '/assets/dp800_q62.jpg'
+) ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO questions (id, cert_id, question_number, text, options, correct_answers, explanation, category, tags, image_url) VALUES (
+  'dp63',
+  'dp-800',
+  63,
+  'You are troubleshooting a performance issue where queries on a specific table are experiencing high compilations and parameter-sensitive plan (PSP) optimization issues. Which feature of SQL Server 2022 / 2025 can automatically mitigate this issue without rewriting code?',
+  '[{"key":"A","text":"Parameter Sensitive Plan (PSP) Optimization, which automatically maintains multiple execution plans for a single parameterized query based on parameter size/cardinality."},{"key":"B","text":"Always Encrypted, which hashes the parameters to prevent the optimizer from sniffing their values."},{"key":"C","text":"System-Versioned Temporal Tables, which isolates historical executions in a separate plan cache."},{"key":"D","text":"Row-Level Security (RLS) block predicates, which forces the execution plan to compile with a static filter."}]'::jsonb,
+  ARRAY['A']::text[],
+  'Tính năng PSP Optimization (tối ưu hóa kế hoạch nhạy cảm tham số) được giới thiệu từ SQL Server 2022 tự động giải quyết lỗi nghẽn cổ chai Parameter Sniffing kinh điển. Hệ thống sẽ lưu giữ và sử dụng nhiều kế hoạch thực thi (execution plans) khác nhau cho cùng một câu lệnh tham số hóa tùy thuộc vào giá trị tham số truyền vào thực tế, tối ưu hóa tài nguyên cực kỳ thông minh.',
+  'Query Optimization & Indexes',
+  ARRAY['DP-800', 'PSP Optimization', 'Parameter Sniffing', 'Query Store']::text[],
+  '/assets/dp800_q63.jpg'
+) ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO questions (id, cert_id, question_number, text, options, correct_answers, explanation, category, tags, image_url) VALUES (
+  'dp64',
+  'dp-800',
+  64,
+  'You are designing an AI application that generates real-time recommendations. You store product embeddings in Azure SQL Database. How should you write a T-SQL query to return the top 5 products most similar to a query embedding vector stored in @QueryVector?',
+  '[{"key":"A","text":"SELECT TOP 5 ProductId, VECTOR_DISTANCE(''cosine'', ProductEmbedding, @QueryVector) AS Distance FROM Products ORDER BY Distance ASC."},{"key":"B","text":"SELECT TOP 5 ProductId FROM Products WHERE ProductEmbedding = @QueryVector."},{"key":"C","text":"SELECT TOP 5 ProductId FROM Products CROSS APPLY OPENJSON(ProductEmbedding) WHERE value = @QueryVector."},{"key":"D","text":"SELECT TOP 5 ProductId FROM Products JOIN sys.sp_invoke_external_rest_endpoint(@QueryVector) ON ProductId = id."}]'::jsonb,
+  ARRAY['A']::text[],
+  'Để tìm kiếm láng giềng gần nhất (nearest neighbors) trong Azure SQL hoặc SQL Server 2025, ta sử dụng hàm VECTOR_DISTANCE truyền vào loại khoảng cách (như ''cosine'', ''euclidean'' hoặc ''dot'') cùng hai vector cần so sánh, sau đó sắp xếp theo thứ tự khoảng cách tăng dần (ASC) để lấy ra các phần tử giống nhất.',
+  'Vector Search & DiskANN',
+  ARRAY['DP-800', 'VECTOR_DISTANCE', 'Vector Search', 'T-SQL']::text[],
+  '/assets/dp800_q64.jpg'
+) ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO questions (id, cert_id, question_number, text, options, correct_answers, explanation, category, tags, image_url) VALUES (
+  'dp65',
+  'dp-800',
+  65,
+  'You need to mask sensitive customer telephone numbers in an Azure SQL Database. The masking must prevent unauthorized application users from viewing the complete number but allow support agents with elevated privileges to view it. What should you configure?',
+  '[{"key":"A","text":"Dynamic Data Masking (DDM) using the partial() function on the Phone column, and GRANT UNMASK to the support agent database role."},{"key":"B","text":"Row-Level Security (RLS) on the Phone table, and configure a secure enclave to decrypt the phone records."},{"key":"C","text":"Configure a vector index with DiskANN to encrypt and group phone numbers in a secure multidimensional space."},{"key":"D","text":"Enable Always Encrypted with randomized encryption on the Phone column and store the key in the database transaction log."}]'::jsonb,
+  ARRAY['A']::text[],
+  'Dynamic Data Masking (Mã hóa dữ liệu động) giúp che giấu thông tin nhạy cảm ở mức hiển thị kết quả truy vấn mà không làm thay đổi dữ liệu thực tế lưu trên đĩa. Hàm partial() cho phép chỉ định hiển thị vài ký tự đầu/cuối của số điện thoại và che phần giữa. Sau đó, ta cấp quyền UNMASK cho các nhóm tài khoản hỗ trợ để họ có thể xem thông tin rõ ràng (plaintext).',
+  'Database Security & Triggers',
+  ARRAY['DP-800', 'Dynamic Data Masking', 'Data Masking', 'Security']::text[],
+  '/assets/dp800_q65.jpg'
+) ON CONFLICT (id) DO NOTHING;
+

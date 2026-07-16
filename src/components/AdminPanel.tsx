@@ -42,6 +42,11 @@ import {
   UserProgressRecord
 } from '../lib/sync';
 import { Question, Certificate } from '../types';
+import { initialQuestions } from '../data/initialQuestions';
+import { az900Questions } from '../data/az900Questions';
+import { ai900Questions } from '../data/ai900Questions';
+import { ccaQuestions } from '../data/ccaQuestions';
+import { dp800Questions } from '../data/dp800Questions';
 
 interface AdminPanelProps {
   certificates: Certificate[];
@@ -398,17 +403,28 @@ export default function AdminPanel({
         console.warn('Fallback to local questions storage:', error);
         setQuestions(localQs);
       } else if (data && data.length > 0) {
-        const dbQs: Question[] = data.map((q: any) => ({
-          id: q.id,
-          questionNumber: q.question_number,
-          text: q.text,
-          options: Array.isArray(q.options) ? q.options : JSON.parse(q.options),
-          correctAnswers: q.correct_answers,
-          explanation: q.explanation || '',
-          category: q.category || 'General',
-          tags: q.tags || [],
-          imageUrl: q.image_url || undefined
-        }));
+        // Find default static questions for activeCertId
+        let staticQs: Question[] = [];
+        if (activeCertId === 'gh-300') staticQs = initialQuestions;
+        else if (activeCertId === 'az-900') staticQs = az900Questions;
+        else if (activeCertId === 'ai-900') staticQs = ai900Questions;
+        else if (activeCertId === 'cca-f') staticQs = ccaQuestions;
+        else if (activeCertId === 'dp-800') staticQs = dp800Questions;
+
+        const dbQs: Question[] = data.map((q: any) => {
+          const matchedStatic = staticQs.find(sq => sq.id === q.id || sq.questionNumber === q.question_number);
+          return {
+            id: q.id,
+            questionNumber: q.question_number,
+            text: q.text,
+            options: Array.isArray(q.options) ? q.options : JSON.parse(q.options),
+            correctAnswers: q.correct_answers,
+            explanation: q.explanation || '',
+            category: q.category || 'General',
+            tags: q.tags || [],
+            imageUrl: q.image_url || matchedStatic?.imageUrl
+          };
+        });
         setQuestions(dbQs);
         // Sync back to local cached storage
         localStorage.setItem(`questions_${activeCertId}`, JSON.stringify(dbQs));
