@@ -1,5 +1,5 @@
 import { supabase } from './supabase';
-import { Question, ProgressState } from '../types';
+import { Question, ProgressState, GroupMemberProgress } from '../types';
 
 // Fetch questions for a certification from Database
 export async function fetchQuestionsFromDb(certId: string): Promise<Question[] | null> {
@@ -25,7 +25,8 @@ export async function fetchQuestionsFromDb(certId: string): Promise<Question[] |
       correctAnswers: q.correct_answers,
       explanation: q.explanation || '',
       category: q.category || 'General',
-      tags: q.tags || []
+      tags: q.tags || [],
+      imageUrl: q.image_url || undefined
     }));
   } catch (err) {
     console.error('Failed to fetch questions from Db:', err);
@@ -45,14 +46,31 @@ export async function uploadQuestionsToDb(certId: string, questionsList: Questio
       correct_answers: q.correctAnswers,
       explanation: q.explanation,
       category: q.category,
-      tags: q.tags || []
+      tags: q.tags || [],
+      image_url: q.imageUrl || null
     }));
 
-    const { error } = await supabase
+    let { error } = await supabase
       .from('questions')
       .upsert(rows, { onConflict: 'id' });
 
     if (error) {
+      // If error is about missing image_url column, retry without it
+      const isMissingImageUrl = error.message?.includes('image_url') || error.message?.includes('column');
+      if (isMissingImageUrl) {
+        console.warn('DB schema lacks image_url column. Retrying upsert without image_url...');
+        const rowsWithoutImage = rows.map(({ image_url, ...rest }) => rest);
+        const { error: retryError } = await supabase
+          .from('questions')
+          .upsert(rowsWithoutImage, { onConflict: 'id' });
+        
+        if (retryError) {
+          console.error('Retry upserting questions to DB without image_url failed:', retryError);
+          return false;
+        }
+        return true;
+      }
+
       console.error('Error upserting questions to DB:', error);
       return false;
     }
@@ -437,4 +455,188 @@ export async function clearAllUserProgressFromDb(): Promise<boolean> {
     return false;
   }
 }
+
+// ----------------- STUDY GROUPS STORAGE & SYNC -----------------
+
+export async function fetchGroupsFromDb(): Promise<any[] | null> {
+  try {
+    const { data, error } = await supabase
+      .from('study_groups')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching study groups:', error);
+      return null;
+    }
+
+    return (data || []).map((g: any) => ({
+      id: g.id,
+      name: g.name,
+      description: g.description || '',
+      createdBy: g.created_by,
+      token: g.token,
+      createdAt: g.created_at
+    }));
+  } catch (err) {
+    console.error('Failed to fetch groups from DB:', err);
+    return null;
+  }
+}
+
+export async function createGroupInDb(name: string, description: string, createdBy: string, token: string): Promise<string | null> {
+  try {
+    const groupId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    const { error } = await supabase
+      .from('study_groups')
+      .insert({
+        id: groupId,
+        name,
+        description,
+        created_by: createdBy,
+        token
+      });
+
+    if (error) {
+      console.error('Error creating study group:', error);
+      return null;
+    }
+
+    // Auto join the creator
+    await joinGroupInDb(groupId, createdBy);
+
+    return groupId;
+  } catch (err) {
+    console.error('Failed to create group in DB:', err);
+    return null;
+  }
+}
+
+export async function joinGroupInDb(groupId: string, username: string): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('group_members')
+      .upsert({
+        group_id: groupId,
+        username
+      }, { onConflict: 'group_id,username' });
+
+    if (error) {
+      console.error('Error joining group:', error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Failed to join group in DB:', err);
+    return false;
+  }
+}
+
+export async function joinGroupByTokenInDb(token: string, username: string): Promise<any | null> {
+  try {
+    const { data, error } = await supabase
+      .from('study_groups')
+      .select('*')
+      .eq('token', token)
+      .maybeSingle();
+
+    if (error || !data) {
+      console.error('Error checking group token:', error);
+      return null;
+    }
+
+    const joined = await joinGroupInDb(data.id, username);
+    if (!joined) return null;
+
+    return {
+      id: data.id,
+      name: data.name,
+      description: data.description || '',
+      createdBy: data.created_by,
+      token: data.token,
+      createdAt: data.created_at
+    };
+  } catch (err) {
+    console.error('Failed to join group by token in DB:', err);
+    return null;
+  }
+}
+
+export async function leaveGroupInDb(groupId: string, username: string): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('group_members')
+      .delete()
+      .eq('group_id', groupId)
+      .eq('username', username);
+
+    if (error) {
+      console.error('Error leaving group:', error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Failed to leave group in DB:', err);
+    return false;
+  }
+}
+
+export async function fetchGroupMembersProgress(groupId: string): Promise<GroupMemberProgress[] | null> {
+  try {
+    // 1. Fetch group members
+    const { data: members, error: membersError } = await supabase
+      .from('group_members')
+      .select('*')
+      .eq('group_id', groupId);
+
+    if (membersError || !members) {
+      console.error('Error fetching group members:', membersError);
+      return null;
+    }
+
+    if (members.length === 0) return [];
+
+    const usernames = members.map((m: any) => m.username);
+
+    // 2. Fetch progress of these members
+    const { data: progressData, error: progressError } = await supabase
+      .from('user_progress')
+      .select('*')
+      .in('username', usernames);
+
+    if (progressError) {
+      console.error('Error fetching members progress:', progressError);
+      return null;
+    }
+
+    // Build map of username -> list of progress
+    const progressMap: Record<string, any[]> = {};
+    usernames.forEach(uname => {
+      progressMap[uname] = [];
+    });
+
+    (progressData || []).forEach((p: any) => {
+      if (progressMap[p.username]) {
+        progressMap[p.username].push({
+          certId: p.cert_id,
+          certCode: p.cert_id.toUpperCase(),
+          answeredCount: p.answered_count || 0,
+          correctCount: p.correct_count || 0,
+          streak: p.streak || 0,
+          lastUpdated: p.last_updated
+        });
+      }
+    });
+
+    return members.map((m: any) => ({
+      username: m.username,
+      joinedAt: m.joined_at,
+      certProgress: progressMap[m.username] || []
+    }));
+  } catch (err) {
+    console.error('Failed to fetch group progress from DB:', err);
+    return null;
+  }
+}
+
 

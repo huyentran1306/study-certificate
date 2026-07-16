@@ -10,9 +10,32 @@ export interface Question {
   explanation: string;
   category: string; // e.g. "Responsible AI", "Copilot CLI", "Features & Optimization", "Security & Licensing"
   tags?: string[];
+  imageUrl?: string;
 }
 
-export type StudyMode = 'home' | 'practice' | 'exam' | 'guide' | 'admin';
+export type StudyMode = 'home' | 'practice' | 'exam' | 'guide' | 'admin' | 'group';
+
+export interface StudyGroup {
+  id: string;
+  name: string;
+  description: string;
+  createdBy: string;
+  token: string;
+  createdAt: string;
+}
+
+export interface GroupMemberProgress {
+  username: string;
+  joinedAt: string;
+  certProgress: {
+    certId: string;
+    certCode: string;
+    answeredCount: number;
+    correctCount: number;
+    streak: number;
+    lastUpdated: string;
+  }[];
+}
 
 export interface Certificate {
   id: string;

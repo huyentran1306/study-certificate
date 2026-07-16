@@ -11,7 +11,8 @@ CREATE TABLE IF NOT EXISTS questions (
     correct_answers TEXT[] NOT NULL,
     explanation TEXT,
     category TEXT,
-    tags TEXT[]
+    tags TEXT[],
+    image_url TEXT
 );
 
 -- 2. Create table for user overall stats progress
@@ -1954,3 +1955,26 @@ INSERT INTO questions (id, cert_id, question_number, text, options, correct_answ
 
 
 -- SETUP COMPLETE. Database is ready with questions loaded.
+
+
+-- ===========================================
+-- 5. STUDY GROUPS SCHEMAS (ADDITIONAL FEATURE)
+-- Run this block if you want to support Group Study & Progress Tracking
+-- ===========================================
+
+CREATE TABLE IF NOT EXISTS study_groups (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    description TEXT,
+    created_by TEXT NOT NULL,
+    token TEXT UNIQUE NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
+);
+
+CREATE TABLE IF NOT EXISTS group_members (
+    group_id TEXT REFERENCES study_groups(id) ON DELETE CASCADE,
+    username TEXT NOT NULL,
+    joined_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()),
+    PRIMARY KEY (group_id, username)
+);
+

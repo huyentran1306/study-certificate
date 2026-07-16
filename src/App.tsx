@@ -24,7 +24,8 @@ import {
   Database,
   Check,
   Loader2,
-  Asterisk
+  Asterisk,
+  Users
 } from 'lucide-react';
 
 import { Question, ProgressState, StudyMode, Certificate } from './types';
@@ -32,11 +33,14 @@ import { initialQuestions } from './data/initialQuestions';
 import { az900Questions } from './data/az900Questions';
 import { ai900Questions } from './data/ai900Questions';
 import { ccaQuestions } from './data/ccaQuestions';
+import { dp800Questions } from './data/dp800Questions';
 import QuizCard from './components/QuizCard';
 import StatsPanel from './components/StatsPanel';
 import MockExam from './components/MockExam';
 import CustomQuestionsImport from './components/CustomQuestionsImport';
 import AdminPanel from './components/AdminPanel';
+import GroupStudy from './components/GroupStudy';
+
 
 // Supabase synchronization functions
 import { 
@@ -112,6 +116,16 @@ export default function App() {
       estimatedHours: '12-18 Giờ',
       colorClass: 'bg-gradient-to-br from-amber-600 via-orange-700 to-amber-950 text-white',
       iconName: 'Trophy'
+    },
+    {
+      id: 'dp-800',
+      name: 'Developing AI-Enabled Database Solutions',
+      code: 'DP-800',
+      description: 'Chinh phục chứng chỉ Microsoft DP-800: Thiết kế và triển khai giải pháp cơ sở dữ liệu tích hợp AI. Bao quát SQL Server 2025, Vector Search, DiskANN, JSON, RLS và tích hợp Azure OpenAI.',
+      difficulty: 'Nâng cao',
+      estimatedHours: '15-20 Giờ',
+      colorClass: 'bg-gradient-to-br from-indigo-700 via-blue-800 to-slate-900 text-white',
+      iconName: 'Database'
     }
   ]);
 
@@ -232,6 +246,8 @@ export default function App() {
       defaultQs = ai900Questions;
     } else if (certId === 'cca-f') {
       defaultQs = ccaQuestions;
+    } else if (certId === 'dp-800') {
+      defaultQs = dp800Questions;
     } else {
       const storedQs = localStorage.getItem(`questions_${certId}`);
       if (storedQs) {
@@ -324,7 +340,7 @@ export default function App() {
       try {
         const parsed = JSON.parse(storedCustomCerts);
         setCertificates(prev => {
-          const defaultIds = ['gh-300', 'az-900', 'ai-900', 'cca-f'];
+          const defaultIds = ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800'];
           const filteredPrev = prev.filter(c => defaultIds.includes(c.id));
           return [...filteredPrev, ...parsed];
         });
@@ -401,6 +417,8 @@ export default function App() {
           certQs = ai900Questions;
         } else if (cert.id === 'cca-f') {
           certQs = ccaQuestions;
+        } else if (cert.id === 'dp-800') {
+          certQs = dp800Questions;
         } else {
           const storedQs = localStorage.getItem(`questions_${cert.id}`);
           if (storedQs) {
@@ -462,7 +480,7 @@ export default function App() {
   const confirmDeleteCert = () => {
     if (!certToDelete) return;
     const cert = certToDelete;
-    if (['gh-300', 'az-900', 'ai-900', 'cca-f'].includes(cert.id)) {
+    if (['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800'].includes(cert.id)) {
       showAppToast(`Không thể xóa chứng chỉ hệ thống ${cert.code}!`, 'error');
       setCertToDelete(null);
       return;
@@ -773,6 +791,17 @@ export default function App() {
               <Home className="w-3.5 h-3.5" />
               Trang chủ
             </button>
+            <button
+              onClick={() => { setMode('group'); }}
+              className={`text-xs px-4 py-2 font-bold tracking-wide rounded-lg transition-all flex items-center gap-1.5 ${
+                mode === 'group' 
+                  ? 'bg-white text-slate-900 shadow-sm' 
+                  : 'text-slate-500 hover:text-slate-900'
+              }`}
+            >
+              <Users className="w-3.5 h-3.5" />
+              Học nhóm
+            </button>
             {mode === 'admin' && (
               <button
                 className="text-xs px-4 py-2 font-black text-rose-700 bg-white shadow-sm rounded-lg flex items-center gap-1.5"
@@ -930,6 +959,15 @@ export default function App() {
           <Home className="w-3 h-3" />
           Trang chủ
         </button>
+        <button
+          onClick={() => { setMode('group'); }}
+          className={`flex-1 text-[11px] font-bold text-center py-2.5 rounded-lg transition-all flex items-center justify-center gap-1 ${
+            mode === 'group' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'
+          }`}
+        >
+          <Users className="w-3 h-3" />
+          Học nhóm
+        </button>
         {mode !== 'home' && (
           <>
             <button
@@ -1069,6 +1107,7 @@ export default function App() {
                 else if (cert.id === 'az-900') certProgress.total = az900Questions.length;
                 else if (cert.id === 'ai-900') certProgress.total = ai900Questions.length;
                 else if (cert.id === 'cca-f') certProgress.total = ccaQuestions.length;
+                else if (cert.id === 'dp-800') certProgress.total = dp800Questions.length;
                 
                 // Overwrite with actual local count if exists
                 const storedQs = localStorage.getItem(`questions_${cert.id}`);
@@ -1788,6 +1827,16 @@ export default function App() {
               }
             }}
             showAppToast={showAppToast}
+          />
+        )}
+
+        {/* Study Group Mode Rendering */}
+        {mode === 'group' && (
+          <GroupStudy
+            username={username}
+            onUsernameChange={handleLogin}
+            certificates={certificates}
+            showToast={showAppToast}
           />
         )}
 

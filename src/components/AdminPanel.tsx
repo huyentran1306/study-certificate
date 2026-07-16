@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Plus, 
   Trash2, 
@@ -88,6 +88,7 @@ export default function AdminPanel({
     { key: 'D', text: '' }
   ]);
   const [qCorrectAnswers, setQCorrectAnswers] = useState<string[]>([]);
+  const [qImageUrl, setQImageUrl] = useState('');
 
   // Certificate Form state
   const [newCertCode, setNewCertCode] = useState('');
@@ -405,7 +406,8 @@ export default function AdminPanel({
           correctAnswers: q.correct_answers,
           explanation: q.explanation || '',
           category: q.category || 'General',
-          tags: q.tags || []
+          tags: q.tags || [],
+          imageUrl: q.image_url || undefined
         }));
         setQuestions(dbQs);
         // Sync back to local cached storage
@@ -443,6 +445,7 @@ export default function AdminPanel({
       { key: 'D', text: '' }
     ]);
     setQCorrectAnswers([]);
+    setQImageUrl('');
     setIsQuestionFormOpen(true);
   };
 
@@ -456,6 +459,7 @@ export default function AdminPanel({
     setQTagsString(q.tags ? q.tags.join(', ') : '');
     setQOptions(q.options.map(opt => ({ ...opt })));
     setQCorrectAnswers([...q.correctAnswers]);
+    setQImageUrl(q.imageUrl || '');
     setIsQuestionFormOpen(true);
   };
 
@@ -468,6 +472,40 @@ export default function AdminPanel({
         return [...prev, key];
       }
     });
+  };
+
+  const handleImagePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    const items = e.clipboardData?.items;
+    if (!items) return;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf('image') !== -1) {
+        const file = items[i].getAsFile();
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            if (event.target?.result) {
+              setQImageUrl(event.target.result as string);
+              showAppToast('Đã dán ảnh thành công từ clipboard!', 'success');
+            }
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+    }
+  };
+
+  const handleImageFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        if (event.target?.result) {
+          setQImageUrl(event.target.result as string);
+          showAppToast('Đã tải ảnh lên thành công!', 'success');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   // Handle saving the question (both Add and Edit)
@@ -516,7 +554,8 @@ export default function AdminPanel({
         correctAnswers: validCorrectAnswers,
         explanation: qExplanation.trim(),
         category: qCategory.trim() || 'General',
-        tags: parsedTags
+        tags: parsedTags,
+        imageUrl: qImageUrl.trim() || undefined
       };
 
       let updatedList: Question[] = [];
@@ -536,19 +575,34 @@ export default function AdminPanel({
       onUpdateQuestions(activeCertId, updatedList);
 
       // Sync specific question to Supabase
-      const { error: dbError } = await supabase
+      const payload = {
+        id: questionId,
+        cert_id: activeCertId,
+        question_number: savedQuestion.questionNumber,
+        text: savedQuestion.text,
+        options: savedQuestion.options,
+        correct_answers: savedQuestion.correctAnswers,
+        explanation: savedQuestion.explanation,
+        category: savedQuestion.category,
+        tags: savedQuestion.tags || [],
+        image_url: savedQuestion.imageUrl || null
+      };
+
+      let { error: dbError } = await supabase
         .from('questions')
-        .upsert({
-          id: questionId,
-          cert_id: activeCertId,
-          question_number: savedQuestion.questionNumber,
-          text: savedQuestion.text,
-          options: savedQuestion.options,
-          correct_answers: savedQuestion.correctAnswers,
-          explanation: savedQuestion.explanation,
-          category: savedQuestion.category,
-          tags: savedQuestion.tags || []
-        }, { onConflict: 'id' });
+        .upsert(payload, { onConflict: 'id' });
+
+      if (dbError) {
+        const isMissingImageUrl = dbError.message?.includes('image_url') || dbError.message?.includes('column');
+        if (isMissingImageUrl) {
+          console.warn('DB schema lacks image_url column. Retrying upsert without image_url...');
+          const { image_url, ...payloadWithoutImage } = payload;
+          const { error: retryError } = await supabase
+            .from('questions')
+            .upsert(payloadWithoutImage, { onConflict: 'id' });
+          dbError = retryError;
+        }
+      }
 
       if (dbError) {
         console.error('Failed to sync to Supabase database:', dbError);
@@ -1178,6 +1232,85 @@ export default function AdminPanel({
                       onChange={(e) => setQText(e.target.value)}
                       className="w-full text-xs p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-1 focus:ring-indigo-400"
                     />
+                  </div>
+
+                  {/* Image Attachment panel */}
+                  <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/60 space-y-3.5">
+                    <div className="flex items-center justify-between">
+                      <label className="text-[9.5px] font-black text-slate-500 uppercase tracking-wider block">Ảnh đính kèm (Dành cho câu hỏi sơ đồ, sơ đồ mạng, bảng biểu)</label>
+                      {qImageUrl && (
+                        <button
+                          type="button"
+                          onClick={() => setQImageUrl('')}
+                          className="text-[10px] text-rose-500 hover:text-rose-700 font-extrabold flex items-center gap-1"
+                        >
+                          <X className="w-3.5 h-3.5 shrink-0" />
+                          Xóa ảnh
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="space-y-1">
+                        <span className="text-[10px] text-slate-400 font-medium block">Cách 1: Nhập đường dẫn URL ảnh</span>
+                        <input
+                          type="text"
+                          placeholder="https://example.com/diagram.png"
+                          value={qImageUrl.startsWith('data:') ? '' : qImageUrl}
+                          onChange={(e) => setQImageUrl(e.target.value)}
+                          className="w-full text-xs px-3 py-2.5 bg-white border border-slate-200 rounded-xl focus:ring-1"
+                        />
+                      </div>
+
+                      <div className="space-y-1">
+                        <span className="text-[10px] text-slate-400 font-medium block">Cách 2: Chọn tệp hoặc Dán ảnh (Ctrl+V)</span>
+                        <div className="relative">
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageFileChange}
+                            className="hidden"
+                            id="admin-image-upload"
+                          />
+                          <label
+                            htmlFor="admin-image-upload"
+                            className="w-full text-xs px-3.5 py-2.5 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl cursor-pointer flex items-center justify-center gap-1.5 transition-colors font-medium text-slate-600"
+                          >
+                            <FolderOpen className="w-4 h-4 text-slate-400 shrink-0" />
+                            <span>Tải ảnh lên / Chọn file...</span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Paste receiver */}
+                    <div className="space-y-1">
+                      <input
+                        type="text"
+                        placeholder="👉 Click vào đây rồi nhấn Ctrl+V (Dán) để dán ảnh đã chụp màn hình trực tiếp từ clipboard..."
+                        onPaste={handleImagePaste}
+                        className="w-full text-xs px-3 py-2.5 bg-white/70 border border-dashed border-slate-300 rounded-xl focus:border-indigo-400 focus:bg-white text-center text-slate-500 font-medium placeholder:text-slate-400"
+                      />
+                    </div>
+
+                    {/* Image Preview */}
+                    {qImageUrl && (
+                      <div className="bg-white p-2.5 rounded-xl border border-slate-150 flex flex-col items-center gap-2">
+                        <span className="text-[10px] text-emerald-600 font-bold flex items-center gap-1">
+                          <Check className="w-3.5 h-3.5 shrink-0" />
+                          Xem trước ảnh đính kèm:
+                        </span>
+                        <img
+                          src={qImageUrl}
+                          alt="Question Preview"
+                          referrerPolicy="no-referrer"
+                          className="max-h-36 rounded-lg object-contain border border-slate-100 shadow-sm"
+                        />
+                        {qImageUrl.startsWith('data:') && (
+                          <span className="text-[9px] text-indigo-500 font-mono">Đã nén Base64 (Lưu trực tiếp trong câu hỏi)</span>
+                        )}
+                      </div>
+                    )}
                   </div>
 
                   {/* Options Creator */}
