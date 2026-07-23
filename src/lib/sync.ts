@@ -639,4 +639,117 @@ export async function fetchGroupMembersProgress(groupId: string): Promise<GroupM
   }
 }
 
+// ----------------- VIP KEYS CONFIGURATION DB SYNC -----------------
+
+export async function fetchVipKeyConfigsFromDb(): Promise<Record<string, any[]> | null> {
+  try {
+    const { data, error } = await supabase
+      .from('vip_key_configs')
+      .select('*');
+
+    if (error) {
+      console.warn('Could not fetch VIP key configs from DB (table might not exist yet):', error.message);
+      return null;
+    }
+
+    if (!data) return {};
+
+    const result: Record<string, any[]> = {};
+    data.forEach((row: any) => {
+      const certId = row.cert_id;
+      if (!result[certId]) result[certId] = [];
+      result[certId].push({
+        key: row.key,
+        expiryDate: row.expiry_date || '2026-09-30',
+        disabled: row.disabled === true
+      });
+    });
+
+    return result;
+  } catch (err) {
+    console.error('Failed to fetch VIP key configs from DB:', err);
+    return null;
+  }
+}
+
+export async function saveVipKeyConfigToDb(certId: string, config: { key: string; expiryDate: string; disabled?: boolean }): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('vip_key_configs')
+      .upsert({
+        cert_id: certId,
+        key: config.key,
+        expiry_date: config.expiryDate || '2026-09-30',
+        disabled: config.disabled === true
+      }, { onConflict: 'cert_id,key' });
+
+    if (error) {
+      console.error('Error saving VIP key config to DB:', error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Failed to save VIP key config to DB:', err);
+    return false;
+  }
+}
+
+export async function deleteVipKeyConfigFromDb(certId: string, keyToDelete: string): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('vip_key_configs')
+      .delete()
+      .eq('cert_id', certId)
+      .eq('key', keyToDelete);
+
+    if (error) {
+      console.error('Error deleting VIP key config from DB:', error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Failed to delete VIP key config from DB:', err);
+    return false;
+  }
+}
+
+export async function updateVipKeyDisabledInDb(certId: string, keyToToggle: string, disabled: boolean): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('vip_key_configs')
+      .update({ disabled })
+      .eq('cert_id', certId)
+      .eq('key', keyToToggle);
+
+    if (error) {
+      console.error('Error updating VIP key disabled state in DB:', error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Failed to update VIP key disabled state in DB:', err);
+    return false;
+  }
+}
+
+export async function updateVipKeyExpiryInDb(certId: string, keyToUpdate: string, expiryDate: string): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('vip_key_configs')
+      .update({ expiry_date: expiryDate })
+      .eq('cert_id', certId)
+      .eq('key', keyToUpdate);
+
+    if (error) {
+      console.error('Error updating VIP key expiry in DB:', error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Failed to update VIP key expiry in DB:', err);
+    return false;
+  }
+}
+
+
 

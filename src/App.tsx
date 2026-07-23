@@ -57,7 +57,12 @@ import {
   syncSingleHistoryEntryToDb, 
   syncBulkHistoryToDb,
   saveExamResultToDb,
-  ExamHistoryRecord
+  ExamHistoryRecord,
+  fetchVipKeyConfigsFromDb,
+  saveVipKeyConfigToDb,
+  deleteVipKeyConfigFromDb,
+  updateVipKeyDisabledInDb,
+  updateVipKeyExpiryInDb
 } from './lib/sync';
 
 function DynamicIcon({ name, className = "w-5 h-5" }: { name: string; className?: string }) {
@@ -390,6 +395,19 @@ export default function App() {
 
   // Sync state values on initial load
   useEffect(() => {
+    // Load VIP key configs from DB
+    async function loadVipKeysFromDb() {
+      const dbConfigs = await fetchVipKeyConfigsFromDb();
+      if (dbConfigs && Object.keys(dbConfigs).length > 0) {
+        setVipKeyConfigs(prev => {
+          const merged = { ...prev, ...dbConfigs };
+          localStorage.setItem('vip_key_configs_v3', JSON.stringify(merged));
+          return merged;
+        });
+      }
+    }
+    loadVipKeysFromDb();
+
     // 1. Gather custom certificates from storage
     const storedCustomCerts = localStorage.getItem('study_certs_custom');
     if (storedCustomCerts) {
@@ -520,21 +538,26 @@ export default function App() {
   const handleAddVipKey = (certId: string, newKey: string, expiryDate: string) => {
     const trimmed = newKey.trim().toUpperCase();
     if (!trimmed) return;
+    const finalExpiry = expiryDate || '2026-09-30';
+
     setVipKeyConfigs(prev => {
       const existing = prev[certId] || getDefaultVipKeyConfigs()[certId] || [];
       const idx = existing.findIndex(k => k.key.toUpperCase() === trimmed);
       let updatedList: VipKeyConfig[];
       if (idx >= 0) {
         updatedList = [...existing];
-        updatedList[idx] = { ...updatedList[idx], expiryDate, disabled: false };
+        updatedList[idx] = { ...updatedList[idx], expiryDate: finalExpiry, disabled: false };
       } else {
-        updatedList = [...existing, { key: trimmed, expiryDate: expiryDate || '2026-09-30', disabled: false }];
+        updatedList = [...existing, { key: trimmed, expiryDate: finalExpiry, disabled: false }];
       }
       const updated = { ...prev, [certId]: updatedList };
       localStorage.setItem('vip_key_configs_v3', JSON.stringify(updated));
       return updated;
     });
-    showAppToast(`Đã lưu mã Key VIP "${trimmed}" (Hạn dùng: ${formatDateVN(expiryDate)}) cho ${certId}!`, 'success');
+
+    // Sync to DB
+    saveVipKeyConfigToDb(certId, { key: trimmed, expiryDate: finalExpiry, disabled: false });
+    showAppToast(`Đã lưu mã Key VIP "${trimmed}" (Hạn dùng: ${formatDateVN(finalExpiry)}) cho ${certId}!`, 'success');
   };
 
   const handleDeleteVipKey = (certId: string, keyToDelete: string) => {
@@ -545,13 +568,16 @@ export default function App() {
       localStorage.setItem('vip_key_configs_v3', JSON.stringify(updated));
       return updated;
     });
+
+    // Sync to DB
+    deleteVipKeyConfigFromDb(certId, keyToDelete);
     showAppToast(`Đã xóa mã Key "${keyToDelete}"!`, 'info');
   };
 
   const handleToggleKeyDisabled = (certId: string, keyToToggle: string) => {
+    let newState = false;
     setVipKeyConfigs(prev => {
       const existing = prev[certId] || getDefaultVipKeyConfigs()[certId] || [];
-      let newState = false;
       const updatedList = existing.map(k => {
         if (k.key.toUpperCase() === keyToToggle.toUpperCase()) {
           newState = !k.disabled;
@@ -561,9 +587,12 @@ export default function App() {
       });
       const updated = { ...prev, [certId]: updatedList };
       localStorage.setItem('vip_key_configs_v3', JSON.stringify(updated));
-      showAppToast(`Đã ${newState ? 'tắt (vô hiệu hóa 🚫)' : 'kích hoạt lại ✅'} mã Key "${keyToToggle}"!`, 'info');
       return updated;
     });
+
+    // Sync to DB
+    updateVipKeyDisabledInDb(certId, keyToToggle, newState);
+    showAppToast(`Đã ${newState ? 'tắt (vô hiệu hóa 🚫)' : 'kích hoạt lại ✅'} mã Key "${keyToToggle}"!`, 'info');
   };
 
   const handleUpdateKeyExpiry = (certId: string, keyToUpdate: string, newExpiryDate: string) => {
@@ -579,6 +608,9 @@ export default function App() {
       localStorage.setItem('vip_key_configs_v3', JSON.stringify(updated));
       return updated;
     });
+
+    // Sync to DB
+    updateVipKeyExpiryInDb(certId, keyToUpdate, newExpiryDate);
     showAppToast(`Đã cập nhật hạn sử dụng (${formatDateVN(newExpiryDate)}) cho Key "${keyToUpdate}"!`, 'success');
   };
 
