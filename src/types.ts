@@ -37,6 +37,12 @@ export interface GroupMemberProgress {
   }[];
 }
 
+export interface VipKeyConfig {
+  key: string;
+  expiryDate: string; // YYYY-MM-DD
+  disabled?: boolean;
+}
+
 export interface Certificate {
   id: string;
   name: string;
@@ -46,6 +52,9 @@ export interface Certificate {
   estimatedHours: string;
   colorClass: string; // CSS styling preset
   iconName: string; // name matching Lucide icons
+  isVIP?: boolean; // Requires access key / passcode
+  accessKeys?: string[]; // Allowed keys for this certification
+  vipKeyConfigs?: VipKeyConfig[]; // Detailed VIP key configurations
 }
 
 export interface ProgressState {

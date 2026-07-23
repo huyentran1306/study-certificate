@@ -27,7 +27,14 @@ import {
   User,
   Calendar,
   Clock,
-  AlertTriangle
+  AlertTriangle,
+  Lock,
+  Unlock,
+  Key,
+  ShieldCheck,
+  Eye,
+  EyeOff,
+  Ban
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { 
@@ -41,7 +48,7 @@ import {
   clearAllUserProgressFromDb,
   UserProgressRecord
 } from '../lib/sync';
-import { Question, Certificate } from '../types';
+import { Question, Certificate, VipKeyConfig } from '../types';
 import { initialQuestions } from '../data/initialQuestions';
 import { az900Questions } from '../data/az900Questions';
 import { ai900Questions } from '../data/ai900Questions';
@@ -56,6 +63,14 @@ interface AdminPanelProps {
   onAddCertificate: (newCert: Certificate, initialQs: Question[]) => void;
   onDeleteCertificate: (certId: string) => void;
   showAppToast: (message: string, type: 'success' | 'error' | 'info') => void;
+  unlockedCertIds?: string[];
+  vipKeyConfigs?: Record<string, VipKeyConfig[]>;
+  onAddVipKey?: (certId: string, newKey: string, expiryDate: string) => void;
+  onDeleteVipKey?: (certId: string, keyToDelete: string) => void;
+  onToggleKeyDisabled?: (certId: string, keyToToggle: string) => void;
+  onUpdateKeyExpiry?: (certId: string, keyToUpdate: string, newExpiryDate: string) => void;
+  onToggleCertVip?: (certId: string) => void;
+  onToggleUnlockCert?: (certId: string) => void;
 }
 
 export default function AdminPanel({
@@ -65,7 +80,15 @@ export default function AdminPanel({
   onUpdateQuestions,
   onAddCertificate,
   onDeleteCertificate,
-  showAppToast
+  showAppToast,
+  unlockedCertIds = [],
+  vipKeyConfigs = {},
+  onAddVipKey,
+  onDeleteVipKey,
+  onToggleKeyDisabled,
+  onUpdateKeyExpiry,
+  onToggleCertVip,
+  onToggleUnlockCert
 }: AdminPanelProps) {
   // Questions list of the currently selected certificate
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -113,7 +136,9 @@ export default function AdminPanel({
   const questionsPerPage = 15;
 
   // Admin Panel states & logic
-  const [adminTab, setAdminTab] = useState<'questions' | 'user_progress' | 'exam_history'>('questions');
+  const [adminTab, setAdminTab] = useState<'questions' | 'user_progress' | 'exam_history' | 'vip_keys'>('questions');
+  const [newKeyInputs, setNewKeyInputs] = useState<Record<string, string>>({});
+  const [newExpiryInputs, setNewExpiryInputs] = useState<Record<string, string>>({});
   
   // Student Study Progress states
   const [userProgressList, setUserProgressList] = useState<UserProgressRecord[]>([]);
@@ -945,6 +970,17 @@ export default function AdminPanel({
           <Award className="w-4 h-4" />
           LỊCH SỬ THI THỬ HỌC VIÊN
         </button>
+        <button
+          onClick={() => setAdminTab('vip_keys')}
+          className={`px-6 py-3.5 text-xs font-black tracking-wide border-b-2 transition-all flex items-center gap-2 ${
+            adminTab === 'vip_keys'
+              ? 'border-amber-500 text-amber-700 font-extrabold'
+              : 'border-transparent text-slate-500 hover:text-slate-800'
+          }`}
+        >
+          <Key className="w-4 h-4 text-amber-500" />
+          QUẢN LÝ MÃ KEY VIP 🔐
+        </button>
       </div>
 
       {adminTab === 'questions' && (
@@ -962,7 +998,7 @@ export default function AdminPanel({
               {certificates.map(cert => {
                 const isActive = cert.id === activeCertId;
                 return (
-                  <button
+                  <div
                     key={cert.id}
                     onClick={() => onSelectCert(cert.id)}
                     className={`w-full text-left px-3.5 py-3 rounded-xl text-xs font-bold leading-relaxed flex items-center justify-between transition-all group cursor-pointer ${
@@ -978,7 +1014,7 @@ export default function AdminPanel({
                     {isActive ? (
                       <Check className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
                     ) : (
-                      cert.id !== 'gh-300' && cert.id !== 'az-900' && cert.id !== 'ai-900' && cert.id !== 'cca-f' && (
+                      cert.id !== 'gh-300' && cert.id !== 'az-900' && cert.id !== 'ai-900' && cert.id !== 'cca-f' && cert.id !== 'dp-800' && (
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
@@ -993,7 +1029,7 @@ export default function AdminPanel({
                         </button>
                       )
                     )}
-                  </button>
+                  </div>
                 );
               })}
             </div>
@@ -2146,6 +2182,268 @@ export default function AdminPanel({
                 </table>
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {adminTab === 'vip_keys' && (
+        <div className="space-y-6">
+          <div className="bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/5 border border-amber-200/80 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="space-y-1.5 max-w-2xl">
+              <div className="inline-flex items-center gap-1.5 bg-amber-500 text-slate-950 font-black text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full shadow-sm">
+                <ShieldCheck className="w-3.5 h-3.5 text-slate-950" />
+                BẢO VỆ TÀI LIỆU VIP & QUẢN LÝ KEY TRUY CẬP
+              </div>
+              <h3 className="text-lg font-black text-slate-900 tracking-tight">
+                Cấu hình Mã Key Truy Cập VIP (End Date & Control)
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                Quản lý mã key, thiết lập thời gian hết hạn (End Date) và tùy chọn Vô hiệu hóa (Disable) cho bất kỳ mã key nào (bao gồm key mặc định).
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2 shrink-0">
+              <div className="bg-white px-4 py-3 rounded-2xl border border-amber-200 shadow-xs flex items-center gap-3">
+                <Clock className="w-5 h-5 text-amber-600 shrink-0" />
+                <div>
+                  <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">Hạn Mặc Định Hiện Tại</span>
+                  <span className="font-mono text-xs font-black text-slate-900">30/09/2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Certificate Cards Grid for VIP Settings */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {certificates.map(cert => {
+              const isVip = cert.isVIP || cert.id === 'cca-f' || cert.id === 'dp-800';
+              const isUnlockedOnDevice = unlockedCertIds.includes(cert.id);
+              
+              // Get key configs for this cert
+              const configs: VipKeyConfig[] = vipKeyConfigs[cert.id] || [
+                { key: cert.id === 'cca-f' ? 'CCA-VIP-2026' : cert.id === 'dp-800' ? 'DP800-VIP-2026' : 'VIP-PRO-2026', expiryDate: '2026-09-30', disabled: false },
+                { key: cert.id === 'cca-f' ? 'ANTHROPIC-VIP' : cert.id === 'dp-800' ? 'AZURE-VIP' : 'VIP-KEY-2026', expiryDate: '2026-09-30', disabled: false },
+                { key: 'VIP-PRO-2026', expiryDate: '2026-09-30', disabled: false }
+              ];
+
+              const currentInput = newKeyInputs[cert.id] || '';
+              const currentExpiry = newExpiryInputs[cert.id] || '2026-09-30';
+              const todayStr = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}-${String(new Date().getDate()).padStart(2, '0')}`;
+
+              return (
+                <div key={cert.id} className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-5 flex flex-col justify-between">
+                  <div className="space-y-4">
+                    {/* Header */}
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-black uppercase font-mono px-2 py-0.5 bg-slate-100 text-slate-700 rounded">
+                            {cert.code}
+                          </span>
+                          <span className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full flex items-center gap-1 ${
+                            isVip 
+                              ? 'bg-amber-100 text-amber-900 border border-amber-200' 
+                              : 'bg-emerald-100 text-emerald-900 border border-emerald-200'
+                          }`}>
+                            {isVip ? <Lock className="w-3 h-3 text-amber-700" /> : <Unlock className="w-3 h-3 text-emerald-700" />}
+                            {isVip ? 'Đang Bật Khóa VIP 🔐' : 'Tự Do (Public) 🔓'}
+                          </span>
+                        </div>
+                        <h4 className="text-base font-black text-slate-900 tracking-tight leading-tight pt-1">
+                          {cert.name}
+                        </h4>
+                      </div>
+
+                      {/* VIP Toggle Switch Button */}
+                      {onToggleCertVip && (
+                        <button
+                          onClick={() => onToggleCertVip(cert.id)}
+                          className={`text-xs px-3 py-1.5 font-bold rounded-xl border transition-all cursor-pointer shrink-0 ${
+                            isVip 
+                              ? 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100' 
+                              : 'bg-amber-50 text-amber-800 border-amber-200 hover:bg-amber-100'
+                          }`}
+                        >
+                          {isVip ? 'Tắt VIP (Công khai)' : 'Kích hoạt VIP'}
+                        </button>
+                      )}
+                    </div>
+
+                    <p className="text-xs text-slate-500 leading-relaxed font-medium">
+                      {cert.description}
+                    </p>
+
+                    {/* Device Unlock Status */}
+                    <div className="bg-slate-50 border border-slate-150 rounded-xl p-3 flex items-center justify-between gap-3 text-xs">
+                      <div className="flex items-center gap-2">
+                        <div className={`w-2 h-2 rounded-full ${isUnlockedOnDevice ? 'bg-emerald-500' : 'bg-rose-500'}`} />
+                        <span className="font-bold text-slate-700">Trạng thái thiết bị này:</span>
+                        <span className={`font-black ${isUnlockedOnDevice ? 'text-emerald-700' : 'text-slate-500'}`}>
+                          {isUnlockedOnDevice ? '🔓 Đã Mở Khóa' : '🔒 Đang Khóa'}
+                        </span>
+                      </div>
+
+                      {onToggleUnlockCert && (
+                        <button
+                          onClick={() => onToggleUnlockCert(cert.id)}
+                          className="text-[11px] font-extrabold px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 rounded-lg transition-all cursor-pointer"
+                        >
+                          {isUnlockedOnDevice ? 'Khóa lại để thử' : 'Mở khóa ngay (Admin)'}
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Key List */}
+                    {isVip && (
+                      <div className="space-y-3 pt-2">
+                        <label className="text-[11px] font-black text-slate-500 uppercase tracking-wider block">
+                          Danh Sách Mã Key & Hạn Sử Dụng (End Date):
+                        </label>
+
+                        {/* List of Keys */}
+                        <div className="space-y-2">
+                          {configs.map((conf, idx) => {
+                            const isExpired = conf.expiryDate ? conf.expiryDate < todayStr : false;
+                            const isDisabled = conf.disabled === true;
+                            
+                            // Format expiration date for display DD/MM/YYYY
+                            let expDisplay = '30/09/2026';
+                            if (conf.expiryDate) {
+                              const p = conf.expiryDate.split('-');
+                              if (p.length === 3) expDisplay = `${p[2]}/${p[1]}/${p[0]}`;
+                            }
+
+                            return (
+                              <div 
+                                key={idx} 
+                                className={`p-3 rounded-xl border transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 ${
+                                  isDisabled 
+                                    ? 'bg-slate-100/80 border-slate-300 opacity-70' 
+                                    : isExpired 
+                                      ? 'bg-rose-50/80 border-rose-200' 
+                                      : 'bg-amber-50/70 border-amber-200/80'
+                                }`}
+                              >
+                                <div className="space-y-1">
+                                  <div className="flex items-center gap-2 flex-wrap">
+                                    <span className="font-mono text-xs font-black text-slate-900 bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-2xs">
+                                      {conf.key}
+                                    </span>
+                                    {isDisabled ? (
+                                      <span className="text-[10px] font-bold text-slate-600 bg-slate-200 px-2 py-0.5 rounded flex items-center gap-1">
+                                        <Ban className="w-3 h-3 text-slate-500" /> Đã vô hiệu hóa
+                                      </span>
+                                    ) : isExpired ? (
+                                      <span className="text-[10px] font-bold text-rose-700 bg-rose-200/80 px-2 py-0.5 rounded flex items-center gap-1">
+                                        <Clock className="w-3 h-3 text-rose-600" /> Đã hết hạn ({expDisplay})
+                                      </span>
+                                    ) : (
+                                      <span className="text-[10px] font-bold text-emerald-800 bg-emerald-200/80 px-2 py-0.5 rounded flex items-center gap-1">
+                                        <Check className="w-3 h-3 text-emerald-600" /> Khả dụng
+                                      </span>
+                                    )}
+                                  </div>
+
+                                  <div className="flex items-center gap-2 text-[11px] text-slate-600 font-medium pt-0.5">
+                                    <Calendar className="w-3 h-3 text-slate-400 shrink-0" />
+                                    <span>Hạn dùng (End Date):</span>
+                                    <input
+                                      type="date"
+                                      value={conf.expiryDate || '2026-09-30'}
+                                      onChange={(e) => onUpdateKeyExpiry && onUpdateKeyExpiry(cert.id, conf.key, e.target.value)}
+                                      className="px-2 py-0.5 text-[11px] font-mono font-bold bg-white border border-slate-200 rounded focus:outline-none focus:ring-1 focus:ring-amber-500 cursor-pointer"
+                                      title="Bấm để đổi ngày hết hạn"
+                                    />
+                                  </div>
+                                </div>
+
+                                {/* Controls */}
+                                <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
+                                  {onToggleKeyDisabled && (
+                                    <button
+                                      type="button"
+                                      onClick={() => onToggleKeyDisabled(cert.id, conf.key)}
+                                      className={`px-2.5 py-1 text-[11px] font-extrabold rounded-lg border transition-all cursor-pointer ${
+                                        isDisabled 
+                                          ? 'bg-emerald-600 text-white border-emerald-700 hover:bg-emerald-700 shadow-xs' 
+                                          : 'bg-slate-200 hover:bg-rose-100 text-slate-700 hover:text-rose-700 border-slate-300 hover:border-rose-300'
+                                      }`}
+                                      title={isDisabled ? "Kích hoạt lại Key này" : "Tạm tắt (disable) Key này"}
+                                    >
+                                      {isDisabled ? 'Kích hoạt lại' : 'Tắt (Disable)'}
+                                    </button>
+                                  )}
+
+                                  {onDeleteVipKey && (
+                                    <button
+                                      type="button"
+                                      onClick={() => onDeleteVipKey(cert.id, conf.key)}
+                                      className="p-1.5 hover:bg-rose-100 text-rose-600 rounded-lg transition-colors cursor-pointer"
+                                      title="Xóa Key này"
+                                    >
+                                      <Trash2 className="w-3.5 h-3.5" />
+                                    </button>
+                                  )}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+
+                        {/* Add Custom Key Form */}
+                        {onAddVipKey && (
+                          <form 
+                            onSubmit={(e) => {
+                              e.preventDefault();
+                              const trimmed = currentInput.trim();
+                              if (trimmed) {
+                                onAddVipKey(cert.id, trimmed, currentExpiry);
+                                setNewKeyInputs(prev => ({ ...prev, [cert.id]: '' }));
+                              }
+                            }}
+                            className="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 space-y-3 pt-3"
+                          >
+                            <span className="text-[11px] font-black text-slate-700 uppercase tracking-wider block">
+                              + Tạo Mã Key VIP Mới
+                            </span>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                              <div>
+                                <label className="text-[10px] font-bold text-slate-500 uppercase block mb-1">Mã Key Mới</label>
+                                <input
+                                  type="text"
+                                  value={currentInput}
+                                  onChange={(e) => setNewKeyInputs({ ...newKeyInputs, [cert.id]: e.target.value })}
+                                  placeholder="Nhập mã key..."
+                                  className="w-full px-3 py-2 text-xs font-mono font-bold bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400 uppercase"
+                                />
+                              </div>
+                              <div>
+                                <label className="text-[10px] font-bold text-slate-500 uppercase block mb-1">Ngày Hết Hạn (End Date)</label>
+                                <input
+                                  type="date"
+                                  value={currentExpiry}
+                                  onChange={(e) => setNewExpiryInputs({ ...newExpiryInputs, [cert.id]: e.target.value })}
+                                  className="w-full px-3 py-2 text-xs font-mono font-bold bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400 cursor-pointer"
+                                />
+                              </div>
+                            </div>
+                            <div className="flex justify-end">
+                              <button
+                                type="submit"
+                                className="px-4 py-2 bg-slate-900 hover:bg-amber-600 text-white font-black rounded-xl text-xs transition-all cursor-pointer flex items-center gap-1.5 shadow-xs"
+                              >
+                                <Plus className="w-3.5 h-3.5" />
+                                Thêm Key VIP
+                              </button>
+                            </div>
+                          </form>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       )}

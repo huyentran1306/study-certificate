@@ -25,10 +25,16 @@ import {
   Check,
   Loader2,
   Asterisk,
-  Users
+  Users,
+  Lock,
+  Unlock,
+  Key,
+  ShieldCheck,
+  Eye,
+  EyeOff
 } from 'lucide-react';
 
-import { Question, ProgressState, StudyMode, Certificate } from './types';
+import { Question, ProgressState, StudyMode, Certificate, VipKeyConfig } from './types';
 import { initialQuestions } from './data/initialQuestions';
 import { az900Questions } from './data/az900Questions';
 import { ai900Questions } from './data/ai900Questions';
@@ -66,6 +72,8 @@ function DynamicIcon({ name, className = "w-5 h-5" }: { name: string; className?
       return <BookOpen className={className} />;
     case 'Trophy':
       return <Trophy className={className} />;
+    case 'Database':
+      return <Database className={className} />;
     default:
       return <BookOpen className={className} />;
   }
@@ -74,6 +82,43 @@ function DynamicIcon({ name, className = "w-5 h-5" }: { name: string; className?
 export default function App() {
   // Active Certification ID
   const [activeCertId, setActiveCertId] = useState<string>('gh-300');
+
+  // VIP Access Control States
+  const [unlockedCertIds, setUnlockedCertIds] = useState<string[]>(() => {
+    try {
+      const stored = localStorage.getItem('unlocked_certs');
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  // Default VIP key configurations with expiry dates
+  const getDefaultVipKeyConfigs = (): Record<string, VipKeyConfig[]> => ({
+    'cca-f': [
+      { key: 'CCA-VIP-2026', expiryDate: '2026-09-30', disabled: false },
+      { key: 'ANTHROPIC-VIP', expiryDate: '2026-09-30', disabled: false },
+      { key: 'VIP-PRO-2026', expiryDate: '2026-09-30', disabled: false },
+    ],
+    'dp-800': [
+      { key: 'DP800-VIP-2026', expiryDate: '2026-09-30', disabled: false },
+      { key: 'AZURE-VIP', expiryDate: '2026-09-30', disabled: false },
+      { key: 'VIP-PRO-2026', expiryDate: '2026-09-30', disabled: false },
+    ],
+  });
+
+  const [vipKeyConfigs, setVipKeyConfigs] = useState<Record<string, VipKeyConfig[]>>(() => {
+    try {
+      const stored = localStorage.getItem('vip_key_configs_v3');
+      if (stored) return JSON.parse(stored);
+    } catch {}
+    return getDefaultVipKeyConfigs();
+  });
+
+  const [vipModalCert, setVipModalCert] = useState<Certificate | null>(null);
+  const [vipInputKey, setVipInputKey] = useState<string>('');
+  const [vipKeyError, setVipKeyError] = useState<string>('');
+  const [showVipKeyToggle, setShowVipKeyToggle] = useState<boolean>(false);
 
   // List of all certifications
   const [certificates, setCertificates] = useState<Certificate[]>([
@@ -115,7 +160,9 @@ export default function App() {
       difficulty: 'Trung cấp',
       estimatedHours: '12-18 Giờ',
       colorClass: 'bg-gradient-to-br from-amber-600 via-orange-700 to-amber-950 text-white',
-      iconName: 'Trophy'
+      iconName: 'Trophy',
+      isVIP: true,
+      accessKeys: ['CCA-VIP-2026', 'ANTHROPIC-VIP', 'VIP-PRO-2026']
     },
     {
       id: 'dp-800',
@@ -125,7 +172,9 @@ export default function App() {
       difficulty: 'Nâng cao',
       estimatedHours: '15-20 Giờ',
       colorClass: 'bg-gradient-to-br from-indigo-700 via-blue-800 to-slate-900 text-white',
-      iconName: 'Database'
+      iconName: 'Database',
+      isVIP: true,
+      accessKeys: ['DP800-VIP-2026', 'AZURE-VIP', 'VIP-PRO-2026']
     }
   ]);
 
@@ -357,10 +406,207 @@ export default function App() {
     }
 
     // 2. Select initial active cert and load its content
-    const lastActiveCert = localStorage.getItem('study_active_cert') || 'gh-300';
+    let lastActiveCert = localStorage.getItem('study_active_cert') || 'gh-300';
+    if (['cca-f', 'dp-800'].includes(lastActiveCert)) {
+      const storedUnlocked = localStorage.getItem('unlocked_certs');
+      let unlockedArr: string[] = [];
+      if (storedUnlocked) { try { unlockedArr = JSON.parse(storedUnlocked); } catch {} }
+      if (!unlockedArr.includes(lastActiveCert)) {
+        lastActiveCert = 'gh-300';
+      }
+    }
     setActiveCertId(lastActiveCert);
     loadCertData(lastActiveCert, username);
   }, []);
+
+  // Helper to check if a certificate is locked for the current session
+  const checkIsCertLocked = (cert: Certificate): boolean => {
+    const isVip = cert.isVIP || cert.id === 'cca-f' || cert.id === 'dp-800';
+    if (!isVip) return false;
+    return !unlockedCertIds.includes(cert.id);
+  };
+
+  // Request cert access gatekeeper
+  const handleRequestCertAccess = (certId: string, targetMode: StudyMode = 'practice') => {
+    const cert = certificates.find(c => c.id === certId);
+    if (!cert) return;
+
+    if (checkIsCertLocked(cert)) {
+      setVipModalCert(cert);
+      setVipInputKey('');
+      setVipKeyError('');
+      return;
+    }
+
+    // Direct access allowed
+    handleSelectCert(certId, targetMode);
+  };
+
+  const formatDateVN = (dateStr?: string) => {
+    if (!dateStr) return '30/09/2026';
+    const parts = dateStr.split('-');
+    if (parts.length === 3) return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    return dateStr;
+  };
+
+  const doUnlockCert = (certId: string, certCode: string) => {
+    const updatedUnlocked = Array.from(new Set([...unlockedCertIds, certId]));
+    setUnlockedCertIds(updatedUnlocked);
+    localStorage.setItem('unlocked_certs', JSON.stringify(updatedUnlocked));
+
+    showAppToast(`🎉 Mở khóa thành công! Bạn đã kích hoạt bộ đề VIP ${certCode}.`, 'success');
+    setVipModalCert(null);
+    setVipInputKey('');
+    setVipKeyError('');
+
+    handleSelectCert(certId);
+  };
+
+  // Process key unlock attempt
+  const handleUnlockVipCert = () => {
+    if (!vipModalCert) return;
+    const rawInput = vipInputKey.trim();
+    if (!rawInput) {
+      setVipKeyError('Vui lòng nhập mã Key truy cập VIP!');
+      return;
+    }
+
+    const cleanInput = rawInput.toUpperCase();
+    const certId = vipModalCert.id;
+
+    // Default or stored key configs
+    const certConfigs = vipKeyConfigs[certId] || getDefaultVipKeyConfigs()[certId] || [
+      { key: 'VIP-PRO-2026', expiryDate: '2026-09-30', disabled: false }
+    ];
+
+    // Find key config
+    const matchedConfig = certConfigs.find(c => c.key.trim().toUpperCase() === cleanInput);
+
+    if (!matchedConfig) {
+      // Check master fallback keys
+      if (cleanInput === 'VIP-PRO-2026' || cleanInput === 'MASTER-VIP') {
+        const todayStr = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}-${String(new Date().getDate()).padStart(2, '0')}`;
+        if (todayStr > '2026-09-30') {
+          setVipKeyError('Mã Master Key đã hết hạn ngày 30/09/2026! Vui lòng liên hệ Admin.');
+          return;
+        }
+        doUnlockCert(vipModalCert.id, vipModalCert.code);
+        return;
+      }
+
+      setVipKeyError('Mã Key không chính xác! Vui lòng kiểm tra lại hoặc liên hệ Admin.');
+      return;
+    }
+
+    // Key matched! Check if disabled
+    if (matchedConfig.disabled) {
+      setVipKeyError('Mã Key này đã bị tạm vô hiệu hóa bởi Admin!');
+      return;
+    }
+
+    // Check expiry
+    const todayStr = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}-${String(new Date().getDate()).padStart(2, '0')}`;
+    if (matchedConfig.expiryDate && matchedConfig.expiryDate < todayStr) {
+      const expVN = formatDateVN(matchedConfig.expiryDate);
+      setVipKeyError(`Mã Key này đã hết hạn ngày ${expVN}! Vui lòng nhận Key mới từ Admin.`);
+      return;
+    }
+
+    // Success!
+    doUnlockCert(vipModalCert.id, vipModalCert.code);
+  };
+
+  // Admin VIP key actions
+  const handleAddVipKey = (certId: string, newKey: string, expiryDate: string) => {
+    const trimmed = newKey.trim().toUpperCase();
+    if (!trimmed) return;
+    setVipKeyConfigs(prev => {
+      const existing = prev[certId] || getDefaultVipKeyConfigs()[certId] || [];
+      const idx = existing.findIndex(k => k.key.toUpperCase() === trimmed);
+      let updatedList: VipKeyConfig[];
+      if (idx >= 0) {
+        updatedList = [...existing];
+        updatedList[idx] = { ...updatedList[idx], expiryDate, disabled: false };
+      } else {
+        updatedList = [...existing, { key: trimmed, expiryDate: expiryDate || '2026-09-30', disabled: false }];
+      }
+      const updated = { ...prev, [certId]: updatedList };
+      localStorage.setItem('vip_key_configs_v3', JSON.stringify(updated));
+      return updated;
+    });
+    showAppToast(`Đã lưu mã Key VIP "${trimmed}" (Hạn dùng: ${formatDateVN(expiryDate)}) cho ${certId}!`, 'success');
+  };
+
+  const handleDeleteVipKey = (certId: string, keyToDelete: string) => {
+    setVipKeyConfigs(prev => {
+      const existing = prev[certId] || getDefaultVipKeyConfigs()[certId] || [];
+      const updatedList = existing.filter(k => k.key.toUpperCase() !== keyToDelete.toUpperCase());
+      const updated = { ...prev, [certId]: updatedList };
+      localStorage.setItem('vip_key_configs_v3', JSON.stringify(updated));
+      return updated;
+    });
+    showAppToast(`Đã xóa mã Key "${keyToDelete}"!`, 'info');
+  };
+
+  const handleToggleKeyDisabled = (certId: string, keyToToggle: string) => {
+    setVipKeyConfigs(prev => {
+      const existing = prev[certId] || getDefaultVipKeyConfigs()[certId] || [];
+      let newState = false;
+      const updatedList = existing.map(k => {
+        if (k.key.toUpperCase() === keyToToggle.toUpperCase()) {
+          newState = !k.disabled;
+          return { ...k, disabled: newState };
+        }
+        return k;
+      });
+      const updated = { ...prev, [certId]: updatedList };
+      localStorage.setItem('vip_key_configs_v3', JSON.stringify(updated));
+      showAppToast(`Đã ${newState ? 'tắt (vô hiệu hóa 🚫)' : 'kích hoạt lại ✅'} mã Key "${keyToToggle}"!`, 'info');
+      return updated;
+    });
+  };
+
+  const handleUpdateKeyExpiry = (certId: string, keyToUpdate: string, newExpiryDate: string) => {
+    setVipKeyConfigs(prev => {
+      const existing = prev[certId] || getDefaultVipKeyConfigs()[certId] || [];
+      const updatedList = existing.map(k => {
+        if (k.key.toUpperCase() === keyToUpdate.toUpperCase()) {
+          return { ...k, expiryDate: newExpiryDate };
+        }
+        return k;
+      });
+      const updated = { ...prev, [certId]: updatedList };
+      localStorage.setItem('vip_key_configs_v3', JSON.stringify(updated));
+      return updated;
+    });
+    showAppToast(`Đã cập nhật hạn sử dụng (${formatDateVN(newExpiryDate)}) cho Key "${keyToUpdate}"!`, 'success');
+  };
+
+  const handleToggleCertVip = (certId: string) => {
+    setCertificates(prev => prev.map(c => {
+      if (c.id === certId) {
+        const nextVip = !c.isVIP;
+        showAppToast(`Đã ${nextVip ? 'bật chế độ Yêu Cầu Key VIP 🔐' : 'tắt chế độ VIP (Mở tự do) 🔓'} cho ${c.code}!`, 'info');
+        return { ...c, isVIP: nextVip };
+      }
+      return c;
+    }));
+  };
+
+  const handleToggleUnlockCert = (certId: string) => {
+    setUnlockedCertIds(prev => {
+      let updated: string[];
+      if (prev.includes(certId)) {
+        updated = prev.filter(id => id !== certId);
+        showAppToast(`Đã khóa lại chứng chỉ ${certId} trên thiết bị này!`, 'info');
+      } else {
+        updated = [...prev, certId];
+        showAppToast(`Đã mở khóa chứng chỉ ${certId} trên thiết bị này!`, 'success');
+      }
+      localStorage.setItem('unlocked_certs', JSON.stringify(updated));
+      return updated;
+    });
+  };
 
   // Sync state back to storage helper
   const saveProgress = async (newProgress: ProgressState, currentUsername: string = username) => {
@@ -409,6 +655,10 @@ export default function App() {
     
     // Loop through all certificates
     certificates.forEach(cert => {
+      // Security Check: Skip locked VIP certificate questions from search
+      const isLocked = (cert.isVIP || cert.id === 'cca-f' || cert.id === 'dp-800') && !unlockedCertIds.includes(cert.id);
+      if (isLocked) return;
+
       let certQs: Question[] = [];
       
       // If it's the current active certificate, we already have it in the `questions` state
@@ -517,11 +767,11 @@ export default function App() {
   };
 
   // Switch certification and load its workspace
-  const handleSelectCert = (certId: string) => {
+  const handleSelectCert = (certId: string, targetMode: StudyMode = 'practice') => {
     setActiveCertId(certId);
     localStorage.setItem('study_active_cert', certId);
     loadCertData(certId, username);
-    setMode('practice');
+    setMode(targetMode);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -1137,6 +1387,8 @@ export default function App() {
                   ? Math.round((certProgress.answeredCount / certProgress.total) * 100)
                   : 0;
 
+                const isLocked = (cert.isVIP || cert.id === 'cca-f' || cert.id === 'dp-800') && !unlockedCertIds.includes(cert.id);
+
                 return (
                   <div key={cert.id} className="bg-white border border-slate-150/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
                     <div className={`${cert.colorClass} p-5 flex items-start justify-between gap-4 relative overflow-hidden`}>
@@ -1145,9 +1397,21 @@ export default function App() {
                       </div>
                       
                       <div className="space-y-1 relative z-10">
-                        <span className="text-[10px] font-bold uppercase tracking-widest bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded">
-                          {cert.code}
-                        </span>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-[10px] font-bold uppercase tracking-widest bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded">
+                            {cert.code}
+                          </span>
+                          {(cert.isVIP || cert.id === 'cca-f' || cert.id === 'dp-800') && (
+                            <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full flex items-center gap-1 shadow-xs ${
+                              isLocked 
+                                ? 'bg-amber-400 text-slate-950 animate-pulse' 
+                                : 'bg-emerald-400 text-slate-950'
+                            }`}>
+                              {isLocked ? <Lock className="w-3 h-3" /> : <Unlock className="w-3 h-3" />}
+                              {isLocked ? 'VIP - Cần Key' : 'VIP - Đã Kích Hoạt'}
+                            </span>
+                          )}
+                        </div>
                         <h3 className="text-base font-extrabold tracking-tight leading-tight pt-1">
                           {cert.name}
                         </h3>
@@ -1196,13 +1460,23 @@ export default function App() {
 
                       {/* Action buttons */}
                       <div className="flex items-center gap-2 pt-2 border-t border-slate-100">
-                        <button
-                          onClick={() => handleSelectCert(cert.id)}
-                          className="flex-1 text-center py-2.5 bg-slate-950 hover:bg-indigo-600 text-white font-bold rounded-xl text-xs transition-all shadow-sm flex items-center justify-center gap-1.5"
-                        >
-                          <BookOpen className="w-3.5 h-3.5" />
-                          Học ngay
-                        </button>
+                        {isLocked ? (
+                          <button
+                            onClick={() => handleRequestCertAccess(cert.id)}
+                            className="flex-1 text-center py-2.5 bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-black rounded-xl text-xs transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
+                          >
+                            <Key className="w-3.5 h-3.5" />
+                            Mở Khóa Bằng Key VIP
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => handleRequestCertAccess(cert.id)}
+                            className="flex-1 text-center py-2.5 bg-slate-950 hover:bg-indigo-600 text-white font-bold rounded-xl text-xs transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
+                          >
+                            <BookOpen className="w-3.5 h-3.5" />
+                            Học ngay
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -1789,6 +2063,8 @@ export default function App() {
           <AdminPanel
             certificates={certificates}
             activeCertId={activeCertId}
+            unlockedCertIds={unlockedCertIds}
+            vipKeyConfigs={vipKeyConfigs}
             onSelectCert={(certId) => {
               setActiveCertId(certId);
               localStorage.setItem('study_active_cert', certId);
@@ -1833,6 +2109,12 @@ export default function App() {
                 setCertToDelete(targetCert);
               }
             }}
+            onAddVipKey={handleAddVipKey}
+            onDeleteVipKey={handleDeleteVipKey}
+            onToggleKeyDisabled={handleToggleKeyDisabled}
+            onUpdateKeyExpiry={handleUpdateKeyExpiry}
+            onToggleCertVip={handleToggleCertVip}
+            onToggleUnlockCert={handleToggleUnlockCert}
             showAppToast={showAppToast}
           />
         )}
@@ -2182,6 +2464,103 @@ export default function App() {
               >
                 Xác nhận thoát
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* VIP Access Key Modal */}
+      {vipModalCert && (
+        <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200">
+          <div className="bg-white rounded-3xl p-6 md:p-8 shadow-2xl border border-amber-200/80 max-w-md w-full relative overflow-hidden">
+            {/* Top decorative gradient bar */}
+            <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600" />
+
+            <button
+              onClick={() => { setVipModalCert(null); setVipInputKey(''); setVipKeyError(''); }}
+              className="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-full transition-all cursor-pointer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="flex items-center gap-3 mb-5">
+              <div className="bg-amber-100 text-amber-700 p-3 rounded-2xl shrink-0 shadow-inner">
+                <Lock className="w-6 h-6 animate-pulse" />
+              </div>
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200/60 px-2.5 py-0.5 rounded-full inline-block mb-1">
+                  Kích hoạt Chứng chỉ VIP 🔐
+                </span>
+                <h3 className="text-lg font-black text-slate-900 leading-tight">
+                  {vipModalCert.code} — {vipModalCert.name}
+                </h3>
+              </div>
+            </div>
+
+            <p className="text-xs text-slate-600 leading-relaxed mb-5 bg-slate-50 p-3.5 rounded-2xl border border-slate-150">
+              Nội dung bộ đề thi này đã được chuyển sang chế độ <strong className="text-amber-700">Giới hạn truy cập (VIP)</strong>. Vui lòng nhập <strong className="text-slate-900">Mã Access Key VIP</strong> để mở khóa sử dụng trên thiết bị này.
+            </p>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-[11px] font-extrabold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+                  <span>MÃ KEY TRUY CẬP VIP</span>
+                  <span className="text-[10px] text-slate-400 font-normal">Không phân biệt chữ hoa/thường</span>
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                    <Key className="w-4 h-4" />
+                  </div>
+                  <input
+                    type={showVipKeyToggle ? "text" : "password"}
+                    value={vipInputKey}
+                    onChange={(e) => { setVipInputKey(e.target.value); setVipKeyError(''); }}
+                    onKeyDown={(e) => { if (e.key === 'Enter') handleUnlockVipCert(); }}
+                    placeholder="Nhập mã key VIP để kích hoạt..."
+                    className="w-full pl-10 pr-10 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowVipKeyToggle(!showVipKeyToggle)}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 cursor-pointer"
+                  >
+                    {showVipKeyToggle ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
+                </div>
+                {vipKeyError && (
+                  <p className="text-[11px] text-rose-600 font-bold mt-2 flex items-center gap-1 animate-shake">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>{vipKeyError}</span>
+                  </p>
+                )}
+              </div>
+
+              <div className="bg-amber-50/70 p-3 rounded-xl border border-amber-200/50 text-[11px] text-amber-800 space-y-1">
+                <p className="font-bold flex items-center gap-1">
+                  <ShieldCheck className="w-3.5 h-3.5 text-amber-600" /> Hướng dẫn mở khóa:
+                </p>
+                <p className="text-slate-600 pl-4">
+                  Vui lòng nhập Mã Key VIP hợp lệ do Admin hoặc giảng viên cấp để mở khóa bộ đề này.
+                </p>
+              </div>
+
+              <div className="flex gap-2.5 justify-end pt-2">
+                <button
+                  type="button"
+                  onClick={() => { setVipModalCert(null); setVipInputKey(''); setVipKeyError(''); }}
+                  className="px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition-all cursor-pointer"
+                >
+                  Đóng lại
+                </button>
+                <button
+                  type="button"
+                  onClick={handleUnlockVipCert}
+                  className="px-5 py-2.5 text-xs font-black text-white bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer flex items-center gap-1.5"
+                >
+                  <Unlock className="w-4 h-4" />
+                  Kích Hoạt VIP Ngay
+                </button>
+              </div>
             </div>
           </div>
         </div>
