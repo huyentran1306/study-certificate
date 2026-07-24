@@ -59,26 +59,34 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
     }
   }, [activeGroup]);
 
-  // Check URL query parameters for automatic join tokens (?joinGroup=token)
+  // Check URL query parameters or hash for automatic join tokens (?joinGroup=token or #joinGroup=token)
   const checkForJoinToken = async () => {
-    const params = new URLSearchParams(window.location.search);
-    const joinToken = params.get('joinGroup');
+    const searchParams = new URLSearchParams(window.location.search);
+    let joinToken = searchParams.get('joinGroup');
+
+    if (!joinToken && window.location.hash) {
+      const hashContent = window.location.hash.replace(/^#\/?/, '');
+      const hashParams = new URLSearchParams(hashContent.includes('?') ? hashContent.split('?')[1] : hashContent);
+      joinToken = hashParams.get('joinGroup') || (hashContent.startsWith('joinGroup=') ? hashContent.split('=')[1] : null);
+    }
+
     if (joinToken) {
+      const cleanToken = joinToken.trim().toUpperCase();
       if (!username) {
         showToast('Vui lòng đặt tên tài khoản để tự động tham gia nhóm!', 'info');
         return;
       }
       try {
         setIsLoading(true);
-        const joined = await joinGroupByTokenInDb(joinToken, username);
+        const joined = await joinGroupByTokenInDb(cleanToken, username);
         if (joined) {
           setActiveGroup(joined);
           showToast(`Chào mừng bạn đã tham gia nhóm "${joined.name}"! 🎉`, 'success');
-          // Clear query param to avoid duplicate messages
-          const newUrl = window.location.pathname;
-          window.history.replaceState({}, document.title, newUrl);
+          // Clear query or hash param to avoid duplicate joins
+          const cleanUrl = window.location.pathname;
+          window.history.replaceState({}, document.title, cleanUrl);
         } else {
-          showToast('Mã token nhóm không tồn tại hoặc không hợp lệ!', 'error');
+          showToast(`Mã token nhóm (${cleanToken}) không tồn tại hoặc không hợp lệ!`, 'error');
         }
       } catch (err) {
         console.error('Failed to auto join group:', err);
@@ -247,9 +255,22 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
     }
   };
 
+  const getInviteLinkUrl = (token: string) => {
+    try {
+      // Use current window location href to preserve exact host, protocol, and subpaths
+      const url = new URL(window.location.href);
+      url.searchParams.set('joinGroup', token);
+      url.hash = '';
+      return url.toString();
+    } catch {
+      const base = window.location.href.split('?')[0].split('#')[0];
+      return `${base}?joinGroup=${token}`;
+    }
+  };
+
   const handleCopyInviteLink = () => {
     if (!activeGroup) return;
-    const inviteUrl = `${window.location.origin}?joinGroup=${activeGroup.token}`;
+    const inviteUrl = getInviteLinkUrl(activeGroup.token);
     navigator.clipboard.writeText(inviteUrl);
     setCopiedGroupToken(true);
     showToast('Đã sao chép liên kết mời tham gia nhóm học tập! 🔗', 'success');
@@ -323,14 +344,7 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
     g.token.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  let inviteLinkUrl = '';
-  if (activeGroup) {
-    let origin = window.location.origin;
-    if (origin.includes('-dev-')) {
-      origin = origin.replace('-dev-', '-pre-');
-    }
-    inviteLinkUrl = `${origin}?joinGroup=${activeGroup.token}`;
-  }
+  const inviteLinkUrl = activeGroup ? getInviteLinkUrl(activeGroup.token) : '';
   const qrCodeImgSrc = activeGroup ? `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(inviteLinkUrl)}` : '';
 
   // Return non-connected state first if user hasn't set up a name yet
@@ -681,17 +695,15 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
                 <p className="text-xs text-slate-500 font-medium">
                   Đưa điện thoại lên quét mã QR dưới đây để tham gia trực tiếp vào nhóm học tập cực nhanh!
                 </p>
-                {window.location.origin.includes('-dev-') && (
-                  <div className="bg-emerald-50 text-emerald-800 border border-emerald-200/60 p-2.5 rounded-xl text-[11px] font-bold text-left space-y-1">
-                    <p className="flex items-center gap-1">
-                      <Sparkles className="w-3.5 h-3.5 text-emerald-600 shrink-0 animate-pulse" />
-                      <span>Đã chuyển đổi link tự động:</span>
-                    </p>
-                    <p className="text-[10px] text-slate-500 font-medium">
-                      Hệ thống tự đổi link phát triển (<span className="font-mono">dev</span> - bị chặn 403 trên mobile) thành link chia sẻ công khai (<span className="font-mono">pre</span>) để đồng đội quét thành công 100%!
-                    </p>
-                  </div>
-                )}
+                <div className="bg-amber-50 text-amber-900 border border-amber-200/80 p-3 rounded-2xl text-left space-y-1">
+                  <p className="flex items-center gap-1.5 font-bold text-xs">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                    <span>Mã Token Nhóm: <code className="bg-white px-2 py-0.5 rounded border border-amber-300 font-mono font-black text-amber-900">{activeGroup.token}</code></span>
+                  </p>
+                  <p className="text-[11px] text-amber-800 font-medium leading-relaxed">
+                    Đồng đội có thể quét QR, mở link mời, hoặc tự nhập mã <strong>{activeGroup.token}</strong> tại khung "Nhập Mã Token Nhóm" để vào nhóm tức thì!
+                  </p>
+                </div>
               </div>
 
               <div className="bg-slate-50 border border-slate-100 p-4 rounded-3xl w-fit mx-auto shadow-inner">
