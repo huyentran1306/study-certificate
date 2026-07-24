@@ -9,6 +9,7 @@ import {
   createGroupInDb, 
   joinGroupInDb,
   joinGroupByTokenInDb, 
+  fetchGroupByTokenFromDb,
   leaveGroupInDb, 
   fetchGroupMembersProgress,
   fetchUserJoinedGroupIds
@@ -49,6 +50,9 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
   // Local/Temporary Username State for visitors without an account yet
   const [tempUsername, setTempUsername] = useState('');
 
+  // Welcome Popup Modal State for auto-join tokens
+  const [welcomeGroupPopup, setWelcomeGroupPopup] = useState<{ group: StudyGroup; isNewMember: boolean } | null>(null);
+
   // Load groups on mount or when username changes
   useEffect(() => {
     loadAllGroups();
@@ -81,16 +85,38 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
       }
       try {
         setIsLoading(true);
-        const joined = await joinGroupByTokenInDb(cleanToken, username);
-        if (joined) {
-          setActiveGroup(joined);
-          showToast(`Chào mừng bạn đã tham gia nhóm "${joined.name}"! 🎉`, 'success');
-          // Clear query or hash param to avoid duplicate joins
-          const cleanUrl = window.location.pathname;
-          window.history.replaceState({}, document.title, cleanUrl);
-        } else {
+        // Fetch target group by token first
+        const targetGroup = await fetchGroupByTokenFromDb(cleanToken);
+        if (!targetGroup) {
           showToast(`Mã token nhóm (${cleanToken}) không tồn tại hoặc không hợp lệ!`, 'error');
+          return;
         }
+
+        // Check if user is already in this group
+        const userJoinedIds = await fetchUserJoinedGroupIds(username);
+        const alreadyJoined = userJoinedIds.includes(targetGroup.id);
+
+        if (alreadyJoined) {
+          setActiveGroup(targetGroup);
+          setJoinedGroupIds(prev => prev.includes(targetGroup.id) ? prev : [...prev, targetGroup.id]);
+          setWelcomeGroupPopup({ group: targetGroup, isNewMember: false });
+          showToast(`Bạn đã ở trong nhóm "${targetGroup.name}" từ trước rồi! 👋`, 'info');
+        } else {
+          // Join the group now
+          const joinedSuccess = await joinGroupInDb(targetGroup.id, username);
+          if (joinedSuccess) {
+            setActiveGroup(targetGroup);
+            setJoinedGroupIds(prev => prev.includes(targetGroup.id) ? prev : [...prev, targetGroup.id]);
+            setWelcomeGroupPopup({ group: targetGroup, isNewMember: true });
+            showToast(`Chào mừng bạn đã tham gia nhóm "${targetGroup.name}"! 🎉`, 'success');
+          } else {
+            showToast(`Tham gia nhóm thất bại, vui lòng thử lại sau.`, 'error');
+          }
+        }
+
+        // Clear query or hash param to avoid duplicate joins on refresh
+        const cleanUrl = window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
       } catch (err) {
         console.error('Failed to auto join group:', err);
       } finally {
@@ -111,8 +137,12 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
         const userJoinedIds = await fetchUserJoinedGroupIds(username);
         setJoinedGroupIds(userJoinedIds);
 
-        // If user is already in some group, set it as active if none is active
-        if (!activeGroup && userJoinedIds.length > 0 && dbGroups) {
+        // Check if there is an active join token in the URL
+        const searchParams = new URLSearchParams(window.location.search);
+        const hasJoinToken = searchParams.get('joinGroup') || (window.location.hash && window.location.hash.includes('joinGroup='));
+
+        // Only default to first joined group if no group is active and no joinToken is present
+        if (!activeGroup && !hasJoinToken && userJoinedIds.length > 0 && dbGroups) {
           const firstJoined = dbGroups.find(g => userJoinedIds.includes(g.id));
           if (firstJoined) {
             setActiveGroup(firstJoined);
@@ -1018,6 +1048,65 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
               </button>
             </div>
           </form>
+        </div>
+      )}
+
+      {/* Auto Join Welcome Popup Modal */}
+      {welcomeGroupPopup && (
+        <div className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full border border-slate-100 shadow-2xl space-y-6 text-center animate-scaleIn relative overflow-hidden">
+            
+            {/* Background ambient lighting */}
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
+
+            <div className="w-16 h-16 bg-gradient-to-tr from-indigo-600 to-violet-600 text-white rounded-3xl flex items-center justify-center mx-auto shadow-lg shadow-indigo-200 animate-bounce">
+              <Users className="w-8 h-8" />
+            </div>
+
+            <div className="space-y-2">
+              <span className={`text-[10px] font-black px-3.5 py-1 rounded-full uppercase tracking-wider inline-block ${
+                welcomeGroupPopup.isNewMember 
+                  ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' 
+                  : 'bg-indigo-50 text-indigo-700 border border-indigo-200'
+              }`}>
+                {welcomeGroupPopup.isNewMember ? 'Gia nhập thành công! 🎉' : 'Đã ở trong nhóm 👋'}
+              </span>
+
+              <h3 className="text-xl font-black text-slate-900 tracking-tight">
+                {welcomeGroupPopup.isNewMember ? 'Chào Mừng Đến Với Nhóm Học Tập!' : 'Bạn Đã Là Thành Viên Nhóm này!'}
+              </h3>
+
+              <div className="p-4 bg-slate-50 border border-slate-200/80 rounded-2xl text-left space-y-1">
+                <p className="text-xs font-black text-indigo-600 uppercase tracking-wider">
+                  Mã nhóm: {welcomeGroupPopup.group.token}
+                </p>
+                <p className="text-sm font-black text-slate-800">
+                  {welcomeGroupPopup.group.name}
+                </p>
+                {welcomeGroupPopup.group.description && (
+                  <p className="text-xs text-slate-500 font-medium line-clamp-2">
+                    {welcomeGroupPopup.group.description}
+                  </p>
+                )}
+              </div>
+
+              <p className="text-slate-500 text-xs font-medium leading-relaxed">
+                {welcomeGroupPopup.isNewMember 
+                  ? 'Bạn đã được thêm vào nhóm học tập thành công. Hãy bắt đầu thi đua thứ hạng và làm bài cùng các thành viên ngay nào!'
+                  : 'Hệ thống đã chuyển bạn trực tiếp vào không gian làm việc của nhóm. Xem tiến độ và chuỗi học tập của đồng đội ngay bên dưới!'}
+              </p>
+            </div>
+
+            <button
+              onClick={() => setWelcomeGroupPopup(null)}
+              className="w-full bg-slate-900 hover:bg-indigo-600 text-white font-black py-3.5 rounded-2xl text-xs transition-all cursor-pointer shadow-md flex items-center justify-center gap-2"
+            >
+              <Sparkles className="w-4 h-4 text-amber-300" />
+              <span>Thấy Tuyệt Vời! Vào Nhóm Ngay 🚀</span>
+            </button>
+
+          </div>
         </div>
       )}
     </div>

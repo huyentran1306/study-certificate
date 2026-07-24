@@ -532,6 +532,30 @@ export async function joinGroupInDb(groupId: string, username: string): Promise<
   }
 }
 
+export async function fetchGroupByTokenFromDb(token: string): Promise<any | null> {
+  try {
+    const { data, error } = await supabase
+      .from('study_groups')
+      .select('*')
+      .eq('token', token)
+      .maybeSingle();
+
+    if (error || !data) return null;
+
+    return {
+      id: data.id,
+      name: data.name,
+      description: data.description || '',
+      createdBy: data.created_by,
+      token: data.token,
+      createdAt: data.created_at
+    };
+  } catch (err) {
+    console.error('Failed to fetch group by token from DB:', err);
+    return null;
+  }
+}
+
 export async function joinGroupByTokenInDb(token: string, username: string): Promise<any | null> {
   try {
     const { data, error } = await supabase

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, X, Settings2, Heart, RefreshCw, Volume2, Check } from 'lucide-react';
+import { Sparkles, X, Settings2, Heart, Check, Plus, Edit3, Palette } from 'lucide-react';
 import { fetchUserPetFromDb, saveUserPetToDb } from '../lib/sync';
 
 export interface PetOption {
@@ -166,6 +166,36 @@ export const PET_OPTIONS: PetOption[] = [
   }
 ];
 
+// Helper to resolve custom vs preset pets
+export function getPetFromId(idStr: string): PetOption {
+  if (!idStr) return PET_OPTIONS[0];
+
+  if (idStr.startsWith('custom:')) {
+    const parts = idStr.split(':');
+    const customEmoji = parts[1] || '✨';
+    const customName = parts[2] || 'Linh Vật Tùy Chỉnh';
+    return {
+      id: idStr,
+      name: customName,
+      emoji: customEmoji,
+      tagline: 'Linh vật do chính bạn tạo ra!',
+      quotes: [
+        `${customEmoji} ${customName} chúc bạn trả lời đúng 100%! 🎉`,
+        `Ôn tập cực sung cùng ${customEmoji} ${customName}! ✨`,
+        `Cố lên! ${customName} tin bạn chắc chắn đậu chứng chỉ! 🏆`,
+        `Mỗi ngày tích lũy thêm 100 điểm cùng ${customEmoji}! 🚀`
+      ],
+      color: 'text-purple-600',
+      bgColor: 'bg-purple-50',
+      borderColor: 'border-purple-200'
+    };
+  }
+
+  return PET_OPTIONS.find(p => p.id === idStr) || PET_OPTIONS[0];
+}
+
+const QUICK_EMOJI_LIST = ['🦄', '🐯', '🐥', '🦁', '🐸', '👾', '👻', '🚀', '🌟', '🍉', '🍀', '👑', '⚽', '🌺', '🍕', '🎯', '🦄', '🐝', '🐙', '🦖'];
+
 interface FloatingPetProps {
   username?: string;
   showToast?: (msg: string, type: 'success' | 'error' | 'info') => void;
@@ -175,6 +205,11 @@ export default function FloatingPet({ username = '', showToast }: FloatingPetPro
   const [selectedPetId, setSelectedPetId] = useState<string>(() => {
     return localStorage.getItem('study_user_pet_avatar') || 'cat';
   });
+
+  // Custom creation fields
+  const [customEmojiInput, setCustomEmojiInput] = useState('🦄');
+  const [customNameInput, setCustomNameInput] = useState('Kỳ Lân May Mắn');
+  const [activeTab, setActiveTab] = useState<'presets' | 'custom'>('presets');
 
   // Position state (x: px from left, y: px from bottom)
   const [pos, setPos] = useState<{ x: number; y: number }>(() => {
@@ -193,7 +228,6 @@ export default function FloatingPet({ username = '', showToast }: FloatingPetPro
   const [showQuoteBubble, setShowQuoteBubble] = useState(false);
   const [currentQuote, setCurrentQuote] = useState('');
   const [showSelectorModal, setShowSelectorModal] = useState(false);
-  const [isSyncing, setIsSyncing] = useState(false);
 
   // Dragging state
   const [isDragging, setIsDragging] = useState(false);
@@ -205,14 +239,14 @@ export default function FloatingPet({ username = '', showToast }: FloatingPetPro
     hasMoved: boolean;
   }>({ startX: 0, startY: 0, initialPosX: 0, initialPosY: 0, hasMoved: false });
 
-  const currentPet = PET_OPTIONS.find(p => p.id === selectedPetId) || PET_OPTIONS[0];
+  const currentPet = getPetFromId(selectedPetId);
 
   // Sync pet from DB when username changes
   useEffect(() => {
     if (!username) return;
     async function loadPetFromDb() {
       const dbPetId = await fetchUserPetFromDb(username);
-      if (dbPetId && PET_OPTIONS.some(p => p.id === dbPetId)) {
+      if (dbPetId) {
         setSelectedPetId(dbPetId);
         localStorage.setItem('study_user_pet_avatar', dbPetId);
       }
@@ -265,7 +299,6 @@ export default function FloatingPet({ username = '', showToast }: FloatingPetPro
       }
 
       const newX = Math.max(10, Math.min(window.innerWidth - 80, dragRef.current.initialPosX + dx));
-      // Y is measured from bottom of screen
       const newY = Math.max(10, Math.min(window.innerHeight - 80, dragRef.current.initialPosY - dy));
 
       setPos({ x: newX, y: newY });
@@ -292,7 +325,6 @@ export default function FloatingPet({ username = '', showToast }: FloatingPetPro
   }, [isDragging, pos]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
-    // Only handle primary click
     if (e.button !== 0) return;
     dragRef.current = {
       startX: e.clientX,
@@ -336,18 +368,25 @@ export default function FloatingPet({ username = '', showToast }: FloatingPetPro
     localStorage.setItem('study_user_pet_avatar', petId);
     setShowSelectorModal(false);
 
-    const newPet = PET_OPTIONS.find(p => p.id === petId) || PET_OPTIONS[0];
+    const newPet = getPetFromId(petId);
     if (showToast) {
       showToast(`Đã chọn linh vật đồng hành: ${newPet.emoji} ${newPet.name}!`, 'success');
     }
 
     if (username) {
-      setIsSyncing(true);
       await saveUserPetToDb(username, petId);
-      setIsSyncing(false);
     }
 
     triggerRandomQuote(true);
+  };
+
+  const handleSaveCustomPet = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const emoji = customEmojiInput.trim() || '✨';
+    const name = customNameInput.trim() || 'Linh Vật Của Tôi';
+    const customId = `custom:${emoji}:${name}`;
+
+    await handleSelectPet(customId);
   };
 
   return (
@@ -394,7 +433,7 @@ export default function FloatingPet({ username = '', showToast }: FloatingPetPro
           <div className="relative">
             <button
               onClick={(e) => {
-                if (dragRef.current.hasMoved) return; // ignore click if dragged
+                if (dragRef.current.hasMoved) return;
                 triggerRandomQuote(true);
                 setIsWalking(prev => !prev);
               }}
@@ -438,16 +477,16 @@ export default function FloatingPet({ username = '', showToast }: FloatingPetPro
       {/* Select Mascot Modal Popup */}
       {showSelectorModal && (
         <div className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl p-6 md:p-8 max-w-lg w-full border border-slate-100 shadow-2xl space-y-6 animate-scaleIn max-h-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-3xl p-6 md:p-8 max-w-lg w-full border border-slate-100 shadow-2xl space-y-5 animate-scaleIn max-h-[90vh] overflow-y-auto">
             
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <div className="space-y-1">
                 <h3 className="text-base font-black text-slate-900 flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-amber-500 animate-spin" />
-                  Chọn Linh Vật Đồng Hành 🐾
+                  Đổi Linh Vật Đồng Hành 🐾
                 </h3>
                 <p className="text-[11px] text-slate-500 font-medium">
-                  Lựa chọn linh vật bạn yêu thích để đi dạo cổ vũ ôn thi trên ứng dụng!
+                  Chọn biểu tượng có sẵn hoặc tự gõ emoji yêu thích của bạn!
                 </p>
               </div>
               <button
@@ -458,46 +497,131 @@ export default function FloatingPet({ username = '', showToast }: FloatingPetPro
               </button>
             </div>
 
-            {/* Mascot Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-2 gap-3">
-              {PET_OPTIONS.map(pet => {
-                const isSelected = pet.id === selectedPetId;
-                return (
-                  <button
-                    key={pet.id}
-                    onClick={() => handleSelectPet(pet.id)}
-                    className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-3 relative group ${
-                      isSelected 
-                        ? `${pet.bgColor} ${pet.borderColor} ring-2 ring-indigo-500 shadow-md` 
-                        : 'bg-white border-slate-200/80 hover:border-slate-300 hover:bg-slate-50/80'
-                    }`}
-                  >
-                    <span className="text-3xl p-2 bg-white/80 rounded-xl border border-slate-100 shadow-xs group-hover:scale-110 transition-transform">
-                      {pet.emoji}
-                    </span>
+            {/* Tab selection bar */}
+            <div className="flex items-center gap-2 p-1 bg-slate-100 rounded-2xl">
+              <button
+                onClick={() => setActiveTab('presets')}
+                className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+                  activeTab === 'presets' ? 'bg-white text-indigo-600 shadow-xs' : 'text-slate-500 hover:text-slate-900'
+                }`}
+              >
+                <Palette className="w-3.5 h-3.5" />
+                <span>Danh Sách Mẫu</span>
+              </button>
 
-                    <div className="space-y-0.5 flex-1 min-w-0">
-                      <div className="flex items-center justify-between gap-1">
-                        <h4 className="text-xs font-black text-slate-900 truncate">{pet.name}</h4>
-                        {isSelected && (
-                          <span className="bg-indigo-600 text-white p-0.5 rounded-full shrink-0">
-                            <Check className="w-3 h-3" />
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-[10px] text-slate-500 font-medium line-clamp-2 leading-tight">
-                        {pet.tagline}
-                      </p>
-                    </div>
-                  </button>
-                );
-              })}
+              <button
+                onClick={() => setActiveTab('custom')}
+                className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+                  activeTab === 'custom' ? 'bg-white text-indigo-600 shadow-xs' : 'text-slate-500 hover:text-slate-900'
+                }`}
+              >
+                <Edit3 className="w-3.5 h-3.5" />
+                <span>Tự Đổi Icon / Emoji</span>
+              </button>
             </div>
+
+            {activeTab === 'presets' ? (
+              /* Mascot Preset Grid */
+              <div className="grid grid-cols-2 sm:grid-cols-2 gap-3">
+                {PET_OPTIONS.map(pet => {
+                  const isSelected = pet.id === selectedPetId;
+                  return (
+                    <button
+                      key={pet.id}
+                      onClick={() => handleSelectPet(pet.id)}
+                      className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-3 relative group ${
+                        isSelected 
+                          ? `${pet.bgColor} ${pet.borderColor} ring-2 ring-indigo-500 shadow-md` 
+                          : 'bg-white border-slate-200/80 hover:border-slate-300 hover:bg-slate-50/80'
+                      }`}
+                    >
+                      <span className="text-3xl p-2 bg-white/80 rounded-xl border border-slate-100 shadow-xs group-hover:scale-110 transition-transform">
+                        {pet.emoji}
+                      </span>
+
+                      <div className="space-y-0.5 flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-1">
+                          <h4 className="text-xs font-black text-slate-900 truncate">{pet.name}</h4>
+                          {isSelected && (
+                            <span className="bg-indigo-600 text-white p-0.5 rounded-full shrink-0">
+                              <Check className="w-3 h-3" />
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-[10px] text-slate-500 font-medium line-clamp-2 leading-tight">
+                          {pet.tagline}
+                        </p>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            ) : (
+              /* Custom Emoji & Name Creator Form */
+              <form onSubmit={handleSaveCustomPet} className="space-y-4 bg-slate-50 border border-slate-200/80 p-5 rounded-2xl">
+                <div className="space-y-2">
+                  <label className="text-xs font-black text-slate-700 flex items-center justify-between">
+                    <span>1. Nhập hoặc chọn Emoji biểu tượng:</span>
+                    <span className="text-[11px] font-bold text-indigo-600">Preview: {customEmojiInput || '✨'}</span>
+                  </label>
+                  
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={customEmojiInput}
+                      onChange={(e) => setCustomEmojiInput(e.target.value)}
+                      placeholder="Ví dụ: 🦄, 🐯, 🐥, 🚀, 🦉..."
+                      className="flex-1 px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-base text-center font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+                      maxLength={4}
+                    />
+                  </div>
+
+                  {/* Quick Select Emoji Chips */}
+                  <div className="pt-1 flex flex-wrap gap-1.5">
+                    {QUICK_EMOJI_LIST.map((emo, idx) => (
+                      <button
+                        type="button"
+                        key={idx}
+                        onClick={() => setCustomEmojiInput(emo)}
+                        className={`text-lg p-1.5 bg-white border hover:bg-indigo-50 rounded-lg transition-transform active:scale-90 cursor-pointer ${
+                          customEmojiInput === emo ? 'border-indigo-500 bg-indigo-50 ring-1 ring-indigo-500' : 'border-slate-200'
+                        }`}
+                      >
+                        {emo}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-black text-slate-700">
+                    2. Đặt tên gọi linh vật tùy chọn:
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={customNameInput}
+                    onChange={(e) => setCustomNameInput(e.target.value)}
+                    placeholder="Ví dụ: Kỳ Lân May Mắn, Bé Gà Thông Thái..."
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+                    maxLength={30}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-indigo-600 hover:bg-slate-900 text-white font-black text-xs py-3 rounded-xl transition-all cursor-pointer shadow-md flex items-center justify-center gap-2"
+                >
+                  <Sparkles className="w-4 h-4 text-amber-300" />
+                  <span>Áp Dụng Linh Vật Tự Chọn</span>
+                </button>
+              </form>
+            )}
 
             {/* Modal Footer */}
             <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
               <span className="text-[11px] text-slate-400">
-                Linh vật sẽ tự động lưu vào tài khoản Database & LocalStorage.
+                Linh vật tự động đồng bộ tài khoản Database & LocalStorage.
               </span>
               <button
                 onClick={() => setShowSelectorModal(false)}
