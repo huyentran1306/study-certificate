@@ -751,5 +751,70 @@ export async function updateVipKeyExpiryInDb(certId: string, keyToUpdate: string
   }
 }
 
+// ----------------- USER JOINED GROUPS SYNC -----------------
+
+export async function fetchUserJoinedGroupIds(username: string): Promise<string[]> {
+  try {
+    const { data, error } = await supabase
+      .from('group_members')
+      .select('group_id')
+      .eq('username', username);
+
+    if (error) {
+      console.warn('Could not fetch joined group IDs:', error.message);
+      return [];
+    }
+
+    return (data || []).map((row: any) => row.group_id);
+  } catch (err) {
+    console.error('Failed to fetch joined group IDs:', err);
+    return [];
+  }
+}
+
+// ----------------- USER PET MASCOT CONFIGURATION DB SYNC -----------------
+
+export async function fetchUserPetFromDb(username: string): Promise<string | null> {
+  try {
+    const { data, error } = await supabase
+      .from('user_pets')
+      .select('pet_id')
+      .eq('username', username)
+      .maybeSingle();
+
+    if (error) {
+      console.warn('Could not fetch user pet from DB:', error.message);
+      return null;
+    }
+
+    return data?.pet_id || null;
+  } catch (err) {
+    console.error('Failed to fetch user pet from DB:', err);
+    return null;
+  }
+}
+
+export async function saveUserPetToDb(username: string, petId: string): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('user_pets')
+      .upsert({
+        username,
+        pet_id: petId,
+        updated_at: new Date().toISOString()
+      }, { onConflict: 'username' });
+
+    if (error) {
+      console.error('Error saving user pet to DB:', error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Failed to save user pet to DB:', err);
+    return false;
+  }
+}
+
+
 
 

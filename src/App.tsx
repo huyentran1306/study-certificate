@@ -46,6 +46,7 @@ import MockExam from './components/MockExam';
 import CustomQuestionsImport from './components/CustomQuestionsImport';
 import AdminPanel from './components/AdminPanel';
 import GroupStudy from './components/GroupStudy';
+import FloatingPet from './components/FloatingPet';
 
 
 // Supabase synchronization functions
@@ -2633,6 +2634,9 @@ export default function App() {
           </div>
         </div>
       )}
+
+      {/* Floating Animated Mascot / Pet */}
+      <FloatingPet username={username} showToast={showAppToast} />
     </div>
   );
 }

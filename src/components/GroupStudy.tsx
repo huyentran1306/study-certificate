@@ -10,7 +10,8 @@ import {
   joinGroupInDb,
   joinGroupByTokenInDb, 
   leaveGroupInDb, 
-  fetchGroupMembersProgress 
+  fetchGroupMembersProgress,
+  fetchUserJoinedGroupIds
 } from '../lib/sync';
 import { StudyGroup, GroupMemberProgress } from '../types';
 
@@ -23,8 +24,10 @@ interface GroupStudyProps {
 
 export default function GroupStudy({ username, onUsernameChange, certificates, showToast }: GroupStudyProps) {
   const [groups, setGroups] = useState<StudyGroup[]>([]);
+  const [joinedGroupIds, setJoinedGroupIds] = useState<string[]>([]);
   const [activeGroup, setActiveGroup] = useState<StudyGroup | null>(null);
   const [membersProgress, setMembersProgress] = useState<GroupMemberProgress[]>([]);
+
   
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -102,22 +105,17 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
       const dbGroups = await fetchGroupsFromDb();
       if (dbGroups) {
         setGroups(dbGroups);
-        
+      }
+
+      if (username) {
+        const userJoinedIds = await fetchUserJoinedGroupIds(username);
+        setJoinedGroupIds(userJoinedIds);
+
         // If user is already in some group, set it as active if none is active
-        if (username && !activeGroup) {
-          // Check if user is a member of any fetched group
-          for (const group of dbGroups) {
-            const { data } = await supabase
-              .from('group_members')
-              .select('*')
-              .eq('group_id', group.id)
-              .eq('username', username)
-              .maybeSingle();
-            
-            if (data) {
-              setActiveGroup(group);
-              break;
-            }
+        if (!activeGroup && userJoinedIds.length > 0 && dbGroups) {
+          const firstJoined = dbGroups.find(g => userJoinedIds.includes(g.id));
+          if (firstJoined) {
+            setActiveGroup(firstJoined);
           }
         }
       }
@@ -197,6 +195,7 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
       setIsLoading(true);
       const success = await joinGroupInDb(group.id, username);
       if (success) {
+        setJoinedGroupIds(prev => prev.includes(group.id) ? prev : [...prev, group.id]);
         setActiveGroup(group);
         showToast(`Đã tham gia nhóm "${group.name}" thành công!`, 'success');
       } else {
@@ -221,6 +220,7 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
       setIsLoading(true);
       const group = await joinGroupByTokenInDb(tokenInput.trim().toUpperCase(), username);
       if (group) {
+        setJoinedGroupIds(prev => prev.includes(group.id) ? prev : [...prev, group.id]);
         setActiveGroup(group);
         showToast(`Đã tham gia thành công nhóm "${group.name}"!`, 'success');
       } else {
@@ -228,6 +228,31 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
       }
     } catch (err) {
       console.error('Error joining group by token:', err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleLeaveGroupFromList = async (group: StudyGroup, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (!username) return;
+    if (!window.confirm(`Bạn có chắc chắn muốn rời khỏi nhóm "${group.name}" không?`)) return;
+
+    try {
+      setIsLoading(true);
+      const success = await leaveGroupInDb(group.id, username);
+      if (success) {
+        showToast(`Đã rời khỏi nhóm "${group.name}"`, 'info');
+        setJoinedGroupIds(prev => prev.filter(id => id !== group.id));
+        if (activeGroup?.id === group.id) {
+          setActiveGroup(null);
+          setMembersProgress([]);
+        }
+      } else {
+        showToast('Rời nhóm thất bại.', 'error');
+      }
+    } catch (err) {
+      console.error('Error leaving group from list:', err);
     } finally {
       setIsLoading(false);
     }
@@ -242,6 +267,7 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
       const success = await leaveGroupInDb(activeGroup.id, username);
       if (success) {
         showToast(`Đã rời khỏi nhóm "${activeGroup.name}"`, 'info');
+        setJoinedGroupIds(prev => prev.filter(id => id !== activeGroup.id));
         setActiveGroup(null);
         setMembersProgress([]);
         loadAllGroups();
@@ -800,37 +826,72 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
                 <Loader2 className="w-8 h-8 animate-spin text-indigo-500 mx-auto" />
                 <p className="text-xs text-slate-400 font-bold mt-2">Đang tải danh sách nhóm từ Database...</p>
               </div>
-            ) : filteredGroups.map(group => (
-              <div 
-                key={group.id}
-                className="bg-white border border-slate-100 hover:border-indigo-100 rounded-3xl p-5 shadow-sm hover:shadow-md transition-all space-y-4 flex flex-col justify-between"
-              >
-                <div className="space-y-1.5">
-                  <div className="flex items-center justify-between gap-2">
-                    <h4 className="text-sm font-black text-slate-900 tracking-tight">{group.name}</h4>
-                    <span className="text-[10px] font-black text-indigo-700 bg-indigo-50 border border-indigo-100/50 px-2.5 py-0.5 rounded-lg">
-                      Mã: {group.token}
-                    </span>
+            ) : filteredGroups.map(group => {
+              const isJoined = joinedGroupIds.includes(group.id);
+              return (
+                <div 
+                  key={group.id}
+                  className={`bg-white border rounded-3xl p-5 shadow-sm hover:shadow-md transition-all space-y-4 flex flex-col justify-between ${
+                    isJoined ? 'border-indigo-200/80 bg-indigo-50/20' : 'border-slate-100 hover:border-indigo-100'
+                  }`}
+                >
+                  <div className="space-y-1.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <h4 className="text-sm font-black text-slate-900 tracking-tight">{group.name}</h4>
+                        {isJoined && (
+                          <span className="text-[10px] font-black text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-lg flex items-center gap-1">
+                            <Check className="w-3 h-3 text-emerald-600" />
+                            Đã tham gia
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-[10px] font-black text-indigo-700 bg-indigo-50 border border-indigo-100/50 px-2.5 py-0.5 rounded-lg shrink-0">
+                        Mã: {group.token}
+                      </span>
+                    </div>
+                    {group.description && (
+                      <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                        {group.description}
+                      </p>
+                    )}
                   </div>
-                  {group.description && (
-                    <p className="text-xs text-slate-500 font-medium leading-relaxed">
-                      {group.description}
-                    </p>
-                  )}
-                </div>
 
-                <div className="flex items-center justify-between pt-3 border-t border-slate-50 text-[11px] font-bold text-slate-400">
-                  <span>Tạo bởi: <strong className="text-slate-700 font-extrabold">{group.createdBy}</strong></span>
-                  <button
-                    onClick={() => handleJoinGroup(group)}
-                    className="bg-indigo-600 hover:bg-slate-900 text-white font-bold text-xs px-4 py-2 rounded-xl transition-all cursor-pointer shadow-xs shrink-0 flex items-center gap-1"
-                  >
-                    <Plus className="w-3.5 h-3.5" />
-                    <span>Gia nhập</span>
-                  </button>
+                  <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-[11px] font-bold text-slate-400">
+                    <span>Tạo bởi: <strong className="text-slate-700 font-extrabold">{group.createdBy}</strong></span>
+                    
+                    {isJoined ? (
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => setActiveGroup(group)}
+                          className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition-all cursor-pointer shadow-xs shrink-0 flex items-center gap-1.5"
+                        >
+                          <Trophy className="w-3.5 h-3.5 text-amber-300" />
+                          <span>Vào nhóm</span>
+                        </button>
+
+                        <button
+                          onClick={(e) => handleLeaveGroupFromList(group, e)}
+                          className="bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-500 font-bold text-xs px-3 py-2 rounded-xl transition-all cursor-pointer border border-slate-200 shrink-0 flex items-center gap-1"
+                          title="Rời khỏi nhóm này"
+                        >
+                          <LogOut className="w-3.5 h-3.5" />
+                          <span>Rời nhóm</span>
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => handleJoinGroup(group)}
+                        className="bg-indigo-600 hover:bg-slate-900 text-white font-bold text-xs px-4 py-2 rounded-xl transition-all cursor-pointer shadow-xs shrink-0 flex items-center gap-1"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Gia nhập</span>
+                      </button>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
 
             {!isLoading && filteredGroups.length === 0 && (
               <div className="bg-white border border-slate-100 rounded-3xl p-12 text-center space-y-3">
