@@ -50,6 +50,10 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
   // Local/Temporary Username State for visitors without an account yet
   const [tempUsername, setTempUsername] = useState('');
 
+  // Pending Invite state for visitors without a username who clicked a join link
+  const [pendingInviteGroup, setPendingInviteGroup] = useState<StudyGroup | null>(null);
+  const [inviteUsernameInput, setInviteUsernameInput] = useState('');
+
   // Welcome Popup Modal State for auto-join tokens
   const [welcomeGroupPopup, setWelcomeGroupPopup] = useState<{ group: StudyGroup; isNewMember: boolean } | null>(null);
 
@@ -79,10 +83,6 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
 
     if (joinToken) {
       const cleanToken = joinToken.trim().toUpperCase();
-      if (!username) {
-        showToast('Vui lòng đặt tên tài khoản để tự động tham gia nhóm!', 'info');
-        return;
-      }
       try {
         setIsLoading(true);
         // Fetch target group by token first
@@ -92,12 +92,19 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
           return;
         }
 
+        // Focus active group right away
+        setActiveGroup(targetGroup);
+
+        if (!username) {
+          setPendingInviteGroup(targetGroup);
+          return;
+        }
+
         // Check if user is already in this group
         const userJoinedIds = await fetchUserJoinedGroupIds(username);
         const alreadyJoined = userJoinedIds.includes(targetGroup.id);
 
         if (alreadyJoined) {
-          setActiveGroup(targetGroup);
           setJoinedGroupIds(prev => prev.includes(targetGroup.id) ? prev : [...prev, targetGroup.id]);
           setWelcomeGroupPopup({ group: targetGroup, isNewMember: false });
           showToast(`Bạn đã ở trong nhóm "${targetGroup.name}" từ trước rồi! 👋`, 'info');
@@ -105,7 +112,6 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
           // Join the group now
           const joinedSuccess = await joinGroupInDb(targetGroup.id, username);
           if (joinedSuccess) {
-            setActiveGroup(targetGroup);
             setJoinedGroupIds(prev => prev.includes(targetGroup.id) ? prev : [...prev, targetGroup.id]);
             setWelcomeGroupPopup({ group: targetGroup, isNewMember: true });
             showToast(`Chào mừng bạn đã tham gia nhóm "${targetGroup.name}"! 🎉`, 'success');
@@ -123,6 +129,27 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
         setIsLoading(false);
       }
     }
+  };
+
+  const handleConfirmPendingJoin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!pendingInviteGroup) return;
+    const cleanName = inviteUsernameInput.trim();
+    if (!cleanName) {
+      showToast('Vui lòng nhập tên tài khoản của bạn!', 'error');
+      return;
+    }
+
+    onUsernameChange(cleanName);
+    const joinedSuccess = await joinGroupInDb(pendingInviteGroup.id, cleanName);
+    if (joinedSuccess) {
+      setJoinedGroupIds(prev => prev.includes(pendingInviteGroup.id) ? prev : [...prev, pendingInviteGroup.id]);
+      setWelcomeGroupPopup({ group: pendingInviteGroup, isNewMember: true });
+      showToast(`Chào mừng ${cleanName} đã tham gia nhóm "${pendingInviteGroup.name}"! 🎉`, 'success');
+    }
+    setPendingInviteGroup(null);
+    const cleanUrl = window.location.pathname;
+    window.history.replaceState({}, document.title, cleanUrl);
   };
 
   const loadAllGroups = async () => {
@@ -1105,6 +1132,74 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
               <Sparkles className="w-4 h-4 text-amber-300" />
               <span>Thấy Tuyệt Vời! Vào Nhóm Ngay 🚀</span>
             </button>
+
+          </div>
+        </div>
+      )}
+
+      {/* Pending Invite Name Modal for New Users without Username */}
+      {pendingInviteGroup && (
+        <div className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full border border-slate-100 shadow-2xl space-y-6 animate-scaleIn relative overflow-hidden">
+            
+            <div className="w-14 h-14 bg-indigo-50 text-indigo-600 border border-indigo-200 rounded-3xl flex items-center justify-center mx-auto shadow-sm">
+              <Users className="w-7 h-7" />
+            </div>
+
+            <div className="text-center space-y-2">
+              <span className="text-[10px] font-black uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200 px-3 py-1 rounded-full inline-block">
+                Lời mời tham gia nhóm 📩
+              </span>
+              <h3 className="text-lg font-black text-slate-900">
+                Mời Bạn Vào Nhóm Học Tập!
+              </h3>
+              <div className="p-3.5 bg-slate-50 border border-slate-200/80 rounded-2xl text-left space-y-1">
+                <p className="text-xs font-black text-indigo-600 uppercase tracking-wider">
+                  Mã nhóm: {pendingInviteGroup.token}
+                </p>
+                <p className="text-sm font-black text-slate-800">
+                  {pendingInviteGroup.name}
+                </p>
+                {pendingInviteGroup.description && (
+                  <p className="text-xs text-slate-500 font-medium line-clamp-2">
+                    {pendingInviteGroup.description}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <form onSubmit={handleConfirmPendingJoin} className="space-y-4">
+              <div className="space-y-1.5 text-left">
+                <label className="text-xs font-black text-slate-700">
+                  Nhập Tên / Biệt danh của bạn để tham gia nhóm:
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={inviteUsernameInput}
+                  onChange={(e) => setInviteUsernameInput(e.target.value)}
+                  placeholder="Ví dụ: HuyenTran, Admin, DevMaster..."
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-2xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white"
+                />
+              </div>
+
+              <div className="flex gap-2 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setPendingInviteGroup(null)}
+                  className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold rounded-2xl text-xs transition-colors cursor-pointer"
+                >
+                  Bỏ qua
+                </button>
+                <button
+                  type="submit"
+                  className="flex-2 bg-indigo-600 hover:bg-slate-900 text-white font-black py-3 rounded-2xl text-xs transition-all cursor-pointer shadow-md flex items-center justify-center gap-1.5"
+                >
+                  <Sparkles className="w-4 h-4 text-amber-300" />
+                  <span>Xác Nhận Vào Nhóm Ngay 🚀</span>
+                </button>
+              </div>
+            </form>
 
           </div>
         </div>

@@ -534,10 +534,11 @@ export async function joinGroupInDb(groupId: string, username: string): Promise<
 
 export async function fetchGroupByTokenFromDb(token: string): Promise<any | null> {
   try {
+    const cleanToken = token.trim();
     const { data, error } = await supabase
       .from('study_groups')
       .select('*')
-      .eq('token', token)
+      .ilike('token', cleanToken)
       .maybeSingle();
 
     if (error || !data) return null;
@@ -771,6 +772,48 @@ export async function updateVipKeyExpiryInDb(certId: string, keyToUpdate: string
     return true;
   } catch (err) {
     console.error('Failed to update VIP key expiry in DB:', err);
+    return false;
+  }
+}
+
+// ----------------- CERTIFICATE VIP STATUS OVERRIDES SYNC -----------------
+
+export async function fetchCertVipStatusesFromDb(): Promise<Record<string, boolean> | null> {
+  try {
+    const { data, error } = await supabase
+      .from('cert_vip_statuses')
+      .select('cert_id, is_vip');
+
+    if (error || !data) return null;
+
+    const result: Record<string, boolean> = {};
+    data.forEach((row: any) => {
+      result[row.cert_id] = !!row.is_vip;
+    });
+    return result;
+  } catch (err) {
+    console.error('Failed to fetch cert VIP statuses from DB:', err);
+    return null;
+  }
+}
+
+export async function saveCertVipStatusToDb(certId: string, isVip: boolean): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('cert_vip_statuses')
+      .upsert({
+        cert_id: certId,
+        is_vip: isVip,
+        updated_at: new Date().toISOString()
+      }, { onConflict: 'cert_id' });
+
+    if (error) {
+      console.warn('Error saving cert VIP status to DB:', error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Failed to save cert VIP status to DB:', err);
     return false;
   }
 }

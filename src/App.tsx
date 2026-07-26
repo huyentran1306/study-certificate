@@ -63,7 +63,9 @@ import {
   saveVipKeyConfigToDb,
   deleteVipKeyConfigFromDb,
   updateVipKeyDisabledInDb,
-  updateVipKeyExpiryInDb
+  updateVipKeyExpiryInDb,
+  fetchCertVipStatusesFromDb,
+  saveCertVipStatusToDb
 } from './lib/sync';
 
 function DynamicIcon({ name, className = "w-5 h-5" }: { name: string; className?: string }) {
@@ -179,7 +181,7 @@ export default function App() {
       estimatedHours: '15-20 Giờ',
       colorClass: 'bg-gradient-to-br from-indigo-700 via-blue-800 to-slate-900 text-white',
       iconName: 'Database',
-      isVIP: true,
+      isVIP: false,
       accessKeys: ['DP800-VIP-2026', 'AZURE-VIP', 'VIP-PRO-2026']
     }
   ]);
@@ -219,8 +221,16 @@ export default function App() {
     }
   }, [appToast]);
 
-  // Current states - default to the new Home view
-  const [mode, setMode] = useState<StudyMode>('home');
+  // Current states - default to the new Home view unless joinGroup URL param exists
+  const [mode, setMode] = useState<StudyMode>(() => {
+    if (typeof window !== 'undefined') {
+      const searchParams = new URLSearchParams(window.location.search);
+      const hasJoinQuery = searchParams.has('joinGroup');
+      const hasJoinHash = window.location.hash && window.location.hash.includes('joinGroup=');
+      if (hasJoinQuery || hasJoinHash) return 'group';
+    }
+    return 'home';
+  });
   const [asteriskClicks, setAsteriskClicks] = useState(0);
 
   // Auto reset click counter after 4 seconds of inactivity
@@ -409,6 +419,30 @@ export default function App() {
     }
     loadVipKeysFromDb();
 
+    // 0. Load VIP status overrides from localStorage and DB
+    async function loadVipStatuses() {
+      let overrides: Record<string, boolean> = {};
+      try {
+        const stored = localStorage.getItem('cert_vip_overrides');
+        if (stored) overrides = JSON.parse(stored);
+      } catch {}
+
+      const dbStatuses = await fetchCertVipStatusesFromDb();
+      if (dbStatuses && Object.keys(dbStatuses).length > 0) {
+        overrides = { ...overrides, ...dbStatuses };
+      }
+
+      if (Object.keys(overrides).length > 0) {
+        setCertificates(prev => prev.map(c => {
+          if (overrides[c.id] !== undefined) {
+            return { ...c, isVIP: overrides[c.id] };
+          }
+          return c;
+        }));
+      }
+    }
+    loadVipStatuses();
+
     // 1. Gather custom certificates from storage
     const storedCustomCerts = localStorage.getItem('study_certs_custom');
     if (storedCustomCerts) {
@@ -426,22 +460,13 @@ export default function App() {
 
     // 2. Select initial active cert and load its content
     let lastActiveCert = localStorage.getItem('study_active_cert') || 'gh-300';
-    if (['cca-f', 'dp-800'].includes(lastActiveCert)) {
-      const storedUnlocked = localStorage.getItem('unlocked_certs');
-      let unlockedArr: string[] = [];
-      if (storedUnlocked) { try { unlockedArr = JSON.parse(storedUnlocked); } catch {} }
-      if (!unlockedArr.includes(lastActiveCert)) {
-        lastActiveCert = 'gh-300';
-      }
-    }
     setActiveCertId(lastActiveCert);
     loadCertData(lastActiveCert, username);
   }, []);
 
   // Helper to check if a certificate is locked for the current session
   const checkIsCertLocked = (cert: Certificate): boolean => {
-    const isVip = cert.isVIP || cert.id === 'cca-f' || cert.id === 'dp-800';
-    if (!isVip) return false;
+    if (!cert.isVIP) return false;
     return !unlockedCertIds.includes(cert.id);
   };
 
@@ -616,14 +641,23 @@ export default function App() {
   };
 
   const handleToggleCertVip = (certId: string) => {
-    setCertificates(prev => prev.map(c => {
-      if (c.id === certId) {
-        const nextVip = !c.isVIP;
-        showAppToast(`Đã ${nextVip ? 'bật chế độ Yêu Cầu Key VIP 🔐' : 'tắt chế độ VIP (Mở tự do) 🔓'} cho ${c.code}!`, 'info');
-        return { ...c, isVIP: nextVip };
-      }
-      return c;
-    }));
+    setCertificates(prev => {
+      const updated = prev.map(c => {
+        if (c.id === certId) {
+          const nextVip = !c.isVIP;
+          showAppToast(`Đã ${nextVip ? 'bật chế độ Yêu Cầu Key VIP 🔐' : 'tắt chế độ VIP (Mở tự do) 🔓'} cho ${c.code}!`, 'info');
+          saveCertVipStatusToDb(certId, nextVip);
+          return { ...c, isVIP: nextVip };
+        }
+        return c;
+      });
+      const overrides: Record<string, boolean> = {};
+      updated.forEach(c => {
+        overrides[c.id] = !!c.isVIP;
+      });
+      localStorage.setItem('cert_vip_overrides', JSON.stringify(overrides));
+      return updated;
+    });
   };
 
   const handleToggleUnlockCert = (certId: string) => {
@@ -1420,7 +1454,7 @@ export default function App() {
                   ? Math.round((certProgress.answeredCount / certProgress.total) * 100)
                   : 0;
 
-                const isLocked = (cert.isVIP || cert.id === 'cca-f' || cert.id === 'dp-800') && !unlockedCertIds.includes(cert.id);
+                const isLocked = checkIsCertLocked(cert);
 
                 return (
                   <div key={cert.id} className="bg-white border border-slate-150/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
@@ -1434,7 +1468,7 @@ export default function App() {
                           <span className="text-[10px] font-bold uppercase tracking-widest bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded">
                             {cert.code}
                           </span>
-                          {(cert.isVIP || cert.id === 'cca-f' || cert.id === 'dp-800') && (
+                          {cert.isVIP && (
                             <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full flex items-center gap-1 shadow-xs ${
                               isLocked 
                                 ? 'bg-amber-400 text-slate-950 animate-pulse' 
