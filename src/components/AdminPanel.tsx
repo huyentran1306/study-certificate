@@ -71,6 +71,7 @@ interface AdminPanelProps {
   onToggleKeyDisabled?: (certId: string, keyToToggle: string) => void;
   onUpdateKeyExpiry?: (certId: string, keyToUpdate: string, newExpiryDate: string) => void;
   onToggleCertVip?: (certId: string) => void;
+  onToggleCertDisabled?: (certId: string) => void;
   onToggleUnlockCert?: (certId: string) => void;
 }
 
@@ -89,6 +90,7 @@ export default function AdminPanel({
   onToggleKeyDisabled,
   onUpdateKeyExpiry,
   onToggleCertVip,
+  onToggleCertDisabled,
   onToggleUnlockCert
 }: AdminPanelProps) {
   // Questions list of the currently selected certificate
@@ -164,36 +166,32 @@ export default function AdminPanel({
   };
 
   const handleDeleteUserProgress = async (record: UserProgressRecord) => {
-    if (confirm(`Bạn có chắc chắn muốn xóa tiến trình học tập của "${record.username}" cho môn này?`)) {
-      try {
-        const success = await deleteUserProgressFromDb(record.username, record.cert_id);
-        if (success) {
-          showAppToast('Đã xóa tiến trình học viên thành công!', 'success');
-          loadUserProgress();
-        } else {
-          showAppToast('Không thể xóa tiến trình học viên!', 'error');
-        }
-      } catch (err) {
-        console.error(err);
-        showAppToast('Lỗi khi xóa tiến trình học tập!', 'error');
+    try {
+      const success = await deleteUserProgressFromDb(record.username, record.cert_id);
+      if (success) {
+        showAppToast('Đã xóa tiến trình học viên thành công!', 'success');
+        loadUserProgress();
+      } else {
+        showAppToast('Không thể xóa tiến trình học viên!', 'error');
       }
+    } catch (err) {
+      console.error(err);
+      showAppToast('Lỗi khi xóa tiến trình học tập!', 'error');
     }
   };
 
   const handleClearAllUserProgress = async () => {
-    if (confirm('CẢNH BÁO: Bạn có chắc chắn muốn XÓA SẠCH toàn bộ tiến trình học tập của mọi học viên? Tất cả số câu đúng/sai, số câu lưu và chuỗi ngày học của người dùng sẽ bị xóa hoàn toàn khỏi cơ sở dữ liệu!')) {
-      try {
-        const success = await clearAllUserProgressFromDb();
-        if (success) {
-          showAppToast('Đã xóa sạch toàn bộ tiến trình học tập thành công!', 'success');
-          setUserProgressList([]);
-        } else {
-          showAppToast('Lỗi xóa sạch tiến trình học tập!', 'error');
-        }
-      } catch (err) {
-        console.error(err);
-        showAppToast('Lỗi khi xóa sạch tiến trình!', 'error');
+    try {
+      const success = await clearAllUserProgressFromDb();
+      if (success) {
+        showAppToast('Đã xóa sạch toàn bộ tiến trình học tập thành công!', 'success');
+        setUserProgressList([]);
+      } else {
+        showAppToast('Lỗi xóa sạch tiến trình học tập!', 'error');
       }
+    } catch (err) {
+      console.error(err);
+      showAppToast('Lỗi khi xóa sạch tiến trình!', 'error');
     }
   };
 
@@ -310,48 +308,44 @@ export default function AdminPanel({
   }, [adminTab, historySyncMode]);
 
   const handleDeleteExamResult = async (record: ExamHistoryRecord) => {
-    if (confirm(`Bạn có chắc chắn muốn xóa kết quả thi của "${record.username}"?`)) {
-      // Delete locally
-      try {
-        const localRaw = localStorage.getItem('local_exam_results');
-        if (localRaw) {
-          const localResults: ExamHistoryRecord[] = JSON.parse(localRaw);
-          const filtered = localResults.filter(r => r.id !== record.id && !(r.username === record.username && r.timestamp === record.timestamp));
-          localStorage.setItem('local_exam_results', JSON.stringify(filtered));
-        }
-      } catch (e) {
-        console.error(e);
+    // Delete locally
+    try {
+      const localRaw = localStorage.getItem('local_exam_results');
+      if (localRaw) {
+        const localResults: ExamHistoryRecord[] = JSON.parse(localRaw);
+        const filtered = localResults.filter(r => r.id !== record.id && !(r.username === record.username && r.timestamp === record.timestamp));
+        localStorage.setItem('local_exam_results', JSON.stringify(filtered));
       }
-
-      // Delete from Db
-      if (historySyncMode === 'both') {
-        try {
-          await deleteExamResultFromDb(record.id);
-        } catch (err) {
-          console.error(err);
-        }
-      }
-
-      showAppToast('Đã xóa kết quả thi thành công!', 'success');
-      loadExamResults();
+    } catch (e) {
+      console.error(e);
     }
+
+    // Delete from Db
+    if (historySyncMode === 'both') {
+      try {
+        await deleteExamResultFromDb(record.id);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    showAppToast('Đã xóa kết quả thi thành công!', 'success');
+    loadExamResults();
   };
 
   const handleClearAllExamResults = async () => {
-    if (confirm('CẢNH BÁO: Bạn có chắc chắn muốn XÓA TOÀN BỘ lịch sử thi của tất cả người dùng? Hành động này không thể hoàn tác!')) {
-      localStorage.removeItem('local_exam_results');
+    localStorage.removeItem('local_exam_results');
 
-      if (historySyncMode === 'both') {
-        try {
-          await clearAllExamResultsFromDb();
-        } catch (err) {
-          console.error(err);
-        }
+    if (historySyncMode === 'both') {
+      try {
+        await clearAllExamResultsFromDb();
+      } catch (err) {
+        console.error(err);
       }
-
-      showAppToast('Đã xóa sạch toàn bộ lịch sử thi!', 'success');
-      setExamResults([]);
     }
+
+    showAppToast('Đã xóa toàn bộ lịch sử thi!', 'success');
+    loadExamResults();
   };
 
   const filteredExamResults = examResults.filter(r => {
@@ -411,11 +405,30 @@ export default function AdminPanel({
   const loadQuestions = async () => {
     setIsLoading(true);
     try {
-      // 1. Load from local first
+      // 1. Determine static default questions
+      let staticDefaultQs: Question[] = [];
+      if (activeCertId === 'gh-300') staticDefaultQs = initialQuestions;
+      else if (activeCertId === 'az-900') staticDefaultQs = az900Questions;
+      else if (activeCertId === 'ai-900') staticDefaultQs = ai900Questions;
+      else if (activeCertId === 'cca-f') staticDefaultQs = ccaQuestions;
+      else if (activeCertId === 'dp-800') staticDefaultQs = dp800Questions;
+      else if (activeCertId === 'istqb-ai') staticDefaultQs = istqbAiQuestions;
+
       const stored = localStorage.getItem(`questions_${activeCertId}`);
       let localQs: Question[] = [];
       if (stored) {
-        try { localQs = JSON.parse(stored); } catch (e) { console.error(e); }
+        try {
+          const parsed = JSON.parse(stored);
+          if (parsed.length >= staticDefaultQs.length) {
+            localQs = parsed;
+          } else {
+            // Stale cache! Clean it up
+            localStorage.removeItem(`questions_${activeCertId}`);
+          }
+        } catch (e) { console.error(e); }
+      }
+      if (localQs.length === 0) {
+        localQs = staticDefaultQs;
       }
 
       // 2. Load from Supabase to stay updated
@@ -666,8 +679,6 @@ export default function AdminPanel({
 
   // Handle deleting a question
   const handleDeleteQuestion = async (qId: string) => {
-    if (!confirm('Bạn có chắc chắn muốn xóa câu hỏi này?')) return;
-
     setIsLoading(true);
     try {
       const updatedList = questions.filter(q => q.id !== qId);
@@ -1010,8 +1021,15 @@ export default function AdminPanel({
                     }`}
                   >
                     <div className="truncate pr-2">
-                      <span className="block text-[9px] uppercase font-black text-slate-400 tracking-wider font-mono">{cert.code}</span>
-                      <span className="truncate block font-extrabold text-[11.5px]">{cert.name}</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="block text-[9px] uppercase font-black text-slate-400 tracking-wider font-mono">{cert.code}</span>
+                        {cert.isDisabled && (
+                          <span className="text-[8.5px] font-black uppercase text-rose-600 bg-rose-50 border border-rose-200 px-1 py-0.2 rounded shrink-0">
+                            Đã Ẩn
+                          </span>
+                        )}
+                      </div>
+                      <span className={`truncate block font-extrabold text-[11.5px] ${cert.isDisabled ? 'text-slate-400 line-through' : ''}`}>{cert.name}</span>
                     </div>
                     {isActive ? (
                       <Check className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
@@ -1020,9 +1038,7 @@ export default function AdminPanel({
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            if (confirm(`Xóa chứng chỉ tự tạo ${cert.code}?`)) {
-                              onDeleteCertificate(cert.id);
-                            }
+                            onDeleteCertificate(cert.id);
                           }}
                           className="opacity-0 group-hover:opacity-100 p-1 hover:bg-rose-50 text-rose-500 rounded-lg transition-all"
                           title="Xóa chứng chỉ"
@@ -2237,8 +2253,8 @@ export default function AdminPanel({
                   <div className="space-y-4">
                     {/* Header */}
                     <div className="flex items-start justify-between gap-3">
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-2">
+                      <div className="space-y-1.5">
+                        <div className="flex flex-wrap items-center gap-2">
                           <span className="text-[10px] font-black uppercase font-mono px-2 py-0.5 bg-slate-100 text-slate-700 rounded">
                             {cert.code}
                           </span>
@@ -2250,25 +2266,48 @@ export default function AdminPanel({
                             {isVip ? <Lock className="w-3 h-3 text-amber-700" /> : <Unlock className="w-3 h-3 text-emerald-700" />}
                             {isVip ? 'Đang Bật Khóa VIP 🔐' : 'Tự Do (Public) 🔓'}
                           </span>
+                          <span className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full flex items-center gap-1 ${
+                            cert.isDisabled 
+                              ? 'bg-rose-100 text-rose-900 border border-rose-200' 
+                              : 'bg-sky-100 text-sky-900 border border-sky-200'
+                          }`}>
+                            {cert.isDisabled ? <EyeOff className="w-3 h-3 text-rose-700" /> : <Eye className="w-3 h-3 text-sky-700" />}
+                            {cert.isDisabled ? 'Đã Vô Hiệu Hóa (Ẩn) 🚫' : 'Đang Hiển Thị 👁️'}
+                          </span>
                         </div>
-                        <h4 className="text-base font-black text-slate-900 tracking-tight leading-tight pt-1">
+                        <h4 className={`text-base font-black tracking-tight leading-tight pt-1 ${cert.isDisabled ? 'text-slate-400 line-through' : 'text-slate-900'}`}>
                           {cert.name}
                         </h4>
                       </div>
 
-                      {/* VIP Toggle Switch Button */}
-                      {onToggleCertVip && (
-                        <button
-                          onClick={() => onToggleCertVip(cert.id)}
-                          className={`text-xs px-3 py-1.5 font-bold rounded-xl border transition-all cursor-pointer shrink-0 ${
-                            isVip 
-                              ? 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100' 
-                              : 'bg-amber-50 text-amber-800 border-amber-200 hover:bg-amber-100'
-                          }`}
-                        >
-                          {isVip ? 'Tắt VIP (Công khai)' : 'Kích hoạt VIP'}
-                        </button>
-                      )}
+                      {/* Control Buttons (VIP & Disable) */}
+                      <div className="flex flex-col gap-1.5 shrink-0 items-end">
+                        {onToggleCertVip && (
+                          <button
+                            onClick={() => onToggleCertVip(cert.id)}
+                            className={`text-xs px-3 py-1.5 font-bold rounded-xl border transition-all cursor-pointer shrink-0 ${
+                              isVip 
+                                ? 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100' 
+                                : 'bg-amber-50 text-amber-800 border-amber-200 hover:bg-amber-100'
+                            }`}
+                          >
+                            {isVip ? 'Tắt VIP (Công khai)' : 'Kích hoạt VIP'}
+                          </button>
+                        )}
+                        {onToggleCertDisabled && (
+                          <button
+                            onClick={() => onToggleCertDisabled(cert.id)}
+                            className={`text-xs px-3 py-1.5 font-bold rounded-xl border transition-all cursor-pointer shrink-0 flex items-center gap-1 ${
+                              cert.isDisabled 
+                                ? 'bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100' 
+                                : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-rose-50 hover:text-rose-700 hover:border-rose-300'
+                            }`}
+                          >
+                            {cert.isDisabled ? <Eye className="w-3.5 h-3.5 text-emerald-600" /> : <EyeOff className="w-3.5 h-3.5 text-slate-500" />}
+                            {cert.isDisabled ? 'Kích Hoạt Lại (Hiện)' : 'Vô Hiệu Hóa (Ẩn)'}
+                          </button>
+                        )}
+                      </div>
                     </div>
 
                     <p className="text-xs text-slate-500 leading-relaxed font-medium">

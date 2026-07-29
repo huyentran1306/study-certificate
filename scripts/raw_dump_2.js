@@ -1,0 +1,62 @@
+module.exports = [
+  {
+    "id": 51,
+    "question": "Your agent has analyzed a complex service module—reading 23 source files, tracing request flows, and identifying error handling patterns. A developer wants to compare two testing strategies before committing to one: end-to-end tests with mocked external services vs. snapshot tests capturing expected outputs. They need to independently develop both approaches to evaluate trade-offs. How should you manage the sessions?",
+    "options": {
+      "A": "Export the analysis session's key findings to a file, then create two new sessions that reference this file.",
+      "B": "Resume the analysis session with fork_session enabled, creating a separate branch for each testing strategy.",
+      "C": "Start two fresh sessions, having each re-read the relevant source files before beginning.",
+      "D": "Continue in the original session, developing end-to-end tests first, then snapshot tests sequentially."
+    },
+    "correct": "B",
+    "explanation": "Resuming the analysis session with fork_session branches the session into new session IDs while preserving the full analysis context and leaving the original intact."
+  },
+  {
+    "id": 52,
+    "question": "Your codebase exploration tool stores session IDs to allow engineers to continue investigations across work sessions. An engineer spent an hour yesterday analyzing a legacy authentication module, building context about its architecture and dependencies. They want to continue today. The session ID is valid, but version control shows 3 of the 12 files the agent previously read were modified overnight by a teammate's merge. What approach best balances efficiency and accuracy?",
+    "options": {
+      "A": "Resume the session and immediately have the agent re-read all 12 previously analyzed files",
+      "B": "Start a fresh session to ensure the agent works with current codebase state without stale assumptions",
+      "C": "Resume the session and inform the agent which specific files changed for targeted re-analysis",
+      "D": "Resume the session without informing the agent about the changed files"
+    },
+    "correct": "C",
+    "explanation": "Resuming the session preserves the hour of accumulated context about the module's architecture, while telling the agent exactly which 3 files changed allows targeted re-reading of only the stale files."
+  },
+  {
+    "id": 53,
+    "question": "During testing, you observe that in extended exploration sessions (30+ minutes), the agent starts giving inconsistent answers about code structure it discussed earlier. Engineers report having to repeat context about modules they've already explored. What's the most effective approach to address this?",
+    "options": {
+      "A": "Have the agent maintain a scratchpad file that records key findings, referencing it for subsequent questions.",
+      "B": "Switch to a higher-capacity model tier to provide more context window space for accumulated exploration data.",
+      "C": "Implement automatic context clearing every 15 minutes to ensure the agent starts with fresh, uncontaminated context.",
+      "D": "Create summaries of all source files before exploration begins, loading only these compressed representations into context."
+    },
+    "correct": "A",
+    "explanation": "A scratchpad offloads findings to durable storage the agent can re-read on demand, giving it a stable 'memory' independent of how crowded the context window gets."
+  },
+  {
+    "id": 54,
+    "question": "An engineer used the agent yesterday to analyze a legacy authentication module, identifying two distinct refactoring approaches: extracting a microservice versus refactoring in-place. Today, they want to explore both approaches in depth—having the agent propose specific code changes for each—before deciding which to implement. What's the most effective way to structure this exploration?",
+    "options": {
+      "A": "Resume yesterday's session to explore the first approach, then start a new session for the second, manually recreating the original context.",
+      "B": "Start two fresh sessions, manually providing a summary of yesterday's analysis findings to establish context.",
+      "C": "Resume yesterday's session and explore both approaches sequentially within the same conversation thread.",
+      "D": "Use fork_session to create two branches from yesterday's analysis, exploring one approach in each fork."
+    },
+    "correct": "D",
+    "explanation": "Forking from yesterday's session gives each approach its own independent context starting from the same analysis baseline — clean, parallel, no contamination."
+  },
+  {
+    "id": 55,
+    "question": "An engineer asks your agent to identify untested code paths in a legacy payment processing module spanning 45 files. After reading the first 8 source files, the agent's responses are becoming noticeably less accurate—it's forgetting previously discussed code patterns and hasn't yet located all test files or traced critical payment flows. What's the most effective approach to complete this investigation?",
+    "options": {
+      "A": "Document all current findings in a summary report, clear context completely, then use that report as the sole reference for continuing the investigation.",
+      "B": "Spawn subagents to investigate specific questions while the main agent coordinates findings and preserves high-level understanding.",
+      "C": "Clear context with /clear, then selectively re-read only the most critical files discovered so far, writing key findings to a scratchpad file that persists between context resets.",
+      "D": "Switch to using Grep to search for specific function names instead of reading full files, reducing the content loaded into context for remaining exploration."
+    },
+    "correct": "B",
+    "explanation": "Delegate well-scoped investigations to subagents with fresh context, while the main agent keeps the architectural overview."
+  }
+]

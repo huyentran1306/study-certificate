@@ -53,6 +53,7 @@ export interface Certificate {
   colorClass: string; // CSS styling preset
   iconName: string; // name matching Lucide icons
   isVIP?: boolean; // Requires access key / passcode
+  isDisabled?: boolean; // If true, certification is hidden from normal views
   accessKeys?: string[]; // Allowed keys for this certification
   vipKeyConfigs?: VipKeyConfig[]; // Detailed VIP key configurations
 }

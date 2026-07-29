@@ -293,7 +293,6 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
   const handleLeaveGroupFromList = async (group: StudyGroup, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     if (!username) return;
-    if (!window.confirm(`Bạn có chắc chắn muốn rời khỏi nhóm "${group.name}" không?`)) return;
 
     try {
       setIsLoading(true);
@@ -317,7 +316,6 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
 
   const handleLeaveGroup = async () => {
     if (!activeGroup || !username) return;
-    if (!window.confirm(`Bạn có chắc chắn muốn rời khỏi nhóm "${activeGroup.name}" không?`)) return;
 
     try {
       setIsLoading(true);
@@ -578,7 +576,7 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
                   className="bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 px-2.5 py-2 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 >
                   <option value="all">Tất cả chứng chỉ</option>
-                  {certificates.map(c => (
+                  {certificates.filter(c => !c.isDisabled).map(c => (
                     <option key={c.id} value={c.id}>{c.code}</option>
                   ))}
                 </select>
@@ -712,7 +710,7 @@ export default function GroupStudy({ username, onUsernameChange, certificates, s
             </h3>
 
             <div className="space-y-4">
-              {certificates.map(cert => {
+              {certificates.filter(c => !c.isDisabled).map(cert => {
                 // Calculate average metrics for this cert in the group
                 let totalGroupAnswered = 0;
                 let activeStudents = 0;

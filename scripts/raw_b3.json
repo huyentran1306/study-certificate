@@ -1,0 +1,122 @@
+[
+    {
+        "id": 21,
+        "question": "When researching \"renewable energy adoption,\" the web search agent returns recent statistics (2024: 35% adoption) while the document analysis agent extracts data from internal reports (2022: 18% adoption). The synthesis agent incorrectly flags these as contradictory sources rather than recognizing the data shows growth over time. What change would best enable the synthesis agent to correctly interpret such temporal differences?",
+        "options": {
+            "A": "Require subagents to include publication or data collection dates in their structured outputs.",
+            "B": "Add a conflict resolution agent that automatically discards older data when newer data exists for the same metric.",
+            "C": "Configure the web search agent to only return results from the past 6 months.",
+            "D": "Instruct the synthesis agent to always treat the most recent data as authoritative and place older findings in a separate historical appendix."
+        },
+        "correct": "A",
+        "explanation": "The synthesis agent misreads the data because it never sees the dates. Making each data point carry its own timestamp in the structured output lets synthesis reason about trends instead of contradictions."
+    },
+    {
+        "id": 22,
+        "question": "Production reviews reveal inconsistent handling of uncertainty in final reports. Sometimes conflicting subagent findings are synthesized into a single confident statement (losing nuance), while other times reports over-hedge with excessive qualifications (becoming unhelpful). When the web search agent returns \"industry analysts estimate $50B market size (methodology varies)\" and the document analysis agent returns \"peer-reviewed study estimates 35B(±7B, 95% CI),\" the coordinator either picks one arbitrarily or produces vague statements like \"the market may be 35B−50B depending on factors.\" What systematic approach best addresses this?",
+        "options": {
+            "A": "Configure subagents to only report findings meeting a high-confidence threshold, filtering uncertain information before it reaches the coordinator.",
+            "B": "Implement a confidence calibration layer that normalizes subagent uncertainty expressions to standardized probability scores (0.0-1.0), then weight-average findings by their calibrated confidence.",
+            "C": "Instruct the synthesis agent to structure reports with explicit sections distinguishing well-established findings from contested ones, preserving original source characterizations and methodological context.",
+            "D": "Add a verification subagent that cross-references findings across sources, only passing claims to synthesis that are corroborated by at least two independent sources."
+        },
+        "correct": "C",
+        "explanation": "Report structure that keeps methodological context and separates settled vs. contested claims is how you get nuance without over-hedging."
+    },
+    {
+        "id": 23,
+        "question": "You're building a security scanning workflow. When engineers need to locate all occurrences of a dangerous function like eval() across a large codebase, which tool should your agent use for content search?",
+        "options": {
+            "A": "Use Glob with a pattern like /*eval* to find files, then Read each matching file.",
+            "B": "Use Grep to search for the pattern \"eval(\" across all files in the codebase.",
+            "C": "Read the project's main entry file and follow import statements to trace where eval might be used.",
+            "D": "Use Bash to run ls -R | grep eval to recursively list files containing eval."
+        },
+        "correct": "B",
+        "explanation": "Grep is the purpose-built content-search tool (ripgrep-based) for finding patterns inside file contents across a large codebase, which is exactly what locating all eval( call sites requires."
+    },
+    {
+        "id": 24,
+        "question": "This currently requires manually copy-pasting content into conversations. The team wants the agent to access this standard Jira ticket data directly. What's the most effective approach?",
+        "options": {
+            "A": "Export Jira tickets to markdown files in the repository that the agent accesses using the Read tool.",
+            "B": "Build a custom MCP server wrapping Jira's API with tools designed specifically for this team's code review workflow.",
+            "C": "Integrate an existing Jira MCP server that exposes tickets, comments, and metadata through discoverable tool interfaces.",
+            "D": "Use the Bash tool with curl to call Jira's REST API, including authentication headers and parsing JSON responses inline."
+        },
+        "correct": "C",
+        "explanation": "For standard third-party service data like Jira tickets, Anthropic's recommended practice is to integrate an existing MCP server, which provides discoverable, typed tool interfaces with managed authentication."
+    },
+    {
+        "id": 25,
+        "question": "Developer Productivity An engineer asks the agent to find all files in the monorepo that import the @company/auth package to understand how authentication is used across services. Which built-in tool is most appropriate for this task?",
+        "options": {
+            "A": "Bash, to execute find . -type d -name \"*auth*\" and explore matching directories",
+            "B": "Read, starting with package.json files to trace dependency declarations",
+            "C": "Grep, to search for the import statement pattern across file contents",
+            "D": "Glob, to find files with \"auth\" in their filename or path"
+        },
+        "correct": "C",
+        "explanation": "The task is to find every file whose contents contain an import of @company/auth, which is a content- search problem — exactly what the built-in Grep tool (ripgrep-based) is designed for."
+    },
+    {
+        "id": 26,
+        "question": "Your productivity agent connects to three MCP servers: an issue tracker (search_issues, get_issue, create_comment), a documentation wiki (search_docs, get_page, list_spaces), and a database explorer (run_query, get_schema, list_databases). When engineers ask cross-system questions like \"What database tables are affected by the authentication refactor in PROJ-1234?\", monitoring shows the agent makes 8-10 sequential tool calls, frequently issues exploratory calls because it lacks visibility into what content each server contains, and exhausts context space before completing complex investigations. What architectural change best leverages MCP capabilities to address these issues?",
+        "options": {
+            "A": "Consolidate all three servers into a unified MCP server with cross-referencing capabilities",
+            "B": "Expose each server's content catalog as MCP resources—issue summaries, documentation hierarchy, database schemas",
+            "C": "Add a prepare_investigation tool to each server that accepts a natural language question and returns relevant content summaries",
+            "D": "Add an orchestrator that routes questions to a single server based on keywords"
+        },
+        "correct": "B",
+        "explanation": "MCP resources are the protocol primitive designed for exactly this problem: servers expose browsable, application-controlled context that the agent can discover and read without exploratory tool-call round trips."
+    },
+    {
+        "id": 27,
+        "question": "During testing, agents frequently call tools outside their specialization—the synthesis agent attempts web searches, and the report generator tries to analyze documents. What is the primary cause of this poor tool selection behavior?",
+        "options": {
+            "A": "Choosing from 18 tools instead of 4-5 relevant ones increases decision complexity beyond reliable selection thresholds.",
+            "B": "The coordinator cannot track which capabilities each subagent has, leading to misrouted tasks.",
+            "C": "The agents' role descriptions in their system prompts conflict with having access to tools outside that role.",
+            "D": "The tool definitions consume too much context window space, leaving insufficient room for task content."
+        },
+        "correct": "A",
+        "explanation": "Anthropic's agent best practices recommend giving each subagent only a small, role-relevant tool set, because tool selection accuracy degrades as the number of available (especially irrelevant) tools grows."
+    },
+    {
+        "id": 28,
+        "question": "A customer returns 4 hours after their initial session about the same billing dispute. The previous 32-turn session contains lookup_order results showing \"Status: PENDING, Expected resolution: 24-48 hours.\" In testing, you observe that when resuming sessions with stale tool results, the agent often references the outdated data in responses (e.g., \"I see your refund is still being processed\") even after subsequent fresh tool calls return different information. What approach most reliably handles returning customers?",
+        "options": {
+            "A": "Resume with full history but filter out previous tool_result messages before resuming, keeping only the human/assistant turns so the agent must re-fetch needed data.",
+            "B": "Start a new session, inject a structured summary of the previous interaction (issue type, actions taken, resolution status), then make fresh tool calls before engaging.",
+            "C": "Resume with full history and add a system prompt instruction telling the agent to always prefer the most recent tool results when multiple calls to the same tool exist in context.",
+            "D": "Resume with full history and configure the agent to automatically re-call all previously-used tools at session start to ensure data freshness."
+        },
+        "correct": "B",
+        "explanation": "A clean session with a summary keeps the narrative continuity while guaranteeing the agent isn't reasoning over stale tool results."
+    },
+    {
+        "id": 29,
+        "question": "You're implementing the escalation logic for when the agent should call escalate_to_human. Your team proposes four different approaches for triggering escalation. Which approach will most reliably identify cases that genuinely require human intervention?",
+        "options": {
+            "A": "Instruct the agent to escalate when the customer requests a human, when the issue requires policy exceptions, or when the agent cannot make meaningful progress.",
+            "B": "Configure the agent to escalate after three consecutive tool calls that fail to resolve the customer's stated issue, ensuring a reasonable attempt before involving a human.",
+            "C": "Implement sentiment analysis that monitors for frustration indicators (negative language, repeated questions, exclamation marks) and trigger escalation when the frustration score exceeds a configured threshold.",
+            "D": "Build a rules engine that maps specific issue types, customer segments, and product categories to escalation decisions, removing the need for model judgment calls."
+        },
+        "correct": "A",
+        "explanation": "Escalation decisions are judgment calls about intent and progress — exactly what LLMs are good at. Clear criteria in natural language outperform rigid rules for the long tail."
+    },
+    {
+        "id": 30,
+        "question": "After investigating a billing dispute over 25+ turns, you've identified that duplicate charges occurred due to a payment gateway timeout triggering retry logic. The required refund ($847) exceeds your $500 authorization limit. You need to call escalate_to_human, and the human agent won't have access to your conversation transcript. What context should you pass to enable effective resolution?",
+        "options": {
+            "A": "The customer's original complaint verbatim plus the tool result excerpts showing duplicate transactions.",
+            "B": "A structured summary: customer ID, root cause, refund amount, and recommended action.",
+            "C": "The complete conversation transcript with all tool results.",
+            "D": "Your diagnosis and the refund amount only."
+        },
+        "correct": "B",
+        "explanation": "A structured handoff with identifiers, cause, amount, and recommended action is what a human agent needs to pick up the case instantly without re-investigating."
+    }
+]

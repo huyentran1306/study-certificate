@@ -66,7 +66,9 @@ import {
   updateVipKeyDisabledInDb,
   updateVipKeyExpiryInDb,
   fetchCertVipStatusesFromDb,
-  saveCertVipStatusToDb
+  saveCertVipStatusToDb,
+  fetchCertDisabledStatusesFromDb,
+  saveCertDisabledStatusToDb
 } from './lib/sync';
 
 function DynamicIcon({ name, className = "w-5 h-5" }: { name: string; className?: string }) {
@@ -243,6 +245,8 @@ export default function App() {
     }
     return 'home';
   });
+
+  const isAdmin = username.trim().toLowerCase() === 'admin' || mode === 'admin';
   const [asteriskClicks, setAsteriskClicks] = useState(0);
 
   // Auto reset click counter after 4 seconds of inactivity
@@ -358,6 +362,9 @@ export default function App() {
     }
 
     setQuestions(activeQuestions);
+    if (activeQuestions.length > 0) {
+      localStorage.setItem(`questions_${certId}`, JSON.stringify(activeQuestions));
+    }
 
     // 2. Load progress & history
     let activeProgress: ProgressState = {
@@ -433,29 +440,43 @@ export default function App() {
     }
     loadVipKeysFromDb();
 
-    // 0. Load VIP status overrides from localStorage and DB
-    async function loadVipStatuses() {
-      let overrides: Record<string, boolean> = {};
+    // 0. Load VIP & Disabled status overrides from localStorage and DB
+    async function loadCertStatuses() {
+      let vipOverrides: Record<string, boolean> = {};
+      let disabledOverrides: Record<string, boolean> = {};
+
       try {
-        const stored = localStorage.getItem('cert_vip_overrides');
-        if (stored) overrides = JSON.parse(stored);
+        const storedVip = localStorage.getItem('cert_vip_overrides');
+        if (storedVip) vipOverrides = JSON.parse(storedVip);
+
+        const storedDisabled = localStorage.getItem('cert_disabled_overrides');
+        if (storedDisabled) disabledOverrides = JSON.parse(storedDisabled);
       } catch {}
 
-      const dbStatuses = await fetchCertVipStatusesFromDb();
-      if (dbStatuses && Object.keys(dbStatuses).length > 0) {
-        overrides = { ...overrides, ...dbStatuses };
+      const [dbVipStatuses, dbDisabledStatuses] = await Promise.all([
+        fetchCertVipStatusesFromDb(),
+        fetchCertDisabledStatusesFromDb()
+      ]);
+
+      if (dbVipStatuses && Object.keys(dbVipStatuses).length > 0) {
+        vipOverrides = { ...vipOverrides, ...dbVipStatuses };
+      }
+      if (dbDisabledStatuses && Object.keys(dbDisabledStatuses).length > 0) {
+        disabledOverrides = { ...disabledOverrides, ...dbDisabledStatuses };
       }
 
-      if (Object.keys(overrides).length > 0) {
-        setCertificates(prev => prev.map(c => {
-          if (overrides[c.id] !== undefined) {
-            return { ...c, isVIP: overrides[c.id] };
-          }
-          return c;
-        }));
-      }
+      setCertificates(prev => prev.map(c => {
+        let updated = { ...c };
+        if (vipOverrides[c.id] !== undefined) {
+          updated.isVIP = vipOverrides[c.id];
+        }
+        if (disabledOverrides[c.id] !== undefined) {
+          updated.isDisabled = disabledOverrides[c.id];
+        }
+        return updated;
+      }));
     }
-    loadVipStatuses();
+    loadCertStatuses();
 
     // 1. Gather custom certificates from storage
     const storedCustomCerts = localStorage.getItem('study_certs_custom');
@@ -465,7 +486,7 @@ export default function App() {
         setCertificates(prev => {
           const defaultIds = ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai'];
           const filteredPrev = prev.filter(c => defaultIds.includes(c.id));
-          return [...filteredPrev, ...parsed];
+          return [...parsed, ...filteredPrev];
         });
       } catch {
         // ignore
@@ -674,6 +695,42 @@ export default function App() {
     });
   };
 
+  const handleToggleCertDisabled = (certId: string) => {
+    setCertificates(prev => {
+      const updated = prev.map(c => {
+        if (c.id === certId) {
+          const nextDisabled = !c.isDisabled;
+          showAppToast(`Đã ${nextDisabled ? 'vô hiệu hóa (ẩn) 🚫' : 'kích hoạt lại (hiển thị) 👁️'} chứng chỉ ${c.code}!`, 'info');
+          saveCertDisabledStatusToDb(certId, nextDisabled);
+          return { ...c, isDisabled: nextDisabled };
+        }
+        return c;
+      });
+      const overrides: Record<string, boolean> = {};
+      updated.forEach(c => {
+        overrides[c.id] = !!c.isDisabled;
+      });
+      localStorage.setItem('cert_disabled_overrides', JSON.stringify(overrides));
+
+      // Also sync custom certs storage if custom cert
+      const storedCustom = localStorage.getItem('study_certs_custom');
+      if (storedCustom) {
+        try {
+          const parsed = JSON.parse(storedCustom);
+          const updatedCustom = parsed.map((cc: any) => {
+            if (cc.id === certId) {
+              return { ...cc, isDisabled: !cc.isDisabled };
+            }
+            return cc;
+          });
+          localStorage.setItem('study_certs_custom', JSON.stringify(updatedCustom));
+        } catch {}
+      }
+
+      return updated;
+    });
+  };
+
   const handleToggleUnlockCert = (certId: string) => {
     setUnlockedCertIds(prev => {
       let updated: string[];
@@ -757,6 +814,8 @@ export default function App() {
           certQs = ccaQuestions;
         } else if (cert.id === 'dp-800') {
           certQs = dp800Questions;
+        } else if (cert.id === 'istqb-ai') {
+          certQs = istqbAiQuestions;
         } else {
           const storedQs = localStorage.getItem(`questions_${cert.id}`);
           if (storedQs) {
@@ -818,7 +877,7 @@ export default function App() {
   const confirmDeleteCert = () => {
     if (!certToDelete) return;
     const cert = certToDelete;
-    if (['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800'].includes(cert.id)) {
+    if (['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai'].includes(cert.id)) {
       showAppToast(`Không thể xóa chứng chỉ hệ thống ${cert.code}!`, 'error');
       setCertToDelete(null);
       return;
@@ -895,6 +954,12 @@ export default function App() {
       defaultQs = az900Questions;
     } else if (activeCertId === 'ai-900') {
       defaultQs = ai900Questions;
+    } else if (activeCertId === 'cca-f') {
+      defaultQs = ccaQuestions;
+    } else if (activeCertId === 'dp-800') {
+      defaultQs = dp800Questions;
+    } else if (activeCertId === 'istqb-ai') {
+      defaultQs = istqbAiQuestions;
     }
 
     setQuestions(defaultQs);
@@ -919,7 +984,7 @@ export default function App() {
   };
 
   // Clear progress for active certificate
-  const handleClearProgress = () => {
+  const handleClearProgress = async () => {
     const freshProgress: ProgressState = {
       answeredCount: 0,
       correctCount: 0,
@@ -928,8 +993,9 @@ export default function App() {
       bookmarkedQuestionIds: progress.bookmarkedQuestionIds, // keep bookmarks
       history: []
     };
-    saveProgress(freshProgress);
+    await saveProgress(freshProgress);
     setCurrentQuestionIndex(0);
+    showAppToast('Đã xóa sạch dữ liệu tiến độ và lịch sử làm bài!', 'success');
   };
 
   // Bookmark Toggle
@@ -1273,7 +1339,7 @@ export default function App() {
               </>
             )}
             
-            {mode === 'home' && (
+            {mode === 'home' && isAdmin && (
               <button
                 onClick={() => setShowAddCertForm(true)}
                 className="text-xs bg-slate-950 hover:bg-indigo-600 text-white font-bold px-3.5 py-2 rounded-xl transition-all items-center gap-1.5 shadow-sm cursor-pointer hidden sm:flex"
@@ -1412,14 +1478,14 @@ export default function App() {
               <div className="flex gap-4 items-center shrink-0 bg-slate-50 p-4 rounded-2xl border border-slate-100">
                 <div className="text-center px-4">
                   <span className="block text-[22px] font-black text-slate-900">
-                    {certificates.length}
+                    {certificates.filter(c => !c.isDisabled).length}
                   </span>
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Chứng chỉ</span>
                 </div>
                 <div className="w-px h-8 bg-slate-200" />
                 <div className="text-center px-4">
                   <span className="block text-[22px] font-black text-emerald-600">
-                    {certificates.reduce((acc, cert) => {
+                    {certificates.filter(c => !c.isDisabled).reduce((acc, cert) => {
                       const completed = localStorage.getItem(`progress_${cert.id}`);
                       if (completed) {
                         try {
@@ -1437,7 +1503,7 @@ export default function App() {
 
             {/* Certification Grid list */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {certificates.map(cert => {
+              {certificates.filter(c => !c.isDisabled).map(cert => {
                 // Get progress for this card locally
                 let certProgress = { answeredCount: 0, correctCount: 0, total: 10 };
                 // Map hardcoded count
@@ -1446,12 +1512,19 @@ export default function App() {
                 else if (cert.id === 'ai-900') certProgress.total = ai900Questions.length;
                 else if (cert.id === 'cca-f') certProgress.total = ccaQuestions.length;
                 else if (cert.id === 'dp-800') certProgress.total = dp800Questions.length;
+                else if (cert.id === 'istqb-ai') certProgress.total = istqbAiQuestions.length;
                 
-                // Overwrite with actual local count if exists
+                // Overwrite with actual local count if exists and is larger (or clean up stale cache)
                 const storedQs = localStorage.getItem(`questions_${cert.id}`);
                 if (storedQs) {
                   try {
-                    certProgress.total = JSON.parse(storedQs).length;
+                    const parsedQs = JSON.parse(storedQs);
+                    if (parsedQs.length > certProgress.total) {
+                      certProgress.total = parsedQs.length;
+                    } else if (parsedQs.length < certProgress.total && ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai'].includes(cert.id)) {
+                      // Stale localStorage cache from previous version; remove it so fresh static data is used
+                      localStorage.removeItem(`questions_${cert.id}`);
+                    }
                   } catch {}
                 }
 
@@ -1565,7 +1638,7 @@ export default function App() {
               })}
 
               {/* Add New Custom Certification Card placeholder */}
-              {!showAddCertForm && (
+              {isAdmin && !showAddCertForm && (
                 <button
                   onClick={() => setShowAddCertForm(true)}
                   className="bg-slate-50 hover:bg-slate-100/80 border-2 border-dashed border-slate-200 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 text-center group transition-colors min-h-[350px]"
@@ -1584,7 +1657,7 @@ export default function App() {
             </div>
 
             {/* Highly Polished Custom Code and JSON Upload Portal */}
-            {showAddCertForm && (
+            {isAdmin && showAddCertForm && (
               <div className="bg-white border border-slate-150 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
                 <div className="flex items-center justify-between pb-4 border-b border-slate-100">
                   <div className="flex items-center gap-2">
@@ -1791,14 +1864,14 @@ export default function App() {
                           if (storedCustomStr) {
                             try { listToSave = JSON.parse(storedCustomStr); } catch {}
                           }
-                          listToSave.push(builtCert);
+                          listToSave.unshift(builtCert);
                           localStorage.setItem('study_certs_custom', JSON.stringify(listToSave));
 
                           // Persist questions
                           localStorage.setItem(`questions_${certUid}`, JSON.stringify(parsedQs));
 
-                          // Append local state
-                          setCertificates(prev => [...prev, builtCert]);
+                          // Append local state (new cert at top)
+                          setCertificates(prev => [builtCert, ...prev.filter(c => c.id !== builtCert.id)]);
                           
                           // Form Reset
                           setNewCertCode('');
@@ -1869,29 +1942,82 @@ export default function App() {
               {/* Categories list card panel */}
               <div className="bg-white lg:border border-slate-150 rounded-2xl p-4 shadow-sm space-y-2">
                 <span className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Chủ đề bài thi</span>
-                <div className="space-y-1">
+                <div className="space-y-1.5">
                   {categories.map(cat => {
-                    const count = cat === 'All' 
-                      ? questions.length 
-                      : questions.filter(q => q.category === cat).length;
-                    
                     const isSelected = selectCategory === cat;
+                    
+                    let catTotal = 0;
+                    let catAnswered = 0;
+                    let catCorrect = 0;
+                    let catAccuracy = 0;
+
+                    if (cat === 'All') {
+                      catTotal = questions.length;
+                      catAnswered = progress.history.length;
+                      catCorrect = progress.correctCount;
+                      catAccuracy = catAnswered > 0 ? Math.round((catCorrect / catAnswered) * 100) : 0;
+                    } else {
+                      const catQuestions = questions.filter(q => q.category === cat);
+                      catTotal = catQuestions.length;
+                      const catQIds = new Set(catQuestions.map(q => q.id));
+                      const catHistory = progress.history.filter(h => catQIds.has(h.questionId));
+                      catAnswered = catHistory.length;
+                      catCorrect = catHistory.filter(h => h.isCorrect).length;
+                      catAccuracy = catAnswered > 0 ? Math.round((catCorrect / catAnswered) * 100) : 0;
+                    }
+
                     return (
                       <button
                         key={cat}
                         onClick={() => { setCategoryFilter(cat); setCurrentQuestionIndex(0); setMobileMenuOpen(false); }}
-                        className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between transition-all ${
+                        className={`w-full text-left p-2.5 rounded-xl text-xs font-semibold flex flex-col gap-1.5 transition-all ${
                           isSelected 
-                            ? 'bg-slate-900 text-white' 
-                            : 'text-slate-600 hover:bg-slate-50'
+                            ? 'bg-slate-900 text-white shadow-sm' 
+                            : 'text-slate-700 bg-slate-50/70 hover:bg-slate-100/80 border border-slate-100'
                         }`}
                       >
-                        <span className="truncate">{cat === 'All' ? 'Tất cả chủ đề' : cat}</span>
-                        <span className={`text-[10px] px-2 py-0.5 rounded font-bold ${
-                          isSelected ? 'bg-slate-800 text-indigo-300' : 'bg-slate-100 text-slate-400'
-                        }`}>
-                          {count}
-                        </span>
+                        <div className="flex items-center justify-between w-full">
+                          <span className="truncate pr-1 font-bold">{cat === 'All' ? 'Tất cả chủ đề' : cat}</span>
+                          <div className="flex items-center gap-1.5 shrink-0">
+                            {catAnswered > 0 && (
+                              <span className={`text-[10px] px-1.5 py-0.5 rounded font-bold ${
+                                isSelected
+                                  ? catAccuracy >= 80 ? 'bg-emerald-900/80 text-emerald-300' : catAccuracy >= 50 ? 'bg-amber-900/80 text-amber-300' : 'bg-rose-900/80 text-rose-300'
+                                  : catAccuracy >= 80 ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/60' : catAccuracy >= 50 ? 'bg-amber-50 text-amber-700 border border-amber-200/60' : 'bg-rose-50 text-rose-700 border border-rose-200/60'
+                              }`}>
+                                {catAccuracy}%
+                              </span>
+                            )}
+                            <span className={`text-[10px] px-1.5 py-0.5 rounded font-bold ${
+                              isSelected ? 'bg-slate-800 text-indigo-300' : 'bg-white text-slate-500 border border-slate-200'
+                            }`}>
+                              {catTotal} câu
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Progress bar */}
+                        <div className="w-full flex items-center gap-2">
+                          <div className={`w-full rounded-full h-1.5 overflow-hidden ${isSelected ? 'bg-slate-800' : 'bg-slate-200/80'}`}>
+                            <div 
+                              className={`h-full rounded-full transition-all duration-300 ${
+                                catAnswered === 0
+                                  ? (isSelected ? 'bg-slate-700' : 'bg-slate-300')
+                                  : catAccuracy >= 80 
+                                    ? (isSelected ? 'bg-emerald-400' : 'bg-emerald-500') 
+                                    : catAccuracy >= 50 
+                                      ? (isSelected ? 'bg-amber-400' : 'bg-amber-500') 
+                                      : (isSelected ? 'bg-rose-400' : 'bg-rose-500')
+                              }`}
+                              style={{ width: `${catAnswered === 0 ? 0 : catAccuracy}%` }}
+                            />
+                          </div>
+                          {catAnswered > 0 && (
+                            <span className={`text-[9px] font-medium shrink-0 ${isSelected ? 'text-slate-400' : 'text-slate-400'}`}>
+                              {catCorrect}/{catAnswered}
+                            </span>
+                          )}
+                        </div>
                       </button>
                     );
                   })}
@@ -2164,14 +2290,14 @@ export default function App() {
               if (storedCustomStr) {
                 try { listToSave = JSON.parse(storedCustomStr); } catch {}
               }
-              listToSave.push(newCert);
+              listToSave = [newCert, ...listToSave.filter((c: any) => c.id !== newCert.id)];
               localStorage.setItem('study_certs_custom', JSON.stringify(listToSave));
 
               // Save actual questions
               localStorage.setItem(`questions_${newCert.id}`, JSON.stringify(initialQs));
 
-              // Update state
-              setCertificates(prev => [...prev, newCert]);
+              // Update state with new cert at top
+              setCertificates(prev => [newCert, ...prev.filter(c => c.id !== newCert.id)]);
               setActiveCertId(newCert.id);
               localStorage.setItem('study_active_cert', newCert.id);
 
@@ -2195,6 +2321,7 @@ export default function App() {
             onToggleKeyDisabled={handleToggleKeyDisabled}
             onUpdateKeyExpiry={handleUpdateKeyExpiry}
             onToggleCertVip={handleToggleCertVip}
+            onToggleCertDisabled={handleToggleCertDisabled}
             onToggleUnlockCert={handleToggleUnlockCert}
             showAppToast={showAppToast}
           />
@@ -2375,7 +2502,7 @@ export default function App() {
                   className="w-full text-base sm:text-xs font-bold py-2.5 bg-white border border-slate-200 rounded-xl px-2.5 focus:outline-none focus:ring-2 focus:ring-amber-100"
                 >
                   <option value="all">Tất cả môn học</option>
-                  {certificates.map(c => (
+                  {certificates.filter(c => !c.isDisabled).map(c => (
                     <option key={c.id} value={c.id}>{c.code}</option>
                   ))}
                 </select>

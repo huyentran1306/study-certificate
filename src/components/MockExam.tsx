@@ -161,13 +161,11 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
   };
 
   const handleManualSubmit = () => {
-    if (window.confirm('Bạn có chắc chắn muốn nộp bài thi thử ngay bây giờ?')) {
-      if (timerRef.current) clearInterval(timerRef.current);
-      setSubmitted(true);
-      const score = calculateScore();
-      const elapsed = 600 - timeLeft;
-      onFinishExam(score, examQuestions.length, elapsed);
-    }
+    if (timerRef.current) clearInterval(timerRef.current);
+    setSubmitted(true);
+    const score = calculateScore();
+    const elapsed = 600 - timeLeft;
+    onFinishExam(score, examQuestions.length, elapsed);
   };
 
   const formatTime = (seconds: number) => {

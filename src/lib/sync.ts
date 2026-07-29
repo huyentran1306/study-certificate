@@ -164,6 +164,18 @@ export async function syncUserProgressStateToDb(
   progress: ProgressState
 ): Promise<boolean> {
   try {
+    // If progress history is reset/cleared, delete history entries in study_history
+    if (progress.history.length === 0) {
+      const { error: delErr } = await supabase
+        .from('study_history')
+        .delete()
+        .eq('username', username)
+        .eq('cert_id', certId);
+      if (delErr) {
+        console.error('Error clearing study history in DB:', delErr);
+      }
+    }
+
     const { error } = await supabase
       .from('user_progress')
       .upsert({
@@ -184,6 +196,47 @@ export async function syncUserProgressStateToDb(
     return true;
   } catch (err) {
     console.error('Failed to sync user progress state:', err);
+    return false;
+  }
+}
+
+// Explicit helper to clear user progress and history from DB
+export async function clearUserProgressInDb(
+  username: string,
+  certId: string,
+  keepBookmarks: string[] = []
+): Promise<boolean> {
+  try {
+    const { error: histErr } = await supabase
+      .from('study_history')
+      .delete()
+      .eq('username', username)
+      .eq('cert_id', certId);
+
+    if (histErr) {
+      console.error('Error deleting study history from DB:', histErr);
+    }
+
+    const { error: progErr } = await supabase
+      .from('user_progress')
+      .upsert({
+        username,
+        cert_id: certId,
+        answered_count: 0,
+        correct_count: 0,
+        incorrect_count: 0,
+        streak: 0,
+        bookmarked_question_ids: keepBookmarks,
+        last_updated: new Date().toISOString()
+      }, { onConflict: 'username,cert_id' });
+
+    if (progErr) {
+      console.error('Error resetting user progress in DB:', progErr);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Failed to clear user progress in DB:', err);
     return false;
   }
 }
@@ -814,6 +867,48 @@ export async function saveCertVipStatusToDb(certId: string, isVip: boolean): Pro
     return true;
   } catch (err) {
     console.error('Failed to save cert VIP status to DB:', err);
+    return false;
+  }
+}
+
+// ----------------- CERTIFICATE DISABLED STATUS OVERRIDES SYNC -----------------
+
+export async function fetchCertDisabledStatusesFromDb(): Promise<Record<string, boolean> | null> {
+  try {
+    const { data, error } = await supabase
+      .from('cert_disabled_statuses')
+      .select('cert_id, is_disabled');
+
+    if (error || !data) return null;
+
+    const result: Record<string, boolean> = {};
+    data.forEach((row: any) => {
+      result[row.cert_id] = !!row.is_disabled;
+    });
+    return result;
+  } catch (err) {
+    console.error('Failed to fetch cert disabled statuses from DB:', err);
+    return null;
+  }
+}
+
+export async function saveCertDisabledStatusToDb(certId: string, isDisabled: boolean): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('cert_disabled_statuses')
+      .upsert({
+        cert_id: certId,
+        is_disabled: isDisabled,
+        updated_at: new Date().toISOString()
+      }, { onConflict: 'cert_id' });
+
+    if (error) {
+      console.warn('Error saving cert disabled status to DB:', error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Failed to save cert disabled status to DB:', err);
     return false;
   }
 }
