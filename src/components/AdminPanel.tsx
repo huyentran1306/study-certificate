@@ -54,6 +54,7 @@ import { az900Questions } from '../data/az900Questions';
 import { ai900Questions } from '../data/ai900Questions';
 import { ccaQuestions } from '../data/ccaQuestions';
 import { dp800Questions } from '../data/dp800Questions';
+import { istqbAiQuestions } from '../data/istqbAiQuestions';
 
 interface AdminPanelProps {
   certificates: Certificate[];
@@ -435,6 +436,7 @@ export default function AdminPanel({
         else if (activeCertId === 'ai-900') staticQs = ai900Questions;
         else if (activeCertId === 'cca-f') staticQs = ccaQuestions;
         else if (activeCertId === 'dp-800') staticQs = dp800Questions;
+        else if (activeCertId === 'istqb-ai') staticQs = istqbAiQuestions;
 
         const dbQs: Question[] = data.map((q: any) => {
           const matchedStatic = staticQs.find(sq => sq.id === q.id || sq.questionNumber === q.question_number);

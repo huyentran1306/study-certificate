@@ -40,6 +40,7 @@ import { az900Questions } from './data/az900Questions';
 import { ai900Questions } from './data/ai900Questions';
 import { ccaQuestions } from './data/ccaQuestions';
 import { dp800Questions } from './data/dp800Questions';
+import { istqbAiQuestions } from './data/istqbAiQuestions';
 import QuizCard from './components/QuizCard';
 import StatsPanel from './components/StatsPanel';
 import MockExam from './components/MockExam';
@@ -183,6 +184,17 @@ export default function App() {
       iconName: 'Database',
       isVIP: false,
       accessKeys: ['DP800-VIP-2026', 'AZURE-VIP', 'VIP-PRO-2026']
+    },
+    {
+      id: 'istqb-ai',
+      name: 'ISTQB Certified Tester - AI Testing',
+      code: 'ISTQB-AI',
+      description: 'Chinh phục chứng chỉ ISTQB AI Testing chính thức. Bộ 119 câu hỏi đặc khảo bao quát Đạo đức AI, Học máy, Mạng Nơ-ron, Metamorphic & Adversarial Testing.',
+      difficulty: 'Trung cấp',
+      estimatedHours: '12-18 Giờ',
+      colorClass: 'bg-gradient-to-br from-purple-700 via-indigo-800 to-slate-900 text-white',
+      iconName: 'ShieldCheck',
+      isVIP: false
     }
   ]);
 
@@ -313,6 +325,8 @@ export default function App() {
       defaultQs = ccaQuestions;
     } else if (certId === 'dp-800') {
       defaultQs = dp800Questions;
+    } else if (certId === 'istqb-ai') {
+      defaultQs = istqbAiQuestions;
     } else {
       const storedQs = localStorage.getItem(`questions_${certId}`);
       if (storedQs) {
@@ -449,7 +463,7 @@ export default function App() {
       try {
         const parsed = JSON.parse(storedCustomCerts);
         setCertificates(prev => {
-          const defaultIds = ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800'];
+          const defaultIds = ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai'];
           const filteredPrev = prev.filter(c => defaultIds.includes(c.id));
           return [...filteredPrev, ...parsed];
         });
