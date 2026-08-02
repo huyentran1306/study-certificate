@@ -794,7 +794,7 @@ export default function App() {
     // Loop through all certificates
     certificates.forEach(cert => {
       // Security Check: Skip locked VIP certificate questions from search
-      const isLocked = (cert.isVIP || cert.id === 'cca-f' || cert.id === 'dp-800') && !unlockedCertIds.includes(cert.id);
+      const isLocked = !!cert.isVIP && !unlockedCertIds.includes(cert.id);
       if (isLocked) return;
 
       let certQs: Question[] = [];

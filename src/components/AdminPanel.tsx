@@ -2234,7 +2234,7 @@ export default function AdminPanel({
           {/* Certificate Cards Grid for VIP Settings */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {certificates.map(cert => {
-              const isVip = cert.isVIP || cert.id === 'cca-f' || cert.id === 'dp-800';
+              const isVip = !!cert.isVIP;
               const isUnlockedOnDevice = unlockedCertIds.includes(cert.id);
               
               // Get key configs for this cert
