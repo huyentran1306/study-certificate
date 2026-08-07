@@ -2048,7 +2048,7 @@ export default function App() {
                 </div>
                 {filteredQuestions.length > 0 ? (
                   <div className="space-y-3">
-                    <div className="grid grid-cols-5 gap-1.5 max-h-48 overflow-y-auto pr-1">
+                    <div className="grid grid-cols-5 gap-1.5 max-h-48 overflow-y-auto p-1.5 custom-scrollbar">
                       {paginatedSidebarQuestions.map((q) => {
                         const globalIdx = filteredQuestions.findIndex(fq => fq.id === q.id);
                         const isSelected = globalIdx === currentQuestionIndex;

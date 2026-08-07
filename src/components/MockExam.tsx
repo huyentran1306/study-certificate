@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Timer, Clock, Award, CheckCircle2, XCircle, ChevronLeft, ChevronRight, Check, Maximize2, ZoomIn, ZoomOut, RotateCcw, X, Sparkles, RefreshCw } from 'lucide-react';
+import { Timer, Clock, Award, CheckCircle2, XCircle, ChevronLeft, ChevronRight, Check, Maximize2, ZoomIn, ZoomOut, RotateCcw, X, Sparkles, RefreshCw, Play, FileText, Target, ShieldCheck, ArrowRight, HelpCircle } from 'lucide-react';
 import { Question } from '../types';
 
 interface MockExamProps {
@@ -11,6 +11,7 @@ interface MockExamProps {
 }
 
 export default function MockExam({ questions, onFinishExam, onExit, certName, certCode }: MockExamProps) {
+  const [hasStarted, setHasStarted] = useState<boolean>(false);
   const [targetCount, setTargetCount] = useState<number>(50); // Default to 50 questions
   const [examQuestions, setExamQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -140,28 +141,25 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
   };
 
   useEffect(() => {
-    startExam(targetCount);
-
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [questions, targetCount]);
+  }, []);
 
   const handleSelectCountOption = (count: number) => {
-    if (submitted) {
-      setTargetCount(count);
-      startExam(count);
-      return;
-    }
-    
-    if (Object.keys(selectedAnswers).length > 0) {
-      if (window.confirm(`Bạn đang làm dở bài thi. Bạn có chắc muốn tạo đề thi mới với ${count} câu hỏi không?`)) {
-        setTargetCount(count);
+    setTargetCount(count);
+    if (hasStarted) {
+      if (submitted) {
+        startExam(count);
+        return;
+      }
+      if (Object.keys(selectedAnswers).length > 0) {
+        if (window.confirm(`Bạn đang làm dở bài thi. Bạn có chắc muốn tạo đề thi mới với ${count} câu hỏi không?`)) {
+          startExam(count);
+        }
+      } else {
         startExam(count);
       }
-    } else {
-      setTargetCount(count);
-      startExam(count);
     }
   };
 
@@ -217,10 +215,150 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
+  // ---------------------------------------------------------
+  // LANDING / START EXAM SCREEN
+  // ---------------------------------------------------------
+  if (!hasStarted) {
+    const availablePool = questions.length;
+    const actualCount = Math.min(targetCount, availablePool);
+    const estimatedMinutes = Math.max(actualCount, 5);
+    const passingQuestions = Math.ceil(actualCount * 0.7);
+
+    return (
+      <div id="mock-exam-landing" className="max-w-4xl mx-auto space-y-6 animate-in fade-in duration-200">
+        {/* Hero Banner */}
+        <div className="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-xl relative overflow-hidden">
+          <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10 space-y-3">
+            <div className="inline-flex items-center gap-2 bg-indigo-500/20 border border-indigo-400/30 px-3 py-1 rounded-full text-indigo-300 text-xs font-bold uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5" />
+              Chế độ thi thử ngẫu nhiên
+            </div>
+            
+            <h1 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+              {certCode ? `Kỳ thi mô phỏng ${certCode}` : 'Kỳ thi thử chứng chỉ'} — {certName || 'Hệ thống ôn luyện'}
+            </h1>
+            
+            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-2xl">
+              Đề thi được khởi tạo ngẫu nhiên từ ngân hàng <span className="text-amber-300 font-bold">{availablePool} câu hỏi chuẩn hóa</span>. 
+              Giao diện mô phỏng môi trường thi giúp bạn làm quen áp lực thời gian và đánh giá năng lực thực tế.
+            </p>
+          </div>
+        </div>
+
+        {/* Configuration Card */}
+        <div className="bg-white rounded-3xl border border-slate-150 p-6 sm:p-8 shadow-sm space-y-6">
+          <div className="space-y-3">
+            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider">
+              1. Chọn số lượng câu hỏi trong đề thi:
+            </label>
+            
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {[50, 45, 30, 10].map(count => {
+                const isSelected = targetCount === count;
+                return (
+                  <button
+                    key={count}
+                    disabled={availablePool === 0}
+                    onClick={() => setTargetCount(count)}
+                    className={`p-4 rounded-2xl border-2 text-left transition-all cursor-pointer relative overflow-hidden ${
+                      isSelected
+                        ? 'border-indigo-600 bg-indigo-50/60 text-indigo-950 shadow-md ring-2 ring-indigo-500/20'
+                        : 'border-slate-100 bg-slate-50/50 hover:bg-slate-100/80 hover:border-slate-200 text-slate-700'
+                    }`}
+                  >
+                    {isSelected && (
+                      <div className="absolute top-2.5 right-2.5 bg-indigo-600 text-white p-0.5 rounded-full">
+                        <Check className="w-3 h-3 stroke-[3]" />
+                      </div>
+                    )}
+                    <span className="block text-base sm:text-lg font-black">{count} Câu</span>
+                    <span className="block text-[11px] font-semibold text-slate-500 mt-0.5">
+                      ~ {count} phút làm bài
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Key Metrics Overview */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-100">
+            <div className="flex items-center gap-3 p-1">
+              <div className="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0">
+                <FileText className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="block text-[10px] uppercase font-bold text-slate-400">Số câu trong đề</span>
+                <span className="text-sm font-black text-slate-800">{actualCount} câu</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 p-1">
+              <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+                <Clock className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="block text-[10px] uppercase font-bold text-slate-400">Thời gian làm bài</span>
+                <span className="text-sm font-black text-slate-800">{estimatedMinutes} phút</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 p-1">
+              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                <Target className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="block text-[10px] uppercase font-bold text-slate-400">Điểm đạt (Pass)</span>
+                <span className="text-sm font-black text-slate-800">≥ 70% ({passingQuestions} câu)</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Rules & Guidance */}
+          <div className="space-y-2 pt-2 border-t border-slate-100">
+            <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+              <ShieldCheck className="w-4 h-4 text-indigo-600" />
+              Quy định & Hướng dẫn làm bài
+            </h4>
+            <ul className="text-xs text-slate-600 space-y-2 list-disc list-inside bg-slate-50/50 p-4 rounded-2xl border border-slate-100 leading-relaxed font-medium">
+              <li>Ngân hàng hiện có <strong className="text-indigo-600">{availablePool} câu hỏi</strong> chuẩn hóa được xáo trộn hoàn toàn ngẫu nhiên.</li>
+              <li>Đồng hồ đếm ngược sẽ bắt đầu chạy ngay khi bạn bấm nút <strong className="text-slate-800">"Bắt đầu làm bài thi"</strong>.</li>
+              <li>Bạn có thể chọn đáp án, xem sơ đồ phóng to và di chuyển giữa các câu hỏi linh hoạt.</li>
+              <li>Sau khi bấm <strong className="text-slate-800">"Nộp bài thi"</strong>, hệ thống sẽ chấm điểm và hiển thị chi tiết giải thích cho từng câu.</li>
+            </ul>
+          </div>
+
+          {/* Start Actions */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-100">
+            <button
+              onClick={onExit}
+              className="w-full sm:w-auto px-6 py-3 text-xs font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition-all cursor-pointer"
+            >
+              Quay lại trang chủ
+            </button>
+
+            <button
+              disabled={availablePool === 0}
+              onClick={() => {
+                setHasStarted(true);
+                startExam(targetCount);
+              }}
+              className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-indigo-600 via-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-black text-sm rounded-2xl shadow-lg shadow-indigo-500/25 active:scale-95 transition-all flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-50"
+            >
+              <Play className="w-4.5 h-4.5 fill-current" />
+              Bắt đầu làm bài thi ({actualCount} câu)
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (examQuestions.length === 0) {
     return (
       <div className="flex items-center justify-center p-12 bg-white rounded-3xl border border-slate-100 shadow-sm text-center">
-        <span className="text-slate-500 font-medium">Đang chuẩn bị đề thi thử ngẫu nhiên...</span>
+        <span className="text-slate-500 font-medium">Đang khởi tạo đề thi ngẫu nhiên...</span>
       </div>
     );
   }
@@ -273,11 +411,18 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
           })}
           
           <button
-            onClick={() => startExam(targetCount)}
-            className="p-1.5 text-slate-400 hover:text-indigo-300 hover:bg-slate-700/60 rounded-lg transition-all ml-1 cursor-pointer"
-            title="Đổi bộ câu hỏi ngẫu nhiên mới"
+            onClick={() => {
+              if (!submitted && Object.keys(selectedAnswers).length > 0) {
+                if (!window.confirm('Bạn đang trong bài thi. Bạn có muốn quay lại màn hình chọn đề thi không?')) return;
+              }
+              if (timerRef.current) clearInterval(timerRef.current);
+              setHasStarted(false);
+            }}
+            className="px-2 py-1 text-[11px] font-bold text-slate-300 hover:text-white hover:bg-slate-700/80 rounded-lg transition-all ml-1 cursor-pointer flex items-center gap-1 border border-slate-700/60"
+            title="Đổi cấu hình đề thi"
           >
-            <RefreshCw className="w-3.5 h-3.5" />
+            <RotateCcw className="w-3 h-3 text-indigo-400" />
+            <span className="hidden xl:inline">Cấu hình</span>
           </button>
         </div>
         
@@ -318,7 +463,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
             </span>
           </div>
           
-          <div className="max-h-[360px] overflow-y-auto pr-1 grid grid-cols-5 sm:grid-cols-6 lg:grid-cols-5 gap-1.5 custom-scrollbar">
+          <div className="max-h-[360px] overflow-y-auto p-1.5 grid grid-cols-5 sm:grid-cols-6 lg:grid-cols-5 gap-2 custom-scrollbar">
             {examQuestions.map((q, idx) => {
               const hasAnswered = (selectedAnswers[q.id] || []).length > 0;
               const isActive = idx === currentIndex;
@@ -328,7 +473,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
                 btnClass = 'bg-slate-900 border-slate-900 text-white';
               }
               if (isActive) {
-                btnClass = 'ring-2 ring-indigo-500 ring-offset-2 border-indigo-600';
+                btnClass = 'ring-2 ring-indigo-600 ring-offset-1 border-indigo-600 bg-indigo-50 text-indigo-900 font-extrabold shadow-sm';
               }
               
               if (submitted) {
