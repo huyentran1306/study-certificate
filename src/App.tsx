@@ -2144,6 +2144,8 @@ export default function App() {
             questions={questions}
             onFinishExam={handleFinishExamMock}
             onExit={() => { setMode('practice'); setCurrentQuestionIndex(0); }}
+            certName={certificates.find(c => c.id === activeCertId)?.name}
+            certCode={certificates.find(c => c.id === activeCertId)?.code}
           />
         )}
 

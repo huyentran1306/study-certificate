@@ -1,19 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Timer, Clock, Award, CheckCircle2, XCircle, ChevronLeft, ChevronRight, Check, Maximize2, ZoomIn, ZoomOut, RotateCcw, X, Sparkles } from 'lucide-react';
+import { Timer, Clock, Award, CheckCircle2, XCircle, ChevronLeft, ChevronRight, Check, Maximize2, ZoomIn, ZoomOut, RotateCcw, X, Sparkles, RefreshCw } from 'lucide-react';
 import { Question } from '../types';
 
 interface MockExamProps {
   questions: Question[];
   onFinishExam: (correctCount: number, totalCount: number, elapsedSeconds?: number) => void;
   onExit: () => void;
+  certName?: string;
+  certCode?: string;
 }
 
-export default function MockExam({ questions, onFinishExam, onExit }: MockExamProps) {
+export default function MockExam({ questions, onFinishExam, onExit, certName, certCode }: MockExamProps) {
+  const [targetCount, setTargetCount] = useState<number>(50); // Default to 50 questions
   const [examQuestions, setExamQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string[]>>({});
   const [submitted, setSubmitted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(600); // 10 minutes default
+  const [initialTime, setInitialTime] = useState(3000); // 50 mins default
+  const [timeLeft, setTimeLeft] = useState(3000);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Zoom Lightbox States for Exam Mode
@@ -25,6 +29,7 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
 
   const selectedAnswersRef = useRef(selectedAnswers);
   const examQuestionsRef = useRef(examQuestions);
+  const initialTimeRef = useRef(initialTime);
 
   useEffect(() => {
     // Reset zoom state on question change
@@ -84,11 +89,28 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
   }, [examQuestions]);
 
   useEffect(() => {
-    // Select up to 10 random questions for this exam mock session
+    initialTimeRef.current = initialTime;
+  }, [initialTime]);
+
+  const startExam = (count: number) => {
+    if (questions.length === 0) return;
+    if (timerRef.current) clearInterval(timerRef.current);
+
+    const actualCount = Math.min(count, questions.length);
     const shuffled = [...questions].sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, 10);
+    const selected = shuffled.slice(0, actualCount);
+
+    // Time calculation: 1 minute per question, min 300s
+    const examDurationSeconds = Math.max(actualCount * 60, 300);
+
     setExamQuestions(selected);
     examQuestionsRef.current = selected;
+    setInitialTime(examDurationSeconds);
+    setTimeLeft(examDurationSeconds);
+    initialTimeRef.current = examDurationSeconds;
+    setSelectedAnswers({});
+    setCurrentIndex(0);
+    setSubmitted(false);
 
     // Start timer
     timerRef.current = setInterval(() => {
@@ -97,7 +119,6 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
           clearInterval(timerRef.current!);
           setSubmitted(true);
           
-          // Calculate score from ref values to avoid stale closures
           let correct = 0;
           examQuestionsRef.current.forEach(q => {
             const userAnswers = selectedAnswersRef.current[q.id] || [];
@@ -110,17 +131,39 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
             if (isCorrect) correct++;
           });
           
-          onFinishExam(correct, examQuestionsRef.current.length, 600);
+          onFinishExam(correct, examQuestionsRef.current.length, initialTimeRef.current);
           return 0;
         }
         return prev - 1;
       });
     }, 1000);
+  };
+
+  useEffect(() => {
+    startExam(targetCount);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [questions]);
+  }, [questions, targetCount]);
+
+  const handleSelectCountOption = (count: number) => {
+    if (submitted) {
+      setTargetCount(count);
+      startExam(count);
+      return;
+    }
+    
+    if (Object.keys(selectedAnswers).length > 0) {
+      if (window.confirm(`Bạn đang làm dở bài thi. Bạn có chắc muốn tạo đề thi mới với ${count} câu hỏi không?`)) {
+        setTargetCount(count);
+        startExam(count);
+      }
+    } else {
+      setTargetCount(count);
+      startExam(count);
+    }
+  };
 
   const handleOptionClick = (qId: string, optionKey: string, isMulti: boolean) => {
     if (submitted) return;
@@ -164,7 +207,7 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
     if (timerRef.current) clearInterval(timerRef.current);
     setSubmitted(true);
     const score = calculateScore();
-    const elapsed = 600 - timeLeft;
+    const elapsed = initialTime - timeLeft;
     onFinishExam(score, examQuestions.length, elapsed);
   };
 
@@ -177,7 +220,7 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
   if (examQuestions.length === 0) {
     return (
       <div className="flex items-center justify-center p-12 bg-white rounded-3xl border border-slate-100 shadow-sm text-center">
-        <span className="text-slate-500 font-medium">Đang chuẩn bị đề thi thử...</span>
+        <span className="text-slate-500 font-medium">Đang chuẩn bị đề thi thử ngẫu nhiên...</span>
       </div>
     );
   }
@@ -185,20 +228,63 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
   const currentQ = examQuestions[currentIndex];
   const isMulti = currentQ.correctAnswers.length > 1;
   const currentSelection = selectedAnswers[currentQ.id] || [];
+  const totalExamCount = examQuestions.length;
+  const score = calculateScore();
+  const passingScore = Math.ceil(totalExamCount * 0.7);
+  const isPassed = score >= passingScore;
 
   return (
     <div id="mock-exam-workspace" className="space-y-6">
       {/* Exam control header block */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900 text-white rounded-2xl p-5 border border-slate-800 shadow-sm">
-        <div>
-          <span className="text-[10px] uppercase font-bold text-indigo-400 tracking-wider">Chế độ thi thử chứng chỉ (Dự kiến 10 phút)</span>
-          <h2 className="text-base font-bold text-slate-100 mt-0.5">Mô phỏng GH-300 Microsoft Microsoft</h2>
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-slate-900 text-white rounded-2xl p-5 border border-slate-800 shadow-sm">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-[10px] uppercase font-extrabold text-indigo-400 tracking-wider bg-indigo-950/80 border border-indigo-800/60 px-2.5 py-0.5 rounded-full">
+              Chế độ Thi Thử Ngẫu Nhiên
+            </span>
+            <span className="text-[10px] font-bold text-slate-300 bg-slate-800 px-2.5 py-0.5 rounded-full">
+              Thời gian: {Math.ceil(initialTime / 60)} phút ({totalExamCount} câu)
+            </span>
+          </div>
+          <h2 className="text-base font-extrabold text-slate-100">
+            {certCode ? `Đề thi ${certCode}` : 'Thi thử'} — {certName || 'Hệ thống ôn luyện'}
+          </h2>
+        </div>
+
+        {/* Question Count Quick Selector Bar */}
+        <div className="flex flex-wrap items-center gap-1.5 bg-slate-800/90 p-1.5 rounded-xl border border-slate-700">
+          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-2 hidden sm:inline">Số câu:</span>
+          {[50, 45, 30, 10].map(count => {
+            const isSelected = targetCount === count;
+            return (
+              <button
+                key={count}
+                onClick={() => handleSelectCountOption(count)}
+                className={`text-xs px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                  isSelected
+                    ? 'bg-indigo-600 text-white shadow-sm ring-1 ring-indigo-400'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-700/60'
+                }`}
+                title={`Đề thi ngẫu nhiên ${count} câu`}
+              >
+                {count} câu
+              </button>
+            );
+          })}
+          
+          <button
+            onClick={() => startExam(targetCount)}
+            className="p-1.5 text-slate-400 hover:text-indigo-300 hover:bg-slate-700/60 rounded-lg transition-all ml-1 cursor-pointer"
+            title="Đổi bộ câu hỏi ngẫu nhiên mới"
+          >
+            <RefreshCw className="w-3.5 h-3.5" />
+          </button>
         </div>
         
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700">
-            <Clock className={`w-4 h-4 ${timeLeft < 60 ? 'text-rose-500 animate-pulse' : 'text-slate-400'}`} />
-            <span className={`font-mono text-sm font-bold ${timeLeft < 60 ? 'text-rose-500' : 'text-slate-200'}`}>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700 shrink-0">
+            <Clock className={`w-4 h-4 ${timeLeft < 120 ? 'text-rose-500 animate-pulse' : 'text-slate-400'}`} />
+            <span className={`font-mono text-sm font-bold ${timeLeft < 120 ? 'text-rose-500' : 'text-slate-200'}`}>
               {formatTime(timeLeft)}
             </span>
           </div>
@@ -206,14 +292,14 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
           {!submitted ? (
             <button
               onClick={handleManualSubmit}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs px-4 py-2 rounded-xl border border-indigo-500 shadow-sm transition-all"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs px-4 py-2 rounded-xl border border-indigo-500 shadow-sm transition-all cursor-pointer shrink-0"
             >
               Nộp bài thi
             </button>
           ) : (
             <button
               onClick={onExit}
-              className="bg-slate-800 hover:bg-slate-750 text-slate-200 font-semibold text-xs px-4 py-2 rounded-xl transition-all"
+              className="bg-slate-800 hover:bg-slate-750 text-slate-200 font-semibold text-xs px-4 py-2 rounded-xl border border-slate-700 transition-all cursor-pointer shrink-0"
             >
               Thoát ra
             </button>
@@ -225,9 +311,14 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Questions status grids sidebar */}
         <div className="bg-white border border-slate-100 p-5 rounded-2xl shadow-sm space-y-4">
-          <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest">Danh sách câu hỏi</h3>
+          <div className="flex items-center justify-between">
+            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest">Danh sách câu hỏi</h3>
+            <span className="text-[10px] font-mono font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md">
+              {Object.keys(selectedAnswers).filter(k => (selectedAnswers[k] || []).length > 0).length}/{totalExamCount}
+            </span>
+          </div>
           
-          <div className="grid grid-cols-5 gap-2">
+          <div className="max-h-[360px] overflow-y-auto pr-1 grid grid-cols-5 sm:grid-cols-6 lg:grid-cols-5 gap-1.5 custom-scrollbar">
             {examQuestions.map((q, idx) => {
               const hasAnswered = (selectedAnswers[q.id] || []).length > 0;
               const isActive = idx === currentIndex;
@@ -248,15 +339,15 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
                   normUser.length === normCorrect.length &&
                   normUser.every(ans => normCorrect.includes(ans));
                 btnClass = correct 
-                  ? 'bg-emerald-50 border-emerald-500 text-emerald-700'
-                  : 'bg-rose-50 border-rose-500 text-rose-700';
+                  ? 'bg-emerald-50 border-emerald-500 text-emerald-700 font-bold'
+                  : 'bg-rose-50 border-rose-500 text-rose-700 font-bold';
               }
 
               return (
                 <button
                   key={q.id}
                   onClick={() => setCurrentIndex(idx)}
-                  className={`w-10 h-10 rounded-xl text-xs font-bold flex items-center justify-center transition-all ${btnClass}`}
+                  className={`h-9 rounded-xl text-xs font-bold flex items-center justify-center transition-all cursor-pointer ${btnClass}`}
                 >
                   {idx + 1}
                 </button>
@@ -265,18 +356,31 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
           </div>
 
           {submitted && (
-            <div className="bg-indigo-50/50 p-4 border border-indigo-100 rounded-xl space-y-2 mt-4">
+            <div className={`p-4 border rounded-xl space-y-2.5 mt-4 ${isPassed ? 'bg-emerald-50/70 border-emerald-200' : 'bg-rose-50/70 border-rose-200'}`}>
               <div className="flex items-center justify-between text-xs">
-                <span className="font-semibold text-slate-700">Điểm số đạt được</span>
-                <span className="font-bold text-indigo-700">{calculateScore()}/10 câu</span>
+                <span className="font-bold text-slate-800">Kết quả bài thi</span>
+                <span className={`px-2 py-0.5 text-[10px] font-black rounded-full uppercase ${isPassed ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white'}`}>
+                  {isPassed ? 'ĐẠT (PASS)' : 'CHƯA ĐẠT (FAIL)'}
+                </span>
               </div>
-              <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-slate-600">Số câu đúng:</span>
+                <span className="font-black text-slate-900">{score}/{totalExamCount} câu ({Math.round((score / totalExamCount) * 100)}%)</span>
+              </div>
+
+              <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
                 <div 
-                  className="bg-indigo-600 h-1.5 rounded-full" 
-                  style={{ width: `${(calculateScore() / 10) * 100}%` }}
+                  className={`h-2 rounded-full transition-all duration-500 ${isPassed ? 'bg-emerald-600' : 'bg-rose-500'}`}
+                  style={{ width: `${Math.round((score / totalExamCount) * 100)}%` }}
                 />
               </div>
-              <p className="text-[10px] text-indigo-600 font-medium">Bạn cần đạt tối thiểu 7/10 câu để qua kỳ thi này.</p>
+
+              <p className="text-[10px] text-slate-600 font-medium leading-relaxed">
+                {isPassed 
+                  ? `Chúc mừng! Bạn đã vượt qua mức yêu cầu tối thiểu ${passingScore}/${totalExamCount} câu (70%).` 
+                  : `Bạn cần đạt tối thiểu ${passingScore}/${totalExamCount} câu (70%) để vượt qua bài thi này.`}
+              </p>
             </div>
           )}
         </div>
@@ -285,8 +389,12 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
         <div className="lg:col-span-3 space-y-6">
           <div className="bg-white rounded-2xl border border-slate-100 p-5 md:p-8 shadow-sm space-y-6">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">CÂU HỎI {currentIndex + 1} CỦA 10</span>
-              <span className="text-xs text-slate-500 bg-slate-100 px-3 py-1 rounded-full font-medium">{currentQ.category}</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                CÂU HỎI {currentIndex + 1} CỦA {totalExamCount}
+              </span>
+              <span className="text-xs text-slate-500 bg-slate-100 px-3 py-1 rounded-full font-medium">
+                {currentQ.category}
+              </span>
             </div>
 
             <h3 className="text-base font-semibold text-slate-800 leading-snug">{currentQ.text}</h3>
@@ -368,7 +476,7 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
                     key={opt.key}
                     disabled={submitted}
                     onClick={() => handleOptionClick(currentQ.id, opt.key, isMulti)}
-                    className={`w-full text-left p-4 rounded-xl border text-sm transition-all flex items-start gap-4 ${optStyle}`}
+                    className={`w-full text-left p-4 rounded-xl border text-sm transition-all flex items-start gap-4 cursor-pointer ${optStyle}`}
                   >
                     <span className={`w-5 h-5 rounded-full shrink-0 flex items-center justify-center font-bold text-xs uppercase ${badgeClass}`}>
                       {submitted && isCorrectAnswer && isSelected ? (
@@ -405,7 +513,7 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
               </button>
 
               <button
-                disabled={currentIndex === examQuestions.length - 1}
+                disabled={currentIndex === totalExamCount - 1}
                 onClick={() => setCurrentIndex(prev => prev + 1)}
                 className="text-xs bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 text-white px-5 py-2 rounded-lg font-semibold transition-all cursor-pointer"
               >
@@ -509,3 +617,4 @@ export default function MockExam({ questions, onFinishExam, onExit }: MockExamPr
     </div>
   );
 }
+
