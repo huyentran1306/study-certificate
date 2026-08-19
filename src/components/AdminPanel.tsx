@@ -55,6 +55,7 @@ import { ai900Questions } from '../data/ai900Questions';
 import { ccaQuestions } from '../data/ccaQuestions';
 import { dp800Questions } from '../data/dp800Questions';
 import { istqbAiQuestions } from '../data/istqbAiQuestions';
+import { ab731Questions } from '../data/ab731Questions';
 
 interface AdminPanelProps {
   certificates: Certificate[];
@@ -413,6 +414,7 @@ export default function AdminPanel({
       else if (activeCertId === 'cca-f') staticDefaultQs = ccaQuestions;
       else if (activeCertId === 'dp-800') staticDefaultQs = dp800Questions;
       else if (activeCertId === 'istqb-ai') staticDefaultQs = istqbAiQuestions;
+      else if (activeCertId === 'ab-731') staticDefaultQs = ab731Questions;
 
       const stored = localStorage.getItem(`questions_${activeCertId}`);
       let localQs: Question[] = [];
@@ -450,6 +452,7 @@ export default function AdminPanel({
         else if (activeCertId === 'cca-f') staticQs = ccaQuestions;
         else if (activeCertId === 'dp-800') staticQs = dp800Questions;
         else if (activeCertId === 'istqb-ai') staticQs = istqbAiQuestions;
+        else if (activeCertId === 'ab-731') staticQs = ab731Questions;
 
         const dbQs: Question[] = data.map((q: any) => {
           const matchedStatic = staticQs.find(sq => sq.id === q.id || sq.questionNumber === q.question_number);
@@ -1034,7 +1037,7 @@ export default function AdminPanel({
                     {isActive ? (
                       <Check className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
                     ) : (
-                      cert.id !== 'gh-300' && cert.id !== 'az-900' && cert.id !== 'ai-900' && cert.id !== 'cca-f' && cert.id !== 'dp-800' && (
+                      cert.id !== 'gh-300' && cert.id !== 'az-900' && cert.id !== 'ai-900' && cert.id !== 'cca-f' && cert.id !== 'dp-800' && cert.id !== 'istqb-ai' && cert.id !== 'ab-731' && (
                         <button
                           onClick={(e) => {
                             e.stopPropagation();

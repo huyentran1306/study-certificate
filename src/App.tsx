@@ -30,6 +30,7 @@ import {
   Unlock,
   Key,
   ShieldCheck,
+  Sparkles,
   Eye,
   EyeOff
 } from 'lucide-react';
@@ -41,6 +42,7 @@ import { ai900Questions } from './data/ai900Questions';
 import { ccaQuestions } from './data/ccaQuestions';
 import { dp800Questions } from './data/dp800Questions';
 import { istqbAiQuestions } from './data/istqbAiQuestions';
+import { ab731Questions } from './data/ab731Questions';
 import QuizCard from './components/QuizCard';
 import StatsPanel from './components/StatsPanel';
 import MockExam from './components/MockExam';
@@ -85,6 +87,10 @@ function DynamicIcon({ name, className = "w-5 h-5" }: { name: string; className?
       return <Trophy className={className} />;
     case 'Database':
       return <Database className={className} />;
+    case 'ShieldCheck':
+      return <ShieldCheck className={className} />;
+    case 'Sparkles':
+      return <Sparkles className={className} />;
     default:
       return <BookOpen className={className} />;
   }
@@ -196,6 +202,17 @@ export default function App() {
       estimatedHours: '12-18 Giờ',
       colorClass: 'bg-gradient-to-br from-purple-700 via-indigo-800 to-slate-900 text-white',
       iconName: 'ShieldCheck',
+      isVIP: false
+    },
+    {
+      id: 'ab-731',
+      name: 'Microsoft Certified: AI Transformation Leader',
+      code: 'AB-731',
+      description: 'Chinh phục chứng chỉ Microsoft Certified: AI Transformation Leader (AB-731). Bộ 100 câu hỏi trọng tâm bao quát Chiến lược Chuyển đổi AI, Đạo đức & Quản trị AI (Responsible AI), Microsoft 365 Copilot, Copilot Studio, Microsoft Foundry và Quản trị Chi phí & Cấp phép.',
+      difficulty: 'Trung cấp',
+      estimatedHours: '12-16 Giờ',
+      colorClass: 'bg-gradient-to-br from-blue-700 via-indigo-800 to-violet-950 text-white',
+      iconName: 'Sparkles',
       isVIP: false
     }
   ]);
@@ -331,6 +348,8 @@ export default function App() {
       defaultQs = dp800Questions;
     } else if (certId === 'istqb-ai') {
       defaultQs = istqbAiQuestions;
+    } else if (certId === 'ab-731') {
+      defaultQs = ab731Questions;
     } else {
       const storedQs = localStorage.getItem(`questions_${certId}`);
       if (storedQs) {
@@ -484,7 +503,7 @@ export default function App() {
       try {
         const parsed = JSON.parse(storedCustomCerts);
         setCertificates(prev => {
-          const defaultIds = ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai'];
+          const defaultIds = ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'];
           const filteredPrev = prev.filter(c => defaultIds.includes(c.id));
           return [...parsed, ...filteredPrev];
         });
@@ -816,6 +835,8 @@ export default function App() {
           certQs = dp800Questions;
         } else if (cert.id === 'istqb-ai') {
           certQs = istqbAiQuestions;
+        } else if (cert.id === 'ab-731') {
+          certQs = ab731Questions;
         } else {
           const storedQs = localStorage.getItem(`questions_${cert.id}`);
           if (storedQs) {
@@ -877,7 +898,7 @@ export default function App() {
   const confirmDeleteCert = () => {
     if (!certToDelete) return;
     const cert = certToDelete;
-    if (['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai'].includes(cert.id)) {
+    if (['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'].includes(cert.id)) {
       showAppToast(`Không thể xóa chứng chỉ hệ thống ${cert.code}!`, 'error');
       setCertToDelete(null);
       return;
@@ -960,6 +981,8 @@ export default function App() {
       defaultQs = dp800Questions;
     } else if (activeCertId === 'istqb-ai') {
       defaultQs = istqbAiQuestions;
+    } else if (activeCertId === 'ab-731') {
+      defaultQs = ab731Questions;
     }
 
     setQuestions(defaultQs);
@@ -1513,6 +1536,7 @@ export default function App() {
                 else if (cert.id === 'cca-f') certProgress.total = ccaQuestions.length;
                 else if (cert.id === 'dp-800') certProgress.total = dp800Questions.length;
                 else if (cert.id === 'istqb-ai') certProgress.total = istqbAiQuestions.length;
+                else if (cert.id === 'ab-731') certProgress.total = ab731Questions.length;
                 
                 // Overwrite with actual local count if exists and is larger (or clean up stale cache)
                 const storedQs = localStorage.getItem(`questions_${cert.id}`);
@@ -1521,7 +1545,7 @@ export default function App() {
                     const parsedQs = JSON.parse(storedQs);
                     if (parsedQs.length > certProgress.total) {
                       certProgress.total = parsedQs.length;
-                    } else if (parsedQs.length < certProgress.total && ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai'].includes(cert.id)) {
+                    } else if (parsedQs.length < certProgress.total && ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'].includes(cert.id)) {
                       // Stale localStorage cache from previous version; remove it so fresh static data is used
                       localStorage.removeItem(`questions_${cert.id}`);
                     }
