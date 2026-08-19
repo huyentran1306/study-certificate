@@ -362,7 +362,16 @@ export default function App() {
     // Try fetching from database first
     try {
       const dbQs = await fetchQuestionsFromDb(certId);
-      if (dbQs && dbQs.length >= defaultQs.length) {
+      // Check if dbQs has valid statement_matrix data when defaultQs expects it
+      const dbHasStatementsWhenExpected = defaultQs.every(locQ => {
+        if (locQ.statements && locQ.statements.length > 0) {
+          const matchingDbQ = dbQs?.find(q => q.id === locQ.id || q.questionNumber === locQ.questionNumber);
+          return !!(matchingDbQ?.statements && matchingDbQ.statements.length > 0);
+        }
+        return true;
+      });
+
+      if (dbQs && dbQs.length >= defaultQs.length && dbHasStatementsWhenExpected) {
         // Fallback imageUrl if it's missing in the DB questions but exists in defaultQs
         activeQuestions = dbQs.map(dbQ => {
           const localQ = defaultQs.find(q => q.id === dbQ.id || q.questionNumber === dbQ.questionNumber);
@@ -372,7 +381,7 @@ export default function App() {
           };
         });
       } else if (defaultQs.length > 0) {
-        // If Database has fewer/no questions than our default list, use local list and populate/update DB in background
+        // If Database has fewer questions or older schema/format than our default list, use local list and populate/update DB
         activeQuestions = defaultQs;
         await uploadQuestionsToDb(certId, defaultQs);
       }

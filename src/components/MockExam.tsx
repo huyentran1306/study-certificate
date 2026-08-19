@@ -123,13 +123,30 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
           let correct = 0;
           examQuestionsRef.current.forEach(q => {
             const userAnswers = selectedAnswersRef.current[q.id] || [];
-            const correctAnswers = q.correctAnswers;
-            const normUser = userAnswers.map(ans => ans.trim().toUpperCase());
-            const normCorrect = correctAnswers.map(ans => ans.trim().toUpperCase());
-            const isCorrect = 
-              normUser.length === normCorrect.length &&
-              normUser.every(ans => normCorrect.includes(ans));
-            if (isCorrect) correct++;
+            if (q.questionType === 'statement_matrix' || (q.statements && q.statements.length > 0)) {
+              const statements = q.statements || [];
+              if (statements.length > 0) {
+                const mapped: Record<string, string> = {};
+                userAnswers.forEach(a => {
+                  const [sId, choice] = a.split(':');
+                  if (sId && choice) mapped[sId] = choice;
+                });
+                const isAllCorrect = statements.every(s => {
+                  const uChoice = mapped[s.id];
+                  const normCorrect = /^(?:Yes|Đúng|True)$/i.test(s.correctAnswer) ? 'Yes' : 'No';
+                  return uChoice === normCorrect;
+                });
+                if (isAllCorrect) correct++;
+              }
+            } else {
+              const correctAnswers = q.correctAnswers;
+              const normUser = userAnswers.map(ans => ans.trim().toUpperCase());
+              const normCorrect = correctAnswers.map(ans => ans.trim().toUpperCase());
+              const isCorrect = 
+                normUser.length === normCorrect.length &&
+                normUser.every(ans => normCorrect.includes(ans));
+              if (isCorrect) correct++;
+            }
           });
           
           onFinishExam(correct, examQuestionsRef.current.length, initialTimeRef.current);
@@ -184,19 +201,59 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
     });
   };
 
+  const handleStatementSelect = (qId: string, statementId: string, choice: 'Yes' | 'No', statements: any[]) => {
+    if (submitted) return;
+
+    setSelectedAnswers(prev => {
+      const current = prev[qId] || [];
+      const mapped: Record<string, string> = {};
+      current.forEach(a => {
+        const [sId, c] = a.split(':');
+        if (sId && c) mapped[sId] = c;
+      });
+      mapped[statementId] = choice;
+
+      const encoded = statements.map(s => {
+        const c = mapped[s.id];
+        return c ? `${s.id}:${c}` : null;
+      }).filter(Boolean) as string[];
+
+      return {
+        ...prev,
+        [qId]: encoded
+      };
+    });
+  };
+
   const calculateScore = () => {
     let correct = 0;
     examQuestions.forEach(q => {
       const userAnswers = selectedAnswers[q.id] || [];
-      const correctAnswers = q.correctAnswers;
-      
-      const normUser = userAnswers.map(ans => ans.trim().toUpperCase());
-      const normCorrect = correctAnswers.map(ans => ans.trim().toUpperCase());
-      const isCorrect = 
-        normUser.length === normCorrect.length &&
-        normUser.every(ans => normCorrect.includes(ans));
-      
-      if (isCorrect) correct++;
+      if (q.questionType === 'statement_matrix' || (q.statements && q.statements.length > 0)) {
+        const statements = q.statements || [];
+        if (statements.length > 0) {
+          const mapped: Record<string, string> = {};
+          userAnswers.forEach(a => {
+            const [sId, choice] = a.split(':');
+            if (sId && choice) mapped[sId] = choice;
+          });
+          const isAllCorrect = statements.every(s => {
+            const uChoice = mapped[s.id];
+            const normCorrect = /^(?:Yes|Đúng|True)$/i.test(s.correctAnswer) ? 'Yes' : 'No';
+            return uChoice === normCorrect;
+          });
+          if (isAllCorrect) correct++;
+        }
+      } else {
+        const correctAnswers = q.correctAnswers;
+        const normUser = userAnswers.map(ans => ans.trim().toUpperCase());
+        const normCorrect = correctAnswers.map(ans => ans.trim().toUpperCase());
+        const isCorrect = 
+          normUser.length === normCorrect.length &&
+          normUser.every(ans => normCorrect.includes(ans));
+        
+        if (isCorrect) correct++;
+      }
     });
     return correct;
   };
@@ -571,73 +628,183 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
               </div>
             )}
 
-            {/* Answers select */}
-            <div className="space-y-3">
-              {currentQ.options.map(opt => {
-                const isSelected = currentSelection.includes(opt.key);
-                const isCorrectAnswer = currentQ.correctAnswers.includes(opt.key);
-                
-                let optStyle = 'border-slate-200 hover:border-slate-350 bg-white text-slate-700';
-                let badgeClass = isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-500';
-                let rightLabel = null;
+            {/* Answers select OR Statement Matrix Table */}
+            {currentQ.questionType === 'statement_matrix' || (currentQ.statements && currentQ.statements.length > 0) ? (
+              <div className="space-y-4">
+                <div className="bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 overflow-hidden">
+                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-200 text-xs font-bold text-slate-500">
+                    <span className="flex-1 uppercase tracking-wider">Phát biểu / Khẳng định (Statements)</span>
+                    <div className="flex items-center gap-4 sm:gap-6 px-2 shrink-0">
+                      <span className="w-14 text-center text-emerald-700 font-extrabold">ĐÚNG (YES)</span>
+                      <span className="w-14 text-center text-rose-700 font-extrabold">SAI (NO)</span>
+                    </div>
+                  </div>
 
-                if (isSelected) {
-                  optStyle = 'border-indigo-600 bg-indigo-50/20 text-indigo-900 ring-1 ring-indigo-200';
-                }
+                  <div className="space-y-3">
+                    {(currentQ.statements || []).map((st, sIdx) => {
+                      const mapped: Record<string, string> = {};
+                      currentSelection.forEach(a => {
+                        const [sId, c] = a.split(':');
+                        if (sId && c) mapped[sId] = c;
+                      });
+                      const userChoice = mapped[st.id];
+                      const normalizedCorrect = /^(?:Yes|Đúng|True)$/i.test(st.correctAnswer) ? 'Yes' : 'No';
+                      const isStatementCorrect = userChoice === normalizedCorrect;
 
-                if (submitted) {
-                  if (isCorrectAnswer && isSelected) {
-                    optStyle = 'border-emerald-500 bg-emerald-50 text-emerald-800 font-medium';
-                    badgeClass = 'bg-emerald-600 text-white';
-                    rightLabel = (
-                      <span className="ml-auto text-[10px] font-bold text-emerald-600 bg-emerald-100/50 px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
-                        <Check className="w-3 h-3" /> Chính xác
-                      </span>
-                    );
-                  } else if (isCorrectAnswer && !isSelected) {
-                    optStyle = 'border-dashed border-emerald-500 bg-emerald-50/20 text-slate-700 font-medium';
-                    badgeClass = 'border border-emerald-500 text-emerald-600 bg-white';
-                    rightLabel = (
-                      <span className="ml-auto text-[10px] font-bold text-emerald-600 bg-emerald-100/30 px-2 py-0.5 rounded-full shrink-0">
-                        Đáp án đúng (Bỏ sót)
-                      </span>
-                    );
-                  } else if (isSelected && !isCorrectAnswer) {
-                    optStyle = 'border-rose-500 bg-rose-50 text-rose-800';
-                    badgeClass = 'bg-rose-600 text-white';
-                    rightLabel = (
-                      <span className="ml-auto text-[10px] font-bold text-rose-600 bg-rose-100/50 px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
-                        <X className="w-3 h-3" /> Bạn chọn sai
-                      </span>
-                    );
-                  } else {
-                    optStyle = 'border-slate-100 bg-slate-50/40 text-slate-400 opacity-60';
-                    badgeClass = 'bg-slate-100 text-slate-400';
+                      return (
+                        <div 
+                          key={st.id || sIdx}
+                          className={`p-3 rounded-xl border transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
+                            !submitted 
+                              ? userChoice ? 'bg-white border-indigo-200 shadow-xs' : 'bg-white/80 border-slate-200/70'
+                              : isStatementCorrect ? 'bg-emerald-50/40 border-emerald-300' : 'bg-rose-50/40 border-rose-300'
+                          }`}
+                        >
+                          <div className="flex items-start gap-2.5 flex-1 pr-2">
+                            <span className={`w-5 h-5 rounded-md shrink-0 flex items-center justify-center font-extrabold text-[11px] mt-0.5 ${
+                              !submitted
+                                ? userChoice ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-600'
+                                : isStatementCorrect ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white'
+                            }`}>
+                              {st.id || sIdx + 1}
+                            </span>
+                            <div className="space-y-1">
+                              <p className="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed">
+                                {st.text}
+                              </p>
+                              {submitted && (
+                                <div className="text-[10px] font-bold flex items-center gap-1">
+                                  {isStatementCorrect ? (
+                                    <span className="text-emerald-600 flex items-center gap-1">
+                                      <Check className="w-3 h-3" /> Đúng: <strong>{normalizedCorrect}</strong>
+                                    </span>
+                                  ) : (
+                                    <span className="text-rose-600 flex items-center gap-1">
+                                      <X className="w-3 h-3" /> Chọn: <strong>{userChoice || 'Bỏ trống'}</strong> &bull; Đáp án: <strong className="text-emerald-700 underline">{normalizedCorrect}</strong>
+                                    </span>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 sm:gap-4 shrink-0 justify-end pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100">
+                            <button
+                              type="button"
+                              disabled={submitted}
+                              onClick={() => handleStatementSelect(currentQ.id, st.id, 'Yes', currentQ.statements || [])}
+                              className={`w-14 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer border ${
+                                userChoice === 'Yes'
+                                  ? !submitted
+                                    ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
+                                    : normalizedCorrect === 'Yes'
+                                      ? 'bg-emerald-600 text-white border-emerald-600'
+                                      : 'bg-rose-600 text-white border-rose-600'
+                                  : !submitted
+                                    ? 'bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border-slate-200'
+                                    : normalizedCorrect === 'Yes'
+                                      ? 'bg-emerald-100/60 text-emerald-800 border-emerald-400 font-bold'
+                                      : 'bg-slate-50 text-slate-400 border-slate-200 opacity-60'
+                              }`}
+                            >
+                              Yes
+                            </button>
+
+                            <button
+                              type="button"
+                              disabled={submitted}
+                              onClick={() => handleStatementSelect(currentQ.id, st.id, 'No', currentQ.statements || [])}
+                              className={`w-14 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer border ${
+                                userChoice === 'No'
+                                  ? !submitted
+                                    ? 'bg-rose-600 text-white border-rose-600 shadow-sm'
+                                    : normalizedCorrect === 'No'
+                                      ? 'bg-emerald-600 text-white border-emerald-600'
+                                      : 'bg-rose-600 text-white border-rose-600'
+                                  : !submitted
+                                    ? 'bg-white hover:bg-rose-50 text-slate-700 hover:text-rose-700 border-slate-200'
+                                    : normalizedCorrect === 'No'
+                                      ? 'bg-emerald-100/60 text-emerald-800 border-emerald-400 font-bold'
+                                      : 'bg-slate-50 text-slate-400 border-slate-200 opacity-60'
+                              }`}
+                            >
+                              No
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {currentQ.options.map(opt => {
+                  const isSelected = currentSelection.includes(opt.key);
+                  const isCorrectAnswer = currentQ.correctAnswers.includes(opt.key);
+                  
+                  let optStyle = 'border-slate-200 hover:border-slate-350 bg-white text-slate-700';
+                  let badgeClass = isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-500';
+                  let rightLabel = null;
+
+                  if (isSelected) {
+                    optStyle = 'border-indigo-600 bg-indigo-50/20 text-indigo-900 ring-1 ring-indigo-200';
                   }
-                }
 
-                return (
-                  <button
-                    key={opt.key}
-                    disabled={submitted}
-                    onClick={() => handleOptionClick(currentQ.id, opt.key, isMulti)}
-                    className={`w-full text-left p-4 rounded-xl border text-sm transition-all flex items-start gap-4 cursor-pointer ${optStyle}`}
-                  >
-                    <span className={`w-5 h-5 rounded-full shrink-0 flex items-center justify-center font-bold text-xs uppercase ${badgeClass}`}>
-                      {submitted && isCorrectAnswer && isSelected ? (
-                        <Check className="w-3 h-3" />
-                      ) : submitted && isSelected && !isCorrectAnswer ? (
-                        <X className="w-3 h-3" />
-                      ) : (
-                        opt.key
-                      )}
-                    </span>
-                    <span className="leading-relaxed pt-0.5 flex-1">{opt.text}</span>
-                    {rightLabel}
-                  </button>
-                );
-              })}
-            </div>
+                  if (submitted) {
+                    if (isCorrectAnswer && isSelected) {
+                      optStyle = 'border-emerald-500 bg-emerald-50 text-emerald-800 font-medium';
+                      badgeClass = 'bg-emerald-600 text-white';
+                      rightLabel = (
+                        <span className="ml-auto text-[10px] font-bold text-emerald-600 bg-emerald-100/50 px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
+                          <Check className="w-3 h-3" /> Chính xác
+                        </span>
+                      );
+                    } else if (isCorrectAnswer && !isSelected) {
+                      optStyle = 'border-dashed border-emerald-500 bg-emerald-50/20 text-slate-700 font-medium';
+                      badgeClass = 'border border-emerald-500 text-emerald-600 bg-white';
+                      rightLabel = (
+                        <span className="ml-auto text-[10px] font-bold text-emerald-600 bg-emerald-100/30 px-2 py-0.5 rounded-full shrink-0">
+                          Đáp án đúng (Bỏ sót)
+                        </span>
+                      );
+                    } else if (isSelected && !isCorrectAnswer) {
+                      optStyle = 'border-rose-500 bg-rose-50 text-rose-800';
+                      badgeClass = 'bg-rose-600 text-white';
+                      rightLabel = (
+                        <span className="ml-auto text-[10px] font-bold text-rose-600 bg-rose-100/50 px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
+                          <X className="w-3 h-3" /> Bạn chọn sai
+                        </span>
+                      );
+                    } else {
+                      optStyle = 'border-slate-100 bg-slate-50/40 text-slate-400 opacity-60';
+                      badgeClass = 'bg-slate-100 text-slate-400';
+                    }
+                  }
+
+                  return (
+                    <button
+                      key={opt.key}
+                      disabled={submitted}
+                      onClick={() => handleOptionClick(currentQ.id, opt.key, isMulti)}
+                      className={`w-full text-left p-4 rounded-xl border text-sm transition-all flex items-start gap-4 cursor-pointer ${optStyle}`}
+                    >
+                      <span className={`w-5 h-5 rounded-full shrink-0 flex items-center justify-center font-bold text-xs uppercase ${badgeClass}`}>
+                        {submitted && isCorrectAnswer && isSelected ? (
+                          <Check className="w-3 h-3" />
+                        ) : submitted && isSelected && !isCorrectAnswer ? (
+                          <X className="w-3 h-3" />
+                        ) : (
+                          opt.key
+                        )}
+                      </span>
+                      <span className="leading-relaxed pt-0.5 flex-1">{opt.text}</span>
+                      {rightLabel}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
 
             {/* Explanation section if submitted */}
             {submitted && (

@@ -1,5 +1,5 @@
 import { supabase } from './supabase';
-import { Question, ProgressState, GroupMemberProgress } from '../types';
+import { Question, ProgressState, GroupMemberProgress, Certificate } from '../types';
 
 // Fetch questions for a certification from Database
 export async function fetchQuestionsFromDb(certId: string): Promise<Question[] | null> {
@@ -17,64 +17,103 @@ export async function fetchQuestionsFromDb(certId: string): Promise<Question[] |
 
     if (!data || data.length === 0) return null;
 
-    return data.map((q: any) => ({
-      id: q.id,
-      questionNumber: q.question_number,
-      text: q.text,
-      options: Array.isArray(q.options) ? q.options : JSON.parse(q.options),
-      correctAnswers: q.correct_answers,
-      explanation: q.explanation || '',
-      category: q.category || 'General',
-      tags: q.tags || [],
-      imageUrl: q.image_url || undefined
-    }));
+    return data.map((q: any) => {
+      let rawOptions = q.options;
+      if (typeof rawOptions === 'string') {
+        try { rawOptions = JSON.parse(rawOptions); } catch {}
+      }
+
+      let parsedOptions = Array.isArray(rawOptions) ? rawOptions : [];
+      let statements = undefined;
+      let questionType = 'multiple_choice';
+
+      if (rawOptions && typeof rawOptions === 'object' && !Array.isArray(rawOptions)) {
+        if (rawOptions.type === 'statement_matrix' || rawOptions.statements) {
+          statements = rawOptions.statements;
+          questionType = 'statement_matrix';
+          parsedOptions = rawOptions.choices || [];
+        }
+      }
+
+      return {
+        id: q.id,
+        questionNumber: q.question_number,
+        text: q.text,
+        questionType: (questionType as any) || (statements ? 'statement_matrix' : 'multiple_choice'),
+        statements: statements,
+        options: parsedOptions,
+        correctAnswers: Array.isArray(q.correct_answers) ? q.correct_answers : [q.correct_answers],
+        explanation: q.explanation || '',
+        category: q.category || 'General',
+        tags: q.tags || [],
+        imageUrl: q.image_url || undefined
+      };
+    });
   } catch (err) {
     console.error('Failed to fetch questions from Db:', err);
     return null;
   }
 }
 
-// Bulk sync questions of a cert to DB
+// Bulk sync questions of a cert to DB (chunked in batches of 25)
 export async function uploadQuestionsToDb(certId: string, questionsList: Question[]): Promise<boolean> {
+  if (!questionsList || questionsList.length === 0) return true;
+
   try {
-    const rows = questionsList.map(q => ({
-      id: q.id,
-      cert_id: certId,
-      question_number: q.questionNumber,
-      text: q.text,
-      options: q.options,
-      correct_answers: q.correctAnswers,
-      explanation: q.explanation,
-      category: q.category,
-      tags: q.tags || [],
-      image_url: q.imageUrl || null
-    }));
-
-    let { error } = await supabase
-      .from('questions')
-      .upsert(rows, { onConflict: 'id' });
-
-    if (error) {
-      // If error is about missing image_url column, retry without it
-      const isMissingImageUrl = error.message?.includes('image_url') || error.message?.includes('column');
-      if (isMissingImageUrl) {
-        console.warn('DB schema lacks image_url column. Retrying upsert without image_url...');
-        const rowsWithoutImage = rows.map(({ image_url, ...rest }) => rest);
-        const { error: retryError } = await supabase
-          .from('questions')
-          .upsert(rowsWithoutImage, { onConflict: 'id' });
-        
-        if (retryError) {
-          console.error('Retry upserting questions to DB without image_url failed:', retryError);
-          return false;
-        }
-        return true;
+    const rows = questionsList.map(q => {
+      let optionsPayload: any = q.options;
+      if (q.statements && q.statements.length > 0) {
+        optionsPayload = {
+          type: 'statement_matrix',
+          statements: q.statements,
+          choices: q.options
+        };
       }
 
-      console.error('Error upserting questions to DB:', error);
-      return false;
+      return {
+        id: q.id,
+        cert_id: certId,
+        question_number: q.questionNumber,
+        text: q.text,
+        options: optionsPayload,
+        correct_answers: q.correctAnswers,
+        explanation: q.explanation,
+        category: q.category,
+        tags: q.tags || [],
+        image_url: q.imageUrl || null
+      };
+    });
+
+    const CHUNK_SIZE = 25;
+    let allSuccess = true;
+
+    for (let i = 0; i < rows.length; i += CHUNK_SIZE) {
+      const chunk = rows.slice(i, i + CHUNK_SIZE);
+      let { error } = await supabase
+        .from('questions')
+        .upsert(chunk, { onConflict: 'id' });
+
+      if (error) {
+        // If error is about missing image_url column, retry without it
+        const isMissingImageUrl = error.message?.includes('image_url') || error.message?.includes('column');
+        if (isMissingImageUrl) {
+          const chunkWithoutImage = chunk.map(({ image_url, ...rest }) => rest);
+          const { error: retryError } = await supabase
+            .from('questions')
+            .upsert(chunkWithoutImage, { onConflict: 'id' });
+
+          if (retryError) {
+            console.error(`Retry upserting chunk ${i} failed:`, retryError);
+            allSuccess = false;
+          }
+        } else {
+          console.error(`Error upserting chunk ${i} to DB:`, error);
+          allSuccess = false;
+        }
+      }
     }
-    return true;
+
+    return allSuccess;
   } catch (err) {
     console.error('Failed to upload questions to Db:', err);
     return false;
@@ -976,6 +1015,91 @@ export async function saveUserPetToDb(username: string, petId: string): Promise<
     return false;
   }
 }
+
+// ----------------- CUSTOM CERTIFICATES DB SYNC -----------------
+
+export async function fetchCustomCertificatesFromDb(): Promise<Certificate[] | null> {
+  try {
+    const { data, error } = await supabase
+      .from('custom_certificates')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      // Table might not exist yet; gracefully fallback
+      return null;
+    }
+
+    if (!data) return [];
+
+    return data.map((row: any) => ({
+      id: row.id,
+      name: row.name,
+      code: row.code,
+      description: row.description || '',
+      difficulty: row.difficulty || 'Trung cấp',
+      estimatedHours: row.estimated_hours || '10-15 Giờ',
+      colorClass: row.color_class || 'bg-gradient-to-br from-indigo-700 via-blue-800 to-slate-900 text-white',
+      iconName: row.icon_name || 'BookOpen',
+      isVIP: !!row.is_vip,
+      isDisabled: !!row.is_disabled,
+      accessKeys: Array.isArray(row.access_keys) ? row.access_keys : []
+    }));
+  } catch (err) {
+    console.warn('Failed to fetch custom certificates from DB:', err);
+    return null;
+  }
+}
+
+export async function saveCustomCertificateToDb(cert: Certificate): Promise<boolean> {
+  try {
+    const payload = {
+      id: cert.id,
+      name: cert.name,
+      code: cert.code,
+      description: cert.description,
+      difficulty: cert.difficulty,
+      estimated_hours: cert.estimatedHours,
+      color_class: cert.colorClass,
+      icon_name: cert.iconName,
+      is_vip: !!cert.isVIP,
+      is_disabled: !!cert.isDisabled,
+      access_keys: cert.accessKeys || []
+    };
+
+    const { error } = await supabase
+      .from('custom_certificates')
+      .upsert(payload, { onConflict: 'id' });
+
+    if (error) {
+      console.warn('Could not save custom certificate to DB table (using localStorage fallback):', error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.warn('Failed to save custom certificate to DB:', err);
+    return false;
+  }
+}
+
+export async function deleteCustomCertificateFromDb(certId: string): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('custom_certificates')
+      .delete()
+      .eq('id', certId);
+
+    if (error) {
+      console.warn('Error deleting custom certificate from DB:', error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.warn('Failed to delete custom certificate from DB:', err);
+    return false;
+  }
+}
+
 
 
 

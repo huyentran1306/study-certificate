@@ -7,7 +7,7 @@ import {
   ChevronDown, 
   ChevronUp, 
   ChevronLeft,
-  ChevronRight,
+  ChevronRight, 
   Download, 
   Check, 
   X, 
@@ -34,7 +34,8 @@ import {
   ShieldCheck,
   Eye,
   EyeOff,
-  Ban
+  Ban,
+  Upload
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { 
@@ -46,7 +47,8 @@ import {
   fetchAllUserProgressFromDb,
   deleteUserProgressFromDb,
   clearAllUserProgressFromDb,
-  UserProgressRecord
+  UserProgressRecord,
+  saveCustomCertificateToDb
 } from '../lib/sync';
 import { Question, Certificate, VipKeyConfig } from '../types';
 import { initialQuestions } from '../data/initialQuestions';
@@ -56,6 +58,8 @@ import { ccaQuestions } from '../data/ccaQuestions';
 import { dp800Questions } from '../data/dp800Questions';
 import { istqbAiQuestions } from '../data/istqbAiQuestions';
 import { ab731Questions } from '../data/ab731Questions';
+import CustomQuestionsImport from './CustomQuestionsImport';
+import { smartParseQuestions } from '../utils/questionParser';
 
 interface AdminPanelProps {
   certificates: Certificate[];
@@ -130,7 +134,11 @@ export default function AdminPanel({
   const [newCertHours, setNewCertHours] = useState('8-12 Giờ');
   const [newCertColor, setNewCertColor] = useState('bg-gradient-to-br from-indigo-600 via-sky-700 to-indigo-950 text-white');
   const [newCertIcon, setNewCertIcon] = useState('BookOpen');
-  const [newCertQuestionsText, setNewCertQuestionsText] = useState('[]');
+  const [newCertQuestionsText, setNewCertQuestionsText] = useState('');
+
+  // Bulk Questions Upload modal state
+  const [isBulkUploadOpen, setIsBulkUploadOpen] = useState(false);
+  const [isBulkUploading, setIsBulkUploading] = useState(false);
 
   // Collapsed questions registry (to avoid massive pages on large sets)
   const [expandedQuestionId, setExpandedQuestionId] = useState<string | null>(null);
@@ -838,25 +846,45 @@ export default function AdminPanel({
     showAppToast(`Đã xuất ${questions.length} câu hỏi thành file CSV (hỗ trợ Excel UTF-8)!`, 'success');
   };
 
-  // Create customized certificates
-  const handleCreateNewCert = () => {
+  // Bulk import questions directly into active certificate with Supabase synchronization
+  const handleBulkImportQuestions = async (importedList: Question[], resetProgress: boolean) => {
+    setIsBulkUploading(true);
+    try {
+      setQuestions(importedList);
+      localStorage.setItem(`questions_${activeCertId}`, JSON.stringify(importedList));
+      onUpdateQuestions(activeCertId, importedList);
+
+      // Persist directly to Supabase questions table
+      const dbSuccess = await uploadQuestionsToDb(activeCertId, importedList);
+      if (dbSuccess) {
+        showAppToast(`🎉 Đã nạp thành công và đồng bộ ${importedList.length} câu hỏi vào Database cho chứng chỉ ${activeCert?.code || activeCertId}!`, 'success');
+      } else {
+        showAppToast(`✅ Đã lưu ${importedList.length} câu hỏi vào bộ nhớ trình duyệt! (Đám mây sẽ tự đồng bộ khi có kết nối)`, 'info');
+      }
+      setIsBulkUploadOpen(false);
+    } catch (err: any) {
+      console.error('Lỗi khi nạp hàng loạt câu hỏi:', err);
+      showAppToast(`Lỗi khi nạp câu hỏi: ${err.message || err}`, 'error');
+    } finally {
+      setIsBulkUploading(false);
+    }
+  };
+
+  // Create customized certificates with smart parser (supporting JSON, raw text, or empty)
+  const handleCreateNewCert = async () => {
     if (!newCertCode || !newCertName) {
       showAppToast('Vui lòng điền đầy đủ Mã và Tên chứng chỉ!', 'error');
       return;
     }
 
     let parsedQuestionsList: Question[] = [];
-    try {
-      if (newCertQuestionsText && newCertQuestionsText.trim() !== '[]') {
-        parsedQuestionsList = JSON.parse(newCertQuestionsText);
-        if (!Array.isArray(parsedQuestionsList)) {
-          showAppToast('Cú pháp bộ câu hỏi đi kèm phải là một mảng [] JSON!', 'error');
-          return;
-        }
+    if (newCertQuestionsText && newCertQuestionsText.trim() !== '' && newCertQuestionsText.trim() !== '[]') {
+      try {
+        parsedQuestionsList = smartParseQuestions(newCertQuestionsText.trim(), 1);
+      } catch (err: any) {
+        showAppToast(`Lỗi phân tích cú pháp bộ câu hỏi: ${err.message}`, 'error');
+        return;
       }
-    } catch (err: any) {
-      showAppToast(`Lỗi phân tích cú pháp JSON bộ câu hỏi: ${err.message}`, 'error');
-      return;
     }
 
     try {
@@ -875,11 +903,14 @@ export default function AdminPanel({
       // Call callback parent state
       onAddCertificate(builtCert, parsedQuestionsList);
 
+      // Also persist to Supabase custom_certificates table
+      await saveCustomCertificateToDb(builtCert);
+
       // Reset state
       setNewCertCode('');
       setNewCertName('');
       setNewCertDesc('');
-      setNewCertQuestionsText('[]');
+      setNewCertQuestionsText('');
       setIsNewCertFormOpen(false);
       showAppToast(`Chứng chỉ ${builtCert.code} đã được khởi tạo thành công với ${parsedQuestionsList.length} câu hỏi!`, 'success');
     } catch (e) {
@@ -1229,14 +1260,25 @@ export default function AdminPanel({
                 </select>
               </div>
 
-              {/* Add Question Button */}
-              <button
-                onClick={handleOpenAddQuestion}
-                className="bg-indigo-650 hover:bg-indigo-700 text-white font-black text-xs px-4 py-2.5 rounded-xl flex items-center justify-center gap-1.5 hover:shadow-md cursor-pointer transition-all"
-              >
-                <Plus className="w-4 h-4" />
-                Tạo Câu Hỏi Mới
-              </button>
+              {/* Action Buttons: Batch Upload & Add Question */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setIsBulkUploadOpen(true)}
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs px-3.5 py-2.5 rounded-xl flex items-center justify-center gap-1.5 hover:shadow-md cursor-pointer transition-all shadow-sm"
+                  title="Nạp hàng loạt câu hỏi từ Excel, Word, Text hoặc JSON"
+                >
+                  <Upload className="w-4 h-4" />
+                  Nạp Thêm Câu Hỏi
+                </button>
+
+                <button
+                  onClick={handleOpenAddQuestion}
+                  className="bg-indigo-650 hover:bg-indigo-700 text-white font-black text-xs px-3.5 py-2.5 rounded-xl flex items-center justify-center gap-1.5 hover:shadow-md cursor-pointer transition-all"
+                >
+                  <Plus className="w-4 h-4" />
+                  Tạo Câu Mới
+                </button>
+              </div>
             </div>
             
             <div className="flex items-center justify-between text-[11px] text-slate-400">
@@ -1492,6 +1534,42 @@ export default function AdminPanel({
                     {isLoading ? 'Đang lưu...' : 'Lưu Thay Đổi'}
                   </button>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* Bulk Questions Upload Modal */}
+          {isBulkUploadOpen && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn overflow-y-auto">
+              <div className="bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-2xl space-y-4 w-full max-w-3xl my-6 animate-in zoom-in-95 duration-200 max-h-[92vh] overflow-y-auto">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+                  <div className="flex items-center gap-2">
+                    <div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl">
+                      <Upload className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-tight">
+                        NẠP THÊM CÂU HỎI VÀO CHỨNG CHỈ {activeCert?.code || activeCertId}
+                      </h3>
+                      <p className="text-[11px] text-slate-400 font-medium mt-0.5">
+                        Hiện có: <strong className="text-slate-700 font-bold">{questions.length} câu hỏi</strong> trong hệ thống. Hỗ trợ Excel (.xlsx, .csv), Văn bản thô, JSON hoặc Excel + Tệp ảnh.
+                      </p>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={() => setIsBulkUploadOpen(false)}
+                    className="p-1.5 text-slate-400 hover:text-slate-700 rounded-xl hover:bg-slate-100"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* Embedded Rich Importer */}
+                <CustomQuestionsImport
+                  currentCount={questions.length}
+                  existingQuestions={questions}
+                  onImport={handleBulkImportQuestions}
+                />
               </div>
             </div>
           )}

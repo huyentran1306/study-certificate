@@ -1,12 +1,20 @@
+export interface StatementItem {
+  id: string; // e.g. "1", "2", "3"
+  text: string;
+  correctAnswer: 'Yes' | 'No' | string;
+}
+
 export interface Question {
   id: string;
   questionNumber: number;
   text: string;
+  questionType?: 'multiple_choice' | 'statement_matrix' | 'drag_drop' | 'case_study';
+  statements?: StatementItem[];
   options: {
     key: string; // A, B, C, D, etc.
     text: string;
   }[];
-  correctAnswers: string[]; // ['B'] or ['A', 'B'] for multi-select
+  correctAnswers: string[]; // ['B'] or ['A', 'B'] for multi-select, or ['1:Yes', '2:No'] for statements
   explanation: string;
   category: string; // e.g. "Responsible AI", "Copilot CLI", "Features & Optimization", "Security & Licensing"
   tags?: string[];
