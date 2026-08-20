@@ -508,16 +508,38 @@ export default function App() {
     }
     loadCertStatuses();
 
-    // 1. Gather custom certificates from storage
+    // 1. Gather custom certificates from storage, excluding duplicates of system certificates.
+    const defaultIds = ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'];
+    const defaultCertificates = certificates.filter(cert => defaultIds.includes(cert.id));
+    const defaultCertIdByCode = new Map<string, string>(
+      defaultCertificates.map(cert => [cert.code.trim().toUpperCase(), cert.id] as [string, string])
+    );
+    const duplicateCertRedirects = new Map<string, string>();
+    let retainedCustomCertIds = new Set<string>();
     const storedCustomCerts = localStorage.getItem('study_certs_custom');
     if (storedCustomCerts) {
       try {
-        const parsed = JSON.parse(storedCustomCerts);
-        setCertificates(prev => {
-          const defaultIds = ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'];
-          const filteredPrev = prev.filter(c => defaultIds.includes(c.id));
-          return [...parsed, ...filteredPrev];
+        const parsed = JSON.parse(storedCustomCerts) as Certificate[];
+        const seenCustomCodes = new Set<string>();
+        const uniqueCustomCerts = parsed.filter(cert => {
+          const normalizedCode = cert.code?.trim().toUpperCase();
+          const matchingDefaultId = defaultCertIdByCode.get(normalizedCode);
+
+          if (matchingDefaultId) {
+            duplicateCertRedirects.set(cert.id, matchingDefaultId);
+            return false;
+          }
+          if (!normalizedCode || seenCustomCodes.has(normalizedCode)) return false;
+
+          seenCustomCodes.add(normalizedCode);
+          return true;
         });
+
+        retainedCustomCertIds = new Set(uniqueCustomCerts.map(cert => cert.id));
+        if (uniqueCustomCerts.length !== parsed.length) {
+          localStorage.setItem('study_certs_custom', JSON.stringify(uniqueCustomCerts));
+        }
+        setCertificates([...uniqueCustomCerts, ...defaultCertificates]);
       } catch {
         // ignore
       }
@@ -525,6 +547,14 @@ export default function App() {
 
     // 2. Select initial active cert and load its content
     let lastActiveCert = localStorage.getItem('study_active_cert') || 'gh-300';
+    const redirectedDefaultId = duplicateCertRedirects.get(lastActiveCert);
+    if (redirectedDefaultId) {
+      lastActiveCert = redirectedDefaultId;
+      localStorage.setItem('study_active_cert', lastActiveCert);
+    } else if (!defaultIds.includes(lastActiveCert) && !retainedCustomCertIds.has(lastActiveCert)) {
+      lastActiveCert = 'gh-300';
+      localStorage.setItem('study_active_cert', lastActiveCert);
+    }
     setActiveCertId(lastActiveCert);
     loadCertData(lastActiveCert, username);
   }, []);
@@ -1982,7 +2012,7 @@ export default function App() {
               {/* Categories list card panel */}
               <div className="bg-white lg:border border-slate-150 rounded-2xl p-4 shadow-sm space-y-2">
                 <span className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Chủ đề bài thi</span>
-                <div className="space-y-1.5">
+                <div className="max-h-72 space-y-1.5 overflow-y-auto pr-1 custom-scrollbar">
                   {categories.map(cat => {
                     const isSelected = selectCategory === cat;
                     
