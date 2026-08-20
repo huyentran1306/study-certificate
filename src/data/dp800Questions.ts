@@ -1,10 +1,24 @@
 import { Question } from '../types';
 
-export const dp800Questions: Question[] = [
+const dp800QuestionSource: Question[] = [
   {
     "id": "dp1",
     "questionNumber": 1,
+    "questionType": "matching_dropdown",
     "text": "Contoso is deploying an Azure SQL database and wants to query data from the FeedbackJson column of the CustomerFeedback table. The query must:\n1. Extract the customer feedback text from the JSON document.\n2. Filter rows where the JSON text contains a keyword.\n3. Calculate a fuzzy similarity score between the feedback text and a known issue description.\n4. Order the results by similarity score, with the highest score first.\nHow should you construct the Transact-SQL query?",
+    "statements": [
+      { "id": "1", "text": "SELECT f.FeedbackId, f.VehicleId, [chọn biểu thức FeedbackText]", "correctAnswer": "E" },
+      { "id": "2", "text": "WHERE [chọn điều kiện lọc theo keyword]", "correctAnswer": "C" },
+      { "id": "3", "text": "ORDER BY [chọn biểu thức sắp xếp] DESC", "correctAnswer": "F" }
+    ],
+    "choices": [
+      { "key": "A", "text": "CONTAINS(FeedbackJson, @Keyword)" },
+      { "key": "B", "text": "EDIT_DISTANCE(JSON_VALUE(f.FeedbackJson, '$.details.comment'), @Keyword) < 3" },
+      { "key": "C", "text": "EDIT_DISTANCE(JSON_VALUE(f.FeedbackJson, '$.text'), @Keyword) < 3" },
+      { "key": "D", "text": "JSON_QUERY(f.FeedbackJson, '$.text', @KnownIssueDescription) AS FeedbackText" },
+      { "key": "E", "text": "JSON_VALUE(f.FeedbackJson, '$.text') AS FeedbackText" },
+      { "key": "F", "text": "SimilarityScore" }
+    ],
     "options": [
       {
         "key": "A",
@@ -23,9 +37,7 @@ export const dp800Questions: Question[] = [
         "text": "SELECT JSON_VALUE(f.FeedbackJson, '$.text') AS FeedbackText, EDIT_DISTANCE_SIMILARITY(JSON_VALUE(f.FeedbackJson, '$.text'), @KnownIssueDescription) AS SimilarityScore FROM dbo.CustomerFeedback f WHERE JSON_VALUE(f.FeedbackJson, '$.text') = @Keyword ORDER BY SimilarityScore ASC"
       }
     ],
-    "correctAnswers": [
-      "A"
-    ],
+    "correctAnswers": ["1=E", "2=C", "3=F"],
     "category": "SQL AI Querying & JSON",
     "explanation": "Để trích xuất chuỗi thô từ cột JSON nvarchar(max), chúng ta sử dụng hàm JSON_VALUE(f.FeedbackJson, '$.text'). Để lọc các dòng gần đúng với từ khóa nhất, ta dùng hàm EDIT_DISTANCE(...) < 3 trong mệnh đề WHERE. Để sắp xếp theo điểm tương đồng cao nhất trước, chúng ta tái sử dụng định danh cột (alias) trong SELECT là SimilarityScore và xếp giảm dần (DESC).",
     "tags": [
@@ -37,7 +49,20 @@ export const dp800Questions: Question[] = [
   {
     "id": "dp2",
     "questionNumber": 2,
+    "questionType": "matching_drag_drop",
     "text": "You need to implement robust error handling inside a stored procedure named dbo.usp_CreateOrder to insert rows into dbo.Orders. The transaction must abort on any insert failures, and return a consistent error to the caller. How should you complete the TRY/CATCH blocks in the procedure?",
+    "statements": [
+      { "id": "1", "text": "Trong TRY, ngay sau lệnh INSERT và trước COMMIT TRANSACTION", "correctAnswer": "E" },
+      { "id": "2", "text": "Trong CATCH, ngay trước lệnh THROW", "correctAnswer": "B" }
+    ],
+    "choices": [
+      { "key": "A", "text": "BEGIN CATCH" },
+      { "key": "B", "text": "IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION" },
+      { "key": "C", "text": "RAISERROR('CreateOrder failed', 16, 1)" },
+      { "key": "D", "text": "ROLLBACK TRANSACTION" },
+      { "key": "E", "text": "SET @OrderId = SCOPE_IDENTITY()" },
+      { "key": "F", "text": "THROW" }
+    ],
     "options": [
       {
         "key": "A",
@@ -56,9 +81,7 @@ export const dp800Questions: Question[] = [
         "text": "Trong TRY block, sau INSERT: SET @OrderId = SCOPE_IDENTITY(); Trong CATCH block: IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION; THROW; THROW;"
       }
     ],
-    "correctAnswers": [
-      "A"
-    ],
+    "correctAnswers": ["1=E", "2=B"],
     "category": "Transaction Management & Error Handling",
     "explanation": "Hàm SCOPE_IDENTITY() là cách an toàn nhất để lấy ID của dòng vừa được chèn. Kiểm tra IF @@TRANCOUNT > 0 trước khi ROLLBACK TRANSACTION giúp ngăn chặn lỗi sập DB khi transaction đã bị hủy tự động trước đó. Việc sử dụng THROW; (re-raise) trong Catch block là best-practice để bảo toàn chi tiết lỗi ban đầu.",
     "tags": [
@@ -169,7 +192,18 @@ export const dp800Questions: Question[] = [
   {
     "id": "dp6",
     "questionNumber": 6,
+    "questionType": "matching_drag_drop",
     "text": "You have a table dbo.Orders with a CreateDate column containing order creation dates. You need to create a SARGable stored procedure that filters Orders for a single calendar day based on @StartDate input. Which approach is correct?",
+    "statements": [
+      { "id": "1", "text": "Tính cận trên @EndDate cho đúng một ngày", "correctAnswer": "A" },
+      { "id": "2", "text": "Điều kiện WHERE có thể dùng Index Seek (SARGable)", "correctAnswer": "B" }
+    ],
+    "choices": [
+      { "key": "A", "text": "SET @EndDate = DATEADD(day, 1, @StartDate)" },
+      { "key": "B", "text": "WHERE o.CreateDate >= @StartDate AND o.CreateDate < @EndDate" },
+      { "key": "C", "text": "WHERE CONVERT(date, o.CreateDate) = @StartDate" },
+      { "key": "D", "text": "WHERE o.CreateDate BETWEEN @StartDate AND GETDATE()" }
+    ],
     "options": [
       {
         "key": "A",
@@ -401,7 +435,21 @@ export const dp800Questions: Question[] = [
   {
     "id": "dp13",
     "questionNumber": 13,
+    "questionType": "matching_drag_drop",
     "text": "You need to write a SELECT query in SQL Server 2025 that returns:\n1. RawNumber: The first substring matching a phone number format.\n2. DigitsOnly: Removes all non-digit characters from RawNumber.\n3. PhoneStatus: Returns 'Valid' if a phone number exists exactly once, otherwise 'Missing'.\nWhich REGEXP functions should you use for these columns?",
+    "statements": [
+      { "id": "1", "text": "RawNumber — trích xuất chuỗi con đầu tiên khớp mẫu", "correctAnswer": "A" },
+      { "id": "2", "text": "DigitsOnly — loại bỏ toàn bộ ký tự không phải số", "correctAnswer": "B" },
+      { "id": "3", "text": "PhoneStatus — kiểm tra mẫu xuất hiện đúng một lần", "correctAnswer": "C" }
+    ],
+    "choices": [
+      { "key": "A", "text": "REGEXP_SUBSTR()" },
+      { "key": "B", "text": "REGEXP_REPLACE()" },
+      { "key": "C", "text": "REGEXP_COUNT() trong biểu thức CASE" },
+      { "key": "D", "text": "REGEXP_INSTR()" },
+      { "key": "E", "text": "REGEXP_LIKE()" },
+      { "key": "F", "text": "STRING_SIMILARITY()" }
+    ],
     "options": [
       {
         "key": "A",
@@ -467,7 +515,18 @@ export const dp800Questions: Question[] = [
   {
     "id": "dp15",
     "questionNumber": 15,
+    "questionType": "matching_drag_drop",
     "text": "You have a daily report filtering by a $.severity JSON property stored in a nvarchar(max) column. The query is causing performance issues due to full table scans. You need to optimize the table to allow index seek and avoid key lookups on returning fields (LogId, LogDateTime). What should you do?",
+    "statements": [
+      { "id": "1", "text": "Computed column cho thuộc tính $.severity", "correctAnswer": "A" },
+      { "id": "2", "text": "Covering index tránh Key Lookup khi trả LogId và LogDateTime", "correctAnswer": "B" }
+    ],
+    "choices": [
+      { "key": "A", "text": "severity AS JSON_VALUE(log, '$.severity') PERSISTED" },
+      { "key": "B", "text": "CREATE INDEX ix_severity ON Logs(severity) INCLUDE(LogId, LogDateTime, log)" },
+      { "key": "C", "text": "severity AS JSON_QUERY(log, '$.severity') PERSISTED" },
+      { "key": "D", "text": "CREATE CLUSTERED COLUMNSTORE INDEX ON Logs" }
+    ],
     "options": [
       {
         "key": "A",
@@ -2196,7 +2255,13 @@ export const dp800Questions: Question[] = [
   {
     "id": "dp66",
     "questionNumber": 66,
+    "questionType": "statement_matrix",
     "text": "You are creating a table to store customer profiles in Azure SQL Database using the following T-SQL code:\n\n```sql\nCREATE TABLE dbo.CustomerProfiles\n(\n  CustomerId BIGINT IDENTITY(1,1) PRIMARY KEY,\n  FullName NVARCHAR(200) MASKED WITH (FUNCTION = 'partial(1,\"xxxx\",1)'),\n  EmailAddress NVARCHAR(200) MASKED WITH (FUNCTION = 'email()'),\n  PhoneNumber NVARCHAR(50) MASKED WITH (FUNCTION = 'default()'),\n  RegionCode NVARCHAR(10) NOT NULL\n);\nGO\nCREATE FUNCTION dbo.fn_FilterByRegion(@RegionCode NVARCHAR(10))\nRETURNS TABLE\nAS\nRETURN\n(\n  SELECT 1\n  FROM dbo.UserRegionAccess ura\n  WHERE ura.UserPrincipalName = SUSER_SNAME()\n    AND ura.RegionCode = @RegionCode\n);\nGO\nCREATE SECURITY POLICY CustomerRegionPolicy\nADD FILTER PREDICATE dbo.fn_FilterByRegion(RegionCode)\nON dbo.CustomerProfiles\nWITH (STATE = ON);\nGO\n```\n\nDetermine whether each of the following statements is True (Yes) or False (No):\n1. The schema meets the security requirements for PII data.\n2. Administrators of the Azure SQL server can see all the rows in dbo.CustomerProfiles when they use an application.\n3. The masking rules will apply even when row-level security (RLS) filters out rows.",
+    "statements": [
+      { "id": "1", "text": "The schema meets the security requirements for PII data.", "correctAnswer": "Yes" },
+      { "id": "2", "text": "Administrators of the Azure SQL server can see all the rows in dbo.CustomerProfiles when they use an application.", "correctAnswer": "No" },
+      { "id": "3", "text": "The masking rules will apply even when row-level security (RLS) filters out rows.", "correctAnswer": "No" }
+    ],
     "options": [
       {
         "key": "A",
@@ -2215,9 +2280,7 @@ export const dp800Questions: Question[] = [
         "text": "1: Yes, 2: No, 3: Yes"
       }
     ],
-    "correctAnswers": [
-      "A"
-    ],
+    "correctAnswers": ["1:Yes", "2:No", "3:No"],
     "category": "Database Security & Triggers",
     "explanation": "Sử dụng kết hợp Dynamic Data Masking (DDM) để che giấu các trường thông tin nhạy cảm (như email, số điện thoại) cùng với Row-Level Security (RLS) để giới hạn quyền truy cập dòng dữ liệu theo vùng là giải pháp bảo mật mạnh mẽ của Microsoft đề xuất. Tuy nhiên, quản trị viên hệ thống (sysadmin) vẫn chịu sự chi phối của chính sách RLS (sẽ bị ẩn các dòng không được gán vùng trừ khi được cấu hình đặc biệt), và quy trình RLS lọc dòng trước khi áp dụng quy tắc che dữ liệu (masking), do đó các dòng bị RLS loại bỏ sẽ không bao giờ được áp dụng masking.",
     "tags": [
@@ -4488,4 +4551,8 @@ export const dp800Questions: Question[] = [
     ]
   }
 ];
+
+// Keep the complete 134-row bank, including the 29 repeated/source-variant questions.
+// The user prefers full exam coverage over deduplication for this paid exam set.
+export const dp800Questions: Question[] = dp800QuestionSource;
 

@@ -1,5 +1,35 @@
 import { Question } from '../types';
 
+export function isMatchingQuestion(question: Question): boolean {
+  return question.questionType === 'matching_dropdown' || question.questionType === 'matching_drag_drop';
+}
+
+export function decodeRowSelections(values: string[]): Record<string, string> {
+  const result: Record<string, string> = {};
+  values.forEach(value => {
+    const match = value.match(/^([^:=]+)\s*[:=]\s*(.+)$/);
+    if (match) result[match[1].trim()] = match[2].trim();
+  });
+  return result;
+}
+
+export function evaluateStructuredQuestion(question: Question, selectedKeys: string[]): boolean {
+  if (!question.statements?.length) return false;
+  const selected = decodeRowSelections(selectedKeys);
+  if (question.questionType === 'statement_matrix') {
+    return question.statements.every(statement => {
+      const expected = /^(?:Yes|Đúng|True)$/i.test(statement.correctAnswer) ? 'Yes' : 'No';
+      return selected[statement.id]?.toLowerCase() === expected.toLowerCase();
+    });
+  }
+  if (isMatchingQuestion(question)) {
+    return question.statements.every(statement =>
+      selected[statement.id]?.toUpperCase() === statement.correctAnswer.trim().toUpperCase()
+    );
+  }
+  return false;
+}
+
 export interface MatrixParsedInfo {
   isMatrix: boolean;
   promptText: string;
@@ -162,6 +192,9 @@ export function evaluateMatrixAnswers(
  * Universal evaluation function for single, multiple, and matrix questions
  */
 export function isQuestionAnswerCorrect(question: Question, selectedKeys: string[]): boolean {
+  if (question.questionType === 'statement_matrix' || isMatchingQuestion(question)) {
+    return evaluateStructuredQuestion(question, selectedKeys);
+  }
   const matrixInfo = parseQuestionMatrix(question);
   if (matrixInfo.isMatrix) {
     const { isAllCorrect } = evaluateMatrixAnswers(

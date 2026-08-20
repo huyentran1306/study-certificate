@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Timer, Clock, Award, CheckCircle2, XCircle, ChevronLeft, ChevronRight, Check, Maximize2, ZoomIn, ZoomOut, RotateCcw, X, Sparkles, RefreshCw, Play, FileText, Target, ShieldCheck, ArrowRight, HelpCircle } from 'lucide-react';
 import { Question } from '../types';
+import MatchingQuestion from './MatchingQuestion';
+import FormattedText from './FormattedText';
+import { decodeRowSelections, isMatchingQuestion, isQuestionAnswerCorrect } from '../utils/questionHelper';
 
 interface MockExamProps {
   questions: Question[];
@@ -123,30 +126,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
           let correct = 0;
           examQuestionsRef.current.forEach(q => {
             const userAnswers = selectedAnswersRef.current[q.id] || [];
-            if (q.questionType === 'statement_matrix' || (q.statements && q.statements.length > 0)) {
-              const statements = q.statements || [];
-              if (statements.length > 0) {
-                const mapped: Record<string, string> = {};
-                userAnswers.forEach(a => {
-                  const [sId, choice] = a.split(':');
-                  if (sId && choice) mapped[sId] = choice;
-                });
-                const isAllCorrect = statements.every(s => {
-                  const uChoice = mapped[s.id];
-                  const normCorrect = /^(?:Yes|Đúng|True)$/i.test(s.correctAnswer) ? 'Yes' : 'No';
-                  return uChoice === normCorrect;
-                });
-                if (isAllCorrect) correct++;
-              }
-            } else {
-              const correctAnswers = q.correctAnswers;
-              const normUser = userAnswers.map(ans => ans.trim().toUpperCase());
-              const normCorrect = correctAnswers.map(ans => ans.trim().toUpperCase());
-              const isCorrect = 
-                normUser.length === normCorrect.length &&
-                normUser.every(ans => normCorrect.includes(ans));
-              if (isCorrect) correct++;
-            }
+            if (isQuestionAnswerCorrect(q, userAnswers)) correct++;
           });
           
           onFinishExam(correct, examQuestionsRef.current.length, initialTimeRef.current);
@@ -225,35 +205,25 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
     });
   };
 
+  const handleMatchingSelect = (qId: string, statementId: string, choiceKey: string, statements: any[]) => {
+    if (submitted) return;
+    setSelectedAnswers(prev => {
+      const mapped = decodeRowSelections(prev[qId] || []);
+      mapped[statementId] = choiceKey;
+      return {
+        ...prev,
+        [qId]: statements
+          .map(statement => mapped[statement.id] ? `${statement.id}=${mapped[statement.id]}` : null)
+          .filter(Boolean) as string[],
+      };
+    });
+  };
+
   const calculateScore = () => {
     let correct = 0;
     examQuestions.forEach(q => {
       const userAnswers = selectedAnswers[q.id] || [];
-      if (q.questionType === 'statement_matrix' || (q.statements && q.statements.length > 0)) {
-        const statements = q.statements || [];
-        if (statements.length > 0) {
-          const mapped: Record<string, string> = {};
-          userAnswers.forEach(a => {
-            const [sId, choice] = a.split(':');
-            if (sId && choice) mapped[sId] = choice;
-          });
-          const isAllCorrect = statements.every(s => {
-            const uChoice = mapped[s.id];
-            const normCorrect = /^(?:Yes|Đúng|True)$/i.test(s.correctAnswer) ? 'Yes' : 'No';
-            return uChoice === normCorrect;
-          });
-          if (isAllCorrect) correct++;
-        }
-      } else {
-        const correctAnswers = q.correctAnswers;
-        const normUser = userAnswers.map(ans => ans.trim().toUpperCase());
-        const normCorrect = correctAnswers.map(ans => ans.trim().toUpperCase());
-        const isCorrect = 
-          normUser.length === normCorrect.length &&
-          normUser.every(ans => normCorrect.includes(ans));
-        
-        if (isCorrect) correct++;
-      }
+      if (isQuestionAnswerCorrect(q, userAnswers)) correct++;
     });
     return correct;
   };
@@ -421,7 +391,8 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
   }
 
   const currentQ = examQuestions[currentIndex];
-  const isMulti = currentQ.correctAnswers.length > 1;
+  const currentIsMatching = isMatchingQuestion(currentQ);
+  const isMulti = !currentIsMatching && currentQ.questionType !== 'statement_matrix' && currentQ.correctAnswers.length > 1;
   const currentSelection = selectedAnswers[currentQ.id] || [];
   const totalExamCount = examQuestions.length;
   const score = calculateScore();
@@ -535,11 +506,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
               
               if (submitted) {
                 const userSelected = selectedAnswers[q.id] || [];
-                const normUser = userSelected.map(ans => ans.trim().toUpperCase());
-                const normCorrect = q.correctAnswers.map(ans => ans.trim().toUpperCase());
-                const correct = 
-                  normUser.length === normCorrect.length &&
-                  normUser.every(ans => normCorrect.includes(ans));
+                const correct = isQuestionAnswerCorrect(q, userSelected);
                 btnClass = correct 
                   ? 'bg-emerald-50 border-emerald-500 text-emerald-700 font-bold'
                   : 'bg-rose-50 border-rose-500 text-rose-700 font-bold';
@@ -599,7 +566,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
               </span>
             </div>
 
-            <h3 className="text-base font-semibold text-slate-800 leading-snug">{currentQ.text}</h3>
+            <FormattedText text={currentQ.text} className="text-base font-semibold text-slate-800" />
 
             {/* Display image with interactive zoom trigger */}
             {currentQ.imageUrl && (
@@ -628,8 +595,17 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
               </div>
             )}
 
-            {/* Answers select OR Statement Matrix Table */}
-            {currentQ.questionType === 'statement_matrix' || (currentQ.statements && currentQ.statements.length > 0) ? (
+            {/* Multiple choice, Yes/No matrix, or matching interaction */}
+            {currentIsMatching && currentQ.statements?.length ? (
+              <MatchingQuestion
+                statements={currentQ.statements}
+                choices={currentQ.choices || currentQ.options}
+                selections={decodeRowSelections(currentSelection)}
+                onChange={(statementId, choiceKey) => handleMatchingSelect(currentQ.id, statementId, choiceKey, currentQ.statements || [])}
+                mode={currentQ.questionType === 'matching_dropdown' ? 'matching_dropdown' : 'matching_drag_drop'}
+                submitted={submitted}
+              />
+            ) : currentQ.questionType === 'statement_matrix' || (!currentQ.questionType && currentQ.statements && currentQ.statements.length > 0) ? (
               <div className="space-y-4">
                 <div className="bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 overflow-hidden">
                   <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-200 text-xs font-bold text-slate-500">
@@ -798,7 +774,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
                           opt.key
                         )}
                       </span>
-                      <span className="leading-relaxed pt-0.5 flex-1">{opt.text}</span>
+                      <FormattedText text={opt.text} variant="option" className="leading-relaxed pt-0.5 flex-1" />
                       {rightLabel}
                     </button>
                   );
@@ -810,7 +786,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
             {submitted && (
               <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/50 space-y-2 animate-fade-in text-xs leading-relaxed text-slate-700">
                 <span className="block font-bold text-indigo-950 uppercase tracking-wide">Giải thích đáp án:</span>
-                <p>{currentQ.explanation}</p>
+                <FormattedText text={currentQ.explanation} variant="explanation" />
               </div>
             )}
 

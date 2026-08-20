@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Bookmark, CheckCircle, AlertTriangle, AlertCircle, ArrowRight, HelpCircle, Info, ZoomIn, ZoomOut, Maximize2, RotateCcw, X, Sparkles, Check } from 'lucide-react';
 import { Question } from '../types';
+import MatchingQuestion from './MatchingQuestion';
+import FormattedText from './FormattedText';
+import { decodeRowSelections, isMatchingQuestion } from '../utils/questionHelper';
 
 interface QuizCardProps {
   question: Question;
@@ -27,6 +30,7 @@ export default function QuizCard({
 }: QuizCardProps) {
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
   const [statementSelections, setStatementSelections] = useState<Record<string, 'Yes' | 'No'>>({});
+  const [matchingSelections, setMatchingSelections] = useState<Record<string, string>>({});
   const [isAnswered, setIsAnswered] = useState(false);
   const [isCorrectResult, setIsCorrectResult] = useState(false);
 
@@ -37,13 +41,15 @@ export default function QuizCard({
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
+  const isMatching = isMatchingQuestion(question);
   const isStatementMatrix = Boolean(
-    question.questionType === 'statement_matrix' || 
-    (question.statements && question.statements.length > 0)
+    question.questionType === 'statement_matrix' ||
+    (!isMatching && !question.questionType && question.statements && question.statements.length > 0)
   );
 
   const statements = question.statements || [];
-  const isMultiSelect = !isStatementMatrix && question.correctAnswers.length > 1;
+  const matchingChoices = question.choices || question.options;
+  const isMultiSelect = !isStatementMatrix && !isMatching && question.correctAnswers.length > 1;
 
   // Whenever question changes, reset local values (if user hasn't answered yet)
   useEffect(() => {
@@ -62,9 +68,13 @@ export default function QuizCard({
         });
         setStatementSelections(mapped);
       }
+      if (isMatching) {
+        setMatchingSelections(decodeRowSelections(activeHistoryEntry.selectedOptions));
+      }
     } else {
       setSelectedKeys([]);
       setStatementSelections({});
+      setMatchingSelections({});
       setIsAnswered(false);
       setIsCorrectResult(false);
     }
@@ -72,7 +82,7 @@ export default function QuizCard({
     setIsZoomOpen(false);
     setZoomScale(1);
     setPanPosition({ x: 0, y: 0 });
-  }, [question, activeHistoryEntry, isStatementMatrix]);
+  }, [question, activeHistoryEntry, isStatementMatrix, isMatching]);
 
   const handleZoomIn = () => setZoomScale(prev => Math.min(prev + 0.25, 4));
   const handleZoomOut = () => setZoomScale(prev => Math.max(prev - 0.25, 0.5));
@@ -136,12 +146,34 @@ export default function QuizCard({
     }));
   };
 
+  const handleMatchingSelect = (statementId: string, choiceKey: string) => {
+    if (isAnswered) return;
+    setMatchingSelections(prev => ({ ...prev, [statementId]: choiceKey }));
+  };
+
   const isAllStatementsAnswered = 
     isStatementMatrix && 
     statements.length > 0 && 
     statements.every(s => statementSelections[s.id] !== undefined);
 
+  const isAllMatchingAnswered =
+    isMatching &&
+    statements.length > 0 &&
+    statements.every(statement => Boolean(matchingSelections[statement.id]));
+
   const handleVerify = () => {
+    if (isMatching) {
+      if (!isAllMatchingAnswered) return;
+      const encodedSelections = statements.map(statement => `${statement.id}=${matchingSelections[statement.id]}`);
+      const allCorrect = statements.every(statement =>
+        matchingSelections[statement.id]?.toUpperCase() === statement.correctAnswer.trim().toUpperCase()
+      );
+      setSelectedKeys(encodedSelections);
+      setIsCorrectResult(allCorrect);
+      setIsAnswered(true);
+      onAnswerSubmitted(question.id, encodedSelections, allCorrect);
+      return;
+    }
     if (isStatementMatrix) {
       if (!isAllStatementsAnswered) return;
 
@@ -215,9 +247,7 @@ export default function QuizCard({
           <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">
             CÂU HỎI {question.questionNumber}
           </span>
-          <h2 className="text-base md:text-lg font-semibold text-slate-800 leading-snug">
-            {question.text}
-          </h2>
+          <FormattedText text={question.text} className="text-base md:text-lg font-semibold text-slate-800" />
         </div>
 
         {/* Display image with interactive zoom trigger */}
@@ -247,8 +277,17 @@ export default function QuizCard({
           </div>
         )}
 
-        {/* Options list OR Statement Matrix Table */}
-        {isStatementMatrix && statements.length > 0 ? (
+        {/* Options list, Yes/No matrix, or matching interaction */}
+        {isMatching && statements.length > 0 ? (
+          <MatchingQuestion
+            statements={statements}
+            choices={matchingChoices}
+            selections={matchingSelections}
+            onChange={handleMatchingSelect}
+            mode={question.questionType === 'matching_dropdown' ? 'matching_dropdown' : 'matching_drag_drop'}
+            submitted={isAnswered}
+          />
+        ) : isStatementMatrix && statements.length > 0 ? (
           <div className="space-y-4">
             <div className="bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 overflow-hidden">
               <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-200 text-xs font-bold text-slate-500">
@@ -424,7 +463,7 @@ export default function QuizCard({
                       opt.key
                     )}
                   </span>
-                  <span className="leading-relaxed pt-0.5 flex-1">{opt.text}</span>
+                  <FormattedText text={opt.text} variant="option" className="leading-relaxed pt-0.5 flex-1" />
                   {rightLabel}
                 </button>
               );
@@ -456,14 +495,16 @@ export default function QuizCard({
           {!isAnswered ? (
             <button
               onClick={handleVerify}
-              disabled={isStatementMatrix ? !isAllStatementsAnswered : selectedKeys.length === 0}
+              disabled={isMatching ? !isAllMatchingAnswered : isStatementMatrix ? !isAllStatementsAnswered : selectedKeys.length === 0}
               className={`w-full sm:w-auto text-xs px-6 py-2.5 rounded-xl font-bold uppercase transition-all shadow-sm ${
-                (isStatementMatrix ? isAllStatementsAnswered : selectedKeys.length > 0)
+                (isMatching ? isAllMatchingAnswered : isStatementMatrix ? isAllStatementsAnswered : selectedKeys.length > 0)
                   ? 'bg-slate-900 text-white hover:bg-slate-800 cursor-pointer'
                   : 'bg-slate-100 text-slate-400 cursor-not-allowed'
               }`}
             >
-              {isStatementMatrix 
+              {isMatching
+                ? (isAllMatchingAnswered ? 'Kiểm tra kết quả ghép' : `Ghép đủ ${statements.length} dòng`)
+                : isStatementMatrix
                 ? (isAllStatementsAnswered ? 'Kiểm tra đáp án Yes/No' : `Chọn Yes/No cho cả ${statements.length} phát biểu`)
                 : isMultiSelect ? 'Xác nhận (Chọn hai)' : 'Kiểm tra đáp án'}
             </button>
@@ -494,11 +535,15 @@ export default function QuizCard({
             
             <div className="space-y-3">
               <p className="text-xs text-slate-500 font-medium">
-                Khóa đúng: <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100/50 uppercase tracking-widest">{question.correctAnswers.join(' & ')}</span>
+                Khóa đúng: <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100/50 uppercase tracking-widest">
+                  {isMatching
+                    ? statements.map(statement => `${statement.id}=${statement.correctAnswer}`).join(' & ')
+                    : question.correctAnswers.join(' & ')}
+                </span>
               </p>
               
               <div className="text-xs text-slate-700 leading-relaxed font-sans space-y-2">
-                <p>{question.explanation}</p>
+                <FormattedText text={question.explanation} variant="explanation" />
               </div>
             </div>
           </div>

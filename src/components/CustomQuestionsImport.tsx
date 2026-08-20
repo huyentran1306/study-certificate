@@ -4,7 +4,7 @@ import { Question } from '../types';
 import * as XLSX from 'xlsx';
 
 interface CustomQuestionsImportProps {
-  onImport: (newQuestions: Question[], resetProgress: boolean) => void;
+  onImport: (newQuestions: Question[], resetProgress: boolean) => Promise<boolean>;
   currentCount: number;
   existingQuestions: Question[];
 }
@@ -41,6 +41,60 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
       "category": "Responsible AI / Hoặc chủ đề khác"
     }
   ];
+
+  const normalizeJsonQuestion = (q: any, idx: number, idPrefix: string): Question => {
+    if (!q?.text) {
+      throw new Error(`Câu hỏi ở vị trí #${idx + 1} thiếu thuộc tính "text".`);
+    }
+
+    const questionType = q.questionType || (Array.isArray(q.statements) && q.statements.length > 0 ? 'statement_matrix' : 'multiple_choice');
+    const isMatching = questionType === 'matching_dropdown' || questionType === 'matching_drag_drop';
+    const isMatrix = questionType === 'statement_matrix';
+    const statements = Array.isArray(q.statements)
+      ? q.statements.map((statement: any, statementIndex: number) => ({
+          id: String(statement.id || statementIndex + 1),
+          text: String(statement.text || '').trim(),
+          correctAnswer: String(statement.correctAnswer || '').trim(),
+          choiceKeys: Array.isArray(statement.choiceKeys) ? statement.choiceKeys.map(String) : undefined,
+        }))
+      : [];
+    const options = Array.isArray(q.choices) ? q.choices : Array.isArray(q.options) ? q.options : [];
+
+    if ((isMatching || isMatrix) && statements.length < 1) {
+      throw new Error(`Câu hỏi #${idx + 1} thuộc loại ${questionType} nhưng thiếu "statements".`);
+    }
+    if (isMatching && options.length < 2) {
+      throw new Error(`Câu hỏi matching #${idx + 1} phải có ít nhất 2 "choices".`);
+    }
+    if (!isMatching && !isMatrix && options.length < 2) {
+      throw new Error(`Câu hỏi #${idx + 1} phải có ít nhất 2 phương án.`);
+    }
+
+    let correctAnswers = Array.isArray(q.correctAnswers) ? q.correctAnswers.map(String) : [];
+    if (isMatching && correctAnswers.length === 0) {
+      correctAnswers = statements.map((statement: any) => `${statement.id}=${statement.correctAnswer}`);
+    } else if (isMatrix && correctAnswers.length === 0) {
+      correctAnswers = statements.map((statement: any) => `${statement.id}:${statement.correctAnswer}`);
+    }
+    if (correctAnswers.length < 1) {
+      throw new Error(`Câu hỏi #${idx + 1} thiếu đáp án đúng.`);
+    }
+
+    return {
+      id: q.id || `${idPrefix}-${Date.now()}-${idx}`,
+      questionNumber: q.questionNumber || (idx + 1),
+      text: q.text,
+      questionType,
+      statements: (isMatching || isMatrix) ? statements : undefined,
+      options,
+      choices: isMatching ? options : undefined,
+      correctAnswers,
+      explanation: q.explanation || 'Không có lời giải thích chi tiết.',
+      category: q.category || 'Chủ đề tự chọn',
+      tags: Array.isArray(q.tags) ? q.tags : [],
+      imageUrl: q.imageUrl || undefined,
+    };
+  };
 
   const parseSingleBlock = (content: string, num: number): Question | null => {
     const lines = content.split('\n').map(l => l.trim()).filter(l => l);
@@ -179,9 +233,9 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
     return parsedQuestions;
   };
 
-  const deduplicateAndProcess = (incomingList: Question[]): { added: number, duplicates: number } => {
+  const deduplicateAndProcess = async (incomingList: Question[]): Promise<{ added: number, duplicates: number }> => {
     if (importMergeMode === 'replace') {
-      onImport(incomingList, resetOnImport);
+      await onImport(incomingList, resetOnImport);
       return { added: incomingList.length, duplicates: 0 };
     }
 
@@ -221,7 +275,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
     }
 
     const merged = [...existingQuestions, ...uniqueIncoming];
-    onImport(merged, resetOnImport);
+    await onImport(merged, resetOnImport);
 
     return { added: uniqueIncoming.length, duplicates: duplicatesFound };
   };
@@ -603,7 +657,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
 
   const finalQuestionsToImport = getMappedExcelQuestions();
 
-  const handleConfirmExcelImport = () => {
+  const handleConfirmExcelImport = async () => {
     setFileError(null);
     setSuccessMsg(null);
     try {
@@ -611,7 +665,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
         throw new Error('Không có danh sách câu hỏi nào được phân tích để lưu. Vui lòng nạp file Excel trước.');
       }
 
-      const result = deduplicateAndProcess(finalQuestionsToImport);
+      const result = await deduplicateAndProcess(finalQuestionsToImport);
       if (importMergeMode === 'replace') {
         setSuccessMsg(`Đã ghi đè thành công và nạp ${result.added} câu hỏi mới từ Excel có đính kèm ảnh sơ đồ!`);
       } else {
@@ -626,7 +680,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
     }
   };
 
-  const handleRawTextImport = () => {
+  const handleRawTextImport = async () => {
     setFileError(null);
     setSuccessMsg(null);
     try {
@@ -639,7 +693,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
         throw new Error('Không nhận diện được câu hỏi nào. Hãy chắc chắn văn bản có chứa chứa từ khóa phân định như "Question 1" hoặc "Câu 1".');
       }
 
-      const result = deduplicateAndProcess(parsed);
+      const result = await deduplicateAndProcess(parsed);
       if (importMergeMode === 'replace') {
         setSuccessMsg(`Đã ghi đè và nạp thành công ${result.added} câu hỏi thô mới!`);
       } else {
@@ -651,7 +705,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
     }
   };
 
-  const handlePasteImport = () => {
+  const handlePasteImport = async () => {
     setFileError(null);
     setSuccessMsg(null);
     try {
@@ -662,29 +716,9 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
       const parsed = JSON.parse(jsonText);
       const list = Array.isArray(parsed) ? parsed : [parsed];
 
-      const validated: Question[] = list.map((q, idx) => {
-        if (!q.text || !q.options || !q.correctAnswers) {
-          throw new Error(`Câu hỏi ở vị trí #${idx + 1} thiếu thuộc tính "text", "options" hoặc "correctAnswers".`);
-        }
-        if (!Array.isArray(q.options) || q.options.length < 2) {
-          throw new Error(`Câu hỏi #${idx + 1} phải có ít nhất 2 phương án.`);
-        }
-        if (!Array.isArray(q.correctAnswers) || q.correctAnswers.length < 1) {
-          throw new Error(`Câu hỏi #${idx + 1} phải có ít nhất một đáp án đúng.`);
-        }
-        return {
-          id: q.id || `custom-${Date.now()}-${idx}`,
-          questionNumber: q.questionNumber || (idx + 1),
-          text: q.text,
-          options: q.options,
-          correctAnswers: q.correctAnswers,
-          explanation: q.explanation || "Không có lời giải thích chi tiết.",
-          category: q.category || "Chủ đề tự chọn",
-          tags: q.tags || []
-        };
-      });
+      const validated: Question[] = list.map((q, idx) => normalizeJsonQuestion(q, idx, 'custom'));
 
-      const result = deduplicateAndProcess(validated);
+      const result = await deduplicateAndProcess(validated);
       if (importMergeMode === 'replace') {
         setSuccessMsg(`Đã xóa câu cũ & nạp mới thành công cả ${result.added} câu hỏi qua JSON!`);
       } else {
@@ -703,29 +737,15 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = (event) => {
+    reader.onload = async (event) => {
       try {
         const text = event.target?.result as string;
         const parsed = JSON.parse(text);
         const list = Array.isArray(parsed) ? parsed : [parsed];
 
-        const validated: Question[] = list.map((q, idx) => {
-          if (!q.text || !q.options || !q.correctAnswers) {
-            throw new Error(`Câu hỏi số #${idx + 1} không đúng cấu trúc yêu cầu.`);
-          }
-          return {
-            id: q.id || `uploaded-${Date.now()}-${idx}`,
-            questionNumber: q.questionNumber || (idx + 1),
-            text: q.text,
-            options: q.options,
-            correctAnswers: q.correctAnswers,
-            explanation: q.explanation || "Không có giải thích kèm theo.",
-            category: q.category || "Chủ đề tải lên",
-            tags: q.tags || []
-          };
-        });
+        const validated: Question[] = list.map((q, idx) => normalizeJsonQuestion(q, idx, 'uploaded'));
 
-        const result = deduplicateAndProcess(validated);
+        const result = await deduplicateAndProcess(validated);
         if (importMergeMode === 'replace') {
           setSuccessMsg(`Đã tải tệp tin và thay thế bằng ${result.added} câu hỏi thành công!`);
         } else {

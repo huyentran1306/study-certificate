@@ -39,7 +39,7 @@ import {
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { 
-  uploadQuestionsToDb,
+  syncQuestionsToDb,
   fetchAllExamResultsFromDb,
   deleteExamResultFromDb,
   clearAllExamResultsFromDb,
@@ -57,7 +57,6 @@ import { ai900Questions } from '../data/ai900Questions';
 import { ccaQuestions } from '../data/ccaQuestions';
 import { dp800Questions } from '../data/dp800Questions';
 import { istqbAiQuestions } from '../data/istqbAiQuestions';
-import { ab731Questions } from '../data/ab731Questions';
 import CustomQuestionsImport from './CustomQuestionsImport';
 import { smartParseQuestions } from '../utils/questionParser';
 
@@ -422,7 +421,6 @@ export default function AdminPanel({
       else if (activeCertId === 'cca-f') staticDefaultQs = ccaQuestions;
       else if (activeCertId === 'dp-800') staticDefaultQs = dp800Questions;
       else if (activeCertId === 'istqb-ai') staticDefaultQs = istqbAiQuestions;
-      else if (activeCertId === 'ab-731') staticDefaultQs = ab731Questions;
 
       const stored = localStorage.getItem(`questions_${activeCertId}`);
       let localQs: Question[] = [];
@@ -460,15 +458,24 @@ export default function AdminPanel({
         else if (activeCertId === 'cca-f') staticQs = ccaQuestions;
         else if (activeCertId === 'dp-800') staticQs = dp800Questions;
         else if (activeCertId === 'istqb-ai') staticQs = istqbAiQuestions;
-        else if (activeCertId === 'ab-731') staticQs = ab731Questions;
 
         const dbQs: Question[] = data.map((q: any) => {
           const matchedStatic = staticQs.find(sq => sq.id === q.id || sq.questionNumber === q.question_number);
+          let rawOptions = q.options;
+          if (typeof rawOptions === 'string') {
+            try { rawOptions = JSON.parse(rawOptions); } catch { rawOptions = []; }
+          }
+          const isStructured = rawOptions && typeof rawOptions === 'object' && !Array.isArray(rawOptions) && Array.isArray(rawOptions.statements);
+          const questionType = isStructured ? (rawOptions.type || 'statement_matrix') : 'multiple_choice';
+          const choices = isStructured ? (rawOptions.choices || []) : (Array.isArray(rawOptions) ? rawOptions : []);
           return {
             id: q.id,
             questionNumber: q.question_number,
             text: q.text,
-            options: Array.isArray(q.options) ? q.options : JSON.parse(q.options),
+            questionType,
+            statements: isStructured ? rawOptions.statements : undefined,
+            options: choices,
+            choices: questionType === 'matching_dropdown' || questionType === 'matching_drag_drop' ? choices : undefined,
             correctAnswers: q.correct_answers,
             explanation: q.explanation || '',
             category: q.category || 'General',
@@ -583,7 +590,9 @@ export default function AdminPanel({
     }
 
     const filteredOptions = qOptions.filter(opt => opt.text.trim() !== '');
-    if (filteredOptions.length < 2) {
+    const isStructuredEdit = Boolean(editingQuestion?.statements?.length);
+    const isMatchingEdit = editingQuestion?.questionType === 'matching_dropdown' || editingQuestion?.questionType === 'matching_drag_drop';
+    if ((!isStructuredEdit || isMatchingEdit) && filteredOptions.length < 2) {
       showAppToast('Vui lòng nhập ít nhất 2 phương án trả lời!', 'error');
       return;
     }
@@ -595,7 +604,9 @@ export default function AdminPanel({
 
     // Ensure all selected correct answers correspond to existing specified options
     const optionKeys = filteredOptions.map(opt => opt.key);
-    const validCorrectAnswers = qCorrectAnswers.filter(key => optionKeys.includes(key));
+    const validCorrectAnswers = isStructuredEdit
+      ? qCorrectAnswers
+      : qCorrectAnswers.filter(key => optionKeys.includes(key));
     if (validCorrectAnswers.length === 0) {
       showAppToast('Các đáp án đúng được chọn không khớp với danh sách phương án hợp lệ!', 'error');
       return;
@@ -617,7 +628,12 @@ export default function AdminPanel({
         id: questionId,
         questionNumber: qNum || (questions.length + 1),
         text: qText.trim(),
+        questionType: editingQuestion?.questionType || 'multiple_choice',
+        statements: editingQuestion?.statements,
         options: filteredOptions,
+        choices: editingQuestion?.questionType === 'matching_dropdown' || editingQuestion?.questionType === 'matching_drag_drop'
+          ? filteredOptions
+          : undefined,
         correctAnswers: validCorrectAnswers,
         explanation: qExplanation.trim(),
         category: qCategory.trim() || 'General',
@@ -642,12 +658,19 @@ export default function AdminPanel({
       onUpdateQuestions(activeCertId, updatedList);
 
       // Sync specific question to Supabase
+      const optionsPayload = savedQuestion.statements?.length
+        ? {
+            type: savedQuestion.questionType || 'statement_matrix',
+            statements: savedQuestion.statements,
+            choices: savedQuestion.choices || savedQuestion.options,
+          }
+        : savedQuestion.options;
       const payload = {
         id: questionId,
         cert_id: activeCertId,
         question_number: savedQuestion.questionNumber,
         text: savedQuestion.text,
-        options: savedQuestion.options,
+        options: optionsPayload,
         correct_answers: savedQuestion.correctAnswers,
         explanation: savedQuestion.explanation,
         category: savedQuestion.category,
@@ -847,24 +870,24 @@ export default function AdminPanel({
   };
 
   // Bulk import questions directly into active certificate with Supabase synchronization
-  const handleBulkImportQuestions = async (importedList: Question[], resetProgress: boolean) => {
+  const handleBulkImportQuestions = async (importedList: Question[], resetProgress: boolean): Promise<boolean> => {
     setIsBulkUploading(true);
     try {
+      const dbSuccess = await syncQuestionsToDb(activeCertId, importedList);
+      if (!dbSuccess) {
+        throw new Error('Database không xác nhận lưu dữ liệu. Danh sách hiện tại được giữ nguyên.');
+      }
+
       setQuestions(importedList);
       localStorage.setItem(`questions_${activeCertId}`, JSON.stringify(importedList));
       onUpdateQuestions(activeCertId, importedList);
-
-      // Persist directly to Supabase questions table
-      const dbSuccess = await uploadQuestionsToDb(activeCertId, importedList);
-      if (dbSuccess) {
-        showAppToast(`🎉 Đã nạp thành công và đồng bộ ${importedList.length} câu hỏi vào Database cho chứng chỉ ${activeCert?.code || activeCertId}!`, 'success');
-      } else {
-        showAppToast(`✅ Đã lưu ${importedList.length} câu hỏi vào bộ nhớ trình duyệt! (Đám mây sẽ tự đồng bộ khi có kết nối)`, 'info');
-      }
+      showAppToast(`🎉 Đã nạp và lưu bền vững ${importedList.length} câu hỏi vào Database cho chứng chỉ ${activeCert?.code || activeCertId}!`, 'success');
       setIsBulkUploadOpen(false);
+      return true;
     } catch (err: any) {
       console.error('Lỗi khi nạp hàng loạt câu hỏi:', err);
       showAppToast(`Lỗi khi nạp câu hỏi: ${err.message || err}`, 'error');
+      throw err;
     } finally {
       setIsBulkUploading(false);
     }

@@ -25,13 +25,15 @@ export async function fetchQuestionsFromDb(certId: string): Promise<Question[] |
 
       let parsedOptions = Array.isArray(rawOptions) ? rawOptions : [];
       let statements = undefined;
+      let choices = undefined;
       let questionType = 'multiple_choice';
 
       if (rawOptions && typeof rawOptions === 'object' && !Array.isArray(rawOptions)) {
-        if (rawOptions.type === 'statement_matrix' || rawOptions.statements) {
+        if (rawOptions.type === 'statement_matrix' || rawOptions.type === 'matching_dropdown' || rawOptions.type === 'matching_drag_drop' || rawOptions.statements) {
           statements = rawOptions.statements;
-          questionType = 'statement_matrix';
+          questionType = rawOptions.type || 'statement_matrix';
           parsedOptions = rawOptions.choices || [];
+          choices = rawOptions.choices || [];
         }
       }
 
@@ -41,6 +43,7 @@ export async function fetchQuestionsFromDb(certId: string): Promise<Question[] |
         text: q.text,
         questionType: (questionType as any) || (statements ? 'statement_matrix' : 'multiple_choice'),
         statements: statements,
+        choices: choices,
         options: parsedOptions,
         correctAnswers: Array.isArray(q.correct_answers) ? q.correct_answers : [q.correct_answers],
         explanation: q.explanation || '',
@@ -64,9 +67,9 @@ export async function uploadQuestionsToDb(certId: string, questionsList: Questio
       let optionsPayload: any = q.options;
       if (q.statements && q.statements.length > 0) {
         optionsPayload = {
-          type: 'statement_matrix',
+          type: q.questionType || 'statement_matrix',
           statements: q.statements,
-          choices: q.options
+          choices: q.choices || q.options
         };
       }
 
@@ -116,6 +119,36 @@ export async function uploadQuestionsToDb(certId: string, questionsList: Questio
     return allSuccess;
   } catch (err) {
     console.error('Failed to upload questions to Db:', err);
+    return false;
+  }
+}
+
+/**
+ * Makes the database question bank exactly match the supplied list.
+ * New/changed rows are upserted first; stale rows are removed only after every upsert succeeds.
+ */
+export async function syncQuestionsToDb(certId: string, questionsList: Question[]): Promise<boolean> {
+  if (!questionsList || questionsList.length === 0) return false;
+
+  const uploaded = await uploadQuestionsToDb(certId, questionsList);
+  if (!uploaded) return false;
+
+  try {
+    const desiredIds = questionsList.map(question => question.id);
+    const inFilter = `(${desiredIds.map(id => `"${id.replace(/"/g, '\\"')}"`).join(',')})`;
+    const { error } = await supabase
+      .from('questions')
+      .delete()
+      .eq('cert_id', certId)
+      .not('id', 'in', inFilter);
+
+    if (error) {
+      console.error('Failed to remove stale questions from DB:', error);
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.error('Failed to synchronize question bank:', error);
     return false;
   }
 }

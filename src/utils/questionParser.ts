@@ -286,21 +286,27 @@ export function smartParseQuestions(input: string, startNumber: number = 1): Que
       const parsed = JSON.parse(trimmed);
       const list = Array.isArray(parsed) ? parsed : [parsed];
       return list.map((item, index) => {
+        const isMatching = item.questionType === 'matching_dropdown' || item.questionType === 'matching_drag_drop';
         const isMatrix = 
           item.questionType === 'statement_matrix' || 
-          (Array.isArray(item.statements) && item.statements.length > 0);
+          (!isMatching && Array.isArray(item.statements) && item.statements.length > 0);
 
         let parsedStatements: StatementItem[] | undefined = undefined;
         if (Array.isArray(item.statements) && item.statements.length > 0) {
           parsedStatements = item.statements.map((s: any, sIdx: number) => ({
             id: String(s.id || sIdx + 1),
             text: s.text || '',
-            correctAnswer: (s.correctAnswer === 'No' || s.correctAnswer === 'Sai' || s.correctAnswer === 'False') ? 'No' : 'Yes'
+            choiceKeys: Array.isArray(s.choiceKeys) ? s.choiceKeys.map(String) : undefined,
+            correctAnswer: isMatching
+              ? String(s.correctAnswer || '')
+              : (s.correctAnswer === 'No' || s.correctAnswer === 'Sai' || s.correctAnswer === 'False') ? 'No' : 'Yes'
           }));
         }
 
         // Prepare options
-        let options = Array.isArray(item.options) ? item.options : [];
+        let options = Array.isArray(item.choices)
+          ? item.choices
+          : Array.isArray(item.options) ? item.options : [];
         if (options.length === 0) {
           if (isMatrix && parsedStatements) {
             options = parsedStatements.map(s => ({
@@ -320,7 +326,9 @@ export function smartParseQuestions(input: string, startNumber: number = 1): Que
         // Prepare correct answers
         let correctAnswers = Array.isArray(item.correctAnswers) ? item.correctAnswers : [];
         if (correctAnswers.length === 0) {
-          if (isMatrix && parsedStatements) {
+          if (isMatching && parsedStatements) {
+            correctAnswers = parsedStatements.map(s => `${s.id}=${s.correctAnswer}`);
+          } else if (isMatrix && parsedStatements) {
             correctAnswers = parsedStatements.map(s => `${s.id}:${s.correctAnswer}`);
           } else {
             correctAnswers = ['A'];
@@ -330,10 +338,11 @@ export function smartParseQuestions(input: string, startNumber: number = 1): Que
         return {
           id: item.id || `custom-q-${startNumber + index}-${Date.now()}`,
           questionNumber: item.questionNumber || (startNumber + index),
-          questionType: isMatrix ? 'statement_matrix' : (item.questionType || 'multiple_choice'),
+          questionType: isMatching ? item.questionType : isMatrix ? 'statement_matrix' : (item.questionType || 'multiple_choice'),
           statements: parsedStatements,
           text: item.text || '',
           options: options,
+          choices: isMatching ? options : undefined,
           correctAnswers: correctAnswers,
           explanation: item.explanation || '',
           category: item.category || 'General',

@@ -2,18 +2,32 @@ export interface StatementItem {
   id: string; // e.g. "1", "2", "3"
   text: string;
   correctAnswer: 'Yes' | 'No' | string;
+  /** Optional subset/order of choices shown for this matching row. */
+  choiceKeys?: string[];
 }
+
+export interface QuestionChoice {
+  key: string;
+  text: string;
+}
+
+export type QuestionType =
+  | 'multiple_choice'
+  | 'statement_matrix'
+  | 'matching_dropdown'
+  | 'matching_drag_drop'
+  | 'drag_drop'
+  | 'case_study';
 
 export interface Question {
   id: string;
   questionNumber: number;
   text: string;
-  questionType?: 'multiple_choice' | 'statement_matrix' | 'drag_drop' | 'case_study';
+  questionType?: QuestionType;
   statements?: StatementItem[];
-  options: {
-    key: string; // A, B, C, D, etc.
-    text: string;
-  }[];
+  options: QuestionChoice[];
+  /** Shared answer bank for matching questions. Falls back to options for legacy data. */
+  choices?: QuestionChoice[];
   correctAnswers: string[]; // ['B'] or ['A', 'B'] for multi-select, or ['1:Yes', '2:No'] for statements
   explanation: string;
   category: string; // e.g. "Responsible AI", "Copilot CLI", "Features & Optimization", "Security & Licensing"

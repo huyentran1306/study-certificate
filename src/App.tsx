@@ -42,7 +42,6 @@ import { ai900Questions } from './data/ai900Questions';
 import { ccaQuestions } from './data/ccaQuestions';
 import { dp800Questions } from './data/dp800Questions';
 import { istqbAiQuestions } from './data/istqbAiQuestions';
-import { ab731Questions } from './data/ab731Questions';
 import QuizCard from './components/QuizCard';
 import StatsPanel from './components/StatsPanel';
 import MockExam from './components/MockExam';
@@ -56,6 +55,7 @@ import FloatingPet from './components/FloatingPet';
 import { 
   fetchQuestionsFromDb, 
   uploadQuestionsToDb, 
+  syncQuestionsToDb,
   fetchUserProgressFromDb, 
   syncUserProgressStateToDb, 
   syncSingleHistoryEntryToDb, 
@@ -348,8 +348,6 @@ export default function App() {
       defaultQs = dp800Questions;
     } else if (certId === 'istqb-ai') {
       defaultQs = istqbAiQuestions;
-    } else if (certId === 'ab-731') {
-      defaultQs = ab731Questions;
     } else {
       const storedQs = localStorage.getItem(`questions_${certId}`);
       if (storedQs) {
@@ -366,7 +364,11 @@ export default function App() {
       const dbHasStatementsWhenExpected = defaultQs.every(locQ => {
         if (locQ.statements && locQ.statements.length > 0) {
           const matchingDbQ = dbQs?.find(q => q.id === locQ.id || q.questionNumber === locQ.questionNumber);
-          return !!(matchingDbQ?.statements && matchingDbQ.statements.length > 0);
+          return !!(
+            matchingDbQ?.statements &&
+            matchingDbQ.statements.length > 0 &&
+            matchingDbQ.questionType === locQ.questionType
+          );
         }
         return true;
       });
@@ -844,8 +846,6 @@ export default function App() {
           certQs = dp800Questions;
         } else if (cert.id === 'istqb-ai') {
           certQs = istqbAiQuestions;
-        } else if (cert.id === 'ab-731') {
-          certQs = ab731Questions;
         } else {
           const storedQs = localStorage.getItem(`questions_${cert.id}`);
           if (storedQs) {
@@ -946,18 +946,16 @@ export default function App() {
   };
 
   // Import custom questions handler for ACTIVE certification
-  const handleImportQuestions = async (newQuestions: Question[], resetProgress: boolean) => {
+  const handleImportQuestions = async (newQuestions: Question[], resetProgress: boolean): Promise<boolean> => {
+    const dbSuccess = await syncQuestionsToDb(activeCertId, newQuestions);
+    if (!dbSuccess) {
+      throw new Error('Không thể lưu ngân hàng câu hỏi lên Database. Vui lòng kiểm tra kết nối và quyền ghi Supabase.');
+    }
+
     setQuestions(newQuestions);
     localStorage.setItem(`questions_${activeCertId}`, JSON.stringify(newQuestions));
     setCurrentQuestionIndex(0);
     setShowUploader(false);
-
-    // Sync imported question bank to cloud custom_questions table
-    try {
-      await uploadQuestionsToDb(activeCertId, newQuestions);
-    } catch (err) {
-      console.error('Failed to upload custom questions to DB:', err);
-    }
 
     if (resetProgress) {
       const emptyProgress: ProgressState = {
@@ -970,12 +968,23 @@ export default function App() {
       };
       await saveProgress(emptyProgress);
     }
+    return true;
   };
 
   // Reset progress and restore defaults for ACTIVE certification
   const handleResetToDefault = () => {
     localStorage.removeItem(`questions_${activeCertId}`);
     localStorage.removeItem(`progress_${activeCertId}`);
+
+    if (activeCertId === 'ab-731') {
+      loadCertData(activeCertId, username);
+      setCurrentQuestionIndex(0);
+      setCategoryFilter('All');
+      setSearchQuery('');
+      setShowBookmarksOnly(false);
+      showAppToast('Đã tải lại ngân hàng AB-731 từ Database!', 'success');
+      return;
+    }
     
     let defaultQs: Question[] = [];
     if (activeCertId === 'gh-300') {
@@ -990,8 +999,6 @@ export default function App() {
       defaultQs = dp800Questions;
     } else if (activeCertId === 'istqb-ai') {
       defaultQs = istqbAiQuestions;
-    } else if (activeCertId === 'ab-731') {
-      defaultQs = ab731Questions;
     }
 
     setQuestions(defaultQs);
@@ -1545,7 +1552,7 @@ export default function App() {
                 else if (cert.id === 'cca-f') certProgress.total = ccaQuestions.length;
                 else if (cert.id === 'dp-800') certProgress.total = dp800Questions.length;
                 else if (cert.id === 'istqb-ai') certProgress.total = istqbAiQuestions.length;
-                else if (cert.id === 'ab-731') certProgress.total = ab731Questions.length;
+                else if (cert.id === 'ab-731') certProgress.total = 100;
                 
                 // Overwrite with actual local count if exists and is larger (or clean up stale cache)
                 const storedQs = localStorage.getItem(`questions_${cert.id}`);
