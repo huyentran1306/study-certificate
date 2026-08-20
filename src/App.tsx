@@ -1988,22 +1988,19 @@ export default function App() {
                     
                     let catTotal = 0;
                     let catAnswered = 0;
-                    let catCorrect = 0;
-                    let catAccuracy = 0;
+                    let catProgress = 0;
 
                     if (cat === 'All') {
                       catTotal = questions.length;
                       catAnswered = progress.history.length;
-                      catCorrect = progress.correctCount;
-                      catAccuracy = catAnswered > 0 ? Math.round((catCorrect / catAnswered) * 100) : 0;
+                      catProgress = catTotal > 0 ? Math.round((catAnswered / catTotal) * 100) : 0;
                     } else {
                       const catQuestions = questions.filter(q => q.category === cat);
                       catTotal = catQuestions.length;
                       const catQIds = new Set(catQuestions.map(q => q.id));
                       const catHistory = progress.history.filter(h => catQIds.has(h.questionId));
                       catAnswered = catHistory.length;
-                      catCorrect = catHistory.filter(h => h.isCorrect).length;
-                      catAccuracy = catAnswered > 0 ? Math.round((catCorrect / catAnswered) * 100) : 0;
+                      catProgress = catTotal > 0 ? Math.round((catAnswered / catTotal) * 100) : 0;
                     }
 
                     return (
@@ -2022,10 +2019,10 @@ export default function App() {
                             {catAnswered > 0 && (
                               <span className={`text-[10px] px-1.5 py-0.5 rounded font-bold ${
                                 isSelected
-                                  ? catAccuracy >= 80 ? 'bg-emerald-900/80 text-emerald-300' : catAccuracy >= 50 ? 'bg-amber-900/80 text-amber-300' : 'bg-rose-900/80 text-rose-300'
-                                  : catAccuracy >= 80 ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/60' : catAccuracy >= 50 ? 'bg-amber-50 text-amber-700 border border-amber-200/60' : 'bg-rose-50 text-rose-700 border border-rose-200/60'
+                                  ? catProgress >= 80 ? 'bg-emerald-900/80 text-emerald-300' : catProgress >= 50 ? 'bg-amber-900/80 text-amber-300' : 'bg-rose-900/80 text-rose-300'
+                                  : catProgress >= 80 ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/60' : catProgress >= 50 ? 'bg-amber-50 text-amber-700 border border-amber-200/60' : 'bg-rose-50 text-rose-700 border border-rose-200/60'
                               }`}>
-                                {catAccuracy}%
+                                {catProgress}%
                               </span>
                             )}
                             <span className={`text-[10px] px-1.5 py-0.5 rounded font-bold ${
@@ -2043,18 +2040,18 @@ export default function App() {
                               className={`h-full rounded-full transition-all duration-300 ${
                                 catAnswered === 0
                                   ? (isSelected ? 'bg-slate-700' : 'bg-slate-300')
-                                  : catAccuracy >= 80 
-                                    ? (isSelected ? 'bg-emerald-400' : 'bg-emerald-500') 
-                                    : catAccuracy >= 50 
-                                      ? (isSelected ? 'bg-amber-400' : 'bg-amber-500') 
+                                  : catProgress >= 80
+                                    ? (isSelected ? 'bg-emerald-400' : 'bg-emerald-500')
+                                    : catProgress >= 50
+                                      ? (isSelected ? 'bg-amber-400' : 'bg-amber-500')
                                       : (isSelected ? 'bg-rose-400' : 'bg-rose-500')
                               }`}
-                              style={{ width: `${catAnswered === 0 ? 0 : catAccuracy}%` }}
+                              style={{ width: `${catProgress}%` }}
                             />
                           </div>
                           {catAnswered > 0 && (
                             <span className={`text-[9px] font-medium shrink-0 ${isSelected ? 'text-slate-400' : 'text-slate-400'}`}>
-                              {catCorrect}/{catAnswered}
+                              {catAnswered}/{catTotal}
                             </span>
                           )}
                         </div>

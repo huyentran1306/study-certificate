@@ -21,6 +21,8 @@ export default function MatchingQuestion({
 }: MatchingQuestionProps) {
   const [activeChoice, setActiveChoice] = useState<string | null>(null);
   const choiceByKey = new Map(choices.map(choice => [choice.key, choice]));
+  const selectedChoiceKeys = new Set(Object.values(selections).filter(Boolean));
+  const availableChoices = choices.filter(choice => !selectedChoiceKeys.has(choice.key));
 
   const assign = (statementId: string, choiceKey: string) => {
     if (submitted || !choiceByKey.has(choiceKey)) return;
@@ -88,8 +90,8 @@ export default function MatchingQuestion({
         <div className="mb-3 flex items-center gap-2 text-xs font-black uppercase tracking-wider text-indigo-700">
           <GripVertical className="h-4 w-4" /> Ngân hàng đáp án
         </div>
-        <div className="flex flex-wrap gap-2">
-          {choices.map(choice => (
+        <div className="flex min-h-9 flex-wrap items-center gap-2">
+          {availableChoices.map(choice => (
             <button
               key={choice.key}
               type="button"
@@ -97,7 +99,7 @@ export default function MatchingQuestion({
               disabled={submitted}
               onDragStart={event => {
                 event.dataTransfer.setData('text/plain', choice.key);
-                event.dataTransfer.effectAllowed = 'copy';
+                event.dataTransfer.effectAllowed = 'move';
                 setActiveChoice(choice.key);
               }}
               onDragEnd={() => setActiveChoice(null)}
@@ -112,6 +114,11 @@ export default function MatchingQuestion({
               {choice.text}
             </button>
           ))}
+          {availableChoices.length === 0 && !submitted && (
+            <p className="text-xs font-semibold text-indigo-500">
+              Đã ghép hết đáp án. Bấm vào một dòng đã ghép để trả đáp án về ngân hàng.
+            </p>
+          )}
         </div>
         {!submitted && (
           <p className="mt-3 flex items-center gap-1.5 text-[11px] font-medium text-indigo-600">
@@ -134,14 +141,20 @@ export default function MatchingQuestion({
               onDragOver={event => {
                 if (!submitted) {
                   event.preventDefault();
-                  event.dataTransfer.dropEffect = 'copy';
+                  event.dataTransfer.dropEffect = 'move';
                 }
               }}
               onDrop={event => {
                 event.preventDefault();
                 assign(statement.id, event.dataTransfer.getData('text/plain'));
               }}
-              onClick={() => activeChoice && assign(statement.id, activeChoice)}
+              onClick={() => {
+                if (activeChoice) {
+                  assign(statement.id, activeChoice);
+                } else if (selectedChoice) {
+                  onChange(statement.id, '');
+                }
+              }}
               className={`w-full rounded-2xl border p-4 text-left transition-all ${
                 !submitted
                   ? selectedChoice
@@ -164,6 +177,9 @@ export default function MatchingQuestion({
                     selectedChoice ? 'border-indigo-200 bg-indigo-50 text-indigo-800' : 'border-slate-200 bg-white text-slate-400'
                   }`}>
                     {selectedChoice ? selectedChoice.text : 'Thả đáp án vào đây'}
+                    {!submitted && selectedChoice && (
+                      <X className="ml-auto h-4 w-4 text-indigo-500" />
+                    )}
                     {submitted && (
                       isCorrect
                         ? <Check className="ml-auto h-4 w-4 text-emerald-600" />
