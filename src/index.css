@@ -6,6 +6,35 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+select,
+input {
+  touch-action: manipulation;
+}
+
+.mobile-nav-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mobile-nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 /* Customized clean transitions */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(4px); }

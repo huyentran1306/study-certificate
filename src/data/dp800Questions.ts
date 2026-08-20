@@ -7,9 +7,9 @@ const dp800QuestionSource: Question[] = [
     "questionType": "matching_dropdown",
     "text": "Contoso is deploying an Azure SQL database and wants to query data from the FeedbackJson column of the CustomerFeedback table. The query must:\n1. Extract the customer feedback text from the JSON document.\n2. Filter rows where the JSON text contains a keyword.\n3. Calculate a fuzzy similarity score between the feedback text and a known issue description.\n4. Order the results by similarity score, with the highest score first.\nHow should you construct the Transact-SQL query?",
     "statements": [
-      { "id": "1", "text": "SELECT f.FeedbackId, f.VehicleId, [chọn biểu thức FeedbackText]", "correctAnswer": "E" },
-      { "id": "2", "text": "WHERE [chọn điều kiện lọc theo keyword]", "correctAnswer": "C" },
-      { "id": "3", "text": "ORDER BY [chọn biểu thức sắp xếp] DESC", "correctAnswer": "F" }
+      { "id": "1", "text": "SELECT f.FeedbackId, f.VehicleId, [select the FeedbackText expression]", "correctAnswer": "E" },
+      { "id": "2", "text": "WHERE [select the keyword filter predicate]", "correctAnswer": "C" },
+      { "id": "3", "text": "ORDER BY [select the sort expression] DESC", "correctAnswer": "F" }
     ],
     "choices": [
       { "key": "A", "text": "CONTAINS(FeedbackJson, @Keyword)" },
@@ -52,8 +52,8 @@ const dp800QuestionSource: Question[] = [
     "questionType": "matching_drag_drop",
     "text": "You need to implement robust error handling inside a stored procedure named dbo.usp_CreateOrder to insert rows into dbo.Orders. The transaction must abort on any insert failures, and return a consistent error to the caller. How should you complete the TRY/CATCH blocks in the procedure?",
     "statements": [
-      { "id": "1", "text": "Trong TRY, ngay sau lệnh INSERT và trước COMMIT TRANSACTION", "correctAnswer": "E" },
-      { "id": "2", "text": "Trong CATCH, ngay trước lệnh THROW", "correctAnswer": "B" }
+      { "id": "1", "text": "In the TRY block, immediately after INSERT and before COMMIT TRANSACTION", "correctAnswer": "E" },
+      { "id": "2", "text": "In the CATCH block, immediately before THROW", "correctAnswer": "B" }
     ],
     "choices": [
       { "key": "A", "text": "BEGIN CATCH" },
@@ -66,19 +66,19 @@ const dp800QuestionSource: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Trong TRY block, sau INSERT: SET @OrderId = SCOPE_IDENTITY(); Trong CATCH block: IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION; THROW;"
+        "text": "In the TRY block after INSERT: SET @OrderId = SCOPE_IDENTITY(); In the CATCH block: IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION; THROW;"
       },
       {
         "key": "B",
-        "text": "Trong TRY block, sau INSERT: SET @OrderId = SCOPE_IDENTITY(); Trong CATCH block: BEGIN CATCH; THROW;"
+        "text": "In the TRY block after INSERT: SET @OrderId = SCOPE_IDENTITY(); In the CATCH block: BEGIN CATCH; THROW;"
       },
       {
         "key": "C",
-        "text": "Trong TRY block, sau INSERT: RAISERROR('CreateOrder failed', 16, 1); Trong CATCH block: ROLLBACK TRANSACTION;"
+        "text": "In the TRY block after INSERT: RAISERROR('CreateOrder failed', 16, 1); In the CATCH block: ROLLBACK TRANSACTION;"
       },
       {
         "key": "D",
-        "text": "Trong TRY block, sau INSERT: SET @OrderId = SCOPE_IDENTITY(); Trong CATCH block: IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION; THROW; THROW;"
+        "text": "In the TRY block after INSERT: SET @OrderId = SCOPE_IDENTITY(); In the CATCH block: IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION; THROW; THROW;"
       }
     ],
     "correctAnswers": ["1=E", "2=B"],
@@ -195,8 +195,8 @@ const dp800QuestionSource: Question[] = [
     "questionType": "matching_drag_drop",
     "text": "You have a table dbo.Orders with a CreateDate column containing order creation dates. You need to create a SARGable stored procedure that filters Orders for a single calendar day based on @StartDate input. Which approach is correct?",
     "statements": [
-      { "id": "1", "text": "Tính cận trên @EndDate cho đúng một ngày", "correctAnswer": "A" },
-      { "id": "2", "text": "Điều kiện WHERE có thể dùng Index Seek (SARGable)", "correctAnswer": "B" }
+      { "id": "1", "text": "Calculate the exclusive @EndDate boundary for one calendar day", "correctAnswer": "A" },
+      { "id": "2", "text": "Use a SARGable WHERE predicate that supports an Index Seek", "correctAnswer": "B" }
     ],
     "choices": [
       { "key": "A", "text": "SET @EndDate = DATEADD(day, 1, @StartDate)" },
@@ -438,14 +438,14 @@ const dp800QuestionSource: Question[] = [
     "questionType": "matching_drag_drop",
     "text": "You need to write a SELECT query in SQL Server 2025 that returns:\n1. RawNumber: The first substring matching a phone number format.\n2. DigitsOnly: Removes all non-digit characters from RawNumber.\n3. PhoneStatus: Returns 'Valid' if a phone number exists exactly once, otherwise 'Missing'.\nWhich REGEXP functions should you use for these columns?",
     "statements": [
-      { "id": "1", "text": "RawNumber — trích xuất chuỗi con đầu tiên khớp mẫu", "correctAnswer": "A" },
-      { "id": "2", "text": "DigitsOnly — loại bỏ toàn bộ ký tự không phải số", "correctAnswer": "B" },
-      { "id": "3", "text": "PhoneStatus — kiểm tra mẫu xuất hiện đúng một lần", "correctAnswer": "C" }
+      { "id": "1", "text": "RawNumber — extract the first substring that matches the pattern", "correctAnswer": "A" },
+      { "id": "2", "text": "DigitsOnly — remove every non-digit character", "correctAnswer": "B" },
+      { "id": "3", "text": "PhoneStatus — verify that the pattern occurs exactly once", "correctAnswer": "C" }
     ],
     "choices": [
       { "key": "A", "text": "REGEXP_SUBSTR()" },
       { "key": "B", "text": "REGEXP_REPLACE()" },
-      { "key": "C", "text": "REGEXP_COUNT() trong biểu thức CASE" },
+      { "key": "C", "text": "REGEXP_COUNT() in a CASE expression" },
       { "key": "D", "text": "REGEXP_INSTR()" },
       { "key": "E", "text": "REGEXP_LIKE()" },
       { "key": "F", "text": "STRING_SIMILARITY()" }
@@ -518,8 +518,8 @@ const dp800QuestionSource: Question[] = [
     "questionType": "matching_drag_drop",
     "text": "You have a daily report filtering by a $.severity JSON property stored in a nvarchar(max) column. The query is causing performance issues due to full table scans. You need to optimize the table to allow index seek and avoid key lookups on returning fields (LogId, LogDateTime). What should you do?",
     "statements": [
-      { "id": "1", "text": "Computed column cho thuộc tính $.severity", "correctAnswer": "A" },
-      { "id": "2", "text": "Covering index tránh Key Lookup khi trả LogId và LogDateTime", "correctAnswer": "B" }
+      { "id": "1", "text": "Computed column for the $.severity property", "correctAnswer": "A" },
+      { "id": "2", "text": "Covering index that avoids a Key Lookup when returning LogId and LogDateTime", "correctAnswer": "B" }
     ],
     "choices": [
       { "key": "A", "text": "severity AS JSON_VALUE(log, '$.severity') PERSISTED" },

@@ -362,8 +362,11 @@ export default function App() {
       const dbQs = await fetchQuestionsFromDb(certId);
       // Check if dbQs has valid statement_matrix data when defaultQs expects it
       const dbHasStatementsWhenExpected = defaultQs.every(locQ => {
+        const matchingDbQ = dbQs?.find(q => q.id === locQ.id || q.questionNumber === locQ.questionNumber);
+        if (locQ.questionType && locQ.questionType !== 'multiple_choice' && matchingDbQ?.questionType !== locQ.questionType) {
+          return false;
+        }
         if (locQ.statements && locQ.statements.length > 0) {
-          const matchingDbQ = dbQs?.find(q => q.id === locQ.id || q.questionNumber === locQ.questionNumber);
           return !!(
             matchingDbQ?.statements &&
             matchingDbQ.statements.length > 0 &&
@@ -1204,13 +1207,13 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 font-sans flex flex-col antialiased">
       {/* Top Header bar with clean Swiss look */}
-      <header className="sticky top-0 z-40 bg-white border-b border-slate-200/80 backdrop-blur-md px-4 py-3 md:px-8">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <header className="sticky top-0 z-40 bg-white border-b border-slate-200/80 backdrop-blur-md px-3 py-2.5 sm:px-4 sm:py-3 md:px-8">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
           <div className="flex items-center gap-2">
             {mode !== 'home' && mode !== 'admin' && (
               <button 
                 onClick={() => setMobileMenuOpen(prev => !prev)}
-                className="lg:hidden text-slate-500 hover:text-slate-800 p-2 rounded-lg"
+                className="lg:hidden text-slate-500 hover:text-slate-800 p-2.5 -ml-1 rounded-xl min-h-11 min-w-11 flex items-center justify-center"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -1422,10 +1425,10 @@ export default function App() {
       </header>
 
       {/* Mobile control navigation block */}
-      <div className="md:hidden sticky top-[57px] z-30 bg-slate-100 border-b border-slate-200 flex items-center justify-around gap-1 p-1">
+      <div className="mobile-nav-scroll md:hidden sticky top-[65px] z-30 bg-slate-100 border-b border-slate-200 flex items-center justify-start gap-1 p-1 overflow-x-auto overscroll-x-contain snap-x">
         <button
           onClick={() => { setMode('home'); }}
-          className={`flex-1 text-[11px] font-bold text-center py-2.5 rounded-lg transition-all flex items-center justify-center gap-1 ${
+          className={`flex-1 min-w-[62px] min-h-11 snap-start text-[10px] font-bold text-center px-1 py-2.5 rounded-lg transition-all flex items-center justify-center gap-1 ${
             mode === 'home' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'
           }`}
         >
@@ -1434,7 +1437,7 @@ export default function App() {
         </button>
         <button
           onClick={() => { setMode('group'); }}
-          className={`flex-1 text-[11px] font-bold text-center py-2.5 rounded-lg transition-all flex items-center justify-center gap-1 ${
+          className={`flex-1 min-w-[62px] min-h-11 snap-start text-[10px] font-bold text-center px-1 py-2.5 rounded-lg transition-all flex items-center justify-center gap-1 ${
             mode === 'group' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'
           }`}
         >
@@ -1445,7 +1448,7 @@ export default function App() {
           <>
             <button
               onClick={() => { setMode('practice'); setCurrentQuestionIndex(0); }}
-              className={`flex-1 text-[11px] font-bold text-center py-2.5 rounded-lg transition-all ${
+              className={`flex-1 min-w-[62px] min-h-11 snap-start text-[10px] font-bold text-center px-1 py-2.5 rounded-lg transition-all ${
                 mode === 'practice' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'
               }`}
             >
@@ -1453,7 +1456,7 @@ export default function App() {
             </button>
             <button
               onClick={() => { setMode('exam'); }}
-              className={`flex-1 text-[11px] font-bold text-center py-2.5 rounded-lg transition-all ${
+              className={`flex-1 min-w-[50px] min-h-11 snap-start text-[10px] font-bold text-center px-1 py-2.5 rounded-lg transition-all ${
                 mode === 'exam' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'
               }`}
             >
@@ -1461,7 +1464,7 @@ export default function App() {
             </button>
             <button
               onClick={() => { setMode('guide'); }}
-              className={`flex-1 text-[11px] font-bold text-center py-2.5 rounded-lg transition-all ${
+              className={`flex-1 min-w-[58px] min-h-11 snap-start text-[10px] font-bold text-center px-1 py-2.5 rounded-lg transition-all ${
                 mode === 'guide' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'
               }`}
             >
@@ -1479,7 +1482,7 @@ export default function App() {
             }
             setIsLookupOpen(true);
           }}
-          className="flex-1 text-[11px] font-bold text-center py-2.5 rounded-lg transition-all flex items-center justify-center gap-1 text-slate-500 active:text-amber-700 active:bg-amber-50/50"
+          className="flex-1 min-w-[58px] min-h-11 snap-start text-[10px] font-bold text-center px-1 py-2.5 rounded-lg transition-all flex items-center justify-center gap-1 text-slate-500 active:text-amber-700 active:bg-amber-50/50"
         >
           <Search className="w-3.5 h-3.5 text-amber-500" />
           Tra cứu
@@ -1487,7 +1490,7 @@ export default function App() {
       </div>
 
       {/* Main Workspace content */}
-      <main className="flex-1 w-full max-w-7xl mx-auto p-4 md:p-8 flex flex-col gap-6">
+      <main className="flex-1 w-full max-w-7xl mx-auto p-3 sm:p-4 md:p-8 flex flex-col gap-4 md:gap-6">
         
         {/* Customized uploader expanded */}
         {showUploader && (
@@ -1978,9 +1981,17 @@ export default function App() {
         {/* Mode Practice rendering */}
         {mode === 'practice' && (
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+            {mobileMenuOpen && (
+              <button
+                type="button"
+                aria-label="Đóng bộ lọc câu hỏi"
+                onClick={() => setMobileMenuOpen(false)}
+                className="fixed inset-0 z-40 bg-slate-950/35 backdrop-blur-[1px] lg:hidden"
+              />
+            )}
             
             {/* Filter sidebar rail (Left) */}
-            <div className={`fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-slate-200 p-6 space-y-6 transform ${
+            <div className={`fixed inset-y-0 left-0 z-50 w-[88vw] max-w-sm bg-white border-r border-slate-200 p-4 sm:p-6 space-y-4 sm:space-y-6 overflow-y-auto overscroll-contain pb-[max(1rem,env(safe-area-inset-bottom))] transform ${
               mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
             } transition-transform duration-200 ease-in-out lg:relative lg:translate-x-0 lg:z-0 lg:p-0 lg:bg-transparent lg:border-r-0 lg:w-auto`}>
               
@@ -1988,7 +1999,7 @@ export default function App() {
                 <span className="font-bold text-slate-700">Bộ lọc câu hỏi</span>
                 <button 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-1 text-slate-400 hover:text-slate-655"
+                  className="p-2.5 -mr-2 text-slate-400 hover:text-slate-655 min-h-11 min-w-11 flex items-center justify-center rounded-xl"
                 >
                   <X className="w-5 h-5" />
                 </button>

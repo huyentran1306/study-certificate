@@ -9,6 +9,13 @@ export interface StatementItem {
 export interface QuestionChoice {
   key: string;
   text: string;
+  /** Clickable rectangle for image-hotspot questions, expressed as percentages. */
+  hotspot?: {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+  };
 }
 
 export type QuestionType =
@@ -16,6 +23,7 @@ export type QuestionType =
   | 'statement_matrix'
   | 'matching_dropdown'
   | 'matching_drag_drop'
+  | 'image_hotspot'
   | 'drag_drop'
   | 'case_study';
 

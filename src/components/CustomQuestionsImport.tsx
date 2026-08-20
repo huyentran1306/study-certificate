@@ -50,6 +50,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
     const questionType = q.questionType || (Array.isArray(q.statements) && q.statements.length > 0 ? 'statement_matrix' : 'multiple_choice');
     const isMatching = questionType === 'matching_dropdown' || questionType === 'matching_drag_drop';
     const isMatrix = questionType === 'statement_matrix';
+    const isHotspot = questionType === 'image_hotspot';
     const statements = Array.isArray(q.statements)
       ? q.statements.map((statement: any, statementIndex: number) => ({
           id: String(statement.id || statementIndex + 1),
@@ -68,6 +69,18 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
     }
     if (!isMatching && !isMatrix && options.length < 2) {
       throw new Error(`Câu hỏi #${idx + 1} phải có ít nhất 2 phương án.`);
+    }
+    if (isHotspot) {
+      if (!q.imageUrl) {
+        throw new Error(`Câu hỏi hotspot #${idx + 1} thiếu "imageUrl".`);
+      }
+      const hasInvalidArea = options.some((option: any) => {
+        const area = option?.hotspot;
+        return !area || ['x', 'y', 'width', 'height'].some(field => !Number.isFinite(Number(area[field])));
+      });
+      if (hasInvalidArea) {
+        throw new Error(`Câu hỏi hotspot #${idx + 1} có phương án thiếu tọa độ x, y, width hoặc height.`);
+      }
     }
 
     let correctAnswers = Array.isArray(q.correctAnswers) ? q.correctAnswers.map(String) : [];

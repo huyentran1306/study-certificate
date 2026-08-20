@@ -18,49 +18,49 @@ export default function StatsPanel({ questions, progress, onReset }: StatsPanelP
   const accuracy = answeredCount > 0 ? Math.round((totalCorrect / answeredCount) * 100) : 0;
 
   return (
-    <div className="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm mb-6 space-y-4">
+    <div className="bg-white border border-slate-200/80 rounded-2xl p-3 sm:p-4 shadow-sm mb-4 md:mb-6 space-y-3 sm:space-y-4">
       {/* Overview Stat Widgets */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
         {/* Streak CounterCard */}
-        <div className="bg-slate-900 text-white rounded-xl p-4 shadow-sm flex items-center justify-between border border-slate-800">
+        <div className="bg-slate-900 text-white rounded-xl p-3 sm:p-4 shadow-sm flex items-center justify-between border border-slate-800 min-w-0">
           <div>
             <span className="block text-[11px] text-slate-400 font-medium">Chuỗi liên tiếp</span>
-            <span className="block text-2xl font-bold tracking-tight mt-0.5">{progress.streak}🔥</span>
+            <span className="block text-xl sm:text-2xl font-bold tracking-tight mt-0.5">{progress.streak}🔥</span>
           </div>
-          <div className="bg-slate-800 text-amber-400 p-2.5 rounded-lg shrink-0">
+          <div className="hidden min-[380px]:block bg-slate-800 text-amber-400 p-2 sm:p-2.5 rounded-lg shrink-0">
             <Trophy className="w-5 h-5" />
           </div>
         </div>
 
         {/* Accuracy */}
-        <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 shadow-sm flex items-center justify-between">
+        <div className="bg-slate-50 border border-slate-100 rounded-xl p-3 sm:p-4 shadow-sm flex items-center justify-between min-w-0">
           <div>
             <span className="block text-[11px] text-slate-500 font-medium">Tỷ lệ chính xác</span>
-            <span className="block text-2xl font-bold text-slate-800 mt-0.5">{accuracy}%</span>
+            <span className="block text-xl sm:text-2xl font-bold text-slate-800 mt-0.5">{accuracy}%</span>
           </div>
-          <div className={`p-2.5 rounded-lg shrink-0 ${accuracy >= 80 ? 'bg-emerald-100/70 text-emerald-700' : 'bg-indigo-100/70 text-indigo-700'}`}>
+          <div className={`hidden min-[380px]:block p-2 sm:p-2.5 rounded-lg shrink-0 ${accuracy >= 80 ? 'bg-emerald-100/70 text-emerald-700' : 'bg-indigo-100/70 text-indigo-700'}`}>
             <Award className="w-5 h-5" />
           </div>
         </div>
 
         {/* Answered */}
-        <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 shadow-sm flex items-center justify-between">
+        <div className="bg-slate-50 border border-slate-100 rounded-xl p-3 sm:p-4 shadow-sm flex items-center justify-between min-w-0">
           <div>
             <span className="block text-[11px] text-slate-500 font-medium">Tiến độ tổng quát</span>
-            <span className="block text-2xl font-bold text-slate-800 mt-0.5">{answeredCount}/{totalQuestions}</span>
+            <span className="block text-xl sm:text-2xl font-bold text-slate-800 mt-0.5">{answeredCount}/{totalQuestions}</span>
           </div>
-          <div className="bg-indigo-100/70 text-indigo-700 p-2.5 rounded-lg shrink-0">
+          <div className="hidden min-[380px]:block bg-indigo-100/70 text-indigo-700 p-2 sm:p-2.5 rounded-lg shrink-0">
             <BarChart2 className="w-5 h-5" />
           </div>
         </div>
 
         {/* Bookmarked */}
-        <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 shadow-sm flex items-center justify-between">
+        <div className="bg-slate-50 border border-slate-100 rounded-xl p-3 sm:p-4 shadow-sm flex items-center justify-between min-w-0">
           <div>
             <span className="block text-[11px] text-slate-500 font-medium">Đã đánh dấu</span>
-            <span className="block text-2xl font-bold text-slate-800 mt-0.5">{progress.bookmarkedQuestionIds.length}</span>
+            <span className="block text-xl sm:text-2xl font-bold text-slate-800 mt-0.5">{progress.bookmarkedQuestionIds.length}</span>
           </div>
-          <div className="bg-rose-100/70 text-rose-600 p-2.5 rounded-lg shrink-0">
+          <div className="hidden min-[380px]:block bg-rose-100/70 text-rose-600 p-2 sm:p-2.5 rounded-lg shrink-0">
             <Bookmark className="w-5 h-5 fill-rose-500 text-rose-500" />
           </div>
         </div>

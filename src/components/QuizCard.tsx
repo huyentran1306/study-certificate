@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Bookmark, CheckCircle, AlertTriangle, AlertCircle, ArrowRight, HelpCircle, Info, ZoomIn, ZoomOut, Maximize2, RotateCcw, X, Sparkles, Check } from 'lucide-react';
 import { Question } from '../types';
 import MatchingQuestion from './MatchingQuestion';
+import HotspotQuestion from './HotspotQuestion';
 import FormattedText from './FormattedText';
 import { decodeRowSelections, isMatchingQuestion } from '../utils/questionHelper';
 
@@ -42,6 +43,7 @@ export default function QuizCard({
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
   const isMatching = isMatchingQuestion(question);
+  const isHotspot = question.questionType === 'image_hotspot';
   const isStatementMatrix = Boolean(
     question.questionType === 'statement_matrix' ||
     (!isMatching && !question.questionType && question.statements && question.statements.length > 0)
@@ -211,11 +213,11 @@ export default function QuizCard({
   };
 
   return (
-    <div id={`question-card-${question.id}`} className="bg-white rounded-3xl border border-slate-100 p-5 md:p-8 shadow-sm">
+    <div id={`question-card-${question.id}`} className="bg-white rounded-2xl sm:rounded-3xl border border-slate-100 p-3.5 sm:p-5 md:p-8 shadow-sm">
       {/* Category Panel header */}
-      <div className="flex items-center justify-between gap-4 mb-5 pb-4 border-b border-slate-50">
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-bold px-2.5 py-1 bg-indigo-50 text-indigo-700 rounded-full uppercase tracking-wider">
+      <div className="flex items-center justify-between gap-2 sm:gap-4 mb-4 sm:mb-5 pb-3 sm:pb-4 border-b border-slate-50">
+        <div className="flex min-w-0 items-center gap-2">
+          <span className="max-w-[245px] truncate text-[10px] sm:max-w-none sm:text-xs font-bold px-2.5 py-1 bg-indigo-50 text-indigo-700 rounded-full uppercase tracking-wider">
             {question.category}
           </span>
           {isMultiSelect && (
@@ -242,7 +244,7 @@ export default function QuizCard({
       </div>
 
       {/* Main Question Body */}
-      <div className="space-y-6">
+      <div className="space-y-5 sm:space-y-6">
         <div>
           <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">
             CÂU HỎI {question.questionNumber}
@@ -251,7 +253,7 @@ export default function QuizCard({
         </div>
 
         {/* Display image with interactive zoom trigger */}
-        {question.imageUrl && (
+        {question.imageUrl && !isHotspot && !isMatching && !isStatementMatrix && (
           <div className="relative group overflow-hidden bg-slate-50 border border-slate-100 rounded-3xl p-4 flex flex-col items-center justify-center transition-all">
             <img
               src={question.imageUrl}
@@ -278,7 +280,18 @@ export default function QuizCard({
         )}
 
         {/* Options list, Yes/No matrix, or matching interaction */}
-        {isMatching && statements.length > 0 ? (
+        {isHotspot && question.imageUrl ? (
+          <HotspotQuestion
+            imageUrl={question.imageUrl}
+            questionNumber={question.questionNumber}
+            options={question.options}
+            selectedKeys={selectedKeys}
+            correctAnswers={question.correctAnswers}
+            onChange={setSelectedKeys}
+            submitted={isAnswered}
+            multiple={isMultiSelect}
+          />
+        ) : isMatching && statements.length > 0 ? (
           <MatchingQuestion
             statements={statements}
             choices={matchingChoices}
@@ -289,10 +302,10 @@ export default function QuizCard({
           />
         ) : isStatementMatrix && statements.length > 0 ? (
           <div className="space-y-4">
-            <div className="bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 overflow-hidden">
+            <div className="bg-slate-50/80 border border-slate-200/80 rounded-2xl p-3 sm:p-4 overflow-hidden">
               <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-200 text-xs font-bold text-slate-500">
-                <span className="flex-1 uppercase tracking-wider">Nội dung phát biểu / Khẳng định (Statements)</span>
-                <div className="flex items-center gap-4 sm:gap-8 px-2 shrink-0">
+                <span className="flex-1 uppercase tracking-wider"><span className="sm:hidden">Phát biểu</span><span className="hidden sm:inline">Nội dung phát biểu / Khẳng định (Statements)</span></span>
+                <div className="hidden sm:flex items-center gap-8 px-2 shrink-0">
                   <span className="w-16 text-center text-emerald-700 font-extrabold">ĐÚNG (YES)</span>
                   <span className="w-16 text-center text-rose-700 font-extrabold">SAI (NO)</span>
                 </div>
@@ -347,13 +360,13 @@ export default function QuizCard({
                       </div>
 
                       {/* Yes / No Toggle Controls */}
-                      <div className="flex items-center gap-3 sm:gap-6 shrink-0 justify-end pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100">
+                      <div className="flex w-full sm:w-auto items-center gap-3 sm:gap-6 shrink-0 justify-stretch sm:justify-end pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100">
                         {/* Yes Button */}
                         <button
                           type="button"
                           onClick={() => handleStatementSelect(st.id, 'Yes')}
                           disabled={isAnswerChecked}
-                          className={`w-16 py-2 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1 cursor-pointer border ${
+                          className={`flex-1 sm:flex-none sm:w-16 min-h-11 py-2 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1 cursor-pointer border ${
                             userChoice === 'Yes'
                               ? !isAnswerChecked
                                 ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm scale-105'
@@ -376,7 +389,7 @@ export default function QuizCard({
                           type="button"
                           onClick={() => handleStatementSelect(st.id, 'No')}
                           disabled={isAnswerChecked}
-                          className={`w-16 py-2 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1 cursor-pointer border ${
+                          className={`flex-1 sm:flex-none sm:w-16 min-h-11 py-2 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1 cursor-pointer border ${
                             userChoice === 'No'
                               ? !isAnswerChecked
                                 ? 'bg-rose-600 text-white border-rose-600 shadow-sm scale-105'
@@ -420,7 +433,7 @@ export default function QuizCard({
                   optStyle = 'border-emerald-500 bg-emerald-50 text-emerald-800 font-medium ring-2 ring-emerald-100';
                   badgeClass = 'bg-emerald-600 text-white';
                   rightLabel = (
-                    <span className="ml-auto text-[10px] font-bold text-emerald-600 bg-emerald-100/50 px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
+                    <span className="order-3 w-full pl-9 sm:order-none sm:ml-auto sm:w-auto sm:pl-0 text-[10px] font-bold text-emerald-600 bg-emerald-100/50 px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
                       <Check className="w-3 h-3" /> Chính xác
                     </span>
                   );
@@ -428,7 +441,7 @@ export default function QuizCard({
                   optStyle = 'border-dashed border-emerald-500 bg-emerald-50/20 text-slate-700 font-medium';
                   badgeClass = 'border border-emerald-500 text-emerald-600 bg-white';
                   rightLabel = (
-                    <span className="ml-auto text-[10px] font-bold text-emerald-600 bg-emerald-100/30 px-2 py-0.5 rounded-full shrink-0">
+                    <span className="order-3 w-full pl-9 sm:order-none sm:ml-auto sm:w-auto sm:pl-0 text-[10px] font-bold text-emerald-600 bg-emerald-100/30 px-2 py-0.5 rounded-full shrink-0">
                       Đáp án đúng (Bỏ sót)
                     </span>
                   );
@@ -436,7 +449,7 @@ export default function QuizCard({
                   optStyle = 'border-rose-500 bg-rose-50 text-rose-800 ring-2 ring-rose-100';
                   badgeClass = 'bg-rose-600 text-white';
                   rightLabel = (
-                    <span className="ml-auto text-[10px] font-bold text-rose-600 bg-rose-100/50 px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
+                    <span className="order-3 w-full pl-9 sm:order-none sm:ml-auto sm:w-auto sm:pl-0 text-[10px] font-bold text-rose-600 bg-rose-100/50 px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
                       <X className="w-3 h-3" /> Bạn chọn sai
                     </span>
                   );
@@ -451,7 +464,7 @@ export default function QuizCard({
                   key={opt.key}
                   onClick={() => handleOptionClick(opt.key)}
                   disabled={isAnswered}
-                  className={`w-full text-left p-4 rounded-2xl border text-sm transition-all duration-150 flex items-start gap-4 min-h-[56px] focus:outline-none ${optStyle}`}
+                  className={`w-full text-left p-3 sm:p-4 rounded-2xl border text-sm transition-all duration-150 flex flex-wrap items-start gap-3 sm:gap-4 min-h-[56px] focus:outline-none ${optStyle}`}
                 >
                   {/* Visual choice key circular bubble */}
                   <span className={`w-6 h-6 rounded-full shrink-0 flex items-center justify-center font-bold text-xs uppercase transition-all duration-150 ${badgeClass}`}>
@@ -473,12 +486,12 @@ export default function QuizCard({
 
         {/* Verify and Navigation Controls */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-slate-50">
-          <div className="flex items-center gap-3">
+          <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:items-center sm:gap-3">
             {onPrev && (
               <button
                 onClick={onPrev}
                 disabled={isFirst}
-                className="text-xs bg-slate-100 text-slate-600 hover:bg-slate-200/80 px-4 py-2.5 rounded-xl font-medium transition-all group disabled:opacity-40"
+                className="min-h-11 text-xs bg-slate-100 text-slate-600 hover:bg-slate-200/80 px-3 sm:px-4 py-2.5 rounded-xl font-medium transition-all group disabled:opacity-40"
               >
                 Trước đó
               </button>
@@ -486,7 +499,7 @@ export default function QuizCard({
             
             <button
               onClick={onNext}
-              className="text-xs bg-indigo-600 text-white hover:bg-indigo-700 px-5 py-2.5 rounded-xl font-semibold transition-all flex items-center gap-1.5"
+              className="min-h-11 text-xs bg-indigo-600 text-white hover:bg-indigo-700 px-3 sm:px-5 py-2.5 rounded-xl font-semibold transition-all flex items-center justify-center gap-1.5"
             >
               Thi tiếp <ArrowRight className="w-3.5 h-3.5" />
             </button>
@@ -496,7 +509,7 @@ export default function QuizCard({
             <button
               onClick={handleVerify}
               disabled={isMatching ? !isAllMatchingAnswered : isStatementMatrix ? !isAllStatementsAnswered : selectedKeys.length === 0}
-              className={`w-full sm:w-auto text-xs px-6 py-2.5 rounded-xl font-bold uppercase transition-all shadow-sm ${
+              className={`w-full sm:w-auto min-h-11 text-xs px-4 sm:px-6 py-2.5 rounded-xl font-bold uppercase transition-all shadow-sm ${
                 (isMatching ? isAllMatchingAnswered : isStatementMatrix ? isAllStatementsAnswered : selectedKeys.length > 0)
                   ? 'bg-slate-900 text-white hover:bg-slate-800 cursor-pointer'
                   : 'bg-slate-100 text-slate-400 cursor-not-allowed'

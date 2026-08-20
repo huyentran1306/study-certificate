@@ -465,15 +465,15 @@ export default function AdminPanel({
           if (typeof rawOptions === 'string') {
             try { rawOptions = JSON.parse(rawOptions); } catch { rawOptions = []; }
           }
-          const isStructured = rawOptions && typeof rawOptions === 'object' && !Array.isArray(rawOptions) && Array.isArray(rawOptions.statements);
+          const isStructured = rawOptions && typeof rawOptions === 'object' && !Array.isArray(rawOptions) && (Array.isArray(rawOptions.statements) || rawOptions.type === 'image_hotspot');
           const questionType = isStructured ? (rawOptions.type || 'statement_matrix') : 'multiple_choice';
-          const choices = isStructured ? (rawOptions.choices || []) : (Array.isArray(rawOptions) ? rawOptions : []);
+          const choices = isStructured ? (rawOptions.choices || rawOptions.options || []) : (Array.isArray(rawOptions) ? rawOptions : []);
           return {
             id: q.id,
             questionNumber: q.question_number,
             text: q.text,
             questionType,
-            statements: isStructured ? rawOptions.statements : undefined,
+            statements: Array.isArray(rawOptions?.statements) ? rawOptions.statements : undefined,
             options: choices,
             choices: questionType === 'matching_dropdown' || questionType === 'matching_drag_drop' ? choices : undefined,
             correctAnswers: q.correct_answers,
@@ -664,7 +664,9 @@ export default function AdminPanel({
             statements: savedQuestion.statements,
             choices: savedQuestion.choices || savedQuestion.options,
           }
-        : savedQuestion.options;
+        : savedQuestion.questionType === 'image_hotspot'
+          ? { type: 'image_hotspot', choices: savedQuestion.options }
+          : savedQuestion.options;
       const payload = {
         id: questionId,
         cert_id: activeCertId,

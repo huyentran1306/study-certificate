@@ -29,11 +29,11 @@ export async function fetchQuestionsFromDb(certId: string): Promise<Question[] |
       let questionType = 'multiple_choice';
 
       if (rawOptions && typeof rawOptions === 'object' && !Array.isArray(rawOptions)) {
-        if (rawOptions.type === 'statement_matrix' || rawOptions.type === 'matching_dropdown' || rawOptions.type === 'matching_drag_drop' || rawOptions.statements) {
+        if (rawOptions.type === 'statement_matrix' || rawOptions.type === 'matching_dropdown' || rawOptions.type === 'matching_drag_drop' || rawOptions.type === 'image_hotspot' || rawOptions.statements) {
           statements = rawOptions.statements;
-          questionType = rawOptions.type || 'statement_matrix';
-          parsedOptions = rawOptions.choices || [];
-          choices = rawOptions.choices || [];
+          questionType = rawOptions.type || (rawOptions.statements ? 'statement_matrix' : 'multiple_choice');
+          parsedOptions = rawOptions.choices || rawOptions.options || [];
+          choices = rawOptions.choices || rawOptions.options || [];
         }
       }
 
@@ -70,6 +70,11 @@ export async function uploadQuestionsToDb(certId: string, questionsList: Questio
           type: q.questionType || 'statement_matrix',
           statements: q.statements,
           choices: q.choices || q.options
+        };
+      } else if (q.questionType === 'image_hotspot') {
+        optionsPayload = {
+          type: q.questionType,
+          choices: q.options,
         };
       }
 

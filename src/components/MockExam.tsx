@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Timer, Clock, Award, CheckCircle2, XCircle, ChevronLeft, ChevronRight, Check, Maximize2, ZoomIn, ZoomOut, RotateCcw, X, Sparkles, RefreshCw, Play, FileText, Target, ShieldCheck, ArrowRight, HelpCircle } from 'lucide-react';
 import { Question } from '../types';
 import MatchingQuestion from './MatchingQuestion';
+import HotspotQuestion from './HotspotQuestion';
 import FormattedText from './FormattedText';
 import { decodeRowSelections, isMatchingQuestion, isQuestionAnswerCorrect } from '../utils/questionHelper';
 
@@ -115,6 +116,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
     setSelectedAnswers({});
     setCurrentIndex(0);
     setSubmitted(false);
+    window.setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 0);
 
     // Start timer
     timerRef.current = setInterval(() => {
@@ -392,6 +394,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
 
   const currentQ = examQuestions[currentIndex];
   const currentIsMatching = isMatchingQuestion(currentQ);
+  const currentIsHotspot = currentQ.questionType === 'image_hotspot';
   const isMulti = !currentIsMatching && currentQ.questionType !== 'statement_matrix' && currentQ.correctAnswers.length > 1;
   const currentSelection = selectedAnswers[currentQ.id] || [];
   const totalExamCount = examQuestions.length;
@@ -402,7 +405,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
   return (
     <div id="mock-exam-workspace" className="space-y-6">
       {/* Exam control header block */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-slate-900 text-white rounded-2xl p-5 border border-slate-800 shadow-sm">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 sm:gap-4 bg-slate-900 text-white rounded-2xl p-4 sm:p-5 border border-slate-800 shadow-sm">
         <div className="space-y-1">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-[10px] uppercase font-extrabold text-indigo-400 tracking-wider bg-indigo-950/80 border border-indigo-800/60 px-2.5 py-0.5 rounded-full">
@@ -481,7 +484,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
       </div>
 
       {/* Main layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-6">
         {/* Questions status grids sidebar */}
         <div className="bg-white border border-slate-100 p-5 rounded-2xl shadow-sm space-y-4">
           <div className="flex items-center justify-between">
@@ -491,7 +494,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
             </span>
           </div>
           
-          <div className="max-h-[360px] overflow-y-auto p-1.5 grid grid-cols-5 sm:grid-cols-6 lg:grid-cols-5 gap-2 custom-scrollbar">
+          <div className="max-h-36 lg:max-h-[360px] overflow-y-auto p-1.5 grid grid-cols-6 lg:grid-cols-5 gap-2 custom-scrollbar">
             {examQuestions.map((q, idx) => {
               const hasAnswered = (selectedAnswers[q.id] || []).length > 0;
               const isActive = idx === currentIndex;
@@ -556,12 +559,12 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
 
         {/* Action Panel active question workspace */}
         <div className="lg:col-span-3 space-y-6">
-          <div className="bg-white rounded-2xl border border-slate-100 p-5 md:p-8 shadow-sm space-y-6">
-            <div className="flex items-center justify-between">
+          <div className="bg-white rounded-2xl border border-slate-100 p-3.5 sm:p-5 md:p-8 shadow-sm space-y-5 sm:space-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                 CÂU HỎI {currentIndex + 1} CỦA {totalExamCount}
               </span>
-              <span className="text-xs text-slate-500 bg-slate-100 px-3 py-1 rounded-full font-medium">
+              <span className="max-w-full truncate text-[10px] sm:text-xs text-slate-500 bg-slate-100 px-3 py-1 rounded-full font-medium">
                 {currentQ.category}
               </span>
             </div>
@@ -569,7 +572,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
             <FormattedText text={currentQ.text} className="text-base font-semibold text-slate-800" />
 
             {/* Display image with interactive zoom trigger */}
-            {currentQ.imageUrl && (
+            {currentQ.imageUrl && !currentIsHotspot && !currentIsMatching && currentQ.questionType !== 'statement_matrix' && (
               <div className="relative group overflow-hidden bg-slate-50 border border-slate-100 rounded-2xl p-4 flex flex-col items-center justify-center transition-all">
                 <img
                   src={currentQ.imageUrl}
@@ -596,7 +599,18 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
             )}
 
             {/* Multiple choice, Yes/No matrix, or matching interaction */}
-            {currentIsMatching && currentQ.statements?.length ? (
+            {currentIsHotspot && currentQ.imageUrl ? (
+              <HotspotQuestion
+                imageUrl={currentQ.imageUrl}
+                questionNumber={currentQ.questionNumber}
+                options={currentQ.options}
+                selectedKeys={currentSelection}
+                correctAnswers={currentQ.correctAnswers}
+                onChange={(keys) => setSelectedAnswers(prev => ({ ...prev, [currentQ.id]: keys }))}
+                submitted={submitted}
+                multiple={isMulti}
+              />
+            ) : currentIsMatching && currentQ.statements?.length ? (
               <MatchingQuestion
                 statements={currentQ.statements}
                 choices={currentQ.choices || currentQ.options}
@@ -607,10 +621,10 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
               />
             ) : currentQ.questionType === 'statement_matrix' || (!currentQ.questionType && currentQ.statements && currentQ.statements.length > 0) ? (
               <div className="space-y-4">
-                <div className="bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 overflow-hidden">
+                <div className="bg-slate-50/80 border border-slate-200/80 rounded-2xl p-3 sm:p-4 overflow-hidden">
                   <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-200 text-xs font-bold text-slate-500">
-                    <span className="flex-1 uppercase tracking-wider">Phát biểu / Khẳng định (Statements)</span>
-                    <div className="flex items-center gap-4 sm:gap-6 px-2 shrink-0">
+                    <span className="flex-1 uppercase tracking-wider"><span className="sm:hidden">Phát biểu</span><span className="hidden sm:inline">Phát biểu / Khẳng định (Statements)</span></span>
+                    <div className="hidden sm:flex items-center gap-4 sm:gap-6 px-2 shrink-0">
                       <span className="w-14 text-center text-emerald-700 font-extrabold">ĐÚNG (YES)</span>
                       <span className="w-14 text-center text-rose-700 font-extrabold">SAI (NO)</span>
                     </div>
@@ -664,12 +678,12 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
                             </div>
                           </div>
 
-                          <div className="flex items-center gap-2 sm:gap-4 shrink-0 justify-end pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100">
+                          <div className="flex w-full sm:w-auto items-center gap-2 sm:gap-4 shrink-0 justify-stretch sm:justify-end pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100">
                             <button
                               type="button"
                               disabled={submitted}
                               onClick={() => handleStatementSelect(currentQ.id, st.id, 'Yes', currentQ.statements || [])}
-                              className={`w-14 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer border ${
+                              className={`flex-1 sm:flex-none sm:w-14 min-h-11 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer border ${
                                 userChoice === 'Yes'
                                   ? !submitted
                                     ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
@@ -690,7 +704,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
                               type="button"
                               disabled={submitted}
                               onClick={() => handleStatementSelect(currentQ.id, st.id, 'No', currentQ.statements || [])}
-                              className={`w-14 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer border ${
+                              className={`flex-1 sm:flex-none sm:w-14 min-h-11 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer border ${
                                 userChoice === 'No'
                                   ? !submitted
                                     ? 'bg-rose-600 text-white border-rose-600 shadow-sm'
@@ -763,7 +777,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
                       key={opt.key}
                       disabled={submitted}
                       onClick={() => handleOptionClick(currentQ.id, opt.key, isMulti)}
-                      className={`w-full text-left p-4 rounded-xl border text-sm transition-all flex items-start gap-4 cursor-pointer ${optStyle}`}
+                      className={`w-full min-h-[56px] text-left p-3 sm:p-4 rounded-xl border text-sm transition-all flex flex-wrap items-start gap-3 sm:gap-4 cursor-pointer ${optStyle}`}
                     >
                       <span className={`w-5 h-5 rounded-full shrink-0 flex items-center justify-center font-bold text-xs uppercase ${badgeClass}`}>
                         {submitted && isCorrectAnswer && isSelected ? (
@@ -791,11 +805,11 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
             )}
 
             {/* Prev/Next buttons */}
-            <div className="flex items-center justify-between pt-4 border-t border-slate-50">
+            <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center sm:justify-between pt-4 border-t border-slate-50">
               <button
                 disabled={currentIndex === 0}
                 onClick={() => setCurrentIndex(prev => prev - 1)}
-                className="text-xs bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-600 px-4 py-2 rounded-lg font-medium transition-all cursor-pointer"
+                className="min-h-11 text-xs bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-600 px-3 sm:px-4 py-2 rounded-lg font-medium transition-all cursor-pointer"
               >
                 Câu trước
               </button>
@@ -803,7 +817,7 @@ export default function MockExam({ questions, onFinishExam, onExit, certName, ce
               <button
                 disabled={currentIndex === totalExamCount - 1}
                 onClick={() => setCurrentIndex(prev => prev + 1)}
-                className="text-xs bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 text-white px-5 py-2 rounded-lg font-semibold transition-all cursor-pointer"
+                className="min-h-11 text-xs bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 text-white px-3 sm:px-5 py-2 rounded-lg font-semibold transition-all cursor-pointer"
               >
                 Câu tiếp theo
               </button>

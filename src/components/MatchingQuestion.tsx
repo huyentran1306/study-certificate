@@ -42,7 +42,7 @@ export default function MatchingQuestion({
           return (
             <div
               key={statement.id}
-              className={`rounded-2xl border p-4 ${
+              className={`rounded-2xl border p-3 sm:p-4 ${
                 !submitted
                   ? 'border-slate-200 bg-white'
                   : isCorrect
@@ -50,19 +50,19 @@ export default function MatchingQuestion({
                     : 'border-rose-300 bg-rose-50/50'
               }`}
             >
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-2.5 sm:gap-3">
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-slate-900 text-xs font-black text-white">
                   {statement.id || index + 1}
                 </span>
                 <div className="grid min-w-0 flex-1 items-center gap-3 md:grid-cols-[minmax(0,1fr)_minmax(280px,420px)]">
-                  <p className="text-sm font-medium leading-relaxed text-slate-800">{statement.text}</p>
+                  <p className="text-[13px] sm:text-sm font-medium leading-relaxed text-slate-800">{statement.text}</p>
                   <div className="space-y-2">
                     <select
                       aria-label={`Đáp án cho dòng ${statement.id}`}
                       value={selectedKey}
                       disabled={submitted}
                       onChange={event => assign(statement.id, event.target.value)}
-                      className="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-sm font-semibold text-slate-700 shadow-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 disabled:opacity-80"
+                      className="w-full min-h-11 rounded-xl border border-slate-300 bg-white px-3 py-3 text-base sm:text-sm font-semibold text-slate-700 shadow-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 disabled:opacity-80"
                     >
                       <option value="">Chọn đáp án phù hợp...</option>
                       {rowChoices.map(choice => (
@@ -86,7 +86,7 @@ export default function MatchingQuestion({
 
   return (
     <div className="space-y-4">
-      <div className="rounded-2xl border border-indigo-100 bg-indigo-50/50 p-4">
+      <div className="rounded-2xl border border-indigo-100 bg-indigo-50/50 p-3 sm:p-4">
         <div className="mb-3 flex items-center gap-2 text-xs font-black uppercase tracking-wider text-indigo-700">
           <GripVertical className="h-4 w-4" /> Ngân hàng đáp án
         </div>
@@ -104,7 +104,7 @@ export default function MatchingQuestion({
               }}
               onDragEnd={() => setActiveChoice(null)}
               onClick={() => setActiveChoice(current => current === choice.key ? null : choice.key)}
-              className={`flex items-center gap-2 rounded-xl border px-3 py-2 text-left text-xs font-bold transition-all ${
+              className={`flex min-h-11 items-center gap-2 rounded-xl border px-3 py-2 text-left text-xs font-bold transition-all ${
                 activeChoice === choice.key
                   ? 'border-indigo-600 bg-indigo-600 text-white shadow-md'
                   : 'border-indigo-200 bg-white text-slate-700 hover:border-indigo-400 hover:bg-indigo-50'
@@ -155,7 +155,7 @@ export default function MatchingQuestion({
                   onChange(statement.id, '');
                 }
               }}
-              className={`w-full rounded-2xl border p-4 text-left transition-all ${
+              className={`w-full rounded-2xl border p-3 sm:p-4 text-left transition-all ${
                 !submitted
                   ? selectedChoice
                     ? 'border-indigo-300 bg-white shadow-sm'
@@ -167,13 +167,13 @@ export default function MatchingQuestion({
                     : 'border-rose-300 bg-rose-50/50'
               } disabled:cursor-default`}
             >
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-2.5 sm:gap-3">
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-slate-900 text-xs font-black text-white">
                   {statement.id || index + 1}
                 </span>
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-medium leading-relaxed text-slate-800">{statement.text}</p>
-                  <div className={`mt-3 flex min-h-10 items-center rounded-xl border px-3 py-2 text-xs font-bold ${
+                  <p className="text-[13px] sm:text-sm font-medium leading-relaxed text-slate-800">{statement.text}</p>
+                  <div className={`mt-3 flex min-h-11 items-center rounded-xl border px-3 py-2 text-xs font-bold ${
                     selectedChoice ? 'border-indigo-200 bg-indigo-50 text-indigo-800' : 'border-slate-200 bg-white text-slate-400'
                   }`}>
                     {selectedChoice ? selectedChoice.text : 'Thả đáp án vào đây'}

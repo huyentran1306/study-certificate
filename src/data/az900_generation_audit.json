@@ -1,0 +1,147 @@
+{
+  "sourceRows": 474,
+  "uniqueImages": 124,
+  "assignments": 123,
+  "questions": 323,
+  "counts": {
+    "matching_drag_drop": 23,
+    "multiple_choice": 204,
+    "statement_matrix": 30,
+    "matching_dropdown": 59,
+    "image_hotspot": 7
+  },
+  "categoryCounts": {
+    "Azure Management and Governance": 107,
+    "Azure Architecture and Services": 133,
+    "Cloud Concepts": 83
+  },
+  "skippedRows": 151,
+  "lowConfidenceAssignments": [
+    {
+      "representative": "82.png",
+      "stt": "82",
+      "score": 100,
+      "rawScore": 0.1419,
+      "kind": "dropdown"
+    },
+    {
+      "representative": "86.png",
+      "stt": "88",
+      "score": 100,
+      "rawScore": 0,
+      "kind": "diagram"
+    },
+    {
+      "representative": "97.png",
+      "stt": "97",
+      "score": 100,
+      "rawScore": 0,
+      "kind": "dropdown"
+    },
+    {
+      "representative": "112.png",
+      "stt": "112",
+      "score": 100,
+      "rawScore": 0,
+      "kind": "diagram"
+    },
+    {
+      "representative": "150.png",
+      "stt": "150",
+      "score": 100,
+      "rawScore": 0,
+      "kind": "dropdown"
+    },
+    {
+      "representative": "281.png",
+      "stt": "283",
+      "score": 100,
+      "rawScore": 0,
+      "kind": "matrix"
+    },
+    {
+      "representative": "299.png",
+      "stt": "300",
+      "score": 100,
+      "rawScore": 0,
+      "kind": "matrix"
+    },
+    {
+      "representative": "306.png",
+      "stt": "306",
+      "score": 100,
+      "rawScore": 0,
+      "kind": "dropdown"
+    },
+    {
+      "representative": "352.png",
+      "stt": "353",
+      "score": 100,
+      "rawScore": 0,
+      "kind": "matrix"
+    },
+    {
+      "representative": "399.png",
+      "stt": "399",
+      "score": 100,
+      "rawScore": 0,
+      "kind": "diagram"
+    },
+    {
+      "representative": "447.png",
+      "stt": "448",
+      "score": 100,
+      "rawScore": 0,
+      "kind": "matrix"
+    },
+    {
+      "representative": "392.png",
+      "stt": "393",
+      "score": 0.6855,
+      "rawScore": 0.1355,
+      "kind": "dropdown"
+    },
+    {
+      "representative": "109.png",
+      "stt": "109",
+      "score": 0.6781999999999999,
+      "rawScore": 0.0782,
+      "kind": "dropdown"
+    },
+    {
+      "representative": "276.png",
+      "stt": "276",
+      "score": 0.6,
+      "rawScore": 0,
+      "kind": "dropdown"
+    },
+    {
+      "representative": "1.png",
+      "stt": "1",
+      "score": 0.5226,
+      "rawScore": 0.0926,
+      "kind": "dropdown"
+    },
+    {
+      "representative": "149.png",
+      "stt": "149",
+      "score": 0.48219999999999996,
+      "rawScore": 0.0522,
+      "kind": "dropdown"
+    },
+    {
+      "representative": "212.png",
+      "stt": "212",
+      "score": 0.47,
+      "rawScore": 0,
+      "kind": "matching"
+    },
+    {
+      "representative": "403.png",
+      "stt": "403",
+      "score": 0.47,
+      "rawScore": 0,
+      "kind": "matching"
+    }
+  ]
+}
