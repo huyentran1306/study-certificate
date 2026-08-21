@@ -32,7 +32,8 @@ import {
   ShieldCheck,
   Sparkles,
   Eye,
-  EyeOff
+  EyeOff,
+  ChevronDown
 } from 'lucide-react';
 
 import { Question, ProgressState, StudyMode, Certificate, VipKeyConfig } from './types';
@@ -70,7 +71,10 @@ import {
   fetchCertVipStatusesFromDb,
   saveCertVipStatusToDb,
   fetchCertDisabledStatusesFromDb,
-  saveCertDisabledStatusToDb
+  saveCertDisabledStatusToDb,
+  deleteCustomCertificateFromDb,
+  fetchCustomCertificatesFromDb,
+  saveCustomCertificateToDb
 } from './lib/sync';
 
 function DynamicIcon({ name, className = "w-5 h-5" }: { name: string; className?: string }) {
@@ -240,6 +244,7 @@ export default function App() {
   const [appToast, setAppToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [certToDelete, setCertToDelete] = useState<Certificate | null>(null);
+  const [isDeletingCertificate, setIsDeletingCertificate] = useState(false);
 
   const showAppToast = (message: string, type: 'success' | 'error' | 'info' = 'success') => {
     setAppToast({ message, type });
@@ -302,6 +307,7 @@ export default function App() {
   const [showBookmarksOnly, setShowBookmarksOnly] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showUploader, setShowUploader] = useState(false);
+  const [isTeamSyncExpanded, setIsTeamSyncExpanded] = useState(false);
 
   // States for making a new certification
   const [showAddCertForm, setShowAddCertForm] = useState(false);
@@ -348,11 +354,6 @@ export default function App() {
       defaultQs = dp800Questions;
     } else if (certId === 'istqb-ai') {
       defaultQs = istqbAiQuestions;
-    } else {
-      const storedQs = localStorage.getItem(`questions_${certId}`);
-      if (storedQs) {
-        try { defaultQs = JSON.parse(storedQs); } catch {}
-      }
     }
 
     let activeQuestions = defaultQs;
@@ -395,7 +396,7 @@ export default function App() {
     }
 
     setQuestions(activeQuestions);
-    if (activeQuestions.length > 0) {
+    if (activeQuestions.length > 0 && ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'].includes(certId)) {
       localStorage.setItem(`questions_${certId}`, JSON.stringify(activeQuestions));
     }
 
@@ -511,55 +512,75 @@ export default function App() {
     }
     loadCertStatuses();
 
-    // 1. Gather custom certificates from storage, excluding duplicates of system certificates.
-    const defaultIds = ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'];
-    const defaultCertificates = certificates.filter(cert => defaultIds.includes(cert.id));
-    const defaultCertIdByCode = new Map<string, string>(
-      defaultCertificates.map(cert => [cert.code.trim().toUpperCase(), cert.id] as [string, string])
-    );
-    const duplicateCertRedirects = new Map<string, string>();
-    let retainedCustomCertIds = new Set<string>();
-    const storedCustomCerts = localStorage.getItem('study_certs_custom');
-    if (storedCustomCerts) {
-      try {
-        const parsed = JSON.parse(storedCustomCerts) as Certificate[];
-        const seenCustomCodes = new Set<string>();
-        const uniqueCustomCerts = parsed.filter(cert => {
-          const normalizedCode = cert.code?.trim().toUpperCase();
-          const matchingDefaultId = defaultCertIdByCode.get(normalizedCode);
+    // 1. Load the shared custom-certificate catalog from Supabase.
+    // Legacy local certificates are migrated once, then local metadata is removed.
+    async function loadSharedCertificateCatalog() {
+      const defaultIds = ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'];
+      const defaultCertificates = certificates.filter(cert => defaultIds.includes(cert.id));
+      const defaultCodes = new Set(defaultCertificates.map(cert => cert.code.trim().toUpperCase()));
 
-          if (matchingDefaultId) {
-            duplicateCertRedirects.set(cert.id, matchingDefaultId);
-            return false;
+      const legacyRaw = localStorage.getItem('study_certs_custom');
+      if (legacyRaw) {
+        try {
+          const legacyCertificates = (JSON.parse(legacyRaw) as Certificate[])
+            .filter(cert => cert?.id && cert?.code && !defaultIds.includes(cert.id) && !defaultCodes.has(cert.code.trim().toUpperCase()));
+          let migrationSucceeded = true;
+
+          for (const legacyCert of legacyCertificates) {
+            const metadataSaved = await saveCustomCertificateToDb(legacyCert);
+            if (!metadataSaved) {
+              migrationSucceeded = false;
+              break;
+            }
+
+            const cachedQuestions = localStorage.getItem(`questions_${legacyCert.id}`);
+            if (cachedQuestions) {
+              try {
+                const parsedQuestions = JSON.parse(cachedQuestions) as Question[];
+                if (parsedQuestions.length > 0 && !(await uploadQuestionsToDb(legacyCert.id, parsedQuestions))) {
+                  migrationSucceeded = false;
+                  break;
+                }
+              } catch {
+                migrationSucceeded = false;
+                break;
+              }
+            }
           }
-          if (!normalizedCode || seenCustomCodes.has(normalizedCode)) return false;
 
-          seenCustomCodes.add(normalizedCode);
-          return true;
-        });
-
-        retainedCustomCertIds = new Set(uniqueCustomCerts.map(cert => cert.id));
-        if (uniqueCustomCerts.length !== parsed.length) {
-          localStorage.setItem('study_certs_custom', JSON.stringify(uniqueCustomCerts));
+          if (migrationSucceeded) {
+            localStorage.removeItem('study_certs_custom');
+          }
+        } catch (error) {
+          console.error('Could not migrate legacy local certificate metadata:', error);
         }
-        setCertificates([...uniqueCustomCerts, ...defaultCertificates]);
-      } catch {
-        // ignore
       }
-    }
 
-    // 2. Select initial active cert and load its content
-    let lastActiveCert = localStorage.getItem('study_active_cert') || 'gh-300';
-    const redirectedDefaultId = duplicateCertRedirects.get(lastActiveCert);
-    if (redirectedDefaultId) {
-      lastActiveCert = redirectedDefaultId;
-      localStorage.setItem('study_active_cert', lastActiveCert);
-    } else if (!defaultIds.includes(lastActiveCert) && !retainedCustomCertIds.has(lastActiveCert)) {
-      lastActiveCert = 'gh-300';
-      localStorage.setItem('study_active_cert', lastActiveCert);
+      const dbCustomCertificates = await fetchCustomCertificatesFromDb();
+      if (dbCustomCertificates === null) {
+        showAppToast('Chưa thể tải chứng chỉ dùng chung. Hãy chạy migration custom_certificates trên Supabase.', 'error');
+      }
+
+      const seenCodes = new Set(defaultCodes);
+      const sharedCustomCertificates = (dbCustomCertificates || []).filter(cert => {
+        const normalizedCode = cert.code.trim().toUpperCase();
+        if (!normalizedCode || seenCodes.has(normalizedCode) || defaultIds.includes(cert.id)) return false;
+        seenCodes.add(normalizedCode);
+        return true;
+      });
+
+      setCertificates([...sharedCustomCertificates, ...defaultCertificates]);
+
+      let lastActiveCert = localStorage.getItem('study_active_cert') || 'gh-300';
+      const availableIds = new Set([...defaultIds, ...sharedCustomCertificates.map(cert => cert.id)]);
+      if (!availableIds.has(lastActiveCert)) {
+        lastActiveCert = 'gh-300';
+        localStorage.setItem('study_active_cert', lastActiveCert);
+      }
+      setActiveCertId(lastActiveCert);
+      loadCertData(lastActiveCert, username);
     }
-    setActiveCertId(lastActiveCert);
-    loadCertData(lastActiveCert, username);
+    loadSharedCertificateCatalog();
   }, []);
 
   // Helper to check if a certificate is locked for the current session
@@ -745,7 +766,9 @@ export default function App() {
           const nextVip = !c.isVIP;
           showAppToast(`Đã ${nextVip ? 'bật chế độ Yêu Cầu Key VIP 🔐' : 'tắt chế độ VIP (Mở tự do) 🔓'} cho ${c.code}!`, 'info');
           saveCertVipStatusToDb(certId, nextVip);
-          return { ...c, isVIP: nextVip };
+          const nextCertificate = { ...c, isVIP: nextVip };
+          if (c.id.startsWith('custom_')) saveCustomCertificateToDb(nextCertificate);
+          return nextCertificate;
         }
         return c;
       });
@@ -765,7 +788,9 @@ export default function App() {
           const nextDisabled = !c.isDisabled;
           showAppToast(`Đã ${nextDisabled ? 'vô hiệu hóa (ẩn) 🚫' : 'kích hoạt lại (hiển thị) 👁️'} chứng chỉ ${c.code}!`, 'info');
           saveCertDisabledStatusToDb(certId, nextDisabled);
-          return { ...c, isDisabled: nextDisabled };
+          const nextCertificate = { ...c, isDisabled: nextDisabled };
+          if (c.id.startsWith('custom_')) saveCustomCertificateToDb(nextCertificate);
+          return nextCertificate;
         }
         return c;
       });
@@ -774,21 +799,6 @@ export default function App() {
         overrides[c.id] = !!c.isDisabled;
       });
       localStorage.setItem('cert_disabled_overrides', JSON.stringify(overrides));
-
-      // Also sync custom certs storage if custom cert
-      const storedCustom = localStorage.getItem('study_certs_custom');
-      if (storedCustom) {
-        try {
-          const parsed = JSON.parse(storedCustom);
-          const updatedCustom = parsed.map((cc: any) => {
-            if (cc.id === certId) {
-              return { ...cc, isDisabled: !cc.isDisabled };
-            }
-            return cc;
-          });
-          localStorage.setItem('study_certs_custom', JSON.stringify(updatedCustom));
-        } catch {}
-      }
 
       return updated;
     });
@@ -937,7 +947,7 @@ export default function App() {
     return textMatch || explanationMatch || tagsMatch || optionsMatch || numberMatch;
   });
 
-  const confirmDeleteCert = () => {
+  const confirmDeleteCert = async () => {
     if (!certToDelete) return;
     const cert = certToDelete;
     if (['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'].includes(cert.id)) {
@@ -945,28 +955,31 @@ export default function App() {
       setCertToDelete(null);
       return;
     }
-    const storedCustomCerts = localStorage.getItem('study_certs_custom');
-    if (storedCustomCerts) {
-      try {
-        const parsed = JSON.parse(storedCustomCerts);
-        const remaining = parsed.filter((c: any) => c.id !== cert.id);
-        localStorage.setItem('study_certs_custom', JSON.stringify(remaining));
-        
-        // Clean corresponding storage
-        localStorage.removeItem(`questions_${cert.id}`);
-        localStorage.removeItem(`progress_${cert.id}`);
-        
-        setCertificates(prev => prev.filter(c => c.id !== cert.id));
-        if (activeCertId === cert.id) {
-          setActiveCertId('gh-300');
-          loadCertData('gh-300');
-        }
-        showAppToast(`Đã xóa thành công chứng chỉ tự tạo ${cert.code}!`, 'success');
-      } catch (err) {
-        console.error(err);
+
+    setIsDeletingCertificate(true);
+    try {
+      const deletedFromDb = await deleteCustomCertificateFromDb(cert.id);
+      if (!deletedFromDb) {
+        showAppToast(`Không thể xóa ${cert.code} khỏi Database. Dữ liệu trên máy vẫn được giữ nguyên.`, 'error');
+        return;
       }
+
+      localStorage.removeItem(`questions_${cert.id}`);
+      localStorage.removeItem(`progress_${cert.id}`);
+      setCertificates(prev => prev.filter(c => c.id !== cert.id));
+      if (activeCertId === cert.id) {
+        setActiveCertId('gh-300');
+        localStorage.setItem('study_active_cert', 'gh-300');
+        loadCertData('gh-300');
+      }
+      showAppToast(`Đã xóa chứng chỉ ${cert.code} và toàn bộ ngân hàng câu hỏi khỏi Database!`, 'success');
+      setCertToDelete(null);
+    } catch (err) {
+      console.error(err);
+      showAppToast(`Có lỗi khi xóa chứng chỉ ${cert.code}.`, 'error');
+    } finally {
+      setIsDeletingCertificate(false);
     }
-    setCertToDelete(null);
   };
 
   // Switch certification and load its workspace
@@ -986,7 +999,6 @@ export default function App() {
     }
 
     setQuestions(newQuestions);
-    localStorage.setItem(`questions_${activeCertId}`, JSON.stringify(newQuestions));
     setCurrentQuestionIndex(0);
     setShowUploader(false);
 
@@ -1001,6 +1013,26 @@ export default function App() {
       };
       await saveProgress(emptyProgress);
     }
+    return true;
+  };
+
+  const createSharedCustomCertificate = async (newCert: Certificate, initialQs: Question[]): Promise<boolean> => {
+    const metadataSaved = await saveCustomCertificateToDb(newCert);
+    if (!metadataSaved) {
+      throw new Error('Không thể tạo chứng chỉ trên Database. Hãy kiểm tra migration custom_certificates và quyền RLS.');
+    }
+
+    const questionsSaved = initialQs.length === 0 || await uploadQuestionsToDb(newCert.id, initialQs);
+    if (!questionsSaved) {
+      await deleteCustomCertificateFromDb(newCert.id);
+      throw new Error('Không thể lưu ngân hàng câu hỏi lên Database; chứng chỉ vừa tạo đã được hoàn tác.');
+    }
+
+    setCertificates(prev => [newCert, ...prev.filter(cert => cert.id !== newCert.id)]);
+    setActiveCertId(newCert.id);
+    localStorage.setItem('study_active_cert', newCert.id);
+    setQuestions(initialQs);
+    setCurrentQuestionIndex(0);
     return true;
   };
 
@@ -1503,59 +1535,26 @@ export default function App() {
 
         {/* Certification Hub Home View */}
         {mode === 'home' && (
-          <div className="space-y-8 animate-fadeIn">
-            {!username && (
-              <div id="welcome-team-sync-banner" className="bg-gradient-to-r from-indigo-50/70 to-blue-50/50 border border-indigo-100 rounded-3xl p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 animate-fadeIn">
-                <div className="space-y-1.5 text-center md:text-left">
-                  <span className="text-[9px] font-black text-indigo-700 uppercase tracking-widest bg-white border border-indigo-150 px-3 py-1 rounded-full shadow-xs">Tính năng Team Sync 👥</span>
-                  <h3 className="text-lg font-black text-slate-900 tracking-tight">Học nhóm & Đồng bộ đám mây (Cloud Database)</h3>
-                  <p className="text-xs text-slate-500 max-w-xl leading-relaxed">
-                    Nhập biệt danh của bạn để tự động liên kết và lưu lịch sử làm bài, các câu khó đã đánh dấu lên hệ thống database chung của Team. Không cần đăng ký tài khoản rườm rà!
+          <div className="space-y-5 animate-fadeIn">
+            {/* Compact home overview: keeps the first certificate row above the fold */}
+            <div className="overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-sm">
+              <div className="flex flex-col gap-4 p-5 sm:p-6 md:flex-row md:items-center md:justify-between">
+                <div className="min-w-0 text-center md:text-left">
+                  <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-indigo-600">CERT PREP PORTAL</span>
+                  <h2 className="mt-2 text-xl font-black tracking-tight text-slate-900 md:text-2xl">Trung Tâm Ôn Luyện Đa Chứng Chỉ</h2>
+                  <p className="mt-1 max-w-2xl text-xs leading-relaxed text-slate-500">
+                    Chọn chứng chỉ bên dưới để luyện tập, thi thử hoặc xem cẩm nang ôn tập.
                   </p>
                 </div>
-                <div className="w-full md:w-auto shrink-0 flex flex-col sm:flex-row gap-2.5 items-stretch sm:items-center">
-                  <input
-                    type="text"
-                    placeholder="Nhập tên của bạn (vd: HuyenTran)..."
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
-                        handleLogin((e.target as HTMLInputElement).value);
-                      }
-                    }}
-                    id="dashboard-username-input"
-                    className="px-4 py-3 bg-white text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-bold text-slate-850 min-w-[180px]"
-                  />
-                  <button
-                    onClick={() => {
-                      const input = document.getElementById('dashboard-username-input') as HTMLInputElement;
-                      if (input) handleLogin(input.value);
-                    }}
-                    className="bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs px-5 py-3 rounded-xl border border-indigo-700 shadow-md transition-all cursor-pointer whitespace-nowrap active:scale-95"
-                  >
-                    Đồng bộ ngay
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {/* Header Hub Hero */}
-            <div className="bg-white border border-slate-100 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="space-y-2 text-center md:text-left">
-                <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-2.5 py-1 rounded-full">CERT PREP PORTAL</span>
-                <h2 className="text-2xl md:text-3xl font-black tracking-tight text-slate-900">Trung Tâm Ôn Luyện Đa Chứng Chỉ</h2>
-                <p className="text-xs text-slate-500 max-w-xl leading-relaxed">
-                  Chào mừng bạn đến với môi trường học tập cá nhân hóa. Chọn một chứng chỉ bên dưới để bắt đầu ôn luyện dưới nhiều chế độ (Luyện tập, Thi thử ngẫu nhiên, xem Cẩm nang gốc), hoặc tự khởi tạo và nhập ngân hàng câu hỏi riêng biệt của bạn!
-                </p>
-              </div>
-              <div className="flex gap-4 items-center shrink-0 bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                <div className="text-center px-4">
+                <div className="flex shrink-0 items-center justify-center gap-2 rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2.5">
+                  <div className="min-w-20 text-center px-2">
                   <span className="block text-[22px] font-black text-slate-900">
                     {certificates.filter(c => !c.isDisabled).length}
                   </span>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Chứng chỉ</span>
+                    <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Chứng chỉ</span>
                 </div>
-                <div className="w-px h-8 bg-slate-200" />
-                <div className="text-center px-4">
+                  <div className="h-8 w-px bg-slate-200" />
+                  <div className="min-w-20 text-center px-2">
                   <span className="block text-[22px] font-black text-emerald-600">
                     {certificates.filter(c => !c.isDisabled).reduce((acc, cert) => {
                       const completed = localStorage.getItem(`progress_${cert.id}`);
@@ -1568,9 +1567,68 @@ export default function App() {
                       return acc;
                     }, 0)}
                   </span>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Đã trả lời</span>
+                    <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Đã trả lời</span>
+                  </div>
                 </div>
               </div>
+
+              {!username && (
+                <div id="welcome-team-sync-banner" className="border-t border-indigo-100 bg-gradient-to-r from-indigo-50/70 to-blue-50/50 px-4 py-3 sm:px-6">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="flex min-w-0 items-center gap-3">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-indigo-600 shadow-sm">
+                        <Users className="h-4 w-4" />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="text-xs font-black text-slate-900">Học nhóm & Đồng bộ đám mây</h3>
+                        <p className="truncate text-[10px] text-slate-500">Lưu tiến độ và câu đã đánh dấu lên dữ liệu chung của Team.</p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setIsTeamSyncExpanded(previous => !previous)}
+                      aria-expanded={isTeamSyncExpanded}
+                      className="flex min-h-9 shrink-0 items-center justify-center gap-1.5 rounded-xl border border-indigo-200 bg-white px-3 text-[11px] font-black text-indigo-700 transition hover:bg-indigo-50"
+                    >
+                      {isTeamSyncExpanded ? 'Thu gọn' : 'Kết nối Team Sync'}
+                      <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isTeamSyncExpanded ? 'rotate-180' : ''}`} />
+                    </button>
+                  </div>
+
+                  <AnimatePresence initial={false}>
+                    {isTeamSyncExpanded && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="flex flex-col gap-2 pt-3 sm:flex-row sm:justify-end">
+                          <input
+                            type="text"
+                            placeholder="Nhập tên của bạn (vd: HuyenTran)..."
+                            onKeyDown={(event) => {
+                              if (event.key === 'Enter') handleLogin((event.target as HTMLInputElement).value);
+                            }}
+                            id="dashboard-username-input"
+                            autoFocus
+                            className="min-h-10 w-full rounded-xl border border-slate-200 bg-white px-4 text-xs font-bold text-slate-850 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 sm:max-w-xs"
+                          />
+                          <button
+                            onClick={() => {
+                              const input = document.getElementById('dashboard-username-input') as HTMLInputElement;
+                              if (input) handleLogin(input.value);
+                            }}
+                            className="min-h-10 whitespace-nowrap rounded-xl border border-indigo-700 bg-indigo-600 px-5 text-xs font-black text-white shadow-sm transition hover:bg-indigo-700 active:scale-95"
+                          >
+                            Đồng bộ ngay
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              )}
             </div>
 
             {/* Certification Grid list */}
@@ -1900,7 +1958,7 @@ export default function App() {
                       
                       <button
                         type="button"
-                        onClick={() => {
+                        onClick={async () => {
                           if (!newCertCode || !newCertName) {
                             showAppToast('Vui lòng điền đầy đủ Mã (Code) và Tên chứng chỉ!', 'error');
                             return;
@@ -1931,20 +1989,12 @@ export default function App() {
                             iconName: newCertIcon
                           };
 
-                          // Persist certificate list in local storage
-                          const storedCustomStr = localStorage.getItem('study_certs_custom');
-                          let listToSave = [];
-                          if (storedCustomStr) {
-                            try { listToSave = JSON.parse(storedCustomStr); } catch {}
+                          try {
+                            await createSharedCustomCertificate(builtCert, parsedQs);
+                          } catch (error: any) {
+                            showAppToast(error.message || 'Không thể tạo chứng chỉ dùng chung trên Database.', 'error');
+                            return;
                           }
-                          listToSave.unshift(builtCert);
-                          localStorage.setItem('study_certs_custom', JSON.stringify(listToSave));
-
-                          // Persist questions
-                          localStorage.setItem(`questions_${certUid}`, JSON.stringify(parsedQs));
-
-                          // Append local state (new cert at top)
-                          setCertificates(prev => [builtCert, ...prev.filter(c => c.id !== builtCert.id)]);
                           
                           // Form Reset
                           setNewCertCode('');
@@ -1953,7 +2003,7 @@ export default function App() {
                           setNewCertQuestionsText('');
                           setShowAddCertForm(false);
                           
-                          showAppToast(`Chứng chỉ ${builtCert.code} đã được nạp thành công với ${parsedQs.length} câu hỏi!`, 'success');
+                          showAppToast(`Chứng chỉ ${builtCert.code} đã được lưu lên Database chung với ${parsedQs.length} câu hỏi!`, 'success');
                         }}
                         className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs transition-colors shadow-sm"
                       >
@@ -2363,31 +2413,12 @@ export default function App() {
                 setCurrentQuestionIndex(0);
               }
             }}
-            onAddCertificate={(newCert, initialQs) => {
-              // Save certificate metadata list
-              const storedCustomStr = localStorage.getItem('study_certs_custom');
-              let listToSave = [];
-              if (storedCustomStr) {
-                try { listToSave = JSON.parse(storedCustomStr); } catch {}
-              }
-              listToSave = [newCert, ...listToSave.filter((c: any) => c.id !== newCert.id)];
-              localStorage.setItem('study_certs_custom', JSON.stringify(listToSave));
-
-              // Save actual questions
-              localStorage.setItem(`questions_${newCert.id}`, JSON.stringify(initialQs));
-
-              // Update state with new cert at top
-              setCertificates(prev => [newCert, ...prev.filter(c => c.id !== newCert.id)]);
-              setActiveCertId(newCert.id);
-              localStorage.setItem('study_active_cert', newCert.id);
-
-              // Set active questions state directly
-              setQuestions(initialQs);
-              setCurrentQuestionIndex(0);
-
-              // Upload to Supabase questions table if we have questions
-              if (initialQs.length > 0) {
-                uploadQuestionsToDb(newCert.id, initialQs);
+            onAddCertificate={async (newCert, initialQs) => {
+              try {
+                return await createSharedCustomCertificate(newCert, initialQs);
+              } catch (error: any) {
+                showAppToast(error.message || 'Không thể tạo chứng chỉ dùng chung trên Database.', 'error');
+                return false;
               }
             }}
             onDeleteCertificate={(certId) => {
@@ -2863,27 +2894,29 @@ export default function App() {
                 <X className="w-5 h-5 flex-shrink-0" />
               </div>
               <div>
-                <h3 className="text-base font-extrabold text-slate-900 leading-tight">Xóa chứng chỉ tự tạo?</h3>
+                <h3 className="text-base font-extrabold text-slate-900 leading-tight">Xóa chứng chỉ đã import?</h3>
                 <p className="text-[10px] text-slate-400 font-medium">Hành động này không thể hoàn tác</p>
               </div>
             </div>
 
             <p className="text-xs text-slate-550 leading-relaxed mb-5">
-              Bạn có chắc chắn muốn xóa chứng chỉ tự tạo <strong className="text-rose-600 font-extrabold">"{certToDelete.code}"</strong> cùng toàn bộ dữ liệu lịch sử và tiến độ học tập?
+              Bạn có chắc chắn muốn xóa chứng chỉ <strong className="text-rose-600 font-extrabold">"{certToDelete.code}"</strong>, toàn bộ ngân hàng câu hỏi của chứng chỉ này trên Database và dữ liệu học được lưu trên thiết bị?
             </p>
 
             <div className="flex gap-2.5 justify-end">
               <button
                 onClick={() => setCertToDelete(null)}
+                disabled={isDeletingCertificate}
                 className="px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-50 rounded-xl transition-all cursor-pointer"
               >
                 Hủy bỏ
               </button>
               <button
                 onClick={confirmDeleteCert}
-                className="px-5 py-2.5 text-xs font-extrabold text-white bg-rose-600 hover:bg-rose-700 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer"
+                disabled={isDeletingCertificate}
+                className="px-5 py-2.5 text-xs font-extrabold text-white bg-rose-600 hover:bg-rose-700 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer disabled:cursor-wait disabled:opacity-60"
               >
-                Xác nhận xóa
+                {isDeletingCertificate ? 'Đang xóa Database...' : 'Xác nhận xóa'}
               </button>
             </div>
           </div>

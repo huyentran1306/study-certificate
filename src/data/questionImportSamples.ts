@@ -1,0 +1,127 @@
+import { Question, QuestionType } from '../types';
+
+export const QUESTION_TYPE_LABELS: Record<QuestionType, string> = {
+  multiple_choice: 'Trắc nghiệm / Chọn nhiều',
+  statement_matrix: 'Bảng phát biểu Yes / No',
+  matching_dropdown: 'Ghép đáp án bằng dropdown',
+  matching_drag_drop: 'Ghép đáp án kéo thả',
+  image_hotspot: 'Chọn trực tiếp trên hình',
+  drag_drop: 'Kéo thả (dùng matching_drag_drop)',
+  case_study: 'Tình huống (dùng multiple_choice)',
+};
+
+export const QUESTION_IMPORT_SAMPLES: Question[] = [
+  {
+    id: 'sample-multiple-choice',
+    questionNumber: 1,
+    text: 'Which capability lets an agent use external business systems?',
+    questionType: 'multiple_choice',
+    options: [
+      { key: 'A', text: 'Tool calling' },
+      { key: 'B', text: 'Text formatting' },
+      { key: 'C', text: 'Token counting' },
+      { key: 'D', text: 'Temperature control' },
+    ],
+    correctAnswers: ['A'],
+    explanation: 'Tool calling cho phép agent gọi dịch vụ và hệ thống bên ngoài.',
+    category: 'Agent Architecture',
+    tags: ['Tools', 'Agents'],
+  },
+  {
+    id: 'sample-multi-select',
+    questionNumber: 2,
+    text: 'Which two practices improve production reliability? Select two answers.',
+    questionType: 'multiple_choice',
+    options: [
+      { key: 'A', text: 'Add evaluation datasets' },
+      { key: 'B', text: 'Remove all error handling' },
+      { key: 'C', text: 'Monitor tool failures' },
+      { key: 'D', text: 'Ignore latency regressions' },
+    ],
+    correctAnswers: ['A', 'C'],
+    explanation: 'Evaluation và monitoring giúp phát hiện lỗi trước và sau khi triển khai.',
+    category: 'Evaluation & Monitoring',
+    tags: ['Multi-select', 'Reliability'],
+  },
+  {
+    id: 'sample-statement-matrix',
+    questionNumber: 3,
+    text: 'For each statement, select Yes if it is true. Otherwise, select No.',
+    questionType: 'statement_matrix',
+    statements: [
+      { id: '1', text: 'A stateless subagent automatically inherits the parent conversation.', correctAnswer: 'No' },
+      { id: '2', text: 'Structured tool errors help an agent choose a recovery strategy.', correctAnswer: 'Yes' },
+      { id: '3', text: 'Evaluation datasets can reveal regressions.', correctAnswer: 'Yes' },
+    ],
+    options: [],
+    correctAnswers: ['1:No', '2:Yes', '3:Yes'],
+    explanation: 'Subagent stateless không tự kế thừa hội thoại; structured errors và evals cải thiện độ tin cậy.',
+    category: 'Architecture Fundamentals',
+    tags: ['Matrix', 'Yes-No'],
+  },
+  {
+    id: 'sample-matching-dropdown',
+    questionNumber: 4,
+    text: 'Match each requirement to the appropriate component.',
+    questionType: 'matching_dropdown',
+    statements: [
+      { id: '1', text: 'Store durable shared context', correctAnswer: 'B' },
+      { id: '2', text: 'Run a deterministic external action', correctAnswer: 'A' },
+    ],
+    choices: [
+      { key: 'A', text: 'Tool' },
+      { key: 'B', text: 'External database' },
+      { key: 'C', text: 'System prompt' },
+    ],
+    options: [
+      { key: 'A', text: 'Tool' },
+      { key: 'B', text: 'External database' },
+      { key: 'C', text: 'System prompt' },
+    ],
+    correctAnswers: ['1=B', '2=A'],
+    explanation: 'Database lưu context bền vững; tool thực hiện hành động bên ngoài.',
+    category: 'System Design',
+    tags: ['Dropdown', 'Matching'],
+  },
+  {
+    id: 'sample-matching-drag-drop',
+    questionNumber: 5,
+    text: 'Match each responsibility to the correct role.',
+    questionType: 'matching_drag_drop',
+    statements: [
+      { id: '1', text: 'Break an open-ended task into subtasks', correctAnswer: 'A' },
+      { id: '2', text: 'Execute a focused delegated task', correctAnswer: 'B' },
+    ],
+    choices: [
+      { key: 'A', text: 'Orchestrator' },
+      { key: 'B', text: 'Worker agent' },
+      { key: 'C', text: 'Static formatter' },
+    ],
+    options: [
+      { key: 'A', text: 'Orchestrator' },
+      { key: 'B', text: 'Worker agent' },
+      { key: 'C', text: 'Static formatter' },
+    ],
+    correctAnswers: ['1=A', '2=B'],
+    explanation: 'Orchestrator phân rã và điều phối; worker xử lý nhiệm vụ chuyên biệt.',
+    category: 'Multi-agent Systems',
+    tags: ['Drag-drop', 'Matching'],
+  },
+  {
+    id: 'sample-image-hotspot',
+    questionNumber: 6,
+    text: 'Select the correct region in the answer image.',
+    questionType: 'image_hotspot',
+    imageUrl: 'https://example.com/question-diagram.png',
+    options: [
+      { key: 'A', text: 'Top-left region', hotspot: { x: 5, y: 10, width: 40, height: 25 } },
+      { key: 'B', text: 'Top-right region', hotspot: { x: 55, y: 10, width: 40, height: 25 } },
+      { key: 'C', text: 'Bottom region', hotspot: { x: 5, y: 55, width: 90, height: 30 } },
+    ],
+    correctAnswers: ['B'],
+    explanation: 'Tọa độ hotspot dùng phần trăm so với kích thước ảnh: x, y, width và height.',
+    category: 'Visual Questions',
+    tags: ['Hotspot', 'Image'],
+  },
+];
+

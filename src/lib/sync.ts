@@ -1064,7 +1064,7 @@ export async function fetchCustomCertificatesFromDb(): Promise<Certificate[] | n
       .order('created_at', { ascending: false });
 
     if (error) {
-      // Table might not exist yet; gracefully fallback
+      console.error('Could not load shared custom certificates from DB:', error.message);
       return null;
     }
 
@@ -1110,7 +1110,7 @@ export async function saveCustomCertificateToDb(cert: Certificate): Promise<bool
       .upsert(payload, { onConflict: 'id' });
 
     if (error) {
-      console.warn('Could not save custom certificate to DB table (using localStorage fallback):', error.message);
+      console.error('Could not save custom certificate to DB:', error.message);
       return false;
     }
     return true;
@@ -1122,13 +1122,23 @@ export async function saveCustomCertificateToDb(cert: Certificate): Promise<bool
 
 export async function deleteCustomCertificateFromDb(certId: string): Promise<boolean> {
   try {
-    const { error } = await supabase
+    const { error: questionsError } = await supabase
+      .from('questions')
+      .delete()
+      .eq('cert_id', certId);
+
+    if (questionsError) {
+      console.warn('Error deleting custom certificate questions from DB:', questionsError.message);
+      return false;
+    }
+
+    const { error: certificateError } = await supabase
       .from('custom_certificates')
       .delete()
       .eq('id', certId);
 
-    if (error) {
-      console.warn('Error deleting custom certificate from DB:', error.message);
+    if (certificateError) {
+      console.warn('Error deleting custom certificate from DB:', certificateError.message);
       return false;
     }
     return true;

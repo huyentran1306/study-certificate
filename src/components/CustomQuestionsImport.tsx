@@ -1,12 +1,21 @@
 import React, { useState, ChangeEvent } from 'react';
-import { Upload, ClipboardList, PlusCircle, CheckCircle, FileJson, AlertCircle, FileText, Sparkles, BookOpen, FileSpreadsheet, Image, Link, Trash2, FolderOpen, Info, X } from 'lucide-react';
+import { Upload, ClipboardList, PlusCircle, CheckCircle, FileJson, AlertCircle, FileText, Sparkles, BookOpen, FileSpreadsheet, Image, Link, Trash2, FolderOpen, Info, X, Copy, Eye } from 'lucide-react';
 import { Question } from '../types';
 import * as XLSX from 'xlsx';
+import QuestionImportPreviewModal from './QuestionImportPreviewModal';
+import { QUESTION_IMPORT_SAMPLES, QUESTION_TYPE_LABELS } from '../data/questionImportSamples';
 
 interface CustomQuestionsImportProps {
   onImport: (newQuestions: Question[], resetProgress: boolean) => Promise<boolean>;
   currentCount: number;
   existingQuestions: Question[];
+}
+
+interface ImportPlan {
+  incomingQuestions: Question[];
+  finalQuestions: Question[];
+  duplicateCount: number;
+  source: 'raw' | 'json' | 'file' | 'excel-images';
 }
 
 export default function CustomQuestionsImport({ onImport, currentCount, existingQuestions = [] }: CustomQuestionsImportProps) {
@@ -17,6 +26,11 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
   const [fileError, setFileError] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
   const [resetOnImport, setResetOnImport] = useState(true);
+  const [previewPlan, setPreviewPlan] = useState<ImportPlan | null>(null);
+  const [previewIndex, setPreviewIndex] = useState(0);
+  const [isSavingPreview, setIsSavingPreview] = useState(false);
+  const [sampleIndex, setSampleIndex] = useState(0);
+  const [sampleCopied, setSampleCopied] = useState(false);
 
   // Excel & Images Sync Mode States
   const [mappedImages, setMappedImages] = useState<Record<string, string>>({}); // base64 images keyed by parsed number/filename
@@ -25,29 +39,16 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
   const [excelInputMode, setExcelInputMode] = useState<'file' | 'paste'>('file');
   const [parsedExcelQuestions, setParsedExcelQuestions] = useState<Question[]>([]);
 
-  const sampleJson = [
-    {
-      "id": "custom-1",
-      "questionNumber": 1,
-      "text": "Câu hỏi của bạn ở đây?",
-      "options": [
-        { "key": "A", "text": "Phương án A" },
-        { "key": "B", "text": "Phương án B" },
-        { "key": "C", "text": "Phương án C" },
-        { "key": "D", "text": "Phương án D" }
-      ],
-      "correctAnswers": ["B"],
-      "explanation": "Lời giải chi tiết giải thích vì sao đáp án B đúng...",
-      "category": "Responsible AI / Hoặc chủ đề khác"
-    }
-  ];
-
   const normalizeJsonQuestion = (q: any, idx: number, idPrefix: string): Question => {
     if (!q?.text) {
       throw new Error(`Câu hỏi ở vị trí #${idx + 1} thiếu thuộc tính "text".`);
     }
 
-    const questionType = q.questionType || (Array.isArray(q.statements) && q.statements.length > 0 ? 'statement_matrix' : 'multiple_choice');
+    const questionType = (q.questionType || (Array.isArray(q.statements) && q.statements.length > 0 ? 'statement_matrix' : 'multiple_choice')) as Question['questionType'];
+    const supportedTypes = ['multiple_choice', 'statement_matrix', 'matching_dropdown', 'matching_drag_drop', 'image_hotspot'];
+    if (!supportedTypes.includes(questionType)) {
+      throw new Error(`Câu hỏi #${idx + 1} có questionType "${questionType}" chưa được hỗ trợ. Hãy dùng một trong: ${supportedTypes.join(', ')}.`);
+    }
     const isMatching = questionType === 'matching_dropdown' || questionType === 'matching_drag_drop';
     const isMatrix = questionType === 'statement_matrix';
     const isHotspot = questionType === 'image_hotspot';
@@ -59,7 +60,19 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
           choiceKeys: Array.isArray(statement.choiceKeys) ? statement.choiceKeys.map(String) : undefined,
         }))
       : [];
-    const options = Array.isArray(q.choices) ? q.choices : Array.isArray(q.options) ? q.options : [];
+    const rawOptions = Array.isArray(q.choices) ? q.choices : Array.isArray(q.options) ? q.options : [];
+    const options = rawOptions.map((option: any, optionIndex: number) => ({
+      key: String(option?.key || String.fromCharCode(65 + optionIndex)).trim(),
+      text: String(option?.text || '').trim(),
+      ...(option?.hotspot ? {
+        hotspot: {
+          x: Number(option.hotspot.x),
+          y: Number(option.hotspot.y),
+          width: Number(option.hotspot.width),
+          height: Number(option.hotspot.height),
+        }
+      } : {}),
+    }));
 
     if ((isMatching || isMatrix) && statements.length < 1) {
       throw new Error(`Câu hỏi #${idx + 1} thuộc loại ${questionType} nhưng thiếu "statements".`);
@@ -82,6 +95,19 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
         throw new Error(`Câu hỏi hotspot #${idx + 1} có phương án thiếu tọa độ x, y, width hoặc height.`);
       }
     }
+    if (statements.some(statement => !statement.text || !statement.correctAnswer)) {
+      throw new Error(`Câu hỏi #${idx + 1} có statement thiếu "text" hoặc "correctAnswer".`);
+    }
+    if (options.some(option => !option.key || !option.text)) {
+      throw new Error(`Câu hỏi #${idx + 1} có option/choice thiếu "key" hoặc "text".`);
+    }
+    const optionKeys = options.map(option => option.key);
+    if (new Set(optionKeys).size !== optionKeys.length) {
+      throw new Error(`Câu hỏi #${idx + 1} có key phương án bị trùng.`);
+    }
+    if (isMatching && statements.some(statement => !optionKeys.includes(statement.correctAnswer))) {
+      throw new Error(`Câu hỏi matching #${idx + 1} có correctAnswer không tồn tại trong choices.`);
+    }
 
     let correctAnswers = Array.isArray(q.correctAnswers) ? q.correctAnswers.map(String) : [];
     if (isMatching && correctAnswers.length === 0) {
@@ -91,6 +117,9 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
     }
     if (correctAnswers.length < 1) {
       throw new Error(`Câu hỏi #${idx + 1} thiếu đáp án đúng.`);
+    }
+    if (!isMatching && !isMatrix && correctAnswers.some(answer => !optionKeys.includes(answer))) {
+      throw new Error(`Câu hỏi #${idx + 1} có correctAnswers không tồn tại trong options.`);
     }
 
     return {
@@ -246,12 +275,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
     return parsedQuestions;
   };
 
-  const deduplicateAndProcess = async (incomingList: Question[]): Promise<{ added: number, duplicates: number }> => {
-    if (importMergeMode === 'replace') {
-      await onImport(incomingList, resetOnImport);
-      return { added: incomingList.length, duplicates: 0 };
-    }
-
+  const prepareImportPlan = (incomingList: Question[], source: ImportPlan['source']): ImportPlan => {
     // Helper to normalize strings for robust comparison
     const normalize = (str: string) => {
       return str
@@ -260,9 +284,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
         .substring(0, 150); // check first 150 meaningful characters
     };
 
-    const existingNormalizedSet = new Set(
-      existingQuestions.map(q => normalize(q.text))
-    );
+    const existingNormalizedSet = new Set(importMergeMode === 'append' ? existingQuestions.map(q => normalize(q.text)) : []);
 
     const uniqueIncoming: Question[] = [];
     const internalSeen = new Set<string>();
@@ -274,11 +296,11 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
         duplicatesFound++;
       } else {
         internalSeen.add(norm);
-        const nextNum = existingQuestions.length + uniqueIncoming.length + 1;
+        const nextNum = (importMergeMode === 'append' ? existingQuestions.length : 0) + uniqueIncoming.length + 1;
         uniqueIncoming.push({
           ...newQ,
           questionNumber: nextNum,
-          id: `custom-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`
+          id: `custom-${Date.now()}-${uniqueIncoming.length + 1}-${Math.random().toString(36).substring(2, 6)}`
         });
       }
     });
@@ -287,10 +309,65 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
       throw new Error(`Tất cả ${incomingList.length} câu hỏi mới nhập đều bị trùng lặp với các câu sẵn có trong cơ sở dữ liệu!`);
     }
 
-    const merged = [...existingQuestions, ...uniqueIncoming];
-    await onImport(merged, resetOnImport);
+    return {
+      incomingQuestions: uniqueIncoming,
+      finalQuestions: importMergeMode === 'replace' ? uniqueIncoming : [...existingQuestions, ...uniqueIncoming],
+      duplicateCount: duplicatesFound,
+      source,
+    };
+  };
 
-    return { added: uniqueIncoming.length, duplicates: duplicatesFound };
+  const openImportPreview = (incomingList: Question[], source: ImportPlan['source']) => {
+    const plan = prepareImportPlan(incomingList, source);
+    setPreviewPlan(plan);
+    setPreviewIndex(0);
+    setFileError(null);
+    setSuccessMsg(null);
+  };
+
+  const handleConfirmPreviewImport = async () => {
+    if (!previewPlan) return;
+    setIsSavingPreview(true);
+    setFileError(null);
+    try {
+      const saved = await onImport(previewPlan.finalQuestions, resetOnImport);
+      if (!saved) throw new Error('Database không xác nhận lưu thành công. Không có dữ liệu nào được thay đổi.');
+
+      const sourceLabel = previewPlan.source === 'raw'
+        ? 'văn bản thô'
+        : previewPlan.source === 'file'
+          ? 'file JSON'
+          : previewPlan.source === 'excel-images'
+            ? 'Excel và ảnh'
+            : 'JSON';
+      setSuccessMsg(
+        `${importMergeMode === 'replace' ? 'Đã ghi đè' : 'Đã trộn thêm'} ${previewPlan.incomingQuestions.length} câu từ ${sourceLabel}`
+        + `${previewPlan.duplicateCount ? `, bỏ qua ${previewPlan.duplicateCount} câu trùng.` : '.'}`
+      );
+
+      if (previewPlan.source === 'raw') setRawText('');
+      if (previewPlan.source === 'json') setJsonText('');
+      if (previewPlan.source === 'excel-images') {
+        setParsedExcelQuestions([]);
+        setExcelPasteText('');
+      }
+      setPreviewPlan(null);
+      setPreviewIndex(0);
+    } catch (error: any) {
+      setFileError(error.message || 'Không thể lưu dữ liệu sau khi xem trước.');
+    } finally {
+      setIsSavingPreview(false);
+    }
+  };
+
+  const handleCopySample = async () => {
+    try {
+      await navigator.clipboard.writeText(JSON.stringify(QUESTION_IMPORT_SAMPLES[sampleIndex], null, 2));
+      setSampleCopied(true);
+      window.setTimeout(() => setSampleCopied(false), 1600);
+    } catch {
+      setFileError('Trình duyệt không cho phép sao chép tự động. Bạn có thể chọn nội dung mẫu và nhấn Ctrl+C.');
+    }
   };
 
   // Handler for multiple images mapping
@@ -669,6 +746,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
   };
 
   const finalQuestionsToImport = getMappedExcelQuestions();
+  const selectedSample = QUESTION_IMPORT_SAMPLES[sampleIndex];
 
   const handleConfirmExcelImport = async () => {
     setFileError(null);
@@ -678,16 +756,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
         throw new Error('Không có danh sách câu hỏi nào được phân tích để lưu. Vui lòng nạp file Excel trước.');
       }
 
-      const result = await deduplicateAndProcess(finalQuestionsToImport);
-      if (importMergeMode === 'replace') {
-        setSuccessMsg(`Đã ghi đè thành công và nạp ${result.added} câu hỏi mới từ Excel có đính kèm ảnh sơ đồ!`);
-      } else {
-        setSuccessMsg(`Đã trộn và nạp thành công! Thêm mới ${result.added} câu kèm sơ đồ, lọc bỏ ${result.duplicates} câu trùng lặp.`);
-      }
-
-      // Reset local temp state
-      setParsedExcelQuestions([]);
-      setExcelPasteText('');
+      openImportPreview(finalQuestionsToImport, 'excel-images');
     } catch (err: any) {
       setFileError(err.message || 'Lỗi lưu dữ liệu từ Excel.');
     }
@@ -706,13 +775,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
         throw new Error('Không nhận diện được câu hỏi nào. Hãy chắc chắn văn bản có chứa chứa từ khóa phân định như "Question 1" hoặc "Câu 1".');
       }
 
-      const result = await deduplicateAndProcess(parsed);
-      if (importMergeMode === 'replace') {
-        setSuccessMsg(`Đã ghi đè và nạp thành công ${result.added} câu hỏi thô mới!`);
-      } else {
-        setSuccessMsg(`Đã nạp thêm thành công! Quét thấy ${parsed.length} câu: Thêm mới ${result.added} câu độc bản, tự động lọc bỏ ${result.duplicates} câu trùng lặp.`);
-      }
-      setRawText('');
+      openImportPreview(parsed, 'raw');
     } catch (e: any) {
       setFileError(e.message || 'Lỗi xử lý định dạng văn bản.');
     }
@@ -731,13 +794,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
 
       const validated: Question[] = list.map((q, idx) => normalizeJsonQuestion(q, idx, 'custom'));
 
-      const result = await deduplicateAndProcess(validated);
-      if (importMergeMode === 'replace') {
-        setSuccessMsg(`Đã xóa câu cũ & nạp mới thành công cả ${result.added} câu hỏi qua JSON!`);
-      } else {
-        setSuccessMsg(`Nạp thêm qua JSON thành công! Đã thêm mới ${result.added} câu, lược bỏ ${result.duplicates} câu trùng lặp.`);
-      }
-      setJsonText('');
+      openImportPreview(validated, 'json');
     } catch (e: any) {
       setFileError(e.message || 'JSON không hợp lệ hoặc sai cấu trúc yêu cầu.');
     }
@@ -758,12 +815,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
 
         const validated: Question[] = list.map((q, idx) => normalizeJsonQuestion(q, idx, 'uploaded'));
 
-        const result = await deduplicateAndProcess(validated);
-        if (importMergeMode === 'replace') {
-          setSuccessMsg(`Đã tải tệp tin và thay thế bằng ${result.added} câu hỏi thành công!`);
-        } else {
-          setSuccessMsg(`Tải tệp tin thành công! Thêm mới ${result.added} câu độc lập, lọc trùng bỏ qua ${result.duplicates} câu.`);
-        }
+        openImportPreview(validated, 'file');
       } catch (err: any) {
         setFileError(err.message || 'Lỗi khi đọc tệp tin JSON.');
       }
@@ -1052,7 +1104,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
                   className="bg-indigo-650 hover:bg-indigo-755 text-white font-extrabold px-5 py-2.5 rounded-xl text-xs shadow-md transition-all flex items-center gap-1.5 shrink-0 self-end sm:self-auto cursor-pointer"
                 >
                   <PlusCircle className="w-4 h-4" />
-                  Xác nhận Nạp {finalQuestionsToImport.length} Câu Hỏi & Đồng Bộ Ảnh
+                  Xem trước {finalQuestionsToImport.length} Câu Hỏi & Ảnh
                 </button>
               </div>
 
@@ -1138,13 +1190,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
                     <FileText className="w-4 h-4 text-slate-400" />
                     MÁY QUÉT ĐỀ ANH-VIỆT TỰ ĐỘNG
                   </span>
-                  <button 
-                    onClick={handleRawTextImport}
-                    className="text-xs bg-indigo-650 hover:bg-indigo-755 text-white px-3 py-1 rounded-lg font-bold flex items-center gap-1 transition-all shadow-sm"
-                  >
-                    <Sparkles className="w-3.5 h-3.5" />
-                    Quét & Chuyển đổi ngay!
-                  </button>
+                  <span className="text-[10px] font-bold text-indigo-600">Bước 1: Dán dữ liệu</span>
                 </div>
                 
                 <textarea
@@ -1164,6 +1210,16 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
   Explanation: RA-GRS copies data to secondary regions...`}
                   className="w-full text-xs font-mono p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-100 focus:border-indigo-550 bg-slate-50/55 min-h-[220px]"
                 />
+                <button
+                  type="button"
+                  onClick={handleRawTextImport}
+                  disabled={!rawText.trim()}
+                  className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-indigo-650 px-4 text-sm font-black text-white shadow-md transition-all hover:bg-indigo-755 disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-400 disabled:shadow-none"
+                >
+                  <Eye className="h-5 w-5" />
+                  Phân tích & Xem trước câu hỏi
+                </button>
+                <p className="text-center text-[10px] font-semibold text-slate-400">Chưa lưu Database — bạn sẽ được xem từng câu trước khi xác nhận.</p>
               </div>
             )}
 
@@ -1174,13 +1230,7 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
                     <FileJson className="w-4 h-4 text-slate-400" />
                     DÁN CODE JSON CÁC CÂU HỎI
                   </span>
-                  <button 
-                    onClick={handlePasteImport}
-                    className="text-xs text-indigo-600 hover:text-indigo-700 font-semibold flex items-center gap-1"
-                  >
-                    <PlusCircle className="w-3.5 h-3.5" />
-                    Duyệt & Thêm dữ liệu
-                  </button>
+                  <span className="text-[10px] font-bold text-indigo-600">Bước 1: Dán JSON</span>
                 </div>
                 <textarea
                   id="json-raw-paste"
@@ -1190,6 +1240,16 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
                   placeholder='Dán nội dung mảng JSON tại đây... Ví dụ: [{"text": "Câu hỏi...", "options": [...]}]'
                   className="w-full text-xs font-mono p-3 border border-slate-200 rounded-xl focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-slate-50/50 min-h-[220px]"
                 />
+                <button
+                  type="button"
+                  onClick={handlePasteImport}
+                  disabled={!jsonText.trim()}
+                  className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-indigo-650 px-4 text-sm font-black text-white shadow-md transition-all hover:bg-indigo-755 disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-400 disabled:shadow-none"
+                >
+                  <Eye className="h-5 w-5" />
+                  Kiểm tra JSON & Xem trước
+                </button>
+                <p className="text-center text-[10px] font-semibold text-slate-400">Chưa lưu Database — kiểm tra format, đáp án và explanation trước.</p>
               </div>
             )}
 
@@ -1200,8 +1260,8 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
                   <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-slate-250 rounded-xl cursor-pointer bg-slate-50 hover:bg-slate-100/70 hover:border-indigo-300 transition-colors p-4 text-center">
                     <div className="flex flex-col items-center justify-center pt-2">
                       <Upload className="w-10 h-10 text-indigo-400 mb-3" />
-                      <p className="text-xs text-slate-700 font-semibold">Chọn tệp tin cấu trúc .json</p>
-                      <p className="text-[10px] text-slate-400 mt-1.5">Mẹo: Bạn có thể xuất và lưu tệp này từ các ứng dụng thi khác</p>
+                      <p className="text-xs text-slate-700 font-semibold">Chọn tệp .json để kiểm tra và xem trước</p>
+                      <p className="text-[10px] text-slate-400 mt-1.5">Chưa ghi vào Database cho đến khi bạn xác nhận ở màn hình preview</p>
                     </div>
                     <input 
                       id="json-file-upload" 
@@ -1259,11 +1319,39 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
               ) : (
                 <div className="space-y-2 text-[11px] text-slate-600 leading-relaxed">
                   <p>
-                    Nhập dữ liệu chuẩn hóa dạng JSON để kiểm soát tuyệt đối định dạng và câu chữ. Định dạng phù hợp như mẫu sau:
+                    Chọn từng loại để xem đúng thuộc tính bắt buộc. Nút <strong>JSON Mẫu</strong> ở đầu trang sẽ tải một file chứa đầy đủ toàn bộ các loại bên dưới.
                   </p>
-                  <pre className="text-[10px] bg-slate-900 text-slate-200 overflow-x-auto p-3 rounded-lg font-mono">
-                    {JSON.stringify(sampleJson, null, 2)}
-                  </pre>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {QUESTION_IMPORT_SAMPLES.map((sample, index) => (
+                      <button
+                        key={sample.id}
+                        type="button"
+                        onClick={() => setSampleIndex(index)}
+                        className={`rounded-lg border px-2 py-1.5 text-left text-[9px] font-bold transition-all ${
+                          sampleIndex === index ? 'border-indigo-400 bg-indigo-50 text-indigo-700' : 'border-slate-200 bg-white text-slate-500 hover:border-indigo-200'
+                        }`}
+                      >
+                        {sample.correctAnswers.length > 1 && sample.questionType === 'multiple_choice'
+                          ? 'Multi-select'
+                          : QUESTION_TYPE_LABELS[sample.questionType || 'multiple_choice']}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="overflow-hidden rounded-lg border border-slate-800 bg-slate-950">
+                    <div className="flex items-center justify-between border-b border-white/10 px-3 py-2 text-[9px] font-bold text-slate-300">
+                      <span>{selectedSample.questionType || 'multiple_choice'}</span>
+                      <button type="button" onClick={handleCopySample} className="flex items-center gap-1 text-indigo-300 hover:text-white">
+                        {sampleCopied ? <CheckCircle className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
+                        {sampleCopied ? 'Đã chép' : 'Sao chép'}
+                      </button>
+                    </div>
+                    <pre className="max-h-80 overflow-auto p-3 text-[9px] leading-relaxed text-slate-200">
+                      {JSON.stringify(selectedSample, null, 2)}
+                    </pre>
+                  </div>
+                  <div className="rounded-lg border border-amber-200 bg-amber-50 p-2 text-[10px] text-amber-800">
+                    <strong>Lưu ý:</strong> `drag_drop` độc lập và `case_study` chưa có renderer riêng. Hãy dùng `matching_drag_drop` cho kéo thả, hoặc `multiple_choice` cho câu tình huống.
+                  </div>
                 </div>
               )}
             </div>
@@ -1274,6 +1362,24 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
             </div>
           </div>
         </div>
+      )}
+
+      {previewPlan && (
+        <QuestionImportPreviewModal
+          questions={previewPlan.incomingQuestions}
+          activeIndex={previewIndex}
+          duplicateCount={previewPlan.duplicateCount}
+          mergeMode={importMergeMode}
+          isSaving={isSavingPreview}
+          onIndexChange={setPreviewIndex}
+          onClose={() => {
+            if (!isSavingPreview) {
+              setPreviewPlan(null);
+              setPreviewIndex(0);
+            }
+          }}
+          onConfirm={handleConfirmPreviewImport}
+        />
       )}
     </div>
   );

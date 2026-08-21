@@ -16,6 +16,7 @@ interface QuizCardProps {
   onPrev?: () => void;
   isFirst?: boolean;
   isLast?: boolean;
+  previewMode?: boolean;
 }
 
 export default function QuizCard({
@@ -27,7 +28,8 @@ export default function QuizCard({
   onNext,
   onPrev,
   isFirst = false,
-  isLast = false
+  isLast = false,
+  previewMode = false
 }: QuizCardProps) {
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
   const [statementSelections, setStatementSelections] = useState<Record<string, 'Yes' | 'No'>>({});
@@ -213,9 +215,9 @@ export default function QuizCard({
   };
 
   return (
-    <div id={`question-card-${question.id}`} className="bg-white rounded-2xl sm:rounded-3xl border border-slate-100 p-3.5 sm:p-5 md:p-8 shadow-sm">
+    <div id={`question-card-${question.id}`} className={`bg-white rounded-2xl sm:rounded-3xl border border-slate-100 p-3.5 sm:p-5 md:p-8 ${previewMode ? 'shadow-none' : 'shadow-sm'}`}>
       {/* Category Panel header */}
-      <div className="flex items-center justify-between gap-2 sm:gap-4 mb-4 sm:mb-5 pb-3 sm:pb-4 border-b border-slate-50">
+      {!previewMode && <div className="flex items-center justify-between gap-2 sm:gap-4 mb-4 sm:mb-5 pb-3 sm:pb-4 border-b border-slate-50">
         <div className="flex min-w-0 items-center gap-2">
           <span className="max-w-[245px] truncate text-[10px] sm:max-w-none sm:text-xs font-bold px-2.5 py-1 bg-indigo-50 text-indigo-700 rounded-full uppercase tracking-wider">
             {question.category}
@@ -241,7 +243,7 @@ export default function QuizCard({
             <Bookmark className={`w-4 s-4 ${isBookmarked ? 'fill-rose-500' : ''}`} />
           </button>
         </div>
-      </div>
+      </div>}
 
       {/* Main Question Body */}
       <div className="space-y-5 sm:space-y-6">
@@ -486,7 +488,7 @@ export default function QuizCard({
 
         {/* Verify and Navigation Controls */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-slate-50">
-          <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:items-center sm:gap-3">
+          {!previewMode && <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:items-center sm:gap-3">
             {onPrev && (
               <button
                 onClick={onPrev}
@@ -503,7 +505,7 @@ export default function QuizCard({
             >
               Thi tiếp <ArrowRight className="w-3.5 h-3.5" />
             </button>
-          </div>
+          </div>}
 
           {!isAnswered ? (
             <button

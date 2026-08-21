@@ -14,14 +14,12 @@ import {
   FileJson, 
   FileSpreadsheet, 
   BookOpen, 
-  Settings, 
   PlusCircle,
   HelpCircle,
   FolderOpen,
   Tag,
   Sparkles,
   RefreshCw,
-  Info,
   Award,
   History,
   User,
@@ -47,8 +45,7 @@ import {
   fetchAllUserProgressFromDb,
   deleteUserProgressFromDb,
   clearAllUserProgressFromDb,
-  UserProgressRecord,
-  saveCustomCertificateToDb
+  UserProgressRecord
 } from '../lib/sync';
 import { Question, Certificate, VipKeyConfig } from '../types';
 import { initialQuestions } from '../data/initialQuestions';
@@ -59,13 +56,17 @@ import { dp800Questions } from '../data/dp800Questions';
 import { istqbAiQuestions } from '../data/istqbAiQuestions';
 import CustomQuestionsImport from './CustomQuestionsImport';
 import { smartParseQuestions } from '../utils/questionParser';
+import { QUESTION_IMPORT_SAMPLES } from '../data/questionImportSamples';
+import { QUESTION_TYPE_LABELS } from '../data/questionImportSamples';
+import AdminQuestionTypePreview from './AdminQuestionTypePreview';
+import QuestionSandboxModal from './QuestionSandboxModal';
 
 interface AdminPanelProps {
   certificates: Certificate[];
   activeCertId: string;
   onSelectCert: (certId: string) => void;
   onUpdateQuestions: (certId: string, updatedQs: Question[]) => void;
-  onAddCertificate: (newCert: Certificate, initialQs: Question[]) => void;
+  onAddCertificate: (newCert: Certificate, initialQs: Question[]) => Promise<boolean>;
   onDeleteCertificate: (certId: string) => void;
   showAppToast: (message: string, type: 'success' | 'error' | 'info') => void;
   unlockedCertIds?: string[];
@@ -101,6 +102,9 @@ export default function AdminPanel({
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [certificateSearchQuery, setCertificateSearchQuery] = useState('');
+  const [questionWorkspaceView, setQuestionWorkspaceView] = useState<'catalog' | 'editor'>('catalog');
+  const [certificateQuestionCounts, setCertificateQuestionCounts] = useState<Record<string, number>>({});
   const [categoryFilter, setCategoryFilter] = useState('All');
 
   // Form toggles
@@ -141,6 +145,7 @@ export default function AdminPanel({
 
   // Collapsed questions registry (to avoid massive pages on large sets)
   const [expandedQuestionId, setExpandedQuestionId] = useState<string | null>(null);
+  const [sandboxQuestion, setSandboxQuestion] = useState<Question | null>(null);
 
   // Questions list pagination
   const [currentPage, setCurrentPage] = useState(1);
@@ -422,7 +427,8 @@ export default function AdminPanel({
       else if (activeCertId === 'dp-800') staticDefaultQs = dp800Questions;
       else if (activeCertId === 'istqb-ai') staticDefaultQs = istqbAiQuestions;
 
-      const stored = localStorage.getItem(`questions_${activeCertId}`);
+      const isSystemCertificate = ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'].includes(activeCertId);
+      const stored = isSystemCertificate ? localStorage.getItem(`questions_${activeCertId}`) : null;
       let localQs: Question[] = [];
       if (stored) {
         try {
@@ -447,7 +453,7 @@ export default function AdminPanel({
         .order('question_number', { ascending: true });
 
       if (error) {
-        console.warn('Fallback to local questions storage:', error);
+        console.warn('Could not load questions from Database:', error);
         setQuestions(localQs);
       } else if (data && data.length > 0) {
         // Find default static questions for activeCertId
@@ -484,8 +490,9 @@ export default function AdminPanel({
           };
         });
         setQuestions(dbQs);
-        // Sync back to local cached storage
-        localStorage.setItem(`questions_${activeCertId}`, JSON.stringify(dbQs));
+        if (isSystemCertificate) {
+          localStorage.setItem(`questions_${activeCertId}`, JSON.stringify(dbQs));
+        }
       } else {
         setQuestions(localQs);
       }
@@ -499,6 +506,22 @@ export default function AdminPanel({
   useEffect(() => {
     loadQuestions();
   }, [activeCertId]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const loadCertificateQuestionCounts = async () => {
+      const entries = await Promise.all(certificates.map(async certificate => {
+        const { count, error } = await supabase
+          .from('questions')
+          .select('id', { count: 'exact', head: true })
+          .eq('cert_id', certificate.id);
+        return [certificate.id, error ? 0 : (count || 0)] as const;
+      }));
+      if (!cancelled) setCertificateQuestionCounts(Object.fromEntries(entries));
+    };
+    loadCertificateQuestionCounts();
+    return () => { cancelled = true; };
+  }, [certificates]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -652,11 +675,6 @@ export default function AdminPanel({
       // Sort questions by question number
       updatedList.sort((a, b) => a.questionNumber - b.questionNumber);
 
-      // Save to local & states
-      localStorage.setItem(`questions_${activeCertId}`, JSON.stringify(updatedList));
-      setQuestions(updatedList);
-      onUpdateQuestions(activeCertId, updatedList);
-
       // Sync specific question to Supabase
       const optionsPayload = savedQuestion.statements?.length
         ? {
@@ -698,10 +716,13 @@ export default function AdminPanel({
 
       if (dbError) {
         console.error('Failed to sync to Supabase database:', dbError);
-        showAppToast('Đã lưu cục bộ thành công! (Cảnh báo lỗi đồng bộ Cloud)', 'info');
-      } else {
-        showAppToast(isNew ? 'Đã thêm câu hỏi thành công!' : 'Đã cập nhật câu hỏi thành công!', 'success');
+        showAppToast('Không thể lưu câu hỏi lên Database. Dữ liệu hiện tại không bị thay đổi.', 'error');
+        return;
       }
+
+      setQuestions(updatedList);
+      onUpdateQuestions(activeCertId, updatedList);
+      showAppToast(isNew ? 'Đã thêm câu hỏi thành công!' : 'Đã cập nhật câu hỏi thành công!', 'success');
 
       setIsQuestionFormOpen(false);
       setEditingQuestion(null);
@@ -719,11 +740,6 @@ export default function AdminPanel({
     try {
       const updatedList = questions.filter(q => q.id !== qId);
       
-      // Save local
-      localStorage.setItem(`questions_${activeCertId}`, JSON.stringify(updatedList));
-      setQuestions(updatedList);
-      onUpdateQuestions(activeCertId, updatedList);
-
       // Delete from Supabase
       const { error } = await supabase
         .from('questions')
@@ -732,8 +748,10 @@ export default function AdminPanel({
 
       if (error) {
         console.error('Delete database row error:', error);
-        showAppToast('Đã xóa cục bộ thành công! (Không thể đồng bộ Cloud)', 'info');
+        showAppToast('Không thể xóa câu hỏi khỏi Database. Dữ liệu hiện tại không bị thay đổi.', 'error');
       } else {
+        setQuestions(updatedList);
+        onUpdateQuestions(activeCertId, updatedList);
         showAppToast('Đã xóa câu hỏi thành công!', 'success');
       }
     } catch (e) {
@@ -767,32 +785,14 @@ export default function AdminPanel({
 
   // Downloading sample JSON
   const handleDownloadSampleJson = () => {
-    const sample = [
-      {
-        "id": "vi-du-cau-hoi-1",
-        "questionNumber": 1,
-        "text": "Đâu là thành phần cốt lõi quản lý trạng thái luồng làm việc trong Power Automate Cloud?",
-        "options": [
-          { "key": "A", "text": "Triggers & Actions" },
-          { "key": "B", "text": "Storage Blobs" },
-          { "key": "C", "text": "Model-driven charts" },
-          { "key": "D", "text": "Gateway connections" }
-        ],
-        "correctAnswers": ["A"],
-        "explanation": "Mỗi Power Automate Cloud flow chứa duy nhất Triggers làm điểm khởi đầu, kèm theo các Actions tiếp diễn nhằm thực thi tác vụ tự động hóa.",
-        "category": "Flow Architecture",
-        "tags": ["Automation", "Cloud Flows"]
-      }
-    ];
-
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(sample, null, 2));
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(QUESTION_IMPORT_SAMPLES, null, 2));
     const downloadAnchor = document.createElement('a');
     downloadAnchor.setAttribute("href", dataStr);
     downloadAnchor.setAttribute("download", "question_sample_import.json");
     document.body.appendChild(downloadAnchor);
     downloadAnchor.click();
     downloadAnchor.remove();
-    showAppToast('Đã tải xuống file cấu trúc câu hỏi JSON mẫu!', 'success');
+    showAppToast(`Đã tải JSON mẫu đầy đủ ${QUESTION_IMPORT_SAMPLES.length} định dạng câu hỏi!`, 'success');
   };
 
   // Export questions to JSON format
@@ -881,7 +881,6 @@ export default function AdminPanel({
       }
 
       setQuestions(importedList);
-      localStorage.setItem(`questions_${activeCertId}`, JSON.stringify(importedList));
       onUpdateQuestions(activeCertId, importedList);
       showAppToast(`🎉 Đã nạp và lưu bền vững ${importedList.length} câu hỏi vào Database cho chứng chỉ ${activeCert?.code || activeCertId}!`, 'success');
       setIsBulkUploadOpen(false);
@@ -925,11 +924,8 @@ export default function AdminPanel({
         iconName: newCertIcon
       };
 
-      // Call callback parent state
-      onAddCertificate(builtCert, parsedQuestionsList);
-
-      // Also persist to Supabase custom_certificates table
-      await saveCustomCertificateToDb(builtCert);
+      const created = await onAddCertificate(builtCert, parsedQuestionsList);
+      if (!created) return;
 
       // Reset state
       setNewCertCode('');
@@ -956,6 +952,13 @@ export default function AdminPanel({
   const categories = ['All', ...Array.from(new Set(questions.map(q => q.category).filter(Boolean)))];
 
   const activeCert = certificates.find(c => c.id === activeCertId);
+  const systemCertificateIds = ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'];
+  const canDeleteActiveCertificate = !!activeCert && !systemCertificateIds.includes(activeCert.id);
+  const filteredCertificates = certificates.filter(certificate => {
+    const keyword = certificateSearchQuery.trim().toLowerCase();
+    if (!keyword) return true;
+    return `${certificate.code} ${certificate.name} ${certificate.description}`.toLowerCase().includes(keyword);
+  });
 
   return (
     <div className="space-y-6 animate-fadeIn pb-20">
@@ -966,7 +969,7 @@ export default function AdminPanel({
           <span className="text-[10px] font-black text-indigo-700 uppercase tracking-widest bg-indigo-50 px-3 py-1.5 rounded-full inline-block">🛠️ CHẾ ĐỘ QUẢN TRỊ VIÊN</span>
           <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">Khu Vực Quản Lý Ngân Hàng Câu Hỏi & Đề Thi</h2>
           <p className="text-xs text-slate-500 max-w-2xl leading-relaxed">
-            Cho phép chỉnh sửa, tạo mới hoặc loại bỏ câu hỏi trực tiếp, lưu tức thời về trình duyệt và tự động đồng bộ đám mây Supabase cho các tài khoản liên kết.
+            Cho phép tạo, chỉnh sửa hoặc loại bỏ ngân hàng câu hỏi và lưu trực tiếp lên Supabase để mọi tài khoản được dùng chung dữ liệu.
           </p>
         </div>
         <div className="shrink-0 flex flex-wrap gap-2 w-full md:w-auto justify-end">
@@ -979,26 +982,33 @@ export default function AdminPanel({
             JSON Mẫu
           </button>
           
-          <button
-            onClick={handleExportJson}
-            className="text-xs bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-extrabold px-3 py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-indigo-200"
-            title="Xuất toàn bộ câu hỏi của môn học hiện tại ra file JSON"
-          >
-            <FileJson className="w-3.5 h-3.5 text-indigo-600" />
-            Xuất JSON
-          </button>
+          {questionWorkspaceView === 'editor' && adminTab === 'questions' && (
+            <>
+              <button
+                onClick={handleExportJson}
+                className="text-xs bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-extrabold px-3 py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-indigo-200"
+                title="Xuất toàn bộ câu hỏi của môn học hiện tại ra file JSON"
+              >
+                <FileJson className="w-3.5 h-3.5 text-indigo-600" />
+                Xuất JSON
+              </button>
 
-          <button
-            onClick={handleExportCsv}
-            className="text-xs bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-extrabold px-3 py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-emerald-250"
-            title="Xuất toàn bộ câu hỏi của môn học hiện tại ra file CSV"
-          >
-            <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
-            Xuất CSV
-          </button>
+              <button
+                onClick={handleExportCsv}
+                className="text-xs bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-extrabold px-3 py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-emerald-250"
+                title="Xuất toàn bộ câu hỏi của môn học hiện tại ra file CSV"
+              >
+                <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
+                Xuất CSV
+              </button>
+            </>
+          )}
           
           <button
-            onClick={() => setIsNewCertFormOpen(prev => !prev)}
+            onClick={() => {
+              setQuestionWorkspaceView('editor');
+              setIsNewCertFormOpen(true);
+            }}
             className="text-xs bg-slate-900 hover:bg-indigo-600 text-white font-black px-4 py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
           >
             <FolderOpen className="w-3.5 h-3.5" />
@@ -1010,7 +1020,10 @@ export default function AdminPanel({
       {/* Admin Panel Sub-Tabs Navigation */}
       <div className="flex border-b border-slate-200">
         <button
-          onClick={() => setAdminTab('questions')}
+          onClick={() => {
+            setAdminTab('questions');
+            setQuestionWorkspaceView('catalog');
+          }}
           className={`px-6 py-3.5 text-xs font-black tracking-wide border-b-2 transition-all flex items-center gap-2 ${
             adminTab === 'questions'
               ? 'border-indigo-650 text-indigo-700'
@@ -1055,91 +1068,172 @@ export default function AdminPanel({
         </button>
       </div>
 
-      {adminTab === 'questions' && (
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
-        
-        {/* LEFT COLUMN: Course selection rail & statistics */}
-        <div className="lg:col-span-1 space-y-4">
-          <div className="bg-white border border-slate-150 rounded-2xl p-4.5 shadow-sm space-y-4">
-            <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-1.5 pb-2.5 border-b border-slate-100">
-              <Settings className="w-3.5 h-3.5 text-slate-400" />
-              CHỌN MÔN HỌC / ĐỀ THI
-            </h3>
-            
-            <div className="space-y-1.5 max-h-80 overflow-y-auto pr-1">
-              {certificates.map(cert => {
-                const isActive = cert.id === activeCertId;
+      {adminTab === 'questions' && questionWorkspaceView === 'catalog' && (
+        <div className="space-y-5 animate-fadeIn">
+          <div className="rounded-3xl border border-slate-150 bg-white p-5 shadow-sm md:p-6">
+            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-[0.18em] text-indigo-600">Thư viện đề thi</span>
+                <h3 className="mt-1 text-xl font-black tracking-tight text-slate-900">Chọn chứng chỉ cần quản lý</h3>
+                <p className="mt-1 text-xs leading-relaxed text-slate-500">
+                  {certificates.length} chứng chỉ đang có trên hệ thống. Chọn một chứng chỉ để xem, nhập hoặc chỉnh sửa câu hỏi.
+                </p>
+              </div>
+              <div className="relative w-full md:max-w-md">
+                <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                <input
+                  type="search"
+                  value={certificateSearchQuery}
+                  onChange={(event) => setCertificateSearchQuery(event.target.value)}
+                  placeholder="Tìm theo mã, tên hoặc mô tả chứng chỉ..."
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-indigo-300 focus:bg-white focus:ring-4 focus:ring-indigo-50"
+                />
+              </div>
+            </div>
+          </div>
+
+          {filteredCertificates.length > 0 ? (
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              {filteredCertificates.map((certificate) => {
+                const isCustomCertificate = !systemCertificateIds.includes(certificate.id);
+                const questionCount = certificateQuestionCounts[certificate.id];
                 return (
-                  <div
-                    key={cert.id}
-                    onClick={() => onSelectCert(cert.id)}
-                    className={`w-full text-left px-3.5 py-3 rounded-xl text-xs font-bold leading-relaxed flex items-center justify-between transition-all group cursor-pointer ${
-                      isActive 
-                        ? 'bg-indigo-50/70 border border-indigo-200/80 text-indigo-950' 
-                        : 'hover:bg-slate-50 text-slate-600'
-                    }`}
+                  <article
+                    key={certificate.id}
+                    className="group flex min-h-72 flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-lg hover:shadow-indigo-100/60"
                   >
-                    <div className="truncate pr-2">
-                      <div className="flex items-center gap-1.5">
-                        <span className="block text-[9px] uppercase font-black text-slate-400 tracking-wider font-mono">{cert.code}</span>
-                        {cert.isDisabled && (
-                          <span className="text-[8.5px] font-black uppercase text-rose-600 bg-rose-50 border border-rose-200 px-1 py-0.2 rounded shrink-0">
-                            Đã Ẩn
-                          </span>
+                    <div className={`relative min-h-24 overflow-hidden p-5 text-white ${certificate.colorClass}`}>
+                      <div className="absolute -right-5 -top-6 h-24 w-24 rounded-full border-[16px] border-white/10" />
+                      <div className="relative flex items-start justify-between gap-3">
+                        <div>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="rounded-md bg-white/20 px-2 py-1 font-mono text-[10px] font-black uppercase tracking-widest backdrop-blur-sm">
+                              {certificate.code}
+                            </span>
+                            {isCustomCertificate && (
+                              <span className="rounded-md bg-emerald-300/20 px-2 py-1 text-[9px] font-black uppercase tracking-wider text-emerald-50">
+                                Đã import
+                              </span>
+                            )}
+                            {certificate.isDisabled && (
+                              <span className="rounded-md bg-rose-400/25 px-2 py-1 text-[9px] font-black uppercase tracking-wider text-white">
+                                Đang ẩn
+                              </span>
+                            )}
+                          </div>
+                          <h4 className="mt-3 line-clamp-2 text-base font-black leading-snug">{certificate.name}</h4>
+                        </div>
+                        <BookOpen className="h-8 w-8 shrink-0 text-white/70" />
+                      </div>
+                    </div>
+
+                    <div className="flex flex-1 flex-col p-5">
+                      <p className="line-clamp-3 min-h-12 text-xs leading-relaxed text-slate-500">{certificate.description}</p>
+                      <div className="mt-4 flex flex-wrap gap-2 text-[10px] font-bold text-slate-600">
+                        <span className="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1.5">{certificate.difficulty}</span>
+                        <span className="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1.5">{certificate.estimatedHours}</span>
+                        <span className="rounded-lg border border-indigo-100 bg-indigo-50 px-2.5 py-1.5 text-indigo-700">
+                          {questionCount === undefined ? 'Đang đếm...' : `${questionCount} câu`}
+                        </span>
+                      </div>
+
+                      <div className="mt-auto flex gap-2 pt-5">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            onSelectCert(certificate.id);
+                            setQuestionWorkspaceView('editor');
+                            setSearchQuery('');
+                            setCategoryFilter('All');
+                            setExpandedQuestionId(null);
+                          }}
+                          className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-slate-950 px-4 text-xs font-black text-white transition hover:bg-indigo-600"
+                        >
+                          <Edit3 className="h-4 w-4" />
+                          Quản lý câu hỏi
+                        </button>
+                        {isCustomCertificate && (
+                          <button
+                            type="button"
+                            onClick={() => onDeleteCertificate(certificate.id)}
+                            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-rose-200 bg-rose-50 text-rose-600 transition hover:bg-rose-100"
+                            title={`Xóa chứng chỉ ${certificate.code}`}
+                            aria-label={`Xóa chứng chỉ ${certificate.code}`}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </button>
                         )}
                       </div>
-                      <span className={`truncate block font-extrabold text-[11.5px] ${cert.isDisabled ? 'text-slate-400 line-through' : ''}`}>{cert.name}</span>
                     </div>
-                    {isActive ? (
-                      <Check className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
-                    ) : (
-                      cert.id !== 'gh-300' && cert.id !== 'az-900' && cert.id !== 'ai-900' && cert.id !== 'cca-f' && cert.id !== 'dp-800' && cert.id !== 'istqb-ai' && cert.id !== 'ab-731' && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            onDeleteCertificate(cert.id);
-                          }}
-                          className="opacity-0 group-hover:opacity-100 p-1 hover:bg-rose-50 text-rose-500 rounded-lg transition-all"
-                          title="Xóa chứng chỉ"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      )
-                    )}
-                  </div>
+                  </article>
                 );
               })}
             </div>
-          </div>
-
-          <div className="bg-slate-550/5 border border-slate-150 rounded-2xl p-4.5 space-y-3.5">
-            <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1">
-              <Info className="w-3.5 h-3.5 text-indigo-500" />
-              THÔNG TIN ĐANG CHỌN
-            </h4>
-            <div className="space-y-2 text-xs">
-              <div className="flex justify-between">
-                <span className="text-slate-400 font-semibold">Môn học:</span>
-                <span className="font-extrabold text-slate-700">{activeCert?.code}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-400 font-semibold">Tổng câu hỏi:</span>
-                <span className="font-extrabold text-slate-700">{questions.length} câu</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-400 font-semibold">Cấp độ:</span>
-                <span className="font-extrabold text-slate-700">{activeCert?.difficulty}</span>
-              </div>
-              <p className="text-[10px] text-slate-400 bg-white border border-slate-100 rounded-xl p-2.5 leading-relaxed mt-2.5 shadow-xs">
-                💡 Định nghĩa cấu trúc chuẩn phù hợp để dán tệp đề thô hoặc dán JSON trích lục.
-              </p>
+          ) : (
+            <div className="rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center">
+              <Search className="mx-auto h-8 w-8 text-slate-300" />
+              <h3 className="mt-3 text-sm font-black text-slate-800">Không tìm thấy chứng chỉ phù hợp</h3>
+              <p className="mt-1 text-xs text-slate-500">Thử tìm bằng mã chứng chỉ hoặc một phần tên khác.</p>
+              <button
+                type="button"
+                onClick={() => setCertificateSearchQuery('')}
+                className="mt-4 rounded-xl bg-indigo-50 px-4 py-2 text-xs font-black text-indigo-700 hover:bg-indigo-100"
+              >
+                Xóa từ khóa tìm kiếm
+              </button>
             </div>
-          </div>
+          )}
         </div>
+      )}
+
+      {adminTab === 'questions' && questionWorkspaceView === 'editor' && (
+        <div className="grid grid-cols-1 gap-6 items-start">
 
         {/* RIGHT COLUMN: Question management block */}
-        <div className="lg:col-span-3 space-y-5">
-          
+        <div className="space-y-5">
+          <div className="flex flex-col gap-4 rounded-2xl border border-slate-150 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex min-w-0 items-center gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setQuestionWorkspaceView('catalog');
+                  setIsNewCertFormOpen(false);
+                }}
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-600 transition hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700"
+                title="Quay lại danh sách chứng chỉ"
+                aria-label="Quay lại danh sách chứng chỉ"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="font-mono text-[10px] font-black uppercase tracking-widest text-indigo-600">{activeCert?.code || 'Chứng chỉ mới'}</span>
+                  {activeCert && (
+                    <span className="rounded-lg bg-slate-100 px-2 py-1 text-[9px] font-bold text-slate-600">{questions.length} câu hỏi</span>
+                  )}
+                </div>
+                <h3 className="truncate text-sm font-black text-slate-900">{activeCert?.name || 'Tạo chứng chỉ mới'}</h3>
+                <button
+                  type="button"
+                  onClick={() => setQuestionWorkspaceView('catalog')}
+                  className="mt-1 text-[10px] font-bold text-slate-400 hover:text-indigo-600"
+                >
+                  ← Danh sách chứng chỉ
+                </button>
+              </div>
+            </div>
+            {canDeleteActiveCertificate && !isNewCertFormOpen && (
+              <button
+                type="button"
+                onClick={() => onDeleteCertificate(activeCert.id)}
+                className="flex min-h-10 items-center justify-center gap-2 rounded-xl border border-rose-200 bg-rose-50 px-3 text-[11px] font-black text-rose-700 transition-colors hover:bg-rose-100"
+              >
+                <Trash2 className="h-4 w-4" />
+                Xóa chứng chỉ đã import
+              </button>
+            )}
+          </div>
+
           {/* Certificate Generation Form inside admin area */}
           {isNewCertFormOpen && (
             <div className="bg-white border border-indigo-100 rounded-3xl p-6 shadow-md space-y-5 animate-in slide-in-from-top-4 duration-200">
@@ -1644,12 +1738,18 @@ export default function AdminPanel({
                             <span className="bg-indigo-50 text-indigo-650 text-[10px] font-bold px-2 py-0.5 rounded-full">
                               {q.category}
                             </span>
-                            {q.tags && q.tags.map(t => (
+                            <span className="bg-violet-50 text-violet-700 text-[9.5px] font-black px-2 py-0.5 rounded-full">
+                              {QUESTION_TYPE_LABELS[q.questionType || 'multiple_choice']}
+                            </span>
+                            {q.tags && q.tags.slice(0, 2).map(t => (
                               <span key={t} className="bg-slate-100 text-slate-550 text-[9.5px] px-1.5 py-0.5 rounded flex items-center gap-0.5">
                                 <Tag className="w-2.5 h-2.5 opacity-55" />
                                 {t}
                               </span>
                             ))}
+                            {(q.tags?.length || 0) > 2 && (
+                              <span className="text-[9px] font-bold text-slate-400">+{q.tags!.length - 2} tag</span>
+                            )}
                           </div>
                           <h4 className="text-xs font-bold text-slate-800 mt-1.5 leading-relaxed truncate-3-lines">
                             {q.text}
@@ -1657,6 +1757,17 @@ export default function AdminPanel({
                         </div>
 
                         <div className="flex items-center gap-2 shrink-0 self-center">
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSandboxQuestion(q);
+                            }}
+                            className="flex min-h-9 items-center gap-1.5 rounded-xl border border-indigo-200 bg-indigo-50 px-2.5 text-[10px] font-black text-indigo-700 transition-colors hover:bg-indigo-100"
+                            title="Thao tác thử như lúc học"
+                          >
+                            <Eye className="h-3.5 w-3.5" />
+                            <span className="hidden xl:inline">Preview</span>
+                          </button>
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
@@ -1687,31 +1798,9 @@ export default function AdminPanel({
                       {isExpanded && (
                         <div className="px-5 pb-5 pt-1.5 border-t border-slate-100 bg-slate-50/45 space-y-4">
                           
-                          {/* Options display with bold colors indicating correct ones */}
                           <div className="space-y-2">
-                            <span className="block text-[10px] uppercase font-black tracking-wider text-slate-400">Các lựa chọn:</span>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                              {q.options.map(opt => {
-                                const isCorrect = q.correctAnswers.includes(opt.key);
-                                return (
-                                  <div 
-                                    key={opt.key}
-                                    className={`p-3 rounded-xl border flex items-start gap-2.5 ${
-                                      isCorrect 
-                                        ? 'bg-emerald-50 border-emerald-250 text-emerald-900 font-medium font-bold' 
-                                        : 'bg-white border-slate-150 text-slate-500'
-                                    }`}
-                                  >
-                                    <span className={`w-5 h-5 flex items-center justify-center rounded-lg text-[10px] font-black shrink-0 ${
-                                      isCorrect ? 'bg-emerald-500 text-white' : 'bg-slate-100 text-slate-400'
-                                    }`}>
-                                      {opt.key}
-                                    </span>
-                                    <span className="leading-relaxed">{opt.text}</span>
-                                  </div>
-                                );
-                              })}
-                            </div>
+                            <span className="block text-[10px] uppercase font-black tracking-wider text-slate-400">Xem trước đúng định dạng khi học:</span>
+                            <AdminQuestionTypePreview question={q} />
                           </div>
 
                           {/* Explanation display block */}
@@ -2593,6 +2682,13 @@ export default function AdminPanel({
             })}
           </div>
         </div>
+      )}
+
+      {sandboxQuestion && (
+        <QuestionSandboxModal
+          question={sandboxQuestion}
+          onClose={() => setSandboxQuestion(null)}
+        />
       )}
 
     </div>

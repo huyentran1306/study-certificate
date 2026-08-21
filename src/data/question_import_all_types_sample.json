@@ -1,0 +1,106 @@
+[
+  {
+    "id": "demo-single-choice",
+    "questionNumber": 1,
+    "text": "Which component provides globally distributed document storage?",
+    "questionType": "multiple_choice",
+    "options": [
+      { "key": "A", "text": "A globally distributed document database" },
+      { "key": "B", "text": "A virtual machine" },
+      { "key": "C", "text": "A source control repository" },
+      { "key": "D", "text": "A DNS service" }
+    ],
+    "correctAnswers": ["A"],
+    "explanation": "Cơ sở dữ liệu tài liệu phân tán toàn cầu phù hợp để lưu dữ liệu dạng document trên nhiều khu vực.",
+    "category": "Demo - Multiple Choice",
+    "tags": ["DEMO-ALL-TYPES", "Single choice"]
+  },
+  {
+    "id": "demo-multi-select",
+    "questionNumber": 2,
+    "text": "Which two characteristics are benefits of cloud computing? Select two answers.",
+    "questionType": "multiple_choice",
+    "options": [
+      { "key": "A", "text": "High availability" },
+      { "key": "B", "text": "Scalability" },
+      { "key": "C", "text": "Mandatory upfront hardware purchase" },
+      { "key": "D", "text": "Fixed capacity only" }
+    ],
+    "correctAnswers": ["A", "B"],
+    "explanation": "High availability và scalability là hai lợi ích tiêu biểu của điện toán đám mây.",
+    "category": "Demo - Multiple Choice",
+    "tags": ["DEMO-ALL-TYPES", "Multi-select"]
+  },
+  {
+    "id": "demo-statement-matrix",
+    "questionNumber": 3,
+    "text": "For each statement, select Yes if it is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      { "id": "1", "text": "Infrastructure as Code supports repeatable deployments.", "correctAnswer": "Yes" },
+      { "id": "2", "text": "Every cloud resource must use a different account.", "correctAnswer": "No" },
+      { "id": "3", "text": "A governance scope can contain multiple subscriptions.", "correctAnswer": "Yes" }
+    ],
+    "correctAnswers": ["1:Yes", "2:No", "3:Yes"],
+    "explanation": "Infrastructure as Code hỗ trợ triển khai lặp lại; nhiều tài nguyên có thể dùng chung account và governance scope có thể quản lý nhiều subscription.",
+    "category": "Demo - Statement Matrix",
+    "tags": ["DEMO-ALL-TYPES", "Statement matrix"]
+  },
+  {
+    "id": "demo-matching-dropdown",
+    "questionNumber": 4,
+    "text": "Match each requirement to the appropriate component.",
+    "questionType": "matching_dropdown",
+    "statements": [
+      { "id": "1", "text": "Store globally distributed JSON documents", "correctAnswer": "A" },
+      { "id": "2", "text": "Run event-driven code without managing servers", "correctAnswer": "B" },
+      { "id": "3", "text": "Manage secrets and certificates", "correctAnswer": "C" }
+    ],
+    "choices": [
+      { "key": "A", "text": "Document database" },
+      { "key": "B", "text": "Serverless function" },
+      { "key": "C", "text": "Secret vault" }
+    ],
+    "correctAnswers": ["1=A", "2=B", "3=C"],
+    "explanation": "Document database lưu JSON phân tán, serverless function chạy code theo sự kiện và secret vault quản lý bí mật cùng chứng chỉ.",
+    "category": "Demo - Matching Dropdown",
+    "tags": ["DEMO-ALL-TYPES", "Dropdown"]
+  },
+  {
+    "id": "demo-matching-drag-drop",
+    "questionNumber": 5,
+    "text": "Match each cloud service model to its description.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      { "id": "1", "text": "You manage the operating system and applications.", "correctAnswer": "A" },
+      { "id": "2", "text": "You deploy applications while the provider manages the operating system.", "correctAnswer": "B" },
+      { "id": "3", "text": "You consume a complete application managed by the provider.", "correctAnswer": "C" }
+    ],
+    "choices": [
+      { "key": "A", "text": "Infrastructure as a Service (IaaS)" },
+      { "key": "B", "text": "Platform as a Service (PaaS)" },
+      { "key": "C", "text": "Software as a Service (SaaS)" }
+    ],
+    "correctAnswers": ["1=A", "2=B", "3=C"],
+    "explanation": "IaaS cho quyền quản lý hệ điều hành, PaaS tập trung vào ứng dụng và SaaS cung cấp phần mềm hoàn chỉnh.",
+    "category": "Demo - Matching Drag Drop",
+    "tags": ["DEMO-ALL-TYPES", "Drag and drop"]
+  },
+  {
+    "id": "demo-image-hotspot",
+    "questionNumber": 6,
+    "text": "Select the globally distributed document database directly in the answer image.",
+    "questionType": "image_hotspot",
+    "imageUrl": "samples/hotspot-demo.svg",
+    "options": [
+      { "key": "A", "text": "Object Storage", "hotspot": { "x": 5, "y": 17.1, "width": 90, "height": 14.8 } },
+      { "key": "B", "text": "Globally Distributed Document Database", "hotspot": { "x": 5, "y": 35.7, "width": 90, "height": 14.8 } },
+      { "key": "C", "text": "Virtual Machine", "hotspot": { "x": 5, "y": 54.3, "width": 90, "height": 14.8 } },
+      { "key": "D", "text": "DNS Service", "hotspot": { "x": 5, "y": 72.9, "width": 90, "height": 14.8 } }
+    ],
+    "correctAnswers": ["B"],
+    "explanation": "Globally distributed document database phù hợp để lưu tài liệu JSON và phân phối dữ liệu trên nhiều khu vực.",
+    "category": "Demo - Image Hotspot",
+    "tags": ["DEMO-ALL-TYPES", "Image hotspot"]
+  }
+]
