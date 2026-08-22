@@ -32,7 +32,7 @@ jobs:
       - name: Setup Node.js ⚙️
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Install dependencies 📦
         run: |
@@ -41,6 +41,15 @@ jobs:
           else
             npm install
           fi
+
+      - name: Typecheck 🔎
+        run: npm run lint
+
+      - name: Unit tests 🧪
+        run: npm run test
+
+      - name: Dependency audit 🛡️
+        run: npm audit --audit-level=high
 
       - name: Build project 🏗️
         run: npm run build

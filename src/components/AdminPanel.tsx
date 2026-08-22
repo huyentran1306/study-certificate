@@ -45,23 +45,28 @@ import {
   fetchAllUserProgressFromDb,
   deleteUserProgressFromDb,
   clearAllUserProgressFromDb,
-  UserProgressRecord
+  UserProgressRecord,
+  createQuestionImportBatch,
+  fetchQuestionImportBatches,
+  fetchQuestionImportSnapshot,
+  type QuestionImportBatch,
+  fetchQuestionReports,
+  updateQuestionReport,
+  type AdminQuestionReport,
+  type QuestionReportStatus,
 } from '../lib/sync';
 import { Question, Certificate, VipKeyConfig } from '../types';
-import { initialQuestions } from '../data/initialQuestions';
-import { az900Questions } from '../data/az900Questions';
-import { ai900Questions } from '../data/ai900Questions';
-import { ccaQuestions } from '../data/ccaQuestions';
-import { dp800Questions } from '../data/dp800Questions';
-import { istqbAiQuestions } from '../data/istqbAiQuestions';
+import { loadBuiltinQuestions } from '../data/questionCatalog';
 import CustomQuestionsImport from './CustomQuestionsImport';
 import { smartParseQuestions } from '../utils/questionParser';
 import { QUESTION_IMPORT_SAMPLES } from '../data/questionImportSamples';
 import { QUESTION_TYPE_LABELS } from '../data/questionImportSamples';
 import AdminQuestionTypePreview from './AdminQuestionTypePreview';
 import QuestionSandboxModal from './QuestionSandboxModal';
+import { isSafeExternalUrl } from '../utils/url';
 
 interface AdminPanelProps {
+  currentRole: 'editor' | 'admin';
   certificates: Certificate[];
   activeCertId: string;
   onSelectCert: (certId: string) => void;
@@ -81,6 +86,7 @@ interface AdminPanelProps {
 }
 
 export default function AdminPanel({
+  currentRole,
   certificates,
   activeCertId,
   onSelectCert,
@@ -98,6 +104,7 @@ export default function AdminPanel({
   onToggleCertDisabled,
   onToggleUnlockCert
 }: AdminPanelProps) {
+  const isFullAdmin = currentRole === 'admin';
   // Questions list of the currently selected certificate
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -106,6 +113,7 @@ export default function AdminPanel({
   const [questionWorkspaceView, setQuestionWorkspaceView] = useState<'catalog' | 'editor'>('catalog');
   const [certificateQuestionCounts, setCertificateQuestionCounts] = useState<Record<string, number>>({});
   const [categoryFilter, setCategoryFilter] = useState('All');
+  const [statusFilter, setStatusFilter] = useState<'All' | NonNullable<Question['status']>>('All');
 
   // Form toggles
   const [isQuestionFormOpen, setIsQuestionFormOpen] = useState(false);
@@ -128,6 +136,10 @@ export default function AdminPanel({
   ]);
   const [qCorrectAnswers, setQCorrectAnswers] = useState<string[]>([]);
   const [qImageUrl, setQImageUrl] = useState('');
+  const [qStatus, setQStatus] = useState<NonNullable<Question['status']>>('draft');
+  const [qSourceTitle, setQSourceTitle] = useState('');
+  const [qSourceUrl, setQSourceUrl] = useState('');
+  const [qLastVerifiedAt, setQLastVerifiedAt] = useState('');
 
   // Certificate Form state
   const [newCertCode, setNewCertCode] = useState('');
@@ -142,6 +154,9 @@ export default function AdminPanel({
   // Bulk Questions Upload modal state
   const [isBulkUploadOpen, setIsBulkUploadOpen] = useState(false);
   const [isBulkUploading, setIsBulkUploading] = useState(false);
+  const [importBatches, setImportBatches] = useState<QuestionImportBatch[]>([]);
+  const [showImportHistory, setShowImportHistory] = useState(false);
+  const [rollbackBatchId, setRollbackBatchId] = useState<string | null>(null);
 
   // Collapsed questions registry (to avoid massive pages on large sets)
   const [expandedQuestionId, setExpandedQuestionId] = useState<string | null>(null);
@@ -152,9 +167,42 @@ export default function AdminPanel({
   const questionsPerPage = 15;
 
   // Admin Panel states & logic
-  const [adminTab, setAdminTab] = useState<'questions' | 'user_progress' | 'exam_history' | 'vip_keys'>('questions');
+  const [adminTab, setAdminTab] = useState<'questions' | 'reports' | 'user_progress' | 'exam_history' | 'vip_keys'>('questions');
   const [newKeyInputs, setNewKeyInputs] = useState<Record<string, string>>({});
   const [newExpiryInputs, setNewExpiryInputs] = useState<Record<string, string>>({});
+
+  // Learner-submitted content reports
+  const [questionReports, setQuestionReports] = useState<AdminQuestionReport[]>([]);
+  const [isReportsLoading, setIsReportsLoading] = useState(false);
+  const [reportStatusFilter, setReportStatusFilter] = useState<'All' | QuestionReportStatus>('open');
+  const [reportResolutionNotes, setReportResolutionNotes] = useState<Record<string, string>>({});
+
+  const loadQuestionReports = async () => {
+    setIsReportsLoading(true);
+    try {
+      const reports = await fetchQuestionReports();
+      setQuestionReports(reports || []);
+      if (reports) {
+        setReportResolutionNotes(Object.fromEntries(reports.map(report => [report.id, report.resolutionNote || ''])));
+      }
+    } finally {
+      setIsReportsLoading(false);
+    }
+  };
+
+  const handleUpdateQuestionReport = async (report: AdminQuestionReport, status: QuestionReportStatus) => {
+    const updated = await updateQuestionReport({
+      id: report.id,
+      status,
+      resolutionNote: reportResolutionNotes[report.id],
+    });
+    if (!updated) {
+      showAppToast('Không thể cập nhật báo lỗi. Hãy kiểm tra migration và quyền editor/admin.', 'error');
+      return;
+    }
+    showAppToast('Đã cập nhật trạng thái báo lỗi.', 'success');
+    await loadQuestionReports();
+  };
   
   // Student Study Progress states
   const [userProgressList, setUserProgressList] = useState<UserProgressRecord[]>([]);
@@ -317,6 +365,8 @@ export default function AdminPanel({
       loadExamResults();
     } else if (adminTab === 'user_progress') {
       loadUserProgress();
+    } else if (adminTab === 'reports') {
+      loadQuestionReports();
     }
   }, [adminTab, historySyncMode]);
 
@@ -419,13 +469,7 @@ export default function AdminPanel({
     setIsLoading(true);
     try {
       // 1. Determine static default questions
-      let staticDefaultQs: Question[] = [];
-      if (activeCertId === 'gh-300') staticDefaultQs = initialQuestions;
-      else if (activeCertId === 'az-900') staticDefaultQs = az900Questions;
-      else if (activeCertId === 'ai-900') staticDefaultQs = ai900Questions;
-      else if (activeCertId === 'cca-f') staticDefaultQs = ccaQuestions;
-      else if (activeCertId === 'dp-800') staticDefaultQs = dp800Questions;
-      else if (activeCertId === 'istqb-ai') staticDefaultQs = istqbAiQuestions;
+      const staticDefaultQs = await loadBuiltinQuestions(activeCertId);
 
       let localQs = staticDefaultQs;
       const stored = localStorage.getItem(`questions_${activeCertId}`);
@@ -450,13 +494,7 @@ export default function AdminPanel({
         setQuestions(localQs);
       } else if (data && data.length > 0) {
         // Find default static questions for activeCertId
-        let staticQs: Question[] = [];
-        if (activeCertId === 'gh-300') staticQs = initialQuestions;
-        else if (activeCertId === 'az-900') staticQs = az900Questions;
-        else if (activeCertId === 'ai-900') staticQs = ai900Questions;
-        else if (activeCertId === 'cca-f') staticQs = ccaQuestions;
-        else if (activeCertId === 'dp-800') staticQs = dp800Questions;
-        else if (activeCertId === 'istqb-ai') staticQs = istqbAiQuestions;
+        const staticQs = staticDefaultQs;
 
         const dbQs: Question[] = data.map((q: any) => {
           const matchedStatic = staticQs.find(sq => sq.id === q.id || sq.questionNumber === q.question_number);
@@ -479,7 +517,11 @@ export default function AdminPanel({
             explanation: q.explanation || '',
             category: q.category || 'General',
             tags: q.tags || [],
-            imageUrl: q.image_url || matchedStatic?.imageUrl
+            imageUrl: q.image_url || matchedStatic?.imageUrl,
+            status: q.status || 'published',
+            sourceTitle: q.source_title || undefined,
+            sourceUrl: q.source_url || undefined,
+            lastVerifiedAt: q.last_verified_at || undefined,
           };
         });
         setQuestions(dbQs);
@@ -500,6 +542,14 @@ export default function AdminPanel({
 
   useEffect(() => {
     loadQuestions();
+  }, [activeCertId]);
+
+  const reloadImportHistory = async () => {
+    setImportBatches(await fetchQuestionImportBatches(activeCertId));
+  };
+
+  useEffect(() => {
+    reloadImportHistory();
   }, [activeCertId]);
 
   useEffect(() => {
@@ -538,6 +588,10 @@ export default function AdminPanel({
     ]);
     setQCorrectAnswers([]);
     setQImageUrl('');
+    setQStatus('draft');
+    setQSourceTitle('');
+    setQSourceUrl('');
+    setQLastVerifiedAt('');
     setIsQuestionFormOpen(true);
   };
 
@@ -552,6 +606,10 @@ export default function AdminPanel({
     setQOptions(q.options.map(opt => ({ ...opt })));
     setQCorrectAnswers([...q.correctAnswers]);
     setQImageUrl(q.imageUrl || '');
+    setQStatus(q.status || 'published');
+    setQSourceTitle(q.sourceTitle || '');
+    setQSourceUrl(q.sourceUrl || '');
+    setQLastVerifiedAt(q.lastVerifiedAt?.slice(0, 10) || '');
     setIsQuestionFormOpen(true);
   };
 
@@ -630,6 +688,11 @@ export default function AdminPanel({
       return;
     }
 
+    if (qSourceUrl.trim() && !isSafeExternalUrl(qSourceUrl.trim())) {
+      showAppToast('URL nguồn phải bắt đầu bằng http:// hoặc https://.', 'error');
+      return;
+    }
+
     setIsLoading(true);
     try {
       const parsedTags = qTagsString
@@ -656,7 +719,11 @@ export default function AdminPanel({
         explanation: qExplanation.trim(),
         category: qCategory.trim() || 'General',
         tags: parsedTags,
-        imageUrl: qImageUrl.trim() || undefined
+        imageUrl: qImageUrl.trim() || undefined,
+        status: qStatus,
+        sourceTitle: qSourceTitle.trim() || undefined,
+        sourceUrl: qSourceUrl.trim() || undefined,
+        lastVerifiedAt: qLastVerifiedAt || undefined,
       };
 
       let updatedList: Question[] = [];
@@ -690,7 +757,11 @@ export default function AdminPanel({
         explanation: savedQuestion.explanation,
         category: savedQuestion.category,
         tags: savedQuestion.tags || [],
-        image_url: savedQuestion.imageUrl || null
+        image_url: savedQuestion.imageUrl || null,
+        status: savedQuestion.status || 'draft',
+        source_title: savedQuestion.sourceTitle || null,
+        source_url: savedQuestion.sourceUrl || null,
+        last_verified_at: savedQuestion.lastVerifiedAt || null,
       };
 
       let { error: dbError } = await supabase
@@ -698,13 +769,20 @@ export default function AdminPanel({
         .upsert(payload, { onConflict: 'id' });
 
       if (dbError) {
-        const isMissingImageUrl = dbError.message?.includes('image_url') || dbError.message?.includes('column');
-        if (isMissingImageUrl) {
-          console.warn('DB schema lacks image_url column. Retrying upsert without image_url...');
-          const { image_url, ...payloadWithoutImage } = payload;
+        const isMissingOptionalColumn = dbError.message?.includes('image_url') || dbError.message?.includes('status') || dbError.message?.includes('source_') || dbError.message?.includes('last_verified_at') || dbError.message?.includes('column');
+        if (isMissingOptionalColumn) {
+          console.warn('DB schema lacks editorial metadata columns. Retrying with the legacy payload...');
+          const {
+            image_url,
+            status,
+            source_title,
+            source_url,
+            last_verified_at,
+            ...payloadWithoutOptionalMetadata
+          } = payload;
           const { error: retryError } = await supabase
             .from('questions')
-            .upsert(payloadWithoutImage, { onConflict: 'id' });
+            .upsert(payloadWithoutOptionalMetadata, { onConflict: 'id' });
           dbError = retryError;
         }
       }
@@ -870,6 +948,7 @@ export default function AdminPanel({
   const handleBulkImportQuestions = async (importedList: Question[], resetProgress: boolean): Promise<boolean> => {
     setIsBulkUploading(true);
     try {
+      await createQuestionImportBatch(activeCertId, questions, importedList.length);
       const dbSuccess = await syncQuestionsToDb(activeCertId, importedList);
       if (!dbSuccess) {
         throw new Error('Database không xác nhận lưu dữ liệu. Danh sách hiện tại được giữ nguyên.');
@@ -878,6 +957,7 @@ export default function AdminPanel({
       setQuestions(importedList);
       onUpdateQuestions(activeCertId, importedList);
       showAppToast(`🎉 Đã nạp và lưu bền vững ${importedList.length} câu hỏi vào Database cho chứng chỉ ${activeCert?.code || activeCertId}!`, 'success');
+      await reloadImportHistory();
       setIsBulkUploadOpen(false);
       return true;
     } catch (err: any) {
@@ -886,6 +966,26 @@ export default function AdminPanel({
       throw err;
     } finally {
       setIsBulkUploading(false);
+    }
+  };
+
+  const handleRollbackImport = async (batch: QuestionImportBatch) => {
+    if (!window.confirm(`Khôi phục ngân hàng câu hỏi về trạng thái ${batch.previousCount} câu trước lần import này?`)) return;
+    setRollbackBatchId(batch.id);
+    try {
+      const snapshot = await fetchQuestionImportSnapshot(batch.id);
+      if (!snapshot) throw new Error('Không đọc được snapshot của lần import này.');
+      await createQuestionImportBatch(activeCertId, questions, snapshot.length);
+      const restored = await syncQuestionsToDb(activeCertId, snapshot);
+      if (!restored) throw new Error('Database không xác nhận khôi phục dữ liệu.');
+      setQuestions(snapshot);
+      onUpdateQuestions(activeCertId, snapshot);
+      await reloadImportHistory();
+      showAppToast(`Đã rollback về ${snapshot.length} câu hỏi.`, 'success');
+    } catch (error: any) {
+      showAppToast(error.message || 'Không thể rollback lần import.', 'error');
+    } finally {
+      setRollbackBatchId(null);
     }
   };
 
@@ -940,8 +1040,21 @@ export default function AdminPanel({
     const textMatch = q.text.toLowerCase().includes(searchQuery.toLowerCase()) || 
                       q.explanation.toLowerCase().includes(searchQuery.toLowerCase());
     const catMatch = categoryFilter === 'All' || q.category === categoryFilter;
-    return textMatch && catMatch;
+    const statusMatch = statusFilter === 'All' || (q.status || 'published') === statusFilter;
+    return textMatch && catMatch && statusMatch;
   });
+
+  const contentQuality = {
+    published: questions.filter(q => (q.status || 'published') === 'published').length,
+    needsReview: questions.filter(q => (q.status || 'published') !== 'published').length,
+    missingExplanation: questions.filter(q => !q.explanation?.trim()).length,
+    missingSource: questions.filter(q => !q.sourceTitle && !q.sourceUrl).length,
+    formatIssues: questions.filter(q =>
+      !q.text?.trim()
+      || (q.questionType === 'image_hotspot' && (!q.imageUrl || q.options.some(option => !option.hotspot)))
+      || ((q.questionType === 'matching_dropdown' || q.questionType === 'matching_drag_drop') && (!q.statements?.length || !(q.choices || q.options).length))
+    ).length,
+  };
 
   // Unique categories list
   const categories = ['All', ...Array.from(new Set(questions.map(q => q.category).filter(Boolean)))];
@@ -954,6 +1067,22 @@ export default function AdminPanel({
     if (!keyword) return true;
     return `${certificate.code} ${certificate.name} ${certificate.description}`.toLowerCase().includes(keyword);
   });
+  const reportTypeLabels: Record<AdminQuestionReport['reportType'], string> = {
+    wrong_answer: 'Sai đáp án',
+    outdated: 'Nội dung cũ',
+    formatting: 'Lỗi hiển thị',
+    unclear: 'Khó hiểu',
+    other: 'Khác',
+  };
+  const reportStatusLabels: Record<QuestionReportStatus, string> = {
+    open: 'Mới',
+    reviewing: 'Đang xem',
+    resolved: 'Đã xử lý',
+    dismissed: 'Bỏ qua',
+  };
+  const filteredQuestionReports = questionReports.filter(report => (
+    reportStatusFilter === 'All' || report.status === reportStatusFilter
+  ));
 
   return (
     <div className="space-y-6 animate-fadeIn pb-20">
@@ -961,7 +1090,7 @@ export default function AdminPanel({
       {/* Title & Introduction Panel */}
       <div className="bg-white border border-slate-100 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="space-y-2 text-center md:text-left">
-          <span className="text-[10px] font-black text-indigo-700 uppercase tracking-widest bg-indigo-50 px-3 py-1.5 rounded-full inline-block">🛠️ CHẾ ĐỘ QUẢN TRỊ VIÊN</span>
+          <span className="text-[10px] font-black text-indigo-700 uppercase tracking-widest bg-indigo-50 px-3 py-1.5 rounded-full inline-block">🛠️ {isFullAdmin ? 'CHẾ ĐỘ QUẢN TRỊ VIÊN' : 'CHẾ ĐỘ BIÊN TẬP VIÊN'}</span>
           <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">Khu Vực Quản Lý Ngân Hàng Câu Hỏi & Đề Thi</h2>
           <p className="text-xs text-slate-500 max-w-2xl leading-relaxed">
             Cho phép tạo, chỉnh sửa hoặc loại bỏ ngân hàng câu hỏi và lưu trực tiếp lên Supabase để mọi tài khoản được dùng chung dữ liệu.
@@ -1013,13 +1142,13 @@ export default function AdminPanel({
       </div>
 
       {/* Admin Panel Sub-Tabs Navigation */}
-      <div className="flex border-b border-slate-200">
+      <div className="flex gap-1 overflow-x-auto border-b border-slate-200 pb-px" aria-label="Điều hướng quản trị">
         <button
           onClick={() => {
             setAdminTab('questions');
             setQuestionWorkspaceView('catalog');
           }}
-          className={`px-6 py-3.5 text-xs font-black tracking-wide border-b-2 transition-all flex items-center gap-2 ${
+          className={`min-h-11 shrink-0 px-4 py-3 text-[11px] font-black tracking-wide border-b-2 transition-all flex items-center gap-2 ${
             adminTab === 'questions'
               ? 'border-indigo-650 text-indigo-700'
               : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -1029,38 +1158,58 @@ export default function AdminPanel({
           QUẢN LÝ ĐỀ THI & CÂU HỎI
         </button>
         <button
-          onClick={() => setAdminTab('user_progress')}
-          className={`px-6 py-3.5 text-xs font-black tracking-wide border-b-2 transition-all flex items-center gap-2 ${
-            adminTab === 'user_progress'
-              ? 'border-indigo-650 text-indigo-700'
+          onClick={() => setAdminTab('reports')}
+          className={`min-h-11 shrink-0 px-4 py-3 text-[11px] font-black tracking-wide border-b-2 transition-all flex items-center gap-2 ${
+            adminTab === 'reports'
+              ? 'border-rose-500 text-rose-700'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
-          <History className="w-4 h-4" />
-          TIẾN ĐỘ LUYỆN TẬP CỦA HỌC VIÊN
+          <AlertTriangle className="h-4 w-4" />
+          BÁO LỖI NỘI DUNG
+          {questionReports.filter(report => report.status === 'open').length > 0 && (
+            <span className="rounded-full bg-rose-100 px-2 py-0.5 text-[9px] text-rose-700">
+              {questionReports.filter(report => report.status === 'open').length}
+            </span>
+          )}
         </button>
-        <button
-          onClick={() => setAdminTab('exam_history')}
-          className={`px-6 py-3.5 text-xs font-black tracking-wide border-b-2 transition-all flex items-center gap-2 ${
-            adminTab === 'exam_history'
-              ? 'border-indigo-650 text-indigo-700'
-              : 'border-transparent text-slate-500 hover:text-slate-800'
-          }`}
-        >
-          <Award className="w-4 h-4" />
-          LỊCH SỬ THI THỬ HỌC VIÊN
-        </button>
-        <button
-          onClick={() => setAdminTab('vip_keys')}
-          className={`px-6 py-3.5 text-xs font-black tracking-wide border-b-2 transition-all flex items-center gap-2 ${
-            adminTab === 'vip_keys'
-              ? 'border-amber-500 text-amber-700 font-extrabold'
-              : 'border-transparent text-slate-500 hover:text-slate-800'
-          }`}
-        >
-          <Key className="w-4 h-4 text-amber-500" />
-          QUẢN LÝ MÃ KEY VIP 🔐
-        </button>
+        {isFullAdmin && (
+          <>
+            <button
+              onClick={() => setAdminTab('user_progress')}
+              className={`min-h-11 shrink-0 px-4 py-3 text-[11px] font-black tracking-wide border-b-2 transition-all flex items-center gap-2 ${
+                adminTab === 'user_progress'
+                  ? 'border-indigo-650 text-indigo-700'
+                  : 'border-transparent text-slate-500 hover:text-slate-800'
+              }`}
+            >
+              <History className="w-4 h-4" />
+              TIẾN ĐỘ LUYỆN TẬP CỦA HỌC VIÊN
+            </button>
+            <button
+              onClick={() => setAdminTab('exam_history')}
+              className={`min-h-11 shrink-0 px-4 py-3 text-[11px] font-black tracking-wide border-b-2 transition-all flex items-center gap-2 ${
+                adminTab === 'exam_history'
+                  ? 'border-indigo-650 text-indigo-700'
+                  : 'border-transparent text-slate-500 hover:text-slate-800'
+              }`}
+            >
+              <Award className="w-4 h-4" />
+              LỊCH SỬ THI THỬ HỌC VIÊN
+            </button>
+            <button
+              onClick={() => setAdminTab('vip_keys')}
+              className={`min-h-11 shrink-0 px-4 py-3 text-[11px] font-black tracking-wide border-b-2 transition-all flex items-center gap-2 ${
+                adminTab === 'vip_keys'
+                  ? 'border-amber-500 text-amber-700 font-extrabold'
+                  : 'border-transparent text-slate-500 hover:text-slate-800'
+              }`}
+            >
+              <Key className="w-4 h-4 text-amber-500" />
+              QUẢN LÝ MÃ KEY VIP 🔐
+            </button>
+          </>
+        )}
       </div>
 
       {adminTab === 'questions' && questionWorkspaceView === 'catalog' && (
@@ -1374,8 +1523,32 @@ export default function AdminPanel({
                 </select>
               </div>
 
+              <div className="flex items-center gap-1.5 shrink-0">
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest font-mono">Trạng thái:</span>
+                <select
+                  value={statusFilter}
+                  onChange={(e) => setStatusFilter(e.target.value as typeof statusFilter)}
+                  className="text-xs font-bold py-2 bg-slate-100 border border-slate-200 rounded-xl px-2.5 focus:outline-none"
+                >
+                  <option value="All">Tất cả</option>
+                  <option value="draft">Bản nháp</option>
+                  <option value="review">Chờ duyệt</option>
+                  <option value="published">Đã xuất bản</option>
+                  <option value="archived">Đã lưu trữ</option>
+                </select>
+              </div>
+
               {/* Action Buttons: Batch Upload & Add Question */}
               <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowImportHistory(value => !value)}
+                  className="flex min-h-10 items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 text-xs font-black text-slate-700 transition hover:bg-slate-100"
+                  title="Xem và rollback các lần import gần đây"
+                >
+                  <History className="h-4 w-4" />
+                  Lịch sử import
+                </button>
                 <button
                   onClick={() => setIsBulkUploadOpen(true)}
                   className="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs px-3.5 py-2.5 rounded-xl flex items-center justify-center gap-1.5 hover:shadow-md cursor-pointer transition-all shadow-sm"
@@ -1406,6 +1579,54 @@ export default function AdminPanel({
               </button>
             </div>
           </div>
+
+          {!isNewCertFormOpen && (
+            <section className="grid grid-cols-2 gap-3 rounded-2xl border border-slate-150 bg-white p-4 shadow-sm md:grid-cols-5" aria-label="Chất lượng nội dung">
+              {[
+                { label: 'Đã xuất bản', value: contentQuality.published, tone: 'text-emerald-700 bg-emerald-50 border-emerald-100' },
+                { label: 'Cần duyệt', value: contentQuality.needsReview, tone: 'text-amber-700 bg-amber-50 border-amber-100' },
+                { label: 'Thiếu giải thích', value: contentQuality.missingExplanation, tone: 'text-rose-700 bg-rose-50 border-rose-100' },
+                { label: 'Thiếu nguồn', value: contentQuality.missingSource, tone: 'text-indigo-700 bg-indigo-50 border-indigo-100' },
+                { label: 'Lỗi định dạng', value: contentQuality.formatIssues, tone: 'text-slate-700 bg-slate-50 border-slate-200' },
+              ].map(metric => (
+                <div key={metric.label} className={`rounded-2xl border p-3 ${metric.tone}`}>
+                  <p className="text-2xl font-black">{metric.value}</p>
+                  <p className="mt-1 text-[9px] font-black uppercase tracking-wider opacity-80">{metric.label}</p>
+                </div>
+              ))}
+            </section>
+          )}
+
+          {showImportHistory && !isNewCertFormOpen && (
+            <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <h4 className="text-sm font-black text-slate-900">Lịch sử import & rollback</h4>
+                  <p className="mt-1 text-[10px] text-slate-500">Mỗi lần import lưu snapshot ngân hàng câu hỏi ngay trước khi thay đổi.</p>
+                </div>
+                <button type="button" onClick={reloadImportHistory} className="flex min-h-10 min-w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-500 hover:bg-slate-50" aria-label="Làm mới lịch sử import">
+                  <RefreshCw className="h-4 w-4" />
+                </button>
+              </div>
+              {importBatches.length ? (
+                <div className="mt-4 grid gap-2 md:grid-cols-2">
+                  {importBatches.map(batch => (
+                    <div key={batch.id} className="flex items-center justify-between gap-3 rounded-xl border border-slate-100 bg-slate-50 p-3">
+                      <div>
+                        <p className="text-xs font-black text-slate-800">{batch.previousCount} → {batch.nextCount} câu</p>
+                        <p className="mt-1 text-[10px] text-slate-500">{new Date(batch.createdAt).toLocaleString('vi-VN')}</p>
+                      </div>
+                      <button type="button" onClick={() => handleRollbackImport(batch)} disabled={rollbackBatchId !== null} className="min-h-10 rounded-xl border border-amber-200 bg-amber-50 px-3 text-[10px] font-black text-amber-800 hover:bg-amber-100 disabled:opacity-40">
+                        {rollbackBatchId === batch.id ? 'Đang khôi phục...' : 'Rollback'}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="mt-4 rounded-xl border border-dashed border-slate-200 p-4 text-center text-xs text-slate-400">Chưa có lịch sử import hoặc migration chưa được chạy.</p>
+              )}
+            </section>
+          )}
 
           {/* Question Form Dialog / Modal Overlay */}
           {isQuestionFormOpen && (
@@ -1617,6 +1838,40 @@ export default function AdminPanel({
                     />
                   </div>
 
+                  {/* Editorial workflow and provenance */}
+                  <div className="space-y-4 rounded-2xl border border-indigo-100 bg-indigo-50/40 p-4">
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-[9.5px] font-black uppercase tracking-wider text-indigo-700">Kiểm duyệt & nguồn nội dung</p>
+                        <p className="mt-0.5 text-[10px] text-slate-500">Chỉ câu đã xuất bản mới nên xuất hiện trong bản public sau khi chạy migration bảo mật.</p>
+                      </div>
+                      <select
+                        value={qStatus}
+                        onChange={event => setQStatus(event.target.value as NonNullable<Question['status']>)}
+                        className="min-h-10 rounded-xl border border-indigo-200 bg-white px-3 text-xs font-black text-indigo-800"
+                      >
+                        <option value="draft">Bản nháp</option>
+                        <option value="review">Chờ duyệt</option>
+                        <option value="published">Đã xuất bản</option>
+                        <option value="archived">Lưu trữ</option>
+                      </select>
+                    </div>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      <label className="space-y-1">
+                        <span className="block text-[9px] font-black uppercase tracking-wider text-slate-500">Tên nguồn</span>
+                        <input type="text" value={qSourceTitle} onChange={event => setQSourceTitle(event.target.value)} placeholder="Microsoft Learn / tài liệu chính thức..." className="min-h-10 w-full rounded-xl border border-slate-200 bg-white px-3 text-xs" />
+                      </label>
+                      <label className="space-y-1">
+                        <span className="block text-[9px] font-black uppercase tracking-wider text-slate-500">Ngày kiểm chứng gần nhất</span>
+                        <input type="date" value={qLastVerifiedAt} onChange={event => setQLastVerifiedAt(event.target.value)} className="min-h-10 w-full rounded-xl border border-slate-200 bg-white px-3 text-xs" />
+                      </label>
+                    </div>
+                    <label className="space-y-1">
+                      <span className="block text-[9px] font-black uppercase tracking-wider text-slate-500">URL tham khảo</span>
+                      <input type="url" value={qSourceUrl} onChange={event => setQSourceUrl(event.target.value)} placeholder="https://learn.microsoft.com/..." className="min-h-10 w-full rounded-xl border border-slate-200 bg-white px-3 text-xs" />
+                    </label>
+                  </div>
+
                   {/* Tags input */}
                   <div className="space-y-1">
                     <label className="text-[9.5px] font-black text-slate-400 uppercase tracking-wider block">Thẻ từ khóa / Tags (Phân cách bởi dấu phẩy)</label>
@@ -1666,7 +1921,7 @@ export default function AdminPanel({
                         NẠP THÊM CÂU HỎI VÀO CHỨNG CHỈ {activeCert?.code || activeCertId}
                       </h3>
                       <p className="text-[11px] text-slate-400 font-medium mt-0.5">
-                        Hiện có: <strong className="text-slate-700 font-bold">{questions.length} câu hỏi</strong> trong hệ thống. Hỗ trợ Excel (.xlsx, .csv), Văn bản thô, JSON hoặc Excel + Tệp ảnh.
+                        Hiện có: <strong className="text-slate-700 font-bold">{questions.length} câu hỏi</strong> trong hệ thống. Hỗ trợ Excel an toàn (.xlsx, .csv), Văn bản thô, JSON hoặc Excel + Tệp ảnh.
                       </p>
                     </div>
                   </div>
@@ -1736,6 +1991,17 @@ export default function AdminPanel({
                             <span className="bg-violet-50 text-violet-700 text-[9.5px] font-black px-2 py-0.5 rounded-full">
                               {QUESTION_TYPE_LABELS[q.questionType || 'multiple_choice']}
                             </span>
+                            <span className={`rounded-full px-2 py-0.5 text-[9px] font-black uppercase tracking-wider ${
+                              (q.status || 'published') === 'published'
+                                ? 'bg-emerald-50 text-emerald-700'
+                                : (q.status || 'published') === 'review'
+                                  ? 'bg-amber-50 text-amber-700'
+                                  : (q.status || 'published') === 'archived'
+                                    ? 'bg-slate-100 text-slate-500'
+                                    : 'bg-rose-50 text-rose-700'
+                            }`}>
+                              {{ draft: 'Bản nháp', review: 'Chờ duyệt', published: 'Đã xuất bản', archived: 'Lưu trữ' }[q.status || 'published']}
+                            </span>
                             {q.tags && q.tags.slice(0, 2).map(t => (
                               <span key={t} className="bg-slate-100 text-slate-550 text-[9.5px] px-1.5 py-0.5 rounded flex items-center gap-0.5">
                                 <Tag className="w-2.5 h-2.5 opacity-55" />
@@ -1757,7 +2023,7 @@ export default function AdminPanel({
                               e.stopPropagation();
                               setSandboxQuestion(q);
                             }}
-                            className="flex min-h-9 items-center gap-1.5 rounded-xl border border-indigo-200 bg-indigo-50 px-2.5 text-[10px] font-black text-indigo-700 transition-colors hover:bg-indigo-100"
+                            className="flex min-h-11 items-center gap-1.5 rounded-xl border border-indigo-200 bg-indigo-50 px-3 text-[10px] font-black text-indigo-700 transition-colors hover:bg-indigo-100"
                             title="Thao tác thử như lúc học"
                           >
                             <Eye className="h-3.5 w-3.5" />
@@ -1768,7 +2034,7 @@ export default function AdminPanel({
                               e.stopPropagation();
                               handleOpenEditQuestion(q);
                             }}
-                            className="p-2 border border-slate-200 text-slate-500 hover:text-indigo-600 hover:bg-indigo-50/50 rounded-xl transition-colors cursor-pointer"
+                            className="flex min-h-11 min-w-11 items-center justify-center border border-slate-200 text-slate-500 hover:text-indigo-600 hover:bg-indigo-50/50 rounded-xl transition-colors cursor-pointer"
                             title="Chỉnh sửa câu hỏi"
                           >
                             <Edit3 className="w-3.5 h-3.5" />
@@ -1778,7 +2044,7 @@ export default function AdminPanel({
                               e.stopPropagation();
                               handleDeleteQuestion(q.id);
                             }}
-                            className="p-2 border border-slate-200 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors cursor-pointer"
+                            className="flex min-h-11 min-w-11 items-center justify-center border border-slate-200 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors cursor-pointer"
                             title="Xóa câu hỏi"
                           >
                             <Trash2 className="w-3.5 h-3.5" />
@@ -1805,6 +2071,14 @@ export default function AdminPanel({
                               <p className="text-xs leading-relaxed text-slate-655 font-semibold">
                                 {q.explanation}
                               </p>
+                            </div>
+                          )}
+
+                          {(q.sourceTitle || q.sourceUrl || q.lastVerifiedAt) && (
+                            <div className="grid gap-2 rounded-xl border border-indigo-100 bg-indigo-50/40 p-3.5 text-xs text-slate-600 sm:grid-cols-2">
+                              <p><span className="font-black text-indigo-800">Nguồn:</span> {q.sourceTitle || 'Chưa đặt tên nguồn'}</p>
+                              <p><span className="font-black text-indigo-800">Kiểm chứng:</span> {q.lastVerifiedAt ? new Date(q.lastVerifiedAt).toLocaleDateString('vi-VN') : 'Chưa có ngày'}</p>
+                              {isSafeExternalUrl(q.sourceUrl) && <a href={q.sourceUrl} target="_blank" rel="noopener noreferrer" className="truncate font-bold text-indigo-700 hover:underline sm:col-span-2">{q.sourceUrl}</a>}
                             </div>
                           )}
                         </div>
@@ -1882,6 +2156,111 @@ export default function AdminPanel({
 
         </div>
       </div>
+      )}
+
+      {adminTab === 'reports' && (
+        <div className="space-y-5 animate-fadeIn">
+          <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm md:p-6">
+            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-[0.18em] text-rose-600">Content inbox</span>
+                <h3 className="mt-1 text-xl font-black text-slate-900">Báo lỗi từ người học</h3>
+                <p className="mt-1 max-w-2xl text-xs leading-relaxed text-slate-500">
+                  Tập trung phản hồi sai đáp án, lỗi định dạng và nội dung lỗi thời vào một hàng đợi kiểm duyệt có trạng thái rõ ràng.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <select
+                  value={reportStatusFilter}
+                  onChange={event => setReportStatusFilter(event.target.value as 'All' | QuestionReportStatus)}
+                  className="min-h-11 rounded-xl border border-slate-200 bg-slate-50 px-3 text-xs font-bold text-slate-700 outline-none focus:border-indigo-400"
+                  aria-label="Lọc trạng thái báo lỗi"
+                >
+                  <option value="All">Tất cả trạng thái</option>
+                  {(Object.keys(reportStatusLabels) as QuestionReportStatus[]).map(status => (
+                    <option key={status} value={status}>{reportStatusLabels[status]}</option>
+                  ))}
+                </select>
+                <button type="button" onClick={loadQuestionReports} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-200 px-3 text-xs font-black text-slate-600 hover:bg-slate-50">
+                  <RefreshCw className={`h-4 w-4 ${isReportsLoading ? 'animate-spin' : ''}`} /> Làm mới
+                </button>
+              </div>
+            </div>
+
+            <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">
+              {(Object.keys(reportStatusLabels) as QuestionReportStatus[]).map(status => (
+                <button
+                  key={status}
+                  type="button"
+                  onClick={() => setReportStatusFilter(status)}
+                  className={`min-h-20 rounded-2xl border p-3 text-left transition ${reportStatusFilter === status ? 'border-indigo-300 bg-indigo-50' : 'border-slate-150 bg-slate-50 hover:border-slate-300'}`}
+                >
+                  <span className="block text-2xl font-black text-slate-900">{questionReports.filter(report => report.status === status).length}</span>
+                  <span className="text-[10px] font-black uppercase tracking-wide text-slate-500">{reportStatusLabels[status]}</span>
+                </button>
+              ))}
+            </div>
+          </section>
+
+          {isReportsLoading ? (
+            <div className="rounded-3xl border border-slate-200 bg-white p-10 text-center text-sm font-bold text-slate-500">Đang tải báo lỗi…</div>
+          ) : filteredQuestionReports.length === 0 ? (
+            <div className="rounded-3xl border border-dashed border-slate-250 bg-white p-10 text-center">
+              <ShieldCheck className="mx-auto h-8 w-8 text-emerald-500" />
+              <p className="mt-3 text-sm font-black text-slate-800">Không có báo lỗi trong nhóm này</p>
+              <p className="mt-1 text-xs text-slate-500">Hàng đợi nội dung đang sạch.</p>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {filteredQuestionReports.map(report => {
+                const cert = certificates.find(item => item.id === report.certId);
+                return (
+                  <article key={report.id} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm md:p-5">
+                    <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                      <div className="min-w-0 space-y-2">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="rounded-full bg-rose-50 px-2.5 py-1 text-[10px] font-black uppercase text-rose-700">{reportTypeLabels[report.reportType]}</span>
+                          <span className="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-black text-slate-600">{cert?.code || report.certId} · Câu {report.questionNumber}</span>
+                          <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-[10px] font-black text-indigo-700">{reportStatusLabels[report.status]}</span>
+                        </div>
+                        <p className="whitespace-pre-wrap text-sm font-semibold leading-relaxed text-slate-800">{report.details}</p>
+                        <p className="text-[11px] text-slate-400">
+                          {report.reporterName || 'Người học ẩn danh'} · {new Date(report.createdAt).toLocaleString('vi-VN')}
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onSelectCert(report.certId);
+                          setSearchQuery(String(report.questionNumber));
+                          setQuestionWorkspaceView('editor');
+                          setAdminTab('questions');
+                        }}
+                        className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-indigo-200 bg-indigo-50 px-3 text-xs font-black text-indigo-700 hover:bg-indigo-100"
+                      >
+                        <Eye className="h-4 w-4" /> Mở câu hỏi
+                      </button>
+                    </div>
+
+                    <div className="mt-4 grid gap-3 border-t border-slate-100 pt-4 lg:grid-cols-[1fr_auto]">
+                      <input
+                        value={reportResolutionNotes[report.id] || ''}
+                        onChange={event => setReportResolutionNotes(previous => ({ ...previous, [report.id]: event.target.value }))}
+                        placeholder="Ghi chú cách xử lý (không bắt buộc)…"
+                        className="min-h-11 rounded-xl border border-slate-200 bg-slate-50 px-3 text-xs text-slate-700 outline-none focus:border-indigo-400 focus:bg-white"
+                      />
+                      <div className="grid grid-cols-3 gap-2">
+                        <button type="button" onClick={() => handleUpdateQuestionReport(report, 'reviewing')} className="min-h-11 rounded-xl border border-amber-200 bg-amber-50 px-3 text-[10px] font-black text-amber-800 hover:bg-amber-100">Đang xem</button>
+                        <button type="button" onClick={() => handleUpdateQuestionReport(report, 'resolved')} className="min-h-11 rounded-xl border border-emerald-200 bg-emerald-50 px-3 text-[10px] font-black text-emerald-800 hover:bg-emerald-100">Đã xử lý</button>
+                        <button type="button" onClick={() => handleUpdateQuestionReport(report, 'dismissed')} className="min-h-11 rounded-xl border border-slate-200 bg-slate-50 px-3 text-[10px] font-black text-slate-600 hover:bg-slate-100">Bỏ qua</button>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          )}
+        </div>
       )}
 
       {/* Admin Panel User Progress management panel */}
@@ -2419,11 +2798,7 @@ export default function AdminPanel({
               const isUnlockedOnDevice = unlockedCertIds.includes(cert.id);
               
               // Get key configs for this cert
-              const configs: VipKeyConfig[] = vipKeyConfigs[cert.id] || [
-                { key: cert.id === 'cca-f' ? 'CCA-VIP-2026' : cert.id === 'dp-800' ? 'DP800-VIP-2026' : 'VIP-PRO-2026', expiryDate: '2026-09-30', disabled: false },
-                { key: cert.id === 'cca-f' ? 'ANTHROPIC-VIP' : cert.id === 'dp-800' ? 'AZURE-VIP' : 'VIP-KEY-2026', expiryDate: '2026-09-30', disabled: false },
-                { key: 'VIP-PRO-2026', expiryDate: '2026-09-30', disabled: false }
-              ];
+              const configs: VipKeyConfig[] = vipKeyConfigs[cert.id] || [];
 
               const currentInput = newKeyInputs[cert.id] || '';
               const currentExpiry = newExpiryInputs[cert.id] || '2026-09-30';
@@ -2524,6 +2899,11 @@ export default function AdminPanel({
 
                         {/* List of Keys */}
                         <div className="space-y-2">
+                          {configs.length === 0 && (
+                            <div className="rounded-xl border border-dashed border-amber-200 bg-amber-50/60 p-3 text-[11px] font-semibold leading-relaxed text-amber-800">
+                              Chưa có Key nào trên Database. Tạo Key bên dưới; ứng dụng không còn chứa Key mặc định trong mã nguồn hoặc localStorage.
+                            </div>
+                          )}
                           {configs.map((conf, idx) => {
                             const isExpired = conf.expiryDate ? conf.expiryDate < todayStr : false;
                             const isDisabled = conf.disabled === true;

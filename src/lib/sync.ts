@@ -1,6 +1,19 @@
 import { supabase } from './supabase';
 import { Question, ProgressState, GroupMemberProgress, Certificate } from '../types';
 
+const isMissingColumnError = (error: any, column: string) =>
+  Boolean(error?.message?.includes(column) || error?.code === '42703' || error?.code === 'PGRST204');
+
+const getCurrentDisplayName = async (fallback: string) => {
+  const { data } = await supabase.auth.getSession();
+  const user = data.session?.user;
+  return (
+    user?.user_metadata?.display_name ||
+    user?.email?.split('@')[0] ||
+    fallback
+  );
+};
+
 // Fetch questions for a certification from Database
 export async function fetchQuestionsFromDb(certId: string): Promise<Question[] | null> {
   try {
@@ -49,7 +62,11 @@ export async function fetchQuestionsFromDb(certId: string): Promise<Question[] |
         explanation: q.explanation || '',
         category: q.category || 'General',
         tags: q.tags || [],
-        imageUrl: q.image_url || undefined
+        imageUrl: q.image_url || undefined,
+        status: q.status || 'published',
+        sourceTitle: q.source_title || undefined,
+        sourceUrl: q.source_url || undefined,
+        lastVerifiedAt: q.last_verified_at || undefined,
       };
     });
   } catch (err) {
@@ -88,7 +105,11 @@ export async function uploadQuestionsToDb(certId: string, questionsList: Questio
         explanation: q.explanation,
         category: q.category,
         tags: q.tags || [],
-        image_url: q.imageUrl || null
+        image_url: q.imageUrl || null,
+        status: q.status || 'published',
+        source_title: q.sourceTitle || null,
+        source_url: q.sourceUrl || null,
+        last_verified_at: q.lastVerifiedAt || null,
       };
     });
 
@@ -103,12 +124,19 @@ export async function uploadQuestionsToDb(certId: string, questionsList: Questio
 
       if (error) {
         // If error is about missing image_url column, retry without it
-        const isMissingImageUrl = error.message?.includes('image_url') || error.message?.includes('column');
-        if (isMissingImageUrl) {
-          const chunkWithoutImage = chunk.map(({ image_url, ...rest }) => rest);
+        const isMissingOptionalColumn = error.message?.includes('image_url') || error.message?.includes('status') || error.message?.includes('source_') || error.message?.includes('last_verified_at') || error.message?.includes('column');
+        if (isMissingOptionalColumn) {
+          const chunkWithoutOptionalMetadata = chunk.map(({
+            image_url,
+            status,
+            source_title,
+            source_url,
+            last_verified_at,
+            ...rest
+          }) => rest);
           const { error: retryError } = await supabase
             .from('questions')
-            .upsert(chunkWithoutImage, { onConflict: 'id' });
+            .upsert(chunkWithoutOptionalMetadata, { onConflict: 'id' });
 
           if (retryError) {
             console.error(`Retry upserting chunk ${i} failed:`, retryError);
@@ -124,6 +152,113 @@ export async function uploadQuestionsToDb(certId: string, questionsList: Questio
     return allSuccess;
   } catch (err) {
     console.error('Failed to upload questions to Db:', err);
+    return false;
+  }
+}
+
+export type QuestionReportType = 'wrong_answer' | 'outdated' | 'formatting' | 'unclear' | 'other';
+export type QuestionReportStatus = 'open' | 'reviewing' | 'resolved' | 'dismissed';
+
+export interface AdminQuestionReport {
+  id: string;
+  certId: string;
+  questionId: string;
+  questionNumber: number;
+  reporterName?: string;
+  reportType: QuestionReportType;
+  details: string;
+  status: QuestionReportStatus;
+  resolutionNote?: string;
+  createdAt: string;
+  resolvedAt?: string;
+}
+
+export async function submitQuestionReport(input: {
+  certId: string;
+  questionId: string;
+  questionNumber: number;
+  reporterName?: string;
+  reportType: QuestionReportType;
+  details: string;
+}): Promise<boolean> {
+  try {
+    const { data: authData } = await supabase.auth.getUser();
+    const { error } = await supabase.from('question_reports').insert({
+      cert_id: input.certId,
+      question_id: input.questionId,
+      question_number: input.questionNumber,
+      reporter_id: authData.user?.id || null,
+      reporter_name: input.reporterName?.trim() || null,
+      report_type: input.reportType,
+      details: input.details.trim(),
+      status: 'open',
+    });
+
+    if (error) {
+      console.error('Could not submit question report:', error);
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.error('Could not submit question report:', error);
+    return false;
+  }
+}
+
+export async function fetchQuestionReports(): Promise<AdminQuestionReport[] | null> {
+  try {
+    const { data, error } = await supabase
+      .from('question_reports')
+      .select('id, cert_id, question_id, question_number, reporter_name, report_type, details, status, resolution_note, created_at, resolved_at')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Could not load question reports:', error);
+      return null;
+    }
+
+    return (data || []).map((row: any) => ({
+      id: row.id,
+      certId: row.cert_id,
+      questionId: row.question_id,
+      questionNumber: row.question_number,
+      reporterName: row.reporter_name || undefined,
+      reportType: row.report_type,
+      details: row.details,
+      status: row.status,
+      resolutionNote: row.resolution_note || undefined,
+      createdAt: row.created_at,
+      resolvedAt: row.resolved_at || undefined,
+    }));
+  } catch (error) {
+    console.error('Could not load question reports:', error);
+    return null;
+  }
+}
+
+export async function updateQuestionReport(input: {
+  id: string;
+  status: QuestionReportStatus;
+  resolutionNote?: string;
+}): Promise<boolean> {
+  try {
+    const isClosed = input.status === 'resolved' || input.status === 'dismissed';
+    const { error } = await supabase
+      .from('question_reports')
+      .update({
+        status: input.status,
+        resolution_note: input.resolutionNote?.trim() || null,
+        resolved_at: isClosed ? new Date().toISOString() : null,
+      })
+      .eq('id', input.id);
+
+    if (error) {
+      console.error('Could not update question report:', error);
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.error('Could not update question report:', error);
     return false;
   }
 }
@@ -158,16 +293,98 @@ export async function syncQuestionsToDb(certId: string, questionsList: Question[
   }
 }
 
+export interface QuestionImportBatch {
+  id: string;
+  certId: string;
+  previousCount: number;
+  nextCount: number;
+  createdAt: string;
+  createdBy?: string;
+  snapshot?: Question[];
+}
+
+export async function createQuestionImportBatch(
+  certId: string,
+  previousQuestions: Question[],
+  nextCount: number,
+): Promise<string | null> {
+  try {
+    const { data: authData } = await supabase.auth.getUser();
+    const { data, error } = await supabase
+      .from('question_import_batches')
+      .insert({
+        cert_id: certId,
+        previous_count: previousQuestions.length,
+        next_count: nextCount,
+        snapshot: previousQuestions,
+        created_by: authData.user?.id || null,
+      })
+      .select('id')
+      .single();
+
+    if (error) {
+      console.warn('Import history is not available yet:', error.message);
+      return null;
+    }
+    return data.id;
+  } catch (error) {
+    console.warn('Import history is not available yet:', error);
+    return null;
+  }
+}
+
+export async function fetchQuestionImportBatches(certId: string): Promise<QuestionImportBatch[]> {
+  try {
+    const { data, error } = await supabase
+      .from('question_import_batches')
+      .select('id, cert_id, previous_count, next_count, created_at, created_by')
+      .eq('cert_id', certId)
+      .order('created_at', { ascending: false })
+      .limit(10);
+    if (error) return [];
+    return (data || []).map((row: any) => ({
+      id: row.id,
+      certId: row.cert_id,
+      previousCount: row.previous_count,
+      nextCount: row.next_count,
+      createdAt: row.created_at,
+      createdBy: row.created_by || undefined,
+    }));
+  } catch {
+    return [];
+  }
+}
+
+export async function fetchQuestionImportSnapshot(batchId: string): Promise<Question[] | null> {
+  try {
+    const { data, error } = await supabase
+      .from('question_import_batches')
+      .select('snapshot')
+      .eq('id', batchId)
+      .single();
+    if (error || !Array.isArray(data?.snapshot)) return null;
+    return data.snapshot as Question[];
+  } catch {
+    return null;
+  }
+}
+
 // Fetch user's history and overall progress
 export async function fetchUserProgressFromDb(username: string, certId: string): Promise<ProgressState | null> {
   try {
     // 1. Fetch from user_progress
-    const { data: progressData, error: progressError } = await supabase
+    let { data: progressData, error: progressError } = await supabase
       .from('user_progress')
       .select('*')
-      .eq('username', username)
+      .eq('user_id', username)
       .eq('cert_id', certId)
       .maybeSingle();
+
+    if (isMissingColumnError(progressError, 'user_id')) {
+      const legacy = await supabase.from('user_progress').select('*').eq('username', username).eq('cert_id', certId).maybeSingle();
+      progressData = legacy.data;
+      progressError = legacy.error;
+    }
 
     if (progressError) {
       console.error('Error fetching progress from DB:', progressError);
@@ -175,11 +392,17 @@ export async function fetchUserProgressFromDb(username: string, certId: string):
     }
 
     // 2. Fetch from study_history (to rebuild exact question logs)
-    const { data: historyData, error: historyError } = await supabase
+    let { data: historyData, error: historyError } = await supabase
       .from('study_history')
       .select('*')
-      .eq('username', username)
+      .eq('user_id', username)
       .eq('cert_id', certId);
+
+    if (isMissingColumnError(historyError, 'user_id')) {
+      const legacy = await supabase.from('study_history').select('*').eq('username', username).eq('cert_id', certId);
+      historyData = legacy.data;
+      historyError = legacy.error;
+    }
 
     if (historyError) {
       console.error('Error fetching study logs from DB:', historyError);
@@ -195,6 +418,7 @@ export async function fetchUserProgressFromDb(username: string, certId: string):
 
     if (!progressData) {
       // User doesn't have progress in DB yet
+      if (historyMapped.length === 0) return null;
       return {
         answeredCount: historyMapped.length,
         correctCount: historyMapped.filter(h => h.isCorrect).length,
@@ -241,22 +465,27 @@ export async function syncUserProgressStateToDb(
   progress: ProgressState
 ): Promise<boolean> {
   try {
+    const displayName = await getCurrentDisplayName(username);
     // If progress history is reset/cleared, delete history entries in study_history
     if (progress.history.length === 0) {
-      const { error: delErr } = await supabase
+      let { error: delErr } = await supabase
         .from('study_history')
         .delete()
-        .eq('username', username)
+        .eq('user_id', username)
         .eq('cert_id', certId);
+      if (isMissingColumnError(delErr, 'user_id')) {
+        ({ error: delErr } = await supabase.from('study_history').delete().eq('username', username).eq('cert_id', certId));
+      }
       if (delErr) {
         console.error('Error clearing study history in DB:', delErr);
       }
     }
 
-    const { error } = await supabase
+    let { error } = await supabase
       .from('user_progress')
       .upsert({
-        username,
+        user_id: username,
+        username: displayName,
         cert_id: certId,
         answered_count: progress.answeredCount,
         correct_count: progress.correctCount,
@@ -264,7 +493,20 @@ export async function syncUserProgressStateToDb(
         streak: progress.streak,
         bookmarked_question_ids: progress.bookmarkedQuestionIds,
         last_updated: new Date().toISOString()
-      }, { onConflict: 'username,cert_id' });
+      }, { onConflict: 'user_id,cert_id' });
+
+    if (isMissingColumnError(error, 'user_id')) {
+      ({ error } = await supabase.from('user_progress').upsert({
+        username,
+        cert_id: certId,
+        answered_count: progress.answeredCount,
+        correct_count: progress.correctCount,
+        incorrect_count: progress.incorrectCount,
+        streak: progress.streak,
+        bookmarked_question_ids: progress.bookmarkedQuestionIds,
+        last_updated: new Date().toISOString(),
+      }, { onConflict: 'username,cert_id' }));
+    }
 
     if (error) {
       console.error('Error upserting user progress in DB:', error);
@@ -284,20 +526,26 @@ export async function clearUserProgressInDb(
   keepBookmarks: string[] = []
 ): Promise<boolean> {
   try {
-    const { error: histErr } = await supabase
+    const displayName = await getCurrentDisplayName(username);
+    let { error: histErr } = await supabase
       .from('study_history')
       .delete()
-      .eq('username', username)
+      .eq('user_id', username)
       .eq('cert_id', certId);
+
+    if (isMissingColumnError(histErr, 'user_id')) {
+      ({ error: histErr } = await supabase.from('study_history').delete().eq('username', username).eq('cert_id', certId));
+    }
 
     if (histErr) {
       console.error('Error deleting study history from DB:', histErr);
     }
 
-    const { error: progErr } = await supabase
+    let { error: progErr } = await supabase
       .from('user_progress')
       .upsert({
-        username,
+        user_id: username,
+        username: displayName,
         cert_id: certId,
         answered_count: 0,
         correct_count: 0,
@@ -305,7 +553,20 @@ export async function clearUserProgressInDb(
         streak: 0,
         bookmarked_question_ids: keepBookmarks,
         last_updated: new Date().toISOString()
-      }, { onConflict: 'username,cert_id' });
+      }, { onConflict: 'user_id,cert_id' });
+
+    if (isMissingColumnError(progErr, 'user_id')) {
+      ({ error: progErr } = await supabase.from('user_progress').upsert({
+        username,
+        cert_id: certId,
+        answered_count: 0,
+        correct_count: 0,
+        incorrect_count: 0,
+        streak: 0,
+        bookmarked_question_ids: keepBookmarks,
+        last_updated: new Date().toISOString(),
+      }, { onConflict: 'username,cert_id' }));
+    }
 
     if (progErr) {
       console.error('Error resetting user progress in DB:', progErr);
@@ -327,16 +588,29 @@ export async function syncSingleHistoryEntryToDb(
   isCorrect: boolean
 ): Promise<boolean> {
   try {
-    const { error } = await supabase
+    const displayName = await getCurrentDisplayName(username);
+    let { error } = await supabase
       .from('study_history')
       .upsert({
-        username,
+        user_id: username,
+        username: displayName,
         cert_id: certId,
         question_id: questionId,
         selected_options: selectedOptions,
         is_correct: isCorrect,
         timestamp: new Date().toISOString()
-      }, { onConflict: 'username,cert_id,question_id' });
+      }, { onConflict: 'user_id,cert_id,question_id' });
+
+    if (isMissingColumnError(error, 'user_id')) {
+      ({ error } = await supabase.from('study_history').upsert({
+        username,
+        cert_id: certId,
+        question_id: questionId,
+        selected_options: selectedOptions,
+        is_correct: isCorrect,
+        timestamp: new Date().toISOString(),
+      }, { onConflict: 'username,cert_id,question_id' }));
+    }
 
     if (error) {
       console.error('Error upserting study history log:', error);
@@ -358,8 +632,11 @@ export async function syncBulkHistoryToDb(
   try {
     if (historyEntries.length === 0) return true;
 
+    const displayName = await getCurrentDisplayName(username);
+
     const rows = historyEntries.map(h => ({
-      username,
+      user_id: username,
+      username: displayName,
       cert_id: certId,
       question_id: h.questionId,
       selected_options: h.selectedOptions,
@@ -367,9 +644,14 @@ export async function syncBulkHistoryToDb(
       timestamp: new Date(h.timestamp).toISOString()
     }));
 
-    const { error } = await supabase
+    let { error } = await supabase
       .from('study_history')
-      .upsert(rows, { onConflict: 'username,cert_id,question_id' });
+      .upsert(rows, { onConflict: 'user_id,cert_id,question_id' });
+
+    if (isMissingColumnError(error, 'user_id')) {
+      const legacyRows = rows.map(({ user_id, ...row }) => ({ ...row, username }));
+      ({ error } = await supabase.from('study_history').upsert(legacyRows, { onConflict: 'username,cert_id,question_id' }));
+    }
 
     if (error) {
       console.error('Error in bulk study history sync:', error);
@@ -429,9 +711,11 @@ export async function fetchAllExamResultsFromDb(): Promise<ExamHistoryRecord[] |
 // Save single exam result to DB
 export async function saveExamResultToDb(record: Omit<ExamHistoryRecord, 'id'>): Promise<boolean> {
   try {
-    const { error } = await supabase
+    const { data: authData } = await supabase.auth.getUser();
+    let { error } = await supabase
       .from('exam_results')
       .insert({
+        user_id: authData.user?.id || null,
         username: record.username,
         cert_id: record.cert_id,
         cert_code: record.cert_code,
@@ -441,6 +725,19 @@ export async function saveExamResultToDb(record: Omit<ExamHistoryRecord, 'id'>):
         elapsed_seconds: record.elapsed_seconds,
         timestamp: new Date(record.timestamp).toISOString()
       });
+
+    if (isMissingColumnError(error, 'user_id')) {
+      ({ error } = await supabase.from('exam_results').insert({
+        username: record.username,
+        cert_id: record.cert_id,
+        cert_code: record.cert_code,
+        score: record.score,
+        total_questions: record.total_questions,
+        accuracy: record.accuracy,
+        elapsed_seconds: record.elapsed_seconds,
+        timestamp: new Date(record.timestamp).toISOString(),
+      }));
+    }
 
     if (error) {
       console.error('Error saving exam result:', error);
@@ -827,6 +1124,27 @@ export async function fetchVipKeyConfigsFromDb(): Promise<Record<string, any[]> 
   }
 }
 
+export type VipKeyValidationResult = 'valid' | 'invalid' | 'disabled' | 'expired' | 'unauthenticated' | 'unavailable';
+
+export async function validateVipKeyInDb(certId: string, key: string): Promise<VipKeyValidationResult> {
+  try {
+    const { data, error } = await supabase.rpc('validate_vip_key', {
+      p_cert_id: certId,
+      p_key: key,
+    });
+    if (error) {
+      console.error('Could not validate VIP key securely:', error);
+      return 'unavailable';
+    }
+    return ['valid', 'invalid', 'disabled', 'expired', 'unauthenticated'].includes(data)
+      ? data as VipKeyValidationResult
+      : 'invalid';
+  } catch (error) {
+    console.error('Could not validate VIP key securely:', error);
+    return 'unavailable';
+  }
+}
+
 export async function saveVipKeyConfigToDb(certId: string, config: { key: string; expiryDate: string; disabled?: boolean }): Promise<boolean> {
   try {
     const { error } = await supabase
@@ -1060,7 +1378,7 @@ export async function fetchCustomCertificatesFromDb(): Promise<Certificate[] | n
   try {
     const { data, error } = await supabase
       .from('custom_certificates')
-      .select('*')
+      .select('id, name, code, description, difficulty, estimated_hours, color_class, icon_name, is_vip, is_disabled')
       .order('created_at', { ascending: false });
 
     if (error) {
@@ -1081,7 +1399,7 @@ export async function fetchCustomCertificatesFromDb(): Promise<Certificate[] | n
       iconName: row.icon_name || 'BookOpen',
       isVIP: !!row.is_vip,
       isDisabled: !!row.is_disabled,
-      accessKeys: Array.isArray(row.access_keys) ? row.access_keys : []
+      accessKeys: []
     }));
   } catch (err) {
     console.warn('Failed to fetch custom certificates from DB:', err);

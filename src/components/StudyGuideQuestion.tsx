@@ -1,9 +1,10 @@
-import { Check, Image as ImageIcon, Info } from 'lucide-react';
+import { CalendarCheck, Check, ExternalLink, Image as ImageIcon, Info } from 'lucide-react';
 import { Question } from '../types';
 import { QUESTION_TYPE_LABELS } from '../data/questionImportSamples';
 import FormattedText from './FormattedText';
 import HotspotQuestion from './HotspotQuestion';
 import MatchingQuestion from './MatchingQuestion';
+import { isSafeExternalUrl } from '../utils/url';
 
 interface StudyGuideQuestionProps {
   question: Question;
@@ -171,6 +172,27 @@ export default function StudyGuideQuestion({ question }: StudyGuideQuestionProps
         </div>
         <FormattedText text={question.explanation} variant="explanation" />
       </div>
+
+      {(question.sourceTitle || question.sourceUrl || question.lastVerifiedAt) && (
+        <div className="flex flex-col gap-2 rounded-2xl border border-indigo-100 bg-indigo-50/40 p-4 text-[11px] text-slate-600 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex min-w-0 items-center gap-2">
+            <ExternalLink className="h-4 w-4 shrink-0 text-indigo-500" />
+            {isSafeExternalUrl(question.sourceUrl) ? (
+              <a href={question.sourceUrl} target="_blank" rel="noopener noreferrer" className="truncate font-bold text-indigo-700 hover:underline">
+                {question.sourceTitle || 'Xem nguồn tham khảo'}
+              </a>
+            ) : (
+              <span className="truncate font-semibold">{question.sourceTitle || 'Nguồn chưa hợp lệ'}</span>
+            )}
+          </div>
+          {question.lastVerifiedAt && (
+            <span className="flex shrink-0 items-center gap-1 font-semibold">
+              <CalendarCheck className="h-3.5 w-3.5" />
+              Kiểm chứng {new Date(question.lastVerifiedAt).toLocaleDateString('vi-VN')}
+            </span>
+          )}
+        </div>
+      )}
     </div>
   );
 }

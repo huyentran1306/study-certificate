@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   BookOpen, 
@@ -33,24 +33,26 @@ import {
   Sparkles,
   Eye,
   EyeOff,
-  ChevronDown
+  ChevronDown,
+  Flag,
+  Settings2
 } from 'lucide-react';
 
 import { Question, ProgressState, StudyMode, Certificate, VipKeyConfig } from './types';
-import { initialQuestions } from './data/initialQuestions';
-import { az900Questions } from './data/az900Questions';
-import { ai900Questions } from './data/ai900Questions';
-import { ccaQuestions } from './data/ccaQuestions';
-import { dp800Questions } from './data/dp800Questions';
-import { istqbAiQuestions } from './data/istqbAiQuestions';
 import QuizCard from './components/QuizCard';
 import StatsPanel from './components/StatsPanel';
-import MockExam from './components/MockExam';
-import CustomQuestionsImport from './components/CustomQuestionsImport';
-import AdminPanel from './components/AdminPanel';
-import GroupStudy from './components/GroupStudy';
 import FloatingPet from './components/FloatingPet';
 import StudyGuideQuestion from './components/StudyGuideQuestion';
+import LearningCoachPanel from './components/LearningCoachPanel';
+import QuestionReportModal from './components/QuestionReportModal';
+import { BUILTIN_QUESTION_COUNTS, loadBuiltinQuestions } from './data/questionCatalog';
+import { supabase } from './lib/supabase';
+import { getQuestionSearchScore, matchesAdvancedQuestionSearch } from './lib/questionSearch';
+
+const MockExam = lazy(() => import('./components/MockExam'));
+const CustomQuestionsImport = lazy(() => import('./components/CustomQuestionsImport'));
+const AdminPanel = lazy(() => import('./components/AdminPanel'));
+const GroupStudy = lazy(() => import('./components/GroupStudy'));
 
 
 // Supabase synchronization functions
@@ -65,6 +67,7 @@ import {
   saveExamResultToDb,
   ExamHistoryRecord,
   fetchVipKeyConfigsFromDb,
+  validateVipKeyInDb,
   saveVipKeyConfigToDb,
   deleteVipKeyConfigFromDb,
   updateVipKeyDisabledInDb,
@@ -101,6 +104,15 @@ function DynamicIcon({ name, className = "w-5 h-5" }: { name: string; className?
   }
 }
 
+function LazySectionFallback({ label = 'Đang tải giao diện...' }: { label?: string }) {
+  return (
+    <div className="flex min-h-40 items-center justify-center rounded-3xl border border-slate-100 bg-white text-sm font-bold text-slate-500 shadow-sm">
+      <Loader2 className="mr-2 h-5 w-5 animate-spin text-indigo-600" />
+      {label}
+    </div>
+  );
+}
+
 const APP_CACHE_VERSION_KEY = 'study_app_build_id';
 
 function prepareVersionedLocalCache() {
@@ -124,7 +136,7 @@ function prepareVersionedLocalCache() {
 
   // These values are shared configuration stored in Supabase. Force a fresh
   // read after deployment while keeping user progress, login and preferences.
-  ['vip_key_configs_v3', 'cert_vip_overrides', 'cert_disabled_overrides'].forEach(key => localStorage.removeItem(key));
+  ['vip_key_configs_v3', 'cert_vip_overrides', 'cert_disabled_overrides', 'unlocked_certs'].forEach(key => localStorage.removeItem(key));
   localStorage.setItem(APP_CACHE_VERSION_KEY, __APP_BUILD_ID__);
 }
 
@@ -135,36 +147,9 @@ export default function App() {
   const [activeCertId, setActiveCertId] = useState<string>('gh-300');
 
   // VIP Access Control States
-  const [unlockedCertIds, setUnlockedCertIds] = useState<string[]>(() => {
-    try {
-      const stored = localStorage.getItem('unlocked_certs');
-      return stored ? JSON.parse(stored) : [];
-    } catch {
-      return [];
-    }
-  });
+  const [unlockedCertIds, setUnlockedCertIds] = useState<string[]>([]);
 
-  // Default VIP key configurations with expiry dates
-  const getDefaultVipKeyConfigs = (): Record<string, VipKeyConfig[]> => ({
-    'cca-f': [
-      { key: 'CCA-VIP-2026', expiryDate: '2026-09-30', disabled: false },
-      { key: 'ANTHROPIC-VIP', expiryDate: '2026-09-30', disabled: false },
-      { key: 'VIP-PRO-2026', expiryDate: '2026-09-30', disabled: false },
-    ],
-    'dp-800': [
-      { key: 'DP800-VIP-2026', expiryDate: '2026-09-30', disabled: false },
-      { key: 'AZURE-VIP', expiryDate: '2026-09-30', disabled: false },
-      { key: 'VIP-PRO-2026', expiryDate: '2026-09-30', disabled: false },
-    ],
-  });
-
-  const [vipKeyConfigs, setVipKeyConfigs] = useState<Record<string, VipKeyConfig[]>>(() => {
-    try {
-      const stored = localStorage.getItem('vip_key_configs_v3');
-      if (stored) return JSON.parse(stored);
-    } catch {}
-    return getDefaultVipKeyConfigs();
-  });
+  const [vipKeyConfigs, setVipKeyConfigs] = useState<Record<string, VipKeyConfig[]>>({});
 
   const [vipModalCert, setVipModalCert] = useState<Certificate | null>(null);
   const [vipInputKey, setVipInputKey] = useState<string>('');
@@ -212,8 +197,7 @@ export default function App() {
       estimatedHours: '12-18 Giờ',
       colorClass: 'bg-gradient-to-br from-amber-600 via-orange-700 to-amber-950 text-white',
       iconName: 'Trophy',
-      isVIP: true,
-      accessKeys: ['CCA-VIP-2026', 'ANTHROPIC-VIP', 'VIP-PRO-2026']
+      isVIP: true
     },
     {
       id: 'dp-800',
@@ -224,8 +208,7 @@ export default function App() {
       estimatedHours: '15-20 Giờ',
       colorClass: 'bg-gradient-to-br from-indigo-700 via-blue-800 to-slate-900 text-white',
       iconName: 'Database',
-      isVIP: false,
-      accessKeys: ['DP800-VIP-2026', 'AZURE-VIP', 'VIP-PRO-2026']
+      isVIP: false
     },
     {
       id: 'istqb-ai',
@@ -265,16 +248,41 @@ export default function App() {
   });
 
   // Supabase Auth and Sync States
-  const [username, setUsername] = useState<string>(() => localStorage.getItem('study_username') || '');
+  const [username, setUsername] = useState<string>('');
   const [dbSyncStatus, setDbSyncStatus] = useState<'idle' | 'syncing' | 'success' | 'error'>('idle');
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [authInputUsername, setAuthInputUsername] = useState('');
+  const [authEmail, setAuthEmail] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
+  const [authDisplayName, setAuthDisplayName] = useState('');
+  const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
+  const [authBusy, setAuthBusy] = useState(false);
+  const [authError, setAuthError] = useState('');
+  const [authUserId, setAuthUserId] = useState('');
+  const [userRole, setUserRole] = useState<'student' | 'editor' | 'admin'>('student');
+  const [anonymousMode, setAnonymousMode] = useState(() => localStorage.getItem('study_anonymous_mode') === 'true');
+  const [authIntent, setAuthIntent] = useState<'learning' | 'sync' | 'admin'>('sync');
+  const [pendingCertAccess, setPendingCertAccess] = useState<{ certId: string; targetMode: StudyMode } | null>(null);
+  const progressStorageKey = (certId: string, identity = authUserId) => `progress_${identity || 'guest'}_${certId}`;
+  const readProgressCache = (certId: string, identity = authUserId) => {
+    const scopedKey = progressStorageKey(certId, identity);
+    const scoped = localStorage.getItem(scopedKey);
+    if (scoped) return scoped;
+    const guestProgress = identity ? localStorage.getItem(progressStorageKey(certId, '')) : null;
+    if (guestProgress) {
+      localStorage.setItem(scopedKey, guestProgress);
+      return guestProgress;
+    }
+    const legacy = localStorage.getItem(`progress_${certId}`);
+    if (legacy) localStorage.setItem(scopedKey, legacy);
+    return legacy;
+  };
 
   // Toast, Logout & Deletion confirmation states
   const [appToast, setAppToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [certToDelete, setCertToDelete] = useState<Certificate | null>(null);
   const [isDeletingCertificate, setIsDeletingCertificate] = useState(false);
+  const [reportQuestion, setReportQuestion] = useState<Question | null>(null);
 
   const showAppToast = (message: string, type: 'success' | 'error' | 'info' = 'success') => {
     setAppToast({ message, type });
@@ -337,8 +345,49 @@ export default function App() {
     return 'home';
   });
 
-  const isAdmin = username.trim().toLowerCase() === 'admin' || mode === 'admin';
+  const isAdmin = userRole === 'admin';
+  const canManageContent = userRole === 'editor' || isAdmin;
   const [asteriskClicks, setAsteriskClicks] = useState(0);
+
+  useEffect(() => {
+    let active = true;
+
+    const applyUser = async (user: { id: string; email?: string; user_metadata?: Record<string, any> } | null) => {
+      if (!active) return;
+      if (!user) {
+        setAuthUserId('');
+        setUserRole('student');
+        setUsername('');
+        return;
+      }
+
+      setAuthUserId(user.id);
+      let displayName = user.user_metadata?.display_name || user.email?.split('@')[0] || 'Học viên';
+      let role: 'student' | 'editor' | 'admin' = 'student';
+      const { data } = await supabase.from('profiles').select('display_name, role').eq('id', user.id).maybeSingle();
+      if (data?.display_name) displayName = data.display_name;
+      if (data?.role === 'editor' || data?.role === 'admin') role = data.role;
+      if (!active) return;
+      setUsername(displayName);
+      setUserRole(role);
+      setAnonymousMode(false);
+      localStorage.removeItem('study_anonymous_mode');
+      localStorage.setItem('study_username', displayName);
+    };
+
+    supabase.auth.getSession().then(({ data }) => applyUser(data.session?.user || null));
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      applyUser(session?.user || null);
+    });
+    return () => {
+      active = false;
+      listener.subscription.unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (mode === 'admin' && !canManageContent) setMode('home');
+  }, [mode, canManageContent]);
 
   // Auto reset click counter after 4 seconds of inactivity
   useEffect(() => {
@@ -351,6 +400,18 @@ export default function App() {
   }, [asteriskClicks]);
 
   const handleAsteriskClick = () => {
+    if (!authUserId) {
+      setAuthMode('signin');
+      setAuthIntent('admin');
+      setPendingCertAccess(null);
+      setShowAuthModal(true);
+      showAppToast('Hãy đăng nhập tài khoản Editor hoặc Admin để mở khu vực quản trị.', 'info');
+      return;
+    }
+    if (!canManageContent) {
+      showAppToast('Tài khoản này chưa được cấp quyền Editor hoặc Admin.', 'error');
+      return;
+    }
     setAsteriskClicks(prev => {
       const next = prev + 1;
       if (next === 1) {
@@ -373,10 +434,21 @@ export default function App() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectCategory, setCategoryFilter] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [certificateSearchQuery, setCertificateSearchQuery] = useState('');
   const [showBookmarksOnly, setShowBookmarksOnly] = useState(false);
+  const [showIncorrectOnly, setShowIncorrectOnly] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showUploader, setShowUploader] = useState(false);
   const [isTeamSyncExpanded, setIsTeamSyncExpanded] = useState(false);
+  const [studyOverviewExpanded, setStudyOverviewExpanded] = useState(false);
+  const [showPreferences, setShowPreferences] = useState(false);
+  const [petEnabled, setPetEnabled] = useState(() => localStorage.getItem('pref_pet_enabled') !== 'false');
+  const [reduceMotion, setReduceMotion] = useState(() => localStorage.getItem('pref_reduce_motion') === 'true');
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('reduce-motion', reduceMotion);
+    localStorage.setItem('pref_reduce_motion', String(reduceMotion));
+  }, [reduceMotion]);
 
   // States for making a new certification
   const [showAddCertForm, setShowAddCertForm] = useState(false);
@@ -393,6 +465,13 @@ export default function App() {
   const [isLookupOpen, setIsLookupOpen] = useState(false);
   const [lookupQuery, setLookupQuery] = useState('');
   const [lookupCertId, setLookupCertId] = useState<string>('all');
+  const [lookupQuestionPool, setLookupQuestionPool] = useState<{
+    certId: string;
+    certCode: string;
+    certName: string;
+    question: Question;
+  }[]>([]);
+  const [lookupLoading, setLookupLoading] = useState(false);
 
   // Pagination states
   const [sidebarPage, setSidebarPage] = useState(1);
@@ -403,27 +482,14 @@ export default function App() {
   // Reset pagination when searches or categories update
   useEffect(() => {
     setSidebarPage(1);
-  }, [searchQuery, selectCategory, showBookmarksOnly]);
+  }, [searchQuery, selectCategory, showBookmarksOnly, showIncorrectOnly]);
 
   // Advanced sync state and loader for Supabase + LocalStorage fallback
-  const loadCertData = async (certId: string, currentUsername: string = username) => {
+  const loadCertData = async (certId: string, currentUsername: string = authUserId) => {
     setDbSyncStatus('syncing');
     
     // 1. Load basic local questions
-    let defaultQs: Question[] = [];
-    if (certId === 'gh-300') {
-      defaultQs = initialQuestions;
-    } else if (certId === 'az-900') {
-      defaultQs = az900Questions;
-    } else if (certId === 'ai-900') {
-      defaultQs = ai900Questions;
-    } else if (certId === 'cca-f') {
-      defaultQs = ccaQuestions;
-    } else if (certId === 'dp-800') {
-      defaultQs = dp800Questions;
-    } else if (certId === 'istqb-ai') {
-      defaultQs = istqbAiQuestions;
-    }
+    const defaultQs = await loadBuiltinQuestions(certId);
 
     let activeQuestions = defaultQs;
     const cachedQuestions = localStorage.getItem(`questions_${certId}`);
@@ -499,11 +565,11 @@ export default function App() {
         if (dbProgress) {
           activeProgress = dbProgress;
           // Store locally as fallback cache
-          localStorage.setItem(`progress_${certId}`, JSON.stringify(dbProgress));
+          localStorage.setItem(progressStorageKey(certId, currentUsername), JSON.stringify(dbProgress));
           setDbSyncStatus('success');
         } else {
           // New account with no database record. See if they have offline progress to migrate
-          const storedLocalProgress = localStorage.getItem(`progress_${certId}`);
+          const storedLocalProgress = readProgressCache(certId, currentUsername);
           if (storedLocalProgress) {
             try {
               const parsed = JSON.parse(storedLocalProgress);
@@ -525,7 +591,7 @@ export default function App() {
       }
     } else {
       // Purely offline local fallback
-      const storedProgress = localStorage.getItem(`progress_${certId}`);
+      const storedProgress = readProgressCache(certId, currentUsername);
       if (storedProgress) {
         try {
           activeProgress = JSON.parse(storedProgress);
@@ -539,6 +605,7 @@ export default function App() {
     setCategoryFilter('All');
     setSearchQuery('');
     setShowBookmarksOnly(false);
+    setShowIncorrectOnly(false);
   };
 
   // Sync state values on initial load
@@ -546,13 +613,7 @@ export default function App() {
     // Load VIP key configs from DB
     async function loadVipKeysFromDb() {
       const dbConfigs = await fetchVipKeyConfigsFromDb();
-      if (dbConfigs && Object.keys(dbConfigs).length > 0) {
-        setVipKeyConfigs(prev => {
-          const merged = { ...prev, ...dbConfigs };
-          localStorage.setItem('vip_key_configs_v3', JSON.stringify(merged));
-          return merged;
-        });
-      }
+      setVipKeyConfigs(dbConfigs || {});
     }
     loadVipKeysFromDb();
 
@@ -661,10 +722,24 @@ export default function App() {
         localStorage.setItem('study_active_cert', lastActiveCert);
       }
       setActiveCertId(lastActiveCert);
-      loadCertData(lastActiveCert, username);
+      loadCertData(lastActiveCert, '');
     }
     loadSharedCertificateCatalog();
   }, []);
+
+  useEffect(() => {
+    if (!authUserId) return;
+    try {
+      const storedUnlocks = localStorage.getItem(`unlocked_certs_${authUserId}`);
+      setUnlockedCertIds(storedUnlocks ? JSON.parse(storedUnlocks) : []);
+    } catch {
+      setUnlockedCertIds([]);
+    }
+    loadCertData(activeCertId, authUserId);
+    fetchVipKeyConfigsFromDb().then(configs => {
+      if (configs) setVipKeyConfigs(configs);
+    });
+  }, [authUserId]);
 
   // Helper to check if a certificate is locked for the current session
   const checkIsCertLocked = (cert: Certificate): boolean => {
@@ -676,6 +751,20 @@ export default function App() {
   const handleRequestCertAccess = (certId: string, targetMode: StudyMode = 'practice') => {
     const cert = certificates.find(c => c.id === certId);
     if (!cert) return;
+
+    if (!authUserId) {
+      if (anonymousMode && !cert.isVIP) {
+        handleSelectCert(certId, targetMode, '');
+        return;
+      }
+      setPendingCertAccess({ certId, targetMode });
+      setAuthIntent('learning');
+      setAuthMode('signin');
+      setAuthError(cert.isVIP ? 'Bộ đề VIP cần tài khoản để kiểm tra quyền truy cập an toàn.' : '');
+      setShowAuthModal(true);
+      showAppToast(cert.isVIP ? 'Đăng nhập để mở bộ đề VIP.' : 'Chọn đăng nhập hoặc học ẩn danh.', 'info');
+      return;
+    }
 
     if (checkIsCertLocked(cert)) {
       setVipModalCert(cert);
@@ -698,7 +787,7 @@ export default function App() {
   const doUnlockCert = (certId: string, certCode: string) => {
     const updatedUnlocked = Array.from(new Set([...unlockedCertIds, certId]));
     setUnlockedCertIds(updatedUnlocked);
-    localStorage.setItem('unlocked_certs', JSON.stringify(updatedUnlocked));
+    if (authUserId) localStorage.setItem(`unlocked_certs_${authUserId}`, JSON.stringify(updatedUnlocked));
 
     showAppToast(`🎉 Mở khóa thành công! Bạn đã kích hoạt bộ đề VIP ${certCode}.`, 'success');
     setVipModalCert(null);
@@ -709,7 +798,7 @@ export default function App() {
   };
 
   // Process key unlock attempt
-  const handleUnlockVipCert = () => {
+  const handleUnlockVipCert = async () => {
     if (!vipModalCert) return;
     const rawInput = vipInputKey.trim();
     if (!rawInput) {
@@ -717,59 +806,38 @@ export default function App() {
       return;
     }
 
-    const cleanInput = rawInput.toUpperCase();
-    const certId = vipModalCert.id;
-
-    // Default or stored key configs
-    const certConfigs = vipKeyConfigs[certId] || getDefaultVipKeyConfigs()[certId] || [
-      { key: 'VIP-PRO-2026', expiryDate: '2026-09-30', disabled: false }
-    ];
-
-    // Find key config
-    const matchedConfig = certConfigs.find(c => c.key.trim().toUpperCase() === cleanInput);
-
-    if (!matchedConfig) {
-      // Check master fallback keys
-      if (cleanInput === 'VIP-PRO-2026' || cleanInput === 'MASTER-VIP') {
-        const todayStr = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}-${String(new Date().getDate()).padStart(2, '0')}`;
-        if (todayStr > '2026-09-30') {
-          setVipKeyError('Mã Master Key đã hết hạn ngày 30/09/2026! Vui lòng liên hệ Admin.');
-          return;
-        }
-        doUnlockCert(vipModalCert.id, vipModalCert.code);
-        return;
-      }
-
-      setVipKeyError('Mã Key không chính xác! Vui lòng kiểm tra lại hoặc liên hệ Admin.');
+    const validation = await validateVipKeyInDb(vipModalCert.id, rawInput);
+    if (validation === 'valid') {
+      doUnlockCert(vipModalCert.id, vipModalCert.code);
       return;
     }
-
-    // Key matched! Check if disabled
-    if (matchedConfig.disabled) {
+    if (validation === 'disabled') {
       setVipKeyError('Mã Key này đã bị tạm vô hiệu hóa bởi Admin!');
-      return;
+    } else if (validation === 'expired') {
+      setVipKeyError('Mã Key này đã hết hạn. Vui lòng nhận Key mới từ Admin.');
+    } else if (validation === 'unauthenticated') {
+      setVipKeyError('Phiên đăng nhập đã hết hạn. Hãy đăng nhập lại.');
+    } else if (validation === 'unavailable') {
+      setVipKeyError('Chưa thể kiểm tra Key an toàn. Admin cần chạy security_content_workflow_migration.sql.');
+    } else {
+      setVipKeyError('Mã Key không chính xác! Vui lòng kiểm tra lại hoặc liên hệ Admin.');
     }
-
-    // Check expiry
-    const todayStr = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}-${String(new Date().getDate()).padStart(2, '0')}`;
-    if (matchedConfig.expiryDate && matchedConfig.expiryDate < todayStr) {
-      const expVN = formatDateVN(matchedConfig.expiryDate);
-      setVipKeyError(`Mã Key này đã hết hạn ngày ${expVN}! Vui lòng nhận Key mới từ Admin.`);
-      return;
-    }
-
-    // Success!
-    doUnlockCert(vipModalCert.id, vipModalCert.code);
   };
 
   // Admin VIP key actions
-  const handleAddVipKey = (certId: string, newKey: string, expiryDate: string) => {
+  const handleAddVipKey = async (certId: string, newKey: string, expiryDate: string) => {
     const trimmed = newKey.trim().toUpperCase();
     if (!trimmed) return;
     const finalExpiry = expiryDate || '2026-09-30';
 
+    const saved = await saveVipKeyConfigToDb(certId, { key: trimmed, expiryDate: finalExpiry, disabled: false });
+    if (!saved) {
+      showAppToast('Không thể lưu Key. Hãy kiểm tra quyền Admin và migration bảo mật.', 'error');
+      return;
+    }
+
     setVipKeyConfigs(prev => {
-      const existing = prev[certId] || getDefaultVipKeyConfigs()[certId] || [];
+      const existing = prev[certId] || [];
       const idx = existing.findIndex(k => k.key.toUpperCase() === trimmed);
       let updatedList: VipKeyConfig[];
       if (idx >= 0) {
@@ -779,53 +847,59 @@ export default function App() {
         updatedList = [...existing, { key: trimmed, expiryDate: finalExpiry, disabled: false }];
       }
       const updated = { ...prev, [certId]: updatedList };
-      localStorage.setItem('vip_key_configs_v3', JSON.stringify(updated));
       return updated;
     });
 
-    // Sync to DB
-    saveVipKeyConfigToDb(certId, { key: trimmed, expiryDate: finalExpiry, disabled: false });
     showAppToast(`Đã lưu mã Key VIP "${trimmed}" (Hạn dùng: ${formatDateVN(finalExpiry)}) cho ${certId}!`, 'success');
   };
 
-  const handleDeleteVipKey = (certId: string, keyToDelete: string) => {
+  const handleDeleteVipKey = async (certId: string, keyToDelete: string) => {
+    const deleted = await deleteVipKeyConfigFromDb(certId, keyToDelete);
+    if (!deleted) {
+      showAppToast('Không thể xóa Key trên Database.', 'error');
+      return;
+    }
     setVipKeyConfigs(prev => {
-      const existing = prev[certId] || getDefaultVipKeyConfigs()[certId] || [];
+      const existing = prev[certId] || [];
       const updatedList = existing.filter(k => k.key.toUpperCase() !== keyToDelete.toUpperCase());
       const updated = { ...prev, [certId]: updatedList };
-      localStorage.setItem('vip_key_configs_v3', JSON.stringify(updated));
       return updated;
     });
 
-    // Sync to DB
-    deleteVipKeyConfigFromDb(certId, keyToDelete);
     showAppToast(`Đã xóa mã Key "${keyToDelete}"!`, 'info');
   };
 
-  const handleToggleKeyDisabled = (certId: string, keyToToggle: string) => {
-    let newState = false;
+  const handleToggleKeyDisabled = async (certId: string, keyToToggle: string) => {
+    const target = (vipKeyConfigs[certId] || []).find(key => key.key.toUpperCase() === keyToToggle.toUpperCase());
+    const newState = !target?.disabled;
+    const updatedOnDb = await updateVipKeyDisabledInDb(certId, keyToToggle, newState);
+    if (!updatedOnDb) {
+      showAppToast('Không thể đổi trạng thái Key trên Database.', 'error');
+      return;
+    }
     setVipKeyConfigs(prev => {
-      const existing = prev[certId] || getDefaultVipKeyConfigs()[certId] || [];
+      const existing = prev[certId] || [];
       const updatedList = existing.map(k => {
         if (k.key.toUpperCase() === keyToToggle.toUpperCase()) {
-          newState = !k.disabled;
           return { ...k, disabled: newState };
         }
         return k;
       });
       const updated = { ...prev, [certId]: updatedList };
-      localStorage.setItem('vip_key_configs_v3', JSON.stringify(updated));
       return updated;
     });
 
-    // Sync to DB
-    updateVipKeyDisabledInDb(certId, keyToToggle, newState);
     showAppToast(`Đã ${newState ? 'tắt (vô hiệu hóa 🚫)' : 'kích hoạt lại ✅'} mã Key "${keyToToggle}"!`, 'info');
   };
 
-  const handleUpdateKeyExpiry = (certId: string, keyToUpdate: string, newExpiryDate: string) => {
+  const handleUpdateKeyExpiry = async (certId: string, keyToUpdate: string, newExpiryDate: string) => {
+    const updatedOnDb = await updateVipKeyExpiryInDb(certId, keyToUpdate, newExpiryDate);
+    if (!updatedOnDb) {
+      showAppToast('Không thể cập nhật hạn Key trên Database.', 'error');
+      return;
+    }
     setVipKeyConfigs(prev => {
-      const existing = prev[certId] || getDefaultVipKeyConfigs()[certId] || [];
+      const existing = prev[certId] || [];
       const updatedList = existing.map(k => {
         if (k.key.toUpperCase() === keyToUpdate.toUpperCase()) {
           return { ...k, expiryDate: newExpiryDate };
@@ -833,12 +907,9 @@ export default function App() {
         return k;
       });
       const updated = { ...prev, [certId]: updatedList };
-      localStorage.setItem('vip_key_configs_v3', JSON.stringify(updated));
       return updated;
     });
 
-    // Sync to DB
-    updateVipKeyExpiryInDb(certId, keyToUpdate, newExpiryDate);
     showAppToast(`Đã cập nhật hạn sử dụng (${formatDateVN(newExpiryDate)}) cho Key "${keyToUpdate}"!`, 'success');
   };
 
@@ -897,15 +968,15 @@ export default function App() {
         updated = [...prev, certId];
         showAppToast(`Đã mở khóa chứng chỉ ${certId} trên thiết bị này!`, 'success');
       }
-      localStorage.setItem('unlocked_certs', JSON.stringify(updated));
+      if (authUserId) localStorage.setItem(`unlocked_certs_${authUserId}`, JSON.stringify(updated));
       return updated;
     });
   };
 
   // Sync state back to storage helper
-  const saveProgress = async (newProgress: ProgressState, currentUsername: string = username) => {
+  const saveProgress = async (newProgress: ProgressState, currentUsername: string = authUserId) => {
     setProgress(newProgress);
-    localStorage.setItem(`progress_${activeCertId}`, JSON.stringify(newProgress));
+    localStorage.setItem(progressStorageKey(activeCertId, currentUsername), JSON.stringify(newProgress));
 
     if (currentUsername) {
       try {
@@ -917,89 +988,184 @@ export default function App() {
   };
 
   const handleLogin = async (inputName: string) => {
-    const trimmed = inputName.trim();
-    if (!trimmed) {
-      showAppToast('Vui lòng nhập họ tên hoặc biệt danh hợp lệ!', 'error');
+    if (!authUserId) {
+      setAuthDisplayName(inputName.trim());
+      setAuthMode('signup');
+      setAuthIntent('sync');
+      setPendingCertAccess(null);
+      setShowAuthModal(true);
       return;
     }
-    setUsername(trimmed);
-    localStorage.setItem('study_username', trimmed);
+
+    const trimmed = inputName.trim();
+    if (trimmed) {
+      setUsername(trimmed);
+      localStorage.setItem('study_username', trimmed);
+      await Promise.all([
+        supabase.from('profiles').update({ display_name: trimmed }).eq('id', authUserId),
+        supabase.auth.updateUser({ data: { display_name: trimmed } }),
+      ]);
+    }
+  };
+
+  const closeAuthModal = () => {
     setShowAuthModal(false);
-    
-    // Hot reload Workspace using new username identification profile
-    await loadCertData(activeCertId, trimmed);
-    showAppToast(`Đã liên kết tài khoản "${trimmed}" và đồng bộ Cloud hoàn tất!`, 'success');
+    setPendingCertAccess(null);
+    setAuthError('');
+  };
+
+  const handleContinueAnonymously = () => {
+    const pending = pendingCertAccess;
+    const pendingCertificate = pending ? certificates.find(cert => cert.id === pending.certId) : null;
+    if (pendingCertificate?.isVIP) {
+      setAuthError('Bộ đề VIP cần tài khoản. Chế độ ẩn danh chỉ dùng được với các bộ đề công khai.');
+      return;
+    }
+
+    setAnonymousMode(true);
+    localStorage.setItem('study_anonymous_mode', 'true');
+    setUsername('');
+    setDbSyncStatus('idle');
+    setShowAuthModal(false);
+    setPendingCertAccess(null);
+    setAuthError('');
+
+    if (pending) {
+      handleSelectCert(pending.certId, pending.targetMode, '');
+    } else if (mode !== 'home' && mode !== 'admin') {
+      loadCertData(activeCertId, '');
+    }
+    showAppToast('Đã bật chế độ học ẩn danh. Tiến độ chỉ lưu trên thiết bị này.', 'success');
+  };
+
+  const handleAuthSubmit = async () => {
+    if (!authEmail.trim() || authPassword.length < 6) {
+      setAuthError('Nhập email hợp lệ và mật khẩu có ít nhất 6 ký tự.');
+      return;
+    }
+    if (authMode === 'signup' && authDisplayName.trim().length < 2) {
+      setAuthError('Vui lòng nhập tên hiển thị có ít nhất 2 ký tự.');
+      return;
+    }
+
+    setAuthBusy(true);
+    setAuthError('');
+    try {
+      let signedInUserId = '';
+      if (authMode === 'signup') {
+        const { data, error } = await supabase.auth.signUp({
+          email: authEmail.trim(),
+          password: authPassword,
+          options: { data: { display_name: authDisplayName.trim() } },
+        });
+        if (error) throw error;
+        if (!data.session) {
+          showAppToast('Đã tạo tài khoản. Hãy kiểm tra email để xác nhận đăng ký.', 'success');
+          setAuthMode('signin');
+          return;
+        }
+        signedInUserId = data.session.user.id;
+      } else {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: authEmail.trim(),
+          password: authPassword,
+        });
+        if (error) throw error;
+        signedInUserId = data.user.id;
+      }
+      const pending = pendingCertAccess;
+      setAnonymousMode(false);
+      localStorage.removeItem('study_anonymous_mode');
+      setShowAuthModal(false);
+      setPendingCertAccess(null);
+      setAuthPassword('');
+      showAppToast('Đăng nhập thành công. Tiến độ đang được đồng bộ.', 'success');
+
+      if (pending) {
+        const cert = certificates.find(item => item.id === pending.certId);
+        if (cert && checkIsCertLocked(cert)) {
+          setVipModalCert(cert);
+          setVipInputKey('');
+          setVipKeyError('');
+        } else {
+          handleSelectCert(pending.certId, pending.targetMode, signedInUserId);
+        }
+      }
+    } catch (error: any) {
+      setAuthError(error.message || 'Không thể đăng nhập.');
+    } finally {
+      setAuthBusy(false);
+    }
   };
 
   const handleLogout = () => {
     setShowLogoutConfirm(true);
   };
 
-  const confirmLogout = () => {
+  const confirmLogout = async () => {
+    await supabase.auth.signOut();
+    setAuthUserId('');
+    setUserRole('student');
     setUsername('');
+    setUnlockedCertIds([]);
+    setAnonymousMode(true);
+    localStorage.setItem('study_anonymous_mode', 'true');
     localStorage.removeItem('study_username');
     loadCertData(activeCertId, '');
     setShowLogoutConfirm(false);
-    showAppToast('Đã đăng xuất tài khoản và chuyển về chế độ Offline!', 'info');
+    showAppToast('Đã đăng xuất và chuyển sang học ẩn danh trên thiết bị này.', 'info');
   };
 
-  // Gather questions for search
-  const getAllSearchableQuestions = (): { certCode: string, certName: string, question: Question }[] => {
-    const list: { certCode: string, certName: string, question: Question }[] = [];
-    
-    // Loop through all certificates
-    certificates.forEach(cert => {
-      // Security Check: Skip locked VIP certificate questions from search
-      const isLocked = !!cert.isVIP && !unlockedCertIds.includes(cert.id);
-      if (isLocked) return;
+  // Load the heavy question banks only when the global lookup is opened.
+  useEffect(() => {
+    if (!isLookupOpen) return;
+    let cancelled = false;
 
-      let certQs: Question[] = [];
-      
-      // If it's the current active certificate, we already have it in the `questions` state
-      if (cert.id === activeCertId) {
-        certQs = questions;
-      } else {
-        // Otherwise, fetch from default questions list or localStorage
-        if (cert.id === 'gh-300') {
-          certQs = initialQuestions;
-        } else if (cert.id === 'az-900') {
-          certQs = az900Questions;
-        } else if (cert.id === 'ai-900') {
-          certQs = ai900Questions;
-        } else if (cert.id === 'cca-f') {
-          certQs = ccaQuestions;
-        } else if (cert.id === 'dp-800') {
-          certQs = dp800Questions;
-        } else if (cert.id === 'istqb-ai') {
-          certQs = istqbAiQuestions;
+    const buildLookupPool = async () => {
+      setLookupLoading(true);
+      const allowedCertificates = certificates.filter(cert =>
+        !cert.isDisabled && (!cert.isVIP || unlockedCertIds.includes(cert.id))
+      );
+
+      const results = await Promise.all(allowedCertificates.map(async cert => {
+        let certQuestions: Question[] = [];
+        if (cert.id === activeCertId && questions.length > 0) {
+          certQuestions = questions;
         } else {
-          const storedQs = localStorage.getItem(`questions_${cert.id}`);
-          if (storedQs) {
-            try { certQs = JSON.parse(storedQs); } catch {}
+          const cached = localStorage.getItem(`questions_${cert.id}`);
+          if (cached) {
+            try {
+              const parsed = JSON.parse(cached) as Question[];
+              if (Array.isArray(parsed)) certQuestions = parsed;
+            } catch {}
+          }
+          if (certQuestions.length === 0) {
+            certQuestions = (await fetchQuestionsFromDb(cert.id)) || await loadBuiltinQuestions(cert.id);
           }
         }
+        return certQuestions.map(question => ({ certId: cert.id, certCode: cert.code, certName: cert.name, question }));
+      }));
+
+      if (!cancelled) {
+        setLookupQuestionPool(results.flat());
+        setLookupLoading(false);
       }
-      
-      certQs.forEach(q => {
-        list.push({
-          certCode: cert.code,
-          certName: cert.name,
-          question: q
-        });
-      });
-    });
-    
-    return list;
-  };
+    };
+
+    buildLookupPool();
+    return () => { cancelled = true; };
+  }, [isLookupOpen, certificates, unlockedCertIds, activeCertId, questions]);
 
   const highlightText = (text: string, query: string) => {
     if (!query || !query.trim()) return <span>{text}</span>;
-    const regex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+    const queryParts = query.trim().split(/\s+/).filter(Boolean).map(part => part.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
+    if (queryParts.length === 0) return <span>{text}</span>;
+    const regex = new RegExp(`(${queryParts.join('|')})`, 'gi');
     const parts = text.split(regex);
     return (
       <span>
-        {parts.map((part, i) => 
-          regex.test(part) ? (
+        {parts.map((part, i) =>
+          i % 2 === 1 ? (
             <mark key={i} className="bg-amber-100 text-slate-900 font-extrabold rounded px-0.5">{part}</mark>
           ) : (
             part
@@ -1009,26 +1175,19 @@ export default function App() {
     );
   };
 
-  const filteredLookupQuestions = getAllSearchableQuestions().filter(({ certCode, question }) => {
+  const filteredLookupQuestions = lookupQuestionPool.filter(({ certId, question }) => {
     // Filter by cert first
     if (lookupCertId !== 'all' && lookupCertId !== 'all_certs') {
-      const cert = certificates.find(c => c.id === lookupCertId);
-      if (cert && cert.code !== certCode) return false;
+      if (certId !== lookupCertId) return false;
     }
 
     if (!lookupQuery.trim()) return false; // Don't show anything if search is empty
 
-    const q = question;
-    const lowerQuery = lookupQuery.toLowerCase();
-    
-    const textMatch = q.text.toLowerCase().includes(lowerQuery);
-    const explanationMatch = q.explanation ? q.explanation.toLowerCase().includes(lowerQuery) : false;
-    const tagsMatch = q.tags ? q.tags.some(t => t.toLowerCase().includes(lowerQuery)) : false;
-    const optionsMatch = q.options.some(opt => opt.text.toLowerCase().includes(lowerQuery));
-    const numberMatch = q.questionNumber.toString() === lookupQuery || `câu ${q.questionNumber}`.includes(lowerQuery);
-
-    return textMatch || explanationMatch || tagsMatch || optionsMatch || numberMatch;
-  });
+    return matchesAdvancedQuestionSearch(question, lookupQuery);
+  }).sort((left, right) => (
+    getQuestionSearchScore(right.question, lookupQuery) - getQuestionSearchScore(left.question, lookupQuery)
+      || left.question.questionNumber - right.question.questionNumber
+  ));
 
   const confirmDeleteCert = async () => {
     if (!certToDelete) return;
@@ -1048,7 +1207,7 @@ export default function App() {
       }
 
       localStorage.removeItem(`questions_${cert.id}`);
-      localStorage.removeItem(`progress_${cert.id}`);
+      localStorage.removeItem(progressStorageKey(cert.id));
       setCertificates(prev => prev.filter(c => c.id !== cert.id));
       if (activeCertId === cert.id) {
         setActiveCertId('gh-300');
@@ -1066,13 +1225,49 @@ export default function App() {
   };
 
   // Switch certification and load its workspace
-  const handleSelectCert = (certId: string, targetMode: StudyMode = 'practice') => {
+  const handleSelectCert = (certId: string, targetMode: StudyMode = 'practice', identity = authUserId) => {
     setActiveCertId(certId);
     localStorage.setItem('study_active_cert', certId);
-    loadCertData(certId, username);
+    loadCertData(certId, identity);
     setMode(targetMode);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const openAdvancedLookup = (certId?: string) => {
+    const isInsideCertificate = mode === 'practice' || mode === 'exam' || mode === 'guide';
+    setLookupQuery('');
+    setLookupCertId(certId || (isInsideCertificate ? activeCertId : 'all'));
+    setIsLookupOpen(true);
+  };
+
+  const handleOpenLookupQuestion = (certId: string, questionId: string) => {
+    if (certId !== activeCertId) return;
+
+    const questionIndex = questions.findIndex(question => question.id === questionId);
+    if (questionIndex < 0) return;
+
+    setCategoryFilter('All');
+    setSearchQuery('');
+    setShowBookmarksOnly(false);
+    setShowIncorrectOnly(false);
+    setSidebarPage(Math.floor(questionIndex / sidebarPageSize) + 1);
+    setCurrentQuestionIndex(questionIndex);
+    setMode('practice');
+    setIsLookupOpen(false);
+    setMobileMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  };
+
+  useEffect(() => {
+    const handleLookupShortcut = (event: KeyboardEvent) => {
+      if (!(event.ctrlKey || event.metaKey) || event.key.toLowerCase() !== 'k') return;
+      event.preventDefault();
+      openAdvancedLookup();
+    };
+
+    window.addEventListener('keydown', handleLookupShortcut);
+    return () => window.removeEventListener('keydown', handleLookupShortcut);
+  }, [mode, activeCertId]);
 
   // Import custom questions handler for ACTIVE certification
   const handleImportQuestions = async (newQuestions: Question[], resetProgress: boolean): Promise<boolean> => {
@@ -1120,34 +1315,22 @@ export default function App() {
   };
 
   // Reset progress and restore defaults for ACTIVE certification
-  const handleResetToDefault = () => {
+  const handleResetToDefault = async () => {
     localStorage.removeItem(`questions_${activeCertId}`);
-    localStorage.removeItem(`progress_${activeCertId}`);
+    localStorage.removeItem(progressStorageKey(activeCertId));
 
     if (activeCertId === 'ab-731') {
-      loadCertData(activeCertId, username);
+      loadCertData(activeCertId, authUserId);
       setCurrentQuestionIndex(0);
       setCategoryFilter('All');
       setSearchQuery('');
       setShowBookmarksOnly(false);
+      setShowIncorrectOnly(false);
       showAppToast('Đã tải lại ngân hàng AB-731 từ Database!', 'success');
       return;
     }
     
-    let defaultQs: Question[] = [];
-    if (activeCertId === 'gh-300') {
-      defaultQs = initialQuestions;
-    } else if (activeCertId === 'az-900') {
-      defaultQs = az900Questions;
-    } else if (activeCertId === 'ai-900') {
-      defaultQs = ai900Questions;
-    } else if (activeCertId === 'cca-f') {
-      defaultQs = ccaQuestions;
-    } else if (activeCertId === 'dp-800') {
-      defaultQs = dp800Questions;
-    } else if (activeCertId === 'istqb-ai') {
-      defaultQs = istqbAiQuestions;
-    }
+    const defaultQs = await loadBuiltinQuestions(activeCertId);
 
     setQuestions(defaultQs);
     const emptyProgress = {
@@ -1165,6 +1348,7 @@ export default function App() {
     setCategoryFilter('All');
     setSearchQuery('');
     setShowBookmarksOnly(false);
+    setShowIncorrectOnly(false);
     
     const activeCert = certificates.find(c => c.id === activeCertId);
     showAppToast(`Đã khôi phục ngân hàng câu hỏi gốc của chứng chỉ ${activeCert?.code || activeCertId}!`, 'success');
@@ -1231,9 +1415,9 @@ export default function App() {
 
     await saveProgress(newProgress);
 
-    if (username) {
+    if (authUserId) {
       try {
-        await syncSingleHistoryEntryToDb(username, activeCertId, qId, selectedOptions, isCorrect);
+        await syncSingleHistoryEntryToDb(authUserId, activeCertId, qId, selectedOptions, isCorrect);
       } catch (err) {
         console.error('Logging syncing error:', err);
       }
@@ -1243,13 +1427,12 @@ export default function App() {
   // Filtered List projection
   const filteredQuestions = questions.filter(q => {
     const matchesCategory = selectCategory === 'All' || q.category === selectCategory;
-    
-    const indexStr = `q${q.questionNumber} ${q.text} ${q.explanation} ${q.options.map(o => o.text).join(' ')}`.toLowerCase();
-    const matchesSearch = !searchQuery || indexStr.includes(searchQuery.toLowerCase());
+    const matchesSearch = matchesAdvancedQuestionSearch(q, searchQuery);
     
     const matchesBookmark = !showBookmarksOnly || progress.bookmarkedQuestionIds.includes(q.id);
+    const matchesIncorrect = !showIncorrectOnly || progress.history.some(entry => entry.questionId === q.id && !entry.isCorrect);
 
-    return matchesCategory && matchesSearch && matchesBookmark;
+    return matchesCategory && matchesSearch && matchesBookmark && matchesIncorrect;
   });
 
   // Sidebar Pagination calculation
@@ -1296,7 +1479,7 @@ export default function App() {
     }
     
     // Save to database if logged in
-    if (username) {
+    if (authUserId) {
       try {
         await saveExamResultToDb(record);
       } catch (err) {
@@ -1318,6 +1501,25 @@ export default function App() {
   const activeGuidePage = Math.min(guidePage, totalGuidePages);
   const startGuideIndex = (activeGuidePage - 1) * guidePageSize;
   const paginatedGuideQuestions = questions.slice(startGuideIndex, startGuideIndex + guidePageSize);
+
+  const normalizeCertificateSearch = (value: string) => value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[đĐ]/g, 'd')
+    .toLocaleLowerCase('vi')
+    .replace(/[^a-z0-9]+/g, '');
+  const normalizedCertificateSearchQuery = normalizeCertificateSearch(certificateSearchQuery.trim());
+  const visibleHomeCertificates = certificates.filter(certificate => {
+    if (certificate.isDisabled) return false;
+    if (!normalizedCertificateSearchQuery) return true;
+
+    return normalizeCertificateSearch([
+      certificate.code,
+      certificate.name,
+      certificate.description,
+    ].join(' ')).includes(normalizedCertificateSearchQuery);
+  });
+  const lookupScopeCertificate = certificates.find(certificate => certificate.id === lookupCertId);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 font-sans flex flex-col antialiased">
@@ -1360,10 +1562,10 @@ export default function App() {
             {/* Hidden admin click tracker asterisk */}
             <button
               onClick={handleAsteriskClick}
-              className={`p-1 px-1.5 rounded-lg text-slate-300 hover:text-rose-600 hover:bg-rose-50/50 transition-colors cursor-pointer ${
+              className={`flex min-h-11 min-w-11 items-center justify-center rounded-xl text-slate-300 hover:text-rose-600 hover:bg-rose-50/50 transition-colors cursor-pointer ${
                 mode === 'admin' ? 'text-rose-600 bg-rose-50' : ''
               }`}
-              title="Cơ chế bảo mật mở Chế độ Admin (Click 3 lần)"
+              title="Mở khu vực quản trị nội dung (bấm 3 lần)"
             >
               <Asterisk className={`w-4 h-4 ${mode === 'admin' ? 'animate-spin' : ''}`} />
             </button>
@@ -1439,22 +1641,23 @@ export default function App() {
 
           {/* Quick Stats overview panel */}
           <div className="flex items-center gap-2 sm:gap-2.5">
+            <button
+              type="button"
+              onClick={() => setShowPreferences(true)}
+              className="hidden min-h-10 min-w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-500 transition hover:bg-slate-50 hover:text-indigo-600 sm:flex"
+              title="Tùy chỉnh trải nghiệm học"
+              aria-label="Mở tùy chỉnh trải nghiệm"
+            >
+              <Settings2 className="h-4 w-4" />
+            </button>
             {/* Quick Look-up Button */}
             <button
-              onClick={() => {
-                setLookupQuery('');
-                if (mode !== 'home' && mode !== 'admin' && activeCertId) {
-                  setLookupCertId(activeCertId);
-                } else {
-                  setLookupCertId('all');
-                }
-                setIsLookupOpen(true);
-              }}
+              onClick={() => openAdvancedLookup()}
               className="text-xs bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200/80 font-bold px-3 py-2 rounded-xl transition-all items-center gap-1.5 cursor-pointer shadow-xs shrink-0 hidden sm:flex"
               title="Tra cứu nhanh câu hỏi và đáp án"
             >
               <Search className="w-3.5 h-3.5 text-amber-600 animate-pulse" />
-              <span>Tra cứu đáp án</span>
+              <span>{mode === 'practice' || mode === 'exam' || mode === 'guide' ? 'Tìm nhanh trong đề' : 'Tra cứu đáp án'}</span>
             </button>
 
             {/* Cloud User Profile & Sync Indicator */}
@@ -1471,16 +1674,16 @@ export default function App() {
                   {/* Status Indicator */}
                   <div className="flex items-center justify-center pl-0.5 shrink-0">
                     {dbSyncStatus === 'syncing' && (
-                      <Loader2 className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-indigo-500 animate-spin" title="Đang đồng bộ..." />
+                      <Loader2 className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-indigo-500 animate-spin" aria-label="Đang đồng bộ" />
                     )}
                     {dbSyncStatus === 'success' && (
-                      <Check className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-emerald-500 font-extrabold" title="Đã đồng bộ Cloud" />
+                      <Check className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-emerald-500 font-extrabold" aria-label="Đã đồng bộ Cloud" />
                     )}
                     {dbSyncStatus === 'error' && (
-                      <AlertCircle className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-rose-500 animate-pulse" title="Lỗi đồng bộ Cloud" />
+                      <AlertCircle className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-rose-500 animate-pulse" aria-label="Lỗi đồng bộ Cloud" />
                     )}
                     {dbSyncStatus === 'idle' && (
-                      <Database className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-slate-400" title="Đang lưu offline" />
+                      <Database className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-slate-400" aria-label="Đang lưu offline" />
                     )}
                   </div>
                   
@@ -1496,12 +1699,12 @@ export default function App() {
                 </div>
               ) : (
                 <button
-                  onClick={() => { setAuthInputUsername(''); setShowAuthModal(true); }}
-                  className="bg-indigo-600 hover:bg-slate-900 text-white font-bold text-xs px-2.5 sm:px-3.5 py-2 rounded-xl border border-indigo-700 shadow-sm transition-all flex items-center gap-1.5 cursor-pointer shrink-0"
-                  title="Kết nối tài khoản nhóm"
+                  onClick={() => { setAuthError(''); setAuthMode('signin'); setAuthIntent('sync'); setPendingCertAccess(null); setShowAuthModal(true); }}
+                  className={`flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 rounded-xl border px-2.5 text-xs font-bold shadow-sm transition-all sm:px-3.5 ${anonymousMode ? 'border-slate-200 bg-white text-slate-600 hover:border-indigo-300 hover:text-indigo-700' : 'border-indigo-700 bg-indigo-600 text-white hover:bg-slate-900'}`}
+                  title={anonymousMode ? 'Đang học ẩn danh — bấm để đăng nhập và đồng bộ' : 'Kết nối tài khoản nhóm'}
                 >
-                  <User className="w-3.5 h-3.5 animate-pulse" />
-                  <span className="hidden sm:inline">Lưu lịch sử Team</span>
+                  {anonymousMode ? <EyeOff className="h-3.5 w-3.5" /> : <User className="h-3.5 w-3.5 animate-pulse" />}
+                  <span className="hidden sm:inline">{anonymousMode ? 'Ẩn danh' : 'Lưu lịch sử Team'}</span>
                 </button>
               )}
             </div>
@@ -1526,7 +1729,7 @@ export default function App() {
               </>
             )}
             
-            {mode === 'home' && isAdmin && (
+            {mode === 'home' && canManageContent && (
               <button
                 onClick={() => setShowAddCertForm(true)}
                 className="text-xs bg-slate-950 hover:bg-indigo-600 text-white font-bold px-3.5 py-2 rounded-xl transition-all items-center gap-1.5 shadow-sm cursor-pointer hidden sm:flex"
@@ -1588,19 +1791,19 @@ export default function App() {
           </>
         )}
         <button
-          onClick={() => {
-            setLookupQuery('');
-            if (mode !== 'home' && mode !== 'admin' && activeCertId) {
-              setLookupCertId(activeCertId);
-            } else {
-              setLookupCertId('all');
-            }
-            setIsLookupOpen(true);
-          }}
+          onClick={() => openAdvancedLookup()}
           className="flex-1 min-w-[58px] min-h-11 snap-start text-[10px] font-bold text-center px-1 py-2.5 rounded-lg transition-all flex items-center justify-center gap-1 text-slate-500 active:text-amber-700 active:bg-amber-50/50"
         >
           <Search className="w-3.5 h-3.5 text-amber-500" />
           Tra cứu
+        </button>
+        <button
+          type="button"
+          onClick={() => setShowPreferences(true)}
+          className="flex min-h-11 min-w-[48px] snap-start items-center justify-center rounded-lg text-slate-500 active:bg-white active:text-indigo-600"
+          aria-label="Tùy chỉnh trải nghiệm"
+        >
+          <Settings2 className="h-4 w-4" />
         </button>
       </div>
 
@@ -1609,11 +1812,13 @@ export default function App() {
         
         {/* Customized uploader expanded */}
         {showUploader && (
-          <CustomQuestionsImport 
-            onImport={handleImportQuestions} 
-            currentCount={questions.length} 
-            existingQuestions={questions}
-          />
+          <Suspense fallback={<LazySectionFallback label="Đang mở trình nhập câu hỏi..." />}>
+            <CustomQuestionsImport
+              onImport={handleImportQuestions}
+              currentCount={questions.length}
+              existingQuestions={questions}
+            />
+          </Suspense>
         )}
 
         {/* Certification Hub Home View */}
@@ -1640,7 +1845,7 @@ export default function App() {
                   <div className="min-w-20 text-center px-2">
                   <span className="block text-[22px] font-black text-emerald-600">
                     {certificates.filter(c => !c.isDisabled).reduce((acc, cert) => {
-                      const completed = localStorage.getItem(`progress_${cert.id}`);
+                      const completed = readProgressCache(cert.id);
                       if (completed) {
                         try {
                           const parsed = JSON.parse(completed);
@@ -1656,24 +1861,24 @@ export default function App() {
               </div>
 
               {!username && (
-                <div id="welcome-team-sync-banner" className="border-t border-indigo-100 bg-gradient-to-r from-indigo-50/70 to-blue-50/50 px-4 py-3 sm:px-6">
+                <div id="welcome-team-sync-banner" className={`border-t px-4 py-3 sm:px-6 ${anonymousMode ? 'border-slate-200 bg-slate-50' : 'border-indigo-100 bg-gradient-to-r from-indigo-50/70 to-blue-50/50'}`}>
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div className="flex min-w-0 items-center gap-3">
                       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-indigo-600 shadow-sm">
                         <Users className="h-4 w-4" />
                       </div>
                       <div className="min-w-0">
-                        <h3 className="text-xs font-black text-slate-900">Học nhóm & Đồng bộ đám mây</h3>
-                        <p className="truncate text-[10px] text-slate-500">Lưu tiến độ và câu đã đánh dấu lên dữ liệu chung của Team.</p>
+                        <h3 className="text-xs font-black text-slate-900">{anonymousMode ? 'Đang học ẩn danh' : 'Học nhóm & Đồng bộ đám mây'}</h3>
+                        <p className="truncate text-[10px] text-slate-500">{anonymousMode ? 'Tiến độ chỉ lưu trên trình duyệt và thiết bị này.' : 'Lưu tiến độ và câu đã đánh dấu lên dữ liệu chung của Team.'}</p>
                       </div>
                     </div>
                     <button
                       type="button"
                       onClick={() => setIsTeamSyncExpanded(previous => !previous)}
                       aria-expanded={isTeamSyncExpanded}
-                      className="flex min-h-9 shrink-0 items-center justify-center gap-1.5 rounded-xl border border-indigo-200 bg-white px-3 text-[11px] font-black text-indigo-700 transition hover:bg-indigo-50"
+                      className="flex min-h-11 shrink-0 items-center justify-center gap-1.5 rounded-xl border border-indigo-200 bg-white px-3 text-[11px] font-black text-indigo-700 transition hover:bg-indigo-50"
                     >
-                      {isTeamSyncExpanded ? 'Thu gọn' : 'Kết nối Team Sync'}
+                      {isTeamSyncExpanded ? 'Thu gọn' : anonymousMode ? 'Đổi chế độ' : 'Chọn chế độ học'}
                       <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isTeamSyncExpanded ? 'rotate-180' : ''}`} />
                     </button>
                   </div>
@@ -1686,26 +1891,28 @@ export default function App() {
                         exit={{ opacity: 0, height: 0 }}
                         className="overflow-hidden"
                       >
-                        <div className="flex flex-col gap-2 pt-3 sm:flex-row sm:justify-end">
-                          <input
-                            type="text"
-                            placeholder="Nhập tên của bạn (vd: HuyenTran)..."
-                            onKeyDown={(event) => {
-                              if (event.key === 'Enter') handleLogin((event.target as HTMLInputElement).value);
-                            }}
-                            id="dashboard-username-input"
-                            autoFocus
-                            className="min-h-10 w-full rounded-xl border border-slate-200 bg-white px-4 text-xs font-bold text-slate-850 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 sm:max-w-xs"
-                          />
-                          <button
-                            onClick={() => {
-                              const input = document.getElementById('dashboard-username-input') as HTMLInputElement;
-                              if (input) handleLogin(input.value);
-                            }}
-                            className="min-h-10 whitespace-nowrap rounded-xl border border-indigo-700 bg-indigo-600 px-5 text-xs font-black text-white shadow-sm transition hover:bg-indigo-700 active:scale-95"
-                          >
-                            Đồng bộ ngay
-                          </button>
+                        <div className="flex flex-col gap-3 pt-3 sm:flex-row sm:items-center sm:justify-between">
+                          <p className="max-w-xl text-[11px] leading-relaxed text-slate-600">
+                            {anonymousMode
+                              ? 'Bạn vẫn học và thi thử bình thường. Đăng nhập khi muốn đồng bộ sang thiết bị khác hoặc dùng tính năng nhóm.'
+                              : 'Học ẩn danh không cần tài khoản và chỉ lưu trên thiết bị này. Đăng nhập để đồng bộ nhiều thiết bị và học nhóm.'}
+                          </p>
+                          <div className="flex flex-col gap-2 sm:flex-row">
+                            {!anonymousMode && (
+                              <button
+                                onClick={handleContinueAnonymously}
+                                className="min-h-11 whitespace-nowrap rounded-xl border border-slate-300 bg-white px-5 text-xs font-black text-slate-700 transition hover:border-indigo-300 hover:text-indigo-700"
+                              >
+                                Học ẩn danh
+                              </button>
+                            )}
+                            <button
+                              onClick={() => { setAuthMode('signin'); setAuthIntent('sync'); setPendingCertAccess(null); setAuthError(''); setShowAuthModal(true); }}
+                              className="min-h-11 whitespace-nowrap rounded-xl border border-indigo-700 bg-indigo-600 px-5 text-xs font-black text-white shadow-sm transition hover:bg-indigo-700 active:scale-95"
+                            >
+                              Đăng nhập & đồng bộ
+                            </button>
+                          </div>
                         </div>
                       </motion.div>
                     )}
@@ -1714,19 +1921,45 @@ export default function App() {
               )}
             </div>
 
+            <div className="flex flex-col gap-2 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-4">
+              <div className="relative block min-w-0 flex-1">
+                <label className="sr-only" htmlFor="certificate-search">Tìm nhanh bộ đề</label>
+                <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                <input
+                  id="certificate-search"
+                  type="search"
+                  value={certificateSearchQuery}
+                  onChange={(event) => setCertificateSearchQuery(event.target.value)}
+                  placeholder="Tìm nhanh theo mã hoặc tên chứng chỉ..."
+                  className="min-h-11 w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-10 text-sm font-semibold text-slate-800 outline-none transition placeholder:font-medium placeholder:text-slate-400 focus:border-indigo-400 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                />
+                {certificateSearchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setCertificateSearchQuery('')}
+                    className="absolute right-1.5 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
+                    aria-label="Xóa từ khóa tìm chứng chỉ"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                )}
+              </div>
+              <p className="shrink-0 px-1 text-[11px] font-bold text-slate-500" aria-live="polite">
+                {certificateSearchQuery.trim()
+                  ? `${visibleHomeCertificates.length} bộ đề phù hợp`
+                  : `${visibleHomeCertificates.length} bộ đề đang có`}
+              </p>
+            </div>
+
             {/* Certification Grid list */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {certificates.filter(c => !c.isDisabled).map(cert => {
+              {visibleHomeCertificates.map(cert => {
                 // Get progress for this card locally
-                let certProgress = { answeredCount: 0, correctCount: 0, total: 10 };
-                // Map hardcoded count
-                if (cert.id === 'gh-300') certProgress.total = initialQuestions.length;
-                else if (cert.id === 'az-900') certProgress.total = az900Questions.length;
-                else if (cert.id === 'ai-900') certProgress.total = ai900Questions.length;
-                else if (cert.id === 'cca-f') certProgress.total = ccaQuestions.length;
-                else if (cert.id === 'dp-800') certProgress.total = dp800Questions.length;
-                else if (cert.id === 'istqb-ai') certProgress.total = istqbAiQuestions.length;
-                else if (cert.id === 'ab-731') certProgress.total = 100;
+                let certProgress = {
+                  answeredCount: 0,
+                  correctCount: 0,
+                  total: BUILTIN_QUESTION_COUNTS[cert.id] || 0,
+                };
 
                 // The cache is guaranteed to belong to this app build. Use it
                 // for accurate custom-certificate counts and fast home cards.
@@ -1740,7 +1973,7 @@ export default function App() {
                   }
                 }
 
-                const storedProg = localStorage.getItem(`progress_${cert.id}`);
+                const storedProg = readProgressCache(cert.id);
                 if (storedProg) {
                   try {
                     const parsed = JSON.parse(storedProg);
@@ -1829,7 +2062,7 @@ export default function App() {
                         {isLocked ? (
                           <button
                             onClick={() => handleRequestCertAccess(cert.id)}
-                            className="flex-1 text-center py-2.5 bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-black rounded-xl text-xs transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
+                            className="flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 px-3 text-center text-xs font-black text-white shadow-sm transition-all hover:from-amber-600 hover:to-orange-700"
                           >
                             <Key className="w-3.5 h-3.5" />
                             Mở Khóa Bằng Key VIP
@@ -1837,10 +2070,10 @@ export default function App() {
                         ) : (
                           <button
                             onClick={() => handleRequestCertAccess(cert.id)}
-                            className="flex-1 text-center py-2.5 bg-slate-950 hover:bg-indigo-600 text-white font-bold rounded-xl text-xs transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
+                            className="flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-xl bg-slate-950 px-3 text-center text-xs font-bold text-white shadow-sm transition-all hover:bg-indigo-600"
                           >
                             <BookOpen className="w-3.5 h-3.5" />
-                            Học ngay
+                            {anonymousMode && !authUserId ? 'Học ẩn danh' : 'Học ngay'}
                           </button>
                         )}
                       </div>
@@ -1849,8 +2082,23 @@ export default function App() {
                 );
               })}
 
+              {visibleHomeCertificates.length === 0 && (
+                <div className="col-span-full rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-10 text-center">
+                  <Search className="mx-auto h-7 w-7 text-slate-300" />
+                  <h3 className="mt-3 text-sm font-black text-slate-800">Không tìm thấy bộ đề phù hợp</h3>
+                  <p className="mt-1 text-xs text-slate-500">Thử tìm bằng mã chứng chỉ hoặc một phần tên khác.</p>
+                  <button
+                    type="button"
+                    onClick={() => setCertificateSearchQuery('')}
+                    className="mt-4 min-h-11 rounded-xl border border-indigo-200 bg-indigo-50 px-4 text-xs font-black text-indigo-700 transition hover:bg-indigo-100"
+                  >
+                    Xóa từ khóa tìm kiếm
+                  </button>
+                </div>
+              )}
+
               {/* Add New Custom Certification Card placeholder */}
-              {isAdmin && !showAddCertForm && (
+              {canManageContent && !showAddCertForm && !certificateSearchQuery.trim() && (
                 <button
                   onClick={() => setShowAddCertForm(true)}
                   className="bg-slate-50 hover:bg-slate-100/80 border-2 border-dashed border-slate-200 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 text-center group transition-colors min-h-[350px]"
@@ -1869,7 +2117,7 @@ export default function App() {
             </div>
 
             {/* Highly Polished Custom Code and JSON Upload Portal */}
-            {isAdmin && showAddCertForm && (
+            {canManageContent && showAddCertForm && (
               <div className="bg-white border border-slate-150 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
                 <div className="flex items-center justify-between pb-4 border-b border-slate-100">
                   <div className="flex items-center gap-2">
@@ -2100,13 +2348,81 @@ export default function App() {
           </div>
         )}
 
-        {/* Global Progress Statistics on Practice mode */}
+        {/* Compact desktop overview; hidden on mobile to keep questions focused. */}
         {mode === 'practice' && (
-          <StatsPanel 
-            questions={questions} 
-            progress={progress} 
-            onReset={handleClearProgress} 
-          />
+          <section className="hidden overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm md:block">
+            <button
+              type="button"
+              onClick={() => setStudyOverviewExpanded(previous => !previous)}
+              aria-expanded={studyOverviewExpanded}
+              aria-controls="study-overview-details"
+              className="flex min-h-16 w-full items-center justify-between gap-4 px-4 py-3 text-left transition hover:bg-slate-50 lg:px-5"
+            >
+              <span className="flex min-w-0 items-center gap-3">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                  <Activity className="h-4 w-4" />
+                </span>
+                <span className="min-w-0">
+                  <strong className="block text-sm font-black text-slate-900">Tổng quan ôn tập</strong>
+                  <small className="block truncate text-[10px] font-semibold text-slate-500">
+                    Lộ trình hôm nay, mục tiêu và thống kê tiến độ
+                  </small>
+                </span>
+              </span>
+
+              <span className="flex shrink-0 items-center gap-2">
+                <span className="hidden rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-[10px] font-bold text-slate-600 lg:inline-flex">
+                  Đã làm {progress.answeredCount}/{questions.length}
+                </span>
+                <span className="hidden rounded-lg border border-emerald-200 bg-emerald-50 px-2.5 py-1.5 text-[10px] font-bold text-emerald-700 lg:inline-flex">
+                  Đúng {progress.answeredCount > 0 ? Math.round((progress.correctCount / progress.answeredCount) * 100) : 0}%
+                </span>
+                <span className="inline-flex min-h-9 items-center gap-1.5 rounded-xl border border-indigo-200 bg-indigo-50 px-3 text-[10px] font-black text-indigo-700">
+                  {studyOverviewExpanded ? 'Thu gọn' : 'Mở tổng quan'}
+                  <ChevronDown className={`h-3.5 w-3.5 transition-transform ${studyOverviewExpanded ? 'rotate-180' : ''}`} />
+                </span>
+              </span>
+            </button>
+
+            <AnimatePresence initial={false}>
+              {studyOverviewExpanded && (
+                <motion.div
+                  id="study-overview-details"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="overflow-hidden border-t border-slate-100"
+                >
+                  <div className="space-y-4 bg-slate-50/50 p-4 lg:p-5">
+                    <LearningCoachPanel
+                      certId={activeCertId}
+                      questions={questions}
+                      progress={progress}
+                      onPracticeCategory={(category) => {
+                        setCategoryFilter(category);
+                        setShowBookmarksOnly(false);
+                        setShowIncorrectOnly(false);
+                        setCurrentQuestionIndex(0);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      onReviewMistakes={() => {
+                        setCategoryFilter('All');
+                        setShowBookmarksOnly(false);
+                        setShowIncorrectOnly(true);
+                        setCurrentQuestionIndex(0);
+                      }}
+                      onStartExam={() => setMode('exam')}
+                    />
+                    <StatsPanel
+                      questions={questions}
+                      progress={progress}
+                      onReset={handleClearProgress}
+                    />
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </section>
         )}
 
         {/* Mode Practice rendering */}
@@ -2138,7 +2454,16 @@ export default function App() {
 
               {/* Search keywords card panel */}
               <div className="bg-white lg:border border-slate-150 rounded-2xl p-4 shadow-sm space-y-3">
-                <span className="block text-xs font-bold text-slate-400 uppercase tracking-widest">Từ khóa</span>
+                <div className="flex items-center justify-between gap-2">
+                  <span className="block text-xs font-bold text-slate-400 uppercase tracking-widest">Lọc danh sách</span>
+                  <button
+                    type="button"
+                    onClick={() => openAdvancedLookup(activeCertId)}
+                    className="rounded-lg bg-amber-50 px-2 py-1 text-[9px] font-black text-amber-700 transition hover:bg-amber-100"
+                  >
+                    Tìm nâng cao
+                  </button>
+                </div>
                 <div className="relative">
                   <input
                     type="text"
@@ -2149,6 +2474,9 @@ export default function App() {
                   />
                   <Search className="w-4 h-4 text-slate-400 absolute left-2.5 top-3" />
                 </div>
+                <p className="text-[9px] font-semibold leading-relaxed text-slate-400">
+                  Nhấn <kbd className="rounded border border-slate-200 bg-slate-50 px-1 py-0.5 font-mono text-slate-600">Ctrl K</kbd> để xem nhiều kết quả và đáp án ngay.
+                </p>
               </div>
 
               {/* Categories list card panel */}
@@ -2233,8 +2561,8 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Bookmark Toggle */}
-              <div className="bg-white lg:border border-slate-150 rounded-2xl p-4 shadow-sm">
+              {/* Quick review filters */}
+              <div className="bg-white lg:border border-slate-150 rounded-2xl p-4 shadow-sm space-y-3">
                 <label className="flex items-center gap-2.5 cursor-pointer select-none">
                   <input
                     type="checkbox"
@@ -2245,6 +2573,18 @@ export default function App() {
                   <span className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
                     <Bookmark className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
                     Chỉ xem câu hỏi đã lưu ({progress.bookmarkedQuestionIds.length})
+                  </span>
+                </label>
+                <label className="flex items-center gap-2.5 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    checked={showIncorrectOnly}
+                    onChange={(e) => { setShowIncorrectOnly(e.target.checked); setCurrentQuestionIndex(0); }}
+                    className="rounded border-slate-350 text-rose-600 focus:ring-rose-500 w-4 h-4"
+                  />
+                  <span className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+                    <AlertCircle className="w-3.5 h-3.5 text-rose-500" />
+                    Ôn lại câu trả lời sai ({progress.incorrectCount})
                   </span>
                 </label>
               </div>
@@ -2328,6 +2668,7 @@ export default function App() {
                   onPrev={() => setCurrentQuestionIndex(prev => (prev > 0 ? prev - 1 : filteredQuestions.length - 1))}
                   isFirst={currentQuestionIndex === 0}
                   isLast={currentQuestionIndex === filteredQuestions.length - 1}
+                  onReportIssue={setReportQuestion}
                 />
               ) : (
                 <div className="bg-white border border-slate-100 rounded-3xl p-12 shadow-sm text-center space-y-4">
@@ -2349,13 +2690,15 @@ export default function App() {
 
         {/* Timed Mock Exam Mode Rendering */}
         {mode === 'exam' && (
-          <MockExam
-            questions={questions}
-            onFinishExam={handleFinishExamMock}
-            onExit={() => { setMode('practice'); setCurrentQuestionIndex(0); }}
-            certName={certificates.find(c => c.id === activeCertId)?.name}
-            certCode={certificates.find(c => c.id === activeCertId)?.code}
-          />
+          <Suspense fallback={<LazySectionFallback label="Đang chuẩn bị phòng thi..." />}>
+            <MockExam
+              questions={questions}
+              onFinishExam={handleFinishExamMock}
+              onExit={() => { setMode('practice'); setCurrentQuestionIndex(0); }}
+              certName={certificates.find(c => c.id === activeCertId)?.name}
+              certCode={certificates.find(c => c.id === activeCertId)?.code}
+            />
+          </Suspense>
         )}
 
         {/* Browsable Study Guide Syllabus Mode Rendering */}
@@ -2377,14 +2720,25 @@ export default function App() {
                       <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                         CÂU HỎI {q.questionNumber} • <span className="text-indigo-600 font-semibold">{q.category}</span>
                       </span>
-                      <button
-                        onClick={() => handleToggleBookmark(q.id)}
-                        className={`p-1.5 rounded-lg border ${
-                          bookmarked ? 'bg-rose-50 border-rose-100 text-rose-500' : 'text-slate-350 border-slate-200'
-                        }`}
-                      >
-                        <Star className={`w-3.5 h-3.5 ${bookmarked ? 'fill-rose-500' : ''}`} />
-                      </button>
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setReportQuestion(q)}
+                          className="flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-slate-200 text-slate-400 transition hover:border-amber-200 hover:bg-amber-50 hover:text-amber-600"
+                          aria-label={`Báo vấn đề cho câu hỏi ${q.questionNumber}`}
+                        >
+                          <Flag className="h-3.5 w-3.5" />
+                        </button>
+                        <button
+                          onClick={() => handleToggleBookmark(q.id)}
+                          className={`flex min-h-11 min-w-11 items-center justify-center rounded-xl border ${
+                            bookmarked ? 'bg-rose-50 border-rose-100 text-rose-500' : 'text-slate-350 border-slate-200'
+                          }`}
+                          aria-label={bookmarked ? 'Bỏ lưu câu hỏi' : 'Lưu câu hỏi'}
+                        >
+                          <Star className={`w-3.5 h-3.5 ${bookmarked ? 'fill-rose-500' : ''}`} />
+                        </button>
+                      </div>
                     </div>
 
                     <StudyGuideQuestion question={q} />
@@ -2447,8 +2801,10 @@ export default function App() {
         )}
 
         {/* Admin Dashboard Workspace Mode Rendering */}
-        {mode === 'admin' && (
-          <AdminPanel
+        {mode === 'admin' && canManageContent && (
+          <Suspense fallback={<LazySectionFallback label="Đang tải khu vực quản trị..." />}>
+            <AdminPanel
+            currentRole={userRole === 'admin' ? 'admin' : 'editor'}
             certificates={certificates}
             activeCertId={activeCertId}
             unlockedCertIds={unlockedCertIds}
@@ -2456,7 +2812,7 @@ export default function App() {
             onSelectCert={(certId) => {
               setActiveCertId(certId);
               localStorage.setItem('study_active_cert', certId);
-              loadCertData(certId, username);
+              loadCertData(certId, authUserId);
             }}
             onUpdateQuestions={(certId, updatedQs) => {
               if (certId === activeCertId) {
@@ -2486,17 +2842,20 @@ export default function App() {
             onToggleCertDisabled={handleToggleCertDisabled}
             onToggleUnlockCert={handleToggleUnlockCert}
             showAppToast={showAppToast}
-          />
+            />
+          </Suspense>
         )}
 
         {/* Study Group Mode Rendering */}
         {mode === 'group' && (
-          <GroupStudy
-            username={username}
-            onUsernameChange={handleLogin}
-            certificates={certificates}
-            showToast={showAppToast}
-          />
+          <Suspense fallback={<LazySectionFallback label="Đang tải nhóm học..." />}>
+            <GroupStudy
+              username={username}
+              onUsernameChange={handleLogin}
+              certificates={certificates}
+              showToast={showAppToast}
+            />
+          </Suspense>
         )}
 
       </main>
@@ -2510,62 +2869,97 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Account / Team login connection Modal */}
+      {/* Secure account login modal */}
       {showAuthModal && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[110] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="auth-dialog-title">
           <div className="bg-white rounded-3xl p-6 shadow-2xl border border-slate-100 max-w-md w-full animate-in fade-in zoom-in duration-200">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <div className="bg-indigo-50 text-indigo-600 p-2.5 rounded-2xl">
-                  <Database className="w-5 h-5 flex-shrink-0" />
+                  <ShieldCheck className="w-5 h-5 flex-shrink-0" />
                 </div>
                 <div>
-                  <h3 className="text-base font-extrabold text-slate-900 leading-tight">Kết nối Team DB</h3>
-                  <p className="text-[10px] text-slate-400 font-medium">Lưu lịch sử và tiến độ học tập lên đám mây</p>
+                  <h3 id="auth-dialog-title" className="text-base font-extrabold text-slate-900 leading-tight">
+                    {authIntent === 'learning' ? 'Chọn cách bắt đầu học' : authMode === 'signin' ? 'Đăng nhập tài khoản' : 'Tạo tài khoản học tập'}
+                  </h3>
+                  <p className="text-[10px] text-slate-400 font-medium">
+                    {authIntent === 'learning' ? 'Không bắt buộc tạo tài khoản với bộ đề công khai' : 'Xác thực an toàn bằng Supabase Auth'}
+                  </p>
                 </div>
               </div>
               <button 
-                onClick={() => setShowAuthModal(false)}
-                className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                onClick={closeAuthModal}
+                className="flex min-h-11 min-w-11 items-center justify-center text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer"
+                aria-label="Đóng đăng nhập"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
             <div className="space-y-4">
-              <p className="text-xs text-slate-550 leading-relaxed">
-                Nhập tên tài khoản của bạn (ví dụ: <strong className="text-indigo-600">HuyenTran</strong>, <strong className="text-indigo-600">Admin</strong>, <strong className="text-indigo-600">DevTeam</strong>) để hệ thống đồng bộ lịch sử làm bài, chuỗi sấm sét, và danh sách câu hỏi đã lưu. Bạn có thể sử dụng chung database và chia sẻ tiến trình với đồng đội!
-              </p>
+              {authIntent !== 'admin' && !certificates.find(cert => cert.id === pendingCertAccess?.certId)?.isVIP && (
+                <button
+                  type="button"
+                  onClick={handleContinueAnonymously}
+                  className="flex min-h-16 w-full items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-3.5 text-left transition hover:border-emerald-300 hover:bg-emerald-100"
+                >
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-emerald-700 shadow-sm"><EyeOff className="h-5 w-5" /></span>
+                  <span className="min-w-0">
+                    <strong className="block text-sm font-black text-emerald-900">Học ẩn danh</strong>
+                    <small className="mt-0.5 block text-[10px] font-semibold leading-relaxed text-emerald-700">Không cần tài khoản · tiến độ chỉ lưu trên thiết bị này</small>
+                  </span>
+                </button>
+              )}
 
-              <div>
-                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">
-                  Tên tài khoản (Họ tên / Nickname)
+              {authIntent !== 'admin' && !certificates.find(cert => cert.id === pendingCertAccess?.certId)?.isVIP && (
+                <div className="flex items-center gap-3 text-[9px] font-black uppercase tracking-widest text-slate-300"><span className="h-px flex-1 bg-slate-200" />hoặc dùng tài khoản<span className="h-px flex-1 bg-slate-200" /></div>
+              )}
+
+              <div className="grid grid-cols-2 rounded-xl bg-slate-100 p-1">
+                <button type="button" onClick={() => { setAuthMode('signin'); setAuthError(''); }} className={`min-h-11 rounded-lg text-xs font-black ${authMode === 'signin' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}>Đăng nhập</button>
+                <button type="button" onClick={() => { setAuthMode('signup'); setAuthError(''); }} className={`min-h-11 rounded-lg text-xs font-black ${authMode === 'signup' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}>Đăng ký</button>
+              </div>
+
+              {authMode === 'signup' && (
+                <label className="block">
+                  <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Tên hiển thị</span>
+                  <input type="text" placeholder="Tên bạn muốn hiển thị..." value={authDisplayName} onChange={e => setAuthDisplayName(e.target.value)} className="min-h-11 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-semibold text-slate-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100" />
                 </label>
+              )}
+
+              <label className="block">
+                <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Email</span>
                 <input
-                  type="text"
-                  placeholder="Nhập tên tài khoản của bạn..."
-                  value={authInputUsername}
-                  onChange={(e) => setAuthInputUsername(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') handleLogin(authInputUsername);
-                  }}
-                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-semibold text-slate-800"
+                  type="email"
+                  placeholder="ban@example.com"
+                  value={authEmail}
+                  onChange={(e) => setAuthEmail(e.target.value)}
+                  className="min-h-11 w-full px-4 bg-slate-50 border border-slate-200 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 font-semibold text-slate-800"
                   autoFocus
                 />
-              </div>
+              </label>
+
+              <label className="block">
+                <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Mật khẩu</span>
+                <input type="password" value={authPassword} onChange={e => setAuthPassword(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') handleAuthSubmit(); }} placeholder="Ít nhất 6 ký tự" className="min-h-11 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-semibold text-slate-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100" />
+              </label>
+
+              {authError && <p className="rounded-xl border border-rose-100 bg-rose-50 p-3 text-xs font-bold text-rose-700">{authError}</p>}
 
               <div className="flex gap-2.5 justify-end pt-2">
                 <button
-                  onClick={() => setShowAuthModal(false)}
-                  className="px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 rounded-xl transition-colors cursor-pointer"
+                  onClick={closeAuthModal}
+                  className="min-h-11 px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 rounded-xl transition-colors cursor-pointer"
                 >
-                  Bỏ qua
+                  Đóng
                 </button>
                 <button
-                  onClick={() => handleLogin(authInputUsername)}
-                  className="px-5 py-2.5 text-xs font-extrabold text-white bg-indigo-600 hover:bg-slate-950 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer"
+                  onClick={handleAuthSubmit}
+                  disabled={authBusy}
+                  className="inline-flex min-h-11 items-center justify-center gap-2 px-5 text-xs font-extrabold text-white bg-indigo-600 hover:bg-slate-950 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer disabled:opacity-50"
                 >
-                  Đồng bộ ngay
+                  {authBusy && <Loader2 className="h-4 w-4 animate-spin" />}
+                  {authMode === 'signin' ? 'Đăng nhập & đồng bộ' : 'Tạo tài khoản'}
                 </button>
               </div>
             </div>
@@ -2612,17 +3006,17 @@ export default function App() {
 
       {/* Quick Lookup (Tra cứu nhanh) Modal Overlay */}
       {isLookupOpen && (
-        <div className="fixed inset-0 z-[100] bg-slate-900/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden">
+        <div className="fixed inset-0 z-[100] bg-slate-900/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="advanced-lookup-title">
           <div className="bg-white border-t sm:border border-slate-200 rounded-t-[2rem] sm:rounded-3xl rounded-b-none sm:rounded-b-3xl w-full max-w-2xl flex flex-col h-[88dvh] sm:h-auto sm:max-h-[85dvh] shadow-2xl animate-in slide-in-from-bottom sm:slide-in-from-bottom-0 sm:zoom-in-95 duration-200">
             {/* Header */}
             <div className="p-5 pb-4 border-b border-slate-100 flex items-start justify-between gap-4">
               <div>
-                <h3 className="text-sm font-black text-slate-950 flex items-center gap-2">
+                <h3 id="advanced-lookup-title" className="text-sm font-black text-slate-950 flex items-center gap-2">
                   <span className="p-1 px-1.5 bg-amber-100 text-amber-800 rounded-lg text-xs leading-none">LOOKUP</span>
-                  TRA CỨU ĐÁP ÁN NHANH 🔍
+                  {lookupScopeCertificate ? `TÌM NHANH TRONG ${lookupScopeCertificate.code}` : 'TRA CỨU TOÀN BỘ ĐÁP ÁN'} 🔍
                 </h3>
                 <p className="text-[10px] text-slate-400 font-semibold mt-1">
-                  Nhập từ khóa hoặc số câu để tra cứu đáp án & giải nghĩa chi tiết tức thì.
+                  Tìm theo số câu, nhiều từ khóa, nội dung, đáp án, chủ đề hoặc tag.
                 </p>
               </div>
               <button 
@@ -2663,7 +3057,7 @@ export default function App() {
                   onChange={(e) => setLookupCertId(e.target.value)}
                   className="w-full text-base sm:text-xs font-bold py-2.5 bg-white border border-slate-200 rounded-xl px-2.5 focus:outline-none focus:ring-2 focus:ring-amber-100"
                 >
-                  <option value="all">Tất cả môn học</option>
+                  <option value="all">Tất cả bộ đề</option>
                   {certificates.filter(c => !c.isDisabled).map(c => (
                     <option key={c.id} value={c.id}>{c.code}</option>
                   ))}
@@ -2673,7 +3067,12 @@ export default function App() {
 
             {/* Scrollable Results Area */}
             <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-slate-50/50">
-              {!lookupQuery.trim() ? (
+              {lookupLoading ? (
+                <div className="flex min-h-48 flex-col items-center justify-center gap-3 text-center">
+                  <Loader2 className="h-7 w-7 animate-spin text-amber-500" />
+                  <p className="text-xs font-bold text-slate-500">Đang chuẩn bị chỉ mục tìm kiếm...</p>
+                </div>
+              ) : !lookupQuery.trim() ? (
                 /* Search onboarding state */
                 <div className="text-center py-12 px-4 max-w-sm mx-auto space-y-3.5">
                   <div className="w-12 h-12 bg-amber-50 text-amber-500 rounded-2xl mx-auto flex items-center justify-center border border-amber-100">
@@ -2682,7 +3081,7 @@ export default function App() {
                   <div>
                     <h4 className="text-xs font-black text-slate-800">Sẵn sàng tra cứu dữ liệu</h4>
                     <p className="text-[11px] text-slate-400 mt-1 leading-relaxed font-medium">
-                      Nhập từ khóa tìm kiếm để tra cứu đáp án chính xác trong hệ thống ngân hàng câu hỏi.
+                      Ví dụ: <strong>câu 12</strong>, <strong>cosmos global</strong>, <strong>security policy</strong>. Nhiều từ khóa sẽ giúp thu hẹp kết quả.
                     </p>
                   </div>
                 </div>
@@ -2707,7 +3106,12 @@ export default function App() {
                   </div>
 
                   <div className="space-y-3.5">
-                    {filteredLookupQuestions.map(({ certCode, certName, question: q }, idx) => {
+                    {filteredLookupQuestions.map(({ certId, certCode, certName, question: q }, idx) => {
+                      const answerBank = [...(q.choices || []), ...q.options];
+                      const correctOptionKeys = new Set(q.correctAnswers.map(answer => {
+                        const separatorIndex = answer.indexOf(':');
+                        return separatorIndex >= 0 ? answer.slice(separatorIndex + 1) : answer;
+                      }));
                       return (
                         <div 
                           key={`${certCode}_${q.id}_${idx}`}
@@ -2729,6 +3133,16 @@ export default function App() {
                                 {q.category}
                               </span>
                             )}
+                            {certId === activeCertId && (mode === 'practice' || mode === 'exam' || mode === 'guide') && (
+                              <button
+                                type="button"
+                                onClick={() => handleOpenLookupQuestion(certId, q.id)}
+                                className="inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-indigo-200 bg-indigo-50 px-3 text-[10px] font-black text-indigo-700 transition hover:bg-indigo-100"
+                              >
+                                <Eye className="h-3.5 w-3.5" />
+                                Mở câu này
+                              </button>
+                            )}
                           </div>
 
                           {/* Question text with highlight */}
@@ -2736,12 +3150,32 @@ export default function App() {
                             {highlightText(q.text, lookupQuery)}
                           </p>
 
+                          {q.statements && q.statements.length > 0 && (
+                            <div className="space-y-2">
+                              <span className="block text-[9px] font-black uppercase tracking-wider text-slate-400">Các dòng và đáp án đúng:</span>
+                              <div className="space-y-2">
+                                {q.statements.map(statement => {
+                                  const resolvedAnswer = answerBank.find(choice => choice.key === statement.correctAnswer)?.text || statement.correctAnswer;
+                                  return (
+                                    <div key={statement.id} className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-xs">
+                                      <p className="font-semibold leading-relaxed text-slate-700">{highlightText(statement.text, lookupQuery)}</p>
+                                      <p className="mt-1.5 font-black text-emerald-700">Đáp án: {highlightText(resolvedAnswer, lookupQuery)}</p>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          )}
+
                           {/* Options display with correct answers colored */}
-                          <div className="space-y-2">
-                            <span className="block text-[9px] uppercase font-black tracking-wider text-slate-400">Các phương án lựa chọn:</span>
-                            <div className="grid grid-cols-1 gap-2 text-xs">
+                          {q.options.length > 0 && q.questionType !== 'statement_matrix' && (
+                            <div className="space-y-2">
+                              <span className="block text-[9px] uppercase font-black tracking-wider text-slate-400">
+                                {q.statements?.length ? 'Ngân hàng đáp án:' : 'Các phương án lựa chọn:'}
+                              </span>
+                              <div className="grid grid-cols-1 gap-2 text-xs">
                               {q.options.map(opt => {
-                                const isCorrect = q.correctAnswers.includes(opt.key);
+                                const isCorrect = correctOptionKeys.has(opt.key);
                                 return (
                                   <div 
                                     key={opt.key}
@@ -2765,8 +3199,9 @@ export default function App() {
                                   </div>
                                 );
                               })}
+                              </div>
                             </div>
-                          </div>
+                          )}
 
                           {/* Vietnamese Explanation box */}
                           {q.explanation && (
@@ -2790,7 +3225,7 @@ export default function App() {
             {/* Footer */}
             <div className="p-4 border-t border-slate-100 flex items-center justify-between bg-slate-50 rounded-b-none sm:rounded-b-3xl pb-safe">
               <span className="hidden sm:inline text-[10px] text-slate-400 font-semibold">
-                💡 Nhập ký tự bất kỳ để lọc nhanh tức thì.
+                💡 Tìm chính xác số câu hoặc kết hợp nhiều từ khóa. Phím tắt: Ctrl/⌘ K.
               </span>
               <button
                 onClick={() => setIsLookupOpen(false)}
@@ -2975,7 +3410,63 @@ export default function App() {
       )}
 
       {/* Floating Animated Mascot / Pet */}
-      <FloatingPet username={username} showToast={showAppToast} />
+      {petEnabled && mode !== 'exam' && mode !== 'admin' && (
+        <FloatingPet username={username} showToast={showAppToast} />
+      )}
+
+      {showPreferences && (
+        <div className="fixed inset-0 z-[115] flex items-center justify-center bg-slate-950/60 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="preferences-title">
+          <section className="w-full max-w-md rounded-3xl border border-slate-100 bg-white p-5 shadow-2xl sm:p-6">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <h2 id="preferences-title" className="text-lg font-black text-slate-900">Tùy chỉnh trải nghiệm</h2>
+                <p className="mt-1 text-xs leading-relaxed text-slate-500">Các thiết lập chỉ áp dụng trên thiết bị này.</p>
+              </div>
+              <button type="button" onClick={() => setShowPreferences(false)} className="flex min-h-11 min-w-11 items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100" aria-label="Đóng tùy chỉnh"><X className="h-5 w-5" /></button>
+            </div>
+            <div className="mt-5 divide-y divide-slate-100 rounded-2xl border border-slate-200">
+              {!authUserId && (
+                <label className="flex min-h-16 cursor-pointer items-center justify-between gap-4 p-4">
+                  <span><strong className="block text-sm text-slate-800">Học ẩn danh</strong><small className="mt-1 block text-xs text-slate-500">Không cần tài khoản; tiến độ chỉ lưu trên thiết bị này.</small></span>
+                  <input
+                    type="checkbox"
+                    checked={anonymousMode}
+                    onChange={event => {
+                      if (event.target.checked) {
+                        handleContinueAnonymously();
+                      } else {
+                        setAnonymousMode(false);
+                        localStorage.removeItem('study_anonymous_mode');
+                        showAppToast('Đã tắt học ẩn danh. Bạn sẽ được hỏi cách đăng nhập khi mở bộ đề.', 'info');
+                      }
+                    }}
+                    className="h-5 w-5 rounded text-indigo-600"
+                  />
+                </label>
+              )}
+              <label className="flex min-h-16 cursor-pointer items-center justify-between gap-4 p-4">
+                <span><strong className="block text-sm text-slate-800">Mascot & mẹo học</strong><small className="mt-1 block text-xs text-slate-500">Ẩn hoàn toàn mascot nếu bạn muốn tập trung.</small></span>
+                <input type="checkbox" checked={petEnabled} onChange={event => { setPetEnabled(event.target.checked); localStorage.setItem('pref_pet_enabled', String(event.target.checked)); }} className="h-5 w-5 rounded text-indigo-600" />
+              </label>
+              <label className="flex min-h-16 cursor-pointer items-center justify-between gap-4 p-4">
+                <span><strong className="block text-sm text-slate-800">Giảm hiệu ứng chuyển động</strong><small className="mt-1 block text-xs text-slate-500">Phù hợp khi dễ chóng mặt hoặc muốn tiết kiệm pin.</small></span>
+                <input type="checkbox" checked={reduceMotion} onChange={event => setReduceMotion(event.target.checked)} className="h-5 w-5 rounded text-indigo-600" />
+              </label>
+            </div>
+            <button type="button" onClick={() => setShowPreferences(false)} className="mt-5 min-h-11 w-full rounded-xl bg-slate-950 text-sm font-black text-white hover:bg-indigo-600">Hoàn tất</button>
+          </section>
+        </div>
+      )}
+
+      {reportQuestion && (
+        <QuestionReportModal
+          question={reportQuestion}
+          certId={activeCertId}
+          reporterName={username}
+          onClose={() => setReportQuestion(null)}
+          onResult={(message, type) => showAppToast(message, type)}
+        />
+      )}
     </div>
   );
 }

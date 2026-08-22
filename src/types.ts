@@ -41,6 +41,11 @@ export interface Question {
   category: string; // e.g. "Responsible AI", "Copilot CLI", "Features & Optimization", "Security & Licensing"
   tags?: string[];
   imageUrl?: string;
+  /** Editorial lifecycle used by the Admin publishing workflow. */
+  status?: 'draft' | 'review' | 'published' | 'archived';
+  sourceTitle?: string;
+  sourceUrl?: string;
+  lastVerifiedAt?: string;
 }
 
 export type StudyMode = 'home' | 'practice' | 'exam' | 'guide' | 'admin' | 'group';
