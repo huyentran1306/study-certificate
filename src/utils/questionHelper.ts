@@ -1,7 +1,7 @@
 import { Question } from '../types';
 
 export function isMatchingQuestion(question: Question): boolean {
-  return question.questionType === 'matching_dropdown' || question.questionType === 'matching_drag_drop';
+  return question.questionType === 'matching_dropdown' || question.questionType === 'matching_drag_drop' || question.questionType === 'drag_drop';
 }
 
 export function decodeRowSelections(values: string[]): Record<string, string> {

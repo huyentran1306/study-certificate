@@ -13,7 +13,11 @@
     "correctAnswers": ["A"],
     "explanation": "Cơ sở dữ liệu tài liệu phân tán toàn cầu phù hợp để lưu dữ liệu dạng document trên nhiều khu vực.",
     "category": "Demo - Multiple Choice",
-    "tags": ["DEMO-ALL-TYPES", "Single choice"]
+    "tags": ["DEMO-ALL-TYPES", "Single choice"],
+    "status": "published",
+    "sourceTitle": "Tài liệu chính thức hoặc ghi chú nguồn",
+    "sourceUrl": "https://example.com/source",
+    "lastVerifiedAt": "2026-08-22"
   },
   {
     "id": "demo-multi-select",

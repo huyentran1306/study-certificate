@@ -51,42 +51,26 @@ EXECUTE FUNCTION public.set_custom_certificates_updated_at();
 
 ALTER TABLE public.custom_certificates ENABLE ROW LEVEL SECURITY;
 
-DROP POLICY IF EXISTS "custom certificates shared read"
-  ON public.custom_certificates;
+-- Safe bootstrap: the public app may read catalogue metadata, but this script
+-- never grants anonymous writes and never exposes access_keys. Run
+-- security_content_workflow_migration.sql afterwards to enable role-based
+-- editor/admin writes.
+DROP POLICY IF EXISTS "custom certificates shared read" ON public.custom_certificates;
+DROP POLICY IF EXISTS "custom certificates shared insert" ON public.custom_certificates;
+DROP POLICY IF EXISTS "custom certificates shared update" ON public.custom_certificates;
+DROP POLICY IF EXISTS "custom certificates shared delete" ON public.custom_certificates;
+
 CREATE POLICY "custom certificates shared read"
   ON public.custom_certificates
   FOR SELECT
   TO anon, authenticated
   USING (TRUE);
 
-DROP POLICY IF EXISTS "custom certificates shared insert"
-  ON public.custom_certificates;
-CREATE POLICY "custom certificates shared insert"
-  ON public.custom_certificates
-  FOR INSERT
-  TO anon, authenticated
-  WITH CHECK (TRUE);
-
-DROP POLICY IF EXISTS "custom certificates shared update"
-  ON public.custom_certificates;
-CREATE POLICY "custom certificates shared update"
-  ON public.custom_certificates
-  FOR UPDATE
-  TO anon, authenticated
-  USING (TRUE)
-  WITH CHECK (TRUE);
-
-DROP POLICY IF EXISTS "custom certificates shared delete"
-  ON public.custom_certificates;
-CREATE POLICY "custom certificates shared delete"
-  ON public.custom_certificates
-  FOR DELETE
-  TO anon, authenticated
-  USING (TRUE);
-
-GRANT SELECT, INSERT, UPDATE, DELETE
-  ON TABLE public.custom_certificates
-  TO anon, authenticated;
+REVOKE ALL ON TABLE public.custom_certificates FROM anon, authenticated;
+GRANT SELECT (
+  id, code, name, description, difficulty, estimated_hours,
+  color_class, icon_name, is_vip, is_disabled, created_at, updated_at
+) ON public.custom_certificates TO anon, authenticated;
 
 COMMIT;
 

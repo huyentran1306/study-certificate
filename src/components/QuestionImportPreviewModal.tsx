@@ -1,8 +1,9 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight, Database, Eye, Loader2, X } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, ChevronLeft, ChevronRight, Database, Eye, Loader2, X } from 'lucide-react';
 import { Question } from '../types';
 import { QUESTION_TYPE_LABELS } from '../data/questionImportSamples';
 import InteractiveQuestionSandbox from './InteractiveQuestionSandbox';
+import { isSafeExternalUrl } from '../utils/url';
 
 interface QuestionImportPreviewModalProps {
   questions: Question[];
@@ -29,6 +30,19 @@ export default function QuestionImportPreviewModal({
 }: QuestionImportPreviewModalProps) {
   const question = questions[activeIndex];
   if (!question) return null;
+  const qualityWarnings = questions.reduce((total, item) => {
+    if (!item.explanation?.trim()) total += 1;
+    if (!item.sourceTitle && !item.sourceUrl) total += 1;
+    if (item.sourceUrl && !isSafeExternalUrl(item.sourceUrl)) total += 1;
+    if (item.questionType === 'image_hotspot' && (!item.imageUrl || item.options.some(option => !option.hotspot))) total += 1;
+    return total;
+  }, 0);
+  const currentWarnings = [
+    !question.explanation?.trim() ? 'Thiếu giải thích' : '',
+    !question.sourceTitle && !question.sourceUrl ? 'Thiếu nguồn tham khảo' : '',
+    question.sourceUrl && !isSafeExternalUrl(question.sourceUrl) ? 'URL nguồn không hợp lệ' : '',
+    question.questionType === 'image_hotspot' && (!question.imageUrl || question.options.some(option => !option.hotspot)) ? 'Hotspot chưa hợp lệ' : '',
+  ].filter(Boolean);
 
   return (
     <div className="fixed inset-0 z-[120] flex flex-col bg-slate-950/70 backdrop-blur-sm">
@@ -79,6 +93,13 @@ export default function QuestionImportPreviewModal({
               <span className="text-xs font-black text-slate-400">{activeIndex + 1}/{questions.length}</span>
             </div>
 
+            <div className={`mb-4 flex flex-wrap items-center gap-2 rounded-2xl border p-3 text-[11px] font-bold ${
+              currentWarnings.length ? 'border-amber-200 bg-amber-50 text-amber-800' : 'border-emerald-100 bg-emerald-50 text-emerald-700'
+            }`}>
+              {currentWarnings.length ? <AlertTriangle className="h-4 w-4 shrink-0" /> : <CheckCircle2 className="h-4 w-4 shrink-0" />}
+              {currentWarnings.length ? currentWarnings.map(warning => <span key={warning} className="rounded-lg bg-white/70 px-2 py-1">{warning}</span>) : 'Câu hỏi này đã qua kiểm tra cấu trúc cơ bản.'}
+            </div>
+
             <InteractiveQuestionSandbox question={question} />
           </div>
         </main>
@@ -89,10 +110,15 @@ export default function QuestionImportPreviewModal({
           <button type="button" onClick={() => onIndexChange(Math.max(0, activeIndex - 1))} disabled={activeIndex === 0 || isSaving} className="flex min-h-10 items-center gap-1 rounded-xl border border-slate-200 px-3 text-xs font-bold text-slate-600 disabled:opacity-40"><ChevronLeft className="h-4 w-4" />Trước</button>
           <button type="button" onClick={() => onIndexChange(Math.min(questions.length - 1, activeIndex + 1))} disabled={activeIndex === questions.length - 1 || isSaving} className="flex min-h-10 items-center gap-1 rounded-xl border border-slate-200 px-3 text-xs font-bold text-slate-600 disabled:opacity-40">Tiếp<ChevronRight className="h-4 w-4" /></button>
         </div>
-        <button type="button" onClick={onConfirm} disabled={isSaving} className="flex min-h-11 items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 text-sm font-black text-white shadow-md hover:bg-indigo-700 disabled:cursor-wait disabled:opacity-60">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+          <span className={`text-[10px] font-bold ${qualityWarnings ? 'text-amber-700' : 'text-emerald-700'}`}>
+            {qualityWarnings ? `${qualityWarnings} cảnh báo chất lượng cần review sau import` : 'Không phát hiện cảnh báo chất lượng'}
+          </span>
+          <button type="button" onClick={onConfirm} disabled={isSaving} className="flex min-h-11 items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 text-sm font-black text-white shadow-md hover:bg-indigo-700 disabled:cursor-wait disabled:opacity-60">
           {isSaving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Database className="h-4 w-4" />}
           {isSaving ? 'Đang lưu Database...' : `Xác nhận import ${questions.length} câu`}
-        </button>
+          </button>
+        </div>
       </div>
     </div>
   );

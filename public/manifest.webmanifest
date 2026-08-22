@@ -1,0 +1,19 @@
+{
+  "name": "Cert Prep Hub",
+  "short_name": "Cert Prep",
+  "description": "Luyện tập, thi thử và theo dõi tiến độ chứng chỉ trên nhiều thiết bị.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#4f46e5",
+  "lang": "vi",
+  "icons": [
+    {
+      "src": "./app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

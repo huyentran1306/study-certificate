@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Bookmark, CheckCircle, AlertTriangle, AlertCircle, ArrowRight, HelpCircle, Info, ZoomIn, ZoomOut, Maximize2, RotateCcw, X, Sparkles, Check } from 'lucide-react';
+import { Bookmark, CheckCircle, AlertTriangle, AlertCircle, ArrowRight, HelpCircle, Info, ZoomIn, ZoomOut, Maximize2, RotateCcw, X, Sparkles, Check, Flag, ExternalLink, CalendarCheck } from 'lucide-react';
 import { Question } from '../types';
 import MatchingQuestion from './MatchingQuestion';
 import HotspotQuestion from './HotspotQuestion';
 import FormattedText from './FormattedText';
+import { isSafeExternalUrl } from '../utils/url';
 import { decodeRowSelections, isMatchingQuestion } from '../utils/questionHelper';
 
 interface QuizCardProps {
@@ -17,6 +18,7 @@ interface QuizCardProps {
   isFirst?: boolean;
   isLast?: boolean;
   previewMode?: boolean;
+  onReportIssue?: (question: Question) => void;
 }
 
 export default function QuizCard({
@@ -29,7 +31,8 @@ export default function QuizCard({
   onPrev,
   isFirst = false,
   isLast = false,
-  previewMode = false
+  previewMode = false,
+  onReportIssue,
 }: QuizCardProps) {
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
   const [statementSelections, setStatementSelections] = useState<Record<string, 'Yes' | 'No'>>({});
@@ -230,10 +233,21 @@ export default function QuizCard({
         </div>
         
         <div className="flex items-center gap-2">
+          {onReportIssue && (
+            <button
+              type="button"
+              onClick={() => onReportIssue(question)}
+              className="flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-400 transition hover:border-amber-200 hover:bg-amber-50 hover:text-amber-600"
+              title="Báo câu hỏi có vấn đề"
+              aria-label={`Báo vấn đề cho câu hỏi ${question.questionNumber}`}
+            >
+              <Flag className="h-4 w-4" />
+            </button>
+          )}
           {/* Bookmark Button */}
           <button
             onClick={() => onToggleBookmark(question.id)}
-            className={`p-2 rounded-xl transition-all border ${
+            className={`flex min-h-11 min-w-11 items-center justify-center rounded-xl transition-all border ${
               isBookmarked 
                 ? 'bg-rose-50 text-rose-500 border-rose-100' 
                 : 'text-slate-400 hover:text-slate-600 bg-white hover:bg-slate-50 border-slate-200'
@@ -560,6 +574,27 @@ export default function QuizCard({
               <div className="text-xs text-slate-700 leading-relaxed font-sans space-y-2">
                 <FormattedText text={question.explanation} variant="explanation" />
               </div>
+
+              {(question.sourceTitle || question.sourceUrl || question.lastVerifiedAt) && (
+                <div className="flex flex-col gap-2 rounded-xl border border-indigo-100 bg-white p-3 text-[11px] text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex min-w-0 items-center gap-2">
+                    <ExternalLink className="h-3.5 w-3.5 shrink-0 text-indigo-500" />
+                    {isSafeExternalUrl(question.sourceUrl) ? (
+                      <a href={question.sourceUrl} target="_blank" rel="noopener noreferrer" className="truncate font-bold text-indigo-700 hover:underline">
+                        {question.sourceTitle || 'Xem nguồn tham khảo'}
+                      </a>
+                    ) : (
+                      <span className="truncate font-semibold">{question.sourceTitle}</span>
+                    )}
+                  </div>
+                  {question.lastVerifiedAt && (
+                    <span className="flex shrink-0 items-center gap-1 font-semibold">
+                      <CalendarCheck className="h-3.5 w-3.5" />
+                      Kiểm chứng {new Date(question.lastVerifiedAt).toLocaleDateString('vi-VN')}
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         )}

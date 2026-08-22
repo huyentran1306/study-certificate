@@ -347,7 +347,11 @@ export function smartParseQuestions(input: string, startNumber: number = 1): Que
           explanation: item.explanation || '',
           category: item.category || 'General',
           tags: item.tags || [],
-          imageUrl: item.imageUrl || undefined
+          imageUrl: item.imageUrl || undefined,
+          status: item.status || 'published',
+          sourceTitle: item.sourceTitle || undefined,
+          sourceUrl: item.sourceUrl || undefined,
+          lastVerifiedAt: item.lastVerifiedAt || undefined,
         };
       });
     } catch {

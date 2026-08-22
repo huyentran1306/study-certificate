@@ -26,6 +26,10 @@ export const QUESTION_IMPORT_SAMPLES: Question[] = [
     explanation: 'Tool calling cho phép agent gọi dịch vụ và hệ thống bên ngoài.',
     category: 'Agent Architecture',
     tags: ['Tools', 'Agents'],
+    status: 'published',
+    sourceTitle: 'Tài liệu chính thức hoặc ghi chú nguồn',
+    sourceUrl: 'https://example.com/source',
+    lastVerifiedAt: '2026-08-22',
   },
   {
     id: 'sample-multi-select',
@@ -124,4 +128,3 @@ export const QUESTION_IMPORT_SAMPLES: Question[] = [
     tags: ['Hotspot', 'Image'],
   },
 ];
-

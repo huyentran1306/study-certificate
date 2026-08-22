@@ -19,8 +19,8 @@ CREATE POLICY "Public read access for cert_vip_statuses" ON cert_vip_statuses
     FOR SELECT USING (true);
 
 DROP POLICY IF EXISTS "Public write access for cert_vip_statuses" ON cert_vip_statuses;
-CREATE POLICY "Public write access for cert_vip_statuses" ON cert_vip_statuses
-    FOR ALL USING (true) WITH CHECK (true);
+REVOKE ALL ON TABLE cert_vip_statuses FROM anon, authenticated;
+GRANT SELECT ON TABLE cert_vip_statuses TO anon, authenticated;
 
 -- 2. Table for Certificate Disabled Statuses
 CREATE TABLE IF NOT EXISTS cert_disabled_statuses (
@@ -36,5 +36,8 @@ CREATE POLICY "Public read access for cert_disabled_statuses" ON cert_disabled_s
     FOR SELECT USING (true);
 
 DROP POLICY IF EXISTS "Public write access for cert_disabled_statuses" ON cert_disabled_statuses;
-CREATE POLICY "Public write access for cert_disabled_statuses" ON cert_disabled_statuses
-    FOR ALL USING (true) WITH CHECK (true);
+REVOKE ALL ON TABLE cert_disabled_statuses FROM anon, authenticated;
+GRANT SELECT ON TABLE cert_disabled_statuses TO anon, authenticated;
+
+-- This bootstrap intentionally grants read-only access. Run
+-- security_content_workflow_migration.sql to enable role-based Admin writes.

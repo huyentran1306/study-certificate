@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from 'react';
 import { Upload, ClipboardList, PlusCircle, CheckCircle, FileJson, AlertCircle, FileText, Sparkles, BookOpen, FileSpreadsheet, Image, Link, Trash2, FolderOpen, Info, X, Copy, Eye } from 'lucide-react';
 import { Question } from '../types';
-import * as XLSX from 'xlsx';
+import readXlsxFile from 'read-excel-file/browser';
 import QuestionImportPreviewModal from './QuestionImportPreviewModal';
 import { QUESTION_IMPORT_SAMPLES, QUESTION_TYPE_LABELS } from '../data/questionImportSamples';
 
@@ -135,6 +135,10 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
       category: q.category || 'Chủ đề tự chọn',
       tags: Array.isArray(q.tags) ? q.tags : [],
       imageUrl: q.imageUrl || undefined,
+      status: q.status || 'published',
+      sourceTitle: q.sourceTitle || undefined,
+      sourceUrl: q.sourceUrl || undefined,
+      lastVerifiedAt: q.lastVerifiedAt || undefined,
     };
   };
 
@@ -659,27 +663,55 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
     setSuccessMsg(`Quét bảng tính thành công! Tìm thấy ${questionsList.length} câu hỏi. Hãy xem trước bảng ghép ảnh ở dưới trước khi lưu.`);
   };
 
-  const handleExcelFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const parseCsvRows = (content: string): string[][] => {
+    const rows: string[][] = [];
+    let row: string[] = [];
+    let cell = '';
+    let quoted = false;
+    for (let index = 0; index < content.length; index += 1) {
+      const char = content[index];
+      if (char === '"' && quoted && content[index + 1] === '"') {
+        cell += '"';
+        index += 1;
+      } else if (char === '"') {
+        quoted = !quoted;
+      } else if (char === ',' && !quoted) {
+        row.push(cell);
+        cell = '';
+      } else if ((char === '\n' || char === '\r') && !quoted) {
+        if (char === '\r' && content[index + 1] === '\n') index += 1;
+        row.push(cell);
+        if (row.some(value => value.trim())) rows.push(row);
+        row = [];
+        cell = '';
+      } else {
+        cell += char;
+      }
+    }
+    row.push(cell);
+    if (row.some(value => value.trim())) rows.push(row);
+    return rows;
+  };
+
+  const handleExcelFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
     setFileError(null);
     setSuccessMsg(null);
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = (evt) => {
-      try {
-        const bstr = evt.target?.result;
-        const workbook = XLSX.read(bstr, { type: 'binary' });
-        const sheetName = workbook.SheetNames[0];
-        const worksheet = workbook.Sheets[sheetName];
-        const data = XLSX.utils.sheet_to_json(worksheet, { header: 1 }) as any[][];
-        
-        processExcelRows(data);
-      } catch (err: any) {
-        setFileError('Lỗi đọc file Excel: ' + (err.message || err));
-      }
-    };
-    reader.readAsBinaryString(file);
+    if (file.size > 15 * 1024 * 1024) {
+      setFileError('Tệp vượt quá 15 MB. Hãy tách thành nhiều batch nhỏ để import an toàn.');
+      return;
+    }
+
+    try {
+      const rows = file.name.toLowerCase().endsWith('.csv')
+        ? parseCsvRows(await file.text())
+        : await readXlsxFile(file);
+      processExcelRows(rows as any[][]);
+    } catch (err: any) {
+      setFileError('Lỗi đọc file Excel: ' + (err.message || err));
+    }
   };
 
   const handleExcelPasteImport = () => {
@@ -1026,17 +1058,17 @@ export default function CustomQuestionsImport({ onImport, currentCount, existing
               {excelInputMode === 'file' ? (
                 <div className="space-y-2.5">
                   <div className="text-slate-500 text-[11px]">
-                    Hỗ trợ tệp <code className="font-bold bg-slate-200 px-1 rounded text-slate-700">.xlsx</code>, <code className="font-bold bg-slate-200 px-1 rounded text-slate-700">.xls</code>, <code className="font-bold bg-slate-200 px-1 rounded text-slate-700">.csv</code>. Định dạng bảng cần có tiêu đề dòng đầu tiên.
+                    Hỗ trợ tệp <code className="font-bold bg-slate-200 px-1 rounded text-slate-700">.xlsx</code> và <code className="font-bold bg-slate-200 px-1 rounded text-slate-700">.csv</code> tối đa 15 MB. Định dạng bảng cần có tiêu đề dòng đầu tiên.
                   </div>
                   <label className="flex flex-col items-center justify-center p-5 border-2 border-dashed border-slate-250 rounded-xl cursor-pointer bg-white hover:bg-slate-100/70 transition-colors text-center">
                     <Upload className="w-8 h-8 text-emerald-400 mb-2" />
                     <p className="text-xs text-slate-700 font-bold">Chọn File Excel / CSV câu hỏi</p>
                     <p className="text-[10px] text-slate-400 mt-1">Hệ thống tự động dò cột: Câu số, Đề bài, A, B, C, D, Đáp án đúng, Giải thích</p>
-                    <input 
-                      type="file" 
-                      accept=".xlsx,.xls,.csv" 
-                      className="hidden" 
-                      onChange={handleExcelFileChange} 
+                    <input
+                      type="file"
+                      accept=".xlsx,.csv"
+                      className="hidden"
+                      onChange={handleExcelFileChange}
                     />
                   </label>
                 </div>
