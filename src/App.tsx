@@ -48,6 +48,7 @@ import QuestionReportModal from './components/QuestionReportModal';
 import { BUILTIN_QUESTION_COUNTS, loadBuiltinQuestions } from './data/questionCatalog';
 import { supabase } from './lib/supabase';
 import { getQuestionSearchScore, matchesAdvancedQuestionSearch } from './lib/questionSearch';
+import { getAuthRedirectUrl } from './utils/url';
 
 const MockExam = lazy(() => import('./components/MockExam'));
 const CustomQuestionsImport = lazy(() => import('./components/CustomQuestionsImport'));
@@ -1056,7 +1057,10 @@ export default function App() {
         const { data, error } = await supabase.auth.signUp({
           email: authEmail.trim(),
           password: authPassword,
-          options: { data: { display_name: authDisplayName.trim() } },
+          options: {
+            data: { display_name: authDisplayName.trim() },
+            emailRedirectTo: getAuthRedirectUrl(window.location.href),
+          },
         });
         if (error) throw error;
         if (!data.session) {
