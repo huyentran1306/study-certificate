@@ -4,9 +4,27 @@ import path from 'path';
 import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
+  const buildId = Date.now().toString(36);
+
   return {
     base: './',
-    plugins: [react(), tailwindcss()],
+    define: {
+      __APP_BUILD_ID__: JSON.stringify(buildId),
+    },
+    plugins: [
+      react(),
+      tailwindcss(),
+      {
+        name: 'emit-build-version',
+        generateBundle() {
+          this.emitFile({
+            type: 'asset',
+            fileName: 'version.json',
+            source: JSON.stringify({ buildId }),
+          });
+        },
+      },
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

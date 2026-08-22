@@ -427,22 +427,15 @@ export default function AdminPanel({
       else if (activeCertId === 'dp-800') staticDefaultQs = dp800Questions;
       else if (activeCertId === 'istqb-ai') staticDefaultQs = istqbAiQuestions;
 
-      const isSystemCertificate = ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'].includes(activeCertId);
-      const stored = isSystemCertificate ? localStorage.getItem(`questions_${activeCertId}`) : null;
-      let localQs: Question[] = [];
+      let localQs = staticDefaultQs;
+      const stored = localStorage.getItem(`questions_${activeCertId}`);
       if (stored) {
         try {
-          const parsed = JSON.parse(stored);
-          if (parsed.length >= staticDefaultQs.length) {
-            localQs = parsed;
-          } else {
-            // Stale cache! Clean it up
-            localStorage.removeItem(`questions_${activeCertId}`);
-          }
-        } catch (e) { console.error(e); }
-      }
-      if (localQs.length === 0) {
-        localQs = staticDefaultQs;
+          const parsed = JSON.parse(stored) as Question[];
+          if (Array.isArray(parsed) && parsed.length >= staticDefaultQs.length) localQs = parsed;
+        } catch {
+          localStorage.removeItem(`questions_${activeCertId}`);
+        }
       }
 
       // 2. Load from Supabase to stay updated
@@ -490,8 +483,10 @@ export default function AdminPanel({
           };
         });
         setQuestions(dbQs);
-        if (isSystemCertificate) {
+        try {
           localStorage.setItem(`questions_${activeCertId}`, JSON.stringify(dbQs));
+        } catch (cacheError) {
+          console.warn(`Could not cache questions for ${activeCertId}:`, cacheError);
         }
       } else {
         setQuestions(localQs);
@@ -2035,17 +2030,8 @@ export default function AdminPanel({
                       const cert = certificates.find(c => c.id === p.cert_id);
                       const certCode = cert ? cert.code : p.cert_id;
                       
-                      // Calculate total questions dynamically from stored questions or default to 50
-                      const storedQs = localStorage.getItem(`questions_${p.cert_id}`);
-                      let totalQuestionsCount = 50;
-                      if (storedQs) {
-                        try {
-                          const parsedList = JSON.parse(storedQs);
-                          if (Array.isArray(parsedList) && parsedList.length > 0) {
-                            totalQuestionsCount = parsedList.length;
-                          }
-                        } catch (e) {}
-                      }
+                      // Use the authoritative Database count instead of a stale browser cache.
+                      const totalQuestionsCount = certificateQuestionCounts[p.cert_id] || 50;
 
                       const completionPercent = Math.min(Math.round(((p.answered_count || 0) / totalQuestionsCount) * 100), 100);
                       const accuracyPercent = p.answered_count > 0 

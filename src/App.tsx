@@ -101,6 +101,35 @@ function DynamicIcon({ name, className = "w-5 h-5" }: { name: string; className?
   }
 }
 
+const APP_CACHE_VERSION_KEY = 'study_app_build_id';
+
+function prepareVersionedLocalCache() {
+  if (typeof window === 'undefined') return;
+  const previousBuildId = localStorage.getItem(APP_CACHE_VERSION_KEY);
+  if (previousBuildId === __APP_BUILD_ID__) return;
+
+  // Preserve any not-yet-migrated local certificate questions long enough for
+  // the existing migration flow to upload them to Supabase.
+  const legacyCertificateIds = new Set<string>();
+  try {
+    const legacy = JSON.parse(localStorage.getItem('study_certs_custom') || '[]') as Certificate[];
+    legacy.forEach(cert => cert?.id && legacyCertificateIds.add(cert.id));
+  } catch {}
+
+  Object.keys(localStorage).forEach(key => {
+    if (!key.startsWith('questions_')) return;
+    const certId = key.slice('questions_'.length);
+    if (!legacyCertificateIds.has(certId)) localStorage.removeItem(key);
+  });
+
+  // These values are shared configuration stored in Supabase. Force a fresh
+  // read after deployment while keeping user progress, login and preferences.
+  ['vip_key_configs_v3', 'cert_vip_overrides', 'cert_disabled_overrides'].forEach(key => localStorage.removeItem(key));
+  localStorage.setItem(APP_CACHE_VERSION_KEY, __APP_BUILD_ID__);
+}
+
+prepareVersionedLocalCache();
+
 export default function App() {
   // Active Certification ID
   const [activeCertId, setActiveCertId] = useState<string>('gh-300');
@@ -258,6 +287,45 @@ export default function App() {
     }
   }, [appToast]);
 
+  // GitHub Pages caches index.html for up to 10 minutes. Compare the running
+  // bundle with an uncached build marker and move to a versioned URL when a
+  // newer deployment is available, forcing the fresh hashed assets to load.
+  useEffect(() => {
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') return;
+
+    let checking = false;
+    const checkForNewBuild = async () => {
+      if (checking) return;
+      checking = true;
+      try {
+        const versionUrl = new URL('version.json', document.baseURI);
+        versionUrl.searchParams.set('t', Date.now().toString());
+        const response = await fetch(versionUrl, { cache: 'no-store' });
+        if (!response.ok) return;
+        const remote = await response.json() as { buildId?: string };
+        if (!remote.buildId || remote.buildId === __APP_BUILD_ID__) return;
+
+        const currentUrl = new URL(window.location.href);
+        if (currentUrl.searchParams.get('__v') !== remote.buildId) {
+          currentUrl.searchParams.set('__v', remote.buildId);
+          window.location.replace(currentUrl.toString());
+        }
+      } catch (error) {
+        console.warn('Could not check the deployed app version:', error);
+      } finally {
+        checking = false;
+      }
+    };
+
+    checkForNewBuild();
+    const interval = window.setInterval(checkForNewBuild, 5 * 60 * 1000);
+    window.addEventListener('focus', checkForNewBuild);
+    return () => {
+      window.clearInterval(interval);
+      window.removeEventListener('focus', checkForNewBuild);
+    };
+  }, []);
+
   // Current states - default to the new Home view unless joinGroup URL param exists
   const [mode, setMode] = useState<StudyMode>(() => {
     if (typeof window !== 'undefined') {
@@ -358,6 +426,15 @@ export default function App() {
     }
 
     let activeQuestions = defaultQs;
+    const cachedQuestions = localStorage.getItem(`questions_${certId}`);
+    if (cachedQuestions) {
+      try {
+        const parsed = JSON.parse(cachedQuestions) as Question[];
+        if (Array.isArray(parsed) && parsed.length >= defaultQs.length) activeQuestions = parsed;
+      } catch {
+        localStorage.removeItem(`questions_${certId}`);
+      }
+    }
 
     // Try fetching from database first
     try {
@@ -397,8 +474,12 @@ export default function App() {
     }
 
     setQuestions(activeQuestions);
-    if (activeQuestions.length > 0 && ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'].includes(certId)) {
-      localStorage.setItem(`questions_${certId}`, JSON.stringify(activeQuestions));
+    if (activeQuestions.length > 0) {
+      try {
+        localStorage.setItem(`questions_${certId}`, JSON.stringify(activeQuestions));
+      } catch (error) {
+        console.warn(`Could not cache questions for ${certId}:`, error);
+      }
     }
 
     // 2. Load progress & history
@@ -551,6 +632,7 @@ export default function App() {
 
           if (migrationSucceeded) {
             localStorage.removeItem('study_certs_custom');
+            legacyCertificates.forEach(cert => localStorage.removeItem(`questions_${cert.id}`));
           }
         } catch (error) {
           console.error('Could not migrate legacy local certificate metadata:', error);
@@ -1645,19 +1727,17 @@ export default function App() {
                 else if (cert.id === 'dp-800') certProgress.total = dp800Questions.length;
                 else if (cert.id === 'istqb-ai') certProgress.total = istqbAiQuestions.length;
                 else if (cert.id === 'ab-731') certProgress.total = 100;
-                
-                // Overwrite with actual local count if exists and is larger (or clean up stale cache)
+
+                // The cache is guaranteed to belong to this app build. Use it
+                // for accurate custom-certificate counts and fast home cards.
                 const storedQs = localStorage.getItem(`questions_${cert.id}`);
                 if (storedQs) {
                   try {
                     const parsedQs = JSON.parse(storedQs);
-                    if (parsedQs.length > certProgress.total) {
-                      certProgress.total = parsedQs.length;
-                    } else if (parsedQs.length < certProgress.total && ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'].includes(cert.id)) {
-                      // Stale localStorage cache from previous version; remove it so fresh static data is used
-                      localStorage.removeItem(`questions_${cert.id}`);
-                    }
-                  } catch {}
+                    if (Array.isArray(parsedQs) && parsedQs.length > 0) certProgress.total = parsedQs.length;
+                  } catch {
+                    localStorage.removeItem(`questions_${cert.id}`);
+                  }
                 }
 
                 const storedProg = localStorage.getItem(`progress_${cert.id}`);
