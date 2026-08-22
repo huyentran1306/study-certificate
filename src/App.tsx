@@ -258,6 +258,8 @@ export default function App() {
   const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
   const [authBusy, setAuthBusy] = useState(false);
   const [authError, setAuthError] = useState('');
+  const [authConfirmationPending, setAuthConfirmationPending] = useState(false);
+  const [authConfirmationMessage, setAuthConfirmationMessage] = useState('');
   const [authUserId, setAuthUserId] = useState('');
   const [userRole, setUserRole] = useState<'student' | 'editor' | 'admin'>('student');
   const [anonymousMode, setAnonymousMode] = useState(() => localStorage.getItem('study_anonymous_mode') === 'true');
@@ -1013,6 +1015,8 @@ export default function App() {
     setShowAuthModal(false);
     setPendingCertAccess(null);
     setAuthError('');
+    setAuthConfirmationPending(false);
+    setAuthConfirmationMessage('');
   };
 
   const handleContinueAnonymously = () => {
@@ -1051,6 +1055,8 @@ export default function App() {
 
     setAuthBusy(true);
     setAuthError('');
+    setAuthConfirmationPending(false);
+    setAuthConfirmationMessage('');
     try {
       let signedInUserId = '';
       if (authMode === 'signup') {
@@ -1066,6 +1072,8 @@ export default function App() {
         if (!data.session) {
           showAppToast('Đã tạo tài khoản. Hãy kiểm tra email để xác nhận đăng ký.', 'success');
           setAuthMode('signin');
+          setAuthConfirmationPending(true);
+          setAuthConfirmationMessage('Tài khoản đã được tạo nhưng chưa kích hoạt. Hãy mở email xác nhận rồi đăng nhập lại. Nếu chưa thấy, kiểm tra cả thư Spam hoặc gửi lại email bên dưới.');
           return;
         }
         signedInUserId = data.session.user.id;
@@ -1096,7 +1104,41 @@ export default function App() {
         }
       }
     } catch (error: any) {
-      setAuthError(error.message || 'Không thể đăng nhập.');
+      const errorMessage = error.message || 'Không thể đăng nhập.';
+      if (errorMessage.toLowerCase().includes('email not confirmed')) {
+        setAuthConfirmationPending(true);
+        setAuthConfirmationMessage('Email này chưa được xác nhận. Hãy mở link trong email đăng ký hoặc bấm gửi lại email xác nhận bên dưới.');
+      } else {
+        setAuthError(errorMessage);
+      }
+    } finally {
+      setAuthBusy(false);
+    }
+  };
+
+  const handleResendConfirmation = async () => {
+    const email = authEmail.trim();
+    if (!email) {
+      setAuthError('Nhập email đã đăng ký để gửi lại thư xác nhận.');
+      return;
+    }
+
+    setAuthBusy(true);
+    setAuthError('');
+    try {
+      const { error } = await supabase.auth.resend({
+        type: 'signup',
+        email,
+        options: {
+          emailRedirectTo: getAuthRedirectUrl(window.location.href),
+        },
+      });
+      if (error) throw error;
+      setAuthConfirmationPending(true);
+      setAuthConfirmationMessage('Đã gửi lại email xác nhận. Hãy kiểm tra hộp thư đến và Spam; link mới sẽ mở đúng trang ứng dụng đang deploy.');
+      showAppToast('Đã gửi lại email xác nhận.', 'success');
+    } catch (error: any) {
+      setAuthError(error.message || 'Không thể gửi lại email xác nhận. Vui lòng thử lại sau.');
     } finally {
       setAuthBusy(false);
     }
@@ -2921,7 +2963,7 @@ export default function App() {
 
               <div className="grid grid-cols-2 rounded-xl bg-slate-100 p-1">
                 <button type="button" onClick={() => { setAuthMode('signin'); setAuthError(''); }} className={`min-h-11 rounded-lg text-xs font-black ${authMode === 'signin' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}>Đăng nhập</button>
-                <button type="button" onClick={() => { setAuthMode('signup'); setAuthError(''); }} className={`min-h-11 rounded-lg text-xs font-black ${authMode === 'signup' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}>Đăng ký</button>
+                <button type="button" onClick={() => { setAuthMode('signup'); setAuthError(''); setAuthConfirmationPending(false); setAuthConfirmationMessage(''); }} className={`min-h-11 rounded-lg text-xs font-black ${authMode === 'signup' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}>Đăng ký</button>
               </div>
 
               {authMode === 'signup' && (
@@ -2937,7 +2979,11 @@ export default function App() {
                   type="email"
                   placeholder="ban@example.com"
                   value={authEmail}
-                  onChange={(e) => setAuthEmail(e.target.value)}
+                  onChange={(e) => {
+                    setAuthEmail(e.target.value);
+                    setAuthConfirmationPending(false);
+                    setAuthConfirmationMessage('');
+                  }}
                   className="min-h-11 w-full px-4 bg-slate-50 border border-slate-200 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 font-semibold text-slate-800"
                   autoFocus
                 />
@@ -2949,6 +2995,21 @@ export default function App() {
               </label>
 
               {authError && <p className="rounded-xl border border-rose-100 bg-rose-50 p-3 text-xs font-bold text-rose-700">{authError}</p>}
+
+              {authConfirmationPending && (
+                <div className="rounded-2xl border border-amber-200 bg-amber-50 p-3.5">
+                  <p className="text-xs font-bold leading-relaxed text-amber-900">{authConfirmationMessage}</p>
+                  <button
+                    type="button"
+                    onClick={handleResendConfirmation}
+                    disabled={authBusy}
+                    className="mt-3 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-xl border border-amber-300 bg-white px-4 text-xs font-black text-amber-800 transition hover:bg-amber-100 disabled:cursor-wait disabled:opacity-60"
+                  >
+                    {authBusy ? <Loader2 className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
+                    Gửi lại email xác nhận
+                  </button>
+                </div>
+              )}
 
               <div className="flex gap-2.5 justify-end pt-2">
                 <button
