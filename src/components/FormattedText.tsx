@@ -27,15 +27,15 @@ type Block =
   | { type: 'code'; value: string }
   | { type: 'list'; ordered: boolean; values: string[] };
 
-function toBlocks(text: string): Block[] {
+function toBlocks(text: string, detectCode = true, preserveLineBreaks = false): Block[] {
   const lines = text.replace(/\r\n/g, '\n').split('\n');
   const blocks: Block[] = [];
   let paragraph: string[] = [];
   let list: { ordered: boolean; values: string[] } | null = null;
 
   const flushParagraph = () => {
-    const value = paragraph.join(' ').trim();
-    if (value) blocks.push(isCode(value) ? { type: 'code', value: formatSql(value) } : { type: 'paragraph', value });
+    const value = paragraph.join(preserveLineBreaks ? '\n' : ' ').trim();
+    if (value) blocks.push(detectCode && isCode(value) ? { type: 'code', value: formatSql(value) } : { type: 'paragraph', value });
     paragraph = [];
   };
   const flushList = () => {
@@ -60,7 +60,7 @@ function toBlocks(text: string): Block[] {
       continue;
     }
     flushList();
-    if (isCode(line)) {
+    if (detectCode && isCode(line)) {
       flushParagraph();
       blocks.push({ type: 'code', value: formatSql(line) });
     } else {
@@ -73,7 +73,12 @@ function toBlocks(text: string): Block[] {
 }
 
 export default function FormattedText({ text, variant = 'question', className = '' }: FormattedTextProps) {
-  const blocks = toBlocks(text || '');
+  // Answer options live inside an already styled selection card. Rendering a
+  // detected SQL statement as another dark <pre> card made visually similar
+  // options look inconsistent (for example ALTER DATABASE vs DISABLE TRIGGER).
+  // Keep option text uniform while retaining line breaks; questions and
+  // explanations still receive rich SQL/code formatting.
+  const blocks = toBlocks(text || '', variant !== 'option', variant === 'option');
   const spacing = variant === 'option' ? 'space-y-2' : 'space-y-3';
 
   return (

@@ -86,7 +86,7 @@ export default function MatchingQuestion({
 
   return (
     <div className="space-y-4">
-      <div className="rounded-2xl border border-indigo-100 bg-indigo-50/50 p-3 sm:p-4">
+      {(!submitted || availableChoices.length > 0) && <div className="rounded-2xl border border-indigo-100 bg-indigo-50/50 p-3 sm:p-4">
         <div className="mb-3 flex items-center gap-2 text-xs font-black uppercase tracking-wider text-indigo-700">
           <GripVertical className="h-4 w-4" /> Ngân hàng đáp án
         </div>
@@ -125,7 +125,7 @@ export default function MatchingQuestion({
             <MousePointer2 className="h-3.5 w-3.5" /> Kéo đáp án vào từng dòng, hoặc chọn đáp án rồi bấm vào dòng cần ghép.
           </p>
         )}
-      </div>
+      </div>}
 
       <div className="space-y-3">
         {statements.map((statement, index) => {

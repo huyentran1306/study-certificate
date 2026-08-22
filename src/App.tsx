@@ -50,6 +50,7 @@ import CustomQuestionsImport from './components/CustomQuestionsImport';
 import AdminPanel from './components/AdminPanel';
 import GroupStudy from './components/GroupStudy';
 import FloatingPet from './components/FloatingPet';
+import StudyGuideQuestion from './components/StudyGuideQuestion';
 
 
 // Supabase synchronization functions
@@ -2279,11 +2280,11 @@ export default function App() {
 
         {/* Browsable Study Guide Syllabus Mode Rendering */}
         {mode === 'guide' && (
-          <div className="space-y-6 max-w-4xl mx-auto">
+          <div className="mx-auto max-w-5xl space-y-6">
             <div className="space-y-1">
               <h2 className="text-xl font-bold tracking-tight text-slate-900">Cẩm Nang & Tài Liệu Xem Trước {questions.length} Câu Hỏi</h2>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Đọc tất cả các câu hỏi trắc nghiệm kèm theo cấu trúc đáp án chuẩn xác cùng mục giải thích nghĩa chi tiết từ nguồn tài liệu gốc.
+                Xem trước từng câu theo đúng định dạng thi: trắc nghiệm, Yes/No, dropdown, kéo thả và hotspot, kèm đáp án cùng lời giải chi tiết.
               </p>
             </div>
 
@@ -2291,7 +2292,7 @@ export default function App() {
               {paginatedGuideQuestions.map((q, idx) => {
                 const bookmarked = progress.bookmarkedQuestionIds.includes(q.id);
                 return (
-                  <div key={q.id} className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm space-y-4 hover:shadow-md/50 transition-shadow">
+                  <div key={q.id} className="space-y-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition-shadow hover:shadow-md/50 sm:p-5">
                     <div className="flex items-center justify-between gap-4">
                       <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                         CÂU HỎI {q.questionNumber} • <span className="text-indigo-600 font-semibold">{q.category}</span>
@@ -2306,37 +2307,7 @@ export default function App() {
                       </button>
                     </div>
 
-                    <h3 className="text-sm font-bold text-slate-800 leading-relaxed">{q.text}</h3>
-
-                    {/* Answers Grid layout */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                      {q.options.map(opt => {
-                        const isCorrect = q.correctAnswers.includes(opt.key);
-                        return (
-                          <div 
-                            key={opt.key}
-                            className={`p-3 rounded-lg border flex items-start gap-2.5 ${
-                              isCorrect 
-                                ? 'bg-emerald-50/50 border-emerald-200 text-emerald-900 font-medium' 
-                                : 'bg-slate-50/20 border-slate-150 text-slate-500'
-                            }`}
-                          >
-                            <span className={`w-5 h-5 rounded-full shrink-0 flex items-center justify-center font-bold text-[10px] ${
-                              isCorrect ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-500'
-                            }`}>
-                              {opt.key}
-                            </span>
-                            <span className="leading-relaxed">{opt.text}</span>
-                          </div>
-                        );
-                      })}
-                    </div>
-
-                    {/* Detailed formatted explanation card */}
-                    <div className="bg-slate-50 p-4 border border-slate-100 text-xs text-slate-600 leading-relaxed rounded-xl space-y-1.5">
-                      <span className="font-bold text-slate-800 uppercase tracking-wide block">GỢI Ý ÔN TẬP & ĐÁP ÁN:</span>
-                      <p>{q.explanation}</p>
-                    </div>
+                    <StudyGuideQuestion question={q} />
                   </div>
                 );
               })}
