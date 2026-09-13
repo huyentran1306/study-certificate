@@ -365,8 +365,9 @@ export default function App() {
     return 'home';
   });
 
-  const isAdmin = userRole === 'admin';
-  const canManageContent = userRole === 'editor' || isAdmin;
+  const [adminUnlocked, setAdminUnlocked] = useState(() => localStorage.getItem('study_admin_unlocked') === 'true');
+  const isAdmin = userRole === 'admin' || adminUnlocked;
+  const canManageContent = adminUnlocked || userRole === 'editor' || isAdmin;
   const [asteriskClicks, setAsteriskClicks] = useState(0);
 
   useEffect(() => {
@@ -420,18 +421,6 @@ export default function App() {
   }, [asteriskClicks]);
 
   const handleAsteriskClick = () => {
-    if (!authUserId) {
-      setAuthMode('signin');
-      setAuthIntent('admin');
-      setPendingCertAccess(null);
-      setShowAuthModal(true);
-      showAppToast('Hãy đăng nhập tài khoản Editor hoặc Admin để mở khu vực quản trị.', 'info');
-      return;
-    }
-    if (!canManageContent) {
-      showAppToast('Tài khoản này chưa được cấp quyền Editor hoặc Admin.', 'error');
-      return;
-    }
     setAsteriskClicks(prev => {
       const next = prev + 1;
       if (next === 1) {
@@ -439,11 +428,14 @@ export default function App() {
       } else if (next === 2) {
         showAppToast('Bấm thêm 1 lần nữa để kích hoạt...', 'info');
       } else if (next >= 3) {
-        setMode(mode === 'admin' ? 'home' : 'admin');
+        const nextUnlocked = mode !== 'admin';
+        setAdminUnlocked(nextUnlocked);
+        localStorage.setItem('study_admin_unlocked', String(nextUnlocked));
+        setMode(nextUnlocked ? 'admin' : 'home');
         showAppToast(
-          mode === 'admin' 
-            ? 'Đã tắt và rời khỏi Chế độ Admin' 
-            : 'Chào mừng! Bạn đã chuyển sang Chế độ Admin thành công 🎉', 
+          nextUnlocked 
+            ? 'Chào mừng! Bạn đã chuyển sang Chế độ Admin thành công 🎉' 
+            : 'Đã tắt và rời khỏi Chế độ Admin', 
           'success'
         );
         return 0; // reset
@@ -2874,7 +2866,7 @@ export default function App() {
         {mode === 'admin' && canManageContent && (
           <Suspense fallback={<LazySectionFallback label="Đang tải khu vực quản trị..." />}>
             <AdminPanel
-            currentRole={userRole === 'admin' ? 'admin' : 'editor'}
+            currentRole={userRole === 'admin' || adminUnlocked ? 'admin' : 'editor'}
             certificates={certificates}
             activeCertId={activeCertId}
             unlockedCertIds={unlockedCertIds}
@@ -2939,21 +2931,21 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Learner Profile or Admin Modal */}
+      {/* Learner Profile Modal */}
       {showAuthModal && (
         <div className="fixed inset-0 z-[110] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="auth-dialog-title">
           <div className="bg-white rounded-3xl p-6 shadow-2xl border border-slate-100 max-w-md w-full animate-in fade-in zoom-in duration-200">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2.5">
                 <div className="bg-indigo-50 text-indigo-600 p-2.5 rounded-2xl">
-                  {authIntent === 'admin' ? <ShieldCheck className="w-5 h-5 flex-shrink-0" /> : <User className="w-5 h-5 flex-shrink-0" />}
+                  <User className="w-5 h-5 flex-shrink-0" />
                 </div>
                 <div>
                   <h3 id="auth-dialog-title" className="text-base font-extrabold text-slate-900 leading-tight">
-                    {authIntent === 'admin' ? 'Đăng nhập Quản trị viên' : 'Hồ sơ người học'}
+                    Hồ sơ người học
                   </h3>
                   <p className="text-[11px] text-slate-400 font-medium">
-                    {authIntent === 'admin' ? 'Dành cho Editor và Admin quản trị nội dung' : 'Lưu riêng tiến trình làm bài theo tên của bạn'}
+                    Lưu riêng tiến trình làm bài theo tên của bạn
                   </p>
                 </div>
               </div>
@@ -2966,138 +2958,64 @@ export default function App() {
               </button>
             </div>
 
-            {authIntent === 'admin' ? (
-              <div className="space-y-4">
-                <p className="text-xs text-slate-600 bg-amber-50 border border-amber-200 rounded-xl p-3">
-                  Khu vực dành riêng cho Quản trị viên để chỉnh sửa câu hỏi và quản lý hệ thống.
+            <div className="space-y-4">
+              <div className="rounded-2xl border border-indigo-100 bg-indigo-50/60 p-3.5">
+                <p className="text-xs font-medium leading-relaxed text-indigo-950">
+                  💡 <strong>Không cần đăng ký phức tạp</strong>: Chỉ cần nhập tên hoặc nickname của bạn, hệ thống sẽ tự động lưu lại các câu đã làm, số câu đúng/sai và câu đã bookmark riêng cho bạn.
                 </p>
+              </div>
 
-                <label className="block">
-                  <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Email quản trị</span>
-                  <input
-                    type="email"
-                    placeholder="admin@example.com"
-                    value={authEmail}
-                    onChange={(e) => setAuthEmail(e.target.value)}
-                    className="min-h-11 w-full px-4 bg-slate-50 border border-slate-200 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 font-semibold text-slate-800"
-                    autoFocus
-                  />
-                </label>
+              <label className="block">
+                <span className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+                  Tên hoặc Nickname của bạn
+                </span>
+                <input
+                  type="text"
+                  placeholder="Ví dụ: Huyền Trang, Minh An, Tony..."
+                  value={inputLearnerName}
+                  onChange={(e) => {
+                    setInputLearnerName(e.target.value);
+                    setAuthError('');
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') handleSaveLearnerName(inputLearnerName);
+                  }}
+                  className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-bold text-slate-800 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100"
+                  autoFocus
+                />
+              </label>
 
-                <label className="block">
-                  <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Mật khẩu</span>
-                  <input
-                    type="password"
-                    value={authPassword}
-                    onChange={e => setAuthPassword(e.target.value)}
-                    onKeyDown={e => { if (e.key === 'Enter') handleAuthSubmit(); }}
-                    placeholder="Nhập mật khẩu..."
-                    className="min-h-11 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-semibold text-slate-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
-                  />
-                </label>
+              {authError && <p className="rounded-xl border border-rose-100 bg-rose-50 p-3 text-xs font-bold text-rose-700">{authError}</p>}
 
-                {authError && <p className="rounded-xl border border-rose-100 bg-rose-50 p-3 text-xs font-bold text-rose-700">{authError}</p>}
-
-                <div className="flex items-center justify-between pt-2">
+              {learnerName && (
+                <div className="flex items-center justify-between rounded-xl bg-slate-50 px-3.5 py-2.5 text-xs border border-slate-100">
+                  <span className="text-slate-500">Đang lưu với tên: <strong className="text-slate-800">{learnerName}</strong></span>
                   <button
                     type="button"
-                    onClick={() => { setAuthIntent('sync'); setAuthError(''); }}
-                    className="text-xs font-bold text-indigo-600 hover:underline cursor-pointer"
+                    onClick={handleClearLearnerName}
+                    className="text-[11px] font-bold text-rose-600 hover:text-rose-800 transition-colors cursor-pointer"
                   >
-                    ← Quay lại người học
+                    Xóa tên này
                   </button>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={closeAuthModal}
-                      className="min-h-11 px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 rounded-xl transition-colors cursor-pointer"
-                    >
-                      Đóng
-                    </button>
-                    <button
-                      onClick={handleAuthSubmit}
-                      disabled={authBusy}
-                      className="inline-flex min-h-11 items-center justify-center gap-2 px-5 text-xs font-extrabold text-white bg-indigo-600 hover:bg-slate-950 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer disabled:opacity-50"
-                    >
-                      {authBusy && <Loader2 className="h-4 w-4 animate-spin" />}
-                      Đăng nhập Admin
-                    </button>
-                  </div>
                 </div>
+              )}
+
+              <div className="flex flex-col sm:flex-row gap-2.5 justify-end pt-2">
+                <button
+                  onClick={closeAuthModal}
+                  className="min-h-11 px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 rounded-xl transition-colors cursor-pointer"
+                >
+                  Bỏ qua (Học như Khách)
+                </button>
+                <button
+                  onClick={() => handleSaveLearnerName(inputLearnerName)}
+                  className="inline-flex min-h-11 items-center justify-center gap-2 px-6 text-xs font-extrabold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer"
+                >
+                  <Check className="h-4 w-4" />
+                  Lưu tên & Bắt đầu học
+                </button>
               </div>
-            ) : (
-              <div className="space-y-4">
-                <div className="rounded-2xl border border-indigo-100 bg-indigo-50/60 p-3.5">
-                  <p className="text-xs font-medium leading-relaxed text-indigo-950">
-                    💡 <strong>Không cần đăng ký phức tạp</strong>: Chỉ cần nhập tên hoặc nickname của bạn, hệ thống sẽ tự động lưu lại các câu đã làm, số câu đúng/sai và câu đã bookmark riêng cho bạn.
-                  </p>
-                </div>
-
-                <label className="block">
-                  <span className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">
-                    Tên hoặc Nickname của bạn
-                  </span>
-                  <input
-                    type="text"
-                    placeholder="Ví dụ: Huyền Trang, Minh An, Tony..."
-                    value={inputLearnerName}
-                    onChange={(e) => {
-                      setInputLearnerName(e.target.value);
-                      setAuthError('');
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') handleSaveLearnerName(inputLearnerName);
-                    }}
-                    className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-bold text-slate-800 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100"
-                    autoFocus
-                  />
-                </label>
-
-                {authError && <p className="rounded-xl border border-rose-100 bg-rose-50 p-3 text-xs font-bold text-rose-700">{authError}</p>}
-
-                {learnerName && (
-                  <div className="flex items-center justify-between rounded-xl bg-slate-50 px-3.5 py-2.5 text-xs border border-slate-100">
-                    <span className="text-slate-500">Đang lưu với tên: <strong className="text-slate-800">{learnerName}</strong></span>
-                    <button
-                      type="button"
-                      onClick={handleClearLearnerName}
-                      className="text-[11px] font-bold text-rose-600 hover:text-rose-800 transition-colors cursor-pointer"
-                    >
-                      Xóa tên này
-                    </button>
-                  </div>
-                )}
-
-                <div className="flex flex-col sm:flex-row gap-2.5 justify-end pt-2">
-                  <button
-                    onClick={closeAuthModal}
-                    className="min-h-11 px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 rounded-xl transition-colors cursor-pointer"
-                  >
-                    Bỏ qua (Học như Khách)
-                  </button>
-                  <button
-                    onClick={() => handleSaveLearnerName(inputLearnerName)}
-                    className="inline-flex min-h-11 items-center justify-center gap-2 px-6 text-xs font-extrabold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer"
-                  >
-                    <Check className="h-4 w-4" />
-                    Lưu tên & Bắt đầu học
-                  </button>
-                </div>
-
-                <div className="border-t border-slate-100 pt-3 text-center">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setAuthIntent('admin');
-                      setAuthMode('signin');
-                      setAuthError('');
-                    }}
-                    className="text-[11px] font-medium text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
-                  >
-                    Dành cho Quản trị viên / Editor ➔
-                  </button>
-                </div>
-              </div>
-            )}
+            </div>
           </div>
         </div>
       )}
