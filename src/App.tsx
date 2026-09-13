@@ -20,6 +20,7 @@ import {
   RefreshCw,
   FolderOpen,
   User,
+  UserPlus,
   LogOut,
   Database,
   Check,
@@ -248,8 +249,10 @@ export default function App() {
     history: []
   });
 
-  // Supabase Auth and Sync States
+  // Supabase Auth, Learner Profile and Sync States
   const [username, setUsername] = useState<string>('');
+  const [learnerName, setLearnerName] = useState<string>(() => localStorage.getItem('study_learner_name') || '');
+  const [inputLearnerName, setInputLearnerName] = useState<string>(() => localStorage.getItem('study_learner_name') || '');
   const [dbSyncStatus, setDbSyncStatus] = useState<'idle' | 'syncing' | 'success' | 'error'>('idle');
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authEmail, setAuthEmail] = useState('');
@@ -265,12 +268,26 @@ export default function App() {
   const [anonymousMode, setAnonymousMode] = useState(() => localStorage.getItem('study_anonymous_mode') === 'true');
   const [authIntent, setAuthIntent] = useState<'learning' | 'sync' | 'admin'>('sync');
   const [pendingCertAccess, setPendingCertAccess] = useState<{ certId: string; targetMode: StudyMode } | null>(null);
-  const progressStorageKey = (certId: string, identity = authUserId) => `progress_${identity || 'guest'}_${certId}`;
-  const readProgressCache = (certId: string, identity = authUserId) => {
-    const scopedKey = progressStorageKey(certId, identity);
+
+  const getActiveIdentity = (identity?: string) => {
+    if (identity !== undefined && identity !== '') return identity;
+    if (learnerName.trim()) {
+      return `user_${learnerName.trim().toLowerCase().replace(/[^a-z0-9_\-\u00C0-\u024F\u1EA0-\u1EF9]/g, '_')}`;
+    }
+    return authUserId || '';
+  };
+
+  const progressStorageKey = (certId: string, identity?: string) => {
+    const id = getActiveIdentity(identity);
+    return `progress_${id || 'guest'}_${certId}`;
+  };
+
+  const readProgressCache = (certId: string, identity?: string) => {
+    const id = getActiveIdentity(identity);
+    const scopedKey = progressStorageKey(certId, id);
     const scoped = localStorage.getItem(scopedKey);
     if (scoped) return scoped;
-    const guestProgress = identity ? localStorage.getItem(progressStorageKey(certId, '')) : null;
+    const guestProgress = id ? (localStorage.getItem(progressStorageKey(certId, 'guest')) || localStorage.getItem(`progress_guest_${certId}`) || localStorage.getItem(progressStorageKey(certId, ''))) : null;
     if (guestProgress) {
       localStorage.setItem(scopedKey, guestProgress);
       return guestProgress;
@@ -488,7 +505,7 @@ export default function App() {
   }, [searchQuery, selectCategory, showBookmarksOnly, showIncorrectOnly]);
 
   // Advanced sync state and loader for Supabase + LocalStorage fallback
-  const loadCertData = async (certId: string, currentUsername: string = authUserId) => {
+  const loadCertData = async (certId: string, currentUsername: string = getActiveIdentity()) => {
     setDbSyncStatus('syncing');
     
     // 1. Load basic local questions
@@ -561,8 +578,8 @@ export default function App() {
       history: []
     };
 
-    if (currentUsername) {
-      // Connect and query from Supabase
+    if (authUserId && currentUsername === authUserId) {
+      // Connect and query from Supabase for logged-in accounts
       try {
         const dbProgress = await fetchUserProgressFromDb(currentUsername, certId);
         if (dbProgress) {
@@ -593,7 +610,7 @@ export default function App() {
         setDbSyncStatus('error');
       }
     } else {
-      // Purely offline local fallback
+      // Purely local learner profile / guest progress
       const storedProgress = readProgressCache(certId, currentUsername);
       if (storedProgress) {
         try {
@@ -725,7 +742,18 @@ export default function App() {
         localStorage.setItem('study_active_cert', lastActiveCert);
       }
       setActiveCertId(lastActiveCert);
-      loadCertData(lastActiveCert, '');
+
+      const storedSharedUnlocks = localStorage.getItem('unlocked_certs_shared');
+      if (storedSharedUnlocks) {
+        try {
+          setUnlockedCertIds(JSON.parse(storedSharedUnlocks));
+        } catch {}
+      }
+
+      const initialIdentity = learnerName.trim()
+        ? `user_${learnerName.trim().toLowerCase().replace(/[^a-z0-9_\-\u00C0-\u024F\u1EA0-\u1EF9]/g, '_')}`
+        : '';
+      loadCertData(lastActiveCert, initialIdentity);
     }
     loadSharedCertificateCatalog();
   }, []);
@@ -733,8 +761,10 @@ export default function App() {
   useEffect(() => {
     if (!authUserId) return;
     try {
-      const storedUnlocks = localStorage.getItem(`unlocked_certs_${authUserId}`);
-      setUnlockedCertIds(storedUnlocks ? JSON.parse(storedUnlocks) : []);
+      const storedUnlocks = localStorage.getItem(`unlocked_certs_${authUserId}`) || localStorage.getItem('unlocked_certs_shared');
+      if (storedUnlocks) {
+        setUnlockedCertIds(JSON.parse(storedUnlocks));
+      }
     } catch {
       setUnlockedCertIds([]);
     }
@@ -750,24 +780,10 @@ export default function App() {
     return !unlockedCertIds.includes(cert.id);
   };
 
-  // Request cert access gatekeeper
+  // Request cert access gatekeeper - directly opens cert or asks for VIP key
   const handleRequestCertAccess = (certId: string, targetMode: StudyMode = 'practice') => {
     const cert = certificates.find(c => c.id === certId);
     if (!cert) return;
-
-    if (!authUserId) {
-      if (anonymousMode && !cert.isVIP) {
-        handleSelectCert(certId, targetMode, '');
-        return;
-      }
-      setPendingCertAccess({ certId, targetMode });
-      setAuthIntent('learning');
-      setAuthMode('signin');
-      setAuthError(cert.isVIP ? 'Bộ đề VIP cần tài khoản để kiểm tra quyền truy cập an toàn.' : '');
-      setShowAuthModal(true);
-      showAppToast(cert.isVIP ? 'Đăng nhập để mở bộ đề VIP.' : 'Chọn đăng nhập hoặc học ẩn danh.', 'info');
-      return;
-    }
 
     if (checkIsCertLocked(cert)) {
       setVipModalCert(cert);
@@ -776,7 +792,7 @@ export default function App() {
       return;
     }
 
-    // Direct access allowed
+    // Direct access allowed without blocking login prompts
     handleSelectCert(certId, targetMode);
   };
 
@@ -790,6 +806,7 @@ export default function App() {
   const doUnlockCert = (certId: string, certCode: string) => {
     const updatedUnlocked = Array.from(new Set([...unlockedCertIds, certId]));
     setUnlockedCertIds(updatedUnlocked);
+    localStorage.setItem('unlocked_certs_shared', JSON.stringify(updatedUnlocked));
     if (authUserId) localStorage.setItem(`unlocked_certs_${authUserId}`, JSON.stringify(updatedUnlocked));
 
     showAppToast(`🎉 Mở khóa thành công! Bạn đã kích hoạt bộ đề VIP ${certCode}.`, 'success');
@@ -971,44 +988,65 @@ export default function App() {
         updated = [...prev, certId];
         showAppToast(`Đã mở khóa chứng chỉ ${certId} trên thiết bị này!`, 'success');
       }
+      localStorage.setItem('unlocked_certs_shared', JSON.stringify(updated));
       if (authUserId) localStorage.setItem(`unlocked_certs_${authUserId}`, JSON.stringify(updated));
       return updated;
     });
   };
 
   // Sync state back to storage helper
-  const saveProgress = async (newProgress: ProgressState, currentUsername: string = authUserId) => {
+  const saveProgress = async (newProgress: ProgressState, currentUsername: string = getActiveIdentity()) => {
     setProgress(newProgress);
     localStorage.setItem(progressStorageKey(activeCertId, currentUsername), JSON.stringify(newProgress));
 
-    if (currentUsername) {
+    if (authUserId && currentUsername === authUserId) {
       try {
-        await syncUserProgressStateToDb(currentUsername, activeCertId, newProgress);
+        await syncUserProgressStateToDb(authUserId, activeCertId, newProgress);
       } catch (err) {
         console.error('Async database syncer failed:', err);
       }
     }
   };
 
-  const handleLogin = async (inputName: string) => {
-    if (!authUserId) {
-      setAuthDisplayName(inputName.trim());
-      setAuthMode('signup');
-      setAuthIntent('sync');
-      setPendingCertAccess(null);
-      setShowAuthModal(true);
+  const handleSaveLearnerName = (nameToSave: string) => {
+    const clean = nameToSave.trim();
+    if (!clean) {
+      setAuthError('Vui lòng nhập tên hoặc nickname của bạn.');
       return;
     }
+    setLearnerName(clean);
+    setInputLearnerName(clean);
+    localStorage.setItem('study_learner_name', clean);
+    const newId = `user_${clean.toLowerCase().replace(/[^a-z0-9_\-\u00C0-\u024F\u1EA0-\u1EF9]/g, '_')}`;
+    setAuthError('');
 
-    const trimmed = inputName.trim();
-    if (trimmed) {
-      setUsername(trimmed);
-      localStorage.setItem('study_username', trimmed);
-      await Promise.all([
-        supabase.from('profiles').update({ display_name: trimmed }).eq('id', authUserId),
-        supabase.auth.updateUser({ data: { display_name: trimmed } }),
-      ]);
+    if (activeCertId) {
+      // Migrate guest progress if exists and target is empty
+      const guestKey = `progress_guest_${activeCertId}`;
+      const targetKey = progressStorageKey(activeCertId, newId);
+      const guestData = localStorage.getItem(guestKey) || localStorage.getItem(`progress__${activeCertId}`);
+      if (guestData && !localStorage.getItem(targetKey)) {
+        localStorage.setItem(targetKey, guestData);
+      }
+      loadCertData(activeCertId, newId);
     }
+    setShowAuthModal(false);
+    showAppToast(`Xin chào ${clean}! Tiến trình học sẽ được lưu theo tên này.`, 'success');
+  };
+
+  const handleClearLearnerName = () => {
+    setLearnerName('');
+    setInputLearnerName('');
+    localStorage.removeItem('study_learner_name');
+    if (activeCertId) {
+      loadCertData(activeCertId, '');
+    }
+    setShowAuthModal(false);
+    showAppToast('Đã chuyển sang chế độ Khách (ẩn danh).', 'info');
+  };
+
+  const handleLogin = async (inputName: string) => {
+    handleSaveLearnerName(inputName);
   };
 
   const closeAuthModal = () => {
@@ -1500,7 +1538,7 @@ export default function App() {
     const seconds = elapsedSeconds || 0;
     
     const record: Omit<ExamHistoryRecord, 'id'> = {
-      username: username || 'Offline User',
+      username: username || learnerName || 'Khách',
       cert_id: activeCertId,
       cert_code: certificates.find(c => c.id === activeCertId)?.code || activeCertId,
       score: correct,
@@ -1744,14 +1782,26 @@ export default function App() {
                   </button>
                 </div>
               ) : (
-                <button
-                  onClick={() => { setAuthError(''); setAuthMode('signin'); setAuthIntent('sync'); setPendingCertAccess(null); setShowAuthModal(true); }}
-                  className={`flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 rounded-xl border px-2.5 text-xs font-bold shadow-sm transition-all sm:px-3.5 ${anonymousMode ? 'border-slate-200 bg-white text-slate-600 hover:border-indigo-300 hover:text-indigo-700' : 'border-indigo-700 bg-indigo-600 text-white hover:bg-slate-900'}`}
-                  title={anonymousMode ? 'Đang học ẩn danh — bấm để đăng nhập và đồng bộ' : 'Kết nối tài khoản nhóm'}
-                >
-                  {anonymousMode ? <EyeOff className="h-3.5 w-3.5" /> : <User className="h-3.5 w-3.5 animate-pulse" />}
-                  <span className="hidden sm:inline">{anonymousMode ? 'Ẩn danh' : 'Lưu lịch sử Team'}</span>
-                </button>
+                learnerName ? (
+                  <button
+                    onClick={() => { setInputLearnerName(learnerName); setAuthError(''); setAuthIntent('sync'); setShowAuthModal(true); }}
+                    className="flex min-h-11 items-center justify-center gap-1.5 rounded-xl border border-indigo-200 bg-indigo-50/90 px-3 text-xs font-bold text-indigo-700 shadow-sm transition-all hover:bg-indigo-100 hover:border-indigo-300 cursor-pointer"
+                    title={`Hồ sơ người học: ${learnerName}. Bấm để đổi tên.`}
+                  >
+                    <User className="h-3.5 w-3.5 text-indigo-600 shrink-0" />
+                    <span className="max-w-[120px] truncate">{learnerName}</span>
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => { setInputLearnerName(''); setAuthError(''); setAuthIntent('sync'); setShowAuthModal(true); }}
+                    className="flex min-h-11 items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 text-xs font-bold text-slate-700 shadow-sm transition-all hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50/50 cursor-pointer"
+                    title="Nhập tên của bạn để lưu tiến trình học tập"
+                  >
+                    <UserPlus className="h-3.5 w-3.5 text-indigo-600 shrink-0" />
+                    <span className="hidden sm:inline">Nhập tên người học</span>
+                    <span className="sm:hidden">Đặt tên</span>
+                  </button>
+                )
               )}
             </div>
 
@@ -1907,62 +1957,36 @@ export default function App() {
               </div>
 
               {!username && (
-                <div id="welcome-team-sync-banner" className={`border-t px-4 py-3 sm:px-6 ${anonymousMode ? 'border-slate-200 bg-slate-50' : 'border-indigo-100 bg-gradient-to-r from-indigo-50/70 to-blue-50/50'}`}>
+                <div id="welcome-team-sync-banner" className="border-t border-indigo-100 bg-gradient-to-r from-indigo-50/70 to-blue-50/50 px-4 py-3 sm:px-6">
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div className="flex min-w-0 items-center gap-3">
                       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-indigo-600 shadow-sm">
-                        <Users className="h-4 w-4" />
+                        <User className="h-4 w-4" />
                       </div>
                       <div className="min-w-0">
-                        <h3 className="text-xs font-black text-slate-900">{anonymousMode ? 'Đang học ẩn danh' : 'Học nhóm & Đồng bộ đám mây'}</h3>
-                        <p className="truncate text-[10px] text-slate-500">{anonymousMode ? 'Tiến độ chỉ lưu trên trình duyệt và thiết bị này.' : 'Lưu tiến độ và câu đã đánh dấu lên dữ liệu chung của Team.'}</p>
+                        <h3 className="text-xs font-black text-slate-900">
+                          {learnerName ? `Hồ sơ người học: ${learnerName}` : 'Lưu tiến trình học tập theo tên'}
+                        </h3>
+                        <p className="truncate text-[10px] text-slate-500">
+                          {learnerName
+                            ? 'Tiến độ học, điểm thi thử và câu đã đánh dấu đang được tự động lưu theo tên này.'
+                            : 'Không cần email hay mật khẩu phức tạp: nhập tên để hệ thống lưu riêng tiến trình của bạn.'}
+                        </p>
                       </div>
                     </div>
                     <button
                       type="button"
-                      onClick={() => setIsTeamSyncExpanded(previous => !previous)}
-                      aria-expanded={isTeamSyncExpanded}
-                      className="flex min-h-11 shrink-0 items-center justify-center gap-1.5 rounded-xl border border-indigo-200 bg-white px-3 text-[11px] font-black text-indigo-700 transition hover:bg-indigo-50"
+                      onClick={() => {
+                        setInputLearnerName(learnerName);
+                        setAuthError('');
+                        setAuthIntent('sync');
+                        setShowAuthModal(true);
+                      }}
+                      className="flex min-h-11 shrink-0 items-center justify-center gap-1.5 rounded-xl border border-indigo-200 bg-white px-4 text-xs font-black text-indigo-700 shadow-sm transition hover:bg-indigo-50 active:scale-95 cursor-pointer"
                     >
-                      {isTeamSyncExpanded ? 'Thu gọn' : anonymousMode ? 'Đổi chế độ' : 'Chọn chế độ học'}
-                      <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isTeamSyncExpanded ? 'rotate-180' : ''}`} />
+                      {learnerName ? 'Đổi tên người học' : 'Nhập tên người học'}
                     </button>
                   </div>
-
-                  <AnimatePresence initial={false}>
-                    {isTeamSyncExpanded && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="flex flex-col gap-3 pt-3 sm:flex-row sm:items-center sm:justify-between">
-                          <p className="max-w-xl text-[11px] leading-relaxed text-slate-600">
-                            {anonymousMode
-                              ? 'Bạn vẫn học và thi thử bình thường. Đăng nhập khi muốn đồng bộ sang thiết bị khác hoặc dùng tính năng nhóm.'
-                              : 'Học ẩn danh không cần tài khoản và chỉ lưu trên thiết bị này. Đăng nhập để đồng bộ nhiều thiết bị và học nhóm.'}
-                          </p>
-                          <div className="flex flex-col gap-2 sm:flex-row">
-                            {!anonymousMode && (
-                              <button
-                                onClick={handleContinueAnonymously}
-                                className="min-h-11 whitespace-nowrap rounded-xl border border-slate-300 bg-white px-5 text-xs font-black text-slate-700 transition hover:border-indigo-300 hover:text-indigo-700"
-                              >
-                                Học ẩn danh
-                              </button>
-                            )}
-                            <button
-                              onClick={() => { setAuthMode('signin'); setAuthIntent('sync'); setPendingCertAccess(null); setAuthError(''); setShowAuthModal(true); }}
-                              className="min-h-11 whitespace-nowrap rounded-xl border border-indigo-700 bg-indigo-600 px-5 text-xs font-black text-white shadow-sm transition hover:bg-indigo-700 active:scale-95"
-                            >
-                              Đăng nhập & đồng bộ
-                            </button>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
                 </div>
               )}
             </div>
@@ -2119,7 +2143,7 @@ export default function App() {
                             className="flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-xl bg-slate-950 px-3 text-center text-xs font-bold text-white shadow-sm transition-all hover:bg-indigo-600"
                           >
                             <BookOpen className="w-3.5 h-3.5" />
-                            {anonymousMode && !authUserId ? 'Học ẩn danh' : 'Học ngay'}
+                            Học ngay
                           </button>
                         )}
                       </div>
@@ -2915,119 +2939,165 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Secure account login modal */}
+      {/* Learner Profile or Admin Modal */}
       {showAuthModal && (
         <div className="fixed inset-0 z-[110] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="auth-dialog-title">
           <div className="bg-white rounded-3xl p-6 shadow-2xl border border-slate-100 max-w-md w-full animate-in fade-in zoom-in duration-200">
             <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
                 <div className="bg-indigo-50 text-indigo-600 p-2.5 rounded-2xl">
-                  <ShieldCheck className="w-5 h-5 flex-shrink-0" />
+                  {authIntent === 'admin' ? <ShieldCheck className="w-5 h-5 flex-shrink-0" /> : <User className="w-5 h-5 flex-shrink-0" />}
                 </div>
                 <div>
                   <h3 id="auth-dialog-title" className="text-base font-extrabold text-slate-900 leading-tight">
-                    {authIntent === 'learning' ? 'Chọn cách bắt đầu học' : authMode === 'signin' ? 'Đăng nhập tài khoản' : 'Tạo tài khoản học tập'}
+                    {authIntent === 'admin' ? 'Đăng nhập Quản trị viên' : 'Hồ sơ người học'}
                   </h3>
-                  <p className="text-[10px] text-slate-400 font-medium">
-                    {authIntent === 'learning' ? 'Không bắt buộc tạo tài khoản với bộ đề công khai' : 'Xác thực an toàn bằng Supabase Auth'}
+                  <p className="text-[11px] text-slate-400 font-medium">
+                    {authIntent === 'admin' ? 'Dành cho Editor và Admin quản trị nội dung' : 'Lưu riêng tiến trình làm bài theo tên của bạn'}
                   </p>
                 </div>
               </div>
               <button 
                 onClick={closeAuthModal}
                 className="flex min-h-11 min-w-11 items-center justify-center text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer"
-                aria-label="Đóng đăng nhập"
+                aria-label="Đóng"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="space-y-4">
-              {authIntent !== 'admin' && !certificates.find(cert => cert.id === pendingCertAccess?.certId)?.isVIP && (
-                <button
-                  type="button"
-                  onClick={handleContinueAnonymously}
-                  className="flex min-h-16 w-full items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-3.5 text-left transition hover:border-emerald-300 hover:bg-emerald-100"
-                >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-emerald-700 shadow-sm"><EyeOff className="h-5 w-5" /></span>
-                  <span className="min-w-0">
-                    <strong className="block text-sm font-black text-emerald-900">Học ẩn danh</strong>
-                    <small className="mt-0.5 block text-[10px] font-semibold leading-relaxed text-emerald-700">Không cần tài khoản · tiến độ chỉ lưu trên thiết bị này</small>
-                  </span>
-                </button>
-              )}
+            {authIntent === 'admin' ? (
+              <div className="space-y-4">
+                <p className="text-xs text-slate-600 bg-amber-50 border border-amber-200 rounded-xl p-3">
+                  Khu vực dành riêng cho Quản trị viên để chỉnh sửa câu hỏi và quản lý hệ thống.
+                </p>
 
-              {authIntent !== 'admin' && !certificates.find(cert => cert.id === pendingCertAccess?.certId)?.isVIP && (
-                <div className="flex items-center gap-3 text-[9px] font-black uppercase tracking-widest text-slate-300"><span className="h-px flex-1 bg-slate-200" />hoặc dùng tài khoản<span className="h-px flex-1 bg-slate-200" /></div>
-              )}
-
-              <div className="grid grid-cols-2 rounded-xl bg-slate-100 p-1">
-                <button type="button" onClick={() => { setAuthMode('signin'); setAuthError(''); }} className={`min-h-11 rounded-lg text-xs font-black ${authMode === 'signin' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}>Đăng nhập</button>
-                <button type="button" onClick={() => { setAuthMode('signup'); setAuthError(''); setAuthConfirmationPending(false); setAuthConfirmationMessage(''); }} className={`min-h-11 rounded-lg text-xs font-black ${authMode === 'signup' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}>Đăng ký</button>
-              </div>
-
-              {authMode === 'signup' && (
                 <label className="block">
-                  <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Tên hiển thị</span>
-                  <input type="text" placeholder="Tên bạn muốn hiển thị..." value={authDisplayName} onChange={e => setAuthDisplayName(e.target.value)} className="min-h-11 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-semibold text-slate-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100" />
+                  <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Email quản trị</span>
+                  <input
+                    type="email"
+                    placeholder="admin@example.com"
+                    value={authEmail}
+                    onChange={(e) => setAuthEmail(e.target.value)}
+                    className="min-h-11 w-full px-4 bg-slate-50 border border-slate-200 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 font-semibold text-slate-800"
+                    autoFocus
+                  />
                 </label>
-              )}
 
-              <label className="block">
-                <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Email</span>
-                <input
-                  type="email"
-                  placeholder="ban@example.com"
-                  value={authEmail}
-                  onChange={(e) => {
-                    setAuthEmail(e.target.value);
-                    setAuthConfirmationPending(false);
-                    setAuthConfirmationMessage('');
-                  }}
-                  className="min-h-11 w-full px-4 bg-slate-50 border border-slate-200 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 font-semibold text-slate-800"
-                  autoFocus
-                />
-              </label>
+                <label className="block">
+                  <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Mật khẩu</span>
+                  <input
+                    type="password"
+                    value={authPassword}
+                    onChange={e => setAuthPassword(e.target.value)}
+                    onKeyDown={e => { if (e.key === 'Enter') handleAuthSubmit(); }}
+                    placeholder="Nhập mật khẩu..."
+                    className="min-h-11 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-semibold text-slate-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+                  />
+                </label>
 
-              <label className="block">
-                <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Mật khẩu</span>
-                <input type="password" value={authPassword} onChange={e => setAuthPassword(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') handleAuthSubmit(); }} placeholder="Ít nhất 6 ký tự" className="min-h-11 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-semibold text-slate-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100" />
-              </label>
+                {authError && <p className="rounded-xl border border-rose-100 bg-rose-50 p-3 text-xs font-bold text-rose-700">{authError}</p>}
 
-              {authError && <p className="rounded-xl border border-rose-100 bg-rose-50 p-3 text-xs font-bold text-rose-700">{authError}</p>}
-
-              {authConfirmationPending && (
-                <div className="rounded-2xl border border-amber-200 bg-amber-50 p-3.5">
-                  <p className="text-xs font-bold leading-relaxed text-amber-900">{authConfirmationMessage}</p>
+                <div className="flex items-center justify-between pt-2">
                   <button
                     type="button"
-                    onClick={handleResendConfirmation}
-                    disabled={authBusy}
-                    className="mt-3 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-xl border border-amber-300 bg-white px-4 text-xs font-black text-amber-800 transition hover:bg-amber-100 disabled:cursor-wait disabled:opacity-60"
+                    onClick={() => { setAuthIntent('sync'); setAuthError(''); }}
+                    className="text-xs font-bold text-indigo-600 hover:underline cursor-pointer"
                   >
-                    {authBusy ? <Loader2 className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
-                    Gửi lại email xác nhận
+                    ← Quay lại người học
+                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={closeAuthModal}
+                      className="min-h-11 px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 rounded-xl transition-colors cursor-pointer"
+                    >
+                      Đóng
+                    </button>
+                    <button
+                      onClick={handleAuthSubmit}
+                      disabled={authBusy}
+                      className="inline-flex min-h-11 items-center justify-center gap-2 px-5 text-xs font-extrabold text-white bg-indigo-600 hover:bg-slate-950 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer disabled:opacity-50"
+                    >
+                      {authBusy && <Loader2 className="h-4 w-4 animate-spin" />}
+                      Đăng nhập Admin
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <div className="rounded-2xl border border-indigo-100 bg-indigo-50/60 p-3.5">
+                  <p className="text-xs font-medium leading-relaxed text-indigo-950">
+                    💡 <strong>Không cần đăng ký phức tạp</strong>: Chỉ cần nhập tên hoặc nickname của bạn, hệ thống sẽ tự động lưu lại các câu đã làm, số câu đúng/sai và câu đã bookmark riêng cho bạn.
+                  </p>
+                </div>
+
+                <label className="block">
+                  <span className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+                    Tên hoặc Nickname của bạn
+                  </span>
+                  <input
+                    type="text"
+                    placeholder="Ví dụ: Huyền Trang, Minh An, Tony..."
+                    value={inputLearnerName}
+                    onChange={(e) => {
+                      setInputLearnerName(e.target.value);
+                      setAuthError('');
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') handleSaveLearnerName(inputLearnerName);
+                    }}
+                    className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-bold text-slate-800 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100"
+                    autoFocus
+                  />
+                </label>
+
+                {authError && <p className="rounded-xl border border-rose-100 bg-rose-50 p-3 text-xs font-bold text-rose-700">{authError}</p>}
+
+                {learnerName && (
+                  <div className="flex items-center justify-between rounded-xl bg-slate-50 px-3.5 py-2.5 text-xs border border-slate-100">
+                    <span className="text-slate-500">Đang lưu với tên: <strong className="text-slate-800">{learnerName}</strong></span>
+                    <button
+                      type="button"
+                      onClick={handleClearLearnerName}
+                      className="text-[11px] font-bold text-rose-600 hover:text-rose-800 transition-colors cursor-pointer"
+                    >
+                      Xóa tên này
+                    </button>
+                  </div>
+                )}
+
+                <div className="flex flex-col sm:flex-row gap-2.5 justify-end pt-2">
+                  <button
+                    onClick={closeAuthModal}
+                    className="min-h-11 px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 rounded-xl transition-colors cursor-pointer"
+                  >
+                    Bỏ qua (Học như Khách)
+                  </button>
+                  <button
+                    onClick={() => handleSaveLearnerName(inputLearnerName)}
+                    className="inline-flex min-h-11 items-center justify-center gap-2 px-6 text-xs font-extrabold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer"
+                  >
+                    <Check className="h-4 w-4" />
+                    Lưu tên & Bắt đầu học
                   </button>
                 </div>
-              )}
 
-              <div className="flex gap-2.5 justify-end pt-2">
-                <button
-                  onClick={closeAuthModal}
-                  className="min-h-11 px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 rounded-xl transition-colors cursor-pointer"
-                >
-                  Đóng
-                </button>
-                <button
-                  onClick={handleAuthSubmit}
-                  disabled={authBusy}
-                  className="inline-flex min-h-11 items-center justify-center gap-2 px-5 text-xs font-extrabold text-white bg-indigo-600 hover:bg-slate-950 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer disabled:opacity-50"
-                >
-                  {authBusy && <Loader2 className="h-4 w-4 animate-spin" />}
-                  {authMode === 'signin' ? 'Đăng nhập & đồng bộ' : 'Tạo tài khoản'}
-                </button>
+                <div className="border-t border-slate-100 pt-3 text-center">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setAuthIntent('admin');
+                      setAuthMode('signin');
+                      setAuthError('');
+                    }}
+                    className="text-[11px] font-medium text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
+                  >
+                    Dành cho Quản trị viên / Editor ➔
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       )}
@@ -3491,23 +3561,27 @@ export default function App() {
             </div>
             <div className="mt-5 divide-y divide-slate-100 rounded-2xl border border-slate-200">
               {!authUserId && (
-                <label className="flex min-h-16 cursor-pointer items-center justify-between gap-4 p-4">
-                  <span><strong className="block text-sm text-slate-800">Học ẩn danh</strong><small className="mt-1 block text-xs text-slate-500">Không cần tài khoản; tiến độ chỉ lưu trên thiết bị này.</small></span>
-                  <input
-                    type="checkbox"
-                    checked={anonymousMode}
-                    onChange={event => {
-                      if (event.target.checked) {
-                        handleContinueAnonymously();
-                      } else {
-                        setAnonymousMode(false);
-                        localStorage.removeItem('study_anonymous_mode');
-                        showAppToast('Đã tắt học ẩn danh. Bạn sẽ được hỏi cách đăng nhập khi mở bộ đề.', 'info');
-                      }
+                <div className="flex min-h-16 items-center justify-between gap-4 p-4">
+                  <div>
+                    <strong className="block text-sm text-slate-800">Tên người học</strong>
+                    <small className="mt-0.5 block text-xs text-slate-500">
+                      {learnerName ? `Đang lưu: ${learnerName}` : 'Chưa đặt tên (Đang học như Khách)'}
+                    </small>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowPreferences(false);
+                      setInputLearnerName(learnerName);
+                      setAuthError('');
+                      setAuthIntent('sync');
+                      setShowAuthModal(true);
                     }}
-                    className="h-5 w-5 rounded text-indigo-600"
-                  />
-                </label>
+                    className="min-h-10 rounded-xl border border-indigo-200 bg-indigo-50 px-3.5 text-xs font-bold text-indigo-700 hover:bg-indigo-100 cursor-pointer"
+                  >
+                    {learnerName ? 'Đổi tên' : 'Đặt tên'}
+                  </button>
+                </div>
               )}
               <label className="flex min-h-16 cursor-pointer items-center justify-between gap-4 p-4">
                 <span><strong className="block text-sm text-slate-800">Mascot & mẹo học</strong><small className="mt-1 block text-xs text-slate-500">Ẩn hoàn toàn mascot nếu bạn muốn tập trung.</small></span>
