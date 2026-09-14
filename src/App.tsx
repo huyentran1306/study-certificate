@@ -1251,6 +1251,41 @@ export default function App() {
     setAuthConfirmationMessage('');
   };
 
+  const handleSkipToGuestMode = () => {
+    setShowAuthModal(false);
+    setAuthError('');
+    setAuthConfirmationPending(false);
+    setAuthConfirmationMessage('');
+
+    // Explicitly reset learner name to guest/anonymous
+    setLearnerName('');
+    setInputLearnerName('');
+    localStorage.removeItem('study_learner_name');
+
+    if (pendingCertAccess) {
+      const pending = pendingCertAccess;
+      setPendingCertAccess(null);
+      handleSelectCert(pending.certId, pending.targetMode, '');
+      showAppToast('Bắt đầu học ở chế độ Khách (tiến độ lưu trên thiết bị này)! 🚀', 'success');
+      return;
+    }
+
+    if (activeCertId && mode !== 'home' && mode !== 'admin') {
+      loadCertData(activeCertId, '');
+    }
+
+    showAppToast('Đang ở chế độ Khách (ẩn danh). Chọn bộ đề bên dưới để bắt đầu học ngay! 🎓', 'info');
+
+    if (mode === 'home') {
+      setTimeout(() => {
+        const certsGrid = document.getElementById('certificates-grid');
+        if (certsGrid) {
+          certsGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  };
+
   const handleContinueAnonymously = () => {
     const pending = pendingCertAccess;
     const pendingCertificate = pending ? certificates.find(cert => cert.id === pending.certId) : null;
@@ -2295,7 +2330,7 @@ export default function App() {
             </div>
 
             {/* Certification Grid list */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div id="certificates-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {visibleHomeCertificates.map(cert => {
                 // Get progress and actual total questions for this card
                 const certTotal = getCertificateTotalQuestions(cert);
@@ -3286,7 +3321,7 @@ export default function App() {
 
               <div className="flex flex-col sm:flex-row gap-2.5 justify-end pt-2">
                 <button
-                  onClick={closeAuthModal}
+                  onClick={handleSkipToGuestMode}
                   className="min-h-11 px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 rounded-xl transition-colors cursor-pointer"
                 >
                   Bỏ qua (Học như Khách)

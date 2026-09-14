@@ -65,7 +65,7 @@ const CERTS_CONFIG = [
     code: 'AZ-400',
     title: 'Designing and Implementing Microsoft DevOps Solutions',
     description: 'Chinh phục chứng chỉ Microsoft Certified: DevOps Engineer Expert (AZ-400). Thiết kế và triển khai chiến lược CI/CD, quản lý mã nguồn, cơ sở hạ tầng dưới dạng mã (IaC), tuân thủ bảo mật DevSecOps và giám sát liên tục.',
-    difficulty: 'Chuyên gia',
+    difficulty: 'Nâng cao',
     estimatedHours: '22-28 Giờ',
     colorClass: 'bg-gradient-to-br from-amber-600 via-orange-800 to-slate-950 text-white',
     iconName: 'Zap',

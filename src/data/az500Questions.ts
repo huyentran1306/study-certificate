@@ -1,0 +1,13420 @@
+import { Question } from '../types';
+
+export const az500Questions: Question[] = [
+  {
+    "id": "az500-2",
+    "questionNumber": 2,
+    "text": "You have an Azure subscription containing the virtual networks shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783965706296-q1840ju2.png)  \n  \nThe subscription includes the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783965709673-hslkqu8b.png)  \n  \nAll virtual machines have private IP addresses only.  \n  \nYou deploy Azure Bastion to VNet1 as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783965717507-376763li.png)  \n  \nFor each statement below, select **Yes** if it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "You can connect to VM1 through Bastion1 by using the Remote Desktop Connection client.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "You can connect to VM2 through Bastion1 by using SSH.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "You can connect to VM3 through Bastion1 by using the Azure portal.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Azure Bastion Basic hỗ trợ các kết nối SSH dựa trên trình duyệt với các máy ảo trong cùng một mạng ảo hoặc ngang hàng trực tiếp, nhưng kết nối máy khách RDP/SSH gốc yêu cầu SKU Tiêu chuẩn hoặc Cao cấp. VNet peering không mang tính truyền dẫn: kết nối VNet1-to-VNet2 và kết nối VNet2-to-VNet3 không cung cấp kết nối giữa VNet1 và VNet3. [Azure Bastion SKU comparison](https://learn.microsoft.com/en-us/azure/bastion/bastion-sku-comparison), [Azure Bastion overview](https://learn.microsoft.com/en-us/azure/bastion/bastion-overview)",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783965706296-q1840ju2.png",
+    "sourceTitle": "Examcademy AZ-500 Question 2",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/2-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-4",
+    "questionNumber": 4,
+    "text": "You have a Microsoft Entra tenant named contoso.com.  \n  \nYou plan to collaborate with a partner organization that has a Microsoft Entra tenant named fabrikam.com.  \n  \nFabrikam.com uses these identity providers:  \n  \n- Google Cloud Platform (GCP)  \n- Microsoft accounts  \n- Microsoft Entra ID  \n  \nYou need to configure the Cross-tenant access settings for B2B collaboration.  \n  \nWhich identity providers support cross-tenant access?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Microsoft Entra ID only"
+      },
+      {
+        "key": "B",
+        "text": "GCP and Microsoft Entra ID only"
+      },
+      {
+        "key": "C",
+        "text": "Microsoft accounts and Microsoft Entra ID only"
+      },
+      {
+        "key": "D",
+        "text": "GCP, Microsoft accounts, and Microsoft Entra ID"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Cài đặt quyền truy cập của nhiều người thuê kiểm soát hoạt động cộng tác B2B với các tổ chức Microsoft Entra bên ngoài. Tài khoản Google và Microsoft được hỗ trợ với tư cách là nhà cung cấp danh tính bên ngoài để đăng nhập với tư cách khách nhưng cài đặt quyền truy cập của nhiều đối tượng thuê chỉ áp dụng cho đối tượng thuê Microsoft Entra.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 4",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/4-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-5",
+    "questionNumber": 5,
+    "text": "After creating a new Azure subscription, you are tasked with ensuring that custom alert rules can be created in Azure Security Center.  \n  \nYou have created an Azure Storage account.  \n  \nWhich action should you take?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "You should make sure that Azure Active Directory (Azure AD) Identity Protection is removed."
+      },
+      {
+        "key": "B",
+        "text": "You should create a DLP policy."
+      },
+      {
+        "key": "C",
+        "text": "You should create an Azure Log Analytics workspace."
+      },
+      {
+        "key": "D",
+        "text": "You should make sure that Security Center has the necessary tier configured."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Quy tắc cảnh báo dựa trên nhật ký tùy chỉnh yêu cầu không gian làm việc Log Analytics làm kho lưu trữ dữ liệu mục tiêu cho các nhật ký và truy vấn được thu thập. Microsoft Defender for Cloud (trước đây là Trung tâm bảo mật Azure) tích hợp với Log Analytics và Azure Monitor tạo các quy tắc cảnh báo tìm kiếm nhật ký tùy chỉnh đối với không gian làm việc đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 5",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/5-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-6",
+    "questionNumber": 6,
+    "text": "Your company uses an Azure Container Registry.  \n  \nYou must assign a user a role that permits uploading images to the Azure Container Registry. The assigned role must provide no more privileges than necessary.  \n  \nWhich of the following roles should you assign?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Owner"
+      },
+      {
+        "key": "B",
+        "text": "Contributor"
+      },
+      {
+        "key": "C",
+        "text": "AcrPush"
+      },
+      {
+        "key": "D",
+        "text": "AcrPull"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Vai trò `AcrPush` cấp quyền cho mặt phẳng dữ liệu để đẩy và kéo các hình ảnh và thành phần trong vùng chứa mà không cần cấp quyền quản lý tài nguyên Azure. `AcrPull` bị giới hạn ở việc kéo hình ảnh, trong khi `Contributor` và `Owner` cung cấp các đặc quyền rộng hơn mức yêu cầu.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 6",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/6-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-7",
+    "questionNumber": 7,
+    "text": "HOTSPOT -  \n  \nYou have an Azure subscription containing the alerts shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953052473-ol5jbi8a.jpg)  \n  \nUse the drop-down menus to choose the answer that completes each statement based on the information in the graphic.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các phiên bản cảnh báo Azure Monitor sử dụng trạng thái phản hồi của người dùng Mới, Đã xác nhận và Đã đóng. Trạng thái phản hồi có thể chỉnh sửa được, do đó, cảnh báo đã xác nhận có thể chuyển sang Mới hoặc Đã đóng, trong khi cảnh báo đã đóng có thể chuyển sang Mới hoặc Đã xác nhận.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953052473-ol5jbi8a.jpg",
+    "sourceTitle": "Examcademy AZ-500 Question 7",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/7-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-8",
+    "questionNumber": 8,
+    "text": "HOTSPOT -  \n  \nYou have an Azure subscription named Sub1.  \n  \nYou create a virtual network containing one subnet. You provision the virtual machines on that subnet as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783952199313-m0vbkffk.png)  \n  \nNo network security groups (NSGs) have been provisioned yet. You need to implement network security that meets these requirements:  \n  \n- Allow traffic to VM4 only from VM3.  \n- Allow Internet traffic only to VM1 and VM2.  \n- Minimize the number of NSGs and network security rules.  \n  \nHow many NSGs and network security rules should you create?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Một NSG được gắn vào mạng con có thể sử dụng các nhóm bảo mật ứng dụng trong các quy tắc của nó. Tạo quy tắc cho phép từ AppGroup3 đến AppGroup4, sau đó tạo quy tắc từ chối có mức độ ưu tiên thấp hơn từ mạng ảo đến AppGroup4 để quy tắc AllowVNetInBound mặc định không cho phép các nguồn VNet khác. Quy tắc thứ ba cho phép lưu lượng truy cập Internet tới AppGroup12, chứa VM1 và VM2. Quy tắc từ chối gửi đến mặc định chặn quyền truy cập Internet vào VM3 và VM4.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783952199313-m0vbkffk.png",
+    "sourceTitle": "Examcademy AZ-500 Question 8",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/8-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-9",
+    "questionNumber": 9,
+    "text": "You have an Azure subscription containing an Azure SQL database named SQLDB1. SQLDB1 includes the columns shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783955735251-mxajqkg2.jpg)  \n  \nFor the Email and Birthday columns, dynamic data masking is implemented by using the default masking function. Which value will users see in each column?  \n  \nEach value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "email",
+        "text": "Email:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "birthday",
+        "text": "Birthday:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "1900-01-01"
+      },
+      {
+        "key": "B",
+        "text": "1900-01-01 00:00:00.0000"
+      },
+      {
+        "key": "C",
+        "text": "2010-XX-XX"
+      },
+      {
+        "key": "D",
+        "text": "XXXX"
+      },
+      {
+        "key": "E",
+        "text": "aXXXX@XXXX.com"
+      },
+      {
+        "key": "F",
+        "text": "XXXX@XXXX.com"
+      },
+      {
+        "key": "G",
+        "text": "XXXX@XXXX.XXX"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "1900-01-01"
+      },
+      {
+        "key": "B",
+        "text": "1900-01-01 00:00:00.0000"
+      },
+      {
+        "key": "C",
+        "text": "2010-XX-XX"
+      },
+      {
+        "key": "D",
+        "text": "XXXX"
+      },
+      {
+        "key": "E",
+        "text": "aXXXX@XXXX.com"
+      },
+      {
+        "key": "F",
+        "text": "XXXX@XXXX.com"
+      },
+      {
+        "key": "G",
+        "text": "XXXX@XXXX.XXX"
+      }
+    ],
+    "correctAnswers": [
+      "email=D",
+      "birthday=A"
+    ],
+    "explanation": "Chức năng che giấu dữ liệu động mặc định của Azure SQL Database trả về XXXX cho dữ liệu chuỗi. Đối với dữ liệu ngày/giờ, nó trả về giá trị 1900-01-01; cột Ngày hiển thị giá trị này là 1900-01-01.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783955735251-mxajqkg2.jpg",
+    "sourceTitle": "Examcademy AZ-500 Question 9",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/9-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-10",
+    "questionNumber": 10,
+    "text": "You have an Azure environment.  \n  \nYou need to identify Azure configurations and workloads that do not comply with ISO 27001:2013 standards.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Sentinel"
+      },
+      {
+        "key": "B",
+        "text": "Azure Active Directory (Azure AD) Identity Protection"
+      },
+      {
+        "key": "C",
+        "text": "Microsoft Defender for Cloud"
+      },
+      {
+        "key": "D",
+        "text": "Microsoft Defender for Identity"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Microsoft Defender for Cloud sử dụng bảng điều khiển tuân thủ quy định để đánh giá các tài nguyên Azure dựa trên các tiêu chuẩn và biện pháp kiểm soát quy định, đồng thời báo cáo các tài nguyên tuân thủ hoặc không tuân thủ. ISO 27001:2013 được cung cấp dưới dạng sáng kiến ​​tuân thủ quy định của Chính sách Azure để đánh giá các cấu hình và khối lượng công việc có liên quan của Azure.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 10",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/10-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-11",
+    "questionNumber": 11,
+    "text": "You have an Azure subscription containing an Azure web app named App1 and a virtual machine named VM1. VM1 runs Microsoft SQL Server and connects to a virtual network named VNet1. App1, VM1, and VNet1 are located in the US Central Azure region.  \n  \nYou need to make sure that App1 can connect to VM1. The solution must minimize costs.  \n  \nWhat should you include in the solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "regional virtual network integration"
+      },
+      {
+        "key": "B",
+        "text": "gateway-required virtual network integration"
+      },
+      {
+        "key": "C",
+        "text": "Azure Front Door"
+      },
+      {
+        "key": "D",
+        "text": "Azure Application Gateway integration"
+      },
+      {
+        "key": "E",
+        "text": "NAT gateway integration"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Tích hợp mạng ảo khu vực cho phép ứng dụng Azure App Service tạo kết nối ra bên ngoài tới các tài nguyên trong mạng ảo trong cùng khu vực, bao gồm cả VM chạy SQL Server. Nó tránh được cổng mạng ảo và chi phí liên quan cần thiết cho việc tích hợp cần có cổng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 11",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/11-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-12",
+    "questionNumber": 12,
+    "text": "You have an Azure subscription.  \n  \nYou plan to deploy a new Conditional Access policy named CAPolicy1.  \n  \nYou need to use the What If tool to evaluate how CAPolicy1 will affect users. The solution must minimize CAPolicy1's impact on users.  \n  \nWhat should you set the **Enable policy** setting for CAPolicy1 to?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Off"
+      },
+      {
+        "key": "B",
+        "text": "On"
+      },
+      {
+        "key": "C",
+        "text": "Report only"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Chế độ chỉ báo cáo đánh giá và báo cáo kết quả của chính sách Truy cập có điều kiện mà không thực thi các biện pháp kiểm soát trong quá trình đăng nhập. Nó được bao gồm trong các đánh giá What If, trong khi chính sách được đặt thành Tắt thì không, do đó, nó cho phép đánh giá tác động đồng thời tránh gây gián đoạn cho người dùng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 12",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/12-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-13",
+    "questionNumber": 13,
+    "text": "You have an Azure subscription.  \n  \nYou create an Azure web app named Contoso1812 that uses an S1 App Service plan.  \n  \nYou plan to:  \n  \n- Create a CNAME DNS record for www.contoso.com that points to Contoso1812.  \n  \nYou need to ensure that users can access Contoso1812 by using the https://www.contoso.com URL.  \n  \nWhich two actions should you take? Each correct answer provides part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Turn on the system-assigned managed identity for Contoso1812."
+      },
+      {
+        "key": "B",
+        "text": "Add a hostname to Contoso1812."
+      },
+      {
+        "key": "C",
+        "text": "Scale out the App Service plan of Contoso1812."
+      },
+      {
+        "key": "D",
+        "text": "Add a deployment slot to Contoso1812."
+      },
+      {
+        "key": "E",
+        "text": "Scale up the App Service plan of Contoso1812."
+      },
+      {
+        "key": "F",
+        "text": "Upload a PFX file to Contoso1812."
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "F"
+    ],
+    "explanation": "Miền tùy chỉnh Dịch vụ ứng dụng phải được thêm làm tên máy chủ trên ứng dụng web sau khi ánh xạ DNS của nó được định cấu hình. HTTPS trên tên máy chủ tùy chỉnh đó cũng yêu cầu chứng chỉ TLS/SSL được liên kết với tên máy chủ; tệp PFX cung cấp chứng chỉ mang theo của riêng bạn. Gói Dịch vụ ứng dụng S1 hỗ trợ ràng buộc SSL bắt buộc.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 13",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/13-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-14",
+    "questionNumber": 14,
+    "text": "You have 15 Azure virtual machines in a resource group called RG1.  \n  \nAll of the virtual machines run the same applications.  \n  \nYou need to stop unauthorized applications and malware from running on the virtual machines.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Apply an Azure policy to RG1."
+      },
+      {
+        "key": "B",
+        "text": "From Azure Security Center, configure adaptive application controls."
+      },
+      {
+        "key": "C",
+        "text": "Configure Azure Active Directory (Azure AD) Identity Protection."
+      },
+      {
+        "key": "D",
+        "text": "Apply a resource lock to RG1."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Kiểm soát ứng dụng thích ứng sử dụng khối lượng công việc được quan sát để tạo danh sách cho phép các ứng dụng đã biết là an toàn cho máy ảo và xác định việc thực thi các ứng dụng bên ngoài danh sách đó. Khả năng liệt kê cho phép ứng dụng này được thiết kế để bảo vệ máy khỏi phần mềm trái phép và phần mềm độc hại.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 14",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/14-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-15",
+    "questionNumber": 15,
+    "text": "You have an Azure Container Registry named `Registry1`.  \n  \nFrom Azure Security Center, you enable Azure Container Registry vulnerability scanning for the images in `Registry1`.  \n  \nYou perform the following actions:  \n  \n- Push a Windows image named `Image1` to `Registry1`.  \n- Push a Linux image named `Image2` to `Registry1`.  \n- Push a Windows image named `Image3` to `Registry1`.  \n- Modify `Image1` and push the new image as `Image4` to `Registry1`.  \n- Modify `Image2` and push the new image as `Image5` to `Registry1`.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953697497-1njlra9m.png)  \n  \nWhich two images will be scanned for vulnerabilities? Each correct answer presents a complete solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Image4"
+      },
+      {
+        "key": "B",
+        "text": "Image2"
+      },
+      {
+        "key": "C",
+        "text": "Image1"
+      },
+      {
+        "key": "D",
+        "text": "Image3"
+      },
+      {
+        "key": "E",
+        "text": "Image5"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "E"
+    ],
+    "explanation": "Quét lỗ hổng bảo mật của Trung tâm bảo mật Azure để đăng ký Azure Container tự động quét các hình ảnh Linux được hỗ trợ khi chúng được đẩy vào sổ đăng ký. Do đó, hình ảnh Linux `Image2` và `Image5` được quét; hình ảnh Windows thì không.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953697497-1njlra9m.png",
+    "sourceTitle": "Examcademy AZ-500 Question 15",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/15-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-16",
+    "questionNumber": 16,
+    "text": "HOTSPOT -  \n  \nYou have an Azure subscription containing the virtual machines listed in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953185016-gx2qgytb.png)  \n  \nSubnet1 and Subnet2 are configured with a Microsoft.Storage service endpoint.  \n  \nYou have an Azure Storage account named storageacc1, configured as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953187245-3xwwoe5j.jpg)  \n  \nFor each of the following statements, select **Yes** if it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "From VM1, you can upload a blob to storageacc1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "From VM2, you can upload a blob to storageacc1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "From VM3, you can upload a blob to storageacc1.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "Tài khoản lưu trữ được giới hạn ở các mạng đã chọn chỉ cho phép các mạng con mạng ảo được định cấu hình hoặc các nguồn IP được phép. Microsoft.Storage service endpoint thay đổi lưu lượng truy cập giới hạn lưu trữ từ mạng con để sử dụng IP riêng của VM, do đó, mục nhập tường lửa IP công cộng của VM1 không được áp dụng. Vì mạng con mạng ảo no được định cấu hình trên tài khoản lưu trữ nên lưu lượng truy cập từ cả Subnet1 và Subnet2 đều bị từ chối.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953185016-gx2qgytb.png",
+    "sourceTitle": "Examcademy AZ-500 Question 16",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/16-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-17",
+    "questionNumber": 17,
+    "text": "You must evaluate the underlined segment to determine whether it is correct.  \n  \nYou have been assigned to create a separate subscription for every division in your company. However, all subscriptions will be associated with one Azure Active Directory (Azure AD) tenant.  \n  \nYou need to ensure that every subscription has the same role assignments.  \n  \nYou use Azure AD Privileged Identity Management (PIM).  \n  \nSelect `No adjustment required` if the underlined segment is correct. If it is incorrect, select the correct option.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "No adjustment required"
+      },
+      {
+        "key": "B",
+        "text": "Azure Blueprints"
+      },
+      {
+        "key": "C",
+        "text": "Conditional access policies"
+      },
+      {
+        "key": "D",
+        "text": "Azure DevOps"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Quản lý danh tính đặc quyền Azure AD cung cấp các phân công vai trò Azure RBAC đủ điều kiện và có giới hạn thời gian, trong khi Azure Blueprints hỗ trợ các tạo phẩm phân công vai trò có thể được áp dụng cho các đăng ký để chuẩn hóa các nhiệm vụ truy cập.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 17",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/17-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-18",
+    "questionNumber": 18,
+    "text": "You have the Azure resource hierarchy shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953090039-0wz85rn4.jpg)  \n  \nRG1, RG2, and RG3 are resource groups. RG2 contains a virtual machine named VM2. You assign Azure role-based access control (RBAC) roles to the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953093081-tawvncjy.png)  \n  \nFor each of the following statements, select **Yes** if the statement is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "User1 can deploy virtual machines to RG1.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "User2 can delete VM2.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "User3 can reset the password of the built-in Administrator account of VM2.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Các bài tập Azure RBAC kế thừa từ phạm vi cha đến phạm vi con. Người đóng góp được chỉ định trong nhóm quản lý gốc đối tượng thuê sẽ áp dụng cho RG1 và cho phép triển khai tài nguyên. Virtual Machine Contributor được chỉ định tại Subscription2 sẽ áp dụng cho VM2 và cho phép xóa VM. Đăng nhập quản trị viên máy ảo cung cấp thông tin đăng nhập của quản trị viên vào VM, nhưng nó không cung cấp quyền quản lý VM cần thiết để đặt lại mật khẩu Quản trị viên tích hợp cục bộ của nó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953090039-0wz85rn4.jpg",
+    "sourceTitle": "Examcademy AZ-500 Question 18",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/18-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-19",
+    "questionNumber": 19,
+    "text": "You have five Azure subscriptions linked to one Azure Active Directory (Azure AD) tenant.  \n  \nYou create an Azure Policy initiative named SecurityPolicyInitiative1.  \n  \nYou determine the standard role assignments that must be configured on all new resource groups.  \n  \nYou need to enforce SecurityPolicyInitiative1 and the role assignments whenever a new resource group is created.  \n  \nWhich three actions should you perform, in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "F"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Publish an Azure Blueprints version"
+      },
+      {
+        "key": "B",
+        "text": "Assign an Azure blueprint."
+      },
+      {
+        "key": "C",
+        "text": "Create a policy assignment."
+      },
+      {
+        "key": "D",
+        "text": "Create a custom role-based access control (RBAC) role"
+      },
+      {
+        "key": "E",
+        "text": "Create a dedicated management subscription."
+      },
+      {
+        "key": "F",
+        "text": "Create an Azure Blueprints definition."
+      },
+      {
+        "key": "G",
+        "text": "Create an initiative assignment."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Publish an Azure Blueprints version"
+      },
+      {
+        "key": "B",
+        "text": "Assign an Azure blueprint."
+      },
+      {
+        "key": "C",
+        "text": "Create a policy assignment."
+      },
+      {
+        "key": "D",
+        "text": "Create a custom role-based access control (RBAC) role"
+      },
+      {
+        "key": "E",
+        "text": "Create a dedicated management subscription."
+      },
+      {
+        "key": "F",
+        "text": "Create an Azure Blueprints definition."
+      },
+      {
+        "key": "G",
+        "text": "Create an initiative assignment."
+      }
+    ],
+    "correctAnswers": [
+      "step1=F",
+      "step2=A",
+      "step3=B"
+    ],
+    "explanation": "Định nghĩa Azure Blueprint có thể đóng gói các nhiệm vụ sáng kiến ​​Chính sách Azure và các nhiệm vụ vai trò RBAC dưới dạng các tạo phẩm. Sau khi xác định các tạo phẩm đó, hãy xuất bản định nghĩa dưới dạng phiên bản và gán bản thiết kế đã xuất bản đó cho các đăng ký hiện hành. Sau đó, việc gán bản thiết kế sẽ áp dụng cấu hình được quản lý cho các nhóm tài nguyên mới được tạo.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 19",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/19-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-20",
+    "questionNumber": 20,
+    "text": "You have an Azure subscription that contains the Azure App Service web apps displayed in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783965706894-kfa3zzc6.png)  \n  \nYou upload a private-key certificate named Cert1.pfx to App1.  \n  \nWhich apps can use Cert1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "App1 only"
+      },
+      {
+        "key": "B",
+        "text": "App1 and App2 only"
+      },
+      {
+        "key": "C",
+        "text": "App1 and App4 only"
+      },
+      {
+        "key": "D",
+        "text": "App1, App2, and App3 only"
+      },
+      {
+        "key": "E",
+        "text": "App1, App2, App3, and App4"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Chứng chỉ riêng được tải lên hoặc nhập vào Azure App Service chỉ được chia sẻ với các dịch vụ ứng dụng trong cùng một đơn vị triển khai (không gian web), được liên kết với nhóm tài nguyên, khu vực và hệ điều hành của gói Dịch vụ ứng dụng. Chỉ App1 phù hợp với RG1, Đông Mỹ và Windows; App2 có Linux, App3 ở RG2 và App4 ở miền Trung Hoa Kỳ.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783965706894-kfa3zzc6.png",
+    "sourceTitle": "Examcademy AZ-500 Question 20",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/20-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-21",
+    "questionNumber": 21,
+    "text": "You have an Azure SQL database and implement Always Encrypted.  \n  \nYou need to ensure that application developers can retrieve and decrypt data in the database.  \n  \nWhich two pieces of information should you give the developers? Each correct answer presents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a stored access policy"
+      },
+      {
+        "key": "B",
+        "text": "a shared access signature (SAS)"
+      },
+      {
+        "key": "C",
+        "text": "the column encryption key"
+      },
+      {
+        "key": "D",
+        "text": "user credentials"
+      },
+      {
+        "key": "E",
+        "text": "the column master key"
+      }
+    ],
+    "correctAnswers": [
+      "D",
+      "E"
+    ],
+    "explanation": "Luôn được mã hóa mã hóa dữ liệu bằng khóa mã hóa cột, khóa này được bảo vệ bằng khóa chính của cột được giữ trong kho khóa bên ngoài. Trình điều khiển máy khách luôn được mã hóa phải có khả năng truy cập vào khóa chính của cột để giải mã khóa mã hóa cột và trả về dữ liệu văn bản gốc. Do đó, các nhà phát triển yêu cầu khóa chính của cột và thông tin xác thực cho phép sử dụng nó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 21",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/21-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-22",
+    "questionNumber": 22,
+    "text": "Your network has an on-premises Active Directory domain named adatum.com that synchronizes with a Microsoft Entra tenant.  \n  \nThe Microsoft Entra tenant includes the users in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783965525016-tcvv04wa.png)  \n  \nYou configure Microsoft Entra Password Protection for adatum.com as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783965527974-ejdly85x.png)  \n  \nFor each statement, select **Yes** if it is true; otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "User1 will be prompted to change the password on the next sign-in.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "User2 can change the password to @d@tum_C0mpleX123.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "User3 can change the password to Adatum123!.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Bảo vệ mật khẩu kiểm tra mật khẩu trong khi thay đổi hoặc đặt lại; nó không buộc người dùng chỉ sử dụng đám mây có mật khẩu bị cấm hiện tại phải thay đổi mật khẩu đó. Thuật toán mật khẩu bị cấm tùy chỉnh bình thường hóa các thay thế phổ biến và cho điểm các thuật ngữ bị cấm phù hợp cùng với các ký tự còn lại; @d@tum_C0mpleX123 có đủ ký tự còn lại để đáp ứng điểm chấp nhận. Đối với AD DS tại chỗ, chế độ Kiểm tra ghi lại các mật khẩu có thể bị từ chối nhưng cho phép thay đổi mật khẩu, vì vậy Adatum123! được cho phép.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783965525016-tcvv04wa.png",
+    "sourceTitle": "Examcademy AZ-500 Question 22",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/22-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-23",
+    "questionNumber": 23,
+    "text": "You are investigating a security issue with an Azure Storage account.  \n  \nYou enable Azure Storage Analytics logs and archive them to a storage account. What should you use to retrieve the diagnostic logs?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Cosmos DB explorer"
+      },
+      {
+        "key": "B",
+        "text": "SQL query editor in Azure"
+      },
+      {
+        "key": "C",
+        "text": "AzCopy"
+      },
+      {
+        "key": "D",
+        "text": "the Security admin center"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Nhật ký chẩn đoán Azure Storage Analytics được lưu trữ dưới dạng các đốm màu trong vùng chứa `$logs` của tài khoản lưu trữ. AzCopy có thể tải xuống các đốm màu nhật ký đó để xem xét và phân tích.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 23",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/23-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-25",
+    "questionNumber": 25,
+    "text": "Your company has an Azure subscription named Sub1 that is associated with an Azure Active Directory (Azure AD) tenant named contoso.com.  \n  \nThe company develops a mobile application named App1. App1 uses the OAuth 2 implicit grant type to acquire Azure AD access tokens.  \n  \nYou need to register App1 in Azure AD.  \n  \nWhich information should you obtain from the developer to register the application?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a redirect URI"
+      },
+      {
+        "key": "B",
+        "text": "a reply URL"
+      },
+      {
+        "key": "C",
+        "text": "a key"
+      },
+      {
+        "key": "D",
+        "text": "an application ID"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Đăng ký ứng dụng Azure AD phải chứa URL trả lời (URI chuyển hướng), vì luồng ngầm OAuth 2.0 chỉ trả về mã thông báo truy cập cho điểm cuối đã đăng ký. Nền tảng nhận dạng từ chối URI trả về không khớp với đăng ký ứng dụng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 25",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/25-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-26",
+    "questionNumber": 26,
+    "text": "You have an Azure Active Directory (Azure AD) tenant named contoso.com with Azure Active Directory Premium Plan 1 licenses.  \n  \nYou need to create a group named Group1 that will be assigned the Global reader role.  \n  \nWhich portal should you use to create Group1, and which group type should you create?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure AD Premium P1 cho phép các nhóm có thể gán vai trò. Một nhóm bảo mật mới hoặc nhóm Microsoft 365 có thể được cấu hình để gán vai trò Azure AD, bao gồm cả vai trò Người đọc toàn cầu. Các nhóm bảo mật hỗ trợ thư không thể được sử dụng cho mục đích này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 26",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/26-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-27",
+    "questionNumber": 27,
+    "text": "You have the Azure virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953083046-ojndo3g2.png)  \n  \nEach virtual machine has one network interface.  \n  \nYou add VM1's network interface to an application security group named ASG1.  \n  \nYou need to identify the virtual machines whose network interfaces can be added to ASG1.  \n  \nWhat should you identify?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VM2 only"
+      },
+      {
+        "key": "B",
+        "text": "VM2 and VM3 only"
+      },
+      {
+        "key": "C",
+        "text": "VM2, VM3, VM4, and VM5"
+      },
+      {
+        "key": "D",
+        "text": "VM2, VM3, and VM5 only"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các giao diện mạng được thêm vào nhóm bảo mật ứng dụng Azure phải nằm trong cùng một mạng ảo và vị trí Azure với giao diện đã được gán cho nhóm. Vì VM1 nằm ở Tây Hoa Kỳ 2 và VNET1 nên VM2 và VM3 đủ điều kiện; ở trong một mạng con khác không ngăn cản tư cách thành viên.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953083046-ojndo3g2.png",
+    "sourceTitle": "Examcademy AZ-500 Question 27",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/27-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-28",
+    "questionNumber": 28,
+    "text": "In Azure Security Center, you create a custom alert rule.  \n  \nYou need to configure the users who receive an email message when the alert is triggered.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From Azure Monitor, create an action group."
+      },
+      {
+        "key": "B",
+        "text": "From Security Center, modify the Security policy settings of the Azure subscription."
+      },
+      {
+        "key": "C",
+        "text": "From Azure Active Directory (Azure AD), modify the members of the Security Reader role group."
+      },
+      {
+        "key": "D",
+        "text": "From Security Center, modify the alert rule."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Các nhóm hành động Azure Monitor xác định người nhận thông báo và hành động cho cảnh báo, bao gồm cả thông báo qua email. Liên kết nhóm hành động với quy tắc cảnh báo tùy chỉnh để người dùng được định cấu hình của nhóm sẽ nhận được email khi cảnh báo kích hoạt.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 28",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/28-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-29",
+    "questionNumber": 29,
+    "text": "Determine whether the underlined segment is correct.  \n  \nYour Azure Active Directory Azure (Azure AD) tenant has an Azure subscription associated with it.  \n  \nYour developer has developed a mobile application that acquires Azure AD access tokens by using the OAuth 2 implicit grant type.  \n  \nThe mobile application must be registered in Azure AD.  \n  \nFor registration, you need a redirect URI from the developer.  \n  \nSelect `No adjustment required` if the underlined segment is correct. If the underlined segment is incorrect, select the correct option.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "No adjustment required"
+      },
+      {
+        "key": "B",
+        "text": "a secret"
+      },
+      {
+        "key": "C",
+        "text": "a login hint"
+      },
+      {
+        "key": "D",
+        "text": "a client ID"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "URI chuyển hướng xác định đích được phê duyệt mà Microsoft Entra ID gửi mã thông báo bảo mật sau khi xác thực. Nó phải được định cấu hình cho một ứng dụng nhận mã thông báo truy cập thông qua luồng OAuth dựa trên trình duyệt; các máy khách di động công cộng không sử dụng bí mật máy khách cho mục đích này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 29",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/29-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-30",
+    "questionNumber": 30,
+    "text": "You have an Azure subscription named Sub 1 associated with an Azure Active Directory (Azure AD) tenant named contoso.com. The tenant includes the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953092469-k79grlet.png)  \n  \nEach user has an Azure AD Premium P2 license.  \n  \nYou plan to onboard and configure Azure AD Identity Protection. Which users can onboard Azure AD Identity Protection, remediate users, and configure policies?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Quản trị viên toàn cầu là vai trò có thể tích hợp Bảo vệ danh tính Azure AD. Quản trị viên toàn cầu và Quản trị viên bảo mật có toàn quyền truy cập Bảo vệ danh tính, cho phép họ khắc phục những người dùng gặp rủi ro và định cấu hình chính sách. Bảo mật Người đọc chỉ có thể xem báo cáo và Quản trị viên cấp phép không nhận được các quyền này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953092469-k79grlet.png",
+    "sourceTitle": "Examcademy AZ-500 Question 30",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/30-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-31",
+    "questionNumber": 31,
+    "text": "Your company has an Azure subscription named Subscription1. Subscription1 is associated with the Azure Active Directory tenant that includes the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954287785-oxmkrcet.png)  \n  \nThe company is sold to a new owner.  \n  \nThe company must transfer ownership of Subscription1. Which user can transfer the ownership, and which tool should that user use?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Đối với đăng ký Azure cổ điển, Quản trị viên tài khoản là chủ sở hữu thanh toán được ủy quyền chuyển quyền sở hữu đăng ký. Quá trình chuyển được bắt đầu trong Trung tâm tài khoản Azure; Bản thân các vai trò Quản trị viên thanh toán và Chủ sở hữu Azure RBAC, Quản trị viên toàn cầu Azure AD và Quản trị viên thanh toán không cung cấp khả năng chuyển quyền sở hữu đăng ký cổ điển này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954287785-oxmkrcet.png",
+    "sourceTitle": "Examcademy AZ-500 Question 31",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/31-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-32",
+    "questionNumber": 32,
+    "text": "You must satisfy the technical requirements for VNetwork1.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a new subnet on VNetwork1."
+      },
+      {
+        "key": "B",
+        "text": "Remove the NSGs from Subnet11 and Subnet13."
+      },
+      {
+        "key": "C",
+        "text": "Associate an NSG to Subnet12."
+      },
+      {
+        "key": "D",
+        "text": "Configure DDoS protection for VNetwork1."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Việc tạo mạng con bắt buộc sẽ thiết lập phân đoạn mạng cần thiết trước khi áp dụng các nhóm bảo mật mạng cấp mạng con hoặc cấu hình khác cho mạng con đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 32",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/32-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-33",
+    "questionNumber": 33,
+    "text": "You have an Azure subscription containing virtual machines.  \n  \nYou enable just-in-time (JIT) VM access on all the virtual machines.  \n  \nYou need to connect to a virtual machine by using Remote Desktop.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From Azure Directory (Azure AD) Privileged Identity Management (PIM), activate the Security administrator user role."
+      },
+      {
+        "key": "B",
+        "text": "From Azure Active Directory (Azure AD) Privileged Identity Management (PIM), activate the Owner role for the virtual machine."
+      },
+      {
+        "key": "C",
+        "text": "From the Azure portal, select the virtual machine, select Connect, and then select Request access."
+      },
+      {
+        "key": "D",
+        "text": "From the Azure portal, select the virtual machine and add the Network Watcher Agent virtual machine extension."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Quyền truy cập VM đúng lúc yêu cầu một yêu cầu tạm thời mở cổng RDP gửi đến đã định cấu hình cho IP nguồn yêu cầu và khoảng thời gian được phê duyệt. Từ trang Kết nối cổng thông tin Azure của máy ảo, chọn **Yêu cầu quyền truy cập** trước khi kết nối qua RDP.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 33",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/33-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-34",
+    "questionNumber": 34,
+    "text": "Your network has an on-premises Active Directory Domain Services (AD DS) domain that synchronizes with an Azure AD tenant.  \n  \nYou plan to implement single sign-on (SSO) for Azure AD resources.  \n  \nYou need to configure an Intranet Zone setting for every user by using a Group Policy Object (GPO).  \n  \nWhich setting should you configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Logon options"
+      },
+      {
+        "key": "B",
+        "text": "Allow updates to status bar via script"
+      },
+      {
+        "key": "C",
+        "text": "Allow active scripting"
+      },
+      {
+        "key": "D",
+        "text": "Access data sources across domains"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "SSO liền mạch của Microsoft Entra yêu cầu đặt URL tự động đăng nhập của Microsoft Entra trong vùng Mạng nội bộ cục bộ của người dùng và yêu cầu bật cài đặt Chính sách nhóm vùng mạng nội bộ **Cho phép bật cập nhật lên thanh trạng thái thông qua tập lệnh**.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 34",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/34-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-35",
+    "questionNumber": 35,
+    "text": "Your company’s Azure subscription contains 100 virtual machines with Azure Diagnostics enabled.  \n  \nYou need to analyze the security events from a Windows Server 2016 virtual machine and have already opened Azure Monitor.  \n  \nWhich of the following options should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Application Log"
+      },
+      {
+        "key": "B",
+        "text": "Metrics"
+      },
+      {
+        "key": "C",
+        "text": "Activity Log"
+      },
+      {
+        "key": "D",
+        "text": "Logs"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Nhật ký Azure Monitor là giao diện truy vấn dành cho các bản ghi sự kiện bảo mật Windows được thu thập, chẳng hạn như các bản ghi trong bảng `SecurityEvent`. Số liệu là các phép đo bằng số, trong khi Nhật ký hoạt động ghi lại các hoạt động quản lý tài nguyên Azure chứ không phải các sự kiện bảo mật của hệ điều hành khách.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 35",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/35-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-36",
+    "questionNumber": 36,
+    "text": "You have an Azure subscription that includes an Azure Data Lake Storage account named `sa1`.  \n  \nYou plan to deploy an app named App1 that will access `sa1` and perform operations including Read, List, Create Directory, and Delete Directory.  \n  \nYou need to ensure that App1 can securely connect to `sa1` by using a private endpoint.  \n  \nWhat is the minimum number of private endpoints required for `sa1`?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "1"
+      },
+      {
+        "key": "B",
+        "text": "2"
+      },
+      {
+        "key": "C",
+        "text": "3"
+      },
+      {
+        "key": "D",
+        "text": "4"
+      },
+      {
+        "key": "E",
+        "text": "5"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các hoạt động thư mục Azure Data Lake Storage yêu cầu private endpoint cho tài nguyên con Data Lake Storage (`dfs`). Cũng cần có private endpoint cho nguồn phụ Blob (`blob`) vì các yêu cầu nhắm mục tiêu điểm cuối Bộ lưu trữ hồ dữ liệu có thể được chuyển hướng đến điểm cuối Blob. Do đó, hai điểm cuối riêng tư đảm bảo tất cả các hoạt động được liệt kê có thể hoàn thành một cách an toàn.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 36",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/36-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-37",
+    "questionNumber": 37,
+    "text": "You have an Azure subscription called Subscription1.  \n  \nYou need to see which security settings are assigned to Subscription1 by default. Which Azure Policy or initiative definition should you examine?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the Audit diagnostic setting policy definition"
+      },
+      {
+        "key": "B",
+        "text": "the Enable Monitoring in Azure Security Center initiative definition"
+      },
+      {
+        "key": "C",
+        "text": "the Enable Azure Monitor for VMs initiative definition"
+      },
+      {
+        "key": "D",
+        "text": "the Azure Monitor solution 'Security and Audit' must be deployed policy definition"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Sáng kiến ​​**Bật giám sát trong Trung tâm bảo mật Azure** tích hợp nhóm các định nghĩa Chính sách Azure được sử dụng để bật và đặt cấu hình giám sát bảo mật mặc định cho các tài nguyên trong đăng ký. Việc xem xét sáng kiến ​​đó sẽ xác định các cài đặt bảo mật được chỉ định theo mặc định.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 37",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/37-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-38",
+    "questionNumber": 38,
+    "text": "You plan to deploy an app that will modify Azure Active Directory (Azure AD) user properties by using Microsoft Graph.  \n  \nYou need to ensure that the app can access Azure AD. What should you configure first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an app registration"
+      },
+      {
+        "key": "B",
+        "text": "an external identity"
+      },
+      {
+        "key": "C",
+        "text": "a custom role-based access control (RBAC) role"
+      },
+      {
+        "key": "D",
+        "text": "an Azure AD Application Proxy"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Việc đăng ký ứng dụng sẽ tạo ra danh tính ứng dụng và mối quan hệ tin cậy trong Microsoft Entra ID (Azure AD), cho phép ứng dụng đó xác thực và sau đó được cấp các quyền Microsoft Graph cần thiết để sửa đổi thuộc tính người dùng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 38",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/38-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-39",
+    "questionNumber": 39,
+    "text": "You are configuring and securing a network environment.  \n  \nYou deploy an Azure virtual machine named VM1, configured to analyze network traffic.  \n  \nYou need to ensure that all network traffic is routed through VM1.  \n  \nWhat should you configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a system route"
+      },
+      {
+        "key": "B",
+        "text": "a network security group (NSG)"
+      },
+      {
+        "key": "C",
+        "text": "a user-defined route"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Tuyến do người dùng xác định có thể buộc lưu lượng truy cập đến một thiết bị ảo mạng bằng cách đặt VM1 làm bước nhảy tiếp theo của thiết bị ảo. Tuyến mặc định có tiền tố địa chỉ 0.0.0.0/0 sẽ hướng tất cả lưu lượng truy cập phù hợp qua công cụ đó. Các nhóm bảo mật mạng lọc lưu lượng thay vì định tuyến lưu lượng và các tuyến hệ thống là các tuyến mặc định do Azure quản lý.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 39",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/39-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-40",
+    "questionNumber": 40,
+    "text": "You have an Azure subscription connected to an on-premises datacenter that contains the resources in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960420986-45xkknf4.png)  \n  \nYou must configure virtual network service endpoints for VNet1 and VNet2. The solution must meet these requirements:  \n  \n- Virtual machines connected to the VNet1 subnet must access storage1, storage2, and Azure AD through the Microsoft backbone network.  \n- Virtual machines connected to the VNet2 subnet must access storage1 and KeyVault1 through the Microsoft backbone network.  \n- The virtual machines must use the Microsoft backbone network to communicate between VNet1 and VNet2.  \n  \nHow many service endpoints should be configured for each virtual network?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Một bộ lưu trữ Azure service endpoint duy nhất bao gồm quyền truy cập từ mạng con được kích hoạt của nó vào nhiều tài khoản lưu trữ, do đó, storage1 và storage2 không yêu cầu các điểm cuối riêng biệt. Azure Key Vault sử dụng Microsoft.KeyVault service endpoint riêng biệt. Điểm cuối Microsoft.AzureActiveDirectory là một loại điểm cuối riêng biệt (được sử dụng để tích hợp Azure Data Lake Storage Gen1). Điểm cuối dịch vụ bảo mật lưu lượng truy cập từ mạng con đến dịch vụ Azure PaaS; chúng không cung cấp kết nối VNet-to-VNet, yêu cầu kết nối VNet peering hoặc cổng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783960420986-45xkknf4.png",
+    "sourceTitle": "Examcademy AZ-500 Question 40",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/40-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-41",
+    "questionNumber": 41,
+    "text": "You have an Azure Active Directory (Azure AD) tenant named contoso.com that contains the users in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954558000-thjgggb6.png)  \n  \nAzure AD Privileged Identity Management (PIM) is used in contoso.com. In PIM, the Password Administrator role has these settings:  \n  \n- Maximum activation duration (hours): 2  \n- Send email notifying admins of activation: Disable  \n- Require incident/request ticket number during activation: Disable  \n- Require Azure Multi-Factor Authentication for activation: Enable  \n- Require approval to activate this role: Enable  \n- Selected approver: Group1  \n  \nYou assign the Password Administrator role to users as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954560081-fx7dwvxk.png)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "When User1 signs in, the user is assigned the Password Administrator role automatically.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "User2 can request to activate the Password Administrator role.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "If User3 wants to activate the Password Administrator role, the user can approve their own request.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "Việc gán PIM hoạt động sẽ làm cho vai trò Quản trị viên mật khẩu hoạt động mà không cần yêu cầu kích hoạt. Nhiệm vụ Đủ điều kiện phải được kích hoạt; vì MFA là bắt buộc để kích hoạt nên người dùng có trạng thái MFA bị vô hiệu hóa sẽ không thể kích hoạt vai trò này. Những người phê duyệt đã chọn không thể phê duyệt các yêu cầu kích hoạt vai trò PIM của chính họ, kể cả khi họ là thành viên của nhóm phê duyệt.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954558000-thjgggb6.png",
+    "sourceTitle": "Examcademy AZ-500 Question 41",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/41-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-42",
+    "questionNumber": 42,
+    "text": "HOTSPOT —  \n  \nYou have an Azure key vault.  \n  \nYou need to delegate administrative access to the key vault and meet these requirements:  \n  \n- Provide a user named User1 the ability to configure advanced access policies for the key vault.  \n- Provide a user named User2 the ability to add and delete certificates in the key vault.  \n- Use the principle of least privilege.  \n  \nWhat should you use to assign access to each user?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure RBAC kiểm soát các hoạt động trên mặt phẳng quản lý Key Vault, bao gồm cập nhật các thuộc tính và chính sách truy cập của Key Vault. Hoạt động chứng chỉ là hoạt động trên mặt phẳng dữ liệu; chính sách truy cập Key Vault chỉ có thể cấp cho Người dùng2 quyền Tạo và Xóa Chứng chỉ, đáp ứng ít đặc quyền nhất.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 42",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/42-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-43",
+    "questionNumber": 43,
+    "text": "You have an Azure subscription containing the virtual networks shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960949869-nhv40elv.png)  \n  \nThe subscription includes the subnets shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960953197-s8muqdqn.png)  \n  \nYou plan to create an Azure web app named WebApp2 with these settings:  \n  \n- Region: East US  \n- VNet integration: Enabled  \n- Scale out: Autoscale to up to 10 instances  \n  \nFor each statement below, select **Yes** if it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "WebApp2 can be integrated with Subnet11.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "WebApp2 can be integrated with Subnet12.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "WebApp2 can be integrated with Subnet21.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Tích hợp VNet khu vực Azure App Service yêu cầu một mạng con chuyên dụng, chưa được sử dụng trong cùng khu vực với ứng dụng, có phạm vi địa chỉ ít nhất là /28. Subnet11 chứa VM1 nên không thể sử dụng được. Subnet12 là một /27 trống ở miền Đông Hoa Kỳ, phù hợp với khu vực của WebApp2 và cung cấp đủ địa chỉ cho kế hoạch mở rộng quy mô. Subnet21 ở Tây Hoa Kỳ và đã lưu trữ một ứng dụng web tích hợp nên không thể sử dụng được.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783960949869-nhv40elv.png",
+    "sourceTitle": "Examcademy AZ-500 Question 43",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/43-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-46",
+    "questionNumber": 46,
+    "text": "Your network has an on-premises Active Directory domain named contoso.com, which contains a user named User1.  \n  \nYou have an Azure subscription linked to an Azure Active Directory (Azure AD) tenant named contoso.com. The tenant includes an Azure Storage account named storage1, and storage1 contains an Azure file share named share1.  \n  \nThe domain and tenant are currently not integrated.  \n  \nYou need to ensure that User1 can access share1 by using domain credentials.  \n  \nWhich three actions should you perform, in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a private link to storage1."
+      },
+      {
+        "key": "B",
+        "text": "Enable an Active Directory source for Azure File shares"
+      },
+      {
+        "key": "C",
+        "text": "Implement Azure AD Connect."
+      },
+      {
+        "key": "D",
+        "text": "Create a service endpoint to storage1."
+      },
+      {
+        "key": "E",
+        "text": "Assign share-level permissions for share1."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create a private link to storage1."
+      },
+      {
+        "key": "B",
+        "text": "Enable an Active Directory source for Azure File shares"
+      },
+      {
+        "key": "C",
+        "text": "Implement Azure AD Connect."
+      },
+      {
+        "key": "D",
+        "text": "Create a service endpoint to storage1."
+      },
+      {
+        "key": "E",
+        "text": "Assign share-level permissions for share1."
+      }
+    ],
+    "correctAnswers": [
+      "step1=C",
+      "step2=B",
+      "step3=E"
+    ],
+    "explanation": "Azure AD Connect đồng bộ hóa người dùng AD DS tại chỗ với Azure AD để Azure RBAC có thể cấp quyền truy cập ở cấp độ chia sẻ cho người dùng. Việc bật AD DS làm nguồn nhận dạng Azure Files cho phép xác thực SMB bằng thông tin xác thực tên miền tại chỗ. Sau đó, quyền cấp độ chia sẻ phải được chỉ định để cho phép truy cập vào phần chia sẻ tệp.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 46",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/46-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-47",
+    "questionNumber": 47,
+    "text": "You have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953066387-bujxy6u5.png)  \n  \nYou create the Azure Storage accounts shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953068791-kmrr420g.png)  \n  \nYou need to configure auditing for SQL1. Which storage accounts and Log Analytics workspaces can you use as the audit log destination?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Storage2 là tài khoản lưu trữ V1 cho mục đích chung cùng khu vực đủ điều kiện. Storage1 là tài khoản chỉ dành cho Blob và Storage3 nằm ở một khu vực khác. Kiểm tra Azure SQL có thể gửi các sự kiện kiểm tra tới Log Analytics thông qua cài đặt chẩn đoán Azure Monitor, do đó, cả ba không gian làm việc Log Analytics được liệt kê đều có thể được sử dụng bất kể nhóm tài nguyên hoặc khu vực của chúng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953066387-bujxy6u5.png",
+    "sourceTitle": "Examcademy AZ-500 Question 47",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/47-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-48",
+    "questionNumber": 48,
+    "text": "You have an Azure Kubernetes Service (AKS) cluster that must connect to an Azure Container Registry.  \n  \nYou need to use the AKS cluster’s automatically generated service principal to authenticate to the Azure Container Registry.  \n  \nWhat should you create?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a secret in Azure Key Vault"
+      },
+      {
+        "key": "B",
+        "text": "a role assignment"
+      },
+      {
+        "key": "C",
+        "text": "an Azure Active Directory (Azure AD) user"
+      },
+      {
+        "key": "D",
+        "text": "an Azure Active Directory (Azure AD) group"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Quyền truy cập Sổ đăng ký vùng chứa Azure cho service principal được cấp thông qua Azure RBAC. Gán cho service principal một vai trò đăng ký thích hợp—chẳng hạn như `AcrPull` để kéo quyền truy cập vào sổ đăng ký không hỗ trợ ABAC—cho phép cụm AKS truy xuất hình ảnh vùng chứa.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 48",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/48-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-49",
+    "questionNumber": 49,
+    "text": "Your on-premises network contains the servers shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957469662-wujbrfb7.png)  \n  \nYou have an Azure subscription that contains multiple virtual machines running either Windows Server 2019 or SLES.  \n  \nYou plan to implement adaptive application controls in Microsoft Defender for Cloud.  \n  \nWhich operating systems and platforms can you monitor?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các điều khiển ứng dụng thích ứng hỗ trợ các máy Windows Server, bao gồm máy ảo Azure và máy Windows Server được kích hoạt thông qua Azure Arc. SLES không được hỗ trợ cho tính năng này và máy ảo Hyper-V tại chỗ không được đưa vào làm nền tảng được hỗ trợ chỉ vì chúng chạy trong Hyper-V.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957469662-wujbrfb7.png",
+    "sourceTitle": "Examcademy AZ-500 Question 49",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/49-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-50",
+    "questionNumber": 50,
+    "text": "You have been assigned to create an Azure key vault by using PowerShell. You have been told that objects deleted from the key vault must be retained for a defined period of 90 days.  \n  \nWhich two of the following parameters must be used together to satisfy the requirement? (Choose two.)",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "EnabledForDeployment"
+      },
+      {
+        "key": "B",
+        "text": "EnablePurgeProtection"
+      },
+      {
+        "key": "C",
+        "text": "EnabledForTemplateDeployment"
+      },
+      {
+        "key": "D",
+        "text": "EnableSoftDelete"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "D"
+    ],
+    "explanation": "Xóa mềm sẽ giữ lại các đối tượng Key Vault đã xóa trong khoảng thời gian lưu giữ, trong khi tính năng bảo vệ thanh lọc ngăn chặn việc xóa vĩnh viễn trong khoảng thời gian lưu giữ đó và yêu cầu xóa mềm. Các tham số triển khai không cung cấp khả năng lưu giữ hoặc bảo vệ xóa.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 50",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/50-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-51",
+    "questionNumber": 51,
+    "text": "You have an Azure subscription that includes a storage account named `storage1` and a virtual machine named `VM1`.  \n  \n`VM1` is connected to a virtual network named `VNet1`, which contains one subnet and uses Azure DNS.  \n  \nYou need to ensure that `VM1` connects to `storage1` by using a private IP address. The solution must minimize administrative effort.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "For storage1, disable public network access."
+      },
+      {
+        "key": "B",
+        "text": "On VNet1, create a new subnet."
+      },
+      {
+        "key": "C",
+        "text": "For storage1, create a new private endpoint."
+      },
+      {
+        "key": "D",
+        "text": "Create an Azure Private DNS zone."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Bộ lưu trữ Azure private endpoint tạo giao diện mạng với địa chỉ IP riêng trong mạng ảo và cung cấp kết nối riêng tư với dịch vụ lưu trữ thông qua Azure Private Link. Với DNS do Azure cung cấp, vùng DNS riêng tư bắt buộc và các bản ghi có thể được tạo tự động, cho phép tên điểm cuối lưu trữ thông thường phân giải thành địa chỉ IP riêng tư.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 51",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/51-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-52",
+    "questionNumber": 52,
+    "text": "You create an Azure subscription that has Azure AD Premium P2.  \n  \nYou need to ensure that Azure Active Directory (Azure AD) Privileged Identity Management (PIM) can be used to secure Azure AD roles.  \n  \nWhich three actions should you perform in order?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Discover privileged roles."
+      },
+      {
+        "key": "B",
+        "text": "Sign up PIM for Azure AD roles."
+      },
+      {
+        "key": "C",
+        "text": "Consent to PIM."
+      },
+      {
+        "key": "D",
+        "text": "Discover resources."
+      },
+      {
+        "key": "E",
+        "text": "Verify your identity by using multi-factor authentication (MFA)."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Discover privileged roles."
+      },
+      {
+        "key": "B",
+        "text": "Sign up PIM for Azure AD roles."
+      },
+      {
+        "key": "C",
+        "text": "Consent to PIM."
+      },
+      {
+        "key": "D",
+        "text": "Discover resources."
+      },
+      {
+        "key": "E",
+        "text": "Verify your identity by using multi-factor authentication (MFA)."
+      }
+    ],
+    "correctAnswers": [
+      "step1=C",
+      "step2=E",
+      "step3=B"
+    ],
+    "explanation": "Trình tự giới thiệu PIM ban đầu là cấp sự đồng ý của đối tượng thuê đối với PIM, hoàn thành xác minh danh tính MFA bắt buộc, sau đó đăng ký PIM để quản lý các vai trò Azure AD. Khám phá các vai trò đặc quyền là hoạt động đánh giá sau, trong khi khám phá tài nguyên áp dụng cho việc quản lý tài nguyên Azure thay vì vai trò Azure AD.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 52",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/52-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-53",
+    "questionNumber": 53,
+    "text": "You have an Azure subscription containing a storage account named `storage1` and two web apps named `app1` and `app2`.  \n  \nBoth apps will write data to `storage1`.  \n  \nYou need to ensure that each app can read only the data it wrote.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Provide each app with a system-assigned identity and configure storage1 to use Azure AD User account authentication."
+      },
+      {
+        "key": "B",
+        "text": "Provide each app with a separate Storage account key and configure the app to send the key with each request."
+      },
+      {
+        "key": "C",
+        "text": "Provide each app with a user-managed identity and configure storage1 to use Azure AD User account authentication."
+      },
+      {
+        "key": "D",
+        "text": "Provide each app with a unique Base64-encoded AES-256 encryption key and configure the app to send the key with each request."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "system-assigned managed identity cung cấp cho mỗi ứng dụng web nguyên tắc bảo mật Microsoft Entra riêng. Azure Storage có thể sử dụng xác thực Microsoft Entra và Azure RBAC để chỉ cấp cho mỗi danh tính quyền truy cập vào phạm vi dữ liệu được phép của ứng dụng đó. Khóa tài khoản lưu trữ cung cấp quyền truy cập Khóa chia sẻ ở cấp tài khoản, do đó, các khóa riêng biệt không tách biệt dữ liệu của ứng dụng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 53",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/53-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-54",
+    "questionNumber": 54,
+    "text": "HOTSPOT -  \n  \nYou have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953222956-j3p5oaoq.png)  \n  \nVM1 and VM2 are stopped.  \n  \nYou create an alert rule with these settings:  \n  \n- Resource: RG1  \n- Condition: All Administrative operations  \n- Actions: Action groups configured for this alert rule: ActionGroup1  \n- Alert rule name: Alert1  \n  \nYou create an action rule with these settings:  \n  \n- Scope: VM1  \n- Filter criteria: Resource Type = \"Virtual Machines\"  \n- Define on this scope: Suppression  \n- Suppression config: From now (always)  \n- Name: ActionRule1  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "If you start VM1, an alert is triggered.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "If you start VM2, an alert is triggered.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "If you add a tag to RG1, an alert is triggered.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Các sự kiện trong Nhật ký hoạt động quản trị bao gồm các hoạt động tạo, cập nhật, xóa và hành động của Trình quản lý tài nguyên. Khởi động máy ảo và cập nhật RG1 bằng cách thêm thẻ đáp ứng điều kiện cảnh báo nhật ký hoạt động trong RG1. Quy tắc ngăn chặn luôn bật chỉ áp dụng cho các cảnh báo cho VM1 và loại bỏ các nhóm hành động của chúng; nó không ngăn cảnh báo được kích hoạt hiển thị hoặc được tạo.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953222956-j3p5oaoq.png",
+    "sourceTitle": "Examcademy AZ-500 Question 54",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/54-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-55",
+    "questionNumber": 55,
+    "text": "HOTSPOT -  \n  \nYou have two Azure virtual machines in the East US 2 region, as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783952229922-sw6jdn85.png)  \n  \nYou deploy and configure an Azure Key vault.  \n  \nYou need to ensure that Azure Disk Encryption can be enabled on VM1 and VM2.  \n  \nWhat should you modify on each virtual machine?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Disk Encryption yêu cầu cấp VM và kích thước VM được hỗ trợ. Máy ảo cấp cơ bản không thể sử dụng Azure Disk Encryption, do đó VM1 phải chuyển sang cấp Chuẩn. VM2 đã ở cấp Tiêu chuẩn, nhưng loại VM được tối ưu hóa cho bộ lưu trữ L4 của nó phải được thay đổi thành loại được hỗ trợ trước khi có thể bật Mã hóa ổ đĩa Azure.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783952229922-sw6jdn85.png",
+    "sourceTitle": "Examcademy AZ-500 Question 55",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/55-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-56",
+    "questionNumber": 56,
+    "text": "You have an Azure subscription that contains a resource group named RG1 and an Azure policy named Policy1.  \n  \nYou need to assign Policy1 to RG1.  \n  \nComplete the script. Each value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "policyDefinition",
+        "text": "Slot 1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "policyAssignment",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Get-AzPolicyAssignment"
+      },
+      {
+        "key": "B",
+        "text": "Get-AzPolicyDefinition"
+      },
+      {
+        "key": "C",
+        "text": "Get-AzPolicySetDefinition"
+      },
+      {
+        "key": "D",
+        "text": "New-AzPolicyAssignment"
+      },
+      {
+        "key": "E",
+        "text": "New-AzPolicyDefinition"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Get-AzPolicyAssignment"
+      },
+      {
+        "key": "B",
+        "text": "Get-AzPolicyDefinition"
+      },
+      {
+        "key": "C",
+        "text": "Get-AzPolicySetDefinition"
+      },
+      {
+        "key": "D",
+        "text": "New-AzPolicyAssignment"
+      },
+      {
+        "key": "E",
+        "text": "New-AzPolicyDefinition"
+      }
+    ],
+    "correctAnswers": [
+      "policyDefinition=B",
+      "policyAssignment=D"
+    ],
+    "explanation": "`Get-AzPolicyDefinition` truy xuất định nghĩa Chính sách1 hiện có. `New-AzPolicyAssignment` tạo một bài tập bằng cách sử dụng định nghĩa đó và `$rg.ResourceID` đưa nó vào phạm vi RG1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 56",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/56-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-57",
+    "questionNumber": 57,
+    "text": "You have an Azure web app named **webapp1**.  \n  \nYou need to configure continuous deployment for **webapp1** by using an Azure Repo.  \n  \nWhat should you create first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an Azure Application Insights service"
+      },
+      {
+        "key": "B",
+        "text": "an Azure DevOps organization"
+      },
+      {
+        "key": "C",
+        "text": "an Azure Storage account"
+      },
+      {
+        "key": "D",
+        "text": "an Azure DevTest Labs lab"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Azure Repos được lưu trữ trong tổ chức Azure DevOps. Trước khi có thể chọn Azure Repo làm nguồn triển khai liên tục cho ứng dụng web Dịch vụ ứng dụng, tổ chức Azure DevOps phải tồn tại để chứa dự án và kho lưu trữ.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 57",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/57-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-58",
+    "questionNumber": 58,
+    "text": "On Monday, you set up a Microsoft Defender for Cloud email notification for [email protected] for alerts with Low, Medium, or High severity.  \n  \nOn Tuesday, Microsoft Defender for Cloud generates the security alerts in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960413496-pkbg89b9.png)  \n  \nHow many email notifications will [email protected] receive on Tuesday?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Defender for Cloud giới hạn số lượng email cảnh báo cho mỗi người nhận mỗi ngày ở mức bốn email cảnh báo ở mức độ nghiêm trọng Cao, hai ở mức độ nghiêm trọng trung bình và một ở mức độ nghiêm trọng thấp. Do đó, hai cảnh báo mạnh mẽ RDP Cao và hai Trung bình tạo ra bốn email. Trên tất cả các cảnh báo, bảy cảnh báo Cao được giới hạn ở bốn email, hai cảnh báo Trung bình tạo ra hai email và hai cảnh báo Thấp được giới hạn ở một email, tổng cộng là bảy email.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783960413496-pkbg89b9.png",
+    "sourceTitle": "Examcademy AZ-500 Question 58",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/58-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-59",
+    "questionNumber": 59,
+    "text": "You must ensure that users are able to access VM0. The solution must satisfy the platform-protection requirements.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Move VM0 to Subnet1."
+      },
+      {
+        "key": "B",
+        "text": "On Firewall, configure a network traffic filtering rule."
+      },
+      {
+        "key": "C",
+        "text": "Assign RT1 to AzureFirewallSubnet."
+      },
+      {
+        "key": "D",
+        "text": "On Firewall, configure a DNAT rule."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Quyền truy cập VM đúng lúc (JIT) không thành công đối với máy ảo nằm trong mạng con có bảng định tuyến buộc lưu lượng truy cập đi qua Azure Firewall là bước nhảy tiếp theo: quy tắc cho phép gửi đến tạm thời mà JIT mở cho phép kết nối tiếp cận trực tiếp IP công cộng của VM, nhưng lưu lượng truy cập quay lại được chuyển hướng đến tường lửa theo tuyến do người dùng xác định và tường lửa loại bỏ nó vì nó chưa bao giờ nhìn thấy phiên gửi đến ban đầu — một lỗi định tuyến không đối xứng. Quy tắc lọc lưu lượng truy cập mạng hoặc quy tắc DNAT trên tường lửa không khắc phục được điều này, vì vấn đề là đường dẫn trả về không đối xứng chứ không phải quy tắc cho phép hoặc dịch thuật bị thiếu. Việc di chuyển VM0 vào mạng con không có tuyến do người dùng xác định trỏ đến tường lửa sẽ loại bỏ tình trạng định tuyến không đối xứng và cho phép JIT truy cập hoạt động bình thường, trong khi tường lửa tiếp tục bảo vệ phần còn lại của lưu lượng truy cập của môi trường, đáp ứng yêu cầu bảo vệ nền tảng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 59",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/59-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-60",
+    "questionNumber": 60,
+    "text": "You have an Azure subscription named Sub1 that is associated with an Azure Active Directory (Azure AD) tenant named contoso.com.  \n  \nAn administrator named Admin1 has access to the following identities:  \n  \n- An OpenID-enabled user account  \n- A Hotmail account  \n- An account in contoso.com  \n- An account in an Azure AD tenant named fabrikam.com  \n  \nYou plan to use Azure Account Center to transfer ownership of Sub1 to Admin1.  \n  \nTo which accounts can ownership of Sub1 be transferred?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "contoso.com only"
+      },
+      {
+        "key": "B",
+        "text": "contoso.com, fabrikam.com, and Hotmail only"
+      },
+      {
+        "key": "C",
+        "text": "contoso.com and fabrikam.com only"
+      },
+      {
+        "key": "D",
+        "text": "contoso.com, fabrikam.com, Hotmail, and OpenID-enabled user account"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Quyền sở hữu thanh toán đăng ký có thể được chuyển sang tài khoản Microsoft hoặc tài khoản tổ chức Azure AD đủ điều kiện. Tài khoản tổ chức trong contoso.com hoặc fabrikam.com đều đủ điều kiện và tài khoản Hotmail là tài khoản Microsoft; tài khoản người dùng hỗ trợ OpenID không phải là loại tài khoản đủ điều kiện cho việc chuyển tiền này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 60",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/60-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-61",
+    "questionNumber": 61,
+    "text": "You have an Azure subscription containing a resource group named RG1. RG1 contains a virtual machine named VM1 that uses Azure Active Directory (Azure AD) authentication.  \n  \nTwo custom Azure roles, Role1 and Role2, are scoped to RG1. Their permissions are shown here:  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957454917-q11yicdi.png)  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957457420-f71sal86.png)  \n  \nThe roles are assigned to users as shown here:  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957460633-m9wqytwh.png)  \n  \nFor each statement, select Yes if it is true; otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "User1 can delete VM1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "User2 can delete VM1.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "User3 can sign in to VM1 by using Azure AD credentials.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Azure RBAC NotActions chỉ loại trừ khỏi định nghĩa vai trò cụ thể mà chúng thuộc về; khi hiệu trưởng giữ nhiều nhiệm vụ vai trò, các quyền hiệu quả là sự kết hợp của tất cả các hành động được phép của tất cả các vai trò được giao, do đó, quyền xóa được cấp bởi một vai trò (Role2) không bị chặn bởi loại trừ NotActions trong một vai trò được chỉ định khác (Role1) — đây là lý do tại sao Người dùng2, người có cả hai vai trò, có thể xóa VM mặc dù Người dùng1, người chỉ có Vai trò1, không thể. Riêng biệt, đăng nhập Azure AD vào máy ảo là một hoạt động trên mặt phẳng dữ liệu được kiểm soát bởi dataActions (được sử dụng bởi các vai trò Quản trị viên/Đăng nhập người dùng máy ảo tích hợp sẵn) và vì cả Vai trò 1 và Vai trò 2 đều có các hành động dữ liệu trống nên việc gán no của các vai trò này sẽ cấp khả năng đăng nhập vào VM1 bằng thông tin xác thực Azure AD.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957454917-q11yicdi.png",
+    "sourceTitle": "Examcademy AZ-500 Question 61",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/61-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-62",
+    "questionNumber": 62,
+    "text": "You manage an Azure Active Directory (Azure AD) tenant named contoso.com that includes a user named User1.  \n  \nYou are planning to publish several applications within this tenant.  \n  \nYou need to make sure that User1 is able to grant admin consent for these published applications.  \n  \nWhich two user roles could you assign to User1 to accomplish this? (Each correct answer presents a complete solution.)",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Security administrator"
+      },
+      {
+        "key": "B",
+        "text": "Cloud application administrator"
+      },
+      {
+        "key": "C",
+        "text": "Application administrator"
+      },
+      {
+        "key": "D",
+        "text": "User administrator"
+      },
+      {
+        "key": "E",
+        "text": "Application developer"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "C"
+    ],
+    "explanation": "Sự đồng ý của quản trị viên đối với các ứng dụng đã xuất bản có thể được cấp bởi người dùng được chỉ định một số vai trò Azure AD tích hợp nhất định, bao gồm quyền quản lý việc cấp quyền ứng dụng cho toàn bộ tổ chức. Cả hai vai trò Quản trị viên ứng dụng đám mây và Quản trị viên ứng dụng đều bao gồm khả năng này, cho phép người dùng được chỉ định cấp quyền quản trị viên cho toàn bộ đối tượng thuê đối với các ứng dụng đã đăng ký/xuất bản, trong khi các vai trò Quản trị viên bảo mật, Quản trị viên người dùng và Nhà phát triển ứng dụng không bao gồm quyền này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 62",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/62-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-63",
+    "questionNumber": 63,
+    "text": "You have an Azure subscription containing the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953363409-rh1hljba.png)  \n  \nIn Azure Security Center, you enable Auto Provisioning. You then deploy the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953366594-kxe5wbyj.png)  \n  \nOn which virtual machines is the Microsoft Monitoring Agent installed?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VM3 only"
+      },
+      {
+        "key": "B",
+        "text": "VM1 and VM3 only"
+      },
+      {
+        "key": "C",
+        "text": "VM3 and VM4 only"
+      },
+      {
+        "key": "D",
+        "text": "VM1, VM2, VM3, and VM4"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Tự động cung cấp Trung tâm bảo mật Azure tự động triển khai tác nhân Log Analytics, trước đây gọi là Tác nhân giám sát Microsoft (MMA), tới Azure virtual machines trong đăng ký. Nó bao gồm cả máy ảo hiện có và máy ảo được triển khai sau khi bật Tự động cấp phép; do đó, VM1, VM2, VM3 và VM4 nhận tác nhân.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953363409-rh1hljba.png",
+    "sourceTitle": "Examcademy AZ-500 Question 63",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/63-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-64",
+    "questionNumber": 64,
+    "text": "You use Azure Resource Manager templates to deploy Azure virtual machines.  \n  \nYou need to automatically disable unused Windows features as virtual machine instances are provisioned.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "device configuration policies in Microsoft Intune"
+      },
+      {
+        "key": "B",
+        "text": "an Azure Desired State Configuration (DSC) virtual machine extension"
+      },
+      {
+        "key": "C",
+        "text": "security policies in Azure Security Center"
+      },
+      {
+        "key": "D",
+        "text": "Azure Logic Apps"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Tiện ích mở rộng máy ảo Azure Desired State Configuration (DSC) áp dụng cấu hình PowerShell DSC cho máy ảo Windows. Cấu hình DSC có thể quản lý các tính năng của Windows, bao gồm việc đảm bảo không có các tính năng không được sử dụng và tiện ích mở rộng có thể được đưa vào mẫu Trình quản lý tài nguyên Azure để định cấu hình tại thời điểm triển khai.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 64",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/64-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-65",
+    "questionNumber": 65,
+    "text": "You have an Azure subscription linked to Azure Active Directory (Azure AD). The tenant contains the users listed in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783955732881-97sxcll6.jpg)  \n  \nYou have an Azure key vault named Vault1 with Purge protection set to Disable. Vault1 has the access policies shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783955737024-xliiamms.jpg)  \n  \nYou create the role assignments for Vault1 shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783955740846-hz1042ac.jpg)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "User1 can set Purge protection to Enable for Vault1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "User2 can configure firewalls and virtual networks for Vault1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "User3 can add access policies to Vault1.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Azure Key Vault tách mặt phẳng điều khiển (tạo/xóa vault, đặt chính sách truy cập, định cấu hình quy tắc mạng và các thuộc tính vault khác như bảo vệ thanh lọc) khỏi mặt phẳng dữ liệu (làm việc với khóa, bí mật và chứng chỉ). Mặt phẳng điều khiển được ủy quyền độc quyền thông qua Azure RBAC, trong khi các chính sách truy cập (hoặc hành động dữ liệu RBAC) chỉ chi phối mặt phẳng dữ liệu. Vai trò Người đóng góp Key Vault tích hợp sẵn cấp quyền quản lý mặt phẳng điều khiển của vault, bao gồm khả năng đặt chính sách truy cập mà không cấp quyền truy cập mặt phẳng dữ liệu vào khóa, bí mật hoặc chứng chỉ - không giống như Key Vault Reader, Network Contributor hoặc vai trò Azure AD chẳng hạn như Quản trị viên bảo mật, không vai trò nào trong số đó bao gồm quyền Microsoft.KeyVault/vaults/write cần thiết cho các thay đổi thuộc tính vault như bảo vệ thanh lọc hoặc cấu hình mạng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783955732881-97sxcll6.jpg",
+    "sourceTitle": "Examcademy AZ-500 Question 65",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/65-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-66",
+    "questionNumber": 66,
+    "text": "You have been asked to delegate administrative access to your company’s Azure Key Vault.  \n  \nYou must ensure that a specific user can add and delete certificates in the Key Vault, while assigning access according to the principle of least privilege.  \n  \nWhich of the following options should you use to accomplish this goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "A key vault access policy"
+      },
+      {
+        "key": "B",
+        "text": "Azure policy"
+      },
+      {
+        "key": "C",
+        "text": "Azure AD Privileged Identity Management (PIM)"
+      },
+      {
+        "key": "D",
+        "text": "Azure DevOps"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Chính sách truy cập Azure Key Vault chỉ có thể cấp cho người dùng được đặt tên các quyền chứng chỉ bắt buộc, bao gồm `create` và `delete` mà không cấp các quyền không liên quan đối với khóa, bí mật hoặc quản trị vault rộng hơn.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 66",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/66-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-67",
+    "questionNumber": 67,
+    "text": "HOTSPOT -  \n  \nYour company has an Azure subscription named Subscription1 that includes the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953717830-cf5it1t1.png)  \n  \nThe company is being sold to a new owner. It must transfer ownership of Subscription1.  \n  \nWhich user can transfer the ownership, and which tool should that user use?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Quản trị viên tài khoản là chủ sở hữu thanh toán trong mô hình quản trị viên đăng ký Azure cổ điển và là vai trò được ủy quyền để chuyển quyền sở hữu đăng ký. Trung tâm tài khoản Azure là giao diện quản lý tài khoản cho lần chuyển tiền này; Các vai trò Chủ sở hữu tài nguyên, Quản trị viên toàn cầu Microsoft Entra và Quản trị viên thanh toán không thay thế Quản trị viên tài khoản đăng ký cho quy trình làm việc cổ điển này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953717830-cf5it1t1.png",
+    "sourceTitle": "Examcademy AZ-500 Question 67",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/67-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-68",
+    "questionNumber": 68,
+    "text": "You intend to use Azure Resource Manager templates to carry out multiple deployments of identically configured Azure virtual machines. The administrator-account password for every deployment is stored as a secret in different Azure key vaults.  \n  \nYou need to identify a way to dynamically construct a resource ID that designates the key vault containing the correct secret for each deployment.  \n  \nThe key vault name and secret name will be supplied as inline parameters.  \n  \nWhat should you use to construct the resource ID?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a key vault access policy"
+      },
+      {
+        "key": "B",
+        "text": "a linked template"
+      },
+      {
+        "key": "C",
+        "text": "a parameters file"
+      },
+      {
+        "key": "D",
+        "text": "an automation account"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Mẫu được liên kết hỗ trợ tạo động ID tài nguyên Key Vault từ các tham số triển khai và chuyển ID đó cho tham chiếu bí mật. Biểu thức mẫu ARM không được phép trong tệp tham số, do đó nó không thể tạo ID động ở đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 68",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/68-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-69",
+    "questionNumber": 69,
+    "text": "You have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954564680-3khxd9d2.png)  \n  \nThe subscription is linked to an Azure Active Directory (Azure AD) tenant containing the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954568171-yo7t8x72.png)  \n  \nYou create the groups shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954570750-kjftxmew.png)  \n  \nThe membership rules for Group1 and Group2 are configured as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954573538-r5f8j46a.png)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "User1 is a member of Group1 and Group2.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "User2 is a member of Group2 only.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Managed1 is a member of Group1 and Group2.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "Cả hai nhóm đều có cùng quy tắc Người dùng động. Người dùng1 khớp với `usageLocation = \"US\"`; người dùng được bật, bao gồm User2, khớp với `accountEnabled = true`, vì vậy cả hai người dùng đều thuộc cả hai nhóm. managed identity không phải là đối tượng người dùng và không thể đáp ứng quy tắc thành viên Người dùng động. Microsoft Entra hỗ trợ `accountEnabled` và thuộc tính `usageLocation` gồm hai chữ cái trong quy tắc người dùng động; Nhóm động Microsoft 365 chỉ có thể chứa người dùng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954564680-3khxd9d2.png",
+    "sourceTitle": "Examcademy AZ-500 Question 69",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/69-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-70",
+    "questionNumber": 70,
+    "text": "You have an Azure subscription that includes the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960950087-xqeive8j.png)  \n  \nYou plan to deploy an Azure Private Link service named APL1.  \n  \nWhich resource should you reference when creating APL1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "LB1"
+      },
+      {
+        "key": "B",
+        "text": "SQL1"
+      },
+      {
+        "key": "C",
+        "text": "VMSS1"
+      },
+      {
+        "key": "D",
+        "text": "VM1"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Dịch vụ Azure Private Link hiển thị một dịch vụ được triển khai đằng sau Cân bằng tải tiêu chuẩn Azure và được tạo bằng cách liên kết dịch vụ đó với cấu hình IP giao diện người dùng của cân bằng tải đó. LB1 là Cân bằng tải tiêu chuẩn Azure được liệt kê.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783960950087-xqeive8j.png",
+    "sourceTitle": "Examcademy AZ-500 Question 70",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/70-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-71",
+    "questionNumber": 71,
+    "text": "You have a hybrid Azure Active Directory (Azure AD) configuration.  \n  \nAll users have Windows 10 computers that are hybrid Azure AD joined.  \n  \nYou have an Azure SQL database configured to support Azure AD authentication.  \n  \nDatabase developers must connect to the SQL database by using Microsoft SQL Server Management Studio (SSMS) and authenticate by using their on-premises Active Directory account.  \n  \nYou need to tell the developers which authentication method to use in SSMS to connect to the SQL database. The solution must minimize authentication prompts.  \n  \nWhich authentication method should you tell the developers to use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "SQL Login"
+      },
+      {
+        "key": "B",
+        "text": "Active Directory ג€\" Universal with MFA support"
+      },
+      {
+        "key": "C",
+        "text": "Active Directory ג€\" Integrated"
+      },
+      {
+        "key": "D",
+        "text": "Active Directory ג€\" Password"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Active Directory Xác thực tích hợp sử dụng thông tin xác thực của người dùng Windows đã đăng nhập. Đối với danh tính kết hợp Microsoft Entra, việc tham gia kết hợp môi trường AD tại chỗ cho phép danh tính Windows được liên kết sử dụng đăng nhập một lần khi kết nối với Azure SQL, giảm thiểu các lời nhắc xác thực bổ sung.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 71",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/71-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-72",
+    "questionNumber": 72,
+    "text": "You have Azure Resource Manager templates that you use to deploy Azure virtual machines.  \n  \nYou need to automatically disable unused Windows features as virtual-machine instances are provisioned.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "device configuration policies in Microsoft Intune"
+      },
+      {
+        "key": "B",
+        "text": "Azure Automation State Configuration"
+      },
+      {
+        "key": "C",
+        "text": "security policies in Azure Security Center"
+      },
+      {
+        "key": "D",
+        "text": "device compliance policies in Microsoft Intune"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Cấu hình trạng thái tự động hóa Azure áp dụng Cấu hình trạng thái mong muốn PowerShell cho Azure virtual machines và liên tục thực thi cấu hình được chỉ định của chúng. Tài nguyên DSC `WindowsFeature` có thể yêu cầu vắng mặt tính năng Windows, cho phép các tính năng không sử dụng tự động bị tắt trong quá trình triển khai và cấu hình VM.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 72",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/72-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-73",
+    "questionNumber": 73,
+    "text": "You are investigating a security issue involving an Azure Storage account.  \n  \nYou enable diagnostic logging for the storage account. What should you use to retrieve the diagnostic logs?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the Security & Compliance admin center"
+      },
+      {
+        "key": "B",
+        "text": "Azure Security Center"
+      },
+      {
+        "key": "C",
+        "text": "Azure Cosmos DB explorer"
+      },
+      {
+        "key": "D",
+        "text": "AzCopy"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Nhật ký Azure Storage Analytics được lưu trữ dưới dạng các đốm màu trong vùng chứa `$logs`. AzCopy tải xuống dữ liệu nhật ký này từ tài khoản lưu trữ để xem xét cục bộ.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 73",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/73-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-74",
+    "questionNumber": 74,
+    "text": "You have been assigned to apply Conditional Access policies for your company’s current Azure Active Directory (Azure AD).  \n  \nThe process includes evaluating risk events and risk levels. Which of the following risk levels should be configured for users whose credentials have leaked?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "None"
+      },
+      {
+        "key": "B",
+        "text": "Low"
+      },
+      {
+        "key": "C",
+        "text": "Medium"
+      },
+      {
+        "key": "D",
+        "text": "High"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Việc phát hiện thông tin xác thực bị rò rỉ luôn được phân loại là rủi ro cao vì Microsoft đã xác nhận rằng tài liệu thông tin xác thực hợp lệ đã bị lộ, thay vì chỉ quan sát tín hiệu theo kinh nghiệm hoặc xác suất.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 74",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/74-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-75",
+    "questionNumber": 75,
+    "text": "Solution: You create an Azure Active Directory (Azure AD) role assignment.  \n  \nDoes this solution meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Việc kéo hình ảnh từ Cơ quan đăng ký bộ chứa Azure yêu cầu gán vai trò Azure RBAC để cấp quyền kéo đăng ký AKS service principal, chẳng hạn như vai trò `AcrPull` cho sổ đăng ký không phải ABAC. Việc gán vai trò thư mục Azure AD không cung cấp quyền truy cập đăng ký đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 75",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/75-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-76",
+    "questionNumber": 76,
+    "text": "You create resources in an Azure subscription as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953095115-8mk9d1iz.png)  \n  \nVNET1 has two subnets named Subnet1 and Subnet2. Subnet1 has the network ID 10.0.0.0/24, and Subnet2 has the network ID 10.1.1.0/24.  \n  \nContoso1901 is configured as shown in the exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953098430-oghmbran.jpg)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "An Azure virtual machine on Subnet1 can access data in Contoso1901.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "An Azure virtual machine on Subnet2 can access data in Contoso1901.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "A computer on the Internet that has an IP address of 193.77.10.2 can access data in Contoso1901.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Quy tắc mạng lưu trữ Azure với hành động mặc định là Từ chối chỉ cho phép truy cập từ các nguồn được cho phép rõ ràng. Quy tắc mạng ảo được phép được giới hạn ở Subnet1, không phải Subnet2. Dải IP được phép 193.77.0.0/16 bao gồm 193.77.10.2.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953095115-8mk9d1iz.png",
+    "sourceTitle": "Examcademy AZ-500 Question 76",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/76-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-77",
+    "questionNumber": 77,
+    "text": "You have an Azure subscription containing the custom roles shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953714443-et68k7c3.png)  \n  \nIn the Azure portal, you plan to create new custom roles by cloning existing roles. The new roles will be configured as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953716676-yajemlid.png)  \n  \nWhich roles can you clone to create each new role?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Vai trò tùy chỉnh Microsoft Entra ID có thể sao chép các quyền cơ bản của vai trò Microsoft Entra tùy chỉnh hiện có, nhưng không thể sao chép vai trò Microsoft Entra tích hợp. Vai trò tùy chỉnh Azure RBAC cho tài nguyên Azure có thể sao chép vai trò Azure RBAC tích hợp sẵn hoặc tùy chỉnh hiện có. Vai trò thư mục Microsoft Entra và đăng ký Azure Vai trò RBAC là các hệ thống vai trò riêng biệt, vì vậy các vai trò từ một vai trò này không thể đóng vai trò là nguồn nhân bản cho vai trò tùy chỉnh trong vai trò kia.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953714443-et68k7c3.png",
+    "sourceTitle": "Examcademy AZ-500 Question 77",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/77-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-78",
+    "questionNumber": 78,
+    "text": "You have an Azure subscription that contains an Azure key vault named KeyVault1 and the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954772861-l96pgqvq.png)  \n  \nYou configure the Key Vault access policy to enable access to Azure Disk Encryption for volume encryption. KeyVault1 is configured as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954776967-uyowxloq.jpg)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "From VM1, users can manage the keys and secrets stored in KeyVault1.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "From VM2, users can manage the keys and secrets stored in KeyVault1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "VM2 can use KeyVault1 for Azure Disk Encryption.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "KeyVault1 cho phép VNET1/mạng con mặc định, do đó VM1 có thể tiếp cận mặt phẳng dữ liệu của vault (tùy thuộc vào người dùng có khóa hoặc quyền bí mật cần thiết). VM2 nằm trên VNET2/mặc định, điều này không được phép, do đó quyền truy cập vào mặt phẳng dữ liệu thông thường từ VM2 bị chặn. Azure Disk Encryption là một dịch vụ đáng tin cậy của Microsoft và việc cho phép bỏ qua tường lửa của các dịch vụ đáng tin cậy cùng với chính sách truy cập Azure Disk Encryption sẽ cho phép dịch vụ này sử dụng KeyVault1 từ VM2.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954772861-l96pgqvq.png",
+    "sourceTitle": "Examcademy AZ-500 Question 78",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/78-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-79",
+    "questionNumber": 79,
+    "text": "You must create Role1 to satisfy the platform-protection requirements.  \n  \nHow should the Role1 role definition be completed?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Ổ đĩa được quản lý là tài nguyên Điện toán Azure, vì vậy `Microsoft.Compute/disks/*` cấp quyền mặt phẳng quản lý cho ổ đĩa. Việc giới hạn `AssignableScopes` ở ID tài nguyên Nhóm tài nguyên1 khiến vai trò tùy chỉnh chỉ khả dụng trong nhóm tài nguyên đó; vai trò tùy chỉnh nên sử dụng phạm vi nhóm quản lý, đăng ký hoặc nhóm tài nguyên thay vì phạm vi gốc.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 79",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/79-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-80",
+    "questionNumber": 80,
+    "text": "You have two Azure subscriptions named Sub1 and Sub2. Sub1 contains a resource group named RG1 and an Azure policy named Policy1.  \n  \nYou need to remediate the non-compliant resources in Sub1 based on Policy1.  \n  \nComplete the PowerShell script. Each value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "context_cmd",
+        "text": "Slot 1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "remediation_cmd",
+        "text": "Slot 2:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Get-AzPolicyRemediation"
+      },
+      {
+        "key": "B",
+        "text": "Set-AzContext"
+      },
+      {
+        "key": "C",
+        "text": "Set-AzResourceGroup"
+      },
+      {
+        "key": "D",
+        "text": "Start-AzPolicyComplianceScan"
+      },
+      {
+        "key": "E",
+        "text": "Start-AzPolicyRemediation"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Get-AzPolicyRemediation"
+      },
+      {
+        "key": "B",
+        "text": "Set-AzContext"
+      },
+      {
+        "key": "C",
+        "text": "Set-AzResourceGroup"
+      },
+      {
+        "key": "D",
+        "text": "Start-AzPolicyComplianceScan"
+      },
+      {
+        "key": "E",
+        "text": "Start-AzPolicyRemediation"
+      }
+    ],
+    "correctAnswers": [
+      "context_cmd=B",
+      "remediation_cmd=E"
+    ],
+    "explanation": "Set-AzContext chọn Sub1 cho phiên PowerShell. Start-AzPolicyRemediation tạo một tác vụ khắc phục cho việc gán chính sách và ReEvaluateCompliance làm mới việc phát hiện tuân thủ trước khi tác vụ chạy. Start-AzPolicyComplianceScan chỉ bắt đầu đánh giá tuân thủ; nó không khắc phục được tài nguyên.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 80",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/80-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-82",
+    "questionNumber": 82,
+    "text": "You have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783965517403-nto0np01.png)  \n  \nYou need to configure network connectivity to meet these requirements:  \n  \n- Communication from VM1 to storage1 must traverse an optimized Microsoft backbone network.  \n- All outbound traffic from VM1 to the internet must be denied.  \n- The solution must minimize costs and administrative effort.  \n  \nWhat should you configure for VNet1 and NSG1? Each component may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "vnet1",
+        "text": "VNet1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "nsg1",
+        "text": "NSG1:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "A private endpoint"
+      },
+      {
+        "key": "B",
+        "text": "A route table"
+      },
+      {
+        "key": "C",
+        "text": "A service endpoint"
+      },
+      {
+        "key": "D",
+        "text": "A service tag"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "A private endpoint"
+      },
+      {
+        "key": "B",
+        "text": "A route table"
+      },
+      {
+        "key": "C",
+        "text": "A service endpoint"
+      },
+      {
+        "key": "D",
+        "text": "A service tag"
+      }
+    ],
+    "correctAnswers": [
+      "vnet1=C",
+      "nsg1=D"
+    ],
+    "explanation": "Bộ lưu trữ Azure service endpoint định tuyến lưu lượng dịch vụ trực tiếp từ mạng ảo qua đường trục Microsoft Azure và có thêm chi phí quản lý điểm cuối no. Quy tắc gửi đi NSG có thể sử dụng thẻ dịch vụ Internet làm đích đến và từ chối lưu lượng truy cập đó, ghi đè quy tắc cho phép internet gửi đi mặc định.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783965517403-nto0np01.png",
+    "sourceTitle": "Examcademy AZ-500 Question 82",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/82-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-83",
+    "questionNumber": 83,
+    "text": "You have an Azure subscription that includes the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966878028-p8jltqco.png)  \n  \nYou plan to implement Microsoft Defender for Cloud.  \n  \nWhich resources can be protected by using Defender for Cloud?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VM1 only"
+      },
+      {
+        "key": "B",
+        "text": "VM1 and storage1 only"
+      },
+      {
+        "key": "C",
+        "text": "Vault1 and storage1 only"
+      },
+      {
+        "key": "D",
+        "text": "VM1, Vault1, and storage1 only"
+      },
+      {
+        "key": "E",
+        "text": "VNet1, VM1, Vault1, and storage1"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Microsoft Defender for Cloud cung cấp các gói Defender bảo vệ máy ảo thông qua Defender for Servers, tài khoản lưu trữ thông qua Defender for Storage và các phiên bản Azure Key Vault thông qua Defender for Key Vault. Mạng ảo không được coi là tài nguyên được bảo vệ trực tiếp theo các gói này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783966878028-p8jltqco.png",
+    "sourceTitle": "Examcademy AZ-500 Question 83",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/83-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-84",
+    "questionNumber": 84,
+    "text": "An Azure subscription contains an Azure Blob storage account named `blob1`.  \n  \nYou need to configure attribute-based access control (ABAC) for `blob1`.  \n  \nWhich attributes can be used in access conditions?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "blob index tags only"
+      },
+      {
+        "key": "B",
+        "text": "blob index tags and container names only"
+      },
+      {
+        "key": "C",
+        "text": "file extensions and container names only"
+      },
+      {
+        "key": "D",
+        "text": "blob index tags, file extensions, and container names"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các điều kiện Azure Blob Storage ABAC hỗ trợ thẻ chỉ mục blob và tên vùng chứa làm thuộc tính. Phần mở rộng tệp không phải là thuộc tính được hỗ trợ riêng biệt; đường dẫn blob là thuộc tính tài nguyên liên quan đến đường dẫn được hỗ trợ.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 84",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/84-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-85",
+    "questionNumber": 85,
+    "text": "You have an Azure Active Directory tenant that synchronizes with an Active Directory Domain Services (AD DS) domain.  \n  \nYou plan to create an Azure file share that will contain folders and files.  \n  \nWhich identity store can be used to assign permissions to the Azure file share and to folders within the share?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Quyền truy cập chia sẻ tệp Azure được ủy quyền ở cấp độ chia sẻ thông qua việc gán vai trò Azure RBAC cho danh tính Azure AD. Các quyền cấp thư mục được thực thi bởi Windows ACL (quyền NTFS), sử dụng danh tính Dịch vụ miền Active Directory. Cả hai lớp quyền đều được đánh giá, với việc áp dụng quyền có hiệu lực hạn chế hơn. [Microsoft Learn: Assign share-level permissions for Azure file shares](https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-assign-share-level-permissions)",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 85",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/85-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-86",
+    "questionNumber": 86,
+    "text": "You have an Azure Sentinel workspace that includes an Azure Active Directory (Azure AD) data connector.  \n  \nYou are threat hunting suspicious traffic from a specific IP address. You need to annotate an intermediate event stored in the workspace and be able to reference the IP address when navigating the investigation graph.  \n  \nWhich three actions should you perform in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "G"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Add the query to Favorites."
+      },
+      {
+        "key": "B",
+        "text": "From the Azure Sentinel workspace, run an Azure Log Analytics query."
+      },
+      {
+        "key": "C",
+        "text": "In a Jupyter notebook, create a reference to the IP address."
+      },
+      {
+        "key": "D",
+        "text": "Add a bookmark and assign a tag."
+      },
+      {
+        "key": "E",
+        "text": "Add a bookmark and map an entity."
+      },
+      {
+        "key": "F",
+        "text": "From Azure Monitor, run an Azure Log Analytics query."
+      },
+      {
+        "key": "G",
+        "text": "Select a query result."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Add the query to Favorites."
+      },
+      {
+        "key": "B",
+        "text": "From the Azure Sentinel workspace, run an Azure Log Analytics query."
+      },
+      {
+        "key": "C",
+        "text": "In a Jupyter notebook, create a reference to the IP address."
+      },
+      {
+        "key": "D",
+        "text": "Add a bookmark and assign a tag."
+      },
+      {
+        "key": "E",
+        "text": "Add a bookmark and map an entity."
+      },
+      {
+        "key": "F",
+        "text": "From Azure Monitor, run an Azure Log Analytics query."
+      },
+      {
+        "key": "G",
+        "text": "Select a query result."
+      }
+    ],
+    "correctAnswers": [
+      "step1=B",
+      "step2=G",
+      "step3=E"
+    ],
+    "explanation": "Dấu trang Microsoft Sentinel lưu giữ kết quả truy vấn tìm kiếm có liên quan. Để hiển thị dấu trang trong biểu đồ điều tra, ít nhất một thực thể phải được ánh xạ; ánh xạ địa chỉ IP cung cấp thực thể đó. Truy vấn yêu thích và thẻ đánh dấu không ánh xạ thực thể IP.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 86",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/86-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-87",
+    "questionNumber": 87,
+    "text": "You have an Azure subscription containing an Azure Container Registry named Registry1. Microsoft Defender for Cloud is enabled for the subscription.  \n  \nYou upload several container images to Registry1 and find that vulnerability security scans were not performed.  \n  \nYou need to ensure that container images are vulnerability-scanned when they are uploaded to Registry1. What should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From the Azure portal, modify the Pricing tier settings."
+      },
+      {
+        "key": "B",
+        "text": "From Azure CLI, lock the container images."
+      },
+      {
+        "key": "C",
+        "text": "Upload the container images by using AzCopy."
+      },
+      {
+        "key": "D",
+        "text": "Push the container images to Registry1 by using Docker."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Microsoft Defender for Cloud quét hình ảnh Sổ đăng ký vùng chứa Azure khi chúng được đẩy vào sổ đăng ký (và cũng hỗ trợ các hoạt động đăng ký đủ điều kiện khác). Việc đẩy Docker tạo ra sự kiện đẩy hình ảnh kích hoạt quá trình quét lỗ hổng; khóa đăng ký, tải lên AzCopy và mức giá của Cơ quan đăng ký vùng chứa Azure không cung cấp trình kích hoạt đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 87",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/87-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-88",
+    "questionNumber": 88,
+    "text": "Solution: You configure a delegated permission without admin consent.  \n  \nDoes this solution meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Các quyền được ủy quyền cho phép ứng dụng hành động thay mặt cho người dùng đã đăng nhập, trong phạm vi quyền truy cập của chính người dùng đó. Azure Key Vault hiển thị phạm vi `https://vault.azure.net/user_impersonation` và các quyền được ủy quyền đủ điều kiện có thể được người dùng đồng ý mà không cần có sự đồng ý của quản trị viên toàn đối tượng thuê.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 88",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/88-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-89",
+    "questionNumber": 89,
+    "text": "Solution: You set up a delegated permission with administrator consent.  \n  \nDoes this solution achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Quyền được ủy quyền cho phép ứng dụng hành động thay mặt cho người dùng đã đăng nhập. Sự đồng ý của quản trị viên cấp quyền được ủy quyền đã định cấu hình cho người dùng trong đối tượng thuê, cho phép mô hình truy cập được ủy quyền cần thiết để truy cập thay mặt người dùng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 89",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/89-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-90",
+    "questionNumber": 90,
+    "text": "You have an Azure subscription.  \n  \nYou plan to deploy the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966877122-ldbdnqdi.png)  \n  \nYou need to determine which virtual machines and operating systems can be deployed as confidential virtual machines.  \n  \nWhich Windows virtual machines and which Linux virtual machines should you identify?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Máy ảo bí mật Azure hỗ trợ các kích thước máy ảo DCadsv5 và ECadsv5. Các hình ảnh Windows Server đủ điều kiện bao gồm Trung tâm dữ liệu Windows Server 2022: Phiên bản Azure và Trung tâm dữ liệu Windows Server 2022, trong khi Windows Server Standard không được liệt kê. Hình ảnh Linux đủ tiêu chuẩn bao gồm Ubuntu và SUSE, trong khi Debian không được liệt kê. [About Azure confidential VMs](https://learn.microsoft.com/en-us/azure/confidential-computing/confidential-vm-overview)",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783966877122-ldbdnqdi.png",
+    "sourceTitle": "Examcademy AZ-500 Question 90",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/90-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-91",
+    "questionNumber": 91,
+    "text": "You have an Azure subscription containing a resource group named RG1 and a security group named ServerAdmins. RG1 includes 10 virtual machines, a virtual network named VNET1, and a network security group (NSG) named NSG1. ServerAdmins can access the virtual machines by using RDP.  \n  \nYou need to ensure that NSG1 permits RDP connections to the virtual machines for no more than 60 minutes when a ServerAdmins member requests access.  \n  \nWhat should you configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an Azure policy assigned to RG1"
+      },
+      {
+        "key": "B",
+        "text": "a just in time (JIT) VM access policy in Microsoft Defender for Cloud"
+      },
+      {
+        "key": "C",
+        "text": "an Azure Active Directory (Azure AD) Privileged Identity Management (PIM) role assignment"
+      },
+      {
+        "key": "D",
+        "text": "an Azure Bastion host on VNET1"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Quyền truy cập VM đúng lúc của Microsoft Defender for Cloud có thể bảo vệ cổng RDP 3389 và đặt thời gian yêu cầu tối đa. Theo yêu cầu được phê duyệt, nó tạm thời định cấu hình NSG có liên quan để cho phép truy cập RDP gửi đến trong khoảng thời gian được định cấu hình, sau đó khôi phục trạng thái NSG sau khi hết thời gian đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 91",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/91-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-92",
+    "questionNumber": 92,
+    "text": "You have an on-premises network and an Azure subscription.  \n  \nYou have the Microsoft SQL Server instances shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783955730967-u8g53xu8.png)  \n  \nYou plan to deploy Microsoft Defender for SQL.  \n  \nWhich SQL Server instances will Microsoft Defender for SQL protect?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "sql1 and sql2 only"
+      },
+      {
+        "key": "B",
+        "text": "sql1, sql2, and sql3 only"
+      },
+      {
+        "key": "C",
+        "text": "sql1, sql2, and sql4 only"
+      },
+      {
+        "key": "D",
+        "text": "sql1, sql2, sql3, and sql4"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Microsoft Defender cho SQL bảo vệ Azure SQL Managed Instance và hỗ trợ các phiên bản SQL Server trên máy Windows, bao gồm SQL Server trên Azure virtual machines và các máy chủ Windows tại chỗ được hỗ trợ khi chúng được tích hợp theo yêu cầu. SQL Server chạy trên RHEL không được bao gồm trong hỗ trợ Windows Server hiện hành dành cho Bộ bảo vệ dành cho Máy chủ SQL trên Máy.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783955730967-u8g53xu8.png",
+    "sourceTitle": "Examcademy AZ-500 Question 92",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/92-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-93",
+    "questionNumber": 93,
+    "text": "Your company has an Azure subscription named Sub1 that is associated with an Azure Active Directory (Azure AD) tenant named contoso.com.  \n  \nThe company develops an application named App1, which is registered in Azure AD.  \n  \nYou need to ensure that App1 can access secrets in Azure Key Vault on behalf of the application users.  \n  \nWhat should you configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an application permission without admin consent"
+      },
+      {
+        "key": "B",
+        "text": "a delegated permission without admin consent"
+      },
+      {
+        "key": "C",
+        "text": "a delegated permission that requires admin consent"
+      },
+      {
+        "key": "D",
+        "text": "an application permission that requires admin consent"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Quyền được ủy quyền cho phép ứng dụng truy cập tài nguyên thay mặt cho người dùng đã đăng nhập; quyền ứng dụng được sử dụng khi ứng dụng hoạt động mà không có người dùng. Azure Key Vault cung cấp phạm vi `user_impersonation` được ủy quyền và kịch bản này vốn không yêu cầu sự đồng ý của quản trị viên.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 93",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/93-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-94",
+    "questionNumber": 94,
+    "text": "You plan to deploy Azure container instances.  \n  \nYou have a containerized application composed of two containers: an application container and a validation container. The application container is monitored by the validation container. After every transaction, the validation container performs security checks by sending requests to the application container and waiting for responses.  \n  \nYou need to ensure that the application container and the validation container are scheduled for deployment together. The containers must communicate with one another only on ports that are not externally exposed.  \n  \nWhat should you include in the deployment?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "application security groups"
+      },
+      {
+        "key": "B",
+        "text": "network security groups (NSGs)"
+      },
+      {
+        "key": "C",
+        "text": "management groups"
+      },
+      {
+        "key": "D",
+        "text": "container groups"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Nhóm vùng chứa Azure Container Instances triển khai các vùng chứa liên quan cùng nhau trên cùng một máy chủ. Các vùng chứa chia sẻ một không gian tên mạng và có thể giao tiếp qua localhost, cho phép vùng chứa xác thực tiếp cận vùng chứa ứng dụng mà không để lộ các cổng đó ra bên ngoài.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 94",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/94-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-95",
+    "questionNumber": 95,
+    "text": "You need to configure SQLDB1 to meet the data and application requirements.  \n  \nWhich three actions should you recommend performing in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "From the Azure portal, create a managed identity."
+      },
+      {
+        "key": "B",
+        "text": "Connect to SQLDB1 by using Microsoft SQL Server Management Studio (SSMS)."
+      },
+      {
+        "key": "C",
+        "text": "In Azure AD, enable authentication method policy."
+      },
+      {
+        "key": "D",
+        "text": "In SQLDB1, create contained database users."
+      },
+      {
+        "key": "E",
+        "text": "From the Azure portal, create an Azure AD administrator for LitwareSQLServer1."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "From the Azure portal, create a managed identity."
+      },
+      {
+        "key": "B",
+        "text": "Connect to SQLDB1 by using Microsoft SQL Server Management Studio (SSMS)."
+      },
+      {
+        "key": "C",
+        "text": "In Azure AD, enable authentication method policy."
+      },
+      {
+        "key": "D",
+        "text": "In SQLDB1, create contained database users."
+      },
+      {
+        "key": "E",
+        "text": "From the Azure portal, create an Azure AD administrator for LitwareSQLServer1."
+      }
+    ],
+    "correctAnswers": [
+      "step1=E",
+      "step2=B",
+      "step3=D"
+    ],
+    "explanation": "Quản trị viên Microsoft Entra (Azure AD) là danh tính ban đầu được ủy quyền để kết nối và tạo người dùng Microsoft Entra trong Azure SQL Database. Sau khi kết nối với SQLDB1 trong SSMS với tư cách quản trị viên đó, hãy tạo người dùng cơ sở dữ liệu chứa đựng các danh tính Microsoft Entra cần thiết. managed identity không phải là điều kiện tiên quyết khi quản trị viên thực hiện việc tạo người dùng này và chính sách phương thức xác thực không liên quan đến việc định cấu hình người dùng chứa Azure SQL.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 95",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/95-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-96",
+    "questionNumber": 96,
+    "text": "You have an Azure Active Directory (Azure AD) tenant called contoso.com.  \n  \nYou need to set up diagnostic settings for contoso.com. The solution must satisfy these requirements:  \n  \n- Retain logs for two years.  \n- Query logs by using the Kusto query language.  \n- Minimize administrative effort.  \n  \nWhere should the logs be stored?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an Azure event hub"
+      },
+      {
+        "key": "B",
+        "text": "an Azure Log Analytics workspace"
+      },
+      {
+        "key": "C",
+        "text": "an Azure Storage account"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Không gian làm việc Azure Log Analytics là đích đến gốc cho nhật ký chẩn đoán Microsoft Entra ID và hỗ trợ truy vấn các nhật ký đó bằng Ngôn ngữ truy vấn Kusto (KQL). Việc lưu giữ nó có thể được cấu hình trong 730 ngày, đáp ứng yêu cầu lưu giữ trong hai năm mà không cần xây dựng cơ sở hạ tầng truy vấn lưu trữ hoặc truyền phát bổ sung.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 96",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/96-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-97",
+    "questionNumber": 97,
+    "text": "Solution: Create a policy initiative and an assignment scoped to the **Tenant Root Group** management group.  \n  \nDoes this meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Sáng kiến ​​Chính sách Azure kết hợp nhiều định nghĩa chính sách vào một nhiệm vụ duy nhất. Việc gán chính sách được thực hiện tại nhóm quản lý gốc sẽ áp dụng trên toàn bộ hệ thống phân cấp thư mục, bao gồm tất cả các nhóm quản lý con và các đăng ký trong đối tượng thuê Microsoft Entra.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 97",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/97-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-98",
+    "questionNumber": 98,
+    "text": "Solution: You create a policy initiative and assignments scoped to resource groups.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Sáng kiến ​​Chính sách Azure nhóm các định nghĩa chính sách nhưng mỗi nhiệm vụ chỉ áp dụng cho phạm vi được chỉ định và các tài nguyên con của nó. Do đó, các nhiệm vụ trong phạm vi nhóm tài nguyên không thể triển khai sáng kiến ​​cho cả ba đăng ký Azure; nhiệm vụ phải nằm trong phạm vi từng đăng ký hoặc cho nhóm quản lý có chứa chúng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 98",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/98-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-99",
+    "questionNumber": 99,
+    "text": "Solution: You create a policy definition and assignments that are scoped to resource groups.  \n  \nDoes this fulfill the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Việc gán chính sách nhóm tài nguyên chỉ áp dụng cho nhóm tài nguyên đó và các tài nguyên con của nó, không áp dụng cho các nhóm tài nguyên hoặc đăng ký khác. Để triển khai nhiều định nghĩa chính sách cùng nhau trên ba đăng ký, hãy sử dụng phân công sáng kiến ​​ở phạm vi nhóm quản lý chung (hoặc chỉ định riêng ở từng phạm vi đăng ký).",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 99",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/99-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-100",
+    "questionNumber": 100,
+    "text": "Solution: You create an initiative and an assignment scoped to a management group.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Sáng kiến ​​Chính sách Azure nhóm nhiều định nghĩa chính sách vào một đơn vị. Việc chỉ định sáng kiến ​​đó ở phạm vi nhóm quản lý sẽ áp dụng sáng kiến ​​đó cho các đăng ký con của nhóm quản lý, cho phép triển khai tập trung trên cả ba đăng ký.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 100",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/100-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-101",
+    "questionNumber": 101,
+    "text": "Solution: You create a resource graph along with an assignment that is scoped to a management group.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Sáng kiến ​​Chính sách Azure, còn được gọi là bộ chính sách, là đối tượng nhóm nhiều định nghĩa chính sách để quản lý thông qua một nhiệm vụ duy nhất. Azure Resource Graph là dịch vụ truy vấn tài nguyên và không tạo nhóm chính sách như vậy. Việc phân công nhóm quản lý có thể áp dụng chính sách cho các đăng ký con, nhưng nó phải chỉ định một sáng kiến ​​hoặc định nghĩa chính sách.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 101",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/101-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-102",
+    "questionNumber": 102,
+    "text": "You are investigating a security issue involving an Azure Storage account.  \n  \nYou enable Azure Storage Analytics logs and archive them to a storage account.  \n  \nWhat should you use to retrieve the diagnostic logs?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the Microsoft 365 Defender portal"
+      },
+      {
+        "key": "B",
+        "text": "SQL query editor in Azure"
+      },
+      {
+        "key": "C",
+        "text": "Azure Monitor"
+      },
+      {
+        "key": "D",
+        "text": "Azure Storage Explorer"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Nhật ký chẩn đoán Azure Storage Analytics được lưu trữ trong vùng chứa blob `$logs` của tài khoản lưu trữ. Microsoft Azure Storage Explorer có thể truy cập và xem các đốm nhật ký được lưu trữ này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 102",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/102-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-103",
+    "questionNumber": 103,
+    "text": "You have an Azure subscription named Sub1.  \n  \nIn Microsoft Defender for Cloud, you have a workflow automation named WF1. WF1 is configured to send an email message to a user named User1.  \n  \nYou need to change WF1 so that it sends email messages to a distribution group named Alerts.  \n  \nWhat should you use to modify WF1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Logic Apps Designer"
+      },
+      {
+        "key": "B",
+        "text": "Azure Application Insights"
+      },
+      {
+        "key": "C",
+        "text": "Azure DevOps"
+      },
+      {
+        "key": "D",
+        "text": "Azure Monitor"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Tự động hóa quy trình làm việc Microsoft Defender for Cloud kích hoạt Ứng dụng Logic tiêu thụ và hành động email—bao gồm cả người nhận—được định cấu hình trong Ứng dụng Logic đó. Do đó, Azure Logic Apps Designer được sử dụng để thay đổi người nhận thành nhóm phân phối Cảnh báo.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 103",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/103-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-104",
+    "questionNumber": 104,
+    "text": "You have an Azure subscription containing the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966882920-a4dv3hs9.png)  \n  \nYou are configuring Microsoft Defender for Servers.  \n  \nYou plan to enable adaptive application controls to create an allowlist of known-safe applications on the virtual machines.  \n  \nWhich virtual machines support using adaptive application controls?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VM1 and VM2 only"
+      },
+      {
+        "key": "B",
+        "text": "VM2 and VM4 only"
+      },
+      {
+        "key": "C",
+        "text": "VM2 and VM3 only"
+      },
+      {
+        "key": "D",
+        "text": "VM1, VM2, VM3, and VM4"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Các điều khiển ứng dụng thích ứng dựa trên AppLocker. AppLocker không được hỗ trợ trên các bản cài đặt Server Core, ngoại trừ VM3. Các điều khiển ứng dụng thích ứng cũng không hỗ trợ các máy Windows đã bật chính sách AppLocker, ngoại trừ VM4. Vì vậy, các máy được hỗ trợ là bản cài đặt đầy đủ của Windows Server 2019 và Windows Server 2022: VM1 và VM2.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783966882920-a4dv3hs9.png",
+    "sourceTitle": "Examcademy AZ-500 Question 104",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/104-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-105",
+    "questionNumber": 105,
+    "text": "Your organization has an Azure subscription named Sub1.  \n  \nYou plan to create multiple security alerts by using Azure Monitor.  \n  \nYou need to prepare Sub1 for these alerts.  \n  \nWhat should you create first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an Azure Automation account"
+      },
+      {
+        "key": "B",
+        "text": "an Azure event hub"
+      },
+      {
+        "key": "C",
+        "text": "an Azure Log Analytics workspace"
+      },
+      {
+        "key": "D",
+        "text": "an Azure Storage account"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Không gian làm việc Log Analytics là kho lưu trữ dữ liệu Azure Monitor dành cho dữ liệu nhật ký được thu thập. Cảnh báo bảo mật dựa trên nhật ký truy vấn không gian làm việc đó, do đó, không gian làm việc đó phải tồn tại trước khi có thể tạo quy tắc cảnh báo.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 105",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/105-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.791Z"
+  },
+  {
+    "id": "az500-106",
+    "questionNumber": 106,
+    "text": "Your company has an Azure subscription named Sub1. Sub1 contains an Azure web app named WebApp1 that uses Azure Application Insights. WebApp1 requires users to authenticate by using OAuth 2.0 client secrets.  \n  \nDevelopers at the company plan to create a multi-step web test app that performs synthetic transactions emulating user traffic to WebApp1.  \n  \nYou need to ensure that the web tests can run unattended. What should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "In Microsoft Visual Studio, modify the .webtest file."
+      },
+      {
+        "key": "B",
+        "text": "Upload the .webtest file to Application Insights."
+      },
+      {
+        "key": "C",
+        "text": "Register the web test app in Azure AD."
+      },
+      {
+        "key": "D",
+        "text": "Add a plug-in to the web test app."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Xác thực bí mật ứng dụng khách OAuth 2.0 để thực thi không cần giám sát yêu cầu ứng dụng khách bí mật có ID ứng dụng (ứng dụng khách) và bí mật ứng dụng khách. Đăng ký ứng dụng kiểm tra web trong Microsoft Entra ID sẽ tạo ra danh tính khách hàng đó; sau đó nó có thể lấy mã thông báo truy cập mà không cần xác thực người dùng tương tác.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 106",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/106-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-107",
+    "questionNumber": 107,
+    "text": "You have an Azure subscription.  \n  \nYou plan to map online infrastructure and carry out vulnerability scanning for the following:  \n  \n- ASNs  \n- Hostnames  \n- IP addresses  \n- SSL certificates  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Microsoft Defender for Cloud"
+      },
+      {
+        "key": "B",
+        "text": "Microsoft Defender External Attack Surface Management (Defender EASM)"
+      },
+      {
+        "key": "C",
+        "text": "Microsoft Defender for Identity"
+      },
+      {
+        "key": "D",
+        "text": "Microsoft Defender for Endpoint"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Quản lý bề mặt tấn công bên ngoài của Bộ bảo vệ Microsoft (Defender EASM) liên tục phát hiện và lập bản đồ cơ sở hạ tầng tiếp xúc với Internet. Nó hỗ trợ khám phá ASN, máy chủ, địa chỉ IP và chứng chỉ SSL, đồng thời cung cấp thông tin chi tiết về lỗ hổng và mức độ phơi nhiễm cho bề mặt tấn công bên ngoài.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 107",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/107-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-108",
+    "questionNumber": 108,
+    "text": "You have the Azure resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783955545059-0gh34rg4.jpg)  \n  \nYou must meet the following requirements:  \n  \n- Internet-facing virtual machines must be protected by using network security groups (NSGs).  \n- Disk encryption must be enabled on all the virtual machines.  \n  \nWhat is the minimum number of security policies that you need to create in Microsoft Defender for Cloud?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "1"
+      },
+      {
+        "key": "B",
+        "text": "2"
+      },
+      {
+        "key": "C",
+        "text": "3"
+      },
+      {
+        "key": "D",
+        "text": "4"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Một chính sách bảo mật duy nhất được chỉ định ở phạm vi Subscription1 có thể chứa các điều khiển mã hóa ổ đĩa và NSG cần thiết. Việc gán chính sách ở phạm vi đó bao gồm cả RG1 và RG2 cũng như các máy ảo của chúng, do đó, một chính sách có thể chi phối cả hai yêu cầu trên tất cả các máy ảo.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783955545059-0gh34rg4.jpg",
+    "sourceTitle": "Examcademy AZ-500 Question 108",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/108-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-109",
+    "questionNumber": 109,
+    "text": "You have an Azure key vault.  \n  \nYou must delegate administrative access to the key vault to meet these requirements:  \n  \n- Give a user named User1 the ability to set key-vault access policies.  \n- Give a user named User2 the ability to add and delete certificates in the key vault.  \n- Follow the principle of least privilege.  \n  \nWhat should you use to assign access to each user?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Cập nhật chính sách truy cập Key Vault là một hành động trên mặt phẳng điều khiển và yêu cầu Azure RBAC. Tạo và xóa chứng chỉ là các hoạt động trên mặt phẳng dữ liệu Key Vault; chính sách truy cập Key Vault chỉ có thể cấp các quyền chứng chỉ cần thiết, do đó, việc gán RBAC bổ sung no là bắt buộc đối với Người dùng2.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 109",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/109-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-110",
+    "questionNumber": 110,
+    "text": "You have an Azure Active Directory (Azure AD) tenant that includes a group named Group1.  \n  \nYou need to make sure that Group1 members sign in using passwordless authentication.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure the sign-in risk policy."
+      },
+      {
+        "key": "B",
+        "text": "Create a Conditional Access policy."
+      },
+      {
+        "key": "C",
+        "text": "Configure the Microsoft Authenticator authentication method policy."
+      },
+      {
+        "key": "D",
+        "text": "Configure the certificate-based authentication (CBA) policy."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Chính sách phương pháp xác thực Microsoft Authenticator có thể cho phép đăng nhập bằng điện thoại không cần mật khẩu và nhắm mục tiêu phương thức đã bật vào một nhóm cụ thể, chẳng hạn như Group1. Chế độ xác thực của nó có thể được đặt thành chỉ không cần mật khẩu (`deviceBasedPush`) khi được yêu cầu. [Microsoft Learn: Passwordless sign-in with Authenticator](https://learn.microsoft.com/en-us/azure/active-directory/authentication/howto-authentication-passwordless-phone)",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 110",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/110-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-111",
+    "questionNumber": 111,
+    "text": "You have an Azure subscription that uses Microsoft Defender for Cloud. The subscription includes the Azure Policy definitions shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960426076-n5o0uhce.png)  \n  \nWhich definitions can be assigned as a security policy in Defender for Cloud?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Policy1 and Policy2 only"
+      },
+      {
+        "key": "B",
+        "text": "Initiative1 and Initiative2 only"
+      },
+      {
+        "key": "C",
+        "text": "Policy1 and Initiative1 only"
+      },
+      {
+        "key": "D",
+        "text": "Policy2 and Initiative2 only"
+      },
+      {
+        "key": "E",
+        "text": "Policy1, Policy2, Initiative1, and Initiative2"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các chính sách bảo mật của Microsoft Defender for Cloud dựa trên các định nghĩa sáng kiến ​​Chính sách Azure, bao gồm một hoặc nhiều định nghĩa chính sách. Không thể chỉ định các định nghĩa Chính sách Azure riêng lẻ làm chính sách bảo mật của Bộ bảo vệ cho đám mây. Cả hai sáng kiến ​​đều đủ điều kiện: sáng kiến ​​Tuân thủ quy định hỗ trợ đánh giá tuân thủ quy định của Defender for Cloud và sáng kiến ​​Trung tâm bảo mật hỗ trợ đánh giá chính sách bảo mật.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783960426076-n5o0uhce.png",
+    "sourceTitle": "Examcademy AZ-500 Question 111",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/111-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-112",
+    "questionNumber": 112,
+    "text": "You have an Azure subscription named Sub1. Sub1 contains an Azure virtual machine named VM1 that runs Windows Server 2016.  \n  \nYou need to encrypt the disks on VM1 by using Azure Disk Encryption.  \n  \nWhich three actions should you carry out in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Slot 1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot3",
+        "text": "Slot 3:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Run Set-AzStorageAccount."
+      },
+      {
+        "key": "B",
+        "text": "Create an Azure key vault."
+      },
+      {
+        "key": "C",
+        "text": "Configure access policies for the Azure key vault."
+      },
+      {
+        "key": "D",
+        "text": "Configure secrets for the Azure key vault."
+      },
+      {
+        "key": "E",
+        "text": "Run Set-AzVMDiskEncryptionExtension."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Run Set-AzStorageAccount."
+      },
+      {
+        "key": "B",
+        "text": "Create an Azure key vault."
+      },
+      {
+        "key": "C",
+        "text": "Configure access policies for the Azure key vault."
+      },
+      {
+        "key": "D",
+        "text": "Configure secrets for the Azure key vault."
+      },
+      {
+        "key": "E",
+        "text": "Run Set-AzVMDiskEncryptionExtension."
+      }
+    ],
+    "correctAnswers": [
+      "slot1=B",
+      "slot2=C",
+      "slot3=E"
+    ],
+    "explanation": "Azure Disk Encryption yêu cầu Key Vault và chính sách truy cập cho phép vault mã hóa ổ đĩa. Sau khi định cấu hình các điều kiện tiên quyết đó, `Set-AzVMDiskEncryptionExtension` sẽ cài đặt tiện ích mở rộng mã hóa ổ đĩa và kích hoạt mã hóa trên máy ảo IaaS đang chạy. Tiện ích mở rộng tạo và sử dụng tài liệu bí mật mã hóa cần thiết, do đó, việc định cấu hình bí mật theo cách thủ công không phải là điều kiện tiên quyết.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 112",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/112-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-114",
+    "questionNumber": 114,
+    "text": "You have an Azure subscription named Subscription1 that includes an Azure Active Directory (Azure AD) tenant named contoso.com and a resource group named RG1.  \n  \nYou create a custom role named Role1 for contoso.com.  \n  \nWhere can you use Role1 to delegate permissions?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "contoso.com only"
+      },
+      {
+        "key": "B",
+        "text": "contoso.com and RG1 only"
+      },
+      {
+        "key": "C",
+        "text": "contoso.com and Subscription1 only"
+      },
+      {
+        "key": "D",
+        "text": "contoso.com, RG1, and Subscription1"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Vai trò tùy chỉnh Microsoft Entra ID là vai trò thư mục và chỉ có thể được chỉ định trong đối tượng thuê Microsoft Entra nơi vai trò đó được xác định. Các quyền của đăng ký Azure và nhóm tài nguyên được ủy quyền thông qua các định nghĩa và phân công vai trò Azure RBAC chứ không phải thông qua các vai trò tùy chỉnh trong thư mục Microsoft Entra.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 114",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/114-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-115",
+    "questionNumber": 115,
+    "text": "You have an Azure AD tenant that includes the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960408953-s9yfec29.png)  \n  \nPasswordless authentication is enabled for the tenant.  \n  \nWhich passwordless authentication method can each user use? An authentication method may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "user1",
+        "text": "User1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "user2",
+        "text": "User2:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "FIDO2 security key only"
+      },
+      {
+        "key": "B",
+        "text": "Microsoft Authenticator app only"
+      },
+      {
+        "key": "C",
+        "text": "Windows Hello for Business only"
+      },
+      {
+        "key": "D",
+        "text": "Microsoft Authenticator app and Windows Hello for Business only"
+      },
+      {
+        "key": "E",
+        "text": "Windows Hello for Business and FIDO2 security key only"
+      },
+      {
+        "key": "F",
+        "text": "Microsoft Authenticator app, Windows Hello for Business, and FIDO2 security key"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "FIDO2 security key only"
+      },
+      {
+        "key": "B",
+        "text": "Microsoft Authenticator app only"
+      },
+      {
+        "key": "C",
+        "text": "Windows Hello for Business only"
+      },
+      {
+        "key": "D",
+        "text": "Microsoft Authenticator app and Windows Hello for Business only"
+      },
+      {
+        "key": "E",
+        "text": "Windows Hello for Business and FIDO2 security key only"
+      },
+      {
+        "key": "F",
+        "text": "Microsoft Authenticator app, Windows Hello for Business, and FIDO2 security key"
+      }
+    ],
+    "correctAnswers": [
+      "user1=B",
+      "user2=E"
+    ],
+    "explanation": "Tính năng đăng nhập qua điện thoại không cần mật khẩu Microsoft Authenticator chạy trên Android hoặc iOS và sử dụng sinh trắc học hoặc mã PIN của điện thoại, do đó, tính năng này khả dụng trên thiết bị Android của User1 có nhận dạng khuôn mặt. Windows Hello for Business là thông tin xác thực sinh trắc học/mã PIN dành cho PC chạy Windows tương thích, do đó, nó có sẵn cho Người dùng2. Đăng nhập bằng khóa bảo mật FIDO2 được hỗ trợ trên Windows và được định cấu hình độc lập với Windows Hello for Business. Thiết bị di động No được liệt kê cho Người dùng2, vì vậy ứng dụng Authenticator không phải là phương pháp khả dụng cho người dùng đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783960408953-s9yfec29.png",
+    "sourceTitle": "Examcademy AZ-500 Question 115",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/115-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-116",
+    "questionNumber": 116,
+    "text": "Your Azure subscription contains the Azure Active Directory (Azure AD) resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954303199-m5u69ba9.png)  \n  \nYou then create the groups shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954307285-mu2k4e1d.png)  \n  \nWhich resources can be added to Group5 and Group6?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Một nhóm bảo mật được chỉ định có thể chứa người dùng, các nhóm bảo mật khác và dịch vụ chính. Danh tính được quản lý và ứng dụng doanh nghiệp là các đối tượng chính của dịch vụ, vì vậy User1, Group1, Managed1 và App1 là thành viên hợp lệ của Group5. Nhóm Microsoft 365 chỉ cho phép người dùng làm thành viên, vì vậy chỉ có thể thêm Người dùng1 vào Nhóm6.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954303199-m5u69ba9.png",
+    "sourceTitle": "Examcademy AZ-500 Question 116",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/116-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-117",
+    "questionNumber": 117,
+    "text": "HOTSPOT -  \n  \nYou have an Azure subscription containing an Azure Active Directory (Azure AD) tenant named contoso.com. The tenant includes the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953178817-n1db3bf2.png)  \n  \nYou create a resource group named RG1.  \n  \nWhich users can modify RG1 permissions, and which users can create virtual networks in RG1?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Chủ sở hữu ở phạm vi đăng ký có thể quản lý quyền truy cập và tài nguyên trong RG1. Cộng tác viên có thể tạo và quản lý tài nguyên, bao gồm cả mạng ảo, nhưng không thể chỉ định vai trò Azure RBAC. Quản trị viên bảo mật Azure AD và quản trị viên dịch vụ là các vai trò thư mục chứ không phải vai trò tài nguyên Azure nên họ không cấp quyền cho RG1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953178817-n1db3bf2.png",
+    "sourceTitle": "Examcademy AZ-500 Question 117",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/117-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-118",
+    "questionNumber": 118,
+    "text": "You have an Azure Active Directory (Azure AD) tenant.  \n  \nYou need to stop nonprivileged Azure AD users from creating service principals in Azure AD.  \n  \nWhat should you do in the tenant's Azure Active Directory admin center?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From the User settings blade, set Users can register applications to No."
+      },
+      {
+        "key": "B",
+        "text": "From the Properties blade, set Access management for Azure resources to No."
+      },
+      {
+        "key": "C",
+        "text": "From the User settings blade, set Restrict access to Azure AD administration portal to Yes."
+      },
+      {
+        "key": "D",
+        "text": "From the Properties blade, set Enable Security defaults to Yes."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Đăng ký ứng dụng sẽ tự động tạo service principal trong đối tượng thuê. Cài đặt **Người dùng có thể đăng ký ứng dụng** thành **No** trong Cài đặt người dùng sẽ ngăn người dùng không có đặc quyền đăng ký ứng dụng và do đó tạo nguyên tắc dịch vụ thông qua đăng ký ứng dụng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 118",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/118-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-119",
+    "questionNumber": 119,
+    "text": "Your company has an Azure SQL database with Always Encrypted enabled.  \n  \nYou need to make the relevant information available to application developers so they can access data in the database.  \n  \nWhich two options should be made available?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Slot 1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "slot2",
+        "text": "Slot 2:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "The column encryption key"
+      },
+      {
+        "key": "B",
+        "text": "A DLP policy"
+      },
+      {
+        "key": "C",
+        "text": "A shared access signature (SAS)"
+      },
+      {
+        "key": "D",
+        "text": "A key vault access policy"
+      },
+      {
+        "key": "E",
+        "text": "The column master key"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "The column encryption key"
+      },
+      {
+        "key": "B",
+        "text": "A DLP policy"
+      },
+      {
+        "key": "C",
+        "text": "A shared access signature (SAS)"
+      },
+      {
+        "key": "D",
+        "text": "A key vault access policy"
+      },
+      {
+        "key": "E",
+        "text": "The column master key"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=D",
+      "slot2=E"
+    ],
+    "explanation": "Ứng dụng đọc dữ liệu Luôn được mã hóa ở dạng văn bản gốc phải truy cập vào khóa chính của cột (CMK), khóa này sẽ giải mã khóa mã hóa cột (CEK). Khi CMK được lưu trữ trong Azure Key Vault, danh tính của ứng dụng yêu cầu chính sách truy cập Key Vault thích hợp, chẳng hạn như quyền lấy và mở khóa. CEK được trình điều khiển truy xuất từ ​​siêu dữ liệu cơ sở dữ liệu, trong khi các chính sách DLP và mã thông báo SAS không cung cấp quyền truy cập khóa cần thiết.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 119",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/119-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-121",
+    "questionNumber": 121,
+    "text": "You have an Azure subscription.  \n  \nYou configure the subscription to use another Azure Active Directory (Azure AD) tenant.  \n  \nWhat are two possible effects of this change? Each correct answer presents a complete solution.  \n  \n> NOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Role assignments at the subscription level are lost."
+      },
+      {
+        "key": "B",
+        "text": "Virtual machine managed identities are lost."
+      },
+      {
+        "key": "C",
+        "text": "Virtual machine disk snapshots are lost."
+      },
+      {
+        "key": "D",
+        "text": "Existing Azure resources are deleted."
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "B"
+    ],
+    "explanation": "Việc thay đổi gói đăng ký sang một đối tượng thuê Azure AD khác sẽ xóa vĩnh viễn các hoạt động gán vai trò Azure RBAC khỏi đối tượng thuê nguồn, do đó, các hoạt động gán vai trò ở cấp độ đăng ký phải được tạo lại. Danh tính được quản lý liên kết với các tài nguyên như máy ảo không được chuyển dưới dạng danh tính chức năng; danh tính do hệ thống chỉ định phải được kích hoạt lại và danh tính do người dùng chỉ định phải được tạo lại. Các tài nguyên Azure hiện có và ảnh chụp nhanh ổ đĩa của chúng sẽ được giữ lại.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 121",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/121-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-122",
+    "questionNumber": 122,
+    "text": "You have an Azure AD tenant.  \n  \nYou need to ensure that users cannot create passwords that include a variation of the word `contoso`.  \n  \nWhat should you configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Microsoft Entra Verified ID"
+      },
+      {
+        "key": "B",
+        "text": "Microsoft Entra Identity Governance"
+      },
+      {
+        "key": "C",
+        "text": "Azure AD Privileged Identity Management (PIM)"
+      },
+      {
+        "key": "D",
+        "text": "Azure AD Password Protection"
+      },
+      {
+        "key": "E",
+        "text": "Azure AD Identity Protection"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Bảo vệ mật khẩu Azure AD cung cấp danh sách mật khẩu bị cấm tùy chỉnh cho các thuật ngữ dành riêng cho tổ chức, chẳng hạn như tên công ty. Thuật toán đánh giá mật khẩu của nó bình thường hóa các thay thế ký tự phổ biến và đánh giá các biến thể của thuật ngữ bị cấm, do đó, việc thêm `contoso` sẽ bảo vệ chống lại mật khẩu dựa trên từ đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 122",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/122-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-123",
+    "questionNumber": 123,
+    "text": "Solution: You begin by creating a custom sensitive information type.  \n  \nDoes this solution meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Loại thông tin nhạy cảm tùy chỉnh được sử dụng để xác định các mẫu nội dung cụ thể. Nó không tạo nhãn nhạy cảm tùy chỉnh; nhãn nhạy cảm phải được tạo riêng trong dịch vụ dán nhãn bảo vệ thông tin liên quan.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 123",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/123-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-124",
+    "questionNumber": 124,
+    "text": "Solution: You begin by changing the Security Center pricing tier.  \n  \nDoes the solution meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Nhãn độ nhạy tùy chỉnh được tạo và định cấu hình trong cổng Microsoft Purview. Việc thay đổi bậc giá của Trung tâm Bảo mật Azure không tạo hoặc đặt cấu hình nhãn nhạy cảm.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 124",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/124-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-125",
+    "questionNumber": 125,
+    "text": "Solution: Begin by integrating Security Center with Microsoft Cloud App Security.  \n  \nDoes this solution meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Nhãn độ nhạy tùy chỉnh được tạo và định cấu hình trong cổng Microsoft Purview. Việc tích hợp giữa Ứng dụng Microsoft Defender for Cloud và Microsoft Defender for Cloud không tạo nhãn độ nhạy tùy chỉnh.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 125",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/125-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-126",
+    "questionNumber": 126,
+    "text": "You have an Azure subscription.  \n  \nYou plan to create two custom roles, named Role1 and Role2.  \n  \nThe custom roles will be used for these tasks:  \n  \n- Members of Role1 will manage application security groups.  \n- Members of Role2 will manage Azure Bastion.  \n  \nYou must add permissions to the custom roles.  \n  \nWhich resource provider should be used for each role? Each resource provider may be used more than once or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "role1",
+        "text": "Role1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "role2",
+        "text": "Role2:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Microsoft.Compute"
+      },
+      {
+        "key": "B",
+        "text": "Microsoft.Network"
+      },
+      {
+        "key": "C",
+        "text": "Microsoft.Security"
+      },
+      {
+        "key": "D",
+        "text": "Microsoft.Solutions"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Microsoft.Compute"
+      },
+      {
+        "key": "B",
+        "text": "Microsoft.Network"
+      },
+      {
+        "key": "C",
+        "text": "Microsoft.Security"
+      },
+      {
+        "key": "D",
+        "text": "Microsoft.Solutions"
+      }
+    ],
+    "correctAnswers": [
+      "role1=B",
+      "role2=B"
+    ],
+    "explanation": "Các nhóm bảo mật ứng dụng là tài nguyên Microsoft.Network và Azure Bastion được quản lý thông qua Microsoft.Network/bastionHosts. Do đó, cả hai vai trò tùy chỉnh đều cần có quyền từ nhà cung cấp tài nguyên Microsoft.Network.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 126",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/126-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-127",
+    "questionNumber": 127,
+    "text": "You have an Azure subscription that uses Azure AD Privileged Identity Management (PIM).  \n  \nA user named User1 is eligible for the Billing administrator role.  \n  \nYou need to ensure that the role can be used for no more than two hours.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a new access review."
+      },
+      {
+        "key": "B",
+        "text": "Edit the role assignment settings."
+      },
+      {
+        "key": "C",
+        "text": "Update the end date of the user assignment."
+      },
+      {
+        "key": "D",
+        "text": "Edit the role activation settings."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Cài đặt kích hoạt vai trò PIM chứa cài đặt Thời lượng tối đa kích hoạt, kiểm soát số giờ tối đa mà kích hoạt vai trò của người dùng đủ điều kiện vẫn hoạt động. Đặt khoảng thời gian đó thành hai giờ cho vai trò Quản trị viên thanh toán.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 127",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/127-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-128",
+    "questionNumber": 128,
+    "text": "HOTSPOT –  \n  \nYou are assessing the security of VM1, VM2, and VM3 in Sub2.  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "From the Internet, you can connect to the web server on VM1 by using HTTP.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "From the Internet, you can connect to the web server on VM2 by using HTTP.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "From the Internet, you can connect to the web server on VM3 by using HTTP.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "VM1 được cho phép vì mạng con NSG cho phép cổng Internet TCP 80. VM2 bị chặn vì lưu lượng truy cập cũng phải vượt qua NIC NSG, có quy tắc gửi đến không cho phép HTTP từ Internet và do đó đạt đến quy tắc từ chối mặc định. VM3 có no NSG được liên kết với mạng con hoặc NIC của nó; với IP công cộng và truy cập web IIS/tường lửa được kích hoạt, HTTP được cho phép. Các quy tắc NSG được đánh giá theo mức độ ưu tiên và NSG có thể lọc lưu lượng truy cập gửi đến ở cả phạm vi mạng con và NIC.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 128",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/128-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-129",
+    "questionNumber": 129,
+    "text": "You need to evaluate the underlined segment to determine whether it is correct.  \n  \nYou have configured an Azure Kubernetes Service (AKS) cluster in your testing environment. You are now preparing to deploy the cluster to the production environment.  \n  \nAfter disabling HTTP application routing, you want to replace it with an application-routing solution that provides reverse proxy and TLS termination for AKS services through a single IP address. You must create an AKS Ingress controller.  \n  \nSelect `No adjustment required` if the underlined segment is accurate. If it is inaccurate, select the correct option.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "No adjustment required."
+      },
+      {
+        "key": "B",
+        "text": "a network security group"
+      },
+      {
+        "key": "C",
+        "text": "an application security group"
+      },
+      {
+        "key": "D",
+        "text": "an Azure Basic Load Balancer"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Bộ điều khiển xâm nhập AKS cung cấp định tuyến proxy ngược và chấm dứt TLS lớp 7, đồng thời nó có thể hiển thị nhiều dịch vụ AKS thông qua một địa chỉ IP. Các nhóm bảo mật mạng và nhóm bảo mật ứng dụng cung cấp tính năng lọc lưu lượng, trong khi Bộ cân bằng tải cơ bản Azure cung cấp khả năng cân bằng tải Lớp 4 thay vì khả năng xâm nhập của lớp ứng dụng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 129",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/129-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-130",
+    "questionNumber": 130,
+    "text": "You have an Azure subscription containing a user named Admin1 and an Azure key vault called Vault1.  \n  \nYou plan to implement Microsoft Entra Verified ID.  \n  \nYou need to create an access policy that gives Admin1 the Vault1 permissions needed to support implementation of the Verified ID service. The solution must follow the principle of least privilege.  \n  \nWhich three key permissions should you select?\n\n![Question Image](https://cdn.examcademy.com/images/questions/1785599521933-cfey45me.png)",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "ID được xác minh của Microsoft Entra sử dụng khóa Azure Key Vault để ký thông tin xác thực có thể xác minh. Các quyền khóa tối thiểu bắt buộc là Tạo và Xóa để thiết lập dịch vụ có thể quản lý khóa ký và Ký để có thể tạo chữ ký thông tin xác thực. Nhận, Liệt kê, Cập nhật, Nhập, khôi phục/sao lưu/khôi phục, mã hóa/giải mã, gói, xác minh, hoạt động đặc quyền và quyền chính sách xoay vòng là không cần thiết cho mục đích này.\n\n**Tài liệu tham khảo:**\n[Advanced Microsoft Entra Verified ID setup](https://learn.microsoft.com/en-us/entra/verified-id/verifiable-credentials-configure-tenant)",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785599521933-cfey45me.png",
+    "sourceTitle": "Examcademy AZ-500 Question 130",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/130-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-131",
+    "questionNumber": 131,
+    "text": "You have an Azure subscription containing two virtual machines, named VM1 and VM2, that run Windows Server 2019.  \n  \nYou are implementing Update Management in Azure Automation and plan to create a new update deployment named Update1.  \n  \nYou must ensure that Update1 meets these requirements:  \n  \n- Automatically apply updates to VM1 and VM2.  \n- Automatically add any new Windows Server 2019 virtual machines to Update1.  \n  \nWhat should you include in Update1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a security group that has a Membership type of Assigned"
+      },
+      {
+        "key": "B",
+        "text": "a security group that has a Membership type of Dynamic Device"
+      },
+      {
+        "key": "C",
+        "text": "a dynamic group query"
+      },
+      {
+        "key": "D",
+        "text": "a Kusto query language query"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Truy vấn nhóm động Quản lý Cập nhật tự động giải quyết các máy ảo được nhắm mục tiêu khi triển khai bản cập nhật. Nó có thể khớp VM1 và VM2, đồng thời tự động bao gồm các máy ảo Windows Server 2019 mới được phát hiện đáp ứng tiêu chí truy vấn tại thời điểm triển khai.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 131",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/131-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-133",
+    "questionNumber": 133,
+    "text": "You have an Azure subscription that includes an Azure key vault named Vault1 and a virtual machine named VM1.  \n  \nVM1 is connected to a virtual network named VNet1.  \n  \nYou need to permit access to Vault1 only from VM1.  \n  \nWhat should you do in Vault1's Networking settings?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From the Firewalls and virtual networks tab, add the IP address of VM1."
+      },
+      {
+        "key": "B",
+        "text": "From the Private endpoint connections tab, create a private endpoint for VM1."
+      },
+      {
+        "key": "C",
+        "text": "From the Firewalls and virtual networks tab, add VNet1."
+      },
+      {
+        "key": "D",
+        "text": "From the Firewalls and virtual networks tab, set Allow trusted Microsoft services to bypass this firewall to Yes for Vault1."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Các quy tắc tường lửa Azure Key Vault có thể cho phép truy cập từ các mạng ảo và mạng con đã chọn. Việc thêm VNet1 vào tường lửa của vault và các quy tắc mạng ảo sẽ cho phép lưu lượng truy cập mạng ảo của VM đồng thời từ chối lưu lượng truy cập từ các mạng không được phép. Các quy tắc mạng Key Vault IP không chấp nhận dải địa chỉ IP riêng tư, do đó địa chỉ riêng của VM không phải là quy tắc thích hợp.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 133",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/133-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-134",
+    "questionNumber": 134,
+    "text": "You have an Azure subscription that contains a virtual machine named VM1.  \n  \nNSG1 is associated with VM1's network interface and is configured as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966699511-vhbrcmwn.png)  \n  \nJust-in-time (JIT) VM access is enabled on VM1 with these configurations:  \n  \n- Management ports: 3389, 22  \n- Maximum time range: 3 hours  \n- Allowed source IP addresses: Any  \n  \nYou activate the JIT rule and connect to VM1 by using SSH.  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "The RDP rule has priority over the NSG rule created by JIT.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "If you disconnect from VM1 within the three-hour time range, you must reactivate the JIT rule to reconnect to VM1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "The SSH connection to VM1 disconnects automatically after three hours.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "Các quy tắc NSG hiện tại cho cổng được JIT bảo vệ được ưu tiên hơn quy tắc từ chối tất cả do JIT tạo ra; do đó, quy tắc cho phép RDP gửi đến ở mức ưu tiên 300 được ưu tiên. Phê duyệt JIT sẽ mở cổng SSH được yêu cầu trong khoảng thời gian truy cập được phê duyệt, do đó, kết nối mới có thể được thực hiện trong khoảng thời gian ba giờ đó mà không cần kích hoạt lại JIT. Hết hạn sẽ khôi phục trạng thái NSG trước đó, trong khi các kết nối đã thiết lập không bị gián đoạn.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783966699511-vhbrcmwn.png",
+    "sourceTitle": "Examcademy AZ-500 Question 134",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/134-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-135",
+    "questionNumber": 135,
+    "text": "You need to deploy AKS1 so that it meets the platform protection requirements.  \n  \nWhich four actions should you perform in sequence?  \n  \nMore than one ordering is correct; any correct ordering receives credit.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Slot 1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot2",
+        "text": "Slot 2:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot3",
+        "text": "Slot 3:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot4",
+        "text": "Slot 4:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Deploy an AKS cluster."
+      },
+      {
+        "key": "B",
+        "text": "Create a client application."
+      },
+      {
+        "key": "C",
+        "text": "Create a server application."
+      },
+      {
+        "key": "D",
+        "text": "Create an RBAC binding."
+      },
+      {
+        "key": "E",
+        "text": "Create a custom RBAC role."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Deploy an AKS cluster."
+      },
+      {
+        "key": "B",
+        "text": "Create a client application."
+      },
+      {
+        "key": "C",
+        "text": "Create a server application."
+      },
+      {
+        "key": "D",
+        "text": "Create an RBAC binding."
+      },
+      {
+        "key": "E",
+        "text": "Create a custom RBAC role."
+      }
+    ],
+    "correctAnswers": [
+      "slot1=C",
+      "slot2=B",
+      "slot3=A",
+      "slot4=D"
+    ],
+    "explanation": "Tích hợp Microsoft Entra ID kế thừa cho AKS sử dụng ứng dụng máy chủ và ứng dụng khách. Ứng dụng khách được định cấu hình để yêu cầu quyền truy cập vào ứng dụng máy chủ, vì vậy những đăng ký đó trước khi triển khai AKS. Sau khi cụm tồn tại, liên kết Kubernetes RBAC sẽ gán các quyền thích hợp. Vai trò RBAC tùy chỉnh là không cần thiết khi có sẵn vai trò phù hợp.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 135",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/135-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-136",
+    "questionNumber": 136,
+    "text": "You have an Azure subscription containing an Azure SQL database named SQL1 and an Azure key vault named KeyVault1. KeyVault1 stores the keys shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954842474-nct697fa.png)  \n  \nYou need to configure Transparent Data Encryption (TDE). TDE will use a customer-managed key for SQL1.  \n  \nWhich keys can you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Key2 only"
+      },
+      {
+        "key": "B",
+        "text": "Key1 only"
+      },
+      {
+        "key": "C",
+        "text": "Key2 and Key3 only"
+      },
+      {
+        "key": "D",
+        "text": "Key1, Key2, Key3, and Key4"
+      },
+      {
+        "key": "E",
+        "text": "Key1 and Key2 only"
+      }
+    ],
+    "correctAnswers": [
+      "E"
+    ],
+    "explanation": "Mã hóa dữ liệu trong suốt Azure SQL Database với khóa do khách hàng quản lý hỗ trợ các khóa bảo vệ RSA hoặc RSA-HSM TDE không đối xứng có kích thước 2048 hoặc 3072 bit. Do đó, các khóa đủ điều kiện là khóa RSA 2048 bit và khóa RSA 3072 bit; khóa RSA 4096 bit và khóa đường cong elip không được hỗ trợ.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954842474-nct697fa.png",
+    "sourceTitle": "Examcademy AZ-500 Question 136",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/136-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-137",
+    "questionNumber": 137,
+    "text": "You have an Azure subscription named Sub1 that uses Microsoft Defender for Cloud.  \n  \nYou have the management group hierarchy shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960426168-nwq76duh.png)  \n  \nYou create the definitions shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960429014-taba3qha.png)  \n  \nYou need to use Defender for Cloud to add a security policy.  \n  \nWhich definitions can be used as a security policy?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Policy1 only"
+      },
+      {
+        "key": "B",
+        "text": "Policy1 and Initiative1 only"
+      },
+      {
+        "key": "C",
+        "text": "Initiative1 and Initiative2 only"
+      },
+      {
+        "key": "D",
+        "text": "Initiative1, Initiative2, and Initiative3 only"
+      },
+      {
+        "key": "E",
+        "text": "Policy1, Initiative1, Initiative2, and Initiative3"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Chính sách bảo mật Microsoft Defender for Cloud sử dụng các định nghĩa sáng kiến ​​Chính sách Azure. Sáng kiến1 được xác định tại Nhóm gốc đối tượng thuê, do đó, sáng kiến ​​này có sẵn để gán cho đăng ký con cháu Sub1. Sáng kiến2 được xác định trực tiếp trong Sub1 và cũng có sẵn ở đó. Chính sách1 là một định nghĩa chính sách riêng lẻ chứ không phải là một sáng kiến, và Sáng kiến3 được định nghĩa trong MG1, đây không phải là tiền thân của Sub1. Các định nghĩa Chính sách Azure chỉ có thể được chỉ định tại hoặc bên dưới vị trí định nghĩa của chúng trong hệ thống phân cấp tài nguyên.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783960426168-nwq76duh.png",
+    "sourceTitle": "Examcademy AZ-500 Question 137",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/137-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-138",
+    "questionNumber": 138,
+    "text": "HOTSPOT —  \n  \nYou have an Azure Active Directory (Azure AD) tenant that contains the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953048080-vz9iwb4p.jpg)  \n  \nFrom Azure AD Privileged Identity Management (PIM), you configure the settings for the Security Administrator role as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953050866-gbay67ra.jpg)  \n  \nFrom PIM, you assign the Security Administrator role to the following groups:  \n  \n- Group1: Active assignment type, permanently assigned  \n- Group2: Eligible assignment type, permanently eligible  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "User1 can only activate the Security Administrator role in five hours.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "If User2 activates the Security Administrator role, the user will be assigned the role immediately.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "User3 can activate the Security Administrator role.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Nhiệm vụ đang hoạt động sẽ cấp vai trò mà không cần yêu cầu kích hoạt, do đó giới hạn thời lượng kích hoạt không áp dụng cho nhiệm vụ hoạt động vĩnh viễn của Người dùng1. Các nhiệm vụ đủ điều kiện yêu cầu kích hoạt và việc kích hoạt của Người dùng2 là ngay lập tức vì phê duyệt và tất cả các yêu cầu kích hoạt được liệt kê đều bị vô hiệu hóa. Người dùng3 là thành viên của Nhóm2 và do đó có nhiệm vụ đủ điều kiện vĩnh viễn của nhóm đó và có thể được kích hoạt.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953048080-vz9iwb4p.jpg",
+    "sourceTitle": "Examcademy AZ-500 Question 138",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/138-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-139",
+    "questionNumber": 139,
+    "text": "You are setting up just-in-time (JIT) VM access for a Windows Server 2019 Azure virtual machine.  \n  \nYou must give users PowerShell access to the virtual machine through JIT VM access. What should you configure?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Điều khiển từ xa PowerShell tới máy ảo Windows sử dụng WinRM. Trình nghe HTTPS của nó sử dụng TCP 5986. Người dùng yêu cầu quyền truy cập đúng lúc cần có quyền để bắt đầu chính sách truy cập mạng JIT; điều này có sẵn thông qua vai trò Trình đọc bảo mật, tương ứng với lựa chọn Đọc.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 139",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/139-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-140",
+    "questionNumber": 140,
+    "text": "You have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783965522635-5ds2m1jq.png)  \n  \nYou create an Azure DDoS Protection plan named DDoS1 in the West US Azure region.  \n  \nWhich resources can be added to DDoS1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VNetl1only"
+      },
+      {
+        "key": "B",
+        "text": "WebApp1 only"
+      },
+      {
+        "key": "C",
+        "text": "VNet1 and VNet2 only"
+      },
+      {
+        "key": "D",
+        "text": "VNet1 and WebApp1 only"
+      },
+      {
+        "key": "E",
+        "text": "VNet1, VNet2, and WebApp1"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Gói Bảo vệ Mạng Azure DDoS bảo vệ các mạng ảo và có thể được liên kết với các mạng ảo ở các vùng Azure khác nhau. Nó không thể thêm ứng dụng web Dịch vụ ứng dụng làm tài nguyên được bảo vệ. Do đó, VNet1 và VNet2 có thể được liên kết với kế hoạch.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783965522635-5ds2m1jq.png",
+    "sourceTitle": "Examcademy AZ-500 Question 140",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/140-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-141",
+    "questionNumber": 141,
+    "text": "You have an Azure subscription and plan to create a storage account. You must use customer-managed keys to encrypt the tables in that storage account.  \n  \nFrom Azure Cloud Shell, which three cmdlets should be run in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "New-AzStorageAccountKey"
+      },
+      {
+        "key": "B",
+        "text": "New-AzStorageTable"
+      },
+      {
+        "key": "C",
+        "text": "Register-AzProviderFeature"
+      },
+      {
+        "key": "D",
+        "text": "New-AzStorageAccount"
+      },
+      {
+        "key": "E",
+        "text": "Register-AzResourceProvider"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "New-AzStorageAccountKey"
+      },
+      {
+        "key": "B",
+        "text": "New-AzStorageTable"
+      },
+      {
+        "key": "C",
+        "text": "Register-AzProviderFeature"
+      },
+      {
+        "key": "D",
+        "text": "New-AzStorageAccount"
+      },
+      {
+        "key": "E",
+        "text": "Register-AzResourceProvider"
+      }
+    ],
+    "correctAnswers": [
+      "step1=C",
+      "step2=E",
+      "step3=D"
+    ],
+    "explanation": "Khóa do khách hàng quản lý cho Azure Table storage yêu cầu đăng ký tính năng nhà cung cấp Microsoft.Storage hiện hành, sau đó đăng ký nhà cung cấp tài nguyên Microsoft.Storage. Tài khoản lưu trữ được tạo sau đó bằng `New-AzStorageAccount`. `New-AzStorageAccountKey` tạo lại khóa tài khoản, trong khi `New-AzStorageTable` tạo bảng nên cả hai đều không kích hoạt tính năng này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 141",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/141-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-143",
+    "questionNumber": 143,
+    "text": "You have an on-premises network and an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966700379-dhsvhh0d.png)  \n  \nYou plan to deploy a Site-to-Site (S2S) VPN between the on-premises network and VNet1.  \n  \nYou need to recommend an Azure VPN Gateway SKU that meets these requirements:  \n  \n- Supports 1-Gbps throughput  \n- Minimizes costs  \n  \nWhat should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VpnGw1"
+      },
+      {
+        "key": "B",
+        "text": "VpnGw2"
+      },
+      {
+        "key": "C",
+        "text": "VpnGw1AZ"
+      },
+      {
+        "key": "D",
+        "text": "VpnGw2AZ"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "VpnGw2 hỗ trợ điểm chuẩn thông lượng tổng hợp là 1 Gbps. VpnGw1 chỉ hỗ trợ 650 Mbps, trong khi VpnGw2AZ cũng hỗ trợ 1 Gbps nhưng bao gồm dự phòng vùng, điều này không cần thiết đối với các yêu cầu đã nêu và không giảm thiểu chi phí.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783966700379-dhsvhh0d.png",
+    "sourceTitle": "Examcademy AZ-500 Question 143",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/143-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-144",
+    "questionNumber": 144,
+    "text": "You have an Azure subscription containing the storage accounts shown in the table below.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784167335470-0c5bqgfw.png)  \n  \nYou enable Azure Defender for Storage (Microsoft Defender for Storage).  \n  \nDetermine which storage services of storage5 are monitored by Azure Defender for Storage, and which storage accounts overall are protected by Azure Defender for Storage.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Bộ bảo vệ Microsoft dành cho lưu trữ phân tích phép đo từ xa Azure Blob Storage, Azure Files và Azure Data Lake Storage; Lưu trữ bảng không phải là một dịch vụ được giám sát. Trong mô hình sẵn có cũ được trình bày ở đây, biện pháp bảo vệ áp dụng cho các tài khoản BlobStorage, BlockBlobStorage cao cấp và tài khoản v2 đa năng. Do đó, tài khoản v2 có mục đích chung với không gian tên phân cấp được bật sẽ có phạm vi bao phủ của Dịch vụ tệp và Bộ lưu trữ hồ dữ liệu, đồng thời các tài khoản được bảo vệ là storage1, storage2 và storage5. Tài liệu hiện tại của Microsoft cũng lưu ý rằng gói cổ điển đã được thay thế và không áp dụng cho các gói đăng ký mới.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784167335470-0c5bqgfw.png",
+    "sourceTitle": "Examcademy AZ-500 Question 144",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/144-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-145",
+    "questionNumber": 145,
+    "text": "$36",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Users with devices that have a compliant device claim from fabrikam.com will be granted access to the cloud apps in contoso.com.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "To minimize the number of MFA authentication prompts for the users in fabrikam.com, you must configure the Trust settings.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "Users with devices that have a compliant device claim from fabrikam.com can review the user properties of the users in contoso.com.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Cần phải tin cậy các thiết bị tuân thủ từ một đối tượng thuê bên ngoài trước khi yêu cầu tuân thủ thiết bị của đối tượng thuê đó có thể đáp ứng kiểm soát cấp thiết bị tuân thủ Truy cập có điều kiện. Việc tin cậy MFA từ đối tượng thuê bên ngoài cho phép đối tượng thuê tài nguyên chấp nhận yêu cầu MFA bên ngoài và tránh những lời nhắc bổ sung không cần thiết. Cài đặt quyền truy cập toàn diện nhất của khách-người dùng cung cấp cho khách B2B quyền truy cập tương tự vào tài nguyên Microsoft Entra và dữ liệu thư mục như người dùng thành viên, cho phép họ xem xét các thuộc tính của người dùng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 145",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/145-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-146",
+    "questionNumber": 146,
+    "text": "You have an Azure subscription.  \n  \nYou plan to create a workflow automation in Azure Security Center that automatically remediates a security vulnerability.  \n  \nWhat should you create first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an automation account"
+      },
+      {
+        "key": "B",
+        "text": "a managed identity"
+      },
+      {
+        "key": "C",
+        "text": "an Azure logic app"
+      },
+      {
+        "key": "D",
+        "text": "an Azure function app"
+      },
+      {
+        "key": "E",
+        "text": "an alert rule"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Tự động hóa quy trình làm việc Microsoft Defender for Cloud chạy Ứng dụng Logic tiêu thụ khi các điều kiện kích hoạt của nó được đáp ứng. Ứng dụng Logic xác định các hành động khắc phục tự động, do đó, nó phải được tạo trước khi có thể liên kết với quá trình tự động hóa quy trình làm việc. [Workflow automation — Microsoft Learn](https://learn.microsoft.com/en-us/azure/defender-for-cloud/workflow-automations)",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 146",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/146-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-147",
+    "questionNumber": 147,
+    "text": "You have an Azure virtual machine running Ubuntu 16.04-DAILY-LTS.  \n  \nYou plan to deploy and configure an Azure Key Vault and enable Azure Disk Encryption for the virtual machine.  \n  \nWhich of the following is **TRUE** regarding Azure Disk Encryption for a Linux VM?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "It is NOT supported for basic tier VMs."
+      },
+      {
+        "key": "B",
+        "text": "It is NOT supported for standard tier VMs."
+      },
+      {
+        "key": "C",
+        "text": "OS drive encryption for Linux virtual machine scale sets is supported."
+      },
+      {
+        "key": "D",
+        "text": "Custom image encryption is supported."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Disk Encryption không khả dụng cho các máy ảo Linux cấp cơ bản. Nó hỗ trợ các máy ảo cấp tiêu chuẩn đủ điều kiện, nhưng không hỗ trợ mã hóa ổ đĩa hệ điều hành cho các bộ quy mô máy ảo Linux hoặc mã hóa hình ảnh tùy chỉnh trên máy ảo Linux.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 147",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/147-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-148",
+    "questionNumber": 148,
+    "text": "You have an Azure subscription.  \n  \nYou need to create and deploy an Azure Policy that meets these requirements:  \n  \n- When a new virtual machine is deployed, automatically install a custom security extension.  \n- Trigger an autogenerated remediation task for non-compliant virtual machines to install the extension.  \n  \nWhat should the policy include?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "DeployIfNotExists đánh giá xem tài nguyên liên quan được chỉ định có tồn tại hay không và triển khai nó khi không có, hỗ trợ triển khai tiện ích mở rộng máy ảo. Nhiệm vụ khắc phục các chính sách DeployIfNotExists sử dụng managed identity của nhiệm vụ chính sách; chỉ định nó Người đóng góp cung cấp cho nó các quyền quản lý tài nguyên cần thiết để triển khai tiện ích mở rộng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 148",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/148-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-149",
+    "questionNumber": 149,
+    "text": "You have an Azure subscription that includes a user named User1 and an Azure Container Registry named ContReg1.  \n  \nYou enable content trust for ContReg1.  \n  \nYou need to ensure that User1 can create trusted images in ContReg1. The solution must follow the principle of least privilege.  \n  \nWhich two roles should you assign to User1? Each correct answer presents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "AcrQuarantineReader"
+      },
+      {
+        "key": "B",
+        "text": "Contributor"
+      },
+      {
+        "key": "C",
+        "text": "AcrPush"
+      },
+      {
+        "key": "D",
+        "text": "AcrImageSigner"
+      },
+      {
+        "key": "E",
+        "text": "AcrQuarantineWriter"
+      }
+    ],
+    "correctAnswers": [
+      "C",
+      "D"
+    ],
+    "explanation": "AcrPush cấp quyền mặt phẳng dữ liệu để đẩy hình ảnh vùng chứa vào sổ đăng ký. AcrImageSigner cấp các quyền Docker Content Trust cần thiết để ký hình ảnh và tạo siêu dữ liệu hình ảnh đáng tin cậy. Cùng với nhau, các vai trò này cho phép tạo hình ảnh đáng tin cậy mà không cần có quyền quản lý rộng hơn do Contributor cấp.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 149",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/149-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-150",
+    "questionNumber": 150,
+    "text": "You have an Azure Sentinel workspace containing an Azure Active Directory (Azure AD) connector, an Azure Log Analytics query named Query1, and a playbook named Playbook1.  \n  \nQuery1 returns a subset of security events generated by Azure AD.  \n  \nYou plan to create an Azure Sentinel analytics rule based on Query1 that triggers Playbook1. You need to ensure that Playbook1 can be added to the new rule.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Quy tắc phân tích Microsoft Sentinel dựa trên truy vấn là quy tắc truy vấn được lên lịch. Playbook chỉ có thể được liên kết với tự động hóa Sentinel khi quy trình làm việc của nó bao gồm trình kích hoạt Microsoft Sentinel hiện hành, cho phép nó bắt đầu từ cảnh báo hoặc sự cố do quy tắc tạo ra.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 150",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/150-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-151",
+    "questionNumber": 151,
+    "text": "You have an Azure subscription that contains the virtual networks shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966878344-qrqqpr2c.png)  \n  \nNSG1 rules limit internet access from Subnet3.  \n  \nThe subscription includes the function apps shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966881144-gpvnkenv.png)  \n  \nVirtual network integration uses its default settings.  \n  \nYou need to configure network access for App1 and App2 to meet these requirements:  \n  \n- Deny inbound access to App1 from Subnet1 and permit inbound access from Subnet2.  \n- Deny outbound access from App2 to the internet.  \n  \nWhat should you do for each requirement?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Hạn chế truy cập Dịch vụ ứng dụng là các quy tắc tường lửa gửi đến và có thể hạn chế quyền truy cập của các mạng con mạng ảo đã chọn, cho phép Subnet2 trong khi từ chối Subnet1. Tích hợp mạng ảo kiểm soát kết nối ra bên ngoài; nó không làm cho ứng dụng có thể truy cập được ở chế độ riêng tư. Route All gửi lưu lượng truy cập internet của App2 thông qua VNet2 thay vì trực tiếp từ Dịch vụ ứng dụng, do đó quy tắc NSG1 hiện có trên Subnet3 có thể chặn lưu lượng đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783966878344-qrqqpr2c.png",
+    "sourceTitle": "Examcademy AZ-500 Question 151",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/151-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-152",
+    "questionNumber": 152,
+    "text": "You have an Azure subscription named Sub1 that contains two resource groups named RGnet and NET.  \n  \nYou have the Azure Policy definition shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783965701982-g5zaqyrl.png)  \n  \nYou assign the policy definition to Sub1 and NET.  \n  \nYou plan to deploy the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783965705765-hp6vaswg.png)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "You can deploy VNet1 to RGnet.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "You can deploy ASG1 to NET.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "You can deploy storage1 to RGnet.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Hiệu ứng từ chối chỉ được kích hoạt đối với các nhóm tài nguyên có tên chứa \"net\" và các loại tài nguyên bên ngoài không gian tên Microsoft.Network. VNet1 và ASG1 là tài nguyên của Microsoft.Network nên được phép. storage1 là tài nguyên Microsoft.Storage được triển khai cho RGnet nên chính sách sẽ từ chối tài nguyên đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783965701982-g5zaqyrl.png",
+    "sourceTitle": "Examcademy AZ-500 Question 152",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/152-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-153",
+    "questionNumber": 153,
+    "text": "You are testing an Azure Kubernetes Service (AKS) cluster. The cluster configuration is shown in the exhibit. (Click the Exhibit tab.)  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966702319-vga1h7yy.png)  \n  \nYou plan to deploy the cluster to production and disable HTTP application routing.  \n  \nYou need to implement application routing that provides reverse proxying and TLS termination for AKS services by using a single IP address.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an AKS Ingress controller."
+      },
+      {
+        "key": "B",
+        "text": "Create an Azure Standard Load Balancer."
+      },
+      {
+        "key": "C",
+        "text": "Install the container network interface (CNI) plug-in."
+      },
+      {
+        "key": "D",
+        "text": "Create an Azure Basic Load Balancer."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Bộ điều khiển xâm nhập AKS cung cấp tính năng định tuyến proxy ngược Lớp 7 và chấm dứt TLS cho các dịch vụ Kubernetes. Quy tắc xâm nhập cho phép nhiều dịch vụ được hiển thị thông qua một địa chỉ IP duy nhất. Azure Load Balancer là dịch vụ Lớp 4 và không cung cấp khả năng định tuyến HTTP/S hoặc kết thúc TLS.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783966702319-vga1h7yy.png",
+    "sourceTitle": "Examcademy AZ-500 Question 153",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/153-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-154",
+    "questionNumber": 154,
+    "text": "You have an Azure subscription that contains the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953084084-pis1p5wd.png)  \n  \nWhich user can enable Azure AD Privileged Identity Management (PIM)?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "User2 and User3 only"
+      },
+      {
+        "key": "B",
+        "text": "User1 and User2 only"
+      },
+      {
+        "key": "C",
+        "text": "User2 only"
+      },
+      {
+        "key": "D",
+        "text": "User1 only"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Quản trị viên toàn cầu có thể bật Quản trị viên danh tính đặc quyền Azure AD và quản trị viên kích hoạt phải sử dụng xác thực đa yếu tố. Vai trò Chủ sở hữu đăng ký và vai trò Quản trị viên xác thực không cấp khả năng cấp thư mục này; Quản trị viên toàn cầu không bật MFA sẽ không đáp ứng yêu cầu MFA.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953084084-pis1p5wd.png",
+    "sourceTitle": "Examcademy AZ-500 Question 154",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/154-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-155",
+    "questionNumber": 155,
+    "text": "You have an Azure Active Directory (Azure AD) tenant containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954561646-6l2rbb8f.png)  \n  \nUser2 owns Group2. The user and group settings for App1 are configured as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954564195-bwckptqo.jpg)  \n  \nYou enable self-service application access for App1 as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954567808-plzkh4si.jpg)  \n  \nUser3 is configured to approve access to App1.  \n  \nAfter self-service application access is enabled for App1, identify who is configured as the Group2 owner and who is configured as the App1 users.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Việc gán ứng dụng tự phục vụ sẽ thêm những người yêu cầu được phê duyệt vào nhóm đã chọn và gán nhóm đó cho ứng dụng doanh nghiệp. Người phê duyệt được chọn sẽ trở thành chủ sở hữu của nhóm tự phục vụ đó, vì vậy Group2 có Người dùng2 và Người dùng3 làm chủ sở hữu. Nhiệm vụ App1 hiện tại của Group1 vẫn được giữ nguyên và Group2 được thêm vào; Cả Người dùng1 và Người dùng3 đều không nhận được sự phân bổ App1 trực tiếp chỉ từ các cài đặt này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954561646-6l2rbb8f.png",
+    "sourceTitle": "Examcademy AZ-500 Question 155",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/155-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-156",
+    "questionNumber": 156,
+    "text": "Consider a Microsoft Entra ID (Azure AD) tenant with dynamic security groups, Group1 and Group2, whose membership rules are based on each user's City attribute. Select the membership that results for each group.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Quy tắc thành viên động của Group1 sử dụng toán tử -contains (ví dụ: user.city -contains \"ON\"), thực hiện tìm kiếm chuỗi con không phân biệt chữ hoa chữ thường. Bởi vì chuỗi con \"bật\" xuất hiện ở đâu đó ở mỗi thành phố Montreal, MONTREAL, London và Ontario bất kể chữ cái viết hoa chữ cái nào, cả bốn người dùng đều đáp ứng quy tắc và trở thành thành viên của Nhóm1. Quy tắc của Group2 sử dụng toán tử -match với biểu thức chính quy yêu cầu giá trị thành phố kết thúc bằng chuỗi chữ thường \"on\" (ví dụ: user.city -match \"on$\"). Các kết quả khớp biểu thức chính quy trong quy tắc thành viên động phân biệt chữ hoa chữ thường đối với mẫu đã cho và chỉ \"London\" kết thúc bằng các ký tự chính xác \"on\"; Montreal kết thúc bằng \"eal\", MONTREAL kết thúc bằng \"AL\" và Ontario kết thúc bằng \"io\". Do đó, chỉ Người dùng3 (London) đủ điều kiện tham gia Nhóm2. Điều này minh họa sự khác biệt giữa toán tử -contains không phân biệt chữ hoa chữ thường và hành vi biểu thức chính quy phân biệt chữ hoa chữ thường của -match trong quy tắc nhóm động Microsoft Entra ID.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 156",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/156-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-157",
+    "questionNumber": 157,
+    "text": "You have an Azure subscription named Sub1 associated with an Azure Active Directory (Azure AD) tenant named contoso.com.  \n  \nYou plan to implement an application consisting of the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783952067140-5wk3wzhw.png)  \n  \nUsers will authenticate by using their Azure AD user accounts and will access the Cosmos DB account by using resource tokens.  \n  \nIdentify the task to implement in each resource.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Mã thông báo tài nguyên Azure Cosmos DB được cấp cho các quyền liên quan đến người dùng cơ sở dữ liệu Cosmos DB. Ứng dụng web xác thực người dùng thông qua Azure AD và chuyển tiếp mã thông báo tài nguyên thích hợp để cho phép người dùng truy cập trong phạm vi giới hạn vào Cosmos DB.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783952067140-5wk3wzhw.png",
+    "sourceTitle": "Examcademy AZ-500 Question 157",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/157-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-158",
+    "questionNumber": 158,
+    "text": "HOTSPOT –  \n  \nYou have an Azure subscription containing a storage account named storage1 and several virtual machines. The storage account and the virtual machines are in the same Azure region. The virtual-machine network configurations are shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953185398-pk2q99ne.png)  \n  \nThe virtual-network subnets have the service endpoints shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953187554-hzvewvvn.png)  \n  \nYou configure these Firewall and virtual network settings for storage1:  \n  \n- Allow access from: Selected networks  \n- Virtual networks: VNET3\\Subnet3  \n- Firewall IP address range: 52.233.129.0/24  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "VM1 can connect to storage1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "VM2 can connect to storage1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "VM3 can connect to storage1.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Quy tắc mạng ảo lưu trữ Azure yêu cầu Azure Storage service endpoint và việc thêm mạng con làm quy tắc mạng ảo lưu trữ sẽ kích hoạt điểm cuối đó. Do đó, VNET3/Subnet3 được phép có thể truy cập vào storage1. Điểm cuối Microsoft.Storage của VM1 khiến lưu lượng truy cập trong cùng khu vực sử dụng danh tính mạng con, nhưng mạng con của nó không được phép. VM2 không thể dựa vào quy tắc mạng IP vì quy tắc IP không áp dụng cho các dịch vụ Azure cùng khu vực.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953185398-pk2q99ne.png",
+    "sourceTitle": "Examcademy AZ-500 Question 158",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/158-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-159",
+    "questionNumber": 159,
+    "text": "HOTSPOT –  \n  \nYou have the Azure virtual networks listed in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953186807-3zu09up8.png)  \n  \nYou have the Azure virtual machines listed in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953189117-ux6xqt5a.png)  \n  \nThe firewalls on every virtual machine permit ping traffic. NSG1 is configured as shown in the following exhibits.  \n  \nInbound security rules –  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953191556-jkbdt2ve.png)  \n  \nOutbound security rules –  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953194652-wjdr4vak.png)  \n  \nFor each of the following statements, select **Yes** if the statement is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "VM1 can ping VM3 successfully.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "VM2 can ping VM4 successfully.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "VM3 can be accessed by using Remote Desktop from the internet.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Tham chiếu nhóm bảo mật ứng dụng trong quy tắc NSG chỉ áp dụng cho các địa chỉ IP riêng trong cùng một mạng ảo; chúng không khớp với máy ảo trên mạng ngang hàng ảo. Do đó, lưu lượng VM1 đến VM3 bị từ chối theo quy tắc gửi đến từ chối tất cả mức độ ưu tiên 160. VM2 không thể truy cập VM4 vì VNET2 và VNET4 không được kết nối. VM3 có địa chỉ IP công cộng và quy tắc ưu tiên 110 cho phép RDP trên cổng 3389 từ bất kỳ nguồn nào.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953186807-3zu09up8.png",
+    "sourceTitle": "Examcademy AZ-500 Question 159",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/159-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-160",
+    "questionNumber": 160,
+    "text": "You have an Azure subscription named Sub1 that is associated with an Azure Active Directory (Azure AD) tenant named contoso.com.  \n  \nYou are assigned the Global administrator role for the tenant and are responsible for managing Azure Security Center settings.  \n  \nYou need to create a custom sensitivity label.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a custom sensitive information type."
+      },
+      {
+        "key": "B",
+        "text": "Elevate access for global administrators in Azure AD."
+      },
+      {
+        "key": "C",
+        "text": "Upgrade the pricing tier of the Security Center to Standard."
+      },
+      {
+        "key": "D",
+        "text": "Enable integration with Microsoft Cloud App Security."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Loại thông tin nhạy cảm tùy chỉnh cung cấp quy tắc phân loại dành riêng cho tổ chức được sử dụng với nhãn nhạy cảm. Các loại thông tin nhạy cảm tích hợp không thể chỉnh sửa được; các loại tùy chỉnh có thể được tạo hoặc sao chép từ các loại tích hợp sẵn và được điều chỉnh theo tiêu chí phát hiện được yêu cầu. Độ cao của Azure RBAC, giá của Bộ bảo vệ cho đám mây và tích hợp Bảo mật ứng dụng đám mây không phải là điều kiện tiên quyết để xác định quy tắc phân loại đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 160",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/160-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-161",
+    "questionNumber": 161,
+    "text": "You need to make sure that the security operations requirements can be met. What should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Turn on Auto Provisioning in Security Center."
+      },
+      {
+        "key": "B",
+        "text": "Integrate Security Center and Microsoft Cloud App Security."
+      },
+      {
+        "key": "C",
+        "text": "Upgrade the pricing tier of Security Center to Standard."
+      },
+      {
+        "key": "D",
+        "text": "Modify the Security Center workspace configuration."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Cấp tiêu chuẩn của Microsoft Defender for Cloud (trước đây là Trung tâm bảo mật Azure) cung cấp các khả năng bảo mật nâng cao, trong khi cấp miễn phí chỉ cung cấp các tính năng bảo mật cơ bản. Do đó, việc kích hoạt bậc Tiêu chuẩn là điều kiện tiên quyết trước khi định cấu hình các hoạt động tích hợp nâng cao, thu thập dữ liệu hoặc cung cấp tác nhân tự động.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 161",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/161-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-162",
+    "questionNumber": 162,
+    "text": "You have an Azure Active Directory (Azure AD) tenant containing a user named Admin1. Admin1 has the Application developer role.  \n  \nYou buy a cloud app named App1 and register App1 in Azure AD.  \n  \nAdmin1 reports that the option to enable token encryption for App1 is not available.  \n  \nYou need to make sure that Admin1 can enable token encryption for App1 in the Azure portal.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Upload a certificate for App1."
+      },
+      {
+        "key": "B",
+        "text": "Modify the API permissions of App1."
+      },
+      {
+        "key": "C",
+        "text": "Add App1 as an enterprise application."
+      },
+      {
+        "key": "D",
+        "text": "Assign Admin1 the Cloud application administrator role."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Microsoft Entra ID mã hóa mã thông báo bằng cách sử dụng khóa chung từ chứng chỉ đã đăng ký với ứng dụng. Việc tải lên chứng chỉ App1 sẽ cung cấp khóa mã hóa để có thể bật mã hóa mã thông báo.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 162",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/162-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-163",
+    "questionNumber": 163,
+    "text": "You need to deploy Microsoft Antimalware to meet the platform-protection requirements. What should you do?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Hiệu ứng DeployIfNotExists có thể triển khai một tài nguyên cần thiết khi nó bị thiếu, chẳng hạn như phần mở rộng Microsoft Antimalware VM. Việc gán chính sách bằng cách sử dụng DeployIfNotExists yêu cầu managed identity với các quyền được chỉ định bởi các nhiệm vụ vai trò của định nghĩa chính sách để Chính sách Azure có thể thực hiện việc triển khai.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 163",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/163-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-164",
+    "questionNumber": 164,
+    "text": "You have an Azure subscription that contains an Azure key vault and an Azure Storage account. The key vault contains customer-managed keys, and the storage account is configured to use the customer-managed keys stored in the key vault.  \n  \nYou plan to store data in Azure by using the following services:  \n  \n- Azure Files  \n- Azure Blob storage  \n- Azure Table storage  \n- Azure Queue storage  \n  \nWhich two services support data encryption by using the keys stored in the key vault? Each correct answer presents a complete solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Table storage"
+      },
+      {
+        "key": "B",
+        "text": "Azure Files"
+      },
+      {
+        "key": "C",
+        "text": "Blob storage"
+      },
+      {
+        "key": "D",
+        "text": "Queue storage"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "C"
+    ],
+    "explanation": "Khi các khóa do khách hàng quản lý được đặt cấu hình cho tài khoản Azure Storage, bộ nhớ Blob và dữ liệu Azure Files sẽ tự động được mã hóa bằng các khóa đó. Việc lưu trữ bảng và hàng đợi không được tự động bao gồm trừ khi tài khoản lưu trữ được tạo với sự hỗ trợ khóa mã hóa trong phạm vi tài khoản cho các dịch vụ đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 164",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/164-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-165",
+    "questionNumber": 165,
+    "text": "You have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954795275-m7gifpox.png)  \n  \nTransparent Data Encryption (TDE) is disabled on SQL1. You assign policies to the resource groups as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954801418-1ereu2hd.png)  \n  \nYou plan to deploy Azure SQL databases by using an Azure Resource Manager (ARM) template. The databases will be configured as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954805078-3979e7tt.png)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "SQL1 will have TDE enabled automatically.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "The deployment of SQL2 will fail.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "SQL3 will be deployed and marked as noncompliant.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "DeployIfNotExists đánh dấu các tài nguyên không tuân thủ hiện có là không tuân thủ; việc khắc phục yêu cầu một tác vụ khắc phục nên nó không tự động kích hoạt TDE trên SQL1. Chính sách Từ chối ngăn chặn việc tạo hoặc cập nhật tài nguyên vi phạm chính sách, do đó việc triển khai SQL2 TDE bị vô hiệu hóa trong RG2 không thành công. Chính sách Từ chối tương tự chặn SQL3 trong RG1 trước khi chính sách Kiểm tra chỉ có thể ghi lại sự không tuân thủ.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954795275-m7gifpox.png",
+    "sourceTitle": "Examcademy AZ-500 Question 165",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/165-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-166",
+    "questionNumber": 166,
+    "text": "You have an Azure subscription that includes a user named Admin1 and a virtual machine named VM1. VM1 runs Windows Server 2019 and was deployed using an Azure Resource Manager template. VM1 is a member of the backend pool of a public Azure Basic Load Balancer.  \n  \nAdmin1 reports that VM1 appears as **Unsupported** on the Just in time VM access blade of Azure Security Center.  \n  \nYou need to ensure that Admin1 can enable just in time (JIT) VM access for VM1.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create and configure a network security group (NSG)."
+      },
+      {
+        "key": "B",
+        "text": "Create and configure an additional public IP address for VM1."
+      },
+      {
+        "key": "C",
+        "text": "Replace the Basic Load Balancer with an Azure Standard Load Balancer."
+      },
+      {
+        "key": "D",
+        "text": "Assign an Azure Active Directory Premium Plan 1 license to Admin1."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Quyền truy cập VM đúng lúc trong Microsoft Defender for Cloud (Trung tâm bảo mật Azure) hoạt động bằng cách tự động tạo NSG cho phép các quy tắc mở cổng quản lý trong một thời gian giới hạn. Máy ảo hiển thị là Không được hỗ trợ trong lưỡi JIT khi nó thiếu nhóm bảo mật mạng liên quan trên NIC hoặc mạng con của nó, vì không có gì để JIT sửa đổi. Việc tạo và định cấu hình NSG cho VM1 giúp nó đủ điều kiện truy cập JIT VM. SKU Cân bằng tải, các địa chỉ IP công cộng bổ sung và giấy phép Azure AD Premium không ảnh hưởng đến khả năng đủ điều kiện JIT cho máy ảo.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 166",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/166-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-167",
+    "questionNumber": 167,
+    "text": "You have three on-premises servers—Server1, Server2, and Server3—running Windows Server 2019. Server1 and Server2 are on the internal network, while Server3 is on the perimeter network. All of the servers can access Azure.  \n  \nFrom Azure Sentinel, you install a Windows firewall data connector.  \n  \nYou need to collect Microsoft Defender Firewall data from the servers for Azure Sentinel.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an event subscription from Server1, Server2, and Server3."
+      },
+      {
+        "key": "B",
+        "text": "Install the On-premises data gateway on each server."
+      },
+      {
+        "key": "C",
+        "text": "Install the Microsoft Monitoring Agent on each server."
+      },
+      {
+        "key": "D",
+        "text": "Install the Microsoft Monitoring Agent on Server1 and Server2. Install the On-premises data gateway on Server3."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Trình kết nối dữ liệu Tường lửa Windows cũ sẽ thu thập dữ liệu Tường lửa của Bộ bảo vệ Microsoft cục bộ của mỗi máy chủ thông qua Tác nhân Giám sát Microsoft. Vì mọi máy chủ đều có kết nối Azure nên tác nhân phải được cài đặt trên Server1, Server2 và Server3; không cần có cổng dữ liệu tại chỗ và đăng ký sự kiện Windows.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 167",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/167-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-168",
+    "questionNumber": 168,
+    "text": "You have an Azure subscription that uses Microsoft Defender for Cloud.  \n  \nYou need to add a custom security recommendation to Defender for Cloud. The recommendation must receive the subscription’s custom severity rating.  \n  \nWhat should you create?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an exemption"
+      },
+      {
+        "key": "B",
+        "text": "an initiative definition"
+      },
+      {
+        "key": "C",
+        "text": "a policy definition"
+      },
+      {
+        "key": "D",
+        "text": "an assignment"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Định nghĩa Chính sách Azure tùy chỉnh sẽ tạo logic đề xuất và giữ các thuộc tính Defender for Cloud `metadata.securityCenter`, bao gồm giá trị `Severity` tùy chỉnh. Một sáng kiến ​​có thể nhóm định nghĩa chính sách đó thành một tiêu chuẩn tùy chỉnh, nhưng mức độ nghiêm trọng thuộc về định nghĩa chính sách.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 168",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/168-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-169",
+    "questionNumber": 169,
+    "text": "You have a Microsoft Entra tenant containing the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783965524731-leqkehv0.png)  \n  \nYou configure the Temporary Access Pass settings as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783965528468-5ffi9f8c.png)  \n  \nYou add the Temporary Access Pass authentication method to Admin2.  \n  \nFor each statement, select **Yes** if it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Admin1 can view the Temporary Access Pass of Admin2.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Admin2 can add the Temporary Access Pass authentication method to User1.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "Admin2 can add the Temporary Access Pass authentication method to Admin1.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Quản trị viên toàn cầu có thể quản lý tất cả các khía cạnh của Microsoft Entra ID, vì vậy Quản trị viên1 có thể xem Thẻ truy cập tạm thời của Quản trị viên2. Quản trị viên xác thực đặc quyền có thể tạo, xóa và xem Thẻ truy cập tạm thời cho cả quản trị viên và thành viên, ngoại trừ chính họ. Thẻ truy cập tạm thời có thể được tạo cho bất kỳ người dùng nào; Tư cách thành viên trong chính sách phương thức xác thực được nhắm mục tiêu sẽ kiểm soát xem người dùng đó có thể sử dụng thẻ để đăng nhập hay không. Do đó, Admin2 có thể thêm thẻ cho cả Người dùng1 và Quản trị viên1, trong khi Người dùng1 sẽ không thể sử dụng thẻ đó vì Người dùng1 nằm ngoài Nhóm1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783965524731-leqkehv0.png",
+    "sourceTitle": "Examcademy AZ-500 Question 169",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/169-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-171",
+    "questionNumber": 171,
+    "text": "You have an Azure resource group that includes 100 virtual machines.  \n  \nYou have an initiative named Initiative1 that contains multiple policy definitions. Initiative1 is assigned to the resource group.  \n  \nYou need to determine which resources do **not** comply with the policy definitions.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From Azure Security Center, view the Regulatory compliance assessment."
+      },
+      {
+        "key": "B",
+        "text": "From the Policy blade of the Azure Active Directory admin center, select Compliance."
+      },
+      {
+        "key": "C",
+        "text": "From Azure Security Center, view the Secure Score."
+      },
+      {
+        "key": "D",
+        "text": "From the Policy blade of the Azure Active Directory admin center, select Assignments."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Chế độ xem Tuân thủ của Chính sách Azure hiển thị kết quả tuân thủ cho các nhiệm vụ chính sách và sáng kiến, bao gồm cả các tài nguyên không tuân thủ được đánh giá theo sáng kiến ​​được giao. Chế độ xem Bài tập quản lý các bài tập thay vì báo cáo việc tuân thủ theo từng nguồn lực.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 171",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/171-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-172",
+    "questionNumber": 172,
+    "text": "You have an Azure subscription.  \n  \nYou create an Azure Firewall policy with the rules shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783964135786-u21bvey7.png)  \n  \nIn what order should the rules be processed?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "1",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "2",
+        "text": "2",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "3",
+        "text": "3",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "4",
+        "text": "4",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "5",
+        "text": "5",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Rule1"
+      },
+      {
+        "key": "B",
+        "text": "Rule2"
+      },
+      {
+        "key": "C",
+        "text": "Rule3"
+      },
+      {
+        "key": "D",
+        "text": "Rule4"
+      },
+      {
+        "key": "E",
+        "text": "Rule5"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Rule1"
+      },
+      {
+        "key": "B",
+        "text": "Rule2"
+      },
+      {
+        "key": "C",
+        "text": "Rule3"
+      },
+      {
+        "key": "D",
+        "text": "Rule4"
+      },
+      {
+        "key": "E",
+        "text": "Rule5"
+      }
+    ],
+    "correctAnswers": [
+      "1=B",
+      "2=D",
+      "3=C",
+      "4=E",
+      "5=A"
+    ],
+    "explanation": "Chính sách Azure Firewall đánh giá các loại bộ sưu tập quy tắc theo thứ tự cố định sau: DNAT (NAT), mạng, sau đó là ứng dụng. Bộ sưu tập quy tắc cùng loại được đánh giá theo giá trị ưu tiên tăng dần. Do đó, các quy tắc NAT Rule2 (200) và Rule4 (400) đặt trước các quy tắc mạng Rule3 (300) và Rule5 (500), tiếp theo là quy tắc ứng dụng Rule1 (100).",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783964135786-u21bvey7.png",
+    "sourceTitle": "Examcademy AZ-500 Question 172",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/172-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-173",
+    "questionNumber": 173,
+    "text": "You have an Azure subscription linked to an Azure AD tenant that contains the resources displayed in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960435780-ovj2jxwb.png)  \n  \nWhich resources can be assigned the Contributor role for VM1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Managed1 and App1 only"
+      },
+      {
+        "key": "B",
+        "text": "Group1 and Managed1 only"
+      },
+      {
+        "key": "C",
+        "text": "Group1, Managed1, and VM2 only"
+      },
+      {
+        "key": "D",
+        "text": "Group1, Managed1, VM1, and App1 only"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Vai trò Azure RBAC có thể được chỉ định ở phạm vi tài nguyên cho các nhóm, nguyên tắc dịch vụ (bao gồm cả ứng dụng doanh nghiệp) và danh tính được quản lý. system-assigned managed identity là nguyên tắc bảo mật nên VM1 có thể nhận nhiệm vụ thông qua danh tính của nó. Group1, Managed1, VM1 và App1 là các nguyên tắc hợp lệ; VM2 có no managed identity được chỉ định và chỉ là tài nguyên máy ảo.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783960435780-ovj2jxwb.png",
+    "sourceTitle": "Examcademy AZ-500 Question 173",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/173-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-174",
+    "questionNumber": 174,
+    "text": "You have an Azure subscription that includes an Azure key vault.  \n  \nYou create a storage account named storage1.  \n  \nYou plan to store data in the following storage1 services:  \n  \n- Azure Files  \n- Azure Blob storage  \n- Azure Table storage  \n- Azure Queue storage  \n  \nFor which two services can you configure data encryption by using keys stored in the key vault? Each correct answer presents a complete solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Blob storage"
+      },
+      {
+        "key": "B",
+        "text": "Table storage"
+      },
+      {
+        "key": "C",
+        "text": "Queue storage"
+      },
+      {
+        "key": "D",
+        "text": "Azure Files"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "D"
+    ],
+    "explanation": "Các khóa do khách hàng quản lý của Azure Storage được lưu trữ trong Azure Key Vault sẽ bảo vệ bộ nhớ Blob và Azure Files khi được định cấu hình cho tài khoản lưu trữ. Lưu trữ bảng và hàng đợi yêu cầu tài khoản lưu trữ phải được tạo bằng khóa mã hóa trong phạm vi tài khoản trước khi chúng có thể sử dụng khóa do khách hàng quản lý.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 174",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/174-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-175",
+    "questionNumber": 175,
+    "text": "You have an Azure subscription containing the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960410820-jcjqts0t.png)  \n  \nWhich computers support file integrity monitoring?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Computer2 only"
+      },
+      {
+        "key": "B",
+        "text": "Computer1 and Computer2 only"
+      },
+      {
+        "key": "C",
+        "text": "Computer2 and Computer3 only"
+      },
+      {
+        "key": "D",
+        "text": "Computer1, Computer2, and Computer3"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Giám sát tính toàn vẹn tệp Microsoft Defender for Cloud hỗ trợ khối lượng công việc của Windows Server và các bản phân phối máy chủ Linux được hỗ trợ, bao gồm Windows Server 2022 và SUSE Linux Enterprise Server. Windows 10 không được đưa vào làm khối lượng công việc máy chủ được hỗ trợ cho trường hợp này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783960410820-jcjqts0t.png",
+    "sourceTitle": "Examcademy AZ-500 Question 175",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/175-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-176",
+    "questionNumber": 176,
+    "text": "You collect events from Azure virtual machines in an Azure Log Analytics workspace.  \n  \nYou plan to create alerts based on those collected events. You need to determine which Azure services can be used to create the alerts.  \n  \nWhich two services should you identify? Each correct answer provides a complete solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Monitor"
+      },
+      {
+        "key": "B",
+        "text": "Azure Security Center"
+      },
+      {
+        "key": "C",
+        "text": "Azure Analysis Services"
+      },
+      {
+        "key": "D",
+        "text": "Azure Sentinel"
+      },
+      {
+        "key": "E",
+        "text": "Azure Advisor"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "D"
+    ],
+    "explanation": "Azure Monitor tạo quy tắc cảnh báo nhật ký từ các truy vấn Log Analytics và kích hoạt cảnh báo khi kết quả truy vấn đáp ứng điều kiện đã định cấu hình. Azure Sentinel, hiện được gọi là Microsoft Sentinel, sử dụng các quy tắc phân tích để giám sát dữ liệu nhật ký và tạo cảnh báo cho các sự kiện bảo mật được phát hiện.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 176",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/176-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-177",
+    "questionNumber": 177,
+    "text": "You have an Azure subscription linked to an Azure Active Directory (Azure AD) tenant.  \n  \nFrom the Azure portal, you register an enterprise application. Which additional resource is created in Azure AD?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a service principal"
+      },
+      {
+        "key": "B",
+        "text": "an X.509 certificate"
+      },
+      {
+        "key": "C",
+        "text": "a managed identity"
+      },
+      {
+        "key": "D",
+        "text": "a user account"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Ứng dụng doanh nghiệp là đại diện cho đối tượng thuê cục bộ của một ứng dụng và được triển khai dưới dạng service principal. service principal cung cấp danh tính của ứng dụng và xác định quyền truy cập của ứng dụng đó trong đối tượng thuê Azure AD.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 177",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/177-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-178",
+    "questionNumber": 178,
+    "text": "You have an Azure subscription containing a virtual network named VNet1. VNet1 includes the subnets shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966886001-98nrv2ws.png)  \n  \nThe subscription contains the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966890286-43q5e053.png)  \n  \nVM3 hosts a service that listens for connections on port 8080.  \n  \nFor VM1, you configure just-in-time (JIT) VM access as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966893932-rfi5fdeg.png)  \n  \nFor each of the following statements, select **Yes** if the statement is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "You can establish a Remote Desktop connection from VM1 to VM3 for a maximum of three hours.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "You can establish a Remote Desktop connection from VM2 to VM1 after requesting access.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "You can establish a Remote Desktop connection from VM3 to VM1 without requesting access.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "JIT bảo vệ các cổng vào đã được định cấu hình trên VM1 và chỉ mở chúng sau khi có yêu cầu truy cập trong khoảng thời gian được định cấu hình. Giới hạn RDP ba giờ không hạn chế kết nối ra ngoài của VM1 với VM3. Mạng con 172.16.0.0/24 của VM2 không phải là phạm vi nguồn RDP được phép và VM3 vẫn phải yêu cầu quyền truy cập mặc dù 192.168.10.0/24 được cho phép.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783966886001-98nrv2ws.png",
+    "sourceTitle": "Examcademy AZ-500 Question 178",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/178-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-180",
+    "questionNumber": 180,
+    "text": "You intend to configure Azure Disk Encryption for VM4.  \n  \nWhich key vault can store the encryption key?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "KeyVault1"
+      },
+      {
+        "key": "B",
+        "text": "KeyVault2"
+      },
+      {
+        "key": "C",
+        "text": "KeyVault3"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Disk Encryption yêu cầu kho khóa quản lý các khóa mã hóa và bí mật của nó phải nằm trong cùng khu vực Azure và đăng ký với máy ảo. KeyVault1 là vault đủ điều kiện cho VM4. [Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/disk-encryption-overview)",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 180",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/180-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-181",
+    "questionNumber": 181,
+    "text": "You have an Azure subscription that includes 100 virtual machines and has Azure Defender enabled.  \n  \nYou plan to run a vulnerability scan on every virtual machine.  \n  \nYou need to deploy the vulnerability scanner extension to the virtual machines by using an Azure Resource Manager template.  \n  \nWhich two values should you specify in the code to automate deployment of the extension to the virtual machines? Each correct answer presents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the user-assigned managed identity"
+      },
+      {
+        "key": "B",
+        "text": "the workspace ID"
+      },
+      {
+        "key": "C",
+        "text": "the Azure Active Directory (Azure AD) ID"
+      },
+      {
+        "key": "D",
+        "text": "the Key Vault managed storage account key"
+      },
+      {
+        "key": "E",
+        "text": "the system-assigned managed identity"
+      },
+      {
+        "key": "F",
+        "text": "the primary shared key"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "F"
+    ],
+    "explanation": "Tiện ích mở rộng trình quét lỗ hổng Qualys tích hợp sử dụng ID không gian làm việc Log Analytics để xác định không gian làm việc của nó và khóa chia sẻ chính của không gian làm việc làm cài đặt xác thực được bảo vệ. Các giá trị này cho phép tiện ích mở rộng đăng ký và hoạt động cho các máy ảo.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 181",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/181-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-182",
+    "questionNumber": 182,
+    "text": "You have an Azure subscription.  \n  \nYou plan to create a custom role-based access control (RBAC) role that grants permission to read the Azure Storage account.  \n  \nWhich RBAC role-definition property should you configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "NotActions []"
+      },
+      {
+        "key": "B",
+        "text": "DataActions []"
+      },
+      {
+        "key": "C",
+        "text": "AssignableScopes []"
+      },
+      {
+        "key": "D",
+        "text": "Actions []"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Quyền truy cập đọc tài khoản Azure Storage là một quyền trên mặt phẳng điều khiển, thuộc mảng `Actions` của định nghĩa vai trò Azure RBAC tùy chỉnh. `DataActions` dành cho các hoạt động trên mặt phẳng dữ liệu trên dữ liệu trong một tài nguyên và `AssignableScopes` chỉ xác định nơi có thể chỉ định vai trò.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 182",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/182-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-185",
+    "questionNumber": 185,
+    "text": "You have 10 virtual machines on one subnet that uses a single network security group (NSG).  \n  \nYou need to log network traffic to an Azure Storage account.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Install the Network Performance Monitor solution."
+      },
+      {
+        "key": "B",
+        "text": "Create an Azure Log Analytics workspace."
+      },
+      {
+        "key": "C",
+        "text": "Enable diagnostic logging for the NSG."
+      },
+      {
+        "key": "D",
+        "text": "Enable NSG flow logs."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Nhật ký luồng NSG nắm bắt thông tin về lưu lượng IP truyền qua nhóm bảo mật mạng, bao gồm các luồng vào và ra cũng như quyết định quy tắc được áp dụng, đồng thời gửi dữ liệu luồng đến tài khoản Azure Storage.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 185",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/185-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-186",
+    "questionNumber": 186,
+    "text": "You have an Azure Container Registry named Registry1. You add the following role assignments for Registry1.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953714627-fn6b3e1d.png)  \n  \nWhich users can upload images to Registry1, and which users can download images from Registry1?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "AcrPush cho phép đẩy và kéo hình ảnh vùng chứa, trong khi AcrPull chỉ cho phép kéo. AcrImageSigner cho phép các thao tác đẩy và kéo đối với các hình ảnh đáng tin cậy khi tính năng tin cậy nội dung của Sổ đăng ký vùng chứa Azure được bật. Vai trò Cộng tác viên bao gồm các quyền đăng ký cần thiết để tải lên và tải xuống hình ảnh. Do đó, User1, User3 và User4 có thể tải hình ảnh lên; cả bốn người dùng đều có thể tải xuống hình ảnh.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953714627-fn6b3e1d.png",
+    "sourceTitle": "Examcademy AZ-500 Question 186",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/186-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-187",
+    "questionNumber": 187,
+    "text": "You have a Microsoft Sentinel deployment.  \n  \nYou need to connect a third-party security solution that will send Common Event Format (CEF)-formatted messages.  \n  \nWhat should the solution include?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Thông báo CEF là các bản ghi có định dạng Syslog. Do đó, trình kết nối Microsoft Sentinel CEF/Syslog sử dụng trình chuyển tiếp Syslog dựa trên Linux, gửi các sự kiện đã thu thập đến không gian làm việc Log Analytics thông qua Tác nhân Azure Monitor. Trong từ ngữ của trình kết nối cũ được thể hiện bằng các lựa chọn này, đây là tác nhân Azure Log Analytics; tác nhân Phụ thuộc và tác nhân Máy được kết nối không thu thập và chuyển tiếp nhật ký CEF.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 187",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/187-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-188",
+    "questionNumber": 188,
+    "text": "You have a network security group (NSG) associated with an Azure subnet. You run `Get-AzNetworkSecurityRuleConfig` and receive the output in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783951830285-uaxr9622.jpg)  \n  \nUse the drop-down menus to choose the answer that completes each statement based on the information shown.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các quy tắc NSG được đánh giá theo thứ tự ưu tiên tăng dần và quá trình xử lý dừng ở quy tắc khớp đầu tiên. Quy tắc gửi đi ưu tiên-104 cho phép lưu lượng truy cập TCP 443 đến thẻ dịch vụ `Storage.EastUS2` trước khi quy tắc ưu tiên-105 từ chối tất cả lưu lượng truy cập khác đến thẻ `Storage` rộng hơn. Quy tắc FTP gửi đến cho phép rõ ràng cổng TCP 21 từ `1.2.3.4/32` đến `10.0.0.10/32`.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783951830285-uaxr9622.jpg",
+    "sourceTitle": "Examcademy AZ-500 Question 188",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/188-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-189",
+    "questionNumber": 189,
+    "text": "You have an Azure Active Directory (Azure AD) tenant named Contoso.com and an Azure Kubernetes Service (AKS) cluster named AKS1.  \n  \nYou find that AKS1 cannot be accessed by using accounts from Contoso.com.  \n  \nYou need to ensure that accounts from Contoso.com can access AKS1. The solution must minimize administrative effort.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From Azure, recreate AKS1."
+      },
+      {
+        "key": "B",
+        "text": "From AKS1, upgrade the version of Kubernetes."
+      },
+      {
+        "key": "C",
+        "text": "From Azure AD, implement Azure AD Premium P2"
+      },
+      {
+        "key": "D",
+        "text": "From Azure AD, configure the User settings."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Microsoft Entra ID Cài đặt người dùng kiểm soát xem người dùng có thể đăng ký ứng dụng hay không. Việc kích hoạt hoặc đặt cấu hình khả năng ở cấp độ đối tượng thuê cho phép đăng ký ứng dụng cần thiết để truy cập AKS tích hợp Azure AD mà không yêu cầu nâng cấp Kubernetes, giải trí cụm hoặc giấy phép Premium P2.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 189",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/189-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-190",
+    "questionNumber": 190,
+    "text": "You have an Azure subscription and plan to implement Azure DDoS Protection. The solution must meet these requirements:  \n  \n- Provide access to DDoS rapid-response support during active attacks.  \n- Protect Basic SKU public IP addresses.  \n  \nRecommend the DDoS Protection type for each requirement. A protection type may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "rapid_response",
+        "text": "Provide access to DDoS rapid response support during active attacks:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "basic_sku",
+        "text": "Protect Basic SKU public IP addresses:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "DDoS infrastructure protection"
+      },
+      {
+        "key": "B",
+        "text": "DDoS IP Protection"
+      },
+      {
+        "key": "C",
+        "text": "DDoS Network Protection"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "DDoS infrastructure protection"
+      },
+      {
+        "key": "B",
+        "text": "DDoS IP Protection"
+      },
+      {
+        "key": "C",
+        "text": "DDoS Network Protection"
+      }
+    ],
+    "correctAnswers": [
+      "rapid_response=C",
+      "basic_sku=C"
+    ],
+    "explanation": "Bảo vệ mạng DDoS bao gồm quyền truy cập vào Phản hồi nhanh DDoS trong các cuộc tấn công và hỗ trợ các địa chỉ IP công cộng cấp Cơ bản. Bảo vệ IP DDoS không cung cấp hỗ trợ Phản hồi nhanh hoặc bảo vệ IP công cộng cấp Cơ bản; bảo vệ cơ sở hạ tầng là dịch vụ cơ bản được bao gồm chứ không phải là gói nâng cao cung cấp các khả năng này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 190",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/190-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-191",
+    "questionNumber": 191,
+    "text": "You have an Azure subscription containing three storage accounts, an Azure SQL managed instance named SQL1, and three Azure SQL databases. The storage accounts are configured as follows.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954282351-af5eibth.png)  \n  \nSQL1 has these settings:  \n  \n- Auditing: On  \n- Audit log destination: storage1  \n  \nThe Azure SQL databases are configured as follows.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954286477-3937lfhb.png)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Audit events for DB1 are written to storage1.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Audit events for DB2 are written to storage1 and storage2.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "Storage3 can be used as an audit log destination for DB3.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Kiểm tra phiên bản được quản lý SQL hoạt động ở cấp phiên bản/máy chủ và kiểm tra cơ sở dữ liệu của nó đến đích Azure Blob storage đã định cấu hình. Một chính sách kiểm tra cấp cơ sở dữ liệu riêng biệt có thể chạy cùng với việc kiểm tra cấp độ máy chủ, do đó DB2 ghi vào cả hai đích được cấu hình. Premium StorageV2 không được hỗ trợ làm đích lưu trữ nhật ký kiểm tra trong trường hợp này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954282351-af5eibth.png",
+    "sourceTitle": "Examcademy AZ-500 Question 191",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/191-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-192",
+    "questionNumber": 192,
+    "text": "You have an Azure subscription that includes the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953372224-jicx334j.png)  \n  \nIn Azure Security Center, you enable Auto Provisioning.  \n  \nYou deploy the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953375851-ex5xb70g.png)  \n  \nOn which virtual machines is the Log Analytics Agent installed?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VM3 only"
+      },
+      {
+        "key": "B",
+        "text": "VM1 and VM3 only"
+      },
+      {
+        "key": "C",
+        "text": "VM3 and VM4 only"
+      },
+      {
+        "key": "D",
+        "text": "VM1, VM2, VM3, and VM4"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Tính năng tự động cung cấp kế thừa của Trung tâm Bảo mật Azure triển khai tác nhân Log Analytics cho tất cả Azure virtual machines được hỗ trợ trong đăng ký, bao gồm cả các máy hiện có và máy được tạo sau đó. Cả Windows Server 2016 và Ubuntu Server 18.04 LTS đều được hỗ trợ, do đó tác nhân được cài đặt trên cả bốn máy ảo.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953372224-jicx334j.png",
+    "sourceTitle": "Examcademy AZ-500 Question 192",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/192-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-193",
+    "questionNumber": 193,
+    "text": "Your company has an Azure Active Directory (Azure AD) tenant named contoso.com.  \n  \nThe company is developing an application named App1. App1 will run as a service on a server running Windows Server 2016. App1 will authenticate to contoso.com and use Microsoft Graph to read directory data.  \n  \nYou must delegate the minimum required permissions to App1.  \n  \nWhich three actions should you perform, in order, from the Azure portal?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Grant permissions"
+      },
+      {
+        "key": "B",
+        "text": "Add a delegated permission."
+      },
+      {
+        "key": "C",
+        "text": "Configure Azure AD Application Proxy."
+      },
+      {
+        "key": "D",
+        "text": "Add an application permission."
+      },
+      {
+        "key": "E",
+        "text": "Create an app registration."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Grant permissions"
+      },
+      {
+        "key": "B",
+        "text": "Add a delegated permission."
+      },
+      {
+        "key": "C",
+        "text": "Configure Azure AD Application Proxy."
+      },
+      {
+        "key": "D",
+        "text": "Add an application permission."
+      },
+      {
+        "key": "E",
+        "text": "Create an app registration."
+      }
+    ],
+    "correctAnswers": [
+      "step1=E",
+      "step2=D",
+      "step3=A"
+    ],
+    "explanation": "Quyền của ứng dụng chỉ dành cho quyền truy cập của ứng dụng mà không cần người dùng đăng nhập. Do đó, dịch vụ đọc dữ liệu thư mục thông qua Microsoft Graph cần có ứng dụng đã đăng ký, quyền ứng dụng có đặc quyền tối thiểu bắt buộc và sự đồng ý của quản trị viên để cấp quyền đó cho đối tượng thuê. [Get access without a user](https://learn.microsoft.com/en-us/graph/auth-v2-service)",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 193",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/193-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-194",
+    "questionNumber": 194,
+    "text": "HOTSPOT -  \n  \nYou have an Azure subscription named Subscription1 that contains a resource group named RG1 and a user named User1. User1 has the Owner role assigned for RG1.  \n  \nYou create an Azure Blueprints definition named Blueprint1 that includes a resource group named RG2, as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954305753-uew5gama.jpg)  \n  \nYou assign Blueprint1 to Subscription1 using these settings:  \n  \n- Lock assignment: Read Only  \n- Managed Identity: System assigned  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "A locking mode of Read Only will be assigned to RG1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "User1 can add tags to RG2.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "You can remove User1 from the Tag Contributor role for RG2.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Khóa Blueprint chỉ áp dụng cho các tài nguyên được triển khai bởi các tạo phẩm Blueprint, vì vậy RG1 không bị khóa. Khóa Chỉ đọc trên cấu phần phần mềm nhóm tài nguyên cho phép thay đổi thẻ và Người dùng1 có vai trò Người đóng góp thẻ trên RG2. Người đóng góp thẻ không cấp quyền xóa các phân công vai trò và việc phân công từ chối chỉ đọc bản thiết kế chi tiết cũng bảo vệ cấu hình tạo phẩm được chỉ định.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954305753-uew5gama.jpg",
+    "sourceTitle": "Examcademy AZ-500 Question 194",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/194-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-196",
+    "questionNumber": 196,
+    "text": "You have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957447255-ktwqm9li.png)  \n  \nVM1 and VM2 both connect to VNET1 and are configured to use NSG1.  \n  \nYou need to ensure that DB1 can be accessed only by VM1 and VM2.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "For NSG1, configure a rule that has a service tag."
+      },
+      {
+        "key": "B",
+        "text": "Add the IP address range of VNET1 to the Firewall settings of DB1."
+      },
+      {
+        "key": "C",
+        "text": "Create an application security group."
+      },
+      {
+        "key": "D",
+        "text": "Configure DB1 to allow access from only VNET1."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure Cosmos DB hỗ trợ các quy tắc truy cập mạng ảo hạn chế quyền truy cập tài khoản vào các mạng con mạng ảo đã chọn bằng cách sử dụng Azure Cosmos DB service endpoint. Việc định cấu hình DB1 để chỉ cho phép truy cập từ VNET1 sẽ hạn chế các nguồn mạng được phép đối với mạng ảo đó, trong khi NSG và cài đặt nhóm bảo mật ứng dụng không kiểm soát quyền truy cập vào chính tài khoản Cosmos DB. Quy tắc tường lửa Cosmos DB IP không được chứa địa chỉ IP riêng tư từ dải địa chỉ mạng ảo.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957447255-ktwqm9li.png",
+    "sourceTitle": "Examcademy AZ-500 Question 196",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/196-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-198",
+    "questionNumber": 198,
+    "text": "You are assessing how application security groups affect network communication between the virtual machines in Sub2.  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "From VM1, you can successfully ping the private IP address of VM4.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "From VM2, you can successfully ping the private IP address of VM4.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "From VM1, you can connect to the web server on VM4.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Các quy tắc NSG đánh giá giao thức cũng như nguồn và đích. Quy tắc chỉ cho phép TCP đối với ASG1 cho phép VM1 truy cập dịch vụ web của VM4 nhưng không cho phép ping ICMP. Quy tắc cho phép ASG2 áp dụng cho mọi giao thức, vì vậy VM2 có thể ping VM4.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 198",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/198-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-199",
+    "questionNumber": 199,
+    "text": "You need to set up an access review. It must be assigned to a new collection of reviews and be reviewed by the resource owners.  \n  \nWhich three actions should you perform, in order?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an access review program."
+      },
+      {
+        "key": "B",
+        "text": "Set Reviewers to Selected users."
+      },
+      {
+        "key": "C",
+        "text": "Create an access review audit."
+      },
+      {
+        "key": "D",
+        "text": "Create an access review control."
+      },
+      {
+        "key": "E",
+        "text": "Set Reviewers to Group owners."
+      },
+      {
+        "key": "F",
+        "text": "Set Reviewers to Members."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create an access review program."
+      },
+      {
+        "key": "B",
+        "text": "Set Reviewers to Selected users."
+      },
+      {
+        "key": "C",
+        "text": "Create an access review audit."
+      },
+      {
+        "key": "D",
+        "text": "Create an access review control."
+      },
+      {
+        "key": "E",
+        "text": "Set Reviewers to Group owners."
+      },
+      {
+        "key": "F",
+        "text": "Set Reviewers to Members."
+      }
+    ],
+    "correctAnswers": [
+      "step1=A",
+      "step2=D",
+      "step3=E"
+    ],
+    "explanation": "Chương trình đánh giá quyền truy cập là bộ sưu tập chứa các đánh giá quyền truy cập. Sau đó, kiểm soát xem xét quyền truy cập sẽ được tạo trong chương trình đó. Đối với tài nguyên nhóm, chủ sở hữu tài nguyên là chủ sở hữu nhóm, vì vậy chủ sở hữu nhóm phải được chọn làm người đánh giá.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 199",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/199-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-200",
+    "questionNumber": 200,
+    "text": "You need to make sure that User2 can implement PIM.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assign User2 the Global administrator role."
+      },
+      {
+        "key": "B",
+        "text": "Configure authentication methods for contoso.com."
+      },
+      {
+        "key": "C",
+        "text": "Configure the identity secure score for contoso.com."
+      },
+      {
+        "key": "D",
+        "text": "Enable multi-factor authentication (MFA) for User2."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Quản trị viên toàn cầu có quyền cấp thư mục để bắt đầu thiết lập PIM và chỉ định vai trò quản trị PIM. Các phương thức xác thực, điểm bảo mật danh tính và cấu hình MFA không cấp các quyền cần thiết để triển khai PIM.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 200",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/200-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-202",
+    "questionNumber": 202,
+    "text": "You are implementing an Azure Application Gateway web application firewall (WAF) named WAF1.  \n  \nYou have the following Bicep code snippet.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783964135510-6i0bfyf0.png)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "A request to the backend pool from IP address 10.1.1.5 is allowed.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Incoming requests attempting file path attacks are blocked.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "WAF1 allows a 50-MB file to be uploaded.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Điều kiện khớp IP bị phủ định kích hoạt cho 10.1.1.5 vì nó nằm ngoài 10.1.10.0/24. Chính sách WAF Chế độ phát hiện ghi lại quy tắc Chặn tùy chỉnh được kích hoạt thay vì chặn yêu cầu, do đó, điều này được cho phép. Chế độ phát hiện cũng ghi nhật ký thay vì chặn các hoạt động phát hiện quy tắc được quản lý, do đó các cuộc tấn công vào đường dẫn tệp không bị chặn. Giới hạn kiểm tra nội dung yêu cầu và giới hạn tải tệp lên là các cài đặt riêng biệt; Giới hạn tải lên tệp hạn chế no được định cấu hình và chế độ Phát hiện không chặn tải lên.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783964135510-6i0bfyf0.png",
+    "sourceTitle": "Examcademy AZ-500 Question 202",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/202-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-203",
+    "questionNumber": 203,
+    "text": "You suspect that users are trying to sign in to resources for which they lack access.  \n  \nCreate an Azure Log Analytics query that identifies failed user sign-in attempts during the last three days. The results must show only users with more than five failed sign-in attempts.  \n  \nHow should you configure the query?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "ID sự kiện bảo mật Windows 4625 ghi lại lần đăng nhập không thành công. Việc lọc AccountType thành User giới hạn kết quả đối với tài khoản người dùng, trong khi count() tổng hợp các bản ghi đăng nhập không thành công cho mỗi tài khoản để truy vấn chỉ có thể giữ lại số lượng lớn hơn năm.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 203",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/203-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-205",
+    "questionNumber": 205,
+    "text": "You have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783961073408-pe726vbf.png)  \n  \nVNet1 is connected to a remote site by a Site-to-Site (S2S) VPN that uses forced tunneling.  \n  \nVNet1 includes the subnets shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783961077936-1os8sges.png)  \n  \nThe SQL subnet hosts SQL1.  \n  \nFor each statement, select **Yes** when it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "To restrict inbound traffic to SQL1, you must modify an access rule in NSG1.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "To enable VM1 to access storage1 by using the Microsoft backbone network, you must enable a service endpoint on the Default subnet.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "You can deploy an App Service Environment to the Default subnet.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "NSG1 được áp dụng cho mạng con SQL, do đó các quy tắc gửi đến của nó sẽ chi phối quyền truy cập vào SQL1. Microsoft.Storage service endpoint được định cấu hình trên mạng con nguồn và cung cấp tuyến đường trục Azure trực tiếp ghi đè các tuyến đường hầm bắt buộc cho tiền tố dịch vụ. Môi trường dịch vụ ứng dụng yêu cầu một mạng con trống, chuyên dụng, trong khi mạng con mặc định đã chứa VM1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783961073408-pe726vbf.png",
+    "sourceTitle": "Examcademy AZ-500 Question 205",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/205-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-207",
+    "questionNumber": 207,
+    "text": "You have an Azure subscription that contains an Azure Firewall Standard instance named AzFW1.  \n  \nYou need to determine whether AzFW1 can use these features:  \n  \n- TLS inspection  \n- Threat intelligence  \n- The network intrusion detection and prevention systems (IDPS)  \n  \nWhat can you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "TLS inspection only"
+      },
+      {
+        "key": "B",
+        "text": "threat intelligence only"
+      },
+      {
+        "key": "C",
+        "text": "TLS inspection and the IDPS only"
+      },
+      {
+        "key": "D",
+        "text": "threat intelligence and the IDPS only"
+      },
+      {
+        "key": "E",
+        "text": "TLS inspection, threat intelligence, and the IDPS"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Azure Firewall Standard hỗ trợ lọc thông tin về mối đe dọa, bao gồm các chế độ cảnh báo và từ chối. Kiểm tra TLS và IDPS mạng chỉ khả dụng với SKU cao cấp.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 207",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/207-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-208",
+    "questionNumber": 208,
+    "text": "An Azure subscription contains an Azure Data Lake Storage Gen2 account named `storage1`.  \n  \nYou deploy an Azure Synapse Analytics workspace named `synapsews1` to a managed virtual network.  \n  \nYou need to enable `synapsews1` to access `storage1`.  \n  \nWhat should you configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "peering"
+      },
+      {
+        "key": "B",
+        "text": "a private endpoint"
+      },
+      {
+        "key": "C",
+        "text": "a network security group (NSG)"
+      },
+      {
+        "key": "D",
+        "text": "a virtual network gateway"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Không gian làm việc Azure Synapse sử dụng mạng ảo được quản lý sẽ truy cập riêng tư vào tài khoản Azure Data Lake Storage Gen2 bằng cách sử dụng private endpoint được quản lý. Kết nối điểm cuối phải được phê duyệt trên tài khoản lưu trữ để thiết lập private link.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 208",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/208-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-209",
+    "questionNumber": 209,
+    "text": "You have an Azure AD tenant containing the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783964525299-qhv4dja6.png)  \n  \nYou must ensure that the users are unable to create app passwords. The solution must allow User1 to continue using the Mail and Calendar app.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assign User1 the Authentication Policy Administrator role."
+      },
+      {
+        "key": "B",
+        "text": "Enable Azure AD Password Protection."
+      },
+      {
+        "key": "C",
+        "text": "Configure a multi-factor authentication (MFA) registration policy."
+      },
+      {
+        "key": "D",
+        "text": "Create a new app registration."
+      },
+      {
+        "key": "E",
+        "text": "From multi-factor authentication, configure the service settings."
+      }
+    ],
+    "correctAnswers": [
+      "E"
+    ],
+    "explanation": "Cài đặt dịch vụ MFA bao gồm tùy chọn toàn bộ đối tượng thuê cho phép người dùng tạo mật khẩu ứng dụng cho các ứng dụng không có trình duyệt. Việc tắt tùy chọn đó sẽ ngăn việc tạo mật khẩu ứng dụng mới trong khi mật khẩu ứng dụng hiện có tiếp tục hoạt động, cho phép truy cập liên tục vào ứng dụng đã được định cấu hình bằng mật khẩu đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783964525299-qhv4dja6.png",
+    "sourceTitle": "Examcademy AZ-500 Question 209",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/209-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-211",
+    "questionNumber": 211,
+    "text": "You have an Azure subscription containing 100 virtual machines, with Azure Diagnostics enabled on every virtual machine. You are planning how to monitor Azure services in the subscription.  \n  \nYou need to retrieve these details:  \n  \n- Identify the user who deleted a virtual machine three weeks ago.  \n- Query the security events for a virtual machine running Windows Server 2016.  \n  \nWhat should you use in Azure Monitor? Each configuration setting may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "vm-deletion-user",
+        "text": "Identify the user who deleted a virtual machine three weeks ago:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "vm-security-events",
+        "text": "Query the security events of a virtual machine that runs Windows Server 2016:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Activity log"
+      },
+      {
+        "key": "B",
+        "text": "Logs"
+      },
+      {
+        "key": "C",
+        "text": "Metrics"
+      },
+      {
+        "key": "D",
+        "text": "Service Health"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Activity log"
+      },
+      {
+        "key": "B",
+        "text": "Logs"
+      },
+      {
+        "key": "C",
+        "text": "Metrics"
+      },
+      {
+        "key": "D",
+        "text": "Service Health"
+      }
+    ],
+    "correctAnswers": [
+      "vm-deletion-user=A",
+      "vm-security-events=B"
+    ],
+    "explanation": "Nhật ký hoạt động Azure ghi lại các hoạt động tạo, cập nhật và xóa trên mặt phẳng điều khiển Azure và lưu giữ các sự kiện trong 90 ngày, cho phép xác định người dùng xóa ba tuần sau đó. Các sự kiện bảo mật của Windows được thu thập dưới dạng dữ liệu sự kiện Windows trong không gian làm việc Log Analytics và được truy vấn bằng cách sử dụng Nhật ký Azure Monitor.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 211",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/211-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-212",
+    "questionNumber": 212,
+    "text": "You have an Azure Active Directory (Azure AD) tenant that includes a user named User1.  \n  \nYou plan to enable passwordless authentication for the tenant.  \n  \nYou need to ensure that User1 can enable the combined registration experience. The solution must follow the principle of least privilege.  \n  \nWhich role should you assign to User1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Security administrator"
+      },
+      {
+        "key": "B",
+        "text": "Privileged role administrator"
+      },
+      {
+        "key": "C",
+        "text": "Authentication administrator"
+      },
+      {
+        "key": "D",
+        "text": "Global administrator"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Kích hoạt đăng ký kết hợp là cấu hình tính năng người dùng trên toàn đối tượng thuê, không chỉ đơn thuần là thao tác để quản lý các phương thức xác thực của người dùng. Quản trị viên xác thực có thể xem, đặt và đặt lại các phương thức xác thực cho người dùng không phải quản trị viên, trong khi Quản trị viên có vai trò đặc quyền quản lý việc phân công vai trò. Trong số các vai trò có sẵn, Quản trị viên toàn cầu có các quyền quản trị bắt buộc đối với toàn bộ đối tượng thuê. Tham chiếu vai trò hiện tại của Microsoft Entra cũng phân biệt phạm vi phương thức xác thực có giới hạn của Quản trị viên xác thực với quyền quản lý tất cả các khía cạnh của Microsoft Entra ID của Quản trị viên toàn cầu.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 212",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/212-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-215",
+    "questionNumber": 215,
+    "text": "Solution: Create an AKS Ingress controller.  \n  \nDoes this solution meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Bộ điều khiển xâm nhập AKS định tuyến lưu lượng truy cập web đến các dịch vụ trong cụm AKS; nó không gắn các bộ chứa Docker độc lập trên máy ảo vào mạng ảo. Plug-in Azure CNI được sử dụng để cung cấp kết nối mạng ảo cho các bộ chứa trên máy chủ Linux Docker độc lập, cho phép lưu lượng truy cập của chúng bắt nguồn thông qua mạng con nơi các điểm cuối dịch vụ Azure Storage và Azure SQL được định cấu hình.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 215",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/215-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-216",
+    "questionNumber": 216,
+    "text": "Solution: Install the container network interface (CNI) plug-in.  \n  \nDoes this solution meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Plug-in Azure Virtual Network CNI cung cấp các bộ chứa Docker với tệp đính kèm mạng ảo trực tiếp và kết nối IP mạng ảo. Do đó, các bộ chứa có thể truy cập Azure Storage và Azure SQL Database được bảo vệ bởi các điểm cuối dịch vụ được định cấu hình trên mạng con.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 216",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/216-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-217",
+    "questionNumber": 217,
+    "text": "Solution: You create an application security group.  \n  \nDoes the solution meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Nhóm bảo mật ứng dụng chỉ cung cấp một nhóm logic các giao diện mạng có thể được tham chiếu bởi các quy tắc của nhóm bảo mật mạng. Nó không định cấu hình mạng bộ chứa Docker hoặc cho phép bộ chứa truy cập vào Azure Storage và Azure SQL thông qua mạng ảo service endpoint.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 217",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/217-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-218",
+    "questionNumber": 218,
+    "text": "You have been assigned to ensure that you can modify operating system security configurations through Azure Security Center.  \n  \nTo accomplish this goal, you must have the appropriate Azure Security Center pricing tier in place. Which of the following pricing tiers is required?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Advanced"
+      },
+      {
+        "key": "B",
+        "text": "Premium"
+      },
+      {
+        "key": "C",
+        "text": "Standard"
+      },
+      {
+        "key": "D",
+        "text": "Free"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Bậc Tiêu chuẩn của Trung tâm Bảo mật Azure cung cấp các khả năng bảo mật nâng cao, trong khi Bậc Miễn phí chỉ cung cấp các tính năng bảo mật cơ bản. Do đó, việc sửa đổi cấu hình bảo mật của hệ điều hành yêu cầu tầng Tiêu chuẩn.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 218",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/218-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-219",
+    "questionNumber": 219,
+    "text": "You are investigating a security issue involving an Azure Storage account.  \n  \nYou enable Azure Storage Analytics logs and archive them to a storage account.  \n  \nWhat should you use to retrieve the diagnostic logs?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Monitor"
+      },
+      {
+        "key": "B",
+        "text": "SQL query editor in Azure"
+      },
+      {
+        "key": "C",
+        "text": "File Explorer in Windows"
+      },
+      {
+        "key": "D",
+        "text": "Azure Storage Explorer"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Nhật ký chẩn đoán Azure Storage Analytics được lưu dưới dạng các đốm màu trong vùng chứa `$logs` của tài khoản lưu trữ. Azure Storage Explorer có thể duyệt tài khoản lưu trữ và truy xuất hoặc xem các đốm màu nhật ký đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 219",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/219-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-220",
+    "questionNumber": 220,
+    "text": "You have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957573066-7xqh3nsl.png)  \n  \nYou perform these tasks:  \n  \n- Create a managed identity named Managed1.  \n- Create a Microsoft 365 group named Group1.  \n- Register an enterprise application named App1.  \n- Enable a system-assigned managed identity for VM1.  \n  \nYou need to determine which service principals were created and which identities can be assigned the Reader role for RG1.  \n  \nWhat should you identify?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Mỗi user-assigned managed identity, system-assigned managed identity và đăng ký ứng dụng đều có Microsoft Entra service principal. Nhóm Microsoft 365 không tạo một nhóm. Các vai trò Azure RBAC như Trình đọc có thể được chỉ định ở phạm vi nhóm tài nguyên cho một nhóm, service principal hoặc managed identity; do đó cả bốn danh tính được đặt tên đều có thể nhận Reader trên RG1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957573066-7xqh3nsl.png",
+    "sourceTitle": "Examcademy AZ-500 Question 220",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/220-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-221",
+    "questionNumber": 221,
+    "text": "You have an Azure AD tenant containing the identities shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957442710-mvlgfxlv.png)  \n  \nYou plan to deploy Azure AD Identity Protection.  \n  \nWhat is the maximum number of user risk policies that you can configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "1"
+      },
+      {
+        "key": "B",
+        "text": "90"
+      },
+      {
+        "key": "C",
+        "text": "200"
+      },
+      {
+        "key": "D",
+        "text": "265"
+      },
+      {
+        "key": "E",
+        "text": "1000"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure AD Identity Protection hỗ trợ một chính sách rủi ro người dùng kế thừa trên toàn bộ đối tượng thuê. Nó có thể nhắm mục tiêu người dùng và nhóm, nhưng số lượng danh tính của đối tượng thuê không thay đổi giới hạn chính sách đó. Hướng dẫn hiện tại của Microsoft xác định chính sách rủi ro Người dùng cũ dưới dạng một loại chính sách duy nhất và khuyến nghị di chuyển chính sách đó sang Truy cập có điều kiện trước khi ngừng hoạt động.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957442710-mvlgfxlv.png",
+    "sourceTitle": "Examcademy AZ-500 Question 221",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/221-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-223",
+    "questionNumber": 223,
+    "text": "You have a file named File1.yaml with the following contents.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953179778-8wkj8oft.png)  \n  \nYou create an Azure container instance named container1 by using File1.yaml.  \n  \nYou need to determine where you can access the values of Variable1 and Variable2.  \n  \nWhat should you identify?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "`value` tạo một biến môi trường tiêu chuẩn có sẵn trong vùng chứa và hiển thị trong thuộc tính vùng chứa cổng thông tin Azure. `secureValue` tạo một biến môi trường an toàn có giá trị chỉ khả dụng trong vùng chứa; cổng hiển thị tên của nó nhưng không hiển thị giá trị của nó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953179778-8wkj8oft.png",
+    "sourceTitle": "Examcademy AZ-500 Question 223",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/223-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-224",
+    "questionNumber": 224,
+    "text": "You have an Azure AD tenant containing the groups shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783964134043-5azpw2hj.png)  \n  \nYou assign licenses to the groups as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783964137019-wphny84e.png)  \n  \nOn May 1, you delete Group1, Group2, and Group3.  \n  \nFor each statement, select **Yes** if it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "On May 3, you can restore Group1.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "On May 15, you can restore Group2.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "On June 3, you can restore Group3.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Microsoft Entra giữ lại các nhóm Microsoft 365 và nhóm bảo mật đám mây đã xóa trong 30 ngày, sau đó chúng không thể khôi phục được. Do đó, Group1 có thể phục hồi vào ngày 3 tháng 5 và Group2 vào ngày 15 tháng 5; Ngày 3 tháng 6 nằm ngoài thời hạn 30 ngày nên Nhóm 3 không thể phục hồi được. Việc chuyển nhượng giấy phép không làm thay đổi khoảng thời gian lưu giữ này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783964134043-5azpw2hj.png",
+    "sourceTitle": "Examcademy AZ-500 Question 224",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/224-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-225",
+    "questionNumber": 225,
+    "text": "You have an Azure SQL Database server called SQL1.  \n  \nFor SQL1, you enable Azure Defender for SQL to detect every threat-detection type.  \n  \nWhich action will Azure Defender for SQL identify as a threat?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "A user updates more than 50 percent of the records in a table."
+      },
+      {
+        "key": "B",
+        "text": "A user attempts to sign in as SELECT * FROM table1."
+      },
+      {
+        "key": "C",
+        "text": "A user is added to the db_owner database role."
+      },
+      {
+        "key": "D",
+        "text": "A user deletes more than 100 records from the same table."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Bộ bảo vệ Microsoft dành cho Cơ sở dữ liệu SQL Azure phát hiện các cuộc tấn công tiêm nhiễm SQL tiềm ẩn, bao gồm các câu lệnh SQL không đúng định dạng hoặc độc hại được tạo thông qua đầu vào ứng dụng. Việc sử dụng `SELECT * FROM table1` làm nỗ lực đăng nhập là biểu hiện của tải trọng chèn SQL.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 225",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/225-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-226",
+    "questionNumber": 226,
+    "text": "HOTSPOT -  \n  \nYou have an Azure subscription containing an Azure key vault named Vault1. On January 1, 2019, Vault1 contains the following secrets. All dates use the mm/dd/yy format.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954345513-y2zd6cmm.png)  \n  \nWhen is each secret available for an application to use?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Key Vault chỉ cho phép truy xuất bí mật khi nó được bật và hoạt động xảy ra trong cửa sổ chưa hết hạn và chưa được định cấu hình của nó. Mật khẩu1 bị vô hiệu hóa nên không bao giờ sử dụng được. Mật khẩu2 được kích hoạt và có hiệu lực từ ngày 1 tháng 3 năm 2019 cho đến khi hết hạn vào ngày 1 tháng 5 năm 2019.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954345513-y2zd6cmm.png",
+    "sourceTitle": "Examcademy AZ-500 Question 226",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/226-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-227",
+    "questionNumber": 227,
+    "text": "You have an Azure subscription that includes several Azure SQL databases and an Azure Sentinel workspace.  \n  \nYou need to create a saved query in the workspace to identify events reported by Azure Defender for SQL.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From Azure CLI, run the Get-AzOperationalInsightsWorkspace cmdlet."
+      },
+      {
+        "key": "B",
+        "text": "From the Azure SQL Database query editor, create a Transact-SQL query."
+      },
+      {
+        "key": "C",
+        "text": "From the Azure Sentinel workspace, create a Kusto query language query."
+      },
+      {
+        "key": "D",
+        "text": "From Microsoft SQL Server Management Studio (SSMS), create a Transact-SQL query."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Microsoft Sentinel sử dụng Ngôn ngữ truy vấn Kusto (KQL) để truy vấn và phân tích dữ liệu trong không gian làm việc Log Analytics của nó. Các sự kiện được Azure Defender cho SQL báo cáo được truy vấn từ không gian làm việc đó bằng truy vấn KQL đã lưu.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 227",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/227-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-228",
+    "questionNumber": 228,
+    "text": "You have an Azure subscription called Sub1. Sub1 includes a virtual network named VNet1, which has one subnet called Subnet1.  \n  \nSubnet1 hosts an Azure virtual machine named VM1 that runs Ubuntu Server 18.04.  \n  \nYou create a Microsoft.Storage service endpoint in Subnet1.  \n  \nYou need to ensure that, when Docker containers are deployed to VM1, the containers can access Azure Storage resources through the service endpoint.  \n  \nWhat should you do on VM1 before deploying the container?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an application security group and a network security group (NSG)."
+      },
+      {
+        "key": "B",
+        "text": "Edit the docker-compose.yml file."
+      },
+      {
+        "key": "C",
+        "text": "Install the container network interface (CNI) plug-in."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Trình cắm Azure CNI gắn các bộ chứa Docker vào Azure virtual network và gán cho chúng địa chỉ IP mạng ảo. Điều này cho phép lưu lượng vùng chứa sử dụng các khả năng mạng có sẵn cho mạng con, bao gồm cả Microsoft.Storage service endpoint của nó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 228",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/228-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-229",
+    "questionNumber": 229,
+    "text": "You have an on-premises datacenter.  \n  \nYou have an Azure subscription that contains a virtual machine named VM1. VM1 connects to a virtual network named VNet1. VNet1 connects to the on-premises datacenter by using a Site-to-Site (S2S) VPN.  \n  \nYou plan to create an Azure storage account named storage1 and deploy an Azure web app named App1.  \n  \nYou must ensure that network communication to each resource meets these requirements:  \n  \n- Connections to App1 are allowed only from corporate network NAT addresses.  \n- Connections from VNet1 to storage1 use the Microsoft backbone network.  \n- The solution minimizes costs.  \n  \nWhat should you configure for each resource? Each component may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "storage1",
+        "text": "storage1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "app1",
+        "text": "App1:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "A private endpoint"
+      },
+      {
+        "key": "B",
+        "text": "A service endpoint"
+      },
+      {
+        "key": "C",
+        "text": "An access restriction rule"
+      },
+      {
+        "key": "D",
+        "text": "Azure Private Link"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "A private endpoint"
+      },
+      {
+        "key": "B",
+        "text": "A service endpoint"
+      },
+      {
+        "key": "C",
+        "text": "An access restriction rule"
+      },
+      {
+        "key": "D",
+        "text": "Azure Private Link"
+      }
+    ],
+    "correctAnswers": [
+      "storage1=B",
+      "app1=C"
+    ],
+    "explanation": "Quy tắc hạn chế quyền truy cập Dịch vụ ứng dụng chỉ có thể cho phép App1 từ dải địa chỉ IP công cộng NAT của công ty. Mạng ảo service endpoint dành cho Bộ lưu trữ Azure duy trì lưu lượng truy cập VNet1-to-storage1 trên đường trục của Microsoft và tránh chi phí bổ sung cho điểm cuối riêng tư/Private Link.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 229",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/229-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-230",
+    "questionNumber": 230,
+    "text": "You create a new Azure subscription.  \n  \nYou need to ensure that you can create custom alert rules in Azure Security Center.  \n  \nWhich two actions should you take? Each correct answer is part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Onboard Azure Active Directory (Azure AD) Identity Protection."
+      },
+      {
+        "key": "B",
+        "text": "Create an Azure Storage account."
+      },
+      {
+        "key": "C",
+        "text": "Implement Azure Advisor recommendations."
+      },
+      {
+        "key": "D",
+        "text": "Create an Azure Log Analytics workspace."
+      },
+      {
+        "key": "E",
+        "text": "Upgrade the pricing tier of Security Center to Standard."
+      }
+    ],
+    "correctAnswers": [
+      "D",
+      "E"
+    ],
+    "explanation": "Quy tắc cảnh báo tùy chỉnh của Trung tâm bảo mật sử dụng các truy vấn về dữ liệu trong không gian làm việc Azure Log Analytics, do đó cần có không gian làm việc. Tính năng này yêu cầu cấp Tiêu chuẩn của Trung tâm Bảo mật phải trả phí; bậc miễn phí không cung cấp khả năng cần thiết.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 230",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/230-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-232",
+    "questionNumber": 232,
+    "text": "You have 10 on-premises servers running Windows Server 2019.  \n  \nYou plan to implement Azure Security Center vulnerability scanning for these servers.  \n  \nWhat should you install on the servers first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the Azure Arc enabled servers Connected Machine agent"
+      },
+      {
+        "key": "B",
+        "text": "the Microsoft Defender for Endpoint agent"
+      },
+      {
+        "key": "C",
+        "text": "the Security Events data connector in Azure Sentinel"
+      },
+      {
+        "key": "D",
+        "text": "the Microsoft Endpoint Configuration Manager client"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Đối với các máy chủ tại chỗ, quá trình quét lỗ hổng của Trung tâm Bảo mật Azure yêu cầu các máy trước tiên phải được tích hợp vào Azure Arc. Cài đặt máy chủ hỗ trợ Azure Arc Tác nhân Máy được kết nối đăng ký mỗi máy chủ dưới dạng máy hỗ trợ Azure Arc, cho phép triển khai và quản lý tiện ích mở rộng đánh giá lỗ hổng từ Azure.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 232",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/232-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-234",
+    "questionNumber": 234,
+    "text": "You have an Azure subscription linked to an Azure AD tenant that contains the virtual machines in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960421157-809hvioa.png)  \n  \nThe virtual-network subnets have the service endpoints shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960424411-6merymzm.png)  \n  \nYou create the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960427268-ol0qgai7.png)  \n  \nFor each statement below, select **Yes** if it is true; otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Connections from VM1 to storage1 always use IP address 10.1.1.5.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Connections from VM2 to Vault1 always use IP address 20.224.219.230.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Authentication from VM3 to the tenant uses either IP address 10.11.1.5 or 40.122.155.212.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "service endpoint thay đổi địa chỉ nguồn mà dịch vụ Azure được hỗ trợ nhìn thấy từ địa chỉ IPv4 công cộng của VM thành địa chỉ IPv4 riêng tư của VM. Do đó, VM1 đạt tới Azure Storage dưới dạng 10.1.1.5 và VM2 đạt tới Key Vault dưới dạng 10.1.2.5 thay vì 20.224.219.230. VM3 chỉ có điểm cuối cho Bộ lưu trữ và Vault khóa; Microsoft Entra ID (Azure AD) vốn không hỗ trợ các điểm cuối dịch vụ, do đó, xác thực đối tượng thuê sử dụng địa chỉ công cộng của VM3 chứ không phải địa chỉ riêng tư hay công cộng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783960421157-809hvioa.png",
+    "sourceTitle": "Examcademy AZ-500 Question 234",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/234-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-236",
+    "questionNumber": 236,
+    "text": "You strongly suspect that some users are attempting to sign in to resources they cannot access.  \n  \nYou decide to create an Azure Log Analytics query to validate this suspicion. The query will identify unsuccessful user sign-in attempts from the past few days.  \n  \nYou want to ensure the results show only users who have failed to sign in more than five times. Which of the following should be included in your query?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "The EventID and CountIf() parameters."
+      },
+      {
+        "key": "B",
+        "text": "The ActivityID and CountIf() parameters."
+      },
+      {
+        "key": "C",
+        "text": "The EventID and Count() parameters."
+      },
+      {
+        "key": "D",
+        "text": "The ActivityID and Count() parameters."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Các lần đăng nhập Windows không thành công được biểu thị bằng SecurityEvent EventID 4625. Một truy vấn sẽ lọc trên EventID đó, tổng hợp các sự kiện trùng khớp trên mỗi người dùng với `count()` và giữ lại số lượng lớn hơn năm. Các ví dụ về truy vấn SecurityEvent của Microsoft sử dụng `EventID == 4625` với `summarize count()` để đếm số lần đăng nhập thất bại theo tài khoản.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 236",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/236-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-237",
+    "questionNumber": 237,
+    "text": "You have an Azure Active Directory (Azure AD) tenant named contoso.com that contains three security groups named Group1, Group2, and Group3 and the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954281400-jes9wy3y.png)  \n  \nGroup3 is a member of Group2.  \n  \nIn contoso.com, you register an enterprise application named App1 that has these settings:  \n  \n- Owners: User1  \n- Users and groups: Group2  \n  \nYou configure the properties of App1 as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954284015-vas8fwi2.png)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "User1 has App1 listed on his My Apps portal.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "User2 has App1 listed on her My Apps portal.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "User3 has App1 listed on her My Apps portal.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "App1 hiển thị với người dùng nhưng chỉ những người dùng được chỉ định mới có thể nhìn thấy nó trong Ứng dụng của tôi. Người dùng2 nhận được sự phân công của Group2. Vai trò chủ sở hữu của User1 quản lý ứng dụng doanh nghiệp nhưng không gán ứng dụng cho người dùng đó. Các bài tập ứng dụng doanh nghiệp dựa trên nhóm không xếp tầng qua các nhóm lồng nhau, do đó Người dùng3 không nhận được bài tập của Group2 thông qua Group3.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954281400-jes9wy3y.png",
+    "sourceTitle": "Examcademy AZ-500 Question 237",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/237-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-238",
+    "questionNumber": 238,
+    "text": "You have an Azure subscription that includes an Azure SQL database named `sql1`.  \n  \nYou plan to audit `sql1`.  \n  \nYou need to configure the destination for the audit logs. The solution must meet the following requirements:  \n  \n- Support querying events by using the Kusto query language.  \n- Minimize administrative effort.  \n  \nWhat should you configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an event hub"
+      },
+      {
+        "key": "B",
+        "text": "a storage account"
+      },
+      {
+        "key": "C",
+        "text": "a Log Analytics workspace"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Không gian làm việc Log Analytics lưu trữ các sự kiện kiểm tra Azure SQL trong Nhật ký Azure Monitor, nơi chúng có thể được truy vấn trực tiếp bằng cách sử dụng Ngôn ngữ truy vấn Kusto (KQL). Nó cung cấp khả năng thu thập và phân tích nhật ký được quản lý mà không cần một đường dẫn xử lý hoặc tiêu dùng sự kiện riêng biệt.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 238",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/238-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-239",
+    "questionNumber": 239,
+    "text": "Which virtual networks in Sub1 can User9 modify and delete in their current state?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Khóa tài nguyên Azure được ưu tiên hơn các quyền RBAC. Khóa CanNotDelete cho phép người dùng được ủy quyền đọc và sửa đổi tài nguyên nhưng ngăn chặn việc xóa tài nguyên đó, trong khi khóa ReadOnly ngăn chặn cả sửa đổi và xóa (chỉ còn lại quyền truy cập đọc). Trong trường hợp này, VNET1 nằm trong nhóm tài nguyên được bảo vệ bởi khóa CanNotDelete, vì vậy Người dùng9 (người có đủ quyền RBAC) vẫn có thể sửa đổi nhưng không thể xóa nó. VNET2 và VNET3 nằm trong các nhóm tài nguyên được bảo vệ bởi khóa ReadOnly, vì vậy User9 không thể sửa đổi hay xóa chúng. VNET4 đã áp dụng khóa no nên User9 có thể sửa đổi và xóa nó. Do đó, bộ có thể sửa đổi chỉ là VNET4 và VNET1 và bộ có thể xóa chỉ là VNET4.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 239",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/239-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-240",
+    "questionNumber": 240,
+    "text": "You have an Azure AD tenant and an application named App1.  \n  \nYou must ensure that App1 can use Microsoft Entra Verified ID to verify credentials.  \n  \nWhich three actions should you carry out, in order?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure the Verified ID service."
+      },
+      {
+        "key": "B",
+        "text": "Register App1 in Azure AD and grant permissions."
+      },
+      {
+        "key": "C",
+        "text": "Create an Azure key vault."
+      },
+      {
+        "key": "D",
+        "text": "Configure an authentication methods policy."
+      },
+      {
+        "key": "E",
+        "text": "Add an identity provider."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Configure the Verified ID service."
+      },
+      {
+        "key": "B",
+        "text": "Register App1 in Azure AD and grant permissions."
+      },
+      {
+        "key": "C",
+        "text": "Create an Azure key vault."
+      },
+      {
+        "key": "D",
+        "text": "Configure an authentication methods policy."
+      },
+      {
+        "key": "E",
+        "text": "Add an identity provider."
+      }
+    ],
+    "correctAnswers": [
+      "step1=C",
+      "step2=A",
+      "step3=B"
+    ],
+    "explanation": "ID được xác minh của Microsoft Entra lưu trữ các khóa được sử dụng để ký và xác minh thông tin xác thực trong Azure Key Vault, do đó vault phải tồn tại trước khi thiết lập dịch vụ. Sau đó, dịch vụ ID đã xác minh sẽ được định cấu hình để sử dụng kho lưu trữ đó. Cuối cùng, App1 phải được đăng ký và cấp quyền API dịch vụ yêu cầu ID đã xác minh để có thể nhận mã thông báo và gọi dịch vụ để xác minh thông tin xác thực.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 240",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/240-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-241",
+    "questionNumber": 241,
+    "text": "HOTSPOT —  \n  \nYou have an Azure subscription containing a blob container named cont1. Cont1 has the access policies shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783956458293-7klujkvt.jpg)  \n  \nUse the drop-down menus to select the choice that completes each statement based on the graphic.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Một thùng chứa blob có thể có tối đa năm chính sách truy cập được lưu trữ; với Chính sách1 đã được định cấu hình, vẫn còn bốn chính sách bổ sung. Bộ nhớ Blob bất biến có thể sử dụng cả chính sách lưu giữ theo thời gian và chính sách lưu giữ pháp lý. Vì cont1 đã có chính sách lưu giữ theo thời gian nên một chính sách lưu giữ pháp lý cũng có thể được thêm vào.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783956458293-7klujkvt.jpg",
+    "sourceTitle": "Examcademy AZ-500 Question 241",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/241-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-242",
+    "questionNumber": 242,
+    "text": "You have an Azure subscription containing a web app named App1 and an Azure Key Vault named Vault1.  \n  \nYou need to configure App1 to store and access the secrets in Vault1. How should you configure App1?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "managed identity cho phép Dịch vụ ứng dụng xác thực với Key Vault mà không lưu trữ khóa, chứng chỉ hoặc cụm mật khẩu. Sau khi cấp quyền nhận dạng đó để đọc bí mật, hãy định cấu hình từng tham chiếu Key Vault dưới dạng cài đặt ứng dụng Dịch vụ ứng dụng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 242",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/242-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-243",
+    "questionNumber": 243,
+    "text": "You have an Azure subscription containing an Azure Active Directory (Azure AD) tenant and a user named User1.  \n  \nThe tenant's **App registrations** settings are configured as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953193151-ww4if3rm.jpg)  \n  \nYou plan to deploy an app named App1.  \n  \nYou need to ensure that User1 can register App1 in Azure AD. The solution must follow the principle of least privilege.  \n  \nWhich role should you assign to User1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "App Configuration Data Owner for the subscription"
+      },
+      {
+        "key": "B",
+        "text": "Managed Application Contributor for the subscription"
+      },
+      {
+        "key": "C",
+        "text": "Cloud application administrator in Azure AD"
+      },
+      {
+        "key": "D",
+        "text": "Application developer in Azure AD"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Khi cài đặt **Người dùng có thể đăng ký ứng dụng** được đặt thành **No**, việc chỉ định vai trò Microsoft Entra **Nhà phát triển ứng dụng** sẽ khôi phục khả năng tạo đăng ký ứng dụng cho người dùng đó. Nó chỉ cấp khả năng đăng ký ứng dụng cần thiết, trong khi Quản trị viên ứng dụng đám mây cấp các quyền quản lý ứng dụng rộng hơn; vai trò cấp đăng ký không cung cấp quyền thư mục Microsoft Entra này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953193151-ww4if3rm.jpg",
+    "sourceTitle": "Examcademy AZ-500 Question 243",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/243-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-244",
+    "questionNumber": 244,
+    "text": "You have the Azure virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783951828671-6k38ejyi.png)  \n  \nYou create an Azure Log Analytics workspace named Analytics1 in RG1 in the East US region.  \n  \nWhich virtual machines can be enrolled in Analytics1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VM1 only"
+      },
+      {
+        "key": "B",
+        "text": "VM1, VM2, and VM3 only"
+      },
+      {
+        "key": "C",
+        "text": "VM1, VM2, VM3, and VM4"
+      },
+      {
+        "key": "D",
+        "text": "VM1 and VM4 only"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Azure virtual machines có thể gửi dữ liệu giám sát đến không gian làm việc Log Analytics bất kể nhóm tài nguyên của họ có khớp với nhóm tài nguyên của không gian làm việc hay không. Một không gian làm việc có thể thu thập dữ liệu từ các tài nguyên và ứng dụng Azure, đồng thời các máy ảo Windows Server và Red Hat Enterprise Linux được liệt kê có thể được kết nối với nó; các nhóm nguồn lực khác nhau cũng như vị trí Tây Âu đều không ngăn cản việc đăng ký.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783951828671-6k38ejyi.png",
+    "sourceTitle": "Examcademy AZ-500 Question 244",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/244-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-245",
+    "questionNumber": 245,
+    "text": "You have an Azure subscription named Sub1 that contains the storage accounts shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783964134642-0hnjyzoq.png)  \n  \nThe storage3 storage account is encrypted by using customer-managed keys.  \n  \nYou need to enable Microsoft Defender for Storage to meet these requirements:  \n  \n- The storage1 and storage2 accounts must be included in Defender for Storage protections.  \n- The storage3 account must be excluded from Defender for Storage protections.  \n  \nWhich three actions should you perform in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Slot 1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot2",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "slot3",
+        "text": "Slot 3:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "For storage3, disable the customer-managed keys."
+      },
+      {
+        "key": "B",
+        "text": "Disable Defender for Storage for storage3."
+      },
+      {
+        "key": "C",
+        "text": "Enable the Defender for Storage plan for Sub1."
+      },
+      {
+        "key": "D",
+        "text": "For storage3, assign the AzDefenderPlanAutoEnable tag and set the value to off."
+      },
+      {
+        "key": "E",
+        "text": "Enable the Defender for Storage plan for RG1."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "For storage3, disable the customer-managed keys."
+      },
+      {
+        "key": "B",
+        "text": "Disable Defender for Storage for storage3."
+      },
+      {
+        "key": "C",
+        "text": "Enable the Defender for Storage plan for Sub1."
+      },
+      {
+        "key": "D",
+        "text": "For storage3, assign the AzDefenderPlanAutoEnable tag and set the value to off."
+      },
+      {
+        "key": "E",
+        "text": "Enable the Defender for Storage plan for RG1."
+      }
+    ],
+    "correctAnswers": [
+      "slot1=C",
+      "slot2=D",
+      "slot3=B"
+    ],
+    "explanation": "Bộ bảo vệ lưu trữ cấp đăng ký bao gồm storage1 và storage2. Để loại trừ một tài khoản, hãy áp dụng `AzDefenderPlanAutoEnable=off` để chính sách đăng ký không bật lại dịch vụ, sau đó tắt Defender for Storage trên tài khoản đó. Không cần phải tắt mã hóa khóa do khách hàng quản lý.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783964134642-0hnjyzoq.png",
+    "sourceTitle": "Examcademy AZ-500 Question 245",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/245-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-246",
+    "questionNumber": 246,
+    "text": "You have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960413110-cmbjodn1.png)  \n  \nVNet1 includes the subnets shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960416184-ifqfxi0i.png)  \n  \nYou plan to deploy an Azure firewall named AzFW1 to VNet1 by using the Azure portal.  \n  \nWhich resource group and subnet can be used to deploy AzFW1?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Firewall phải được triển khai trong cùng nhóm tài nguyên với mạng ảo của nó. Nó cũng yêu cầu một mạng con chuyên dụng có tên `AzureFirewallSubnet`; mạng con không được chứa các tài nguyên khác. VNet1 nằm trong RG2 và AzureFirewallSubnet trống.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783960413110-cmbjodn1.png",
+    "sourceTitle": "Examcademy AZ-500 Question 246",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/246-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-247",
+    "questionNumber": 247,
+    "text": "You have an Azure subscription that contains an Azure key vault. The role assignments for the key vault are shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1785751601608-l0u48l47.jpg)",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Key Vault sử dụng hành động dữ liệu Azure RBAC cho các hoạt động chính và bí mật. Nhân viên bí mật của Key Vault có thể tạo và quản lý khóa, trong khi Nhân viên bí mật của Key Vault có thể tạo và quản lý bí mật. Vai trò Chủ sở hữu là vai trò trên mặt phẳng quản lý và không cấp quyền truy cập vào mặt phẳng dữ liệu Key Vault. Nhiệm vụ của Quản trị viên Key Vault chỉ trong phạm vi khóa hiện có sẽ áp dụng cho khóa đó và không thể tạo khóa hoặc bí mật cấp vault mới.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785751601608-l0u48l47.jpg",
+    "sourceTitle": "Examcademy AZ-500 Question 247",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/247-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-248",
+    "questionNumber": 248,
+    "text": "You have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954294394-p45tb20b.png)  \n  \nYou need to ensure that ServerAdmins can perform the following tasks:  \n  \n- Create virtual machines in RG1 only.  \n- Connect the virtual machines to the existing virtual networks in RG2 only.  \n  \nThe solution must follow the principle of least privilege.  \n  \nWhich two role-based access control (RBAC) roles should you assign to ServerAdmins? Each correct answer presents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a custom RBAC role for RG2"
+      },
+      {
+        "key": "B",
+        "text": "the Network Contributor role for RG2"
+      },
+      {
+        "key": "C",
+        "text": "the Contributor role for the subscription"
+      },
+      {
+        "key": "D",
+        "text": "a custom RBAC role for the subscription"
+      },
+      {
+        "key": "E",
+        "text": "the Network Contributor role for RG1"
+      },
+      {
+        "key": "F",
+        "text": "the Virtual Machine Contributor role for RG1"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "F"
+    ],
+    "explanation": "Chỉ định Người đóng góp máy ảo ở phạm vi RG1 để chỉ cho phép tạo và quản lý máy ảo trong nhóm tài nguyên đó. Gán một vai trò tùy chỉnh ở phạm vi RG2 chỉ cấp các hành động đọc/tham gia mạng ảo và mạng con cần thiết, chẳng hạn như `Microsoft.Network/virtualNetworks/read`, `Microsoft.Network/virtualNetworks/subnets/read` và `Microsoft.Network/virtualNetworks/subnets/join/action`. Network Contributor không phải là đặc quyền tối thiểu vì nó cấp `Microsoft.Network/*`, cho phép quản lý mạng rộng rãi.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954294394-p45tb20b.png",
+    "sourceTitle": "Examcademy AZ-500 Question 248",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/248-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-249",
+    "questionNumber": 249,
+    "text": "You have an Azure subscription named Subscription1.  \n  \nYou deploy a Linux virtual machine named VM1 in Subscription1.  \n  \nYou need to monitor VM1's metrics and logs.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the AzurePerformanceDiagnostics extension"
+      },
+      {
+        "key": "B",
+        "text": "Azure HDInsight"
+      },
+      {
+        "key": "C",
+        "text": "Linux Diagnostic Extension (LAD) 3.0"
+      },
+      {
+        "key": "D",
+        "text": "Azure Analysis Services"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Linux Diagnostic Extension (LAD) 3.0 thu thập số liệu hiệu suất hệ thống và nhật ký hệ thống hoặc các sự kiện tệp nhật ký được chỉ định từ máy ảo Azure Linux, cho phép giám sát cả hai loại dữ liệu cần thiết.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 249",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/249-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-250",
+    "questionNumber": 250,
+    "text": "You have an Azure subscription named Sub1.  \n  \nYou have an Azure Active Directory (Azure AD) group named Group1 that includes every member of your IT team.  \n  \nYou must ensure that Group1 members can stop, start, and restart the Azure virtual machines in Sub1. The solution must follow the principle of least privilege.  \n  \nWhich three actions should you carry out, in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a JSON file."
+      },
+      {
+        "key": "B",
+        "text": "Run the Update-AzManagementGroup cmdlet."
+      },
+      {
+        "key": "C",
+        "text": "Create an XML file."
+      },
+      {
+        "key": "D",
+        "text": "Run the New-AzRoleDefinition cmdlet."
+      },
+      {
+        "key": "E",
+        "text": "Run the New-AzRoleAssignment cmdlet."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create a JSON file."
+      },
+      {
+        "key": "B",
+        "text": "Run the Update-AzManagementGroup cmdlet."
+      },
+      {
+        "key": "C",
+        "text": "Create an XML file."
+      },
+      {
+        "key": "D",
+        "text": "Run the New-AzRoleDefinition cmdlet."
+      },
+      {
+        "key": "E",
+        "text": "Run the New-AzRoleAssignment cmdlet."
+      }
+    ],
+    "correctAnswers": [
+      "step1=A",
+      "step2=D",
+      "step3=E"
+    ],
+    "explanation": "Các vai trò RBAC tùy chỉnh của Azure được xác định trong JSON và được tạo bằng New-AzRoleDefinition. Vai trò chỉ chứa các hành động khởi động, khởi động lại và dừng/giải phóng VM (và các hành động đọc cần thiết) tuân theo đặc quyền tối thiểu. Sau đó, New-AzRoleAssignment cấp vai trò tùy chỉnh đó cho Group1 ở phạm vi Sub1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 250",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/250-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-251",
+    "questionNumber": 251,
+    "text": "You have a Microsoft Entra tenant named contoso.com.  \n  \nA partner company has a Microsoft Entra tenant named fabrikam.com.  \n  \nYou need to ensure that, when a user in fabrikam.com tries to access resources in contoso.com, the user receives only one Microsoft Entra Multi-Factor Authentication (MFA) prompt. The solution must minimize administrative effort.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From the Azure portal of contoso.com, configure the inbound access default settings."
+      },
+      {
+        "key": "B",
+        "text": "From the Azure portal of contoso.com, configure the External collaboration settings."
+      },
+      {
+        "key": "C",
+        "text": "From the Azure portal of contoso.com, configure the outbound access default settings."
+      },
+      {
+        "key": "D",
+        "text": "From the Azure portal of fabrikam.com, configure the outbound access default settings."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Sự tin cậy MFA của nhiều bên thuê được định cấu hình trong cài đặt quyền truy cập vào của nhiều bên thuê tài nguyên. Khi contoso tin cậy các yêu cầu MFA từ đối tượng thuê Microsoft Entra bên ngoài, nó có thể chấp nhận MFA được thực hiện trong fabrikam thay vì yêu cầu một thử thách MFA khác. Việc định cấu hình cài đặt mặc định gửi đến sẽ cung cấp hành vi này với mức quản trị tối thiểu.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 251",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/251-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-252",
+    "questionNumber": 252,
+    "text": "You need to configure WebApp1 to satisfy the data and application requirements.  \n  \nWhich two actions should you take? Each correct answer forms part of the solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Upload a public certificate."
+      },
+      {
+        "key": "B",
+        "text": "Turn on the HTTPS Only protocol setting."
+      },
+      {
+        "key": "C",
+        "text": "Set the Minimum TLS Version protocol setting to 1.2."
+      },
+      {
+        "key": "D",
+        "text": "Change the pricing tier of the App Service plan."
+      },
+      {
+        "key": "E",
+        "text": "Turn on the Incoming client certificates protocol setting."
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "E"
+    ],
+    "explanation": "Cài đặt Chỉ HTTPS của Dịch vụ ứng dụng sẽ chuyển hướng tất cả lưu lượng HTTP sang HTTPS, bảo vệ lưu lượng truy cập từ máy khách đến ứng dụng trong quá trình truyền tải. Chứng chỉ ứng dụng khách đến sẽ kích hoạt TLS chung, cho phép ứng dụng yêu cầu và nhận chứng chỉ ứng dụng khách để xác thực ứng dụng khách.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 252",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/252-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-253",
+    "questionNumber": 253,
+    "text": "You have a Microsoft Entra tenant containing the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783965526309-48pa0m02.png)  \n  \nIn Microsoft Entra Privileged Identity Management (PIM), you configure the settings for the Security Administrator role as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783965528677-038kz0ub.png)  \n  \nFrom PIM, you assign the Security Administrator role to the following groups:  \n  \n- Group1: Active assignment type, permanently assigned  \n- Group2: Eligible assignment type, permanently eligible  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "User1 has five hours to activate the Security Administrator role.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "If User2 activates the Security Administrator role, the user will be assigned the role immediately.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "User3 can activate the Security Administrator role.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Việc gán vai trò Microsoft Entra hoạt động vĩnh viễn sẽ cấp các đặc quyền của vai trò mà không yêu cầu kích hoạt. Giá trị năm giờ được định cấu hình giới hạn thời gian duy trì hoạt động của một vai trò đủ điều kiện đã kích hoạt; nó không áp dụng cho một bài tập đã hoạt động. Các nhiệm vụ đủ điều kiện yêu cầu kích hoạt và khi không cần phê duyệt, PIM sẽ tạo nhiệm vụ hoạt động ngay lập tức. Người dùng là thành viên của một nhóm đủ điều kiện cho một vai trò có thể kích hoạt sự phân công vai trò đủ điều kiện đó, ngay cả khi người dùng đó cũng nhận được sự phân công hiện hoạt thông qua một nhóm khác. [Assign Microsoft Entra roles in PIM](https://learn.microsoft.com/en-us/entra/id-governance/privileged-identity-management/pim-how-to-add-role-to-user) [Activate Microsoft Entra roles in PIM](https://learn.microsoft.com/en-us/entra/id-governance/privileged-identity-management/pim-how-to-activate-role)",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783965526309-48pa0m02.png",
+    "sourceTitle": "Examcademy AZ-500 Question 253",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/253-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-254",
+    "questionNumber": 254,
+    "text": "You have an Azure subscription containing a Microsoft Defender External Attack Surface Management (Defender EASM) resource named EASM1. EASM1 has discovery enabled and includes several inventory assets.  \n  \nYou need to determine which inventory assets are vulnerable to the most critical web application security risks.  \n  \nWhich Defender EASM dashboard should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Security Posture"
+      },
+      {
+        "key": "B",
+        "text": "OWASP Top 10"
+      },
+      {
+        "key": "C",
+        "text": "Attack Surface Summary"
+      },
+      {
+        "key": "D",
+        "text": "GDPR Compliance"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Bảng điều khiển Top 10 của OWASP xác định các nội dung có nguy cơ gặp rủi ro bảo mật ứng dụng web nghiêm trọng nhất của OWASP và cung cấp thông tin khắc phục những rủi ro đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 254",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/254-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-255",
+    "questionNumber": 255,
+    "text": "You have an Azure subscription named Sub1 with Security defaults disabled. The subscription includes the following users:  \n  \n- Five users who have owner permissions for Sub1.  \n- Ten users who have owner permissions for Azure resources.  \n  \nNone of the users have multi-factor authentication (MFA) enabled.  \n  \nSub1 has the secure score shown in the Secure Score exhibit. (Click the Secure Score tab.)  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783964139001-mkii0828.png)  \n  \nYou plan to enable MFA for the following users:  \n  \n- Five users who have owner permission for Sub1.  \n- Five users who have owner permissions for Azure resources.  \n  \nBy how many points will the secure score increase after you make the planned changes?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "0"
+      },
+      {
+        "key": "B",
+        "text": "5"
+      },
+      {
+        "key": "C",
+        "text": "7.5"
+      },
+      {
+        "key": "D",
+        "text": "10"
+      },
+      {
+        "key": "E",
+        "text": "14"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Kiểm soát bảo mật Enable MFA có điểm tối đa là 10 điểm. Bảo vệ tất cả năm Chủ sở hữu đăng ký bằng MFA kiếm được 5 điểm và bảo vệ năm trong số mười Chủ sở hữu tài nguyên Azure kiếm được một nửa trong số 5 điểm còn lại hoặc 2,5 điểm. Do đó, tổng mức tăng Điểm an toàn là 7,5 điểm. Microsoft ghi lại rằng điểm của kiểm soát dựa trên điểm trên mỗi tài nguyên nhân với số lượng tài nguyên lành mạnh và Bật MFA có điểm tối đa là 10.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783964139001-mkii0828.png",
+    "sourceTitle": "Examcademy AZ-500 Question 255",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/255-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-256",
+    "questionNumber": 256,
+    "text": "You plan to deploy an Azure function named Function1 that will create new storage accounts for containerized application instances.  \n  \nYou need to give Function1 the least privileges necessary to create the storage accounts while minimizing administrative effort.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "system-assigned managed identity được quản lý vòng đời bằng chức năng này và loại bỏ việc quản lý thông tin xác thực. Chỉ định vai trò Người đóng góp tài khoản lưu trữ tích hợp ở phạm vi được yêu cầu; nó cho phép tạo mặt phẳng quản lý và quản lý tài khoản lưu trữ mà không cần sử dụng mô hình quản trị viên cổ điển rộng hơn hoặc duy trì vai trò tùy chỉnh.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 256",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/256-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-257",
+    "questionNumber": 257,
+    "text": "You have an Azure subscription associated with an Azure AD tenant named contoso.com. Contoso.com includes a user named User1 and an Azure web app named App1.  \n  \nYou plan to allow User1 to perform these tasks:  \n  \n- Configure contoso.com to use Microsoft Entra Verified ID.  \n- Register App1 in contoso.com.  \n  \nYou need to determine which roles to assign to User1. The solution must follow the principle of least privilege.  \n  \nWhich two roles should you identify? Each correct answer presents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Authentication Policy Administrator"
+      },
+      {
+        "key": "B",
+        "text": "Authentication Administrator"
+      },
+      {
+        "key": "C",
+        "text": "Cloud App Security Administrator"
+      },
+      {
+        "key": "D",
+        "text": "Application Administrator"
+      },
+      {
+        "key": "E",
+        "text": "User Administrator"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "D"
+    ],
+    "explanation": "Cần có vai trò Quản trị viên chính sách xác thực để đặt cấu hình thư mục cho ID được xác minh của Microsoft Entra. Vai trò Quản trị viên ứng dụng có thể tạo và quản lý đăng ký ứng dụng, bao gồm đăng ký App1. Cùng với nhau, các vai trò này cấp các khả năng cần thiết mà không cần sử dụng các đặc quyền quản trị thư mục rộng hơn.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 257",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/257-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-258",
+    "questionNumber": 258,
+    "text": "HOTSPOT -  \n  \nYou have an Azure subscription named Subscription1 that contains the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954774425-0jzrfpi8.png)  \n  \nYou create a custom RBAC role in Subscription1 by using the following JSON file.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954777033-tj3wrmld.png)  \n  \nYou assign Role1 to User1 on RG1.  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "User1 can add VM1 to VNET1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "User1 can start and stop App1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "User1 can start and stop cont1.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "Việc phân công vai trò áp dụng trong RG1, nhưng Role1 chỉ cấp quyền truy cập đọc trên các nhà cung cấp cộng với tất cả các hành động Microsoft.Compute. Việc thêm máy ảo vào mạng ảo yêu cầu các quyền của Microsoft.Network, chẳng hạn như quyền ghi/nối giao diện mạng. Các hoạt động bắt đầu/dừng Dịch vụ ứng dụng sử dụng nhà cung cấp Microsoft.Web và các hoạt động bắt đầu/dừng Phiên bản vùng chứa sử dụng nhà cung cấp Microsoft.ContainerInstance. Không được phép thực hiện bất kỳ hành động quản lý không phải Máy tính nào.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954774425-0jzrfpi8.png",
+    "sourceTitle": "Examcademy AZ-500 Question 258",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/258-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-259",
+    "questionNumber": 259,
+    "text": "You must fulfill the identity and access requirements for Group1.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a membership rule to Group1."
+      },
+      {
+        "key": "B",
+        "text": "Delete Group1. Create a new group named Group1 that has a group type of Microsoft 365. Add users and devices to the group."
+      },
+      {
+        "key": "C",
+        "text": "Modify the membership rule of Group1."
+      },
+      {
+        "key": "D",
+        "text": "Change the membership type of Group1 to Assigned. Create two groups that have dynamic memberships. Add the new groups to Group1."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Nhóm thành viên động được định cấu hình cho người dùng hoặc thiết bị. Một nhóm bảo mật với tư cách thành viên được chỉ định có thể chứa các nhóm thiết bị động và người dùng động riêng biệt, cung cấp cho Group1 tư cách thành viên kết hợp cần thiết mà không cần tạo lại nhóm.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 259",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/259-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-260",
+    "questionNumber": 260,
+    "text": "You have a Microsoft Entra tenant.  \n  \nOn January 1, configure a multi-factor authentication (MFA) registration policy with these settings:  \n  \n- Assignments: All users  \n- Require Microsoft Entra ID multifactor authentication registration: Enabled  \n- Enforce policy: On  \n  \nOn January 3, create two new users named User1 and User2.  \n  \nOn January 5, User1 first authenticates to Microsoft Entra ID. On January 7, User2 first authenticates to Microsoft Entra ID.  \n  \nOn what dates will User1 and User2 be required to register for MFA? Each date can be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "user1",
+        "text": "User1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "user2",
+        "text": "User2:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "January 15"
+      },
+      {
+        "key": "B",
+        "text": "January 19"
+      },
+      {
+        "key": "C",
+        "text": "January 21"
+      },
+      {
+        "key": "D",
+        "text": "February 1"
+      },
+      {
+        "key": "E",
+        "text": "February 5"
+      },
+      {
+        "key": "F",
+        "text": "February 7"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "January 15"
+      },
+      {
+        "key": "B",
+        "text": "January 19"
+      },
+      {
+        "key": "C",
+        "text": "January 21"
+      },
+      {
+        "key": "D",
+        "text": "February 1"
+      },
+      {
+        "key": "E",
+        "text": "February 5"
+      },
+      {
+        "key": "F",
+        "text": "February 7"
+      }
+    ],
+    "correctAnswers": [
+      "user1=B",
+      "user2=C"
+    ],
+    "explanation": "Chính sách đăng ký Microsoft Entra MFA được kích hoạt sẽ cung cấp cho người dùng bị ảnh hưởng thời gian gia hạn 14 ngày bắt đầu từ lần đăng nhập đầu tiên của họ. Do đó, User1 bắt buộc phải đăng ký vào ngày 19 tháng 1 và User2 vào ngày 21 tháng 1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 260",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/260-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-261",
+    "questionNumber": 261,
+    "text": "Your network includes an on-premises Active Directory domain named adatum.com that synchronizes with Azure Active Directory (Azure AD). The Azure AD tenant has the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954284264-ek4ylklo.png)  \n  \nYou configure the Password Protection settings under Authentication methods for adatum.com as shown below.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954286618-c8i98atq.jpg)  \n  \nFor each statement, select **Yes** if it is true; otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "User1 will be prompted to change the password on the next sign-in.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "User2 can change the password to @@tum_C0mpleX123.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "User3 can change the password to Adatum123!.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Bảo vệ mật khẩu được đánh giá trong quá trình thay đổi và đặt lại mật khẩu, không phải trong quá trình đăng nhập thông thường bằng mật khẩu hiện có. Thuật toán danh sách tùy chỉnh sử dụng phương pháp chuẩn hóa và đối sánh mờ, sau đó chấp nhận mật khẩu có điểm cuối cùng ít nhất là 5 ngay cả khi mật khẩu đó bao gồm cụm từ bị cấm. Đối với AD DS tại chỗ, chế độ Kiểm tra sẽ đánh giá và ghi lại các mật khẩu không an toàn nhưng vẫn xử lý cập nhật mật khẩu; chỉ có chế độ Thực thi mới từ chối nó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954284264-ek4ylklo.png",
+    "sourceTitle": "Examcademy AZ-500 Question 261",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/261-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-262",
+    "questionNumber": 262,
+    "text": "You have an Azure subscription containing the virtual networks shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783964136003-8q0zz6yw.png)  \n  \nNSG1 and NSG2 have only their default rules.  \n  \nThe subscription includes the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783964138443-ipfrir3o.png)  \n  \nThe subscription also includes the web apps shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783964141102-0knp2i7k.png)  \n  \nFor each statement, select **Yes** when it is true; otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "WebApp1 can connect to VM2.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "NSG1 controls inbound traffic to WebApp1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "WebApp2 can connect to VM1.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Tích hợp VNet dịch vụ ứng dụng khu vực cho phép ứng dụng tạo kết nối ra bên ngoài tới các tài nguyên trong VNet tích hợp và trong các VNet ngang hàng, do đó WebApp1 có thể tiếp cận VM2. Nó không cung cấp quyền truy cập vào ứng dụng, vì vậy NSG1 trên mạng con tích hợp không chi phối lưu lượng truy cập vào WebApp1. Môi trường dịch vụ ứng dụng cấp biệt lập được triển khai trong VNet của nó; WebApp2 có thể tiếp cận VM1 qua VNet peering. Các quy tắc Mạng ảo NSG mặc định bao gồm các không gian địa chỉ VNet ngang hàng và cho phép lưu lượng truy cập.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783964136003-8q0zz6yw.png",
+    "sourceTitle": "Examcademy AZ-500 Question 262",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/262-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-263",
+    "questionNumber": 263,
+    "text": "You have an Azure subscription containing a virtual network named VNet1. VNet1 includes the subnets shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966701021-1m5t8ejp.png)  \n  \nYou create the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966704479-aziwd3zl.png)  \n  \nYou plan to configure just-in-time (JIT) VM access for the virtual machines. The solution must minimize administrative effort.  \n  \nFor which virtual machines can JIT VM access be configured?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VM1 only"
+      },
+      {
+        "key": "B",
+        "text": "VM1 and VM2 only"
+      },
+      {
+        "key": "C",
+        "text": "VM1 and VM3 only"
+      },
+      {
+        "key": "D",
+        "text": "VM1, VM2, and VM3 only"
+      },
+      {
+        "key": "E",
+        "text": "VM1, VM2, VM3, and VM4"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Truy cập VM đúng lúc yêu cầu nhóm bảo mật mạng (NSG) hoặc cấu hình Azure Firewall. NSG có thể được liên kết với mạng con của VM hoặc giao diện mạng của nó. Do đó, VM1, VM2 và VM3 đủ điều kiện vì mỗi máy đều được NSG bảo vệ ở một hoặc cả hai phạm vi đó; VM4 có no NSG ở cả hai phạm vi.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783966701021-1m5t8ejp.png",
+    "sourceTitle": "Examcademy AZ-500 Question 263",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/263-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-264",
+    "questionNumber": 264,
+    "text": "HOTSPOT -  \n  \nYou have an Azure key vault named KeyVault1 that contains the items listed in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954290003-f64v3az5.png)  \n  \nIn KeyVault1, these events occur in sequence:  \n  \n- Item1 is deleted.  \n- Item2 and Policy1 are deleted.  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "You can recover Policy1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "You can add a new key named Item1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "You can recover Item2.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Tính năng xóa mềm Azure Key Vault cho phép khôi phục các khóa và bí mật đã xóa, do đó có thể khôi phục Item2. Chính sách truy cập không thể khôi phục được các đối tượng đã xóa, vì vậy Chính sách 1 không thể khôi phục được. Khóa bị xóa mềm vẫn được giữ nguyên theo tên cho đến khi nó được khôi phục hoặc bị xóa, ngăn chặn việc tạo khóa khác có tên Item1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954290003-f64v3az5.png",
+    "sourceTitle": "Examcademy AZ-500 Question 264",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/264-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-265",
+    "questionNumber": 265,
+    "text": "You have an Azure subscription and the computers displayed in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960423143-7rizyqba.png)  \n  \nYou need to run a vulnerability scan of the computers by using Microsoft Defender for Cloud.  \n  \nWhich computers can you scan?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VM1 only"
+      },
+      {
+        "key": "B",
+        "text": "VM1 and VM2 only"
+      },
+      {
+        "key": "C",
+        "text": "Server1 and VMSS1_0 only"
+      },
+      {
+        "key": "D",
+        "text": "VM1, VM2, and Server1 only"
+      },
+      {
+        "key": "E",
+        "text": "VM1, VM2, Server 1, and VMSS1_0"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Đánh giá lỗ hổng tích hợp của Microsoft Defender for Cloud hỗ trợ Azure virtual machines đủ điều kiện và các máy kết hợp được kết nối, bao gồm các máy Windows Server và RHEL được liệt kê. Trong phạm vi hỗ trợ máy quét được sử dụng ở đây, không thể quét phiên bản quy mô máy ảo thông qua quá trình triển khai đánh giá lỗ hổng này, do đó VMSS1_0 bị loại trừ.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783960423143-7rizyqba.png",
+    "sourceTitle": "Examcademy AZ-500 Question 265",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/265-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-267",
+    "questionNumber": 267,
+    "text": "You have an Azure subscription named Sub1 that contains the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783952090205-noazmvh1.png)  \n  \nYou need to ensure that the virtual machines in RG1 keep the Remote Desktop port closed until an authorized user requests access.  \n  \nWhat should you configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Active Directory (Azure AD) Privileged Identity Management (PIM)"
+      },
+      {
+        "key": "B",
+        "text": "an application security group"
+      },
+      {
+        "key": "C",
+        "text": "Azure Active Directory (Azure AD) conditional access"
+      },
+      {
+        "key": "D",
+        "text": "just in time (JIT) VM access"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Theo mặc định, quyền truy cập VM đúng lúc trong Microsoft Defender for Cloud chặn lưu lượng truy cập đến các cổng quản lý VM đã chọn, bao gồm cả RDP. Khi người dùng được ủy quyền yêu cầu quyền truy cập, nó sẽ tạm thời cho phép cổng được định cấu hình từ địa chỉ IP nguồn được yêu cầu trong một khoảng thời gian giới hạn, sau đó khôi phục khối.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783952090205-noazmvh1.png",
+    "sourceTitle": "Examcademy AZ-500 Question 267",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/267-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-268",
+    "questionNumber": 268,
+    "text": "You have an Azure subscription that uses Microsoft Defender for Cloud.  \n  \nAn Amazon Web Services (AWS) account named AWS1 is connected to Defender for Cloud.  \n  \nYou need to ensure that AWS1 uses AWS Foundational Security Best Practices while minimizing administrative effort.  \n  \nWhat should you do in Defender for Cloud?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assign a built-in compliance standard."
+      },
+      {
+        "key": "B",
+        "text": "Create a new custom standard."
+      },
+      {
+        "key": "C",
+        "text": "Assign a built-in assessment."
+      },
+      {
+        "key": "D",
+        "text": "Create a new custom assessment."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Các biện pháp thực hành tốt nhất về bảo mật nền tảng của AWS là tiêu chuẩn tuân thủ Defender for Cloud được tích hợp sẵn cho AWS. Việc chỉ định tiêu chuẩn đó sẽ áp dụng tập hợp các biện pháp kiểm soát và đánh giá cho tài khoản AWS, tránh công việc quản trị trong việc xác định tiêu chuẩn tùy chỉnh hoặc đánh giá tùy chỉnh riêng lẻ.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 268",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/268-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-269",
+    "questionNumber": 269,
+    "text": "HOTSPOT -  \n  \nYou have an Azure subscription containing the storage accounts shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954772675-rnppy1av.png)  \n  \nYou need to configure authorization access.  \n  \nWhich authorization types can you use for each storage account?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các dịch vụ Azure Blob và Table hỗ trợ ủy quyền Khóa chia sẻ, SAS và Microsoft Entra ID (Azure AD). Azure Files được truy cập qua SMB hỗ trợ ủy quyền Khóa chia sẻ, nhưng SAS không được hỗ trợ để truy cập SMB; các tùy chọn SMB dựa trên danh tính của nó sử dụng Dịch vụ miền Entra hoặc Entra Kerberos thay vì lựa chọn Azure AD chung được liệt kê.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954772675-rnppy1av.png",
+    "sourceTitle": "Examcademy AZ-500 Question 269",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/269-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-271",
+    "questionNumber": 271,
+    "text": "You have an Azure subscription that includes a user named User1 and a storage account that hosts a blob container named blob1.  \n  \nYou must grant User1 access to blob1. The solution must ensure that the access expires after six days.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a shared access signature (SAS)"
+      },
+      {
+        "key": "B",
+        "text": "role-based access control (RBAC)"
+      },
+      {
+        "key": "C",
+        "text": "a shared access policy"
+      },
+      {
+        "key": "D",
+        "text": "a managed identity"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Chữ ký truy cập chung (SAS) ủy quyền quyền truy cập hạn chế vào tài nguyên Bộ lưu trữ Azure trong một khoảng thời gian được chỉ định. Do đó, SAS cho vùng chứa blob có thể cấp các quyền cần thiết và được ấn định thời gian hết hạn sáu ngày sau khi được cấp.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 271",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/271-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-272",
+    "questionNumber": 272,
+    "text": "Your network has an on-premises Active Directory domain synchronized with an Azure Active Directory (Azure AD) tenant. The tenant includes the users shown in this table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953082454-33gmgdui.png)  \n  \nThe tenant also includes the groups shown in this table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953086346-cy1867ll.png)  \n  \nYou configure a multi-factor authentication (MFA) registration policy with these settings:  \n  \n- Assignments:  \n  - Include: Group1  \n  - Exclude: Group2  \n- Controls: Require Azure MFA registration  \n- Enforce Policy: On  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "User1 will be prompted to configure MFA registration during the user’s next Azure AD authentication.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "User2 must configure MFA during the user’s next Azure AD authentication.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "User3 will be prompted to configure MFA registration during the user’s next Azure AD authentication.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Chính sách đăng ký MFA được bật sẽ nhắc những người dùng đã chọn trong lần đăng nhập Azure AD tương tác tiếp theo của họ. Người dùng1 và Người dùng3 là thành viên của Nhóm1 được bao gồm và không bị loại trừ. Người dùng2 cũng thuộc Nhóm2 và việc loại trừ sẽ ngăn chính sách áp dụng cho người dùng đó. Chính sách đăng ký Azure AD MFA có thể nhắm mục tiêu tài khoản Active Directory tại chỗ được đồng bộ hóa.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953082454-33gmgdui.png",
+    "sourceTitle": "Examcademy AZ-500 Question 272",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/272-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-273",
+    "questionNumber": 273,
+    "text": "You have an Azure Active Directory (Azure AD) tenant containing the users in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953054925-m5woc4cu.png)  \n  \nYou create and enforce an Azure AD Identity Protection sign-in risk policy with these settings:  \n  \n- Assignments: Include Group1; exclude Group2  \n- Conditions: Sign-in risk level: Medium and above  \n- Access: Allow access; require multi-factor authentication  \n  \nIdentify what happens when the users sign in to Azure AD.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Chính sách rủi ro đăng nhập Microsoft Entra ID yêu cầu MFA ở mức Trung bình trở lên yêu cầu đăng nhập rủi ro trong phạm vi để hoàn thành MFA. Người dùng không đăng ký MFA khi cần khắc phục sẽ bị chặn. Địa chỉ IP ẩn danh, thuộc tính đăng nhập không quen thuộc và các lần đăng nhập liên quan đến thiết bị bị nhiễm độc là các tình huống có rủi ro đăng nhập ở mức trung bình hoặc cao hơn trong mô hình chính sách này. Loại trừ dựa trên nhóm loại bỏ yêu cầu của chính sách rủi ro đối với Người dùng1, nhưng Người dùng1 vẫn bật MFA cho mỗi người dùng và được nhắc về MFA.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953054925-m5woc4cu.png",
+    "sourceTitle": "Examcademy AZ-500 Question 273",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/273-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-274",
+    "questionNumber": 274,
+    "text": "You are implementing conditional access policies.  \n  \nYou must assess the existing Azure Active Directory (Azure AD) risk events and risk levels to configure and implement the policies.  \n  \nIdentify the risk level for these risk events:  \n  \n- Users with leaked credentials  \n- Impossible travel to atypical locations  \n- Sign-ins from IP addresses with suspicious activity  \n  \nEach level may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "impossible_travel",
+        "text": "Impossible travel to atypical locations:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "leaked_credentials",
+        "text": "Users with leaked credentials:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "suspicious_ip",
+        "text": "Sign-ins from IP addresses with suspicious activity:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "High"
+      },
+      {
+        "key": "B",
+        "text": "Low"
+      },
+      {
+        "key": "C",
+        "text": "Medium"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "High"
+      },
+      {
+        "key": "B",
+        "text": "Low"
+      },
+      {
+        "key": "C",
+        "text": "Medium"
+      }
+    ],
+    "correctAnswers": [
+      "impossible_travel=C",
+      "leaked_credentials=A",
+      "suspicious_ip=B"
+    ],
+    "explanation": "Microsoft Entra ID Protection phân loại thông tin xác thực bị rò rỉ là phát hiện người dùng có rủi ro cao. Việc di chuyển bất khả thi là phát hiện đăng nhập có rủi ro trung bình, trong khi đăng nhập từ địa chỉ IP có hoạt động đáng ngờ là phát hiện đăng nhập có rủi ro thấp.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 274",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/274-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-275",
+    "questionNumber": 275,
+    "text": "You have a management group named MG1 that contains an Azure subscription and a resource group named RG1. RG1 contains a virtual machine named VM1.  \n  \nYou have the custom Azure roles shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957437568-biph62gk.png)  \n  \nThe permissions for Role1 appear in the following role definition file.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957442303-nuq35zb6.png)  \n  \nThe permissions for Role2 appear in the following role definition file.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957445386-scloo7ff.png)  \n  \nYou assign the roles to the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957448613-ti3esb9k.png)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "User1 can delete VM1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "User2 can delete VM1.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "User3 can delete VM1.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Vai trò1 cấp cho no các hành động trên mặt phẳng điều khiển vì mảng `Actions` của nó trống. Quyền `Microsoft.Compute/virtualMachines/*` của Role2 bao gồm việc xóa máy ảo và được gán tại RG1, chứa VM1. Các quyền của vai trò được chỉ định ở phạm vi cha sẽ được kế thừa bởi phạm vi con. Các quyền của Azure RBAC là các quyền bổ sung và `NotActions` chỉ loại trừ một hành động khỏi các hành động được phép của vai trò đó; nó không phải là một nhiệm vụ từ chối, vì vậy nó không ghi đè lên sự cấp phép Vai trò2 của Người dùng2.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957437568-biph62gk.png",
+    "sourceTitle": "Examcademy AZ-500 Question 275",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/275-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-276",
+    "questionNumber": 276,
+    "text": "You have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957454059-uusgqubp.png)  \n  \nYou plan to take these actions:  \n  \n- Deploy a new app named App1 that requires access to Vault1.  \n- Configure a shared identity for VM1 and VM2 to access st1.  \n  \nYou need to configure an identity for each requirement while minimizing administrative effort. Each identity type may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "vm-access-st1",
+        "text": "VM1 and VM2 access to st1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "app1-access-vault1",
+        "text": "App1 access to Vault1:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Security group"
+      },
+      {
+        "key": "B",
+        "text": "System-assigned managed identity"
+      },
+      {
+        "key": "C",
+        "text": "User account"
+      },
+      {
+        "key": "D",
+        "text": "User-assigned managed identity"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Security group"
+      },
+      {
+        "key": "B",
+        "text": "System-assigned managed identity"
+      },
+      {
+        "key": "C",
+        "text": "User account"
+      },
+      {
+        "key": "D",
+        "text": "User-assigned managed identity"
+      }
+    ],
+    "correctAnswers": [
+      "vm-access-st1=D",
+      "app1-access-vault1=B"
+    ],
+    "explanation": "system-assigned managed identity được liên kết với một tài nguyên Azure duy nhất và được quản lý tự động bằng tài nguyên đó, giúp nó phù hợp với App1. user-assigned managed identity có vòng đời độc lập và có thể được gán cho nhiều tài nguyên Azure, cho phép VM1 và VM2 chia sẻ một danh tính khi truy cập st1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957454059-uusgqubp.png",
+    "sourceTitle": "Examcademy AZ-500 Question 276",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/276-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-277",
+    "questionNumber": 277,
+    "text": "HOTSPOT -  \n  \nYou have an Azure subscription containing Azure virtual machines that run Windows Server 2016.  \n  \nYou need to implement a policy that ensures every virtual machine has a custom antimalware virtual machine extension installed.  \n  \nHow should you complete the policy?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "`DeployIfNotExists` đánh giá tài nguyên liên quan được chỉ định và triển khai nó khi không có tài nguyên đó. `details.deployment.properties` của nó sử dụng thuộc tính `template` triển khai ARM để xác định các tài nguyên cần tạo. `existenceCondition` được sử dụng để đánh giá sự tồn tại chứ không phải để giữ định nghĩa triển khai.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 277",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/277-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-278",
+    "questionNumber": 278,
+    "text": "You have an Azure subscription that includes a web app named App1.  \n  \nUsers must be able to choose either a Google identity or a Microsoft identity when they authenticate to App1.  \n  \nYou need to add Google as an identity provider in Azure AD.  \n  \nWhich two pieces of information should you configure? Each correct answer is part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a client ID"
+      },
+      {
+        "key": "B",
+        "text": "a tenant name"
+      },
+      {
+        "key": "C",
+        "text": "the endpoint URL of an application"
+      },
+      {
+        "key": "D",
+        "text": "a tenant ID"
+      },
+      {
+        "key": "E",
+        "text": "a client secret"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "E"
+    ],
+    "explanation": "Liên kết Google trong Microsoft Entra ID yêu cầu ID ứng dụng khách OAuth và bí mật ứng dụng khách có được khi đăng ký ứng dụng Google. Những thông tin xác thực này xác định và xác thực đối tượng thuê Entra với Google.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 278",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/278-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-279",
+    "questionNumber": 279,
+    "text": "You have an Azure Active Directory (Azure AD) tenant containing two administrative units, named AU1 and AU2.  \n  \nUsers are assigned to the administrative units shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957443371-lx1z7qde.png)  \n  \nUsers have the roles shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957447384-evwx0dpg.png)  \n  \nFor each statement, select **Yes** if it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Admin1 can reset the password of User1.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Admin2 can reset the password of User3.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Admin3 can reset the password of Admin4.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "Quản trị viên bộ phận trợ giúp trong phạm vi đơn vị quản trị chỉ có thể đặt lại mật khẩu cho những người không phải quản trị viên trong đơn vị hành chính được chỉ định của họ, vì vậy, Quản trị viên1 có thể đặt lại mật khẩu của Người dùng1 trong AU1. Quản trị viên nhóm cấp quyền quản lý nhóm chứ không cấp quyền đặt lại mật khẩu nên Admin2 không thể đặt lại mật khẩu của User3. Quản trị viên mật khẩu cũng bị giới hạn ở những người không phải quản trị viên trong đơn vị hành chính được chỉ định của họ; do đó Admin3 không thể đặt lại mật khẩu của Admin4 vì Admin4 là Quản trị viên người dùng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957443371-lx1z7qde.png",
+    "sourceTitle": "Examcademy AZ-500 Question 279",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/279-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-280",
+    "questionNumber": 280,
+    "text": "You are configuring connectivity for two Azure virtual networks, VNET1 and VNET2.  \n  \nImplement VPN gateways that meet these requirements:  \n  \n- VNET1 must support six site-to-site connections using BGP.  \n- VNET2 must support 12 site-to-site connections using BGP.  \n- Costs must be minimized.  \n  \nWhich VPN gateway SKU should be used for each virtual network? Each SKU may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "vnet1",
+        "text": "VNET1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "vnet2",
+        "text": "VNET2:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Basic"
+      },
+      {
+        "key": "B",
+        "text": "VpnGw1"
+      },
+      {
+        "key": "C",
+        "text": "VpnGw2"
+      },
+      {
+        "key": "D",
+        "text": "VpnGw3"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Basic"
+      },
+      {
+        "key": "B",
+        "text": "VpnGw1"
+      },
+      {
+        "key": "C",
+        "text": "VpnGw2"
+      },
+      {
+        "key": "D",
+        "text": "VpnGw3"
+      }
+    ],
+    "correctAnswers": [
+      "vnet1=B",
+      "vnet2=B"
+    ],
+    "explanation": "Cơ bản không hỗ trợ BGP. VpnGw1 hỗ trợ BGP và tối đa 30 đường hầm site-to-site/VNet-to-VNet, bao gồm cả 6 và 12 kết nối; đây là SKU có chi phí thấp nhất trong số các tùy chọn có khả năng BGP được liệt kê.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 280",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/280-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-281",
+    "questionNumber": 281,
+    "text": "You have an Azure subscription that includes a virtual machine named VM1.  \n  \nYou create an Azure key vault with the following configuration:  \n  \n- Name: Vault5  \n- Region: West US  \n- Resource group: RG1  \n  \nYou need to use Vault5 to enable Azure Disk Encryption on VM1. The solution must support backing up VM1 by using Azure Backup.  \n  \nWhich key vault setting should you configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Access policies"
+      },
+      {
+        "key": "B",
+        "text": "Secrets"
+      },
+      {
+        "key": "C",
+        "text": "Keys"
+      },
+      {
+        "key": "D",
+        "text": "Locks"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Mã hóa đĩa Azure phải được bật trong cài đặt chính sách truy cập của kho khóa và Azure Backup yêu cầu chính sách truy cập cấp cho nó quyền truy cập vào các khóa và bí mật có liên quan cho máy ảo được mã hóa ADE. [Microsoft Learn: Configure a key vault for Azure Disk Encryption](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/disk-encryption-key-vault) [Microsoft Learn: Back up and restore encrypted Azure VMs](https://learn.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption)",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 281",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/281-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-282",
+    "questionNumber": 282,
+    "text": "You have an Azure subscription containing an Azure Firewall named AzFW1. AzFW1 uses a firewall policy named FWPolicy1.  \n  \nAdd rule collections to FWPolicy1 that meet these requirements:  \n  \n- Allow traffic according to the destination FQDN.  \n- Allow TCP traffic.  \n  \nWhich rule-collection types should you add for each requirement?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Firewall có thể lọc FQDN đích trong Quy tắc mạng thông qua độ phân giải DNS (đã bật proxy DNS) hoặc trong Quy tắc ứng dụng. Các quy tắc mạng hỗ trợ lọc giao thức TCP, trong khi các quy tắc Ứng dụng đánh giá lưu lượng truy cập ứng dụng HTTP, HTTPS và MSSQL. DNAT được sử dụng để dịch và xuất bản địa chỉ đích thay vì cung cấp các yêu cầu lọc gửi đi này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 282",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/282-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-284",
+    "questionNumber": 284,
+    "text": "You have an Azure subscription containing a Microsoft Defender External Attack Surface Management (Defender EASM) resource named EASM1. EAMS1 contains the inventory assets shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960940494-dm4282de.png)  \n  \nWhich assets are scanned each day, and which assets appear in the default dashboard charts?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Nội dung Hàng tồn kho, Phụ thuộc và Chỉ giám sát đã được phê duyệt được quét hàng ngày. Tài sản ứng viên chỉ được quét trong quá trình khám phá. Biểu đồ bảng điều khiển EASM của Bộ bảo vệ mặc định thể hiện nội dung Khoảng không quảng cáo được phê duyệt, do đó chỉ bao gồm VM1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783960940494-dm4282de.png",
+    "sourceTitle": "Examcademy AZ-500 Question 284",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/284-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-285",
+    "questionNumber": 285,
+    "text": "You have an Azure Active Directory (Azure AD) tenant.  \n  \nThe deleted objects are shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953192683-l62ldv3r.png)  \n  \nOn May 4, 2020, you try to restore the deleted objects by using the Azure Active Directory admin center.  \n  \nWhich two objects can you restore? Each correct answer presents a complete solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Group1"
+      },
+      {
+        "key": "B",
+        "text": "Group2"
+      },
+      {
+        "key": "C",
+        "text": "User2"
+      },
+      {
+        "key": "D",
+        "text": "User1"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "C"
+    ],
+    "explanation": "Tài khoản người dùng Azure AD đã xóa vẫn có thể khôi phục được trong 30 ngày; do đó, Người dùng2, bị xóa vào ngày 30 tháng 4 năm 2020, có thể được khôi phục, trong khi Người dùng1 thì không. Nhóm Office 365 đã xóa cũng có thể được khôi phục trong thời gian lưu giữ 30 ngày, do đó, Nhóm2, bị xóa vào ngày 5 tháng 4 năm 2020, có thể được khôi phục. Theo hành vi khôi phục Azure AD áp dụng ở đây, nhóm bảo mật không được khôi phục thông qua quy trình làm việc này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953192683-l62ldv3r.png",
+    "sourceTitle": "Examcademy AZ-500 Question 285",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/285-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-286",
+    "questionNumber": 286,
+    "text": "You have Azure virtual machines with Update Management enabled. The virtual machines are configured as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783952242250-j9cctvq8.png)  \n  \nYou schedule two update deployments named Update1 and Update2. Update1 updates VM3. Update2 updates VM6.  \n  \nWhich additional virtual machines can be updated by using Update1 and Update2?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Việc triển khai Windows có thể bao gồm các máy ảo Windows khác, VM1 và VM2. Việc triển khai Linux có thể bao gồm các máy ảo Linux khác, VM4 và VM5. Tư cách thành viên khu vực và nhóm tài nguyên không hạn chế những lựa chọn đó. Azure Update Manager sử dụng các cơ chế cập nhật Windows và Linux riêng biệt.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783952242250-j9cctvq8.png",
+    "sourceTitle": "Examcademy AZ-500 Question 286",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/286-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-287",
+    "questionNumber": 287,
+    "text": "You have an Azure subscription containing a user named User1. User1 has the Reader role for the subscription.  \n  \nYou plan to create a custom role named Role1 and assign it to User1.  \n  \nYou must ensure that User1 can create and manage application security groups by using Azure portal.  \n  \nWhich two permissions should you add to Role1?\n\n![Question Image](https://cdn.examcademy.com/images/questions/1785598770567-hmwye13w.png)",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các nhóm bảo mật ứng dụng là tài nguyên của Microsoft.Network, do đó, các hoạt động quản lý tài nguyên bắt buộc đều có trong nhà cung cấp Microsoft.Network. Quyền của Microsoft.Portal cho phép trải nghiệm cổng thông tin Azure được sử dụng để quản lý tài nguyên Azure. Trình đọc đã cung cấp quyền truy cập đọc cần thiết để xem đăng ký và các tài nguyên hiện có.\n\n**Tài liệu tham khảo:**\n[Azure resource provider operations - Microsoft.Network](https://learn.microsoft.com/en-us/azure/role-based-access-control/permissions/networking) · [Azure resource provider operations - Microsoft.Portal](https://learn.microsoft.com/en-us/azure/role-based-access-control/permissions/management-and-governance)",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785598770567-hmwye13w.png",
+    "sourceTitle": "Examcademy AZ-500 Question 287",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/287-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-288",
+    "questionNumber": 288,
+    "text": "You have an Azure subscription containing a virtual network named VNet1. VNet1 has a single subnet. The subscription also contains a virtual machine named VM1 that is connected to VNet1.  \n  \nYou plan to deploy an Azure SQL Managed Instance named SQL1.  \n  \nYou need to ensure that VM1 can access SQL1.  \n  \nWhich three components must you create? Each correct answer represents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a subnet"
+      },
+      {
+        "key": "B",
+        "text": "a network security perimeter"
+      },
+      {
+        "key": "C",
+        "text": "a virtual network gateway"
+      },
+      {
+        "key": "D",
+        "text": "a network security group (NSG)"
+      },
+      {
+        "key": "E",
+        "text": "a route table"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "D",
+      "E"
+    ],
+    "explanation": "Azure SQL Managed Instance phải sử dụng mạng con chuyên dụng chứa các tài nguyên khác của no, do đó VM1 không thể chia sẻ mạng con hiện có của nó với SQL1. Mạng con phiên bản được quản lý cũng phải có nhóm bảo mật mạng và bảng lộ trình liên quan. Vì VM1 và SQL1 nằm trong cùng một mạng ảo nên cổng mạng ảo không cần thiết cho kết nối riêng tư của chúng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 288",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/288-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-289",
+    "questionNumber": 289,
+    "text": "You have an Azure subscription containing four Azure SQL Managed Instances.  \n  \nYou need to assess the managed instances for vulnerability to SQL injection attacks.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an Azure Sentinel workspace."
+      },
+      {
+        "key": "B",
+        "text": "Enable Advanced Data Security."
+      },
+      {
+        "key": "C",
+        "text": "Add the SQL Health Check solution to Azure Monitor."
+      },
+      {
+        "key": "D",
+        "text": "Create an Azure Advanced Threat Protection (ATP) instance."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Bảo mật dữ liệu nâng cao cho Azure SQL Managed Instance bao gồm tính năng Bảo vệ mối đe dọa nâng cao, giúp phát hiện hoạt động bất thường và có khả năng gây hại, chẳng hạn như các cuộc tấn công tiêm nhiễm SQL tiềm ẩn. Khả năng này hiện là một phần của Microsoft Defender cho SQL.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 289",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/289-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-290",
+    "questionNumber": 290,
+    "text": "You have an Azure subscription that contains the key vaults in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957453065-5wmqh9qt.png)  \n  \nThe subscription has the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957456826-n0tl7zle.png)  \n  \nOn June 1, you take these actions:  \n  \n- Delete a key named key1 from KeyVault1.  \n- Delete a secret named secret1 from KeyVault2.  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Admin1 can recover key1 on June 5.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "Admin2 can purge secret1 on June 12.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "Admin3 can recover key1 on June 17.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Đối tượng Key Vault đã xóa chỉ có thể phục hồi được trong khoảng thời gian lưu giữ đã được định cấu hình của nó. Người đóng góp Key Vault là một vai trò trong mặt phẳng quản lý và không cấp quyền truy cập vào các hoạt động chính của mặt phẳng dữ liệu, vì vậy Admin1 không thể khôi phục key1. Nhân viên bí mật của Key Vault có thể xóa bí mật; vì tính năng bảo vệ thanh lọc bị vô hiệu hóa đối với KeyVault2 nên Admin2 có thể thanh lọc secret1 trong thời gian lưu giữ 15 ngày. Mặc dù Quản trị viên Key Vault có thể thực hiện các hoạt động quan trọng trên mặt phẳng dữ liệu nhưng thời gian lưu giữ 10 ngày của KeyVault1 đã trôi qua trước ngày 17 tháng 6.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957453065-5wmqh9qt.png",
+    "sourceTitle": "Examcademy AZ-500 Question 290",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/290-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-291",
+    "questionNumber": 291,
+    "text": "You have an Azure subscription containing an Azure Key Vault Standard key vault named Vault1. Vault1 contains a 2048-bit RSA key named key1.  \n  \nYou need to ensure that key1 rotates every 90 days.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a key rotation policy."
+      },
+      {
+        "key": "B",
+        "text": "Modify the Access policies settings of Vault1."
+      },
+      {
+        "key": "C",
+        "text": "Upgrade Vault1 to Key Vault Premium."
+      },
+      {
+        "key": "D",
+        "text": "Recreate key1 as an EC key."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Tự động xoay khóa Azure Key Vault được định cấu hình cho mỗi khóa bằng cách tạo hoặc đặt chính sách xoay vòng khóa. Chính sách có thể chỉ định khoảng thời gian luân chuyển là 90 ngày để tạo ra phiên bản mới của khóa RSA hiện có. Key Vault Standard hỗ trợ khả năng này; không cần phải nâng cấp Premium cũng như không cần thay đổi loại khóa. Việc quản lý chính sách yêu cầu các quyền thích hợp nhưng chỉ sửa đổi chính sách truy cập sẽ không định cấu hình xoay vòng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 291",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/291-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-292",
+    "questionNumber": 292,
+    "text": "You are securing access to resources in an Azure subscription.  \n  \nA new company policy requires that every Azure virtual machine in the subscription use managed disks.  \n  \nYou need to stop users from creating virtual machines that use unmanaged disks.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Monitor"
+      },
+      {
+        "key": "B",
+        "text": "Azure Policy"
+      },
+      {
+        "key": "C",
+        "text": "Azure Security Center"
+      },
+      {
+        "key": "D",
+        "text": "Azure Service Health"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Chính sách Azure thực thi các tiêu chuẩn tổ chức ở phạm vi đăng ký. Việc gán chính sách có hiệu ứng Từ chối có thể từ chối việc triển khai máy ảo không đáp ứng yêu cầu về đĩa được quản lý, ngăn không cho tạo máy ảo trên đĩa không được quản lý.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 292",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/292-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-293",
+    "questionNumber": 293,
+    "text": "Your company uses cloud-based resources from the following platforms:  \n  \n- Azure  \n- Amazon Web Services (AWS)  \n- Google Cloud Platform (GCP)  \n  \nYou plan to implement Microsoft Defender for Cloud.  \n  \nOn which platforms can Defender for Cloud protect containers and storage?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Defender for Containers hỗ trợ Azure Kubernetes Service, Amazon Elastic Kubernetes Service và Google Kubernetes Engine. Bộ bảo vệ cho Bộ lưu trữ có nguồn gốc từ Azure và bảo vệ Azure Blob Storage, Azure Files và Azure Data Lake Storage; nó không hỗ trợ trực tiếp các nhóm AWS S3.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 293",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/293-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-294",
+    "questionNumber": 294,
+    "text": "You have an Azure subscription containing an Azure web app named App1.  \n  \nYou plan to configure a Conditional Access policy for App1. The solution must meet these requirements:  \n  \n- Only permit access to App1 from Windows devices.  \n- Only permit devices marked as compliant to access App1.  \n  \nWhich Conditional Access policy settings should you configure? Each setting may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "windows_devices",
+        "text": "Only allow access to App1 from Windows devices:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "compliant_devices",
+        "text": "Only allow devices that are marked as compliant to access App1:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Cloud apps or actions"
+      },
+      {
+        "key": "B",
+        "text": "Conditions"
+      },
+      {
+        "key": "C",
+        "text": "Grant"
+      },
+      {
+        "key": "D",
+        "text": "Session"
+      },
+      {
+        "key": "E",
+        "text": "Users or workload identities"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Cloud apps or actions"
+      },
+      {
+        "key": "B",
+        "text": "Conditions"
+      },
+      {
+        "key": "C",
+        "text": "Grant"
+      },
+      {
+        "key": "D",
+        "text": "Session"
+      },
+      {
+        "key": "E",
+        "text": "Users or workload identities"
+      }
+    ],
+    "correctAnswers": [
+      "windows_devices=B",
+      "compliant_devices=C"
+    ],
+    "explanation": "Nhắm mục tiêu nền tảng thiết bị được định cấu hình trong Điều kiện truy cập có điều kiện. Việc yêu cầu đánh dấu thiết bị là tuân thủ là một biện pháp kiểm soát quyền truy cập được cấp, vì vậy quyền truy cập chỉ được cấp khi thiết bị đáp ứng yêu cầu tuân thủ.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 294",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/294-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-295",
+    "questionNumber": 295,
+    "text": "You have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966876960-5vkijlq3.png)  \n  \nYou intend to use service endpoints and service endpoint policies.  \n  \nIdentify which resources can be accessed by using a service endpoint and which resources support service endpoint policies.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Điểm cuối dịch vụ Mạng ảo hỗ trợ Microsoft.Storage và Microsoft.Web, do đó, tài khoản lưu trữ và ứng dụng web Azure App Service có thể được truy cập thông qua các điểm cuối dịch vụ tương ứng của chúng; máy ảo Microsoft.Compute không thể. Chính sách Service endpoint cung cấp tính năng lọc danh sách cho phép đối với lưu lượng truy cập đến tài khoản Azure Storage qua điểm cuối dịch vụ, do đó chỉ tài khoản lưu trữ mới hỗ trợ chúng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783966876960-5vkijlq3.png",
+    "sourceTitle": "Examcademy AZ-500 Question 295",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/295-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-296",
+    "questionNumber": 296,
+    "text": "You have an Azure subscription that includes an Azure key vault.  \n  \nYou need to set the maximum number of days that newly created keys can remain valid. The solution must minimize administrative effort.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Purview"
+      },
+      {
+        "key": "B",
+        "text": "Key Vault properties"
+      },
+      {
+        "key": "C",
+        "text": "Azure Blueprints"
+      },
+      {
+        "key": "D",
+        "text": "Azure Policy"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Chính sách Azure cung cấp chính sách **Khóa tích hợp phải có thời hạn hiệu lực tối đa được chỉ định**. Việc chỉ định số ngày tối đa bắt buộc sẽ quản lý các khóa Key Vault ở phạm vi đã chọn và có thể kiểm tra hoặc từ chối các khóa không tuân thủ, tránh việc quản lý thủ công theo từng khóa.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 296",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/296-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-297",
+    "questionNumber": 297,
+    "text": "You have an Azure subscription containing a virtual network. The virtual network includes the subnets shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953194781-x9lkjfp7.png)  \n  \nThe subscription includes the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953197068-v97b2g9v.png)  \n  \nYou enable just-in-time (JIT) VM access for every virtual machine.  \n  \nYou need to determine which virtual machines are protected by JIT.  \n  \nWhich virtual machines should you identify?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VM4 only"
+      },
+      {
+        "key": "B",
+        "text": "VM1 and VM3 only"
+      },
+      {
+        "key": "C",
+        "text": "VM1, VM3 and VM4 only"
+      },
+      {
+        "key": "D",
+        "text": "VM1, VM2, VM3, and VM4"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Quyền truy cập VM đúng lúc yêu cầu cấu hình NSG hoặc Azure Firewall vì cấu hình này kiểm soát quyền truy cập quản lý gửi đến bằng cách quản lý các quy tắc mạng. NSG có thể áp dụng ở cấp độ mạng con hoặc cấp độ giao diện mạng. VM1 và VM3 được bao phủ bởi NSG được liên kết với Subnet1 và VM4 được bao phủ bởi NSG được liên kết với bộ điều hợp mạng của nó. VM2 không có NSG cấp mạng con cũng như cấp bộ điều hợp mạng, do đó nó không được JIT bảo vệ.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953194781-x9lkjfp7.png",
+    "sourceTitle": "Examcademy AZ-500 Question 297",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/297-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.792Z"
+  },
+  {
+    "id": "az500-298",
+    "questionNumber": 298,
+    "text": "You use Azure Resource Manager templates to deploy Azure virtual machines.  \n  \nYou have been tasked with ensuring that unused Windows features are automatically disabled when virtual-machine instances are provisioned.  \n  \nWhich of the following actions should you take?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "You should make use of Azure DevOps."
+      },
+      {
+        "key": "B",
+        "text": "You should make use of Azure Automation State Configuration."
+      },
+      {
+        "key": "C",
+        "text": "You should make use of network security groups (NSG)."
+      },
+      {
+        "key": "D",
+        "text": "You should make use of Azure Blueprints."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Cấu hình trạng thái tự động hóa Azure áp dụng Cấu hình trạng thái mong muốn PowerShell (DSC) cho máy ảo Azure và duy trì cấu hình được chỉ định theo thời gian. Tài nguyên DSC `WindowsFeature` có thể đặt một tính năng Windows không được sử dụng thành `Ensure = 'Absent'`, tự động thực thi trạng thái vô hiệu hóa của tính năng đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 298",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/298-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-299",
+    "questionNumber": 299,
+    "text": "You have an Azure Active Directory (Azure AD) tenant and a root management group. You created 10 Azure subscriptions and added them to the root management group.  \n  \nYou need to create an Azure Blueprints definition that will be stored in the root management group.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Modify the role-based access control (RBAC) role assignments for the root management group."
+      },
+      {
+        "key": "B",
+        "text": "Add an Azure Policy definition to the root management group."
+      },
+      {
+        "key": "C",
+        "text": "Create a user-assigned identity."
+      },
+      {
+        "key": "D",
+        "text": "Create a service principal."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Các quyền của Azure RBAC tách biệt với vai trò thư mục Azure AD, do đó, việc có quyền Quản trị viên toàn cầu trong Azure AD không tự động cấp quyền quản lý tài nguyên, chẳng hạn như định nghĩa Blueprint, ở phạm vi nhóm quản lý. Để tạo và lưu định nghĩa Blueprint trong nhóm quản lý gốc, trước tiên, tài khoản phải được cấp vai trò RBAC thích hợp (chẳng hạn như Chủ sở hữu hoặc Người đóng góp Blueprint) ở phạm vi nhóm quản lý đó. Do đó, bước đầu tiên cần thiết là sửa đổi các phân công vai trò RBAC trên nhóm quản lý gốc để có sẵn các quyền cần thiết trước khi có thể tạo định nghĩa Blueprint ở đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 299",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/299-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-300",
+    "questionNumber": 300,
+    "text": "HOTSPOT –  \n  \nYou have an Azure Active Directory (Azure AD) tenant containing the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954554394-jwm0luor.png)  \n  \nThe tenant includes the named locations shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954557459-ldh45gzi.png)  \n  \nYou create Conditional Access policies for a cloud app named App1, as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954559655-78xwdahd.png)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "User1 can access App1 from an IP address of 154.12.18.10.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "User2 can access App1 from an IP address of 193.77.10.15.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "User2 can access App1 from an IP address of 154.12.18.34.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Quyền truy cập có điều kiện đánh giá tất cả các chính sách hiện hành. Người dùng1 bị loại khỏi Chính sách1 thông qua tư cách thành viên Nhóm2, vì vậy chỉ Chính sách2 yêu cầu MFA và quyền truy cập có thể được cấp sau MFA. Người dùng2 tuân theo Chính sách4, do đó, quyền đăng nhập vào Seattle có thể được cấp sau MFA. Tại địa chỉ Boston, Chính sách 3 áp dụng cho Người dùng 2 và chặn quyền truy cập; kiểm soát truy cập khối được ưu tiên hơn các kiểm soát cấp. Việc tắt MFA cho mỗi người dùng không ngăn cản Truy cập có điều kiện yêu cầu MFA.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954554394-jwm0luor.png",
+    "sourceTitle": "Examcademy AZ-500 Question 300",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/300-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-302",
+    "questionNumber": 302,
+    "text": "You have an Azure subscription containing an Azure SQL database named DB1 in the East US Azure region.  \n  \nYou create the storage accounts shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783955194915-9tyy5pfo.jpg)  \n  \nYou plan to enable auditing for DB1. Which storage accounts can be used as the auditing destination for DB1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "storage1 and storage4 only"
+      },
+      {
+        "key": "B",
+        "text": "storage1 only"
+      },
+      {
+        "key": "C",
+        "text": "storage1, storage2, storage3, and storage4"
+      },
+      {
+        "key": "D",
+        "text": "storage1, storage2, and storage3 only"
+      },
+      {
+        "key": "E",
+        "text": "storage2 and storage3 only"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Đối với cấu hình này, quá trình kiểm tra Azure SQL Database yêu cầu tài khoản lưu trữ Tiêu chuẩn trong cùng vùng Azure với cơ sở dữ liệu. storage1 là tài khoản duy nhất vừa Tiêu chuẩn vừa nằm ở Đông Hoa Kỳ; storage4 nằm ở East US 2, còn storage2 và storage3 sử dụng hiệu suất Cao cấp.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783955194915-9tyy5pfo.jpg",
+    "sourceTitle": "Examcademy AZ-500 Question 302",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/302-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-303",
+    "questionNumber": 303,
+    "text": "You have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953067493-nwgugdtr.png)  \n  \nThe IP address `10.1.0.4` is assigned to VM5. VM5 has no public IP address.  \n  \nVM5 has just-in-time (JIT) VM access configured as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953070076-oivsxllq.jpg)  \n  \nYou enable JIT VM access for VM5. NSG1 has the inbound rules displayed in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953073733-2jo4vdhp.png)  \n  \nFor each statement below, select **Yes** if it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Deleting the security rule that has a priority of 100 will revoke the approved JIT access request.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Remote Desktop access to VM5 is blocked.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "An Azure Bastion host will enable Remote Desktop access to VM5 from the internet.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "JIT tạo quy tắc cho phép NSG tạm thời cho yêu cầu được phê duyệt; việc xóa quy tắc cho phép ưu tiên-100 đó sẽ xóa quyền truy cập đã được phê duyệt. Các quy tắc NSG được đánh giá theo thứ tự ưu tiên tăng dần, do đó, quy tắc ưu tiên-100 cho phép cổng 3389 được ưu tiên hơn quy tắc từ chối ưu tiên-1000 JIT. Azure Bastion cung cấp kết nối RDP thông qua dịch vụ Bastion tới địa chỉ IP riêng của VM mà không yêu cầu địa chỉ IP công cộng trên VM.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953067493-nwgugdtr.png",
+    "sourceTitle": "Examcademy AZ-500 Question 303",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/303-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-304",
+    "questionNumber": 304,
+    "text": "You have a web app hosted on an on-premises server and accessed by using the URL `https://www.contoso.com`.  \n  \nYou plan to migrate the web app to Azure and will continue using `https://www.contoso.com`.  \n  \nYou need to enable HTTPS for the Azure web app.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Export the public key from the on-premises server and save the key as a P7b file."
+      },
+      {
+        "key": "B",
+        "text": "Export the private key from the on-premises server and save the key as a PFX file that is encrypted by using TripleDES."
+      },
+      {
+        "key": "C",
+        "text": "Export the public key from the on-premises server and save the key as a CER file."
+      },
+      {
+        "key": "D",
+        "text": "Export the private key from the on-premises server and save the key as a PFX file that is encrypted by using AES256."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Liên kết TLS/SSL Azure App Service yêu cầu chứng chỉ PFX bao gồm khóa riêng; Các tệp CER và P7B chỉ có khóa công khai không thể thiết lập danh tính HTTPS của máy chủ. Để có khả năng tương thích PFX cần thiết, hãy xuất chứng chỉ bằng khóa riêng của nó bằng mã hóa TripleDES. Tài liệu Dịch vụ ứng dụng của Microsoft lưu ý rằng các tệp PFX sử dụng AES256 có thể yêu cầu ghi đè mật mã để sử dụng 3DES để hỗ trợ Dịch vụ ứng dụng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 304",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/304-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-305",
+    "questionNumber": 305,
+    "text": "$35",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "User1 is required to use number matching during sign-in.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "User2 is required to use number matching during sign-in.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "User3 is required to use number matching during sign-in.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "CAPolicy1 chỉ yêu cầu MFA cho các thành viên Group1. Việc khớp số chỉ được bật cho mục tiêu Group2 và cấu hình chỉ áp dụng cho những người dùng cũng nằm trong nhóm mục tiêu Microsoft Authenticator (Group1). Do đó, Người dùng2, thuộc cả hai nhóm, phải sử dụng phương pháp khớp số; Người dùng1 thiếu tư cách thành viên Nhóm2 và Người dùng3 thiếu tư cách thành viên Nhóm1 và không tuân theo chính sách Truy cập có điều kiện MFA.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 305",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/305-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-306",
+    "questionNumber": 306,
+    "text": "You are investigating a security problem with an Azure Storage account.  \n  \nYou enable diagnostic logging for the storage account. What should you use to retrieve the diagnostic logs?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Storage Explorer"
+      },
+      {
+        "key": "B",
+        "text": "SQL query editor in Azure"
+      },
+      {
+        "key": "C",
+        "text": "File Explorer in Windows"
+      },
+      {
+        "key": "D",
+        "text": "Azure Security Center"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Nhật ký chẩn đoán Bộ nhớ Azure được lưu trữ trong vùng chứa blob `$logs` của tài khoản và có thể được xem hoặc truy xuất bằng cách sử dụng Microsoft Azure Storage Explorer.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 306",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/306-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-307",
+    "questionNumber": 307,
+    "text": "You have an Azure AD tenant that contains users assigned Azure AD Premium P2 licenses.  \n  \nA partner company has a domain named fabrikam.com. The fabrikam.com domain includes a user named User1, whose email address is [email protected].  \n  \nYou need to give User1 access to the resources in the tenant. The solution must meet these requirements:  \n  \n- User1 must be able to sign in using the [email protected] credentials.  \n- You must be able to grant User1 access to resources in the tenant.  \n- Administrative effort must be minimized.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a user account for User1."
+      },
+      {
+        "key": "B",
+        "text": "To the tenant, add fabrikam.com as a custom domain."
+      },
+      {
+        "key": "C",
+        "text": "Create an invite for User1."
+      },
+      {
+        "key": "D",
+        "text": "Set Enable guest self-service sign up via user flows to Yes for the tenant."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Lời mời Microsoft Entra B2B tạo người dùng khách trong đối tượng thuê. Khách đăng nhập bằng thông tin đăng nhập bên ngoài hiện có của họ và có thể được chỉ định quyền truy cập vào các ứng dụng, nhóm và các tài nguyên được chia sẻ khác, tránh việc tạo và duy trì một tài khoản đối tượng thuê riêng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 307",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/307-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-308",
+    "questionNumber": 308,
+    "text": "You have an Azure subscription containing an Azure Files share named share1 and a user named User1. Identity-based authentication is configured for share1.  \n  \nUser1 tries to access share1 from a Windows 10 device by using SMB.  \n  \nWhich type of token does Azure Files use to authorize the request?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "OAuth 2.0"
+      },
+      {
+        "key": "B",
+        "text": "JSON Web Token (JWT)"
+      },
+      {
+        "key": "C",
+        "text": "SAML"
+      },
+      {
+        "key": "D",
+        "text": "Kerberos"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure Files sử dụng Kerberos để xác thực dựa trên danh tính qua SMB. Máy khách SMB xuất trình một vé dịch vụ Kerberos mà Azure Files sử dụng để cấp quyền truy cập theo các quyền cấp chia sẻ đã được định cấu hình và Windows ACL.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 308",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/308-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-309",
+    "questionNumber": 309,
+    "text": "You have an Azure Active Directory (Azure AD) tenant containing 500 users and an administrative unit named AU1.  \n  \nFrom the Azure Active Directory admin center, you plan to add the users to AU1 by using **Bulk add members**.  \n  \nYou need to create and upload a file for the bulk addition.  \n  \nWhat should the file include?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "only the display name of each user"
+      },
+      {
+        "key": "B",
+        "text": "only the user principal name (UPN) of each user"
+      },
+      {
+        "key": "C",
+        "text": "only the user principal name (UPN) and display name of each user"
+      },
+      {
+        "key": "D",
+        "text": "only the user principal name (UPN) and object identifier of each user"
+      },
+      {
+        "key": "E",
+        "text": "only the object identifier of each user"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Để thêm hàng loạt người dùng vào đơn vị quản trị Azure AD, mẫu CSV sẽ xác định từng người dùng theo tên chính của người dùng (UPN), với một UPN được nhập trên mỗi hàng. Tên hiển thị không phải là số nhận dạng cho thao tác này và tệp không yêu cầu số nhận dạng đối tượng được ghép nối.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 309",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/309-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-310",
+    "questionNumber": 310,
+    "text": "You have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957438882-zv3chxej.png)  \n  \nYou need to configure **storage1** so that its keys are regenerated automatically every 90 days.  \n  \nWhich cmdlet should you run?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add-AzKeyVaultflanagedStorageAccount"
+      },
+      {
+        "key": "B",
+        "text": "Set-AzStorageAccountManagementPolicy"
+      },
+      {
+        "key": "C",
+        "text": "Set-AzStorageAccount"
+      },
+      {
+        "key": "D",
+        "text": "Add-AzStorageAccountManagementPolicyAction"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "`Add-AzKeyVaultManagedStorageAccount` thêm tài khoản lưu trữ hiện có vào Azure Key Vault cho các khóa lưu trữ do Key Vault quản lý. Tham số `-RegenerationPeriod` của nó đặt khoảng thời gian sau đó khóa không hoạt động được tạo lại và kích hoạt; `TimeSpan` 90 ngày định cấu hình xoay vòng 90 ngày tự động. Chính sách quản lý tài khoản lưu trữ áp dụng cho việc quản lý vòng đời dữ liệu thay vì tái tạo khóa truy cập.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957438882-zv3chxej.png",
+    "sourceTitle": "Examcademy AZ-500 Question 310",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/310-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-311",
+    "questionNumber": 311,
+    "text": "You have an Azure subscription containing the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960421054-snkmny38.png)  \n  \nSQL1 has these configurations:  \n  \n- Auditing: Enabled  \n- Audit log destination: storage1, Workspace1  \n  \nDB1 has these configurations:  \n  \n- Auditing: Enabled  \n- Audit log destination: storage2  \n  \nDB2 has auditing disabled.  \n  \nWhere are the audit logs for DB1 and DB2 stored?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Chính sách kiểm tra máy chủ logic Azure SQL áp dụng cho tất cả các cơ sở dữ liệu của nó bất kể cài đặt kiểm tra cơ sở dữ liệu riêng lẻ của chúng. Kiểm tra cấp cơ sở dữ liệu chạy song song, thay vì thay thế, kiểm tra cấp máy chủ. Do đó, DB1 ghi thông qua chính sách máy chủ vào storage1 và Workspace1 và thông qua chính sách cơ sở dữ liệu của nó vào storage2; DB2 ghi thông qua chính sách máy chủ vào storage1 và Workspace1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783960421054-snkmny38.png",
+    "sourceTitle": "Examcademy AZ-500 Question 311",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/311-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-312",
+    "questionNumber": 312,
+    "text": "You have an Azure subscription that contains the Azure virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953180164-dztntk5j.png)  \n  \nYou create an MDM Security Baseline profile named Profile1.  \n  \nYou need to identify the virtual machines to which Profile1 can be applied.  \n  \nWhich virtual machines should you identify?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VM1 only"
+      },
+      {
+        "key": "B",
+        "text": "VM1, VM2, and VM3 only"
+      },
+      {
+        "key": "C",
+        "text": "VM1 and VM3 only"
+      },
+      {
+        "key": "D",
+        "text": "VM1, VM2, VM3, and VM4"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Cơ sở bảo mật MDM của Microsoft được thiết kế cho các thiết bị khách Windows, bao gồm Windows 10 trở lên. Windows Server 2016, Windows Server 2019 và Ubuntu Server 18.04 LTS không phải là mục tiêu cho đường cơ sở này, vì vậy chỉ có máy ảo Windows 10 mới đủ điều kiện.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953180164-dztntk5j.png",
+    "sourceTitle": "Examcademy AZ-500 Question 312",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/312-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-313",
+    "questionNumber": 313,
+    "text": "You have an Azure subscription named Sub1 that contains the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953053739-3seza5on.png)  \n  \nYou need to ensure that VM1 can securely access a database on SQL1 by using a contained database user.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable a managed identity on VM1."
+      },
+      {
+        "key": "B",
+        "text": "Create a secret in KV1."
+      },
+      {
+        "key": "C",
+        "text": "Configure a service endpoint on SQL1."
+      },
+      {
+        "key": "D",
+        "text": "Create a key in KV1."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "managed identity cung cấp cho VM1 danh tính Microsoft Entra có thể xác thực với Azure SQL mà không cần thông tin xác thực do ứng dụng quản lý. Azure SQL hỗ trợ tạo người dùng cơ sở dữ liệu chứa cho managed identity bằng cách sử dụng `CREATE USER. FROM EXTERNAL PROVIDER`, sau đó có thể cấp các quyền cơ sở dữ liệu cần thiết.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953053739-3seza5on.png",
+    "sourceTitle": "Examcademy AZ-500 Question 313",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/313-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-314",
+    "questionNumber": 314,
+    "text": "You have an Azure subscription containing a web app named App1. App1 delivers product images and videos to users. Users reach App1 by using the URL `HTTPS://app1.contoso.com`.  \n  \nYou deploy two server pools named Pool1 and Pool2. Pool1 hosts product images, and Pool2 hosts product videos.  \n  \nYou need to optimize App1 performance. The solution must meet these requirements:  \n  \n- Minimize the performance effect of TLS connections on Pool1 and Pool2.  \n- Route user requests to the server pools according to the requested URL path.  \n  \nWhat should you include in the solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Bastion"
+      },
+      {
+        "key": "B",
+        "text": "Azure Front Door"
+      },
+      {
+        "key": "C",
+        "text": "Azure Traffic Manager"
+      },
+      {
+        "key": "D",
+        "text": "Azure Application Gateway"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Azure Front Door giảm tải các kết nối TLS của máy khách tại các điểm hiện diện ở biên và áp dụng các quy tắc định tuyến phù hợp với đường dẫn URL, chuyển tiếp từng yêu cầu đến nhóm gốc thích hợp. Điều này làm giảm công việc xử lý TLS trên nhóm máy chủ hình ảnh và video trong khi vẫn cho phép định tuyến dựa trên đường dẫn.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 314",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/314-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-315",
+    "questionNumber": 315,
+    "text": "You have the Azure key vaults shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953206719-1aecw9ce.png)  \n  \nKV1 contains a secret named Secret1 and a key for a managed storage account named Key1. You back up Secret1 and Key1.  \n  \nIdentify the key vaults to which you can restore each backup.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Bản sao lưu Key Vault phải được khôi phục vào vault trong cùng một đăng ký và địa lý Azure làm nguồn của nó. Đông Hoa Kỳ và Tây Hoa Kỳ nằm trong khu vực địa lý của Hoa Kỳ, vì vậy các kho lưu trữ Subscription1 KV1, KV2 và KV3 là các điểm đến hợp lệ. KV4 và KV5 nằm trong Subscription2 nên chúng không hợp lệ để sao lưu.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953206719-1aecw9ce.png",
+    "sourceTitle": "Examcademy AZ-500 Question 315",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/315-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-316",
+    "questionNumber": 316,
+    "text": "You have an Azure subscription named Subscription1 that contains the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953217583-6769vock.png)  \n  \nYou need to determine which initiatives and policies can be added to Subscription1 by using Azure Security Center.  \n  \nWhat should you identify?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Policy1 and Policy2 only"
+      },
+      {
+        "key": "B",
+        "text": "Initiative1 only"
+      },
+      {
+        "key": "C",
+        "text": "Initiative1 and Initiative2 only"
+      },
+      {
+        "key": "D",
+        "text": "Initiative1, Initiative2, Policy1, and Policy2"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Trung tâm Bảo mật Azure hỗ trợ đưa vào các định nghĩa sáng kiến ​​Chính sách Azure tùy chỉnh, là tập hợp các định nghĩa chính sách. Không thể thêm trực tiếp các định nghĩa chính sách độc lập thông qua trải nghiệm sáng kiến ​​tùy chỉnh và danh mục sáng kiến ​​là siêu dữ liệu chứ không phải là hạn chế về tính đủ điều kiện. Vì vậy, cả hai định nghĩa sáng kiến ​​đều có thể được thêm vào.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953217583-6769vock.png",
+    "sourceTitle": "Examcademy AZ-500 Question 316",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/316-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-317",
+    "questionNumber": 317,
+    "text": "You have been tasked with enabling Advanced Threat Protection for an Azure SQL Database server.  \n  \nAdvanced Threat Protection must be configured to identify all threat-detection types.  \n  \nWhich of the following occurs when an application generates a faulty SQL statement in the database?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "A Potential SQL injection alert is triggered."
+      },
+      {
+        "key": "B",
+        "text": "A Vulnerability to SQL injection alert is triggered."
+      },
+      {
+        "key": "C",
+        "text": "An Access from a potentially harmful application alert is triggered."
+      },
+      {
+        "key": "D",
+        "text": "A Brute force SQL credentials alert is triggered."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Câu lệnh SQL bị lỗi do ứng dụng tạo ra cho biết có thể có lỗ hổng chèn SQL, thường do cấu trúc truy vấn bị lỗi hoặc đầu vào không được chuẩn hóa. Bộ bảo vệ Microsoft dành cho SQL phân loại tình trạng này dưới dạng cảnh báo lỗ hổng bảo mật SQL; Thay vào đó, một cảnh báo tiềm ẩn về việc tiêm SQL cho biết nỗ lực đang hoạt động nhằm khai thác một ứng dụng dễ bị tấn công đã được xác định.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 317",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/317-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-318",
+    "questionNumber": 318,
+    "text": "You have 20 Azure subscriptions and a security group named Group1. The subscriptions are child resources of the root management group.  \n  \nEvery subscription contains a resource group named RG1.  \n  \nEnsure that RG1 in every subscription meets these requirements:  \n  \n- Members of Group1 receive the Owner role.  \n- Changes to permissions for RG1 are prevented.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Bản thiết kế Azure có thể bao gồm cấu phần phần mềm gán vai trò RBAC cho một nhóm tài nguyên và có thể được sử dụng nhất quán trên các đăng ký. Nhiệm vụ Blueprint được định cấu hình với chế độ khóa sẽ tạo ra nhiệm vụ từ chối Azure RBAC, ngăn chặn các hành động được bảo vệ—bao gồm cả thay đổi quyền—được thực hiện ngay cả bởi một hiệu trưởng được ủy quyền khác. Bản thiết kế Azure sắp ngừng hoạt động nhưng đây là chức năng chính xác trong số các lựa chọn được liệt kê.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 318",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/318-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-319",
+    "questionNumber": 319,
+    "text": "HOTSPOT -  \n  \nYou have the Azure Information Protection labels shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783952070839-x5gcfqpi.png)  \n  \nYou have the Azure Information Protection policies shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783952073037-4cdyvul4.png)  \n  \nYou need to determine how Azure Information Protection will label files. Identify the appropriate results.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các điều kiện phân loại tự động trong Azure Information Protection/Microsoft Purview so sánh chuỗi điều kiện với nội dung tài liệu bằng cách sử dụng cài đặt phân biệt chữ hoa chữ thường được định cấu hình của nhãn: Nhãn1 yêu cầu khớp chính xác với chữ \"Trắng\" và Nhãn2 khớp với \"Đen\" bất kể chữ hoa chữ thường. Tự động ghi nhãn chỉ đánh giá nội dung bên trong các ứng dụng Office được hỗ trợ (Word, Excel, PowerPoint, Outlook); các tệp văn bản thuần túy được tạo trong Notepad hoàn toàn không được xử lý bởi công cụ phân loại, do đó nhãn no luôn tự động được áp dụng cho chúng ngay cả khi văn bản phù hợp với một điều kiện.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783952070839-x5gcfqpi.png",
+    "sourceTitle": "Examcademy AZ-500 Question 319",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/319-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-320",
+    "questionNumber": 320,
+    "text": "You have an Azure subscription containing a resource group named RG1 and the identities shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957573460-apvxf41m.png)  \n  \nYou assign the Contributor role for RG1 to Group4.  \n  \nWhich identities can be added as members of Group4?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "User1 only"
+      },
+      {
+        "key": "B",
+        "text": "User1 and Group3 only"
+      },
+      {
+        "key": "C",
+        "text": "User1, Group1, and Group3 only"
+      },
+      {
+        "key": "D",
+        "text": "User1, Group2, and Group3 only"
+      },
+      {
+        "key": "E",
+        "text": "User1, Group1, Group2, and Group3"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Group4 là nhóm bảo mật Microsoft Entra có thể gán vai trò vì các vai trò Azure AD có thể được gán cho nhóm đó. Việc lồng nhóm không được hỗ trợ cho các nhóm được gán vai trò, do đó không thể thêm Group1, Group2 và Group3 vào Group4. Người dùng có thể là thành viên của nhóm; do đó, chỉ có thể thêm Người dùng1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957573460-apvxf41m.png",
+    "sourceTitle": "Examcademy AZ-500 Question 320",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/320-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-321",
+    "questionNumber": 321,
+    "text": "You have an Azure subscription that uses Microsoft Defender for Cloud.  \n  \nYou have an Amazon Web Services (AWS) account.  \n  \nYou need to ensure that, when you deploy a new AWS Elastic Compute Cloud (EC2) instance, the Microsoft Defender for Servers agent is installed automatically.  \n  \nWhat should you configure first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the classic cloud connector"
+      },
+      {
+        "key": "B",
+        "text": "the Azure Monitor agent"
+      },
+      {
+        "key": "C",
+        "text": "the Log Analytics agent"
+      },
+      {
+        "key": "D",
+        "text": "the native cloud connector"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Trình kết nối đám mây AWS gốc là kết nối bắt buộc giữa tài khoản AWS và Microsoft Defender for Cloud. Cấu hình Defender for Servers của nó hỗ trợ tự động triển khai các phiên bản EC2, bao gồm cả việc cung cấp tác nhân Azure Arc, cho phép bảo vệ Defender for Servers. Tác nhân Azure Monitor và tác nhân Log Analytics không được sử dụng để thiết lập tích hợp AWS này; tác nhân Log Analytics đã ngừng hoạt động đối với Defender for Servers.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 321",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/321-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-322",
+    "questionNumber": 322,
+    "text": "You have an Azure subscription containing a resource group named RG1 and the network security groups (NSGs) shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960399249-lc0pn5d7.png)  \n  \nYou create and assign the Azure Policy shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783960407345-azkrhi4i.png)  \n  \nWhat will the flow log status be for NSG1 and NSG2 after the Azure Policy is assigned?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Flow logs will be enabled for NSG1 only."
+      },
+      {
+        "key": "B",
+        "text": "Flow logs will be enabled for NSG2 only."
+      },
+      {
+        "key": "C",
+        "text": "Flow logs will be enabled for NSG1 and NSG2."
+      },
+      {
+        "key": "D",
+        "text": "Flow logs will be disabled for NSG1 and NSG2."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "NSG1 bị loại trừ khỏi phạm vi chuyển nhượng và không được chính sách đánh giá. NSG2 được đánh giá, nhưng hiệu ứng Kiểm tra chỉ ghi lại sự không tuân thủ và không làm thay đổi cấu hình tài nguyên hoặc tạo ra hoạt động triển khai khắc phục. Do đó, cả NSG đều không bật nhật ký luồng và cả hai vẫn bị tắt.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783960399249-lc0pn5d7.png",
+    "sourceTitle": "Examcademy AZ-500 Question 322",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/322-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-323",
+    "questionNumber": 323,
+    "text": "Your company's Azure subscription contains an Azure Log Analytics workspace.  \n  \nYour company has one hundred on-premises servers running either Windows Server 2012 R2 or Windows Server 2016 that are connected to the Azure Log Analytics workspace. The workspace is configured to collect security-related performance counters from these connected servers.  \n  \nYou are responsible for configuring alerts based on the information collected by the Azure Log Analytics workspace.  \n  \nYou must ensure that alert rules support dimensions and that alert-creation time is minimized. In addition, a single alert notification must be generated when the alert is created and when it is resolved.  \n  \nYou need to use the required signal type when creating the alert rules.  \n  \nWhich of the following options should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "You should make use of the Activity log signal type."
+      },
+      {
+        "key": "B",
+        "text": "You should make use of the Application Log signal type."
+      },
+      {
+        "key": "C",
+        "text": "You should make use of the Metric signal type."
+      },
+      {
+        "key": "D",
+        "text": "You should make use of the Audit Log signal type."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Quy tắc cảnh báo số liệu Azure Monitor hỗ trợ thứ nguyên, cho phép giám sát chuỗi thời gian số liệu cụ thể thay vì chỉ các giá trị tổng hợp. Cảnh báo số liệu có thể có trạng thái, do đó chúng sẽ gửi thông báo khi điều kiện kích hoạt và thông báo đã giải quyết khi điều kiện đó được xóa. Điều này làm cho loại tín hiệu Số liệu phù hợp để cảnh báo bộ đếm hiệu suất với các yêu cầu về thông báo kích thước và độ phân giải.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 323",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/323-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-324",
+    "questionNumber": 324,
+    "text": "You have an Azure subscription named Sub1 that contains an Azure Storage account named contosostorage1 and an Azure key vault named Contosokeyvault1.  \n  \nYou plan to create an Azure Automation runbook that will rotate the keys of contosostorage1 and store them in Contosokeyvault1.  \n  \nYou need to implement prerequisites to ensure that you can implement the runbook.  \n  \nWhich three actions should you perform in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Run Set-AzKeyVaultAccessPolicy."
+      },
+      {
+        "key": "B",
+        "text": "Create an Azure Automation account."
+      },
+      {
+        "key": "C",
+        "text": "Import PowerShell modules to the Azure Automation account."
+      },
+      {
+        "key": "D",
+        "text": "Create a user-assigned managed identity."
+      },
+      {
+        "key": "E",
+        "text": "Create a connection resource in the Azure Automation account."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Run Set-AzKeyVaultAccessPolicy."
+      },
+      {
+        "key": "B",
+        "text": "Create an Azure Automation account."
+      },
+      {
+        "key": "C",
+        "text": "Import PowerShell modules to the Azure Automation account."
+      },
+      {
+        "key": "D",
+        "text": "Create a user-assigned managed identity."
+      },
+      {
+        "key": "E",
+        "text": "Create a connection resource in the Azure Automation account."
+      }
+    ],
+    "correctAnswers": [
+      "step1=B",
+      "step2=C",
+      "step3=A"
+    ],
+    "explanation": "Tài khoản Tự động hóa phải được tạo trước khi có thể nhập mô-đun vào đó. Mô-đun PowerShell cung cấp các lệnh ghép ngắn Storage và Key Vault mà runbook cần. Set-AzKeyVaultAccessPolicy cấp cho danh tính Run As của tài khoản Tự động hóa quyền truy cập cần thiết vào kho khóa. Tài nguyên kết nối hoặc danh tính do người dùng chỉ định riêng biệt là không cần thiết cho thiết kế này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 324",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/324-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-325",
+    "questionNumber": 325,
+    "text": "You need to implement the planned changes for OU2 and User1. Which tools should you use?  \n  \nEach tool can be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "ou2",
+        "text": "OU2:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "user1",
+        "text": "User1:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "The Azure portal"
+      },
+      {
+        "key": "B",
+        "text": "Azure AD Connect"
+      },
+      {
+        "key": "C",
+        "text": "The Active Directory admin center"
+      },
+      {
+        "key": "D",
+        "text": "Active Directory Sites and Services"
+      },
+      {
+        "key": "E",
+        "text": "Active Directory Users and Computers"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "The Azure portal"
+      },
+      {
+        "key": "B",
+        "text": "Azure AD Connect"
+      },
+      {
+        "key": "C",
+        "text": "The Active Directory admin center"
+      },
+      {
+        "key": "D",
+        "text": "Active Directory Sites and Services"
+      },
+      {
+        "key": "E",
+        "text": "Active Directory Users and Computers"
+      }
+    ],
+    "correctAnswers": [
+      "ou2=B",
+      "user1=A"
+    ],
+    "explanation": "Azure AD Connect định cấu hình phạm vi đồng bộ hóa, bao gồm lọc dựa trên OU, giữa Active Directory và Microsoft Entra ID tại chỗ. Tư cách thành viên nhóm đám mây có thể được quản lý trong trung tâm quản trị Microsoft Entra thông qua cổng Azure.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 325",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/325-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-326",
+    "questionNumber": 326,
+    "text": "You have an Azure subscription containing the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957473757-uvtbz55z.png)  \n  \nVNET1, VNET2, and VNET3 are peered with one another.  \n  \nYou perform these actions:  \n  \n- Create two application security groups named ASG1 and ASG2 in the West US region.  \n- Add VM1’s network interface to ASG1.  \n  \nThe network interfaces of which virtual machines can be added to ASG1 and ASG2?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Tất cả các giao diện mạng trong nhóm bảo mật ứng dụng phải nằm trong cùng một mạng ảo và ASG phải ở cùng khu vực với các giao diện. ASG1 đã có VM1 trong VNET1 ở Tây Hoa Kỳ, vì vậy chỉ có thể thêm VM2, cũng có trong VNET1 và Tây Hoa Kỳ. ASG2 trống nên nó có thể chứa các giao diện Tây Mỹ của VM1, VM2 và VM4; VM3 bị loại trừ vì nó nằm ở miền Trung Hoa Kỳ. VNet peering không làm cho các VNet riêng biệt đủ điều kiện cùng tồn tại trong cùng một ASG.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957473757-uvtbz55z.png",
+    "sourceTitle": "Examcademy AZ-500 Question 326",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/326-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-327",
+    "questionNumber": 327,
+    "text": "You have a Microsoft 365 tenant that uses an Azure Active Directory (Azure AD) tenant. The Azure AD tenant synchronizes with an on-premises Active Directory domain by using an Azure AD Connect instance.  \n  \nYou create a new Azure subscription.  \n  \nYou discover that the synchronized on-premises user accounts cannot be assigned roles in the new subscription.  \n  \nYou need to ensure that you can assign Azure and Microsoft 365 roles to the synchronized Azure AD user accounts.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure the Azure AD tenant used by the new subscription to use pass-through authentication."
+      },
+      {
+        "key": "B",
+        "text": "Configure the Azure AD tenant used by the new subscription to use federated authentication."
+      },
+      {
+        "key": "C",
+        "text": "Change the Azure AD tenant used by the new subscription."
+      },
+      {
+        "key": "D",
+        "text": "Configure a second instance of Azure AD Connect."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Đăng ký Azure tin tưởng một đối tượng thuê Microsoft Entra ID để xác thực, ủy quyền và nhận dạng Azure RBAC. Việc liên kết gói đăng ký với đối tượng thuê Azure AD được đồng bộ hóa với miền Active Directory tại chỗ giúp các tài khoản người dùng được đồng bộ hóa sẵn sàng cho các nhiệm vụ gán vai trò Azure trong khi vẫn giữ lại danh tính thư mục Microsoft 365 của họ. Xác thực chuyển tiếp, liên kết và máy chủ Azure AD Connect khác không thay đổi đối tượng thuê được liên kết với đăng ký.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 327",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/327-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-329",
+    "questionNumber": 329,
+    "text": "You have an Azure AD tenant named contoso.com that contains the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957573990-y8w0h7vt.png)  \n  \nYou add enterprise applications to contoso.com as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957575991-bwgs93m2.png)  \n  \nYou need to identify which users can grant admin consent for App1 and App2.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Quản trị viên ứng dụng có thể cấp sự đồng ý cho các ứng dụng doanh nghiệp. Chủ sở hữu ứng dụng doanh nghiệp có cùng quyền đối với ứng dụng đó. Do đó, Người dùng1 và Người dùng3 có thể cấp sự đồng ý cho Ứng dụng1, trong khi Người dùng1 và Người dùng4 có thể cấp sự đồng ý cho Ứng dụng2. Việc gán ứng dụng và các vai trò được liệt kê khác không cấp quyền này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957573990-y8w0h7vt.png",
+    "sourceTitle": "Examcademy AZ-500 Question 329",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/329-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-330",
+    "questionNumber": 330,
+    "text": "You have an Azure Storage account containing a blob container named container1 and a client application named App1.  \n  \nYou need to allow App1 to access container1 by using Azure Active Directory (Azure AD) authentication.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Việc đăng ký ứng dụng sẽ tạo ra ứng dụng/service principal mà Microsoft Entra ID có thể xác thực. Sau đó, Azure Storage ủy quyền cho nguyên tắc bảo mật đó thông qua vai trò truy cập dữ liệu Azure RBAC, chẳng hạn như Trình đọc dữ liệu Storage Blob hoặc Người đóng góp dữ liệu Storage Blob, được chỉ định ở phạm vi vùng chứa hoặc tài khoản lưu trữ thông qua Kiểm soát truy cập (IAM).",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 330",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/330-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-331",
+    "questionNumber": 331,
+    "text": "You have an Azure subscription that uses Microsoft Defender for Cloud. The subscription includes an Azure Database for PostgreSQL instance.  \n  \nYou need to make sure an email alert is triggered when a suspected brute-force attack against the database is detected. The solution must minimize administrative effort.  \n  \nWhat should you configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the Azure Monitor activity log"
+      },
+      {
+        "key": "B",
+        "text": "an Azure Monitor alert rule"
+      },
+      {
+        "key": "C",
+        "text": "Microsoft Defender for open-source relational databases"
+      },
+      {
+        "key": "D",
+        "text": "the PostgreSQL Audit extension (pgAudit)"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Bộ bảo vệ Microsoft dành cho cơ sở dữ liệu quan hệ nguồn mở cung cấp khả năng phát hiện mối đe dọa tích hợp cho Cơ sở dữ liệu Azure cho PostgreSQL, bao gồm các cuộc tấn công bạo lực bị nghi ngờ và đưa ra cảnh báo của Bộ bảo vệ cho đám mây bằng thông báo qua email. Điều này tránh việc tạo và duy trì logic giám sát tùy chỉnh hoặc cảnh báo dựa trên kiểm tra.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 331",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/331-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-333",
+    "questionNumber": 333,
+    "text": "You have a hybrid Azure Active Directory (Azure AD) configuration with Single Sign-On (SSO) enabled. An Azure SQL Database instance is configured to support Azure AD authentication.  \n  \nDatabase developers must connect to the database instance from a domain-joined device and authenticate by using their on-premises Active Directory account.  \n  \nYou need to ensure that developers can connect to the instance by using Microsoft SQL Server Management Studio. The solution must minimize authentication prompts.  \n  \nWhich authentication method should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Active Directory - Password"
+      },
+      {
+        "key": "B",
+        "text": "Active Directory - Universal with MFA support"
+      },
+      {
+        "key": "C",
+        "text": "SQL Server Authentication"
+      },
+      {
+        "key": "D",
+        "text": "Active Directory - Integrated"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Xác thực Microsoft Entra Integrated (trước đây là Active Directory - Integrated) sử dụng thông tin xác thực miền của người dùng Windows đã đăng nhập trong môi trường nhận dạng kết hợp. Nó hỗ trợ đăng nhập một lần vào Azure SQL Database từ một thiết bị đã tham gia miền, tránh việc nhập tên người dùng/mật khẩu riêng biệt và giảm thiểu các lời nhắc xác thực tương tác.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 333",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/333-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-334",
+    "questionNumber": 334,
+    "text": "You have an Azure Storage account named storage1 and an Azure virtual machine named VM1. VM1 has a premium SSD managed disk.  \n  \nYou need to enable Azure Disk Encryption for VM1.  \n  \nWhich three actions should you perform, in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Run the Set-AzVMDiskEncryptionExtension cmdlet."
+      },
+      {
+        "key": "B",
+        "text": "Set the Key Vault access policy to Enable access to Azure Virtual Machines for deployment."
+      },
+      {
+        "key": "C",
+        "text": "Set the Key Vault access policy to Enable access to Azure Disk Encryption for volume encryption."
+      },
+      {
+        "key": "D",
+        "text": "Generate a key vault certificate."
+      },
+      {
+        "key": "E",
+        "text": "Create an Azure key vault."
+      },
+      {
+        "key": "F",
+        "text": "Configure storage1 to use a customer-managed key."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Run the Set-AzVMDiskEncryptionExtension cmdlet."
+      },
+      {
+        "key": "B",
+        "text": "Set the Key Vault access policy to Enable access to Azure Virtual Machines for deployment."
+      },
+      {
+        "key": "C",
+        "text": "Set the Key Vault access policy to Enable access to Azure Disk Encryption for volume encryption."
+      },
+      {
+        "key": "D",
+        "text": "Generate a key vault certificate."
+      },
+      {
+        "key": "E",
+        "text": "Create an Azure key vault."
+      },
+      {
+        "key": "F",
+        "text": "Configure storage1 to use a customer-managed key."
+      }
+    ],
+    "correctAnswers": [
+      "step1=E",
+      "step2=C",
+      "step3=A"
+    ],
+    "explanation": "Azure Disk Encryption lưu trữ các bí mật mã hóa của nó trong Azure Key Vault. Tạo vault, kích hoạt tính năng mã hóa ổ đĩa, sau đó sử dụng Set-AzVMDiskEncryptionExtension để kích hoạt tính năng mã hóa trên ổ đĩa được quản lý gắn với VM1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 334",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/334-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-335",
+    "questionNumber": 335,
+    "text": "You have an Azure subscription that includes a managed identity named Identity1 and the Azure key vaults shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957436149-g05p4wbh.png)  \n  \nKeyVault1 has an access policy that grants Identity1 these key permissions:  \n  \n- Get  \n- List  \n- Wrap  \n- Unwrap  \n  \nYou need to grant Identity1 the same permissions for KeyVault2. The solution must follow the principle of least privilege.  \n  \nWhich role should you assign to Identity1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Key Vault Crypto Service Encryption User"
+      },
+      {
+        "key": "B",
+        "text": "Key Vault Crypto User"
+      },
+      {
+        "key": "C",
+        "text": "Key Vault Reader"
+      },
+      {
+        "key": "D",
+        "text": "Key Vault Crypto Officer"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Vai trò **Người dùng mã hóa dịch vụ tiền điện tử Key Vault** cho phép đọc siêu dữ liệu khóa và thực hiện các thao tác bọc và mở khóa trong vault sử dụng Azure RBAC. Điều này tương ứng với các quyền khóa Nhận, Liệt kê, Gói và Mở gói trong khi tránh các khả năng quản lý khóa và mật mã bổ sung được cấp bởi các vai trò rộng hơn. Ánh xạ chính sách truy cập tới RBAC của Microsoft ánh xạ cụ thể các quyền này tới vai trò này.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957436149-g05p4wbh.png",
+    "sourceTitle": "Examcademy AZ-500 Question 335",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/335-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-336",
+    "questionNumber": 336,
+    "text": "Solution: You recommend using federation with Active Directory Federation Services (AD FS).  \n  \nDoes this solution meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Liên kết AD FS xác thực người dùng thông qua cơ sở hạ tầng nhận dạng tại chỗ, cho phép thực thi các hạn chế đăng nhập và mật khẩu Active Directory. Tuy nhiên, liên kết yêu cầu cơ sở hạ tầng AD FS bổ sung và cơ sở hạ tầng proxy truy cập bên ngoài thông thường, do đó, việc liên kết này không làm giảm số lượng máy chủ cần thiết.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 336",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/336-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-337",
+    "questionNumber": 337,
+    "text": "Solution: You recommend using pass-through authentication and seamless SSO together with password hash synchronization.  \n  \nDoes this solution meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Xác thực chuyển tiếp thực thi các chính sách tài khoản Active Directory tại chỗ khi đăng nhập, bao gồm các tài khoản bị vô hiệu hóa hoặc bị khóa, hết hạn mật khẩu và số giờ đăng nhập được phép. Nó có thể được kết hợp với SSO liền mạch và đồng bộ hóa băm mật khẩu có thể được bật để sao lưu hoặc hỗ trợ các tính năng trong khi xác thực chuyển tiếp vẫn là phương thức đăng nhập chính. Điều này tránh việc triển khai cơ sở hạ tầng liên kết AD FS riêng biệt.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 337",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/337-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-338",
+    "questionNumber": 338,
+    "text": "Solution: You recommend using password hash synchronization and seamless SSO.  \n  \nDoes this solution meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Đồng bộ hóa băm mật khẩu thực hiện xác thực trong Microsoft Entra ID thay vì dựa trên Active Directory tại chỗ. SSO liền mạch chỉ cung cấp tính năng đăng nhập tự động cho các thiết bị công ty đủ điều kiện; nó không khiến các giới hạn đăng nhập của người dùng Active Directory được đánh giá để xác thực đám mây. Do đó, cấu hình này không thể đảm bảo rằng cả chính sách mật khẩu và giới hạn đăng nhập của người dùng đều ảnh hưởng đến tài khoản được đồng bộ hóa.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 338",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/338-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-340",
+    "questionNumber": 340,
+    "text": "You have an Azure subscription containing the following resources:  \n  \n- A virtual network named VNET1 with two subnets, Subnet1 and Subnet2.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783954793749-29h7eacz.png)  \n  \n- A virtual machine named VM1 that has only a private IP address and is connected to Subnet1.  \n  \nYou need to make sure Remote Desktop connections to VM1 can be established from the internet.  \n  \nWhich three actions should you carry out, in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Slot 1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "slot2",
+        "text": "Slot 2:",
+        "correctAnswer": "F"
+      },
+      {
+        "id": "slot3",
+        "text": "Slot 3:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure a network security group (NSG)."
+      },
+      {
+        "key": "B",
+        "text": "Create a network rule collection."
+      },
+      {
+        "key": "C",
+        "text": "Create a NAT rule collection."
+      },
+      {
+        "key": "D",
+        "text": "Create a new subnet."
+      },
+      {
+        "key": "E",
+        "text": "Deploy Azure Application Gateway."
+      },
+      {
+        "key": "F",
+        "text": "Deploy Azure Firewall."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Configure a network security group (NSG)."
+      },
+      {
+        "key": "B",
+        "text": "Create a network rule collection."
+      },
+      {
+        "key": "C",
+        "text": "Create a NAT rule collection."
+      },
+      {
+        "key": "D",
+        "text": "Create a new subnet."
+      },
+      {
+        "key": "E",
+        "text": "Deploy Azure Application Gateway."
+      },
+      {
+        "key": "F",
+        "text": "Deploy Azure Firewall."
+      }
+    ],
+    "correctAnswers": [
+      "slot1=D",
+      "slot2=F",
+      "slot3=C"
+    ],
+    "explanation": "Azure Firewall yêu cầu mạng con chuyên dụng có tên AzureFirewallSubnet, do đó mạng con đó được tạo trước khi tường lửa được triển khai. Sau đó, bộ sưu tập quy tắc NAT Azure Firewall chứa quy tắc DNAT chuyển IP công cộng của tường lửa và cổng TCP 3389 sang IP riêng của VM1, cho phép RDP gửi đến. Bộ sưu tập quy tắc mạng không cung cấp ánh xạ DNAT gửi đến.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783954793749-29h7eacz.png",
+    "sourceTitle": "Examcademy AZ-500 Question 340",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/340-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-341",
+    "questionNumber": 341,
+    "text": "You have a management group named Group1 that contains an Azure subscription named sub1. Sub1 has a subscription ID of 11111111-1234-1234-1234-1111111111.  \n  \nYou need to create a custom Azure role-based access control (RBAC) role that delegates permissions to manage tags on every object in Group1.  \n  \nWhat should be included in the Role1 role definition?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Hoạt động thẻ thuộc về nhà cung cấp Microsoft.Resources. Vai trò tùy chỉnh có thể được chỉ định ở phạm vi nhóm quản lý Group1 có thể được chỉ định cho các tài nguyên trong nhóm quản lý đó và đăng ký con cháu của nó, trong khi phạm vi sub1 sẽ không bao gồm toàn bộ hệ thống phân cấp của nhóm quản lý.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 341",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/341-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-342",
+    "questionNumber": 342,
+    "text": "You must ensure that the Azure AD application-registration and consent configurations meet the identity and access requirements.  \n  \nWhat should you use in the Azure portal?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Microsoft Entra ID Cài đặt người dùng bao gồm kiểm soát xem người dùng có thể đăng ký ứng dụng hay không. Cấu hình sự đồng ý của người dùng được quản lý trong ứng dụng Doanh nghiệp trong Cài đặt người dùng, nơi quản trị viên định cấu hình khả năng đồng ý của người dùng đối với ứng dụng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 342",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/342-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-344",
+    "questionNumber": 344,
+    "text": "You have a Microsoft Entra tenant that uses Microsoft Entra Permissions Management and includes the accounts shown in the following table:  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966710640-we6mo6zs.png)  \n  \nWhich accounts are listed as assigned to highly privileged roles on the Azure AD insights tab in the Entra Permissions Management portal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Admin1 only"
+      },
+      {
+        "key": "B",
+        "text": "Admin2 and Admin3 only"
+      },
+      {
+        "key": "C",
+        "text": "Admin2 and Admin4 only"
+      },
+      {
+        "key": "D",
+        "text": "Admin1, Admin2, and Admin3 only"
+      },
+      {
+        "key": "E",
+        "text": "Admin2, Admin3, and Admin4 only"
+      },
+      {
+        "key": "F",
+        "text": "Admin1, Admin2, Admin3, and Admin4"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Tab Microsoft Entra Insights xem xét riêng các nhiệm vụ của Quản trị viên toàn cầu. Quá trình đánh giá vai trò có đặc quyền cao của nó bao gồm các vai trò Quản trị viên vai trò đặc quyền và Quản trị viên Exchange, do đó bao gồm cả Admin2 và Admin4. Quản trị viên xác thực đặc quyền không có trong danh sách vai trò có đặc quyền cao được tuyển chọn đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783966710640-we6mo6zs.png",
+    "sourceTitle": "Examcademy AZ-500 Question 344",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/344-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-345",
+    "questionNumber": 345,
+    "text": "You have an Azure subscription containing a resource group named RG1 and the network security groups (NSGs) shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957437267-ae13jak7.png)  \n  \nYou create the Azure Policy shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957443479-876fskan.png)  \n  \nYou assign the policy to RG1.  \n  \nWhat happens to NSG1 and NSG2 when the policy is assigned?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Flow logs will be enabled for NSG2 only."
+      },
+      {
+        "key": "B",
+        "text": "Flow logs will be disabled for NSG1 and NSG2."
+      },
+      {
+        "key": "C",
+        "text": "Flow logs will be enabled for NSG1 and NSG2."
+      },
+      {
+        "key": "D",
+        "text": "Flow logs will be enabled for NSG1 only."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "NSG1 được loại trừ khỏi việc chuyển nhượng chính sách. NSG2 được đánh giá, nhưng hiệu ứng **Kiểm tra** Chính sách Azure chỉ ghi lại sự không tuân thủ và không thay đổi cấu hình tài nguyên. Do đó, nó không thể kích hoạt nhật ký luồng. Vì nhật ký luồng ban đầu bị tắt đối với cả hai NSG nên chúng vẫn bị tắt.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957437267-ae13jak7.png",
+    "sourceTitle": "Examcademy AZ-500 Question 345",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/345-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-346",
+    "questionNumber": 346,
+    "text": "Your company uses Azure DevOps.  \n  \nYou need to recommend a way to validate that code satisfies the company's quality and code-review standards.  \n  \nWhat should you recommend implementing in Azure DevOps?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "branch folders"
+      },
+      {
+        "key": "B",
+        "text": "branch permissions"
+      },
+      {
+        "key": "C",
+        "text": "branch policies"
+      },
+      {
+        "key": "D",
+        "text": "branch locking"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Chính sách chi nhánh Azure DevOps thực thi các tiêu chuẩn quản lý thay đổi và chất lượng mã đối với các yêu cầu kéo. Họ có thể yêu cầu xác thực bản dựng và số lượng phê duyệt tối thiểu của người đánh giá trước khi mã có thể hợp nhất vào một nhánh được bảo vệ.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 346",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/346-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-347",
+    "questionNumber": 347,
+    "text": "Your company’s Azure subscription contains Windows Server 2016 Azure virtual machines.  \n  \nYou are told that every virtual machine must have a custom antimalware virtual-machine extension installed. You are writing the required code for a policy to help accomplish this.  \n  \nWhich of the following effects must be included in your code?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Disabled"
+      },
+      {
+        "key": "B",
+        "text": "Modify"
+      },
+      {
+        "key": "C",
+        "text": "AuditIfNotExists"
+      },
+      {
+        "key": "D",
+        "text": "DeployIfNotExists"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Hiệu ứng Chính sách Azure `DeployIfNotExists` triển khai một mẫu khi tài nguyên liên quan được yêu cầu không tồn tại, cho phép cài đặt tiện ích mở rộng VM chống phần mềm độc hại trên các máy ảo thiếu nó. Chính sách tích hợp của Microsoft triển khai tiện ích mở rộng IaaSAntimalware mặc định cho Windows Server cũng sử dụng `deployIfNotExists`.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 347",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/347-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-348",
+    "questionNumber": 348,
+    "text": "You have an Azure subscription that includes the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953372594-w9biztw5.png)  \n  \nYou plan to enable Azure Defender for the subscription. Which resources can Azure Defender protect?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VM1, VNET1, storage1, and Vault1"
+      },
+      {
+        "key": "B",
+        "text": "VM1, VNET1, and storage1 only"
+      },
+      {
+        "key": "C",
+        "text": "VM1, storage1, and Vault1 only"
+      },
+      {
+        "key": "D",
+        "text": "VM1 and VNET1 only"
+      },
+      {
+        "key": "E",
+        "text": "VM1 and storage1 only"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Microsoft Defender for Cloud cung cấp các gói bảo vệ khối lượng công việc cho máy ảo (Defender for Servers), tài khoản lưu trữ (Defender for Storage) và Azure Key Vault (Defender for Key Vault). Nó không cung cấp gói Azure Defender bảo vệ mạng ảo dưới dạng tài nguyên.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953372594-w9biztw5.png",
+    "sourceTitle": "Examcademy AZ-500 Question 348",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/348-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-349",
+    "questionNumber": 349,
+    "text": "Your network has an on-premises Active Directory domain named corp.contoso.com.  \n  \nYou have an Azure subscription named Sub1 that is associated with an Azure Active Directory (Azure AD) tenant named contoso.com. You synchronize all on-premises identities to Azure AD.  \n  \nYou need to stop users whose `givenName` attribute begins with TEST from being synchronized to Azure AD. The solution must minimize administrative effort.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Synchronization Rules Editor"
+      },
+      {
+        "key": "B",
+        "text": "Web Service Configuration Tool"
+      },
+      {
+        "key": "C",
+        "text": "the Azure AD Connect wizard"
+      },
+      {
+        "key": "D",
+        "text": "Active Directory Users and Computers"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Trình chỉnh sửa quy tắc đồng bộ hóa cho phép Azure AD Connect áp dụng các bộ lọc phạm vi dựa trên thuộc tính, bao gồm các điều kiện tiền tố chuỗi và loại trừ các đối tượng người dùng phù hợp khỏi quá trình đồng bộ hóa bằng cách đặt `cloudFiltered`. Điều này lọc tập trung tất cả người dùng có `givenName` bắt đầu bằng TEST mà không quản lý riêng tài khoản AD của họ.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 349",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/349-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-350",
+    "questionNumber": 350,
+    "text": "You have an Azure subscription named Sub1 that contains the Azure key vaults shown in the following table:  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783952082479-ns67f5qh.png)  \n  \nIn Sub1, you create a virtual machine with the following configuration:  \n  \n- Name: VM1  \n- Size: DS2v2  \n- Resource group: RG1  \n- Region: West Europe  \n- Operating system: Windows Server 2016  \n  \nYou plan to enable Azure Disk Encryption on VM1.  \n  \nIn which key vaults can you store VM1's encryption key?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Vault1 or Vault3 only"
+      },
+      {
+        "key": "B",
+        "text": "Vault1, Vault2, Vault3, or Vault4"
+      },
+      {
+        "key": "C",
+        "text": "Vault1 only"
+      },
+      {
+        "key": "D",
+        "text": "Vault1 or Vault2 only"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Mã hóa đĩa Azure yêu cầu kho khóa và máy ảo phải nằm trong cùng khu vực và đăng ký Azure. VM1 nằm ở Tây Âu trong Sub1, vì vậy Vault1 và Vault3 đủ điều kiện. Kho khóa có thể nằm trong một nhóm tài nguyên khác; Vault2 và Vault4 ở miền Đông Hoa Kỳ và không đủ điều kiện.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783952082479-ns67f5qh.png",
+    "sourceTitle": "Examcademy AZ-500 Question 350",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/350-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-351",
+    "questionNumber": 351,
+    "text": "You create a new Azure subscription associated with a new Azure Active Directory (Azure AD) tenant.  \n  \nYou create an active conditional access policy named Portal Policy to provide access to the Microsoft Azure Management cloud app. The Conditions and Grant settings are configured as shown.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953706758-7n3ojkfq.png)  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953709399-wsy30app.jpg)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Users from the Contoso named location must use multi-factor authentication (MFA) to access the Azure portal.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Users from the Contoso named location must use multi-factor authentication (MFA) to access the web services hosted in the Azure subscription.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Users external to the Contoso named location must use multi-factor authentication (MFA) to access the Azure portal.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "Điều kiện vị trí được đặt tên chỉ bao gồm Contoso và kiểm soát cấp quyền yêu cầu MFA. Quản lý Microsoft Azure bao gồm các tài nguyên quản lý Azure như cổng Azure, vì vậy người dùng trong Contoso phải thực hiện MFA ở đó. Chính sách này không nhắm mục tiêu đến các dịch vụ web tùy ý được lưu trữ trong đăng ký cũng như không khớp với những người dùng bên ngoài vị trí Contoso được bao gồm.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953706758-7n3ojkfq.png",
+    "sourceTitle": "Examcademy AZ-500 Question 351",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/351-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-352",
+    "questionNumber": 352,
+    "text": "You have an Azure subscription named Sub1 that contains an Azure Policy definition called Policy1. Policy1 has these settings:  \n  \n- Definition location: Tenant Root Group  \n- Category: Monitoring  \n  \nYou need to ensure that resources noncompliant with Policy1 are displayed in the Azure Security Center dashboard.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Change the Category of Policy1 to Security Center."
+      },
+      {
+        "key": "B",
+        "text": "Add Policy1 to a custom initiative."
+      },
+      {
+        "key": "C",
+        "text": "Change the Definition location of Policy1 to Sub1."
+      },
+      {
+        "key": "D",
+        "text": "Assign Policy1 to Sub1."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Microsoft Defender for Cloud/Trung tâm bảo mật Azure sử dụng các sáng kiến ​​Chính sách Azure làm tiêu chuẩn bảo mật để đánh giá và trình bày sự tuân thủ. Định nghĩa chính sách tùy chỉnh phải được thêm vào sáng kiến ​​tùy chỉnh trước khi sáng kiến ​​đó có thể được đưa vào và chỉ định cho đăng ký để các tài nguyên không tuân thủ của sáng kiến ​​đó có thể xuất hiện trong bảng điều khiển bảo mật.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 352",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/352-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-353",
+    "questionNumber": 353,
+    "text": "HOTSPOT  \n  \nYou have an Azure subscription containing the following Azure firewall:  \n  \n- Name: Fw1  \n- Azure region: UK West  \n- Private IP address: 10.1.3.4  \n- Public IP address: 23.236.62.147  \n  \nThe subscription includes the virtual networks in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957460149-ssndketk.png)  \n  \nThe subscription includes the subnets in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957464298-d2nay9x1.png)  \n  \nThe subscription includes the routes in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957469782-gartlgx4.png)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Traffic from Subnet1-1 to Subnet1-2 is routed through Fw1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "Traffic from Subnet2-1 to Subnet1-1 is routed through Fw1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Traffic from Subnet3-1 to the internet is routed through Fw1.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "Azure chọn các tuyến từ mạng con nguồn bằng cách sử dụng kết hợp tiền tố dài nhất. Tuyến Vnet1-local cụ thể hơn tuyến 0.0.0.0/0 của Rt1, do đó lưu lượng giữa Subnet1-1 và Subnet1-2 vẫn nằm trong Vnet1. Lưu lượng Vnet2-to-Vnet1 sử dụng tuyến hệ thống VNet peering; Rt2 được liên kết với Subnet1-2 và không thể ảnh hưởng đến lưu lượng truy cập bắt nguồn từ Subnet2-1. Rt4 chỉ áp dụng cho 10.2.1.0/24, do đó, nó không bắt buộc lưu lượng truy cập Internet từ Subnet3-1 đến Fw1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957460149-ssndketk.png",
+    "sourceTitle": "Examcademy AZ-500 Question 353",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/353-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-354",
+    "questionNumber": 354,
+    "text": "You have a web app named WebApp1.  \n  \nYou create a web application firewall (WAF) policy named WAF1.  \n  \nYou need to use WAF1 to protect WebApp1.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Deploy an Azure Front Door."
+      },
+      {
+        "key": "B",
+        "text": "Add an extension to WebApp1."
+      },
+      {
+        "key": "C",
+        "text": "Deploy Azure Firewall."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Chính sách Azure WAF có hiệu lực khi được liên kết với nền tảng phân phối ứng dụng như Azure Front Door. Triển khai Azure Front Door cung cấp liên kết tài nguyên và miền mà qua đó WAF1 có thể bảo vệ WebApp1; Azure Firewall và tiện ích mở rộng ứng dụng không đáp ứng liên kết chính sách WAF đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 354",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/354-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-356",
+    "questionNumber": 356,
+    "text": "You have the Azure virtual machines listed in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953059031-kx5212q4.png)  \n  \nFor which virtual machines can Update Management be enabled?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VM2 and VM3 only"
+      },
+      {
+        "key": "B",
+        "text": "VM2, VM3, and VM4 only"
+      },
+      {
+        "key": "C",
+        "text": "VM1, VM2, and VM4 only"
+      },
+      {
+        "key": "D",
+        "text": "VM1, VM2, VM3, and VM4"
+      },
+      {
+        "key": "E",
+        "text": "VM1, VM2, and VM3 only"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Quản lý cập nhật hỗ trợ Windows Server 2012, Windows Server 2012 R2, Windows Server 2016 và Ubuntu Server 18.04 LTS. Một VM đã dừng có thể được kích hoạt để quản lý, mặc dù việc đánh giá và triển khai cập nhật yêu cầu VM phải chạy.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953059031-kx5212q4.png",
+    "sourceTitle": "Examcademy AZ-500 Question 356",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/356-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-357",
+    "questionNumber": 357,
+    "text": "You have an Azure Storage account named `storage1` that contains a container named `container1`.  \n  \nYou need to stop the blobs in `container1` from being modified.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From container1, change the access level."
+      },
+      {
+        "key": "B",
+        "text": "From container1, add an access policy."
+      },
+      {
+        "key": "C",
+        "text": "From container1, modify the Access Control (IAM) settings."
+      },
+      {
+        "key": "D",
+        "text": "From storage1, enable soft delete for blobs."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Chính sách bất biến Azure Blob Storage thực thi bảo vệ ghi một lần, đọc nhiều (WORM): trong khi nó có hiệu lực, các đốm màu có thể được đọc nhưng không thể sửa đổi hoặc xóa. Chính sách bất biến ở cấp vùng chứa được thêm vào thông qua ngăn chính sách Truy cập của vùng chứa.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 357",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/357-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-358",
+    "questionNumber": 358,
+    "text": "You plan to use Azure Sentinel to create an analytic rule that detects suspicious threats and automates responses. Which components are required for the rule?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Quy tắc phân tích Microsoft Sentinel sử dụng truy vấn Ngôn ngữ truy vấn Kusto (KQL) để đánh giá dữ liệu Log Analytics và tạo ra các phát hiện. Sách hướng dẫn Microsoft Sentinel, được xây dựng trên Ứng dụng Azure Logic, tự động hóa và điều phối các phản hồi đối với các cảnh báo và sự cố.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 358",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/358-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-359",
+    "questionNumber": 359,
+    "text": "You intend to implement JIT VM access.  \n  \nWhich virtual machines are supported?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VM2, VM3, and VM4 only"
+      },
+      {
+        "key": "B",
+        "text": "VM1, VM2, VM3, and VM4"
+      },
+      {
+        "key": "C",
+        "text": "VM1 and VM3 only"
+      },
+      {
+        "key": "D",
+        "text": "VM1 only"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Đối với khả năng truy cập máy ảo JIT lịch sử được thử nghiệm ở đây, các máy được hỗ trợ là máy ảo Windows Server: VM1 và VM3. Các máy ảo Linux, VM2 và VM4, nằm ngoài phạm vi hệ điều hành được hỗ trợ của mục đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 359",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/359-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-360",
+    "questionNumber": 360,
+    "text": "You have an Azure subscription that contains the virtual machines shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953179423-jj393i6v.png)  \n  \nAll of the virtual networks are peered.  \n  \nYou deploy Azure Bastion to VNET2. Which virtual machines can the bastion host protect?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VM1, VM2, VM3, and VM4"
+      },
+      {
+        "key": "B",
+        "text": "VM1, VM2, and VM3 only"
+      },
+      {
+        "key": "C",
+        "text": "VM2 and VM4 only"
+      },
+      {
+        "key": "D",
+        "text": "VM2 only"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Bastion có thể kết nối an toàn với các máy ảo trong mạng ảo nơi nó được triển khai và với các máy ảo trong mạng ảo ngang hàng. Hỗ trợ này bao gồm cả virtual network peering cùng khu vực và virtual network peering toàn cầu trên các khu vực Azure. Do đó, máy chủ trong VNET2 có thể bảo vệ VM2 cục bộ, VM1 và VM3 trong VNET1 và VM4 trong VNET3.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953179423-jj393i6v.png",
+    "sourceTitle": "Examcademy AZ-500 Question 360",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/360-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-361",
+    "questionNumber": 361,
+    "text": "Your company uses Azure DevOps and has configured branch policies.  \n  \nWhich statements about branch policies are **TRUE**? (Choose all that apply.)",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "It enforces your team's change management standards."
+      },
+      {
+        "key": "B",
+        "text": "It controls who can read and update the code in a branch."
+      },
+      {
+        "key": "C",
+        "text": "It enforces your team's code quality."
+      },
+      {
+        "key": "D",
+        "text": "It places a branch into a read-only state."
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "C"
+    ],
+    "explanation": "Chính sách chi nhánh Azure DevOps thực thi các tiêu chuẩn quản lý thay đổi và yêu cầu về chất lượng mã của nhóm bằng cách yêu cầu các điều kiện như đánh giá yêu cầu kéo, bản dựng thành công và kiểm tra trạng thái trước khi các thay đổi có thể hợp nhất. Quyền của chi nhánh—không phải chính sách—kiểm soát ai có thể đọc hoặc cập nhật mã chi nhánh. [Git branch policies and settings - Azure Repos](https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies?view=azure-devops)",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 361",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/361-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-363",
+    "questionNumber": 363,
+    "text": "You must recommend the virtual machines to host App1. The solution has to satisfy the technical requirements for KeyVault1.  \n  \nWhich virtual machines should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VM1 only"
+      },
+      {
+        "key": "B",
+        "text": "VM1, VM2, VM3, and VM4"
+      },
+      {
+        "key": "C",
+        "text": "VM1 and VM2 only"
+      },
+      {
+        "key": "D",
+        "text": "VM1, VM2, and VM4 only"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Có thể truy cập Azure Key Vault private endpoint từ cùng một mạng ảo và từ các mạng ảo ngang hàng trong khu vực hoặc toàn cầu. Lưu lượng giữa các mạng ảo ngang hàng vẫn nằm trên đường trục của Microsoft thay vì truyền qua Internet công cộng, do đó VM1, VM2, VM3 và VM4 đáp ứng yêu cầu về lưu lượng riêng tư.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 363",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/363-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-364",
+    "questionNumber": 364,
+    "text": "You have an Azure subscription associated with an Azure Active Directory (Azure AD) tenant.  \n  \nWhen a developer tries to register an app named App1 in the tenant, the developer receives the error message shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953200078-5u4lwqjx.png)  \n  \nYou need to make sure that the developer can register App1 in the tenant.  \n  \nWhat should you do for the tenant?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Modify the Directory properties."
+      },
+      {
+        "key": "B",
+        "text": "Set Enable Security defaults to Yes."
+      },
+      {
+        "key": "C",
+        "text": "Configure the Consent and permissions settings for enterprise applications."
+      },
+      {
+        "key": "D",
+        "text": "Modify the User settings."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Việc đăng ký ứng dụng của người dùng không có quyền quản trị được kiểm soát bởi **Cài đặt người dùng** của đối tượng thuê, cụ thể là cài đặt **Người dùng có thể đăng ký ứng dụng**. Việc cho phép người dùng đăng ký ứng dụng sẽ cho phép nhà phát triển tạo đăng ký App1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953200078-5u4lwqjx.png",
+    "sourceTitle": "Examcademy AZ-500 Question 364",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/364-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-365",
+    "questionNumber": 365,
+    "text": "You have an Azure Sentinel deployment.  \n  \nYou need to create a scheduled query rule called Rule1.  \n  \nWhat should you use to define the query-rule logic for Rule1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a Transact-SQL statement"
+      },
+      {
+        "key": "B",
+        "text": "a JSON definition"
+      },
+      {
+        "key": "C",
+        "text": "GraphQL"
+      },
+      {
+        "key": "D",
+        "text": "a Kusto query"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Các quy tắc phân tích theo lịch trình của Microsoft Sentinel chạy các truy vấn Ngôn ngữ truy vấn Kusto (KQL) đối với dữ liệu trong không gian làm việc Log Analytics. Truy vấn quy tắc chứa logic phát hiện được đánh giá theo lịch trình đã định cấu hình.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 365",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/365-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-366",
+    "questionNumber": 366,
+    "text": "You have an Azure subscription containing these resources:  \n  \n- A network virtual appliance (NVA) running non-Microsoft firewall software that routes all outbound virtual-machine traffic to the internet  \n- An Azure function containing a script that manages the NVA firewall rules  \n- Azure Security Center Standard tier enabled for every virtual machine  \n- An Azure Sentinel workspace  \n- 30 virtual machines  \n  \nYou must ensure that a high-priority Security Center alert for a virtual machine creates an incident in Azure Sentinel and then starts a script to configure an NVA firewall rule.  \n  \nConfigure Azure Sentinel to meet these requirements. Each component can be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "enable_alert_notifications",
+        "text": "Enable alert notifications from Security Center:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "create_incident",
+        "text": "Create an incident:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "initiate_firewall_script",
+        "text": "Initiate a script to configure the firewall rule:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "A data connector for Security Center"
+      },
+      {
+        "key": "B",
+        "text": "A data connector for the firewall software"
+      },
+      {
+        "key": "C",
+        "text": "A playbook"
+      },
+      {
+        "key": "D",
+        "text": "A rule"
+      },
+      {
+        "key": "E",
+        "text": "A Security Events connector"
+      },
+      {
+        "key": "F",
+        "text": "A workbook"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "A data connector for Security Center"
+      },
+      {
+        "key": "B",
+        "text": "A data connector for the firewall software"
+      },
+      {
+        "key": "C",
+        "text": "A playbook"
+      },
+      {
+        "key": "D",
+        "text": "A rule"
+      },
+      {
+        "key": "E",
+        "text": "A Security Events connector"
+      },
+      {
+        "key": "F",
+        "text": "A workbook"
+      }
+    ],
+    "correctAnswers": [
+      "enable_alert_notifications=A",
+      "create_incident=D",
+      "initiate_firewall_script=C"
+    ],
+    "explanation": "Trình kết nối dữ liệu của Trung tâm bảo mật nhập cảnh báo của Trung tâm bảo mật vào Microsoft Sentinel. Một quy tắc phân tích sẽ tạo ra sự cố Sentinel khi đáp ứng các tiêu chí cảnh báo của nó, bao gồm cả mức độ ưu tiên cao. Playbook là một quy trình làm việc của Ứng dụng Azure Logic có thể chạy tự động khi xảy ra sự cố và gọi Hàm Azure để đặt cấu hình quy tắc tường lửa NVA.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 366",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/366-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-367",
+    "questionNumber": 367,
+    "text": "You work for a company named Contoso, Ltd. that has the offices shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953056584-zqkjsomb.png)  \n  \nContoso has an Azure Active Directory (Azure AD) tenant named contoso.com. All contoso.com users have Azure Multi-Factor Authentication (MFA) enabled. The tenant includes the users shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953059211-mprpwva5.png)  \n  \nThe multi-factor authentication settings for contoso.com are configured as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953061927-vn8zsy92.jpg)  \n  \nFor each statement below, select **Yes** if it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "When User1 signs in to Device1 from the Seattle office on June 10, the user will be prompted for MFA.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "When User2 signs in to Device2 from the Boston office on June 5, the user will be prompted for MFA.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "When User1 signs in to a new device from the Seattle office on June 7, the user will be prompted for MFA.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Dải IP đáng tin cậy được định cấu hình sẽ bỏ qua lời nhắc MFA, vì vậy việc đăng nhập từ Boston không yêu cầu MFA. Việc chọn tùy chọn đã ghi nhớ-MFA sẽ chặn các lời nhắc trong khoảng thời gian 14 ngày được định cấu hình trong trình duyệt/thiết bị đó; Đăng nhập vào Device1 của Người dùng1 vào ngày 10 tháng 6 vẫn trong khoảng thời gian đó. Một thiết bị mới ở Seattle không được ghi nhớ cũng như không nằm trong phạm vi IP đáng tin cậy của Boston, do đó cần có MFA.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953056584-zqkjsomb.png",
+    "sourceTitle": "Examcademy AZ-500 Question 367",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/367-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-368",
+    "questionNumber": 368,
+    "text": "You have an Azure subscription containing an Azure SQL Database logical server named SQL1 and an Azure virtual machine named VM1. VM1 uses only a private IP address.  \n  \nThe Firewall and virtual networks settings for SQL1 are shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783957448570-80ga64em.png)  \n  \nYou need to ensure that VM1 can connect to SQL1. The solution must follow the principle of least privilege.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Set Connection Policy to Proxy."
+      },
+      {
+        "key": "B",
+        "text": "Set Allow Azure services and resources to access this server to Yes."
+      },
+      {
+        "key": "C",
+        "text": "Add an existing virtual network."
+      },
+      {
+        "key": "D",
+        "text": "Create a new firewall rule."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Quy tắc mạng ảo cho phép kết nối với máy chủ logic Azure SQL từ mạng con mạng ảo cụ thể. Việc thêm mạng/mạng con ảo hiện có của VM1 sẽ cung cấp quyền truy cập được yêu cầu trong phạm vi hẹp, thường sử dụng Microsoft.Sql service endpoint. Quy tắc tường lửa IP yêu cầu IP nguồn công cộng, đồng thời cho phép dịch vụ Azure cho phép rộng rãi các tài nguyên Azure ngoài VM1.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783957448570-80ga64em.png",
+    "sourceTitle": "Examcademy AZ-500 Question 368",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/368-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-369",
+    "questionNumber": 369,
+    "text": "HOTSPOT -  \n  \nYou have an Azure subscription containing a user named Admin1 and a resource group named RG1. In Azure Monitor, you create the alert rules shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783953049896-wsujeetf.png)  \n  \nAdmin1 takes the following actions in RG1:  \n  \n- Adds a virtual network named VNET1.  \n- Adds a Delete lock named Lock1.  \n  \nWhich rules trigger an alert because of Admin1's actions?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các hoạt động tạo và ghi của Azure Resource Manager được ghi lại trong danh mục nhật ký hoạt động Quản trị. Cả hai hoạt động đều xảy ra trong RG1 và được khởi tạo bởi Quản trị viên1, do đó, mỗi hoạt động đều khớp với điều kiện Quản trị RG1 của Quy tắc 2 và điều kiện Quản trị do Quản trị viên1 thực hiện trên toàn đăng ký của Quy tắc4. Chúng không phù hợp với quy tắc bảo mật.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783953049896-wsujeetf.png",
+    "sourceTitle": "Examcademy AZ-500 Question 369",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/369-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-370",
+    "questionNumber": 370,
+    "text": "You need to create an Azure key vault. The solution must ensure that any object deleted from the key vault is retained for 90 days.  \n  \nHow should you complete the command?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Xóa mềm sẽ giữ lại các đối tượng Key Vault đã xóa trong khoảng thời gian lưu giữ được định cấu hình, mặc định là 90 ngày. Tính năng bảo vệ thanh lọc sẽ ngăn không cho vault hoặc đối tượng đã xóa bị xóa vĩnh viễn cho đến khi hết thời gian lưu giữ.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 370",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/370-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-371",
+    "questionNumber": 371,
+    "text": "You have been tasked with delegating administrative access to your company's Azure key vault.  \n  \nYou need to ensure that:  \n  \n- A specific user can set advanced access policies for the key vault.  \n- Access is assigned based on the principle of least privilege.  \n  \nWhich of the following options should you use to achieve your goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Information Protection B. RBAC"
+      },
+      {
+        "key": "C",
+        "text": "Azure AD Privileged Identity Management (PIM)"
+      },
+      {
+        "key": "D",
+        "text": "Azure DevOps"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các hoạt động trên mặt phẳng quản lý Azure Key Vault, bao gồm cả việc đặt cấu hình các chính sách truy cập nâng cao, được quản lý bởi Azure RBAC. Bằng cách chỉ định cho người dùng vai trò RBAC thích hợp (chẳng hạn như vai trò Người đóng góp Key Vault tích hợp sẵn) chỉ trong phạm vi kho khóa đó, bạn chỉ cấp các quyền cần thiết để quản lý chính sách truy cập, đáp ứng nguyên tắc đặc quyền tối thiểu. Azure Information Protection xử lý việc phân loại và ghi nhãn dữ liệu chứ không phải ủy quyền truy cập Key Vault; Azure AD PIM quản lý việc kích hoạt các vai trò đã được cấp theo thời gian thay vì tự xác định quyền chính sách truy cập; và Azure DevOps không liên quan đến quản lý quyền Key Vault.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 371",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/371-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-372",
+    "questionNumber": 372,
+    "text": "You have an Azure subscription containing an Azure SQL database named SQL1. You plan to deploy a web app named App1.  \n  \nYou must give App1 read and write access to SQL1 while meeting these requirements:  \n  \n- Give App1 access to SQL1 without storing a password.  \n- Follow the principle of least privilege.  \n- Minimize administrative effort.  \n  \nWhich account type should App1 use to access SQL1, and which database roles should you assign to App1?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "managed identity cho phép ứng dụng được lưu trữ trên Azure xác thực với Azure SQL thông qua Microsoft Entra ID mà không cần lưu trữ mật khẩu hoặc quản lý bí mật chính của dịch vụ. Các vai trò db_datareader và db_datawriter cấp các quyền đọc và ghi cần thiết mà không cần các quyền quản trị rộng hơn có trong db_owner.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 372",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/372-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-373",
+    "questionNumber": 373,
+    "text": "You have an Azure subscription containing an Azure SQL server named SQL1. SQL1 contains an Azure SQL database named DB1.  \n  \nYou need to use Microsoft Defender for Cloud to perform a vulnerability assessment for DB1.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From Advanced Threat Protection types, select SQL injection vulnerability."
+      },
+      {
+        "key": "B",
+        "text": "Configure the Send scan report to setting."
+      },
+      {
+        "key": "C",
+        "text": "Set Periodic recurring scans to ON."
+      },
+      {
+        "key": "D",
+        "text": "Enable the Microsoft Defender for SQL plan."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Microsoft Defender cho Azure SQL phải được bật trước khi quá trình quét đánh giá lỗ hổng có thể chạy trên cơ sở dữ liệu Azure SQL. Việc kích hoạt gói Defender for SQL sẽ kích hoạt khả năng bảo vệ và đánh giá lỗ hổng bảo mật cần thiết; quét định kỳ và cài đặt báo cáo quét có thể được cấu hình sau đó.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 373",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/373-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-374",
+    "questionNumber": 374,
+    "text": "You have an Azure AD tenant.  \n  \nYou plan to deploy an authentication solution that meets the following requirements:  \n  \n- Require number matching.  \n- Show the geographic location during sign-in.  \n  \nWhich authentication method should you include in the solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Microsoft Authenticator"
+      },
+      {
+        "key": "B",
+        "text": "FIDO2 security key"
+      },
+      {
+        "key": "C",
+        "text": "SMS"
+      },
+      {
+        "key": "D",
+        "text": "Temporary Access Pass"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Microsoft Authenticator hỗ trợ khớp số cho thông báo đẩy. Cài đặt ngữ cảnh bổ sung của nó cũng có thể hiển thị vị trí địa lý của thông báo đăng nhập trong Authenticator và thông báo không cần mật khẩu.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 374",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/374-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-375",
+    "questionNumber": 375,
+    "text": "In Microsoft Defender for Cloud, you need to deploy SecPol1.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable Microsoft Defender for Cloud."
+      },
+      {
+        "key": "B",
+        "text": "Create an Azure Management group."
+      },
+      {
+        "key": "C",
+        "text": "Create an initiative."
+      },
+      {
+        "key": "D",
+        "text": "Configure continuous export."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Chính sách bảo mật của Defender for Cloud dựa trên sáng kiến ​​Chính sách Azure, bao gồm các định nghĩa và biện pháp kiểm soát chính sách sẽ được áp dụng. Sáng kiến ​​phải tồn tại trước khi có thể đưa vào sử dụng hoặc chỉ định làm tiêu chuẩn bảo mật.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 375",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/375-secure-azure-using-microsoft-defender-for-cloud-and-microsof",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-376",
+    "questionNumber": 376,
+    "text": "You are configuring an Azure Policy through the Azure portal.  \n  \nYour policy will include an effect that requires a managed identity in order to be assigned.  \n  \nWhich of the following is that effect?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "AuditIfNotExist"
+      },
+      {
+        "key": "B",
+        "text": "Disabled"
+      },
+      {
+        "key": "C",
+        "text": "DeployIfNotExist"
+      },
+      {
+        "key": "D",
+        "text": "EnforceOPAConstraint"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Hiệu ứng `DeployIfNotExists` triển khai một mẫu để khắc phục các tài nguyên không tuân thủ. Chính sách Azure sử dụng managed identity được liên kết với việc chỉ định chính sách để thực hiện việc triển khai đó, do đó, hiệu ứng này yêu cầu managed identity.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 376",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/376-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-377",
+    "questionNumber": 377,
+    "text": "Your company has an Azure subscription containing two virtual machines, VirMac1 and VirMac2, both in the **Stopped (Deallocated)** state.  \n  \nThe virtual machines are in separate resource groups: ResGroup1 and ResGroup2.  \n  \nTwo Azure policies have also been created, both configured for the `virtualMachines` resource type:  \n  \n- The policy for ResGroup1 uses the **Not allowed resource types** policy definition.  \n- The policy for ResGroup2 uses the **Allowed resource types** policy definition.  \n  \nYou then create a **Read-only** resource lock on VirMac1 and a **Read-only** resource lock on ResGroup2.  \n  \nWhich statements are TRUE for this scenario? (Choose all that apply.)",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "You will be able to start VirMac1."
+      },
+      {
+        "key": "B",
+        "text": "You will NOT be able to start VirMac1."
+      },
+      {
+        "key": "C",
+        "text": "You will be able to create a virtual machine in ResGroup2."
+      },
+      {
+        "key": "D",
+        "text": "You will NOT be able to create a virtual machine in ResGroup2."
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "D"
+    ],
+    "explanation": "Khóa tài nguyên Azure chỉ đọc chỉ cho phép các thao tác đọc và chặn sửa đổi. Khởi động hoặc khởi động lại máy ảo là thao tác POST trên mặt phẳng điều khiển, do đó, khóa Chỉ đọc trên VirMac1 sẽ ngăn không cho máy khởi động. Khóa chỉ đọc ở phạm vi nhóm tài nguyên sẽ ngăn việc tạo tài nguyên trong nhóm đó; do đó, máy ảo no có thể được tạo trong ResGroup2. Chính sách loại tài nguyên được phép cho phép loại được chỉ định nhưng không ghi đè khóa tài nguyên.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 377",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/377-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-378",
+    "questionNumber": 378,
+    "text": "You have a Microsoft Entra tenant containing the groups shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966711150-gbqv0jej.png)  \n  \nFrom the Azure portal, you configure a group expiration policy with a lifetime of 180 days.  \n  \nWhich groups are deleted after 180 days of inactivity, and what is the maximum time available to restore a deleted group?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Chính sách hết hạn của nhóm Microsoft Entra áp dụng cho các nhóm Microsoft 365, không áp dụng cho các nhóm bảo mật hoặc nhóm bảo mật hỗ trợ thư. Nhóm Microsoft 365 đã hết hạn sẽ bị xóa và vẫn có thể khôi phục trong 30 ngày.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783966711150-gbqv0jej.png",
+    "sourceTitle": "Examcademy AZ-500 Question 378",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/378-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-379",
+    "questionNumber": 379,
+    "text": "You have an Azure AD tenant that includes a user named User1.  \n  \nYou purchase an app named App1.  \n  \nUser1 must publish App1 by using Azure AD Application Proxy.  \n  \nWhich role should be assigned to User1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Cloud application administrator"
+      },
+      {
+        "key": "B",
+        "text": "Application administrator"
+      },
+      {
+        "key": "C",
+        "text": "Hybrid identity administrator"
+      },
+      {
+        "key": "D",
+        "text": "Cloud App Security Administrator"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Vai trò Quản trị viên ứng dụng có thể tạo và quản lý các ứng dụng doanh nghiệp, đăng ký ứng dụng và cài đặt Proxy ứng dụng, bao gồm cả việc xuất bản ứng dụng thông qua Proxy ứng dụng. Vai trò Quản trị viên ứng dụng đám mây không bao gồm quản lý Proxy ứng dụng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 379",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/379-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-380",
+    "questionNumber": 380,
+    "text": "You have been assigned to apply Conditional Access policies for your company's existing Azure Active Directory (Azure AD).  \n  \nThe process includes evaluating risk events and risk levels.  \n  \nWhich risk level should be configured for sign-ins that originate from IP addresses showing suspicious activity?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "None"
+      },
+      {
+        "key": "B",
+        "text": "Low"
+      },
+      {
+        "key": "C",
+        "text": "Medium"
+      },
+      {
+        "key": "D",
+        "text": "High"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Trong ánh xạ sự kiện rủi ro Bảo vệ danh tính Azure AD được sử dụng cho cấu hình chính sách này, các lần đăng nhập từ địa chỉ IP có hoạt động đáng ngờ được phân loại là rủi ro **Trung bình**. Rủi ro trung bình thể hiện hoạt động đăng nhập bất thường đáng ngờ hoặc nghiêm trọng ở mức độ vừa phải cần được đánh giá Truy cập có điều kiện.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 380",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/380-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-381",
+    "questionNumber": 381,
+    "text": "You have an Azure subscription that contains a virtual network named VNet1. VNet1 contains the subnets shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966881733-m4zbf7c5.png)  \n  \nThe subscription contains the function apps shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783966886097-0k9kba4k.png)  \n  \nFor which app is outbound traffic controlled by using NSG1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "App4 only"
+      },
+      {
+        "key": "B",
+        "text": "App3 and App4 only"
+      },
+      {
+        "key": "C",
+        "text": "App2, App3, and App4 only"
+      },
+      {
+        "key": "D",
+        "text": "App1, App2, App3, and App4"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Tích hợp mạng ảo gửi lưu lượng truy cập đi có thể áp dụng của ứng dụng thông qua mạng con tích hợp của ứng dụng đó, nơi áp dụng các quy tắc nhóm bảo mật mạng. App1, App2 và App3 lần lượt được tích hợp với Subnet1, Subnet2 và Subnet3; App4 được triển khai lên Subnet4 ở tầng bị cô lập. Vì NSG1 được liên kết với từng mạng con đó nên nó kiểm soát lưu lượng truy cập ra bên ngoài hiện hành của cả bốn ứng dụng.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783966881733-m4zbf7c5.png",
+    "sourceTitle": "Examcademy AZ-500 Question 381",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/381-secure-networking",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-382",
+    "questionNumber": 382,
+    "text": "Your network has an on-premises Active Directory domain named contoso.com, which includes a user named User1.  \n  \nYou have an Azure subscription linked to an Azure Active Directory (Azure AD) tenant named contoso.com. The tenant includes an Azure Storage account named storage1, and storage1 has an Azure file share named share1.  \n  \nAt present, the domain and tenant are not integrated.  \n  \nYou must ensure that User1 can access share1 by using domain credentials.  \n  \nWhich three actions should you take, in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a private link to storage1."
+      },
+      {
+        "key": "B",
+        "text": "Enable Active Directory Domain Services (AD DS) authentication on storage1."
+      },
+      {
+        "key": "C",
+        "text": "Implement Azure AD Connect."
+      },
+      {
+        "key": "D",
+        "text": "Create a service endpoint to storage1."
+      },
+      {
+        "key": "E",
+        "text": "Assign share-level permissions for share1."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create a private link to storage1."
+      },
+      {
+        "key": "B",
+        "text": "Enable Active Directory Domain Services (AD DS) authentication on storage1."
+      },
+      {
+        "key": "C",
+        "text": "Implement Azure AD Connect."
+      },
+      {
+        "key": "D",
+        "text": "Create a service endpoint to storage1."
+      },
+      {
+        "key": "E",
+        "text": "Assign share-level permissions for share1."
+      }
+    ],
+    "correctAnswers": [
+      "step1=C",
+      "step2=B",
+      "step3=E"
+    ],
+    "explanation": "Azure AD Connect đồng bộ hóa danh tính AD DS tại chỗ với Azure AD. Azure Files sau đó có thể xác thực quyền truy cập SMB bằng cách sử dụng thông tin xác thực AD DS tại chỗ sau khi xác thực AD DS được bật trên tài khoản lưu trữ. Các quyền Azure RBAC ở cấp độ chia sẻ phải được chỉ định sau khi nguồn nhận dạng được bật để cấp quyền truy cập vào chia sẻ tệp.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 382",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/382-secure-identity-and-access",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  },
+  {
+    "id": "az500-383",
+    "questionNumber": 383,
+    "text": "You are investigating a security issue for an Azure Storage account.  \n  \nYou enable Azure Storage Analytics logs and archive them to a storage account.  \n  \nWhat should you use to retrieve the diagnostic logs?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Cosmos DB explorer"
+      },
+      {
+        "key": "B",
+        "text": "Azure Monitor"
+      },
+      {
+        "key": "C",
+        "text": "AzCopy"
+      },
+      {
+        "key": "D",
+        "text": "Microsoft Defender for Cloud"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Dữ liệu nhật ký Azure Storage Analytics được lưu trữ dưới dạng các đốm màu. AzCopy có thể tải xuống các đốm nhật ký có liên quan từ tài khoản lưu trữ để truy xuất chúng nhằm phân tích.",
+    "category": "General",
+    "tags": [
+      "AZ-500",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-500 Question 383",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-500/q/383-secure-compute-storage-and-databases",
+    "lastVerifiedAt": "2026-09-14T14:56:40.793Z"
+  }
+];
