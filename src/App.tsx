@@ -1806,14 +1806,22 @@ export default function App() {
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             )}
-            <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => setMode('home')}>
-              <div className="bg-indigo-600 text-white p-2 rounded-xl">
-                {mode === 'home' ? (
-                  <Home className="w-5 h-5" />
-                ) : mode === 'admin' ? (
-                  <Asterisk className="w-5 h-5 animate-spin text-rose-300" />
-                ) : (
-                  <DynamicIcon name={certificates.find(c => c.id === activeCertId)?.iconName || 'Zap'} className="w-5 h-5" />
+            <div className="flex items-center gap-2.5 cursor-pointer group" onClick={() => setMode('home')}>
+              <div className="relative">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-tr from-indigo-700 via-indigo-600 to-blue-500 text-white flex items-center justify-center shadow-md shadow-indigo-500/25 ring-2 ring-indigo-100 transition-all duration-300 group-hover:scale-105 group-hover:shadow-indigo-500/40">
+                  {mode === 'home' ? (
+                    <Award className="w-5 h-5 text-amber-300 drop-shadow-xs" />
+                  ) : mode === 'admin' ? (
+                    <Asterisk className="w-5 h-5 animate-spin text-rose-300" />
+                  ) : (
+                    <DynamicIcon name={certificates.find(c => c.id === activeCertId)?.iconName || 'Zap'} className="w-5 h-5 text-white drop-shadow-xs" />
+                  )}
+                </div>
+                {mode === 'home' && (
+                  <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500 shadow-xs"></span>
+                  </span>
                 )}
               </div>
               <div className="min-w-0">

@@ -13,7 +13,95 @@ export interface PetOption {
   borderColor: string;
 }
 
+export function DoraemonAvatar({ className = 'w-10 h-10' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 100 100" className={className} xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="doraHead" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#38bdf8"/>
+          <stop offset="50%" stopColor="#0284c7"/>
+          <stop offset="100%" stopColor="#0369a1"/>
+        </linearGradient>
+        <linearGradient id="propellerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#fef08a"/>
+          <stop offset="100%" stopColor="#eab308"/>
+        </linearGradient>
+      </defs>
+
+      {/* Chong chóng tre (Bamboo-copter) */}
+      <g id="bamboo-copter">
+        <ellipse cx="50" cy="7" rx="22" ry="3.5" fill="url(#propellerGrad)" stroke="#a16207" strokeWidth="1" />
+        <rect x="48.5" y="7" width="3" height="11" fill="#ca8a04" rx="1.5" />
+        <ellipse cx="50" cy="18" rx="7" ry="2.5" fill="#ef4444" stroke="#991b1b" strokeWidth="0.8" />
+      </g>
+
+      {/* Round Blue Head */}
+      <circle cx="50" cy="54" r="36" fill="url(#doraHead)" stroke="#075985" strokeWidth="1.8" />
+
+      {/* White Face Oval */}
+      <ellipse cx="50" cy="59" rx="29" ry="25" fill="#ffffff" stroke="#e0f2fe" strokeWidth="1" />
+
+      {/* Eyes */}
+      <ellipse cx="43.5" cy="39" rx="7.5" ry="10" fill="#ffffff" stroke="#0f172a" strokeWidth="1.6" />
+      <ellipse cx="56.5" cy="39" rx="7.5" ry="10" fill="#ffffff" stroke="#0f172a" strokeWidth="1.6" />
+      
+      {/* Pupils */}
+      <ellipse cx="45" cy="40.5" rx="3" ry="4" fill="#0f172a" />
+      <circle cx="44.2" cy="38.5" r="1.2" fill="#ffffff" />
+      <ellipse cx="55" cy="40.5" rx="3" ry="4" fill="#0f172a" />
+      <circle cx="55.8" cy="38.5" r="1.2" fill="#ffffff" />
+
+      {/* Red Nose */}
+      <circle cx="50" cy="48.5" r="4.8" fill="#ef4444" stroke="#991b1b" strokeWidth="1" />
+      <circle cx="48.2" cy="46.8" r="1.4" fill="#ffffff" />
+
+      {/* Nose to Mouth Line */}
+      <line x1="50" y1="53.3" x2="50" y2="67" stroke="#0f172a" strokeWidth="1.6" strokeLinecap="round" />
+
+      {/* Happy Smile */}
+      <path d="M30 63 Q50 82, 70 63" fill="#e11d48" stroke="#0f172a" strokeWidth="1.6" strokeLinecap="round" />
+      {/* Tongue */}
+      <path d="M41 71 Q50 67, 59 71 Q50 79, 41 71" fill="#f472b6" />
+
+      {/* Whiskers */}
+      <line x1="22" y1="51" x2="38" y2="53" stroke="#0f172a" strokeWidth="1.4" strokeLinecap="round" />
+      <line x1="20" y1="58" x2="37" y2="58" stroke="#0f172a" strokeWidth="1.4" strokeLinecap="round" />
+      <line x1="22" y1="65" x2="38" y2="63" stroke="#0f172a" strokeWidth="1.4" strokeLinecap="round" />
+
+      <line x1="78" y1="51" x2="62" y2="53" stroke="#0f172a" strokeWidth="1.4" strokeLinecap="round" />
+      <line x1="80" y1="58" x2="63" y2="58" stroke="#0f172a" strokeWidth="1.4" strokeLinecap="round" />
+      <line x1="78" y1="65" x2="62" y2="63" stroke="#0f172a" strokeWidth="1.4" strokeLinecap="round" />
+
+      {/* Red Collar */}
+      <rect x="27" y="83" width="46" height="6.5" rx="3.2" fill="#dc2626" stroke="#991b1b" strokeWidth="1" />
+
+      {/* Golden Bell */}
+      <circle cx="50" cy="88.5" r="5.8" fill="#facc15" stroke="#854d0e" strokeWidth="1" />
+      <line x1="45" y1="87" x2="55" y2="87" stroke="#713f12" strokeWidth="0.8" />
+      <circle cx="50" cy="89.5" r="1.2" fill="#713f12" />
+      <line x1="50" y1="90.7" x2="50" y2="93" stroke="#713f12" strokeWidth="0.8" />
+    </svg>
+  );
+}
+
 export const PET_OPTIONS: PetOption[] = [
+  {
+    id: 'doraemon',
+    name: 'Mèo Máy Doraemon',
+    emoji: '🐱',
+    tagline: 'Mèo máy thế kỷ 22 với Túi Thần Kỳ và Bánh Mì Trí Nhớ 🍞',
+    quotes: [
+      'Bảo bối Bánh Mì Trí Nhớ đây! Nuốt trọn đề thi điểm tối đa nhé! 🍞✨',
+      'Đeo Chong Chóng Tre bay thẳng qua mọi câu hỏi hóc búa nào! 🚁',
+      'Túi thần kỳ của tớ luôn chuẩn bị sẵn 1000 điểm cho bạn! 🎒',
+      'Nobita còn cố gắng được, bạn thông minh thế này chắc chắn đậu! 💙',
+      'Ăn một chiếc Bánh Rán Dorayaki rồi vào làm bài thi cực đỉnh nhé! 🥞',
+      'Tớ và cỗ máy thời gian sẽ đưa bạn đến ngày nhận chứng chỉ quốc tế! ⏳🌟'
+    ],
+    color: 'text-sky-600',
+    bgColor: 'bg-sky-50',
+    borderColor: 'border-sky-300'
+  },
   {
     id: 'cat',
     name: 'Mèo Béo Lười',
@@ -194,7 +282,7 @@ export function getPetFromId(idStr: string): PetOption {
   return PET_OPTIONS.find(p => p.id === idStr) || PET_OPTIONS[0];
 }
 
-const QUICK_EMOJI_LIST = ['🦄', '🐯', '🐥', '🦁', '🐸', '👾', '👻', '🚀', '🌟', '🍉', '🍀', '👑', '⚽', '🌺', '🍕', '🎯', '🦄', '🐝', '🐙', '🦖'];
+const QUICK_EMOJI_LIST = ['🍞', '🚁', '🥞', '🔔', '💙', '🦄', '🐯', '🐥', '🦁', '🐸', '👾', '👻', '🚀', '🌟', '🍉', '🍀', '👑', '⚽', '🌺', '🍕', '🎯', '🐝', '🐙', '🦖'];
 
 interface FloatingPetProps {
   username?: string;
@@ -444,8 +532,12 @@ export default function FloatingPet({ username = '', showToast }: FloatingPetPro
               className={`w-14 h-14 ${currentPet.bgColor} border-2 ${currentPet.borderColor} rounded-2xl shadow-lg hover:shadow-2xl flex items-center justify-center text-3xl transition-transform transform hover:scale-110 active:scale-95 cursor-grab active:cursor-grabbing relative ${isWalking && !isDragging ? 'animate-bounce' : ''}`}
               title="Kéo rê để di chuyển • Nhấn để trò chuyện • Nhấn đúp để đổi linh vật 🐾"
             >
-              <span className={`transform transition-transform ${direction === 'right' ? 'scale-x-110' : '-scale-x-110'}`}>
-                {currentPet.emoji}
+              <span className={`transform transition-transform ${direction === 'right' ? 'scale-x-110' : '-scale-x-110'} flex items-center justify-center`}>
+                {currentPet.id === 'doraemon' ? (
+                  <DoraemonAvatar className="w-11 h-11 drop-shadow-sm" />
+                ) : (
+                  currentPet.emoji
+                )}
               </span>
 
               {/* Heart floating badge */}
@@ -535,8 +627,12 @@ export default function FloatingPet({ username = '', showToast }: FloatingPetPro
                           : 'bg-white border-slate-200/80 hover:border-slate-300 hover:bg-slate-50/80'
                       }`}
                     >
-                      <span className="text-3xl p-2 bg-white/80 rounded-xl border border-slate-100 shadow-xs group-hover:scale-110 transition-transform">
-                        {pet.emoji}
+                      <span className="text-3xl p-1.5 bg-white/80 rounded-xl border border-slate-100 shadow-xs group-hover:scale-110 transition-transform flex items-center justify-center w-12 h-12 shrink-0">
+                        {pet.id === 'doraemon' ? (
+                          <DoraemonAvatar className="w-9 h-9 drop-shadow-xs" />
+                        ) : (
+                          pet.emoji
+                        )}
                       </span>
 
                       <div className="space-y-0.5 flex-1 min-w-0">
