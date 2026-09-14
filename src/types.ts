@@ -78,6 +78,8 @@ export interface VipKeyConfig {
   disabled?: boolean;
 }
 
+export type CertBadgeType = 'verified' | 'new' | 'none';
+
 export interface Certificate {
   id: string;
   name: string;
@@ -89,6 +91,7 @@ export interface Certificate {
   iconName: string; // name matching Lucide icons
   isVIP?: boolean; // Requires access key / passcode
   isDisabled?: boolean; // If true, certification is hidden from normal views
+  badge?: CertBadgeType; // 'verified' (có người pass) | 'new' (mới) | 'none'
   accessKeys?: string[]; // Allowed keys for this certification
   vipKeyConfigs?: VipKeyConfig[]; // Detailed VIP key configurations
 }

@@ -1,5 +1,5 @@
 import { supabase } from './supabase';
-import { Question, ProgressState, GroupMemberProgress, Certificate } from '../types';
+import { Question, ProgressState, GroupMemberProgress, Certificate, CertBadgeType } from '../types';
 
 const isMissingColumnError = (error: any, column: string) =>
   Boolean(error?.message?.includes(column) || error?.code === '42703' || error?.code === 'PGRST204');
@@ -1308,6 +1308,74 @@ export async function saveCertDisabledStatusToDb(certId: string, isDisabled: boo
   }
 }
 
+// ----------------- QUESTION COUNTS BY CERT SYNC -----------------
+
+export async function fetchQuestionCountsByCertFromDb(): Promise<Record<string, number>> {
+  try {
+    const { data, error } = await supabase
+      .from('questions')
+      .select('cert_id');
+
+    if (error || !data) {
+      return {};
+    }
+
+    const counts: Record<string, number> = {};
+    data.forEach((row: any) => {
+      if (row.cert_id) {
+        counts[row.cert_id] = (counts[row.cert_id] || 0) + 1;
+      }
+    });
+
+    return counts;
+  } catch (err) {
+    console.warn('Failed to fetch question counts from DB:', err);
+    return {};
+  }
+}
+
+// ----------------- CERTIFICATE BADGE STATUS OVERRIDES SYNC -----------------
+
+export async function fetchCertBadgeStatusesFromDb(): Promise<Record<string, CertBadgeType> | null> {
+  try {
+    const { data, error } = await supabase
+      .from('cert_badge_statuses')
+      .select('cert_id, badge');
+
+    if (error || !data) return null;
+
+    const result: Record<string, CertBadgeType> = {};
+    data.forEach((row: any) => {
+      if (row.badge) result[row.cert_id] = row.badge as CertBadgeType;
+    });
+    return result;
+  } catch (err) {
+    console.warn('Failed to fetch cert badge statuses from DB:', err);
+    return null;
+  }
+}
+
+export async function saveCertBadgeStatusToDb(certId: string, badge: CertBadgeType): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('cert_badge_statuses')
+      .upsert({
+        cert_id: certId,
+        badge: badge,
+        updated_at: new Date().toISOString()
+      }, { onConflict: 'cert_id' });
+
+    if (error) {
+      console.warn('Error saving cert badge status to DB:', error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Failed to save cert badge status to DB:', err);
+    return false;
+  }
+}
+
 // ----------------- USER JOINED GROUPS SYNC -----------------
 
 export async function fetchUserJoinedGroupIds(username: string): Promise<string[]> {
@@ -1378,7 +1446,7 @@ export async function fetchCustomCertificatesFromDb(): Promise<Certificate[] | n
   try {
     const { data, error } = await supabase
       .from('custom_certificates')
-      .select('id, name, code, description, difficulty, estimated_hours, color_class, icon_name, is_vip, is_disabled')
+      .select('*')
       .order('created_at', { ascending: false });
 
     if (error) {
@@ -1399,6 +1467,7 @@ export async function fetchCustomCertificatesFromDb(): Promise<Certificate[] | n
       iconName: row.icon_name || 'BookOpen',
       isVIP: !!row.is_vip,
       isDisabled: !!row.is_disabled,
+      badge: (row.badge as CertBadgeType) || 'none',
       accessKeys: []
     }));
   } catch (err) {
@@ -1409,7 +1478,7 @@ export async function fetchCustomCertificatesFromDb(): Promise<Certificate[] | n
 
 export async function saveCustomCertificateToDb(cert: Certificate): Promise<boolean> {
   try {
-    const payload = {
+    const payload: any = {
       id: cert.id,
       name: cert.name,
       code: cert.code,
@@ -1420,12 +1489,21 @@ export async function saveCustomCertificateToDb(cert: Certificate): Promise<bool
       icon_name: cert.iconName,
       is_vip: !!cert.isVIP,
       is_disabled: !!cert.isDisabled,
+      badge: cert.badge || 'none',
       access_keys: cert.accessKeys || []
     };
 
-    const { error } = await supabase
+    let { error } = await supabase
       .from('custom_certificates')
       .upsert(payload, { onConflict: 'id' });
+
+    if (error && isMissingColumnError(error, 'badge')) {
+      delete payload.badge;
+      const retry = await supabase
+        .from('custom_certificates')
+        .upsert(payload, { onConflict: 'id' });
+      error = retry.error;
+    }
 
     if (error) {
       console.error('Could not save custom certificate to DB:', error.message);

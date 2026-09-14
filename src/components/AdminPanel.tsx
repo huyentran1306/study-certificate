@@ -55,8 +55,8 @@ import {
   type AdminQuestionReport,
   type QuestionReportStatus,
 } from '../lib/sync';
-import { Question, Certificate, VipKeyConfig } from '../types';
-import { loadBuiltinQuestions } from '../data/questionCatalog';
+import { Question, Certificate, VipKeyConfig, CertBadgeType } from '../types';
+import { loadBuiltinQuestions, BUILTIN_QUESTION_COUNTS } from '../data/questionCatalog';
 import CustomQuestionsImport from './CustomQuestionsImport';
 import { smartParseQuestions } from '../utils/questionParser';
 import { QUESTION_IMPORT_SAMPLES } from '../data/questionImportSamples';
@@ -64,6 +64,7 @@ import { QUESTION_TYPE_LABELS } from '../data/questionImportSamples';
 import AdminQuestionTypePreview from './AdminQuestionTypePreview';
 import QuestionSandboxModal from './QuestionSandboxModal';
 import { isSafeExternalUrl } from '../utils/url';
+import { getSecureQuestionsCache, setSecureQuestionsCache } from '../lib/secureStorage';
 
 interface AdminPanelProps {
   currentRole: 'editor' | 'admin';
@@ -83,6 +84,7 @@ interface AdminPanelProps {
   onToggleCertVip?: (certId: string) => void;
   onToggleCertDisabled?: (certId: string) => void;
   onToggleUnlockCert?: (certId: string) => void;
+  onUpdateCertBadge?: (certId: string, badge: CertBadgeType) => void;
 }
 
 export default function AdminPanel({
@@ -102,7 +104,8 @@ export default function AdminPanel({
   onUpdateKeyExpiry,
   onToggleCertVip,
   onToggleCertDisabled,
-  onToggleUnlockCert
+  onToggleUnlockCert,
+  onUpdateCertBadge
 }: AdminPanelProps) {
   const isFullAdmin = currentRole === 'admin';
   // Questions list of the currently selected certificate
@@ -472,14 +475,9 @@ export default function AdminPanel({
       const staticDefaultQs = await loadBuiltinQuestions(activeCertId);
 
       let localQs = staticDefaultQs;
-      const stored = localStorage.getItem(`questions_${activeCertId}`);
-      if (stored) {
-        try {
-          const parsed = JSON.parse(stored) as Question[];
-          if (Array.isArray(parsed) && parsed.length >= staticDefaultQs.length) localQs = parsed;
-        } catch {
-          localStorage.removeItem(`questions_${activeCertId}`);
-        }
+      const stored = getSecureQuestionsCache(activeCertId);
+      if (stored && stored.length >= staticDefaultQs.length) {
+        localQs = stored;
       }
 
       // 2. Load from Supabase to stay updated
@@ -525,11 +523,7 @@ export default function AdminPanel({
           };
         });
         setQuestions(dbQs);
-        try {
-          localStorage.setItem(`questions_${activeCertId}`, JSON.stringify(dbQs));
-        } catch (cacheError) {
-          console.warn(`Could not cache questions for ${activeCertId}:`, cacheError);
-        }
+        setSecureQuestionsCache(activeCertId, dbQs);
       } else {
         setQuestions(localQs);
       }
@@ -1240,7 +1234,13 @@ export default function AdminPanel({
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
               {filteredCertificates.map((certificate) => {
                 const isCustomCertificate = !systemCertificateIds.includes(certificate.id);
-                const questionCount = certificateQuestionCounts[certificate.id];
+                const cleanCode = certificate.code.toUpperCase().replace(/[^A-Z0-9]/g, '');
+                const codeKey = certificate.code.toLowerCase().trim().replace(/[^a-z0-9]/g, '-');
+                const questionCount = certificateQuestionCounts[certificate.id] 
+                  || certificateQuestionCounts[codeKey]
+                  || BUILTIN_QUESTION_COUNTS[certificate.id]
+                  || BUILTIN_QUESTION_COUNTS[codeKey]
+                  || (cleanCode === 'AI103' ? 135 : cleanCode === 'AI200' ? 128 : cleanCode === 'AB100' ? 120 : cleanCode === 'AZ305' ? 285 : 0);
                 return (
                   <article
                     key={certificate.id}
@@ -2830,6 +2830,23 @@ export default function AdminPanel({
                             {cert.isDisabled ? <EyeOff className="w-3 h-3 text-rose-700" /> : <Eye className="w-3 h-3 text-sky-700" />}
                             {cert.isDisabled ? 'Đã Vô Hiệu Hóa (Ẩn) 🚫' : 'Đang Hiển Thị 👁️'}
                           </span>
+                          {cert.badge === 'verified' && (
+                            <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full flex items-center gap-1 bg-emerald-100 text-emerald-900 border border-emerald-300">
+                              <Check className="w-3 h-3 text-emerald-700" />
+                              Cờ: Đã Xác Thực (Pass) ✅
+                            </span>
+                          )}
+                          {cert.badge === 'new' && (
+                            <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full flex items-center gap-1 bg-purple-100 text-purple-900 border border-purple-300">
+                              <Sparkles className="w-3 h-3 text-purple-700" />
+                              Cờ: Mới Ra Mắt (NEW) ✨
+                            </span>
+                          )}
+                          {(!cert.badge || cert.badge === 'none') && (
+                            <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full flex items-center gap-1 bg-slate-100 text-slate-600 border border-slate-200">
+                              Cờ: Mặc định (Không cờ)
+                            </span>
+                          )}
                         </div>
                         <h4 className={`text-base font-black tracking-tight leading-tight pt-1 ${cert.isDisabled ? 'text-slate-400 line-through' : 'text-slate-900'}`}>
                           {cert.name}
@@ -2889,6 +2906,53 @@ export default function AdminPanel({
                         </button>
                       )}
                     </div>
+
+                    {/* Badge Configuration Control */}
+                    {onUpdateCertBadge && (
+                      <div className="bg-slate-50/90 border border-slate-200 rounded-xl p-3 flex flex-wrap items-center justify-between gap-2.5 text-xs">
+                        <div className="flex items-center gap-1.5">
+                          <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
+                          <span className="font-bold text-slate-700">Cấu hình cờ biểu tượng (Badge):</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <button
+                            type="button"
+                            onClick={() => onUpdateCertBadge(cert.id, 'verified')}
+                            className={`px-2.5 py-1 text-[11px] font-extrabold rounded-lg border transition-all cursor-pointer flex items-center gap-1 ${
+                              cert.badge === 'verified'
+                                ? 'bg-emerald-600 text-white border-emerald-700 shadow-xs'
+                                : 'bg-white hover:bg-emerald-50 text-slate-700 border-slate-200 hover:border-emerald-200'
+                            }`}
+                          >
+                            <Check className="w-3 h-3" />
+                            Đã Xác Thực (Pass)
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => onUpdateCertBadge(cert.id, 'new')}
+                            className={`px-2.5 py-1 text-[11px] font-extrabold rounded-lg border transition-all cursor-pointer flex items-center gap-1 ${
+                              cert.badge === 'new'
+                                ? 'bg-purple-600 text-white border-purple-700 shadow-xs'
+                                : 'bg-white hover:bg-purple-50 text-slate-700 border-slate-200 hover:border-purple-200'
+                            }`}
+                          >
+                            <Sparkles className="w-3 h-3" />
+                            Mới (NEW ✨)
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => onUpdateCertBadge(cert.id, 'none')}
+                            className={`px-2.5 py-1 text-[11px] font-extrabold rounded-lg border transition-all cursor-pointer ${
+                              !cert.badge || cert.badge === 'none'
+                                ? 'bg-slate-800 text-white border-slate-900 shadow-xs'
+                                : 'bg-white hover:bg-slate-100 text-slate-500 border-slate-200'
+                            }`}
+                          >
+                            Không cờ
+                          </button>
+                        </div>
+                      </div>
+                    )}
 
                     {/* Key List */}
                     {isVip && (

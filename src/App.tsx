@@ -36,20 +36,23 @@ import {
   EyeOff,
   ChevronDown,
   Flag,
-  Settings2
+  Settings2,
+  Bot,
+  Cpu
 } from 'lucide-react';
 
-import { Question, ProgressState, StudyMode, Certificate, VipKeyConfig } from './types';
+import { Question, ProgressState, StudyMode, Certificate, VipKeyConfig, CertBadgeType } from './types';
 import QuizCard from './components/QuizCard';
 import StatsPanel from './components/StatsPanel';
 import FloatingPet from './components/FloatingPet';
 import StudyGuideQuestion from './components/StudyGuideQuestion';
 import LearningCoachPanel from './components/LearningCoachPanel';
 import QuestionReportModal from './components/QuestionReportModal';
-import { BUILTIN_QUESTION_COUNTS, loadBuiltinQuestions } from './data/questionCatalog';
+import { BUILTIN_QUESTION_COUNTS, BUILTIN_CERT_IDS, loadBuiltinQuestions } from './data/questionCatalog';
 import { supabase } from './lib/supabase';
 import { getQuestionSearchScore, matchesAdvancedQuestionSearch } from './lib/questionSearch';
 import { getAuthRedirectUrl } from './utils/url';
+import { getSecureQuestionsCache, setSecureQuestionsCache, removeSecureQuestionsCache } from './lib/secureStorage';
 
 const MockExam = lazy(() => import('./components/MockExam'));
 const CustomQuestionsImport = lazy(() => import('./components/CustomQuestionsImport'));
@@ -78,6 +81,9 @@ import {
   saveCertVipStatusToDb,
   fetchCertDisabledStatusesFromDb,
   saveCertDisabledStatusToDb,
+  fetchCertBadgeStatusesFromDb,
+  saveCertBadgeStatusToDb,
+  fetchQuestionCountsByCertFromDb,
   deleteCustomCertificateFromDb,
   fetchCustomCertificatesFromDb,
   saveCustomCertificateToDb
@@ -101,6 +107,10 @@ function DynamicIcon({ name, className = "w-5 h-5" }: { name: string; className?
       return <ShieldCheck className={className} />;
     case 'Sparkles':
       return <Sparkles className={className} />;
+    case 'Bot':
+      return <Bot className={className} />;
+    case 'Cpu':
+      return <Cpu className={className} />;
     default:
       return <BookOpen className={className} />;
   }
@@ -168,7 +178,8 @@ export default function App() {
       difficulty: 'Trung cấp',
       estimatedHours: '10-15 Giờ',
       colorClass: 'bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white',
-      iconName: 'Zap'
+      iconName: 'Zap',
+      badge: 'verified'
     },
     {
       id: 'az-900',
@@ -178,7 +189,8 @@ export default function App() {
       difficulty: 'Cơ bản',
       estimatedHours: '8-12 Giờ',
       colorClass: 'bg-gradient-to-br from-blue-600 via-sky-700 to-indigo-900 text-white',
-      iconName: 'Layers'
+      iconName: 'Layers',
+      badge: 'verified'
     },
     {
       id: 'ai-900',
@@ -188,7 +200,8 @@ export default function App() {
       difficulty: 'Cơ bản',
       estimatedHours: '6-10 Giờ',
       colorClass: 'bg-gradient-to-br from-teal-600 via-cyan-700 to-emerald-900 text-white',
-      iconName: 'Award'
+      iconName: 'Award',
+      badge: 'verified'
     },
     {
       id: 'cca-f',
@@ -199,7 +212,8 @@ export default function App() {
       estimatedHours: '12-18 Giờ',
       colorClass: 'bg-gradient-to-br from-amber-600 via-orange-700 to-amber-950 text-white',
       iconName: 'Trophy',
-      isVIP: true
+      isVIP: true,
+      badge: 'verified'
     },
     {
       id: 'dp-800',
@@ -210,7 +224,8 @@ export default function App() {
       estimatedHours: '15-20 Giờ',
       colorClass: 'bg-gradient-to-br from-indigo-700 via-blue-800 to-slate-900 text-white',
       iconName: 'Database',
-      isVIP: false
+      isVIP: false,
+      badge: 'verified'
     },
     {
       id: 'istqb-ai',
@@ -221,7 +236,8 @@ export default function App() {
       estimatedHours: '12-18 Giờ',
       colorClass: 'bg-gradient-to-br from-purple-700 via-indigo-800 to-slate-900 text-white',
       iconName: 'ShieldCheck',
-      isVIP: false
+      isVIP: false,
+      badge: 'verified'
     },
     {
       id: 'ab-731',
@@ -232,12 +248,69 @@ export default function App() {
       estimatedHours: '12-16 Giờ',
       colorClass: 'bg-gradient-to-br from-blue-700 via-indigo-800 to-violet-950 text-white',
       iconName: 'Sparkles',
-      isVIP: false
+      isVIP: false,
+      badge: 'verified'
+    },
+    {
+      id: 'ai-103',
+      name: 'Developing AI Apps and Agents on Azure',
+      code: 'AI-103',
+      description: 'Chinh phục chứng chỉ Microsoft AI-103: Developing AI Apps and Agents on Azure. Bộ 135 câu hỏi bao quát xây dựng và quản trị Azure AI solutions, Agentic solutions, Microsoft Foundry, Computer Vision, Text Analysis và Trích xuất thông tin.',
+      difficulty: 'Trung cấp',
+      estimatedHours: '14-18 Giờ',
+      colorClass: 'bg-gradient-to-br from-cyan-600 via-teal-700 to-indigo-950 text-white',
+      iconName: 'Bot',
+      isVIP: false,
+      badge: 'new'
+    },
+    {
+      id: 'ai-200',
+      name: 'Developing AI Cloud Solutions on Azure',
+      code: 'AI-200',
+      description: 'Chinh phục chứng chỉ Microsoft AI-200: Developing AI Cloud Solutions on Azure. Bộ 128 câu hỏi bao quát phát triển giải pháp container hóa, kết nối và tiêu thụ dịch vụ Azure AI, quản trị dữ liệu AI, bảo mật và giám sát.',
+      difficulty: 'Trung cấp',
+      estimatedHours: '12-16 Giờ',
+      colorClass: 'bg-gradient-to-br from-violet-700 via-indigo-800 to-slate-950 text-white',
+      iconName: 'Cpu',
+      isVIP: false,
+      badge: 'new'
+    },
+    {
+      id: 'ab-100',
+      name: 'Agentic AI Business Solutions Architect',
+      code: 'AB-100',
+      description: 'Chinh phục chứng chỉ Microsoft AB-100: Agentic AI Business Solutions Architect. Bộ 120 câu hỏi bao quát lập kế hoạch, thiết kế kiến trúc và triển khai các giải pháp AI Agentic tích hợp Copilot Studio, Microsoft Foundry và Azure AI.',
+      difficulty: 'Nâng cao',
+      estimatedHours: '14-18 Giờ',
+      colorClass: 'bg-gradient-to-br from-emerald-600 via-teal-800 to-slate-950 text-white',
+      iconName: 'Sparkles',
+      isVIP: false,
+      badge: 'new'
+    },
+    {
+      id: 'az-305',
+      name: 'Designing Microsoft Azure Infrastructure Solutions',
+      code: 'AZ-305',
+      description: 'Chinh phục chứng chỉ Microsoft Certified: Azure Solutions Architect Expert (AZ-305). Bộ 285 câu hỏi bao quát Thiết kế Giải pháp Định danh, Quản trị và Giám sát; Giải pháp Lưu trữ Dữ liệu; Giải pháp Kinh doanh Liên tục; và Giải pháp Hạ tầng Đám mây.',
+      difficulty: 'Nâng cao',
+      estimatedHours: '20-25 Giờ',
+      colorClass: 'bg-gradient-to-br from-blue-700 via-indigo-900 to-slate-950 text-white',
+      iconName: 'Layers',
+      isVIP: false,
+      badge: 'new'
     }
   ]);
 
   // Questions Bank for the active certification
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [dbQuestionCounts, setDbQuestionCounts] = useState<Record<string, number>>(() => {
+    try {
+      const cached = localStorage.getItem('study_cert_question_counts');
+      return cached ? JSON.parse(cached) : {};
+    } catch {
+      return {};
+    }
+  });
   
   // Progress & History for the active certification
   const [progress, setProgress] = useState<ProgressState>({
@@ -501,17 +574,27 @@ export default function App() {
     setDbSyncStatus('syncing');
     
     // 1. Load basic local questions
-    const defaultQs = await loadBuiltinQuestions(certId);
+    let defaultQs = await loadBuiltinQuestions(certId);
+    if (defaultQs.length === 0) {
+      const targetCert = certificates.find(c => c.id === certId);
+      if (targetCert) {
+        const cleanCode = targetCert.code.toLowerCase().trim().replace(/[^a-z0-9]/g, '-');
+        defaultQs = await loadBuiltinQuestions(cleanCode);
+      }
+    }
 
     let activeQuestions = defaultQs;
-    const cachedQuestions = localStorage.getItem(`questions_${certId}`);
-    if (cachedQuestions) {
-      try {
-        const parsed = JSON.parse(cachedQuestions) as Question[];
-        if (Array.isArray(parsed) && parsed.length >= defaultQs.length) activeQuestions = parsed;
-      } catch {
-        localStorage.removeItem(`questions_${certId}`);
-      }
+    const cachedQuestions = getSecureQuestionsCache(certId);
+    if (cachedQuestions && cachedQuestions.length >= defaultQs.length) {
+      activeQuestions = cachedQuestions;
+    }
+
+    if (activeQuestions.length > 0) {
+      setDbQuestionCounts(prev => {
+        const next = { ...prev, [certId]: activeQuestions.length };
+        try { localStorage.setItem('study_cert_question_counts', JSON.stringify(next)); } catch {}
+        return next;
+      });
     }
 
     // Try fetching from database first
@@ -553,11 +636,7 @@ export default function App() {
 
     setQuestions(activeQuestions);
     if (activeQuestions.length > 0) {
-      try {
-        localStorage.setItem(`questions_${certId}`, JSON.stringify(activeQuestions));
-      } catch (error) {
-        console.warn(`Could not cache questions for ${certId}:`, error);
-      }
+      setSecureQuestionsCache(certId, activeQuestions);
     }
 
     // 2. Load progress & history
@@ -629,10 +708,11 @@ export default function App() {
     }
     loadVipKeysFromDb();
 
-    // 0. Load VIP & Disabled status overrides from localStorage and DB
+    // 0. Load VIP, Disabled & Badge status overrides from localStorage and DB
     async function loadCertStatuses() {
       let vipOverrides: Record<string, boolean> = {};
       let disabledOverrides: Record<string, boolean> = {};
+      let badgeOverrides: Record<string, CertBadgeType> = {};
 
       try {
         const storedVip = localStorage.getItem('cert_vip_overrides');
@@ -640,11 +720,15 @@ export default function App() {
 
         const storedDisabled = localStorage.getItem('cert_disabled_overrides');
         if (storedDisabled) disabledOverrides = JSON.parse(storedDisabled);
+
+        const storedBadge = localStorage.getItem('cert_badge_overrides');
+        if (storedBadge) badgeOverrides = JSON.parse(storedBadge);
       } catch {}
 
-      const [dbVipStatuses, dbDisabledStatuses] = await Promise.all([
+      const [dbVipStatuses, dbDisabledStatuses, dbBadgeStatuses] = await Promise.all([
         fetchCertVipStatusesFromDb(),
-        fetchCertDisabledStatusesFromDb()
+        fetchCertDisabledStatusesFromDb(),
+        fetchCertBadgeStatusesFromDb()
       ]);
 
       if (dbVipStatuses && Object.keys(dbVipStatuses).length > 0) {
@@ -652,6 +736,9 @@ export default function App() {
       }
       if (dbDisabledStatuses && Object.keys(dbDisabledStatuses).length > 0) {
         disabledOverrides = { ...disabledOverrides, ...dbDisabledStatuses };
+      }
+      if (dbBadgeStatuses && Object.keys(dbBadgeStatuses).length > 0) {
+        badgeOverrides = { ...badgeOverrides, ...dbBadgeStatuses };
       }
 
       setCertificates(prev => prev.map(c => {
@@ -662,15 +749,35 @@ export default function App() {
         if (disabledOverrides[c.id] !== undefined) {
           updated.isDisabled = disabledOverrides[c.id];
         }
+        if (badgeOverrides[c.id] !== undefined) {
+          updated.badge = badgeOverrides[c.id];
+        }
         return updated;
       }));
     }
     loadCertStatuses();
 
+    // Fetch real-time question counts from Supabase for all certificates
+    async function loadQuestionCounts() {
+      try {
+        const counts = await fetchQuestionCountsByCertFromDb();
+        if (counts && Object.keys(counts).length > 0) {
+          setDbQuestionCounts(prev => {
+            const next = { ...prev, ...counts };
+            localStorage.setItem('study_cert_question_counts', JSON.stringify(next));
+            return next;
+          });
+        }
+      } catch (err) {
+        console.warn('Could not load question counts from DB:', err);
+      }
+    }
+    loadQuestionCounts();
+
     // 1. Load the shared custom-certificate catalog from Supabase.
     // Legacy local certificates are migrated once, then local metadata is removed.
     async function loadSharedCertificateCatalog() {
-      const defaultIds = ['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'];
+      const defaultIds = BUILTIN_CERT_IDS;
       const defaultCertificates = certificates.filter(cert => defaultIds.includes(cert.id));
       const defaultCodes = new Set(defaultCertificates.map(cert => cert.code.trim().toUpperCase()));
 
@@ -688,15 +795,9 @@ export default function App() {
               break;
             }
 
-            const cachedQuestions = localStorage.getItem(`questions_${legacyCert.id}`);
-            if (cachedQuestions) {
-              try {
-                const parsedQuestions = JSON.parse(cachedQuestions) as Question[];
-                if (parsedQuestions.length > 0 && !(await uploadQuestionsToDb(legacyCert.id, parsedQuestions))) {
-                  migrationSucceeded = false;
-                  break;
-                }
-              } catch {
+            const cachedQuestions = getSecureQuestionsCache(legacyCert.id);
+            if (cachedQuestions && cachedQuestions.length > 0) {
+              if (!(await uploadQuestionsToDb(legacyCert.id, cachedQuestions))) {
                 migrationSucceeded = false;
                 break;
               }
@@ -705,7 +806,7 @@ export default function App() {
 
           if (migrationSucceeded) {
             localStorage.removeItem('study_certs_custom');
-            legacyCertificates.forEach(cert => localStorage.removeItem(`questions_${cert.id}`));
+            legacyCertificates.forEach(cert => removeSecureQuestionsCache(cert.id));
           }
         } catch (error) {
           console.error('Could not migrate legacy local certificate metadata:', error);
@@ -725,7 +826,20 @@ export default function App() {
         return true;
       });
 
-      setCertificates([...sharedCustomCertificates, ...defaultCertificates]);
+      let storedBadgeOverrides: Record<string, CertBadgeType> = {};
+      try {
+        const storedBadge = localStorage.getItem('cert_badge_overrides');
+        if (storedBadge) storedBadgeOverrides = JSON.parse(storedBadge);
+      } catch {}
+
+      const mergedCertificates = [...sharedCustomCertificates, ...defaultCertificates].map(c => {
+        if (storedBadgeOverrides[c.id]) {
+          return { ...c, badge: storedBadgeOverrides[c.id] };
+        }
+        return c;
+      });
+
+      setCertificates(mergedCertificates);
 
       let lastActiveCert = localStorage.getItem('study_active_cert') || 'gh-300';
       const availableIds = new Set([...defaultIds, ...sharedCustomCertificates.map(cert => cert.id)]);
@@ -970,6 +1084,29 @@ export default function App() {
     });
   };
 
+  const handleUpdateCertBadge = (certId: string, badge: CertBadgeType) => {
+    setCertificates(prev => {
+      const updated = prev.map(c => {
+        if (c.id === certId) {
+          const badgeLabel = badge === 'verified' ? 'Đã Xác Thực (Đã Pass) ✅' : badge === 'new' ? 'Mới Ra Mắt (NEW) ✨' : 'Không có cờ (Mặc định)';
+          showAppToast(`Đã đổi cờ chứng chỉ ${c.code} thành "${badgeLabel}"!`, 'success');
+          saveCertBadgeStatusToDb(certId, badge);
+          const nextCertificate = { ...c, badge };
+          if (c.id.startsWith('custom_')) saveCustomCertificateToDb(nextCertificate);
+          return nextCertificate;
+        }
+        return c;
+      });
+      const overrides: Record<string, CertBadgeType> = {};
+      updated.forEach(c => {
+        overrides[c.id] = c.badge || 'none';
+      });
+      localStorage.setItem('cert_badge_overrides', JSON.stringify(overrides));
+
+      return updated;
+    });
+  };
+
   const handleToggleUnlockCert = (certId: string) => {
     setUnlockedCertIds(prev => {
       let updated: string[];
@@ -1208,12 +1345,9 @@ export default function App() {
         if (cert.id === activeCertId && questions.length > 0) {
           certQuestions = questions;
         } else {
-          const cached = localStorage.getItem(`questions_${cert.id}`);
-          if (cached) {
-            try {
-              const parsed = JSON.parse(cached) as Question[];
-              if (Array.isArray(parsed)) certQuestions = parsed;
-            } catch {}
+          const cached = getSecureQuestionsCache(cert.id);
+          if (cached && cached.length > 0) {
+            certQuestions = cached;
           }
           if (certQuestions.length === 0) {
             certQuestions = (await fetchQuestionsFromDb(cert.id)) || await loadBuiltinQuestions(cert.id);
@@ -1268,7 +1402,7 @@ export default function App() {
   const confirmDeleteCert = async () => {
     if (!certToDelete) return;
     const cert = certToDelete;
-    if (['gh-300', 'az-900', 'ai-900', 'cca-f', 'dp-800', 'istqb-ai', 'ab-731'].includes(cert.id)) {
+    if (BUILTIN_CERT_IDS.includes(cert.id)) {
       showAppToast(`Không thể xóa chứng chỉ hệ thống ${cert.code}!`, 'error');
       setCertToDelete(null);
       return;
@@ -1282,7 +1416,7 @@ export default function App() {
         return;
       }
 
-      localStorage.removeItem(`questions_${cert.id}`);
+      removeSecureQuestionsCache(cert.id);
       localStorage.removeItem(progressStorageKey(cert.id));
       setCertificates(prev => prev.filter(c => c.id !== cert.id));
       if (activeCertId === cert.id) {
@@ -1392,7 +1526,7 @@ export default function App() {
 
   // Reset progress and restore defaults for ACTIVE certification
   const handleResetToDefault = async () => {
-    localStorage.removeItem(`questions_${activeCertId}`);
+    removeSecureQuestionsCache(activeCertId);
     localStorage.removeItem(progressStorageKey(activeCertId));
 
     if (activeCertId === 'ab-731') {
@@ -1577,6 +1711,67 @@ export default function App() {
   const activeGuidePage = Math.min(guidePage, totalGuidePages);
   const startGuideIndex = (activeGuidePage - 1) * guidePageSize;
   const paginatedGuideQuestions = questions.slice(startGuideIndex, startGuideIndex + guidePageSize);
+
+  const getCertificateTotalQuestions = (cert: Certificate): number => {
+    // 1. Direct cert.id in DB counts
+    if (dbQuestionCounts[cert.id] && dbQuestionCounts[cert.id] > 0) {
+      return dbQuestionCounts[cert.id];
+    }
+
+    // 2. Normalized cert.id in DB counts (e.g. custom_ai_103_... -> ai-103)
+    const normalizedId = cert.id.toLowerCase().replace(/^custom_/, '').replace(/_\d+$/, '').replace(/_/g, '-');
+    if (dbQuestionCounts[normalizedId] && dbQuestionCounts[normalizedId] > 0) {
+      return dbQuestionCounts[normalizedId];
+    }
+
+    // 3. Normalized cert.code in DB counts (e.g. AI-103 -> ai-103)
+    const codeKey = cert.code.toLowerCase().trim().replace(/[^a-z0-9]/g, '-');
+    if (dbQuestionCounts[codeKey] && dbQuestionCounts[codeKey] > 0) {
+      return dbQuestionCounts[codeKey];
+    }
+
+    // 4. Check cached localStorage questions
+    const storedQs = getSecureQuestionsCache(cert.id);
+    if (storedQs && storedQs.length > 0) return storedQs.length;
+
+    // 5. BUILTIN_QUESTION_COUNTS matching by id, normalizedId, codeKey, or cleanCode
+    const cleanCode = cert.code.toUpperCase().replace(/[^A-Z0-9]/g, '');
+    if (BUILTIN_QUESTION_COUNTS[cert.id]) return BUILTIN_QUESTION_COUNTS[cert.id];
+    if (BUILTIN_QUESTION_COUNTS[normalizedId]) return BUILTIN_QUESTION_COUNTS[normalizedId];
+    if (BUILTIN_QUESTION_COUNTS[codeKey]) return BUILTIN_QUESTION_COUNTS[codeKey];
+    if (cleanCode === 'AI103') return 135;
+    if (cleanCode === 'AI200') return 128;
+    if (cleanCode === 'AB100') return 120;
+    if (cleanCode === 'AZ305') return 285;
+    if (cleanCode === 'GH300') return 152;
+    if (cleanCode === 'AZ900') return 323;
+    if (cleanCode === 'AI900') return 5;
+    if (cleanCode === 'CCAF') return 90;
+    if (cleanCode === 'DP800') return 134;
+    if (cleanCode === 'ISTQBAI') return 119;
+    if (cleanCode === 'AB731') return 100;
+
+    // 6. Parse from description if specified (e.g. "Bộ 135 câu hỏi", "Bộ 128 câu hỏi", "Bộ 120 câu hỏi", "Bộ 285 câu hỏi")
+    if (cert.description) {
+      const descMatch = cert.description.match(/Bộ\s+(\d+)\s+câu/i) || cert.description.match(/(\d+)\s+câu\s+hỏi/i);
+      if (descMatch) {
+        const count = parseInt(descMatch[1] || descMatch[2], 10);
+        if (!isNaN(count) && count > 0) return count;
+      }
+    }
+
+    return 0;
+  };
+
+  const getCertificateBadge = (cert: Certificate): CertBadgeType => {
+    if (cert.badge && cert.badge !== 'none') return cert.badge;
+
+    const cleanCode = cert.code.toUpperCase().replace(/[^A-Z0-9]/g, '');
+    if (['AI103', 'AI200', 'AB100', 'AZ305'].includes(cleanCode)) return 'new';
+    if (['GH300', 'AZ900', 'AI900', 'CCAF', 'DP800', 'ISTQBAI', 'AB731'].includes(cleanCode)) return 'verified';
+
+    return cert.badge || 'none';
+  };
 
   const normalizeCertificateSearch = (value: string) => value
     .normalize('NFD')
@@ -2016,24 +2211,13 @@ export default function App() {
             {/* Certification Grid list */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {visibleHomeCertificates.map(cert => {
-                // Get progress for this card locally
+                // Get progress and actual total questions for this card
+                const certTotal = getCertificateTotalQuestions(cert);
                 let certProgress = {
                   answeredCount: 0,
                   correctCount: 0,
-                  total: BUILTIN_QUESTION_COUNTS[cert.id] || 0,
+                  total: certTotal,
                 };
-
-                // The cache is guaranteed to belong to this app build. Use it
-                // for accurate custom-certificate counts and fast home cards.
-                const storedQs = localStorage.getItem(`questions_${cert.id}`);
-                if (storedQs) {
-                  try {
-                    const parsedQs = JSON.parse(storedQs);
-                    if (Array.isArray(parsedQs) && parsedQs.length > 0) certProgress.total = parsedQs.length;
-                  } catch {
-                    localStorage.removeItem(`questions_${cert.id}`);
-                  }
-                }
 
                 const storedProg = readProgressCache(cert.id);
                 if (storedProg) {
@@ -2049,6 +2233,7 @@ export default function App() {
                   : 0;
 
                 const isLocked = checkIsCertLocked(cert);
+                const badge = getCertificateBadge(cert);
 
                 return (
                   <div key={cert.id} className="bg-white border border-slate-150/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
@@ -2062,6 +2247,18 @@ export default function App() {
                           <span className="text-[10px] font-bold uppercase tracking-widest bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded">
                             {cert.code}
                           </span>
+                          {badge === 'verified' && (
+                            <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm bg-emerald-400 text-slate-950 font-sans">
+                              <CheckCircle className="w-3 h-3 text-slate-950 stroke-[2.5]" />
+                              Đã Xác Thực (Pass)
+                            </span>
+                          )}
+                          {badge === 'new' && (
+                            <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm bg-gradient-to-r from-amber-300 via-rose-300 to-pink-300 text-slate-950 animate-pulse font-sans">
+                              <Sparkles className="w-3 h-3 text-slate-950 stroke-[2.5]" />
+                              NEW ✨
+                            </span>
+                          )}
                           {cert.isVIP && (
                             <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full flex items-center gap-1 shadow-xs ${
                               isLocked 
@@ -2903,6 +3100,7 @@ export default function App() {
             onToggleCertVip={handleToggleCertVip}
             onToggleCertDisabled={handleToggleCertDisabled}
             onToggleUnlockCert={handleToggleUnlockCert}
+            onUpdateCertBadge={handleUpdateCertBadge}
             showAppToast={showAppToast}
             />
           </Suspense>

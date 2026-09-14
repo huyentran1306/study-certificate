@@ -8,20 +8,30 @@ export const BUILTIN_QUESTION_COUNTS: Record<string, number> = {
   'gh-300': 152,
   'az-900': 323,
   'ai-900': 5,
+  'ai-103': 135,
+  'ai-200': 128,
   'cca-f': 90,
   'dp-800': 134,
   'istqb-ai': 119,
   'ab-731': 100,
+  'ab-100': 120,
+  'az-305': 285,
 };
 
-const loaders: Record<string, () => Promise<Question[]>> = import.meta.env.DEV ? {
+export const BUILTIN_CERT_IDS = Object.keys(BUILTIN_QUESTION_COUNTS);
+
+const loaders: Record<string, () => Promise<Question[]>> = {
   'gh-300': async () => (await import('./initialQuestions')).initialQuestions,
   'az-900': async () => (await import('./az900Questions')).az900Questions,
   'ai-900': async () => (await import('./ai900Questions')).ai900Questions,
+  'ai-103': async () => (await import('./ai103Questions')).ai103Questions,
+  'ai-200': async () => (await import('./ai200Questions')).ai200Questions,
+  'ab-100': async () => (await import('./ab100Questions')).ab100Questions,
+  'az-305': async () => (await import('./az305Questions')).az305Questions,
   'cca-f': async () => (await import('./ccaQuestions')).ccaQuestions,
   'dp-800': async () => (await import('./dp800Questions')).dp800Questions,
   'istqb-ai': async () => (await import('./istqbAiQuestions')).istqbAiQuestions,
-} : {};
+};
 
 export async function loadBuiltinQuestions(certId: string): Promise<Question[]> {
   const loader = loaders[certId];
