@@ -1,0 +1,20806 @@
+import { Question } from '../types';
+
+export const az400Questions: Question[] = [
+  {
+    "id": "az400-1",
+    "questionNumber": 1,
+    "text": "You are developing an application whose source repository has multiple branches. You have made several changes to a branch that is used for experimentation. You need to update the main branch so that it captures the changes made on the experimentation branch, while also overriding the history of the Git repository.  \n  \nWhich Git option should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Rebase"
+      },
+      {
+        "key": "B",
+        "text": "Fetch"
+      },
+      {
+        "key": "C",
+        "text": "Merge"
+      },
+      {
+        "key": "D",
+        "text": "Push"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Git rebase di chuyển hoặc phát lại các cam kết từ nhánh này sang nhánh khác, tạo ra các cam kết hoàn toàn mới với các giá trị băm mới cho mỗi cam kết ban đầu. Quá trình này viết lại lịch sử cam kết, tạo ra một chuỗi tuyến tính thay vì giữ nguyên cấu trúc phân nhánh ban đầu, đó là điều \"ghi đè lịch sử\" đề cập đến. Ngược lại, hợp nhất sẽ bảo tồn lịch sử ban đầu của cả hai nhánh và thêm một cam kết hợp nhất thay vì viết lại nó. Tìm nạp chỉ truy xuất các bản cập nhật từ điều khiển từ xa mà không tích hợp chúng và Push chỉ tải các cam kết cục bộ lên kho lưu trữ từ xa - không hoạt động nào tích hợp các thay đổi từ nhánh khác trong khi viết lại lịch sử theo cách rebase.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 1",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/1-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-2",
+    "questionNumber": 2,
+    "text": "You use Azure Pipelines to build and test code projects.  \n  \nYou notice an increase in cycle times.  \n  \nYou need to identify whether agent pool exhaustion is causing the issue.  \n  \nWhat are two possible ways to achieve this goal? Each correct answer presents a complete solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Query the PipelineRun/PipelineRuns endpoint."
+      },
+      {
+        "key": "B",
+        "text": "Query the TaskAgentPoolSizeSnapshots endpoint."
+      },
+      {
+        "key": "C",
+        "text": "View the Pipeline duration report."
+      },
+      {
+        "key": "D",
+        "text": "View the pool consumption report at the organization level."
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "D"
+    ],
+    "explanation": "Truy vấn điểm cuối TaskAgentPoolSizeSnapshots cung cấp ảnh chụp nhanh về mức sử dụng nhóm tác nhân trước đây, cho thấy các mô hình cạn kiệt dung lượng theo thời gian. Việc xem báo cáo mức tiêu thụ nhóm ở cấp tổ chức sẽ cung cấp bản tóm tắt về cách sử dụng nhóm đại lý trong các dự án. Cùng với nhau, hai phương pháp này trực tiếp chẩn đoán tình trạng kiệt sức của hồ bơi là nguyên nhân theo thời gian của chu kỳ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 2",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/2-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-3",
+    "questionNumber": 3,
+    "text": "You have an Azure DevOps organization named Contoso and an Azure subscription. The subscription contains an Azure virtual machine scale set named VMSS1 that is configured for autoscaling.  \n  \nYou use Azure DevOps to build a web app named App1 and deploy App1 to VMSS1. App1 is used heavily and has usage patterns that vary on a weekly basis.  \n  \nYou need to recommend a solution to detect an abnormal rise in the rate of failed requests to App1. The solution must minimize administrative effort.  \n  \nWhat should you include in the recommendation?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the Smart Detection feature in Azure Application Insights"
+      },
+      {
+        "key": "B",
+        "text": "the Failures feature in Azure Application Insights"
+      },
+      {
+        "key": "C",
+        "text": "an Azure Service Health alert"
+      },
+      {
+        "key": "D",
+        "text": "an Azure Monitor alert that uses an Azure Log Analytics query"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Phát hiện thông minh Application Insights (Lỗi bất thường) tự động theo dõi tỷ lệ yêu cầu không thành công bằng cách sử dụng máy học và chủ động cảnh báo khi có mức tăng bất thường mà không yêu cầu bạn tạo hoặc duy trì các truy vấn, ngưỡng hoặc quy tắc cảnh báo tùy chỉnh. Hành vi tự động, tích hợp sẵn này đáp ứng yêu cầu giảm thiểu nỗ lực quản trị, trong khi tính năng Lỗi chỉ cung cấp chế độ xem điều tra thủ công, Azure Service Health bao gồm các trường hợp ngừng hoạt động của nền tảng/dịch vụ Azure thay vì lỗi ở cấp ứng dụng và cảnh báo dựa trên Log Analytics tùy chỉnh sẽ yêu cầu truy vấn thủ công liên tục và bảo trì ngưỡng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 3",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/3-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-4",
+    "questionNumber": 4,
+    "text": "You manage a project by using Azure Boards. You manage the project code by using GitHub.  \n  \nYou have three work items that have IDs of 456, 457, and 458.  \n  \nYou need to create a pull request that will be linked to all the work items. The solution must set the state of work item 456 to done.  \n  \nWhat should you add to the commit message?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "#AB456, #AB457, #AB458Completed #AB456"
+      },
+      {
+        "key": "B",
+        "text": "#456, #457, #458Completed #456"
+      },
+      {
+        "key": "C",
+        "text": "Done #AB456, #AB457, #AB458"
+      },
+      {
+        "key": "D",
+        "text": "#AB456, #AB457, #AB458Verifies #AB456"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Việc tham chiếu các mục công việc của Bảng Azure từ cam kết GitHub yêu cầu tiền tố \"AB#\" trên mỗi ID; việc thêm một điểm đánh dấu hoàn thành rõ ràng, đặt tên mục công việc 456, chỉ chuyển mục đó thành Xong trong khi các tham chiếu AB# đơn giản vẫn liên kết tất cả ba mục công việc với yêu cầu kéo. Trong số các lựa chọn đã cho, việc sử dụng định dạng AB# cho cả ba ID cộng với câu lệnh hoàn thành riêng cho 456 là cách phù hợp nhất với cú pháp và hành vi bắt buộc này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 4",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/4-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-5",
+    "questionNumber": 5,
+    "text": "You have an app that is deployed to two environments named Production-A and Production-B by using Azure Pipelines.  \n  \nYou need to configure a release pipeline that will mark the app as complete and ready for release into the Production-B environment. The solution must meet the following requirements:  \n  \n• Ensure that there are no active Azure Monitor alerts in the Production-A environment before the app is marked as complete.  \n\n• Minimize administrative effort.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "To the Production-B environment stage, add a pre-deployment gate that will query Azure Monitor."
+      },
+      {
+        "key": "B",
+        "text": "To the Production-A environment stage, add a post-deployment gate that will query Azure Monitor."
+      },
+      {
+        "key": "C",
+        "text": "To the Production-A environment stage, add a post-deployment approval."
+      },
+      {
+        "key": "D",
+        "text": "To the Production-A environment stage, add a pre-deployment gate that will query Azure Monitor."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Cổng sau triển khai ở giai đoạn Sản xuất-A sẽ tự động chạy sau khi quá trình triển khai hoàn tất và truy vấn Azure Monitor để biết các cảnh báo hiện hoạt trước khi Azure Pipelines đánh dấu giai đoạn đó là đã hoàn thành thành công, đây là yếu tố kích hoạt để quy trình tiến tới Sản xuất-B. Cổng trước khi triển khai trên Production-B sẽ kiểm tra các cảnh báo trước khi triển khai lên B thay vì trước khi Production-A được đánh dấu là hoàn thành và phê duyệt thủ công không tự động truy vấn Azure Monitor.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 5",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/5-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-6",
+    "questionNumber": 6,
+    "text": "You have a web application hosted on Azure App Service that stores its data in an Azure SQL database.  \n  \nYou need to generate an alert whenever there are 10,000 simultaneous connections to the database. The solution must minimize development effort.  \n  \nWhich option should you select in the Diagnostics settings of the database?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Send to Log Analytics"
+      },
+      {
+        "key": "B",
+        "text": "Stream to an event hub"
+      },
+      {
+        "key": "C",
+        "text": "Archive to a storage account"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Gửi dữ liệu chẩn đoán tới Log Analytics cho phép bạn sử dụng các quy tắc cảnh báo tìm kiếm nhật ký tích hợp của Azure Monitor để đánh giá các số liệu đã thu thập (chẳng hạn như số lượng kết nối) và tự động kích hoạt thông báo, yêu cầu mã tùy chỉnh no. Việc truyền phát tới Trung tâm sự kiện sẽ yêu cầu xây dựng và duy trì một ứng dụng tiêu dùng riêng biệt để xử lý luồng và đưa ra cảnh báo, tăng cường nỗ lực phát triển. Việc lưu trữ vào tài khoản lưu trữ chỉ giữ lại dữ liệu chẩn đoán để phân tích sau này và không hỗ trợ cảnh báo theo thời gian thực. Do đó, định tuyến nhật ký chẩn đoán tới Log Analytics là cách tốn ít công sức nhất để định cấu hình cảnh báo cho ngưỡng như 10.000 kết nối đồng thời.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 6",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/6-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-7",
+    "questionNumber": 7,
+    "text": "Your company has a release pipeline defined in an Azure DevOps project. You plan to deploy to an Azure Kubernetes Service (AKS) cluster by using the Helm package and deploy task.  \n  \nYou need to install a service in the AKS namespace to support the planned deployment.  \n  \nWhich service should you install?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Container Registry"
+      },
+      {
+        "key": "B",
+        "text": "Chart"
+      },
+      {
+        "key": "C",
+        "text": "Kubectl"
+      },
+      {
+        "key": "D",
+        "text": "Tiller"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Helm v2 sử dụng mô hình máy khách-máy chủ trong đó Helm CLI giao tiếp với thành phần phía máy chủ có tên Tiller chạy bên trong cụm Kubernetes. Trước khi Helm có thể đóng gói, cài đặt hoặc nâng cấp biểu đồ thông qua tác vụ triển khai Azure DevOps Helm, Tiller phải được cài đặt vào không gian tên mục tiêu (thường thông qua 'helm init'), vì nó chịu trách nhiệm thực thi các hoạt động phát hành thực tế dựa trên API Kubernetes. Azure Container Register chỉ là một sổ đăng ký bên ngoài để lưu trữ hình ảnh/biểu đồ, Biểu đồ chỉ là thành phần đóng gói và Kubectl là một ứng dụng khách dòng lệnh chứ không phải là một dịch vụ trong cụm, vì vậy không có ứng dụng nào trong số đó đáp ứng yêu cầu về một dịch vụ có thể cài đặt trong không gian tên AKS.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 7",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/7-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-8",
+    "questionNumber": 8,
+    "text": "You have an Azure DevOps organization named Contoso that contains a project named Project1. You also have an Azure subscription named Sub1 that includes an Azure key vault named vault1.  \n  \nYou need to ensure that you can reference the values of the secrets stored in vault1 from all the pipelines in Project1. The solution must prevent the secret values from being stored in the pipelines.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a variable group in Project1."
+      },
+      {
+        "key": "B",
+        "text": "Add a secure file to Project1."
+      },
+      {
+        "key": "C",
+        "text": "Modify the security settings of the pipelines."
+      },
+      {
+        "key": "D",
+        "text": "Configure the security policy of Contoso."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Pipelines cho phép bạn tạo một nhóm biến trong Thư viện của dự án và liên kết nó với Azure key vault hiện có. Khi bạn liên kết nhóm biến với Key Vault, chỉ tên bí mật được lưu trữ trong định nghĩa nhóm biến; các giá trị bí mật thực tế được truy xuất trực tiếp từ Key Vault trong thời gian chạy quy trình thông qua kết nối dịch vụ được ủy quyền với quyền Nhận và Danh sách. Một nhóm biến có thể được cung cấp cho tất cả các đường ống trong dự án, đáp ứng yêu cầu tham chiếu các bí mật của vault1 từ mọi đường ống trong Project1 trong khi vẫn đảm bảo bản thân các giá trị bí mật không bao giờ được lưu giữ trong định nghĩa đường ống.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 8",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/8-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-9",
+    "questionNumber": 9,
+    "text": "Your organization runs an application that includes several Azure App Service web apps and Azure Functions. You want to review recommendations concerning the security of these web apps and functions, and you plan to go to the Compute and Apps section to do so.  \n  \nWhich of the following should you access in order to use Compute and Apps?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Log Analytics"
+      },
+      {
+        "key": "B",
+        "text": "Azure Event Hubs"
+      },
+      {
+        "key": "C",
+        "text": "Azure Advisor"
+      },
+      {
+        "key": "D",
+        "text": "Azure Security Center"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Trung tâm bảo mật Azure (được đổi tên thành Microsoft Defender for Cloud) sắp xếp các đề xuất bảo mật theo danh mục tài nguyên và phần 'Điện toán và ứng dụng' đặc biệt bao gồm các đề xuất cho ứng dụng web Azure App Service và Azure Functions, chẳng hạn như bật danh tính được quản lý, hạn chế quyền truy cập FTP, thực thi HTTPS và sử dụng các phiên bản thời gian chạy mới nhất. Điều này khác với Azure Log Analytics (nền tảng dữ liệu/truy vấn nhật ký), Azure Event Hubs (dịch vụ nhập truyền dữ liệu) và Azure Advisor (một cố vấn chung về các phương pháp hay nhất thiếu nhóm điều hướng 'Điện toán và Ứng dụng' cụ thể dùng để đề xuất tình hình bảo mật).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 9",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/9-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-10",
+    "questionNumber": 10,
+    "text": "You need to consider the underlined segment to establish whether it is accurate.  \n\nTo deploy an application to a number of Azure virtual machines, you should create a universal group.  \n\nSelect `No adjustment required` if the underlined segment is accurate. If the underlined segment is inaccurate, select the accurate option.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "No adjustment required."
+      },
+      {
+        "key": "B",
+        "text": "security"
+      },
+      {
+        "key": "C",
+        "text": "deployment"
+      },
+      {
+        "key": "D",
+        "text": "resource"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Azure Pipelines điều phối việc triển khai ứng dụng trên một nhóm máy mục tiêu bằng cách sử dụng \"nhóm triển khai\" — tập hợp logic các máy chạy tác nhân triển khai. \"Nhóm phổ quát\" là khái niệm phạm vi nhóm Active Directory không liên quan, vì vậy thuật ngữ được gạch chân phải được sửa thành \"triển khai\".",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 10",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/10-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-11",
+    "questionNumber": 11,
+    "text": "You have an Azure DevOps project and need to configure a dashboard that includes the following metrics:  \n  \n- Bottlenecks in the software development process  \n- A burndown chart for work in one iteration  \n- The time needed to close a work item after it has started  \n  \nSelect the appropriate widget type for each metric. Each widget may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "bottlenecks",
+        "text": "Bottlenecks in the software development process:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "cycle",
+        "text": "How long it takes to close a work item after the item was started:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "iteration_burndown",
+        "text": "A burndown chart for the work in a single iteration:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Burndown chart"
+      },
+      {
+        "key": "B",
+        "text": "Cumulative flow diagram (CFD)"
+      },
+      {
+        "key": "C",
+        "text": "Cycle time"
+      },
+      {
+        "key": "D",
+        "text": "Lead time"
+      },
+      {
+        "key": "E",
+        "text": "Sprint burndown"
+      },
+      {
+        "key": "F",
+        "text": "Velocity"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Burndown chart"
+      },
+      {
+        "key": "B",
+        "text": "Cumulative flow diagram (CFD)"
+      },
+      {
+        "key": "C",
+        "text": "Cycle time"
+      },
+      {
+        "key": "D",
+        "text": "Lead time"
+      },
+      {
+        "key": "E",
+        "text": "Sprint burndown"
+      },
+      {
+        "key": "F",
+        "text": "Velocity"
+      }
+    ],
+    "correctAnswers": [
+      "bottlenecks=B",
+      "cycle=C",
+      "iteration_burndown=E"
+    ],
+    "explanation": "Sơ đồ luồng tích lũy hiển thị số lượng công việc ở từng trạng thái quy trình làm việc theo thời gian, do đó, việc mở rộng phạm vi sẽ bộc lộ các điểm nghẽn. Thời gian chu kỳ đo thời gian trôi qua từ khi bắt đầu công việc đến khi hoàn thành. Sprint burndown theo dõi công việc còn lại cho một lần chạy nước rút hoặc lần lặp đã chọn.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 11",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/11-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-13",
+    "questionNumber": 13,
+    "text": "You use Git for source control. You have an app named App1.  \n  \nIn the main branch, you need to restore the third most recent revision of a file named App.exe.config.  \n  \nHow should you complete the command?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Để khôi phục tệp về trạng thái như cam kết trước đó, trước tiên hãy đảm bảo bạn đang ở đúng nhánh bằng cách sử dụng gitcheckout main, sau đó sử dụng git Restore --source=<commit> <file> để lấy nội dung của tệp từ cam kết cụ thể đó vào thư mục làm việc. Tree-ish main~3 đề cập đến cam kết ba bản sửa đổi trở lại từ đầu chính, tương ứng với bản sửa đổi gần đây thứ ba. Tùy chọn --source được thiết kế đặc biệt để chỉ định cam kết khôi phục nội dung của tệp từ đâu, không giống như --staged (ảnh hưởng đến khu vực chỉ mục/tổ chức) hoặc --patch/--merge (phục vụ các mục đích khác nhau trong giải quyết xung đột và khôi phục tương tác).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 13",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/13-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-14",
+    "questionNumber": 14,
+    "text": "You have an Azure Repos repository named `repo1`.  \n  \nYou delete a branch named `features/feature11`.  \n  \nYou need to recover the deleted branch.  \n  \nWhich three commands should you run, in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "1",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "2",
+        "text": "2",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "3",
+        "text": "3",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "git restore <SHA1>"
+      },
+      {
+        "key": "B",
+        "text": "git stash"
+      },
+      {
+        "key": "C",
+        "text": "git checkout <SHA1>"
+      },
+      {
+        "key": "D",
+        "text": "git branch features/feature11"
+      },
+      {
+        "key": "E",
+        "text": "git log"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "git restore <SHA1>"
+      },
+      {
+        "key": "B",
+        "text": "git stash"
+      },
+      {
+        "key": "C",
+        "text": "git checkout <SHA1>"
+      },
+      {
+        "key": "D",
+        "text": "git branch features/feature11"
+      },
+      {
+        "key": "E",
+        "text": "git log"
+      }
+    ],
+    "correctAnswers": [
+      "1=E",
+      "2=C",
+      "3=D"
+    ],
+    "explanation": "Một nhánh đã xóa được khôi phục bằng cách xác định cam kết cuối cùng của nó, kiểm tra cam kết đó và tạo lại tên nhánh ở cam kết hiện tại. `git log` hiển thị lịch sử cam kết, `git checkout <SHA1>` chọn cam kết và `git branch features/feature11` tạo nhánh ở đó. `git restore` khôi phục nội dung tệp và `git stash` lưu các thay đổi chưa được cam kết; không tạo lại một nhánh.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 14",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/14-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-16",
+    "questionNumber": 16,
+    "text": "How should you configure the release retention policy for the investment planning applications suite?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Bộ ứng dụng lập kế hoạch đầu tư yêu cầu theo mặc định, tất cả các bản phát hành vẫn có sẵn trong 30 ngày, ngoại trừ các bản phát hành sản xuất phải được lưu giữ trong 60 ngày. Trong quy trình phát hành cổ điển của Azure DevOps, cài đặt lưu giữ bản phát hành toàn cầu (cấp dự án) bao gồm Chính sách lưu giữ mặc định, chính sách này đặt số ngày cơ sở mà bản phát hành được giữ lại cho tất cả quy trình phát hành trừ khi bị ghi đè rõ ràng - điều này đáp ứng yêu cầu mặc định trong 30 ngày. Sau đó, quy trình phát hành riêng lẻ có thể tùy chỉnh chính sách lưu giữ theo từng giai đoạn cụ thể (Số ngày lưu giữ một bản phát hành) để kéo dài thời gian lưu giữ cho các bản phát hành được triển khai đến một giai đoạn cụ thể, chẳng hạn như Sản xuất, ngoài thời gian mặc định chung - việc đặt cài đặt này thành 60 ngày sẽ đáp ứng yêu cầu rằng các bản phát hành sản xuất phải được lưu giữ lâu hơn. Mô hình lưu giữ hai cấp này (mặc định chung cộng với ghi đè theo từng giai đoạn) là cơ chế được ghi lại để giữ lại các bản phát hành sản xuất lâu hơn các bản phát hành phi sản xuất.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 16",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/16-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-17",
+    "questionNumber": 17,
+    "text": "You have a project in Azure DevOps named Project1 that contains two environments named environment1 and environment2.  \n  \nWhen a new version of Project is released, the latest version is deployed to environment2, and the previous version is redeployed to environment1.  \n  \nYou need to distribute users across the environments. The solution must meet the following requirements:  \n  \n• New releases must be available to only a subset of the users.  \n\n• You must gradually increase the number of users that can access environment2.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VIP swaping"
+      },
+      {
+        "key": "B",
+        "text": "web app deployment slots"
+      },
+      {
+        "key": "C",
+        "text": "Azure Load Balancer"
+      },
+      {
+        "key": "D",
+        "text": "Azure Traffic Manager"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các vị trí triển khai ứng dụng web cho phép triển khai dần dần các phiên bản mới cho một tỷ lệ phần trăm người dùng thông qua phân phối lưu lượng truy cập. Điều này đáp ứng cả hai yêu cầu: các bản phát hành mới ban đầu chỉ tiếp cận một tập hợp con và lưu lượng truy cập có thể tăng dần lên phiên bản mới. Trình quản lý lưu lượng truy cập hoạt động ở cấp DNS/khu vực và không cung cấp định tuyến dựa trên tỷ lệ phần trăm cho mỗi người dùng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 17",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/17-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-18",
+    "questionNumber": 18,
+    "text": "You manage an Azure web app that supports an e-commerce website.  \n  \nYou need to increase the logging level when the web app exceeds normal usage patterns. The solution must minimize administrative overhead.  \n  \nWhich two resources should you include in the solution? Each correct answer presents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an Azure Automation runbook"
+      },
+      {
+        "key": "B",
+        "text": "an Azure Monitor alert that has a dynamic threshold"
+      },
+      {
+        "key": "C",
+        "text": "an Azure Monitor alert that has a static threshold"
+      },
+      {
+        "key": "D",
+        "text": "the Azure Monitor autoscale settings"
+      },
+      {
+        "key": "E",
+        "text": "an Azure Monitor alert that uses an action group that has an email action"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "B"
+    ],
+    "explanation": "Việc phát hiện khi việc sử dụng khác với 'mẫu bình thường' yêu cầu cảnh báo ngưỡng động, sử dụng công nghệ học máy để thiết lập đường cơ sở từ dữ liệu lịch sử và chỉ kích hoạt khi có sai lệch bất thường, thay vì ngưỡng tĩnh cố định. Để giảm thiểu chi phí quản trị, phản hồi cho cảnh báo đó—nâng mức ghi nhật ký—phải diễn ra tự động thay vì dựa vào một người để đọc email và thực hiện thay đổi theo cách thủ công. Sổ tay chạy Tự động hóa Azure có thể được đặt cấu hình làm hành động của cảnh báo để tự động thực hiện thay đổi bắt buộc (ví dụ: cập nhật cài đặt chẩn đoán/ghi nhật ký) bất cứ khi nào cảnh báo ngưỡng động kích hoạt.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 18",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/18-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-19",
+    "questionNumber": 19,
+    "text": "You manage the Git repository for a large enterprise application. During development you use a file named Config.json. You need to prevent Config.json from being committed to source control whenever changes to the application are committed.  \n  \nWhich three actions should you perform in sequence? Move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Delete and recreate the repository."
+      },
+      {
+        "key": "B",
+        "text": "Run the git reflog expire command."
+      },
+      {
+        "key": "C",
+        "text": "Run the git add .gitignore command."
+      },
+      {
+        "key": "D",
+        "text": "Add Config.json to the .gitignore file."
+      },
+      {
+        "key": "E",
+        "text": "Run the git commit command."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Delete and recreate the repository."
+      },
+      {
+        "key": "B",
+        "text": "Run the git reflog expire command."
+      },
+      {
+        "key": "C",
+        "text": "Run the git add .gitignore command."
+      },
+      {
+        "key": "D",
+        "text": "Add Config.json to the .gitignore file."
+      },
+      {
+        "key": "E",
+        "text": "Run the git commit command."
+      }
+    ],
+    "correctAnswers": [
+      "1=D",
+      "2=C",
+      "3=E"
+    ],
+    "explanation": "Git sử dụng tệp.gitignore để chỉ định các tệp và mẫu không bao giờ được theo dõi hoặc cam kết. Quy trình làm việc đúng là: trước tiên hãy thêm tên tệp (Config.json) vào tệp.gitignore để xác định quy tắc bỏ qua; sau đó tự sắp xếp tệp.gitignore bằng 'git add.gitignore' để quy tắc được theo dõi trong kho lưu trữ; cuối cùng cam kết thay đổi đó bằng 'git commit' để quy tắc bỏ qua có hiệu lực cho tất cả các cam kết trong tương lai. Việc xóa và tạo lại kho lưu trữ là hành động phá hoại và không cần thiết, đồng thời 'git reflog hết hạn' chỉ quản lý lịch sử nhật ký tham chiếu chứ không quản lý theo dõi tệp.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 19",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/19-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-20",
+    "questionNumber": 20,
+    "text": "You provision an Azure Kubernetes Service (AKS) cluster with RBAC enabled. You have a Helm chart for a client application.  \n  \nYou need to configure Helm and Tiller on the cluster and install the chart.  \n  \nWhich three commands should you recommend running in sequence? Move the appropriate commands from the list of commands to the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "helm install"
+      },
+      {
+        "key": "B",
+        "text": "kubectl create"
+      },
+      {
+        "key": "C",
+        "text": "helm completion"
+      },
+      {
+        "key": "D",
+        "text": "helm init"
+      },
+      {
+        "key": "E",
+        "text": "helm serve"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "helm install"
+      },
+      {
+        "key": "B",
+        "text": "kubectl create"
+      },
+      {
+        "key": "C",
+        "text": "helm completion"
+      },
+      {
+        "key": "D",
+        "text": "helm init"
+      },
+      {
+        "key": "E",
+        "text": "helm serve"
+      }
+    ],
+    "correctAnswers": [
+      "1=B",
+      "2=D",
+      "3=A"
+    ],
+    "explanation": "Trên cụm AKS hỗ trợ RBAC, Tiller không thể hoạt động với các quyền mặc định, vì vậy trước tiên bạn phải tạo một tài khoản dịch vụ chuyên dụng và ClusterRoleBinding cho nó bằng cách sử dụng kubectl create (áp dụng tệp kê khai RBAC). Tiếp theo, bạn chạy helm init --service-account Tiller để khởi tạo ứng dụng khách Helm và triển khai Tiller vào cụm bằng tài khoản dịch vụ được ủy quyền đó. Cuối cùng, cài đặt helm được sử dụng để triển khai biểu đồ cho ứng dụng khách khi Tiller có các quyền cần thiết để tạo tài nguyên Kubernetes.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 20",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/20-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-21",
+    "questionNumber": 21,
+    "text": "You have a GitHub repository and plan to use it to create a container.  \n  \nYou need to configure GitHub Actions to deploy the container to GitHub Container Registry.  \n  \nHow should you complete the script?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Việc xuất bản Sổ đăng ký vùng chứa GitHub yêu cầu xây dựng hình ảnh Docker, xác thực cho `ghcr.io` bằng cách sử dụng mã thông báo quy trình làm việc được cung cấp thông qua `docker login --password-stdin` và đẩy thẻ hình ảnh `ghcr.io` đủ điều kiện. Mã thông báo quy trình công việc phải có quyền ghi gói để xuất bản hình ảnh. Quy trình làm việc của Cơ quan đăng ký vùng chứa được ghi lại của GitHub tuân theo quy trình xác thực, xây dựng và xuất bản tương tự.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 21",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/21-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-22",
+    "questionNumber": 22,
+    "text": "Solution: In **Pre-deployment conditions**, modify the **Time between re-evaluation of gates** option.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Thời gian giữa các lần đánh giá lại cổng sẽ kiểm soát tần suất lấy mẫu của cổng; nó không kiểm soát thời gian chờ phê duyệt thủ công. Việc triển khai không được phê duyệt sẽ bị từ chối khi hết thời gian chờ phê duyệt, do đó, thời gian chờ phê duyệt phải được đặt thành 8 giờ để đáp ứng yêu cầu.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 22",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/22-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-23",
+    "questionNumber": 23,
+    "text": "Solution: In **Post-deployment conditions**, modify the **Time between re-evaluation of gates** option.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Khoảng thời gian đánh giá lại cổng chỉ xác định tần suất lấy mẫu các cổng triển khai tự động. Phê duyệt thủ công đang chờ xử lý sẽ bị từ chối khi thời gian chờ phê duyệt được định cấu hình của nó hết hạn, do đó, thời gian chờ phê duyệt—không phải khoảng thời gian lấy mẫu cổng sau triển khai—phải được đặt thành 8 giờ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 23",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/23-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-24",
+    "questionNumber": 24,
+    "text": "Solution: In **Pre-deployment conditions**, modify the **Timeout** setting for pre-deployment approvals.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Thời gian chờ phê duyệt trước khi triển khai xác định khoảng thời gian Azure DevOps chờ phê duyệt; nếu phê duyệt no được cấp trong khoảng thời gian đó thì việc triển khai sẽ bị từ chối. Việc định cấu hình trong tám giờ đảm bảo việc triển khai không được phê duyệt không bị lỗi sau hai giờ và chỉ bị từ chối sau khoảng thời gian phê duyệt tám giờ bắt buộc.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 24",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/24-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-25",
+    "questionNumber": 25,
+    "text": "Solution: In **Post-deployment conditions**, modify the **Timeout** setting for post-deployment approvals.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Phê duyệt sau triển khai xảy ra sau khi triển khai, trong khi phê duyệt bắt buộc của trưởng nhóm phải được hoàn thành trước khi triển khai. Do đó, thời gian chờ của nó không thể kiểm soát thời gian triển khai chờ đợi sự phê duyệt cần thiết đó. Thời gian chờ phê duyệt trước khi triển khai phải được đặt thành 8 giờ; khi phê duyệt no được cấp trong thời gian chờ đó, việc triển khai sẽ bị từ chối.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 25",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/25-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-26",
+    "questionNumber": 26,
+    "text": "You plan to create an image that will contain a .NET Core application.  \n  \nYou have a Dockerfile file that contains the following code. (Line numbers are included for reference only.)  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1786827784775-20nktzlc.png)  \n  \nYou need to ensure that the image is as small as possible when the image is built.  \n  \nWhich line should you modify in the file?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "1"
+      },
+      {
+        "key": "B",
+        "text": "3"
+      },
+      {
+        "key": "C",
+        "text": "4"
+      },
+      {
+        "key": "D",
+        "text": "7"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Dòng 4 chứa phần khai báo image cơ sở của Dockerfile. Để giảm thiểu kích thước hình ảnh, bạn nên sử dụng hình ảnh thời gian chạy (thời gian chạy aspnet) thay vì hình ảnh SDK, bao gồm các công cụ xây dựng và có kích thước lớn hơn đáng kể. Hình ảnh thời gian chạy đủ để chạy ứng dụng.NET Core đã được biên dịch sẵn trong sản xuất.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1786827784775-20nktzlc.png",
+    "sourceTitle": "Examcademy AZ-400 Question 26",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/26-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-27",
+    "questionNumber": 27,
+    "text": "You are implementing an Azure DevOps strategy for mobile devices using App Center. You plan to use distribution groups to control access to releases. You need to create the distribution groups shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783717980494-dkdapdny.png)  \n  \nWhich type of distribution group should you use for each group? Each group type may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "group1",
+        "text": "Group1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "group2",
+        "text": "Group2:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "group3",
+        "text": "Group3:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Private"
+      },
+      {
+        "key": "B",
+        "text": "Public"
+      },
+      {
+        "key": "C",
+        "text": "Shared"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Private"
+      },
+      {
+        "key": "B",
+        "text": "Public"
+      },
+      {
+        "key": "C",
+        "text": "Shared"
+      }
+    ],
+    "correctAnswers": [
+      "group1=A",
+      "group2=B",
+      "group3=C"
+    ],
+    "explanation": "Trung tâm ứng dụng hỗ trợ ba loại nhóm phân phối. Các nhóm phân phối riêng tư yêu cầu người thử nghiệm phải được mời qua email và đăng nhập bằng tài khoản Trung tâm ứng dụng của họ trước khi truy cập vào một bản phát hành, phù hợp với yêu cầu của Group1 về người thử nghiệm được mời qua email. Các nhóm phân phối công khai hiển thị liên kết tải xuống công khai mà bất kỳ ai cũng có thể sử dụng mà không cần xác thực, phù hợp với yêu cầu của Group2 về quyền truy cập liên kết công khai không được xác thực. Các nhóm phân phối được chia sẻ tồn tại ở cấp tổ chức và có thể được gắn vào nhiều ứng dụng cùng một lúc, cho phép cùng một nhóm người thử nghiệm kiểm tra tất cả các ứng dụng của công ty, phù hợp với yêu cầu của Group3.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783717980494-dkdapdny.png",
+    "sourceTitle": "Examcademy AZ-400 Question 27",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/27-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-28",
+    "questionNumber": 28,
+    "text": "You are automating the testing process for your company. You need to automate UI testing of a web application. Which framework should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "JaCoco"
+      },
+      {
+        "key": "B",
+        "text": "Selenium"
+      },
+      {
+        "key": "C",
+        "text": "Xamarin.UITest"
+      },
+      {
+        "key": "D",
+        "text": "Microsoft.CodeAnalysis"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Selenium là một framework mã nguồn mở được sử dụng rộng rãi, được thiết kế đặc biệt để tự động hóa các tương tác trình duyệt và kiểm tra giao diện người dùng của các ứng dụng web. Nó hỗ trợ nhiều trình duyệt và ngôn ngữ lập trình, khiến nó trở thành công cụ tiêu chuẩn để tự động hóa kiểm tra giao diện người dùng web. JaCoco là một công cụ kiểm tra mã cho Java, Xamarin.UITest nhằm mục đích tự động hóa kiểm tra giao diện người dùng trên các ứng dụng di động và Microsoft.CodeAnalysis là một API để phân tích mã nguồn, không có API nào được thiết kế để kiểm tra giao diện người dùng web.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 28",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/28-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.013Z"
+  },
+  {
+    "id": "az400-29",
+    "questionNumber": 29,
+    "text": "You have an Azure App Service app named App1.  \n  \nYou need to identify when App1 was offline. The solution must minimize administrative effort.  \n  \nWhich troubleshooting category in App Service diagnostics should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Navigator"
+      },
+      {
+        "key": "B",
+        "text": "Configuration and Management"
+      },
+      {
+        "key": "C",
+        "text": "Diagnostic Tools"
+      },
+      {
+        "key": "D",
+        "text": "Availability and Performance"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Danh mục Tính khả dụng và Hiệu suất trong chẩn đoán Dịch vụ ứng dụng bao gồm Phân tích sự cố ứng dụng web và các trình phát hiện liên quan xác định chính xác thời điểm ứng dụng không khả dụng, sử dụng phương pháp đo từ xa hiện có với cấu hình bổ sung no. Các danh mục khác (Điều hướng, Cấu hình và Quản lý, Công cụ chẩn đoán) tập trung vào việc điều hướng tài nguyên, thay đổi cài đặt hoặc thu thập nhật ký/kết xuất thay vì phân tích tính khả dụng lịch sử. **Tìm hiểu thêm:** [App Service diagnostics overview](https://learn.microsoft.com/en-us/azure/app-service/overview-diagnostics)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 29",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/29-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-30",
+    "questionNumber": 30,
+    "text": "How should you configure the filters for the Project5 trigger?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Trình kích hoạt Azure Pipelines YAML hỗ trợ các bộ lọc đường dẫn trong thuộc tính đường dẫn của trình kích hoạt, chấp nhận bao gồm và loại trừ các mục chỉ định đường dẫn kho lưu trữ. Vì các giá trị được hiển thị (/folder1 và /) là đường dẫn tệp chứ không phải tên nhánh nên loại bộ lọc đúng là bộ lọc đường dẫn chứ không phải bộ lọc nhánh. Đường dẫn cài đặt: loại trừ: - /folder1 kết hợp với các đường dẫn: bao gồm: - / định cấu hình quy trình để kích hoạt các thay đổi ở bất kỳ đâu trong kho lưu trữ ngoại trừ trong thư mục folder1, đây là cách tiêu chuẩn để xác định phạm vi trình kích hoạt CI nhằm loại trừ một thư mục cụ thể trong khi vẫn bao gồm phần còn lại của kho lưu trữ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 30",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/30-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-31",
+    "questionNumber": 31,
+    "text": "You have an Azure subscription that contains the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783721274913-cw6qlgob.png)  \n  \nProject produces npm packages that are published to Feed1. Feed1 is consumed by multiple projects.  \n\nYou need to ensure that only tested packages are available for consumption. The solution must minimize development effort.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a feed view named @release and set @release as the default view. After the npm packages test successfully, configure a release pipeline that promotes a package to the @release view."
+      },
+      {
+        "key": "B",
+        "text": "Create a feed view named @release and set @release as the default view. After the npm packages test successfully, configure a release pipeline that tags the packages as release."
+      },
+      {
+        "key": "C",
+        "text": "Create a feed view named @default. After the npm packages test successfully, configure a release pipeline that tags the packages as release."
+      },
+      {
+        "key": "D",
+        "text": "Create a feed view named @default. After the npm packages test successfully, configure a release pipeline that promotes a package to the @default view."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Artifacts kiểm soát việc quảng bá gói thông qua chế độ xem nguồn cấp dữ liệu, chứ không phải thẻ: tạo chế độ xem @release tùy chỉnh, đặt chế độ xem mặc định mà người tiêu dùng lấy từ đó và có quy trình phát hành chỉ quảng bá gói vào @release sau khi vượt qua thử nghiệm, đảm bảo các gói chưa được kiểm tra vẫn ẩn với người tiêu dùng trong khi yêu cầu công cụ tùy chỉnh no. Nguồn cấp dữ liệu npm của Azure Artifacts có sẵn khái niệm gắn thẻ gói là \"bản phát hành\" no và chế độ xem mặc định tích hợp của nguồn cấp dữ liệu là @Local, không phải chế độ xem có tên theo nghĩa đen là @default, vì vậy C và D mô tả cơ chế không tồn tại.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783721274913-cw6qlgob.png",
+    "sourceTitle": "Examcademy AZ-400 Question 31",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/31-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-32",
+    "questionNumber": 32,
+    "text": "You use release pipelines in Azure Pipelines to deploy an app. Secrets required be the pipeline are stored as pipeline variables. Logging of commands is enabled for the Azure Pipelines agent.  \n\nYou need to prevent the values of the secrets from being logged.  \n\nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Store the secrets in the environment variables instead of the pipeline variables."
+      },
+      {
+        "key": "B",
+        "text": "Pass the secrets on the command line instead of in the pipeline variables."
+      },
+      {
+        "key": "C",
+        "text": "Apply a prefix of secret to the name of the variables."
+      },
+      {
+        "key": "D",
+        "text": "Echo the values of the secrets to the command line."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Pipelines tự động che giấu các giá trị biến bí mật được nhận dạng, nhưng việc che giấu đó sẽ bị vô hiệu khi bí mật được chuyển dưới dạng đối số dòng lệnh hoặc được lặp lại ở đầu ra, đặc biệt là khi bật tính năng ghi nhật ký lệnh; có quy ước tiền tố đặt tên no kích hoạt tính năng tạo mặt nạ. Hướng dẫn là không bao giờ chuyển các bí mật trên dòng lệnh mà thay vào đó ánh xạ chúng vào các biến môi trường, giúp giữ giá trị thô nằm ngoài văn bản lệnh được ghi lại.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 32",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/32-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-34",
+    "questionNumber": 34,
+    "text": "You have an Azure subscription that contains multiple Azure services.  \n\nYou need to send an SMS alert when scheduled maintenance is planned for the Azure services.  \n\nWhich two actions should you perform? Each correct answer presents part of the solution.  \n\nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable Azure Security Center."
+      },
+      {
+        "key": "B",
+        "text": "Create and configure an Azure Monitor alert rule."
+      },
+      {
+        "key": "C",
+        "text": "Create an Azure Service Health alert."
+      },
+      {
+        "key": "D",
+        "text": "Create and configure an action group."
+      }
+    ],
+    "correctAnswers": [
+      "C",
+      "D"
+    ],
+    "explanation": "Cảnh báo Tình trạng dịch vụ Azure thông báo cho bạn về các sự kiện bảo trì theo kế hoạch ảnh hưởng đến dịch vụ Azure. Để nhận thông báo SMS khi các cảnh báo này kích hoạt, bạn cũng phải tạo và đặt cấu hình Nhóm hành động chỉ định SMS làm phương thức thông báo.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 34",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/34-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-35",
+    "questionNumber": 35,
+    "text": "In an Azure DevOps project, a branch policy is configured that requires code to always build successfully before changes can be merged.  \n  \nYou need to make sure that a particular user is always able to merge changes into the master branch, even when the code fails to build.  \n  \nThe solution must follow the principle of least privilege.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add the user to the Build Administrators group."
+      },
+      {
+        "key": "B",
+        "text": "Add the user to the Project Administrators group."
+      },
+      {
+        "key": "C",
+        "text": "From the Security settings of the repository, modify the access control for the user."
+      },
+      {
+        "key": "D",
+        "text": "From the Security settings of the branch, modify the access control for the user."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Các chính sách của chi nhánh, chẳng hạn như yêu cầu xây dựng thành công, có thể bị ghi đè bởi người dùng được cấp quyền \"Bỏ qua chính sách khi hoàn thành yêu cầu kéo\" (hoặc \"Bỏ qua chính sách khi đẩy\"). Việc đặt quyền này từ cài đặt Bảo mật cấp chi nhánh sẽ chỉ áp dụng ngoại lệ đối với nhánh chính cho chỉ người dùng đó, đáp ứng đặc quyền tối thiểu. Việc sử dụng bảo mật cấp kho lưu trữ sẽ áp dụng tính năng bỏ qua trên tất cả các nhánh trong kho lưu trữ và việc thêm người dùng vào Quản trị viên bản dựng hoặc Quản trị viên dự án sẽ cấp quá nhiều quyền, không liên quan ngoài những quyền cần thiết.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 35",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/35-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-36",
+    "questionNumber": 36,
+    "text": "Solution: Create an action group from Azure Monitor.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Nhóm hành động Azure Monitor xác định người nhận email và các hành động phản hồi khác, nhưng nhóm này không gửi gì trừ khi quy tắc cảnh báo yêu cầu. Thông báo tự động chia tỷ lệ của bộ thang đo VM phải được định cấu hình trên cài đặt tự động chia tỷ lệ hoặc cảnh báo nhật ký hoạt động tự động chia tỷ lệ phải được định cấu hình và liên kết với nhóm hành động để tạo email khi xảy ra tỷ lệ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 36",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/36-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-37",
+    "questionNumber": 37,
+    "text": "Solution: In Azure DevOps, configure the Service hooks settings for Project1.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Móc dịch vụ Azure DevOps kích hoạt các hành động từ các sự kiện xảy ra trong dự án Azure DevOps; họ không giám sát các hoạt động tự động chia tỷ lệ của bộ cân Azure virtual machine. Thông báo qua email cho các sự kiện mở rộng hoặc mở rộng quy mô VMSS1 phải được đặt cấu hình thông qua giám sát/cảnh báo tự động chia tỷ lệ Azure thay vì móc nối dịch vụ Project1.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 37",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/37-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-38",
+    "questionNumber": 38,
+    "text": "Solution: Configure the autoscale settings in Azure Monitor.  \n  \nDoes this accomplish the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Cài đặt tự động chia tỷ lệ Azure Monitor có thể được định cấu hình bằng thông báo qua email cho các sự kiện tự động chia tỷ lệ. Bộ thang đo máy ảo là tài nguyên tự động chia tỷ lệ được hỗ trợ, do đó, thông báo có thể được gửi khi nó tăng hoặc giảm tỷ lệ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 38",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/38-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-39",
+    "questionNumber": 39,
+    "text": "Solution: In Azure DevOps, configure the Notifications settings for Project1.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Thông báo dự án Azure DevOps áp dụng cho các sự kiện Azure DevOps, chứ không phải các hoạt động tự động chia tỷ lệ thiết lập quy mô Azure virtual machine. Azure Monitor Autoscale có thể gửi thông báo qua email cho các hành động cân khi thông báo được định cấu hình trên cài đặt tỷ lệ tự động cho bộ tỷ lệ máy ảo.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 39",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/39-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-40",
+    "questionNumber": 40,
+    "text": "You have a .NET app named App1.  \n  \nYou need to upload App1 to GitHub Packages.  \n  \nHow should you complete the command?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "`dotnet nuget push` xuất bản gói NuGet `.nupkg` hiện có lên nguồn được định cấu hình. Lệnh này hỗ trợ cả `--api-key` cho mã thông báo truy cập cá nhân GitHub và `--source` cho nguồn gói.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 40",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/40-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-41",
+    "questionNumber": 41,
+    "text": "You have a private project in Azure DevOps.  \n  \nYou need to ensure that a project manager can create custom work item queries to report on the project's progress. The solution must apply the principle of least privilege.  \n  \nTo which security group should you add the project manager?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Reader"
+      },
+      {
+        "key": "B",
+        "text": "Project Collection Administrators"
+      },
+      {
+        "key": "C",
+        "text": "Project Administrators"
+      },
+      {
+        "key": "D",
+        "text": "Contributor"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Theo mặc định trong Azure DevOps, các thành viên của nhóm Readers chỉ có thể xem và chạy các truy vấn hiện có — họ không thể tạo hoặc lưu truy vấn mới. Tuy nhiên, các thành viên của nhóm Người đóng góp có thể tạo và lưu các truy vấn mục công việc tùy chỉnh cá nhân ('Truy vấn của tôi') theo mặc định, đây chính xác là những gì cần thiết để xây dựng báo cáo về tiến độ dự án. Quản trị viên dự án cấp các khả năng quản lý dự án rộng hơn (bao gồm tạo/quản lý Truy vấn được chia sẻ và thư mục, quản lý nhóm, đường dẫn khu vực/lặp lại, kho lưu trữ và điểm cuối dịch vụ) và Quản trị viên bộ sưu tập dự án cấp quyền quản trị toàn bộ tổ chức/bộ sưu tập trên nhiều dự án — cả hai đều vượt quá những gì được yêu cầu chỉ để tạo các truy vấn tùy chỉnh. Do đó, việc thêm người quản lý dự án vào nhóm Người đóng góp sẽ cung cấp các quyền tối thiểu cần thiết để hoàn thành nhiệm vụ, phù hợp với nguyên tắc đặc quyền tối thiểu.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 41",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/41-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-42",
+    "questionNumber": 42,
+    "text": "You have an Azure DevOps release pipeline as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784167547931-977z7ttg.jpg)  \n  \nYou need to complete the pipeline to configure OWASP ZAP for security testing. Which five Azure CLI tasks should you add, and in what order? Move the tasks from the list of tasks to the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "G"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "4",
+        "text": "Slot 4:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "5",
+        "text": "Slot 5:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Convert Report Format"
+      },
+      {
+        "key": "B",
+        "text": "Build machine image"
+      },
+      {
+        "key": "C",
+        "text": "Publish Test Results"
+      },
+      {
+        "key": "D",
+        "text": "Destroy OWASP Container"
+      },
+      {
+        "key": "E",
+        "text": "Call the Baseline Scan"
+      },
+      {
+        "key": "F",
+        "text": "Docker CLI installer"
+      },
+      {
+        "key": "G",
+        "text": "Download the file"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Convert Report Format"
+      },
+      {
+        "key": "B",
+        "text": "Build machine image"
+      },
+      {
+        "key": "C",
+        "text": "Publish Test Results"
+      },
+      {
+        "key": "D",
+        "text": "Destroy OWASP Container"
+      },
+      {
+        "key": "E",
+        "text": "Call the Baseline Scan"
+      },
+      {
+        "key": "F",
+        "text": "Docker CLI installer"
+      },
+      {
+        "key": "G",
+        "text": "Download the file"
+      }
+    ],
+    "correctAnswers": [
+      "1=E",
+      "2=G",
+      "3=A",
+      "4=C",
+      "5=D"
+    ],
+    "explanation": "Sau khi vùng chứa chạy hình ảnh OWASP ZAP được tạo, quy trình phải gọi quá trình quét đường cơ sở ZAP đối với mục tiêu, truy xuất báo cáo quét đã tạo, chuyển đổi báo cáo đó sang định dạng tương thích với kết quả kiểm tra, xuất bản các kết quả đó lên Azure DevOps và cuối cùng phá bỏ phiên bản vùng chứa để tránh chi phí không cần thiết. Trình tự này — Gọi Quét đường cơ sở, Tải xuống tệp, Chuyển đổi định dạng báo cáo, Xuất bản kết quả kiểm tra, Phá hủy vùng chứa OWASP — phản ánh mẫu thử nghiệm bảo mật CI/CD trong vùng chứa OWASP ZAP tiêu chuẩn được Microsoft và OWASP ghi lại để quét DAST trong vùng chứa trong quy trình phát hành Azure DevOps.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784167547931-977z7ttg.jpg",
+    "sourceTitle": "Examcademy AZ-400 Question 42",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/42-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-43",
+    "questionNumber": 43,
+    "text": "In Azure DevOps, you create Project3.  \n  \nYou need to satisfy the project's requirements.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From Azure DevOps, modify the build definition."
+      },
+      {
+        "key": "B",
+        "text": "From SonarQube, obtain an authentication token."
+      },
+      {
+        "key": "C",
+        "text": "From Azure DevOps, create a service endpoint."
+      },
+      {
+        "key": "D",
+        "text": "From SonarQube, create a project."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Dự án SonarQube thiết lập bối cảnh dự án cần thiết để phân tích cấp dự án và mã thông báo của nó. Sau đó, mã thông báo xác thực được sử dụng khi tạo kết nối dịch vụ SonarQube trong Azure DevOps và kết nối đó là cần thiết trước khi định cấu hình quy trình xây dựng để chạy phân tích. SonarQube khuyên bạn nên tạo dự án trước lần phân tích đầu tiên.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 43",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/43-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-44",
+    "questionNumber": 44,
+    "text": "You are designing a build pipeline in Azure Pipelines.  \n  \nThe pipeline requires a self-hosted agent. The build pipeline will run once daily and will take 30 minutes to complete.  \n  \nYou need to recommend a compute type for the agent. The solution must minimize costs.  \n  \nWhat should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an Azure Kubernetes Service (AKS) cluster"
+      },
+      {
+        "key": "B",
+        "text": "Azure Container Instances"
+      },
+      {
+        "key": "C",
+        "text": "an Azure virtual machine scale set"
+      },
+      {
+        "key": "D",
+        "text": "Azure virtual machines"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Tác nhân Bộ quy mô Azure Virtual Machine là tác nhân tự lưu trữ mà Azure Pipelines có thể tự động mở rộng quy mô dựa trên nhu cầu công việc. Bạn có thể đặt cấu hình số lượng tác nhân để duy trì ở chế độ chờ xuống 0, do đó, Azure Pipelines chỉ cung cấp máy ảo khi một công việc trong quy trình được xếp hàng đợi và loại bỏ các tác nhân không hoạt động sau một khoảng thời gian trễ có thể định cấu hình. Độ co giãn này có nghĩa là bạn tránh phải trả tiền cho máy tính không hoạt động gần như cả ngày, điều này lý tưởng cho quy trình chỉ chạy một lần mỗi ngày trong 30 phút. Đây rõ ràng là kịch bản mà tài liệu của Microsoft nêu ra: 'Bạn không muốn chạy các đại lý chuyên dụng suốt ngày đêm. Bạn muốn ngừng cung cấp các máy đại lý không được sử dụng để thực hiện công việc.' Các máy ảo Azure độc ​​lập sẽ yêu cầu quản lý thủ công để tránh chi phí nhàn rỗi và AKS/Azure Container Instances không phải là cơ chế mở rộng tác nhân tự lưu trữ được tối ưu hóa chi phí, được tích hợp nguyên bản cho mẫu khối lượng công việc không thường xuyên này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 44",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/44-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-45",
+    "questionNumber": 45,
+    "text": "You are using Agile process methodologies in Azure DevOps.  \n  \nWhich widget type should you use for each work item?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Đo thời gian thực hiện là khoảng thời gian trôi qua từ khi tạo mục công việc cho đến khi hoàn thành hoặc kết thúc. Thời gian chu kỳ đo lường thời gian trôi qua kể từ khi bắt đầu công việc đang hoạt động cho đến khi hoàn thành hoặc kết thúc.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 45",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/45-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-46",
+    "questionNumber": 46,
+    "text": "You are designing the development process for your company.  \n  \nYou need to recommend a solution for continuous inspection of the company's code base to locate common code patterns that are known to be problematic.  \n  \nWhat should you include in the recommendation?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Microsoft Visual Studio test plans"
+      },
+      {
+        "key": "B",
+        "text": "Gradle wrapper scripts"
+      },
+      {
+        "key": "C",
+        "text": "SonarCloud analysis"
+      },
+      {
+        "key": "D",
+        "text": "the JavaScript task runner"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "SonarCloud là dịch vụ phân tích mã tĩnh dựa trên đám mây, liên tục kiểm tra mã nguồn để phát hiện lỗi, lỗ hổng và mùi mã—các mẫu mã có vấn đề phổ biến—trên nhiều ngôn ngữ. Nó tích hợp trực tiếp vào quy trình CI/CD (bao gồm Azure DevOps và GitHub Actions) để cung cấp phân tích bảo mật và chất lượng mã tự động, liên tục trên mọi yêu cầu xây dựng hoặc kéo. Các kế hoạch kiểm tra Visual Studio được sử dụng để kiểm tra thủ công và khám phá thay vì phân tích mẫu mã tĩnh, các tập lệnh trình bao bọc Gradle chỉ đơn giản là tiêu chuẩn hóa lệnh gọi công cụ xây dựng và trình chạy tác vụ JavaScript tự động hóa các tác vụ xây dựng/nhà phát triển thay vì thực hiện kiểm tra chất lượng mã.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 46",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/46-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-47",
+    "questionNumber": 47,
+    "text": "You have an Azure DevOps project containing a release pipeline with two stages named QA and Prod. The QA stage deploys code to an Azure web app named webapp1, and the Prod stage deploys code to an Azure web app named webapp2.  \n  \nYou need to ensure that deployments to webapp2 are blocked whenever Azure Application Insights generates Failed requests alerts after new code is deployed to webapp1.  \n  \nWhat should you configure for each stage?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Quy trình phát hành Azure DevOps cho phép bạn thêm tác vụ trong công việc triển khai của một giai đoạn để định cấu hình các quy tắc cảnh báo Application Insights (chẳng hạn như cảnh báo Yêu cầu không thành công) để cảnh báo được tạo/kích hoạt như một phần của quá trình triển khai giai đoạn QA cho webapp1. Riêng biệt, Cổng phát hành là một khả năng điều kiện trước khi triển khai (chúng không tồn tại dưới dạng tùy chọn sau triển khai) có thể tự động truy vấn Azure Monitor/Application Insights để tìm cảnh báo hoạt động trước khi cho phép tiến hành triển khai. Bằng cách định cấu hình một cổng trong các điều kiện trước khi triển khai của giai đoạn Prod để truy vấn các cảnh báo Yêu cầu không thành công đang hoạt động, quá trình triển khai lên webapp2 sẽ tự động bị chặn bất cứ khi nào quá trình triển khai QA kích hoạt cảnh báo như vậy, đáp ứng yêu cầu mà không cần bất kỳ sự can thiệp thủ công nào.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 47",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/47-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-48",
+    "questionNumber": 48,
+    "text": "You have an Azure solution that includes a build pipeline configured in Azure Pipelines.  \n  \nYou notice that the build pipeline experiences intermittent delays before it starts running.  \n  \nYou need to reduce the time it takes for the build pipeline to start.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable self-hosted build agents."
+      },
+      {
+        "key": "B",
+        "text": "Create a new agent pool."
+      },
+      {
+        "key": "C",
+        "text": "Split the build pipeline into multiple stages."
+      },
+      {
+        "key": "D",
+        "text": "Purchase an additional parallel job."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Đường ống Azure sử dụng một số công việc song song có giới hạn (chạy đường ống đồng thời) cho mỗi tổ chức. Khi tất cả các công việc song song có sẵn đang được sử dụng, các đường ống bổ sung phải xếp hàng và đợi một khe trống được giải phóng, điều này tạo ra độ trễ khởi động không liên tục thay đổi theo tải hiện tại. Mua một công việc song song bổ sung sẽ tăng khả năng chạy đồng thời của nhóm, cho phép các quy trình bắt đầu sớm hơn thay vì phải xếp hàng chờ đợi. Đây là biện pháp giảm thiểu được ghi lại từ hướng dẫn của Microsoft về các công việc song song và thời gian xếp hàng quy trình, trái ngược với việc tạo nhóm tác nhân, hỗ trợ tác nhân tự lưu trữ (để giải quyết khả năng thực thi/tùy chỉnh, không nhất thiết phải chờ hàng đợi trừ khi công suất được tăng quy mô) hoặc chia thành các giai đoạn (cấu trúc lại quy trình nhưng không thay đổi thời gian chờ hàng đợi).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 48",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/48-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-49",
+    "questionNumber": 49,
+    "text": "You need to implement Project4. What should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add the FROM instruction in the Dockerfile file."
+      },
+      {
+        "key": "B",
+        "text": "Add a Copy and Publish Build Artifacts task to the build pipeline."
+      },
+      {
+        "key": "C",
+        "text": "Add a Docker task to the build pipeline."
+      },
+      {
+        "key": "D",
+        "text": "Add the MAINTAINER instruction in the Dockerfile file."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Đối với Project4, yêu cầu là định cấu hình dự án để đẩy hình ảnh Docker lên Azure Container Register bằng Dockerfile hiện có. Vì Dockerfile đã tồn tại nên việc chỉnh sửa các hướng dẫn FROM hoặc MAINTAINER của nó là không cần thiết. Hành động đúng đắn đầu tiên là thêm tác vụ Docker (Docker@2) vào quy trình xây dựng, vì tác vụ này xây dựng và đẩy hình ảnh Docker vào sổ đăng ký vùng chứa và cũng có thể được sử dụng để đăng nhập vào sổ đăng ký thông qua kết nối dịch vụ đăng ký Docker, cho phép mọi hành động đẩy hoặc xây dựng tiếp theo.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 49",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/49-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-50",
+    "questionNumber": 50,
+    "text": "You have an Azure subscription linked to an Azure Active Directory Premium Plan 1 tenant.  \n  \nA security review indicates that too many users have privileged access to resources.  \n  \nYou need to deploy a privileged access management solution that meets the following requirements:  \n  \n• Enforces time limits on the use of privileged access  \n\n• Requires approval to activate privileged access  \n\n• Minimizes costs  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure notifications when privileged roles are activated."
+      },
+      {
+        "key": "B",
+        "text": "Configure alerts for the activation of privileged roles."
+      },
+      {
+        "key": "C",
+        "text": "Enforce Azure Multi-Factor Authentication (MFA) for role activation."
+      },
+      {
+        "key": "D",
+        "text": "Upgrade the license of the Azure Active Directory (Azure AD) tenant."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Quản lý danh tính đặc quyền Azure AD (PIM) yêu cầu giấy phép Azure AD Premium P2 để hoạt động. Đây là điều kiện tiên quyết trước khi có thể đặt cấu hình bất kỳ tính năng PIM nào—bao gồm quyền truy cập có giới hạn thời gian, quy trình phê duyệt hoặc thực thi MFA. Việc nâng cấp giấy phép phải được hoàn thành trước tiên.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 50",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/50-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-51",
+    "questionNumber": 51,
+    "text": "Your company uses a Git source-code repository and you plan to implement GitFlow as a workflow strategy. You need to identify which branch type is used for production code and which is used for preproduction code in this strategy.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "GitFlow xác định hai nhánh tồn tại lâu dài: nhánh chính (chính), luôn chứa mã sẵn sàng sản xuất, được phát hành và phát triển, đóng vai trò là nhánh tích hợp cho các tính năng và thể hiện trạng thái tiền sản xuất (bản phát hành tiếp theo) của mã. Các nhánh tính năng tồn tại trong thời gian ngắn và chỉ được sử dụng để phát triển các tính năng riêng lẻ trước khi sáp nhập vào phát triển, vì vậy chúng không đại diện cho trạng thái mã sản xuất hoặc tiền sản xuất.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 51",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/51-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-52",
+    "questionNumber": 52,
+    "text": "You have a private distribution group that contains provisioned and unprovisioned devices.  \n\nYou need to distribute a new iOS application to the distribution group by using Microsoft Visual Studio App Center.  \n\nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Register the devices on the Apple Developer portal."
+      },
+      {
+        "key": "B",
+        "text": "Add the device owner to the organization in App Center."
+      },
+      {
+        "key": "C",
+        "text": "Create an unsigned build."
+      },
+      {
+        "key": "D",
+        "text": "Add the device owner to the collaborators group."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Đối với các ứng dụng iOS, Apple yêu cầu đăng ký thiết bị trên cổng Apple Developer trước khi phân phối. Đây là bước bắt buộc để cung cấp thiết bị để thử nghiệm và phân phối thông qua Trung tâm ứng dụng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 52",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/52-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-53",
+    "questionNumber": 53,
+    "text": "Your company hosts a web application in Azure, and makes use of Azure Pipelines for managing the build and release of the application.  \n\nWhen stakeholders report that system performance has been adversely affected by the most recent releases, you configure alerts in Azure Monitor.  \n\nYou are informed that new releases must satisfy specified performance baseline conditions in the staging environment before they can be deployed to production.  \n\nYou need to make sure that releases not satisfying the performance baseline are prevented from being deployed.  \n\nWhich of the following actions should you take?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "You should make use of a branch control check."
+      },
+      {
+        "key": "B",
+        "text": "You should make use of an alert trigger."
+      },
+      {
+        "key": "C",
+        "text": "You should make use of a gate."
+      },
+      {
+        "key": "D",
+        "text": "You should make use of an approval check."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Cổng phát hành trong Azure Pipelines tự động truy vấn các tín hiệu tình trạng từ các dịch vụ bên ngoài (như Azure Monitor) và đưa ra quyết định về việc có nên tiếp tục triển khai hay không. Gates có thể đánh giá các số liệu hiệu suất và điều kiện cơ bản, chặn các hoạt động triển khai không đáp ứng các tiêu chí cụ thể. Điều này cung cấp khả năng ngăn chặn triển khai tự động, dựa trên số liệu mà không cần can thiệp thủ công.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 53",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/53-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-54",
+    "questionNumber": 54,
+    "text": "You have a private distribution group that contains provisioned and unprovisioned devices.  \n\nYou need to distribute a new iOS application to the distribution group by using Microsoft Visual Studio App Center.  \n\nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Select Register devices and sign my app."
+      },
+      {
+        "key": "B",
+        "text": "Create an active subscription in App Center Test."
+      },
+      {
+        "key": "C",
+        "text": "Create an unsigned build."
+      },
+      {
+        "key": "D",
+        "text": "Add the device owner to the collaborators group."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Để phân phối ứng dụng iOS tới các thiết bị chưa được cấp phép thông qua Trung tâm ứng dụng Visual Studio, bạn phải chọn 'Đăng ký thiết bị và ký ứng dụng của tôi.' Điều này sẽ tự động đăng ký ID thiết bị mới với cổng thông tin dành cho nhà phát triển của Apple và ký lại bản dựng với hồ sơ cung cấp phù hợp, cho phép phân phối cho cả thiết bị đã được cấp phép và chưa đăng ký trước đó.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 54",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/54-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-55",
+    "questionNumber": 55,
+    "text": "You need to implement the code flow strategy for Project2 in Azure DevOps.  \n  \nWhich three actions should you perform in sequence? Move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Step 1",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "Step 2",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "3",
+        "text": "Step 3",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a fork"
+      },
+      {
+        "key": "B",
+        "text": "Create a branch"
+      },
+      {
+        "key": "C",
+        "text": "Add a build policy for the fork"
+      },
+      {
+        "key": "D",
+        "text": "Add a build policy for the master branch"
+      },
+      {
+        "key": "E",
+        "text": "Create a repository"
+      },
+      {
+        "key": "F",
+        "text": "Add an application access policy."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create a fork"
+      },
+      {
+        "key": "B",
+        "text": "Create a branch"
+      },
+      {
+        "key": "C",
+        "text": "Add a build policy for the fork"
+      },
+      {
+        "key": "D",
+        "text": "Add a build policy for the master branch"
+      },
+      {
+        "key": "E",
+        "text": "Create a repository"
+      },
+      {
+        "key": "F",
+        "text": "Add an application access policy."
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=C",
+      "3=D"
+    ],
+    "explanation": "Chiến lược phân nhánh dựa trên nhánh (dòng mã) yêu cầu tạo một nhánh của kho lưu trữ để những người đóng góp có thể làm việc độc lập với kho lưu trữ chính. Khi phân nhánh tồn tại, chính sách xác thực bản dựng phải được thêm vào phân nhánh để đảm bảo các thay đổi được xác thực trước khi yêu cầu kéo được đưa ra đối với kho lưu trữ ngược dòng. Cuối cùng, chính sách xác thực bản dựng cũng phải được thêm vào nhánh chính của kho lưu trữ gốc để mọi thay đổi hợp nhất yêu cầu kéo từ nhánh rẽ đều được xác thực lại trước khi hoàn thành, bảo vệ tính toàn vẹn của nhánh chính.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 55",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/55-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-56",
+    "questionNumber": 56,
+    "text": "You have an Azure subscription.  \n  \nYou have the standards shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784205953419-c86cj1j1.png)  \n  \nYou plan to use Azure Pipelines to build and release web apps.  \n  \nYou need to recommend a solution for building the pipelines. The solution must meet these requirements:  \n  \n- Ensure all new pipelines meet the security requirements defined in Standard1.  \n- Ensure the first stage of every new pipeline includes the software prerequisites defined in Standard2.  \n- Minimize administrative effort.  \n  \nWhat should you use to implement each standard? Each component may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "standard1",
+        "text": "Standard1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "standard2",
+        "text": "Standard2:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "A pipeline permission"
+      },
+      {
+        "key": "B",
+        "text": "A self-hosted agent"
+      },
+      {
+        "key": "C",
+        "text": "A stage"
+      },
+      {
+        "key": "D",
+        "text": "An extends template"
+      },
+      {
+        "key": "E",
+        "text": "An includes template"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "A pipeline permission"
+      },
+      {
+        "key": "B",
+        "text": "A self-hosted agent"
+      },
+      {
+        "key": "C",
+        "text": "A stage"
+      },
+      {
+        "key": "D",
+        "text": "An extends template"
+      },
+      {
+        "key": "E",
+        "text": "An includes template"
+      }
+    ],
+    "correctAnswers": [
+      "standard1=D",
+      "standard2=E"
+    ],
+    "explanation": "Mẫu mở rộng xác định và chi phối cấu trúc đường ống bên ngoài, làm cho nó phù hợp để thực thi các tiêu chuẩn bảo mật chung. Mẫu bao gồm chèn nội dung quy trình có thể sử dụng lại, cho phép sử dụng lại nội dung giai đoạn tiên quyết của phần mềm làm giai đoạn đầu tiên trong mỗi quy trình với sự quản lý tối thiểu.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784205953419-c86cj1j1.png",
+    "sourceTitle": "Examcademy AZ-400 Question 56",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/56-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-57",
+    "questionNumber": 57,
+    "text": "You manage source code control and versioning by using GitHub.  \n  \nYou need to ensure that a PowerShell script is executed automatically before rebase operations are performed.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a package"
+      },
+      {
+        "key": "B",
+        "text": "GitHub Copilot"
+      },
+      {
+        "key": "C",
+        "text": "a webhook"
+      },
+      {
+        "key": "D",
+        "text": "a gist"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Webhooks GitHub có thể được định cấu hình để kích hoạt các hành động bên ngoài khi các sự kiện cụ thể xảy ra, bao gồm cả trước các hoạt động rebase. Mặc dù git hook (pre-rebase) sẽ phù hợp hơn về mặt kỹ thuật cho tự động hóa phía máy khách, nhưng webhook cũng có thể kích hoạt các tập lệnh PowerShell phía máy chủ hoặc tự động hóa khác. Câu trả lời đồng thuận phản ánh cách tiếp cận webhook trong bối cảnh tự động hóa GitHub.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 57",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/57-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-58",
+    "questionNumber": 58,
+    "text": "You have an Azure subscription that contains an Azure container registry. The container registry contains an ACR Tasks task named Task1. Task1 is configured to run once every five days.  \n  \nYou need to trigger Task1 to run immediately.  \n  \nWhich command should you run?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "az acr task run"
+      },
+      {
+        "key": "B",
+        "text": "az acr build"
+      },
+      {
+        "key": "C",
+        "text": "az acr taskrun"
+      },
+      {
+        "key": "D",
+        "text": "az acr run"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Lệnh `az acr task run` ngay lập tức thực thi tác vụ ACR hiện có ngoài nhịp đã lên lịch của nó. Đây là cú pháp CLI chính xác để kích hoạt chạy tác vụ ACR đã lên lịch theo yêu cầu.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 58",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/58-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-59",
+    "questionNumber": 59,
+    "text": "You keep your source code in a Git repository hosted in Azure Repos, and you rely on a third-party continuous integration (CI) tool to manage your builds.  \n  \nWhat mechanism does Azure DevOps use to authenticate with that third-party tool?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "certificate authentication"
+      },
+      {
+        "key": "B",
+        "text": "a personal access token (PAT)"
+      },
+      {
+        "key": "C",
+        "text": "a Shared Access Signature (SAS) token"
+      },
+      {
+        "key": "D",
+        "text": "NTLM authentication"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Đối với các trường hợp trong đó dịch vụ hoặc công cụ CI bên ngoài (bên thứ ba) cần xác thực dựa trên Azure DevOps/Azure Repos—chẳng hạn như để truy cập mã nguồn hoặc trạng thái xây dựng trình kích hoạt/báo cáo—Azure DevOps dựa vào Mã thông báo truy cập cá nhân (PAT). PAT là thông tin xác thực có thể do người dùng tạo, nằm trong phạm vi các quyền cụ thể (ví dụ: Mã, Bản dựng) và có ngày hết hạn, khiến thông tin này phù hợp để sử dụng bởi các ứng dụng bên ngoài, tập lệnh và công cụ CI/CD của bên thứ ba thay vì sử dụng thông tin xác thực tài khoản đầy đủ của người dùng. Đây là phương pháp được ghi lại trong tài liệu được mô tả trong hướng dẫn xác thực Azure DevOps của Microsoft để xác thực các công cụ bên ngoài.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 59",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/59-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-60",
+    "questionNumber": 60,
+    "text": "Your company uses Azure DevOps for the build pipelines and deployment pipelines of Java-based projects.  \n\nYou need to recommend a strategy for managing technical debt.  \n\nWhich action should you include in the recommendation?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure post-deployment approvals in the deployment pipeline."
+      },
+      {
+        "key": "B",
+        "text": "Integrate Azure DevOps and SonarQube."
+      },
+      {
+        "key": "C",
+        "text": "Integrate Azure DevOps and Azure DevTest Labs."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "SonarQube là một nền tảng nguồn mở được thiết kế đặc biệt để kiểm tra chất lượng mã liên tục và quản lý nợ kỹ thuật. Nó cung cấp số liệu chi tiết về mùi mã, lỗ hổng và khả năng bảo trì cho Java và các ngôn ngữ khác, khiến nó trở nên cần thiết trong việc quản lý nợ kỹ thuật trong các dự án dựa trên Java. Phê duyệt sau triển khai và DevTest Labs không giải quyết vấn đề phân tích nợ kỹ thuật.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 60",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/60-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-61",
+    "questionNumber": 61,
+    "text": "You use Azure SQL Database Intelligent Insights together with Azure Application Insights for monitoring purposes.  \n  \nYou need to write ad-hoc queries against the monitoring data.  \n  \nWhich query language should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Kusto Query Language (KQL)"
+      },
+      {
+        "key": "B",
+        "text": "PL/pgSQL"
+      },
+      {
+        "key": "C",
+        "text": "PL/SQL"
+      },
+      {
+        "key": "D",
+        "text": "Transact-SQL"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Dữ liệu giám sát được thu thập bởi Nhật ký Azure Application Insights và Azure Monitor (làm nền tảng cho dữ liệu chẩn đoán Thông tin chi tiết thông minh) được lưu trữ trong không gian làm việc Log Analytics. Phân tích đặc biệt của dữ liệu này được thực hiện bằng Ngôn ngữ truy vấn Kusto (KQL), ngôn ngữ truy vấn gốc cho Nhật ký Azure Monitor và Phân tích Application Insights.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 61",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/61-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-62",
+    "questionNumber": 62,
+    "text": "You need to recommend project metrics for dashboards in Azure DevOps. Which chart widgets should you recommend for each metric? Each chart widget may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "The elapsed time from the creation of work items to their completion:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "2",
+        "text": "The elapsed time to complete work items once they are active:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "3",
+        "text": "The remaining work:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Burndown"
+      },
+      {
+        "key": "B",
+        "text": "Cycle Time"
+      },
+      {
+        "key": "C",
+        "text": "Lead Time"
+      },
+      {
+        "key": "D",
+        "text": "Velocity"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Burndown"
+      },
+      {
+        "key": "B",
+        "text": "Cycle Time"
+      },
+      {
+        "key": "C",
+        "text": "Lead Time"
+      },
+      {
+        "key": "D",
+        "text": "Velocity"
+      }
+    ],
+    "correctAnswers": [
+      "1=C",
+      "2=B",
+      "3=A"
+    ],
+    "explanation": "Trong Azure DevOps, tiện ích Thời gian thực hiện đo tổng thời gian trôi qua kể từ khi một mục công việc được tạo cho đến khi đạt đến trạng thái Đã hoàn thành, phản ánh tổng thời gian phân phối. Tiện ích Thời gian chu kỳ đo thời gian đã trôi qua kể từ khi một mục công việc chuyển sang trạng thái hoạt động (Đang tiến hành) cho đến khi hoàn thành, phản ánh năng suất của nhóm khi công việc bắt đầu. Tiện ích Burndown hiển thị xu hướng công việc còn lại trong các lần chạy nước rút hoặc một bản phát hành, cho biết lượng công việc còn lại. Thay vào đó, tiện ích Vận tốc hiển thị tác phẩm đã hoàn thành (điểm câu chuyện hoặc số lượng vật phẩm) trên mỗi lần lặp và không khớp với bất kỳ số liệu nào trong ba số liệu được mô tả.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 62",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/62-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-63",
+    "questionNumber": 63,
+    "text": "You need to configure a cloud service to store the secrets required by the mobile applications to call the share pricing service.  \n  \nWhat should you include in the solution?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Trong nghiên cứu điển hình này, dịch vụ định giá cổ phiếu của hệ thống quản lý quỹ hưu trí cũ sẽ chỉ hỗ trợ xác thực cơ bản qua HTTPS cho đến khi được nâng cấp. Xác thực cơ bản yêu cầu thông tin xác thực ở dạng tên người dùng và mật khẩu, được mã hóa Base64 và gửi trong tiêu đề Ủy quyền HTTP cho mỗi yêu cầu — không giống như các chứng chỉ, mã thông báo truy cập cá nhân hoặc mã thông báo Ủy quyền truy cập chia sẻ (SAS), áp dụng cho các cơ chế xác thực khác nhau không được dịch vụ cũ này sử dụng. Để giữ các thông tin xác thực này an toàn và được quản lý tập trung cho các ứng dụng di động, chúng phải được lưu trữ trong Azure Key Vault, được thiết kế đặc biệt để lưu trữ và kiểm soát quyền truy cập vào bí mật, khóa và chứng chỉ, giảm nguy cơ bí mật bị mã hóa cứng hoặc bị rò rỉ trong mã ứng dụng. Azure Data Lake và Azure Storage (cho dù được truy cập qua HTTP hay HTTPS) đều là các dịch vụ lưu trữ dữ liệu và không phải là vị trí thích hợp hoặc an toàn để lưu trữ bí mật ứng dụng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 63",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/63-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-64",
+    "questionNumber": 64,
+    "text": "You have a web app named App1 that is hosted on multiple servers. App1 uses Application Insights in Azure Monitor.  \n  \nYou need to compare the daily CPU usage from the last week for all servers.  \n  \nHow should you complete the query? Each value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "time_bin",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "render",
+        "text": "Slot 2:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "bin(timestamp,1d)"
+      },
+      {
+        "key": "B",
+        "text": "bin(timestamp,1h)"
+      },
+      {
+        "key": "C",
+        "text": "project timechart"
+      },
+      {
+        "key": "D",
+        "text": "render chart"
+      },
+      {
+        "key": "E",
+        "text": "render timechart"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "bin(timestamp,1d)"
+      },
+      {
+        "key": "B",
+        "text": "bin(timestamp,1h)"
+      },
+      {
+        "key": "C",
+        "text": "project timechart"
+      },
+      {
+        "key": "D",
+        "text": "render chart"
+      },
+      {
+        "key": "E",
+        "text": "render timechart"
+      }
+    ],
+    "correctAnswers": [
+      "time_bin=A",
+      "render=E"
+    ],
+    "explanation": "`bin(timestamp,1d)` nhóm các mẫu bộ đếm hiệu suất thành các khoảng thời gian hàng ngày trong khi vẫn duy trì `cloud_RoleInstance`, do đó CPU trung bình được tính riêng cho từng máy chủ mỗi ngày. `render timechart` renders the timestamped series as a time chart.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 64",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/64-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-65",
+    "questionNumber": 65,
+    "text": "You have a GitHub Enterprise account.  \n  \nYou need to enable push protection for secret scanning of the account repositories.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Purchase a GitHub Advanced Security license."
+      },
+      {
+        "key": "B",
+        "text": "Purchase Premium Plus support."
+      },
+      {
+        "key": "C",
+        "text": "Enforce multi-factor authentication (MFA)."
+      },
+      {
+        "key": "D",
+        "text": "Create an access policy for secrets."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "GitHub Advanced Security là cấp giấy phép bắt buộc để kích hoạt tính năng bảo vệ đẩy cho quá trình quét bí mật. Tính năng này ngăn chặn các bí mật được cam kết và đẩy vào kho lưu trữ và nó không có sẵn với giấy phép GitHub tiêu chuẩn.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 65",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/65-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-67",
+    "questionNumber": 67,
+    "text": "Your organization relies on Azure DevOps to handle the build pipelines and deployment pipelines for Java-based projects.  \n  \nYou need to recommend a strategy for managing technical debt.  \n  \nWhich two actions should be part of your recommendation? Each correct answer presents part of the solution.  \n  \n*(Choose two. Each correct selection is worth one point.)*",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure post-deployment approvals in the deployment pipeline."
+      },
+      {
+        "key": "B",
+        "text": "Configure pre-deployment approvals in the deployment pipeline."
+      },
+      {
+        "key": "C",
+        "text": "Integrate Azure DevOps and SonarQube."
+      },
+      {
+        "key": "D",
+        "text": "Integrate Azure DevOps and Azure DevTest Labs."
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "C"
+    ],
+    "explanation": "Nợ kỹ thuật trong cơ sở mã Java được theo dõi bằng cách sử dụng phân tích mã tĩnh của SonarQube, đo lường mùi mã, lỗi, lỗ hổng, trùng lặp và phạm vi kiểm tra. Việc tích hợp Azure DevOps với SonarQube (thông qua tiện ích mở rộng thị trường SonarQube/SonarCloud) sẽ thêm các tác vụ xây dựng như Chuẩn bị cấu hình phân tích, Chạy phân tích mã và Xuất bản kết quả cổng chất lượng, tính toán và xuất bản trạng thái Cổng chất lượng cho mỗi bản dựng. Để ngăn không cho mã mang nợ kỹ thuật quá mức được thăng cấp, trạng thái Cổng chất lượng đó được kiểm tra dưới dạng điều kiện/cổng trước khi triển khai ở giai đoạn quy trình phát hành — quá trình triển khai tạm dừng cho đến khi quá trình kiểm tra Cổng chất lượng SonarQube vượt qua (hoặc người phê duyệt can thiệp), ngăn chặn mã chất lượng kém tiếp cận các môi trường hạ nguồn như Sản xuất. Quá trình phê duyệt sau triển khai chỉ diễn ra sau khi quá trình triển khai đã diễn ra và do đó không thể chặn việc phát hành mã chứa nhiều nợ, đồng thời Azure DevTest Labs được sử dụng để cung cấp môi trường thử nghiệm/nhà phát triển và có vai trò no trong việc đo lường hoặc kiểm soát chất lượng mã/nợ kỹ thuật.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 67",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/67-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-68",
+    "questionNumber": 68,
+    "text": "You need to recommend a Docker container build strategy that satisfies the following requirements:  \n  \n- Minimizes image sizes  \n- Minimizes the security surface area of the final image  \n  \nWhat should you include in the recommendation?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "multi-stage builds"
+      },
+      {
+        "key": "B",
+        "text": "PowerShell Desired State Configuration (DSC)"
+      },
+      {
+        "key": "C",
+        "text": "Docker Swarm"
+      },
+      {
+        "key": "D",
+        "text": "single-stage builds"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Bản dựng nhiều giai đoạn cho phép bạn sử dụng nhiều câu lệnh TỪ trong một Dockerfile duy nhất, trong đó các giai đoạn trước chứa các công cụ xây dựng, SDK và tệp trung gian, đồng thời chỉ các tạo phẩm cần thiết của giai đoạn cuối (chẳng hạn như các tệp nhị phân đã biên dịch) mới được sao chép vào hình ảnh thời gian chạy tối thiểu, cuối cùng. Cách tiếp cận này loại bỏ các công cụ và phụ thuộc xây dựng không cần thiết khỏi hình ảnh được vận chuyển, trực tiếp giảm cả kích thước hình ảnh và diện tích bề mặt tấn công/bảo mật, vì có ít gói và công cụ có thể bị khai thác hơn. Tài liệu chính thức của Docker đặc biệt khuyến nghị các bản dựng nhiều giai đoạn cho mục đích này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 68",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/68-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-69",
+    "questionNumber": 69,
+    "text": "Your company has a project in Azure DevOps for a new application. The application will be deployed to several Azure virtual machines running Windows Server 2019.  \n  \nYou need to recommend a deployment strategy for the virtual machines that meets the following requirements:  \n  \n- Ensure that the virtual machines maintain a consistent configuration.  \n- Minimize administrative effort required to configure the virtual machines.  \n  \nWhat should you include in the recommendation?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Resource Manager templates and the PowerShell Desired State Configuration (DSC) extension for Windows"
+      },
+      {
+        "key": "B",
+        "text": "Deployment YAML and Azure pipeline deployment groups"
+      },
+      {
+        "key": "C",
+        "text": "Azure Resource Manager templates and the Custom Script Extension for Windows"
+      },
+      {
+        "key": "D",
+        "text": "Deployment YAML and Azure pipeline stage templates"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Cấu hình trạng thái mong muốn của PowerShell (DSC) cung cấp một cách khai báo, bình thường để xác định và thực thi trạng thái cấu hình của máy Windows, tự động sửa lỗi sai lệch và duy trì tính nhất quán mà không cần can thiệp thủ công liên tục. Việc triển khai tiện ích mở rộng DSC thông qua mẫu Azure Resource Manager cho phép cấu hình được áp dụng tự động như một phần của việc cung cấp VM, đáp ứng cả yêu cầu về tính nhất quán và mục tiêu giảm thiểu nỗ lực quản trị. Tiện ích mở rộng tập lệnh tùy chỉnh chỉ thực thi tập lệnh một lần và không liên tục thực thi trạng thái mong muốn và các tùy chọn đường dẫn YAML (nhóm triển khai/mẫu giai đoạn) là các cấu trúc điều phối phát hành thay vì cơ chế thực thi trạng thái cấu hình.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 69",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/69-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-70",
+    "questionNumber": 70,
+    "text": "You have a GitHub repository that is integrated with Azure Boards. Azure Boards has a work item that has the number 715.  \n  \nYou need to ensure that when you commit source code in GitHub, the work item is updated automatically.  \n  \nWhat should you include in the commit comments?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the URL of the work item"
+      },
+      {
+        "key": "B",
+        "text": "AB#715"
+      },
+      {
+        "key": "C",
+        "text": "@715"
+      },
+      {
+        "key": "D",
+        "text": "#715"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Khi GitHub được tích hợp với Azure Boards, định dạng AB# theo sau là số mục công việc (ví dụ: AB#715) trong thông báo cam kết sẽ tự động cập nhật mục công việc được liên kết. Đây là cú pháp được công nhận để tích hợp Bảng Azure, như được ghi trong hướng dẫn tích hợp chính thức của Microsoft. Các định dạng khác không được hỗ trợ bởi sự tích hợp này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 70",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/70-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-71",
+    "questionNumber": 71,
+    "text": "Solution: Create an email subscription for an Azure DevOps notification.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Đăng ký thông báo qua email sẽ gửi tin nhắn đến người nhận email, trong khi Azure DevOps sử dụng móc dịch vụ Jenkins để kích hoạt bản dựng Jenkins khi mã được đẩy đến kho lưu trữ Azure Repos Git. Do đó, việc đăng ký email không thông báo cho Jenkins theo yêu cầu.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 71",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/71-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-72",
+    "questionNumber": 72,
+    "text": "Solution: You add a trigger to the build pipeline.  \n  \nDoes this fulfill the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Trình kích hoạt Đường ống Azure khiến bản dựng Đường ống Azure chạy khi một nhánh nhận được lệnh đẩy. Để kích hoạt Jenkins từ việc đẩy mã trong Azure Repos, Azure DevOps yêu cầu một hook dịch vụ Jenkins được định cấu hình với sự kiện đẩy mã và hành động xây dựng Jenkins.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 72",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/72-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-73",
+    "questionNumber": 73,
+    "text": "Solution: You create a service hook subscription that uses the **Code pushed** event.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Các móc nối dịch vụ Azure DevOps hỗ trợ Jenkins với tư cách là người tiêu dùng, với **Code được đẩy** là một sự kiện được hỗ trợ có thể kích hoạt Jenkins Git hoặc bản dựng chung. Sự kiện này có thể được lọc theo một nhánh cụ thể, do đó, các lần đẩy do cam kết của nhà phát triển có thể thông báo cho Jenkins.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 73",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/73-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-74",
+    "questionNumber": 74,
+    "text": "Solution: Create a service hook subscription that uses the **build completed** event.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Sự kiện **Xây dựng đã hoàn thành** chỉ kích hoạt khi quá trình xây dựng Azure Pipelines đã hoàn tất, trong khi đó nhà phát triển cam kết với nhánh Azure Repos được xử lý bởi sự kiện **Code push**. Móc dịch vụ Jenkins có thể sử dụng Mã được đẩy để kích hoạt Jenkins khi các thay đổi về kho lưu trữ được đẩy.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 74",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/74-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-75",
+    "questionNumber": 75,
+    "text": "You have a GitHub repository named repo1.  \n  \nYou migrate repo1 to an Azure Repos repository named repo2.  \n  \nAfter the migration, changes are made to repo1.  \n  \nYou need to synchronize those changes to repo2.  \n  \nHow should you complete the script? Each value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "clone_url",
+        "text": "Slot 1:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "directory",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "upstream_url",
+        "text": "Slot 3:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "repo1"
+      },
+      {
+        "key": "B",
+        "text": "repo1 clone URL"
+      },
+      {
+        "key": "C",
+        "text": "repo1 repo URL"
+      },
+      {
+        "key": "D",
+        "text": "repo2"
+      },
+      {
+        "key": "E",
+        "text": "repo2 clone URL"
+      },
+      {
+        "key": "F",
+        "text": "repo2 repo URL"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "repo1"
+      },
+      {
+        "key": "B",
+        "text": "repo1 clone URL"
+      },
+      {
+        "key": "C",
+        "text": "repo1 repo URL"
+      },
+      {
+        "key": "D",
+        "text": "repo2"
+      },
+      {
+        "key": "E",
+        "text": "repo2 clone URL"
+      },
+      {
+        "key": "F",
+        "text": "repo2 repo URL"
+      }
+    ],
+    "correctAnswers": [
+      "clone_url=E",
+      "directory=D",
+      "upstream_url=B"
+    ],
+    "explanation": "Để truyền bá các thay đổi sau này từ GitHub repo1 sang Azure Repos repo2, repo2 phải là kho lưu trữ được sao chép và do đó vẫn là mục tiêu đẩy `origin`. Định cấu hình repo1 là `upstream` với `--mirror=fetch` tìm nạp các giới thiệu của nó để chuyển; `git fetch upstream --tags` truy xuất các thay đổi nguồn và thẻ và `git push origin --all` đẩy tất cả các nhánh tới repo2.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 75",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/75-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-76",
+    "questionNumber": 76,
+    "text": "You have a project named Contoso App in Azure DevOps that contains pipelines in Azure Pipelines for GitHub repositories. You need to ensure that developers receive Microsoft Teams notifications when there are failures in a pipeline of Contoso App. What should you run in Teams?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Ứng dụng Azure Pipelines dành cho Microsoft Teams cho phép bạn tạo đăng ký thông báo cho một quy trình bằng cách nhập '@azure pipelines subscribe <pipeline-url>' trong kênh Teams; sau đó, ứng dụng sẽ thêm đăng ký mặc định cho sự kiện 'Xây dựng đã hoàn thành' (bao gồm cả lỗi) cho quy trình đó. Đối số URL phải tham chiếu chính đường dẫn, tức là một trang trong khu vực '_build' của dự án có chứa (hoặc có thể phân giải thành) ID định nghĩa, chẳng hạn như https://dev.azure.com/contoso/contoso-app/_build. Các lệnh khác như 'đăng nhập', 'đăng ký' và 'phản hồi' không tạo đăng ký thông báo xây dựng mới và các đường dẫn URL khác chẳng hạn như gốc dự án trống, '_packaging' (Artifacts) hoặc '_work-items' (Bảng) không xác định một đường ống.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 76",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/76-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-78",
+    "questionNumber": 78,
+    "text": "You manage projects by using Azure Boards.  \n  \nYou have a current work item name itemA that is dependant on a work item named itemB.  \n  \nYou need to define the dependency for itemA.  \n  \nWhat should you do in the web portal for Azure DevOps?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a Parent link to the user story of itemA."
+      },
+      {
+        "key": "B",
+        "text": "From Backlogs, open the context menu, select Add link, and then select itemA. Set Link type to Successor and add the ID of itemB."
+      },
+      {
+        "key": "C",
+        "text": "From itemA, open the Links tab, and then select Add link. Set Link type to References and add the ID of itemB."
+      },
+      {
+        "key": "D",
+        "text": "From Backlogs, open he context menu, select Add link, and then select itemA. Set Link type to References and add the ID of itemB."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Trong Azure DevOps, các phần phụ thuộc được xác định bằng cách sử dụng các loại liên kết tiền nhiệm/kế nhiệm. Vì itemA phụ thuộc vào itemB nên itemB là phần trước và itemA là phần kế tiếp. Từ Backlog, chọn itemA, thêm liên kết, đặt loại liên kết thành 'Người kế nhiệm' và tham chiếu ID của itemB để xác định rằng itemA thành công (phụ thuộc vào) itemB.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 78",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/78-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-79",
+    "questionNumber": 79,
+    "text": "Solution: Set up an Octopus Tentacle on an on-premises computer. Use the Package Application task in the build pipeline.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Xúc tu Octopus được sử dụng làm mục tiêu triển khai Octopus, trong khi các tác vụ xây dựng được thực thi trên tác nhân xây dựng Azure Pipelines. Để truy cập các tài nguyên tại chỗ trong quá trình xây dựng, Azure Pipelines yêu cầu một tác nhân tự lưu trữ có khả năng kết nối với môi trường đó. Ngoài ra, việc đóng gói một ứng dụng không tự lưu trữ kết quả đầu ra dưới dạng tạo phẩm xây dựng Azure DevOps Server; một bước xuất bản tạo tác là bắt buộc.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 79",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/79-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-80",
+    "questionNumber": 80,
+    "text": "Solution: Set up the build pipeline to use a Hosted Ubuntu agent pool and include the Java Tool Installer task in the build pipeline.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các tác nhân do Microsoft lưu trữ thường không thể tiếp cận các môi trường tại chỗ phía sau tường lửa của công ty. Azure DevOps yêu cầu một tác nhân tự lưu trữ có khả năng kết nối với môi trường tại chỗ khi cần quyền truy cập đó. Việc cài đặt Java không thiết lập quyền truy cập vào hệ thống quản lý phụ thuộc tại chỗ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 80",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/80-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-81",
+    "questionNumber": 81,
+    "text": "Solution: Set up the build pipeline to use a Hosted VS 2019 agent pool. Add the Java Tool Installer task to the build pipeline.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các đại lý Azure Pipelines do Microsoft lưu trữ không có quyền truy cập trực tiếp vào mạng tại chỗ của công ty. Bản dựng phải truy cập hệ thống quản lý phụ thuộc tại chỗ yêu cầu tác nhân tự lưu trữ có kết nối mạng với hệ thống đó. Việc cài đặt Java không cung cấp đường dẫn mạng cần thiết.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 81",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/81-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-82",
+    "questionNumber": 82,
+    "text": "Solution: Install and configure a self-hosted build agent on an on-premises computer. Set the build pipeline to use the Default agent pool. Add the Java Tool Installer task to the build pipeline.  \n  \nDoes this meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Tác nhân Azure Pipelines tự lưu trữ trên máy tại chỗ có tầm nhìn mạng tới các tài nguyên tại chỗ như hệ thống quản lý phụ thuộc, đồng thời liên lạc với Azure DevOps để lấy nguồn từ Azure Repos và xuất bản các tạo phẩm bản dựng. Azure Pipelines hỗ trợ lưu trữ các tạo phẩm đã xuất bản trong Azure Pipelines thay vì sao chép chúng vào một tệp chia sẻ, đáp ứng nhu cầu lưu trữ tạo phẩm của máy chủ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 82",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/82-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-83",
+    "questionNumber": 83,
+    "text": "Solution: Configure the build pipeline to use a Microsoft-hosted agent pool running a Linux image. Add the Java Tool Installer task to the build pipeline.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các tác nhân do Microsoft lưu trữ thường không có khả năng kết nối trực tiếp với môi trường tại chỗ phía sau tường lửa trung gian. Cần có một tác nhân tự lưu trữ có quyền truy cập vào hệ thống quản lý phụ thuộc tại chỗ hoặc quyền truy cập mạng được cấu hình riêng. Việc cài đặt Java không cung cấp khả năng kết nối đó.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 83",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/83-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-84",
+    "questionNumber": 84,
+    "text": "Solution: Set up the build pipeline to use a Microsoft-hosted agent pool that runs the **Windows Server 2019 with Visual Studio 2019** image. Add the **Java Tool Installer** task to the build pipeline.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Theo mặc định, nhóm tác nhân do Microsoft lưu trữ không có quyền truy cập trực tiếp vào môi trường tại chỗ của công ty. Một bản dựng phải truy xuất các phần phụ thuộc từ hệ thống quản lý phụ thuộc tại chỗ yêu cầu một tác nhân có kết nối mạng với hệ thống đó, thường là một tác nhân tự lưu trữ được triển khai bên trong hoặc được kết nối với mạng công ty. Việc cài đặt Java không cung cấp khả năng kết nối đó.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 84",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/84-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-85",
+    "questionNumber": 85,
+    "text": "You have an Azure subscription containing 50 virtual machines.  \n  \nYou manage the virtual-machine configuration by using Azure Automation State Configuration.  \n  \nYou need to make sure that Windows Defender is installed on every virtual machine and that the Windows Defender service is running.  \n  \nHow should you complete the Desired State Configuration (DSC) code? Each value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "ensure",
+        "text": "Slot 1:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "state",
+        "text": "Slot 2:",
+        "correctAnswer": "F"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "'Automatic'"
+      },
+      {
+        "key": "B",
+        "text": "'Enabled'"
+      },
+      {
+        "key": "C",
+        "text": "'IncludeAllSubFeature'"
+      },
+      {
+        "key": "D",
+        "text": "'Manual'"
+      },
+      {
+        "key": "E",
+        "text": "'Present'"
+      },
+      {
+        "key": "F",
+        "text": "'Running'"
+      },
+      {
+        "key": "G",
+        "text": "'Started'"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "'Automatic'"
+      },
+      {
+        "key": "B",
+        "text": "'Enabled'"
+      },
+      {
+        "key": "C",
+        "text": "'IncludeAllSubFeature'"
+      },
+      {
+        "key": "D",
+        "text": "'Manual'"
+      },
+      {
+        "key": "E",
+        "text": "'Present'"
+      },
+      {
+        "key": "F",
+        "text": "'Running'"
+      },
+      {
+        "key": "G",
+        "text": "'Started'"
+      }
+    ],
+    "correctAnswers": [
+      "ensure=E",
+      "state=F"
+    ],
+    "explanation": "Đối với tài nguyên DSC WindowsFeature, `Ensure = 'Present'` cài đặt tính năng Windows được chỉ định khi nó vắng mặt. Đối với tài nguyên Dịch vụ DSC, `State = 'Running'` đảm bảo rằng dịch vụ được đặt tên đang chạy; `StartupType = 'Automatic'` cấu hình khởi động tự động.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 85",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/85-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-86",
+    "questionNumber": 86,
+    "text": "You use Azure DevOps to manage the build and release process for an app named App1. A release pipeline deploys a virtual machine named VM1, and you plan to monitor the pipeline using Azure Monitor.  \n  \nYou need to configure an alert rule to monitor VM1's performance. The alert must trigger when the average CPU usage exceeds 70 percent for a period of five minutes, and the average must be recalculated every minute.  \n  \nHow should you configure the alert rule settings?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Trong quy tắc cảnh báo chỉ số Azure Monitor, mức độ chi tiết Tổng hợp (Chu kỳ) chỉ định khoảng thời gian trong đó các giá trị chỉ số được tổng hợp cho mỗi đánh giá; việc đặt thành 5 phút phù hợp với yêu cầu đánh giá mức sử dụng CPU trung bình trong khoảng thời gian năm phút. Giá trị Ngưỡng phải là Tĩnh vì cảnh báo sử dụng giá trị cố định do quản trị viên xác định (70%) thay vì giá trị bắt nguồn từ phân tích mẫu máy học, vốn là giá trị mà Ngưỡng động sử dụng. Toán tử phải Lớn hơn vì điều kiện được chỉ định là mức sử dụng CPU 'vượt quá' 70 phần trăm, tương ứng trực tiếp với so sánh lớn hơn thay vì lớn hơn hoặc bằng, nhỏ hơn hoặc nhỏ hơn hoặc bằng. Cài đặt 'Tần suất đánh giá' riêng biệt (không được hiển thị trong bộ tùy chọn này) sẽ được đặt thành 1 phút để đáp ứng yêu cầu tính toán lại mức trung bình mỗi phút.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 86",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/86-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-87",
+    "questionNumber": 87,
+    "text": "Your organization uses Azure Artifacts for managing packages. You need to set up an upstream source in Azure Artifacts specifically for Python packages. Which repository type should you select as the upstream source?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "npmjs.org"
+      },
+      {
+        "key": "B",
+        "text": "PyPI"
+      },
+      {
+        "key": "C",
+        "text": "Maven Central"
+      },
+      {
+        "key": "D",
+        "text": "third-party trusted Python"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Azure Artifacts cho phép các nguồn cấp dữ liệu bao gồm các nguồn ngược dòng đăng ký gói công khai ủy quyền để các gói có thể được sử dụng và lưu vào bộ nhớ đệm từ một nguồn cấp dữ liệu duy nhất. Đối với các gói Python, loại nguồn ngược dòng công khai được hỗ trợ là PyPI (Chỉ mục gói Python), đây là kho lưu trữ tiêu chuẩn cho các gói Python. npmjs.org được sử dụng cho các gói npm (JavaScript/Node.js) và Maven Central được sử dụng cho các gói Java, cả hai gói này đều không áp dụng cho Python.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 87",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/87-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-88",
+    "questionNumber": 88,
+    "text": "You are designing the security validation strategy for a project in Azure DevOps.  \n\nYou need to identify package dependencies that have known security issues and can be resolved by an update.  \n\nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Octopus Deploy"
+      },
+      {
+        "key": "B",
+        "text": "Jenkins"
+      },
+      {
+        "key": "C",
+        "text": "Gradle"
+      },
+      {
+        "key": "D",
+        "text": "SonarQube"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "SonarQube là một nền tảng phân tích mã tĩnh quét các lỗ hổng bảo mật trong mã, bao gồm xác định các phần phụ thuộc của gói có vấn đề bảo mật đã biết. Nó tích hợp vào quy trình xây dựng để phát hiện các lỗ hổng và đưa ra đề xuất cập nhật. Octopus Deploy dành cho việc quản lý bản phát hành, Jenkins là người điều phối CI/CD và Gradle là một công cụ xây dựng—không có công cụ nào chuyên về quét lỗ hổng bảo mật.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 88",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/88-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-89",
+    "questionNumber": 89,
+    "text": "You are working on a project for a client who will manage work items using Azure DevOps. You need to ensure that the work item process you select for the client supports tracking of requirements, change requests, risks, and reviews. Which option should you choose?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Basic"
+      },
+      {
+        "key": "B",
+        "text": "Agile"
+      },
+      {
+        "key": "C",
+        "text": "Scrum"
+      },
+      {
+        "key": "D",
+        "text": "CMMI"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Mẫu quy trình CMMI trong Azure Boards được thiết kế đặc biệt cho các nhóm yêu cầu quản lý thay đổi chính thức và hồ sơ quyết định có thể kiểm tra được. Nó cung cấp các loại mục công việc chuyên dụng—Yêu cầu, Yêu cầu thay đổi, Rủi ro và Đánh giá—không có trong các mẫu quy trình Cơ bản, Agile hoặc Scrum, khiến nó trở thành lựa chọn phù hợp khi dự án cần theo dõi các yêu cầu, yêu cầu thay đổi, rủi ro và đánh giá.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 89",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/89-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-90",
+    "questionNumber": 90,
+    "text": "You have an Azure DevOps project named Project1 that references an Azure Artifacts feed named Feed1.  \n  \nYou have a package named Package1 with the versions shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784203876598-7ygcaapx.png)  \n  \nYou need to build Project1.  \n  \nWhich version of Package1 will be used?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "1.0.3"
+      },
+      {
+        "key": "B",
+        "text": "1.4.0"
+      },
+      {
+        "key": "C",
+        "text": "2.0.0"
+      },
+      {
+        "key": "D",
+        "text": "2.3.1"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Azure Artifacts tìm kiếm các gói được xuất bản trực tiếp lên nguồn cấp dữ liệu trước khi các gói được lưu từ các nguồn thượng nguồn và các gói có sẵn từ các nguồn thượng nguồn. Do đó, Gói1 được giải quyết từ các phiên bản được đẩy thủ công trong Nguồn cấp dữ liệu1; phiên bản được chọn là phiên bản mới nhất trong số đó, 1.4.0.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784203876598-7ygcaapx.png",
+    "sourceTitle": "Examcademy AZ-400 Question 90",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/90-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-92",
+    "questionNumber": 92,
+    "text": "You scan a Node.js application using WhiteSource Bolt.  \n\nThe scan finds numerous libraries with invalid licenses, but are only used during development.  \n\nYou have to make sure that only production dependencies are scanned by WhiteSource Bolt.  \n\nWhich of the following is a command you should run?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "npm edit"
+      },
+      {
+        "key": "B",
+        "text": "npm publish"
+      },
+      {
+        "key": "C",
+        "text": "npm install"
+      },
+      {
+        "key": "D",
+        "text": "npm update"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Chạy `npm install --only=prod` (hoặc `--only=production`) chỉ cài đặt các phần phụ thuộc sản xuất và loại trừ các phần phụ thuộc phát triển khỏi quá trình cài đặt. Điều này đảm bảo WhiteSource Bolt chỉ quét các thư viện sản xuất, lọc ra các giấy phép chỉ dành cho phát triển và các lỗ hổng không liên quan đến cơ sở mã sản xuất.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 92",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/92-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-93",
+    "questionNumber": 93,
+    "text": "You have an Azure Pipelines pipeline with the following definition.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784206207572-tmdu3jlh.png)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Job B can run concurrently with job A.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Job D can run concurrently with job B.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "Job C can run concurrently with job D.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "`dependsOn: []` làm cho công việc B độc lập với công việc A, cho phép chúng chạy đồng thời. Công việc D chỉ phụ thuộc vào công việc C nên công việc B độc lập có thể chạy trong khi D chạy. Công việc D phải đợi công việc C hoàn thành; do đó, C và D không thể chạy đồng thời.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784206207572-tmdu3jlh.png",
+    "sourceTitle": "Examcademy AZ-400 Question 93",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/93-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-94",
+    "questionNumber": 94,
+    "text": "You have an Azure pipeline that is used to build and deploy an app named App1. The build job uses a Microsoft-hosted Windows agent.  \n  \nThe build job for App1 intermittently returns a timeout error.  \n  \nYou need to ensure that the build job completes successfully. The solution must minimize administrative effort.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Change the configuration of the build agent."
+      },
+      {
+        "key": "B",
+        "text": "Deploy a self-hosted agent."
+      },
+      {
+        "key": "C",
+        "text": "Change to a Microsoft-hosted Linux agent."
+      },
+      {
+        "key": "D",
+        "text": "Purchase more parallel jobs."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Các công việc quy trình do Microsoft lưu trữ trong dự án tư nhân có thời gian chờ mặc định là 60 phút trừ khi các công việc song song bổ sung đã được mua, điều này làm tăng giới hạn cứng lên 360 phút và giải quyết thời gian chờ không liên tục trên các bản dựng có thời gian chạy hơi dài. Điều này chỉ yêu cầu thay đổi thanh toán/cấp phép, với cơ sở hạ tầng no để cung cấp hoặc duy trì, giúp giảm nỗ lực quản trị so với việc thiết lập và vận hành một đại lý tự lưu trữ. **Tìm hiểu thêm:** [Microsoft-hosted agents — job timeout](https://learn.microsoft.com/en-us/azure/devops/pipelines/troubleshooting/troubleshooting?view=azure-devops#job-time-out)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 94",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/94-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-95",
+    "questionNumber": 95,
+    "text": "You have an Azure web app named webapp1 that uses the .NET Core runtime stack. You have an Azure Application Insights resource named AppInsights1 that collects telemetry data generated by webapp1.  \n  \nYou plan to deploy webapp1 by using an Azure DevOps pipeline.  \n  \nYou need to modify the sampling rate of the telemetry data processed by AppInsights1 without having to redeploy webapp1 after each modification.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Application Insights hỗ trợ ba cơ chế lấy mẫu: lấy mẫu thích ứng, lấy mẫu tốc độ cố định và lấy mẫu nhập. Lấy mẫu thích ứng được bật theo mặc định trong ASP.NET Core SDK. Lấy mẫu tổng hợp hoạt động tại Application Insights service endpoint và cho phép bạn đặt (và sau đó thay đổi) tỷ lệ lấy mẫu trực tiếp từ cổng Azure, trong phần Sử dụng và chi phí ước tính > Lấy mẫu dữ liệu, với no cần chạm hoặc triển khai lại ứng dụng. Tuy nhiên, việc lấy mẫu truyền dẫn chỉ được thực hiện khi SDK chưa thực hiện lấy mẫu thích ứng hoặc tốc độ cố định - nếu service endpoint phát hiện phép đo từ xa đã được lấy mẫu dưới 100%, thì service endpoint sẽ bỏ qua tốc độ lấy mẫu truyền tải đã định cấu hình. Vì webapp1 là một ứng dụng.NET Core nên tính năng lấy mẫu thích ứng được kích hoạt theo mặc định và phải được tắt trong mã ứng dụng (trong Program.cs/appsettings.json, vì ApplicationInsights.config không áp dụng cho ASP.NET Core SDK). Sau khi tắt tính năng lấy mẫu thích ứng, tất cả các thay đổi về tốc độ lấy mẫu tiếp theo có thể được thực hiện hoàn toàn từ ngăn Chi phí ước tính và mức sử dụng của AppInsights1 trong cổng Azure mà không cần thực hiện thêm bất kỳ thay đổi mã hoặc triển khai lại quy trình nào.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 95",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/95-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-96",
+    "questionNumber": 96,
+    "text": "You need to configure Azure Pipelines to control App2 builds.  \n\nWhich authentication method should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Windows NTLM"
+      },
+      {
+        "key": "B",
+        "text": "certificate"
+      },
+      {
+        "key": "C",
+        "text": "SAML"
+      },
+      {
+        "key": "D",
+        "text": "personal access token (PAT)"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Mã thông báo truy cập cá nhân (PAT) là phương thức xác thực được đề xuất cho các công cụ và ứng dụng của bên thứ ba tích hợp với Azure DevOps. PAT cung cấp giải pháp thay thế mật khẩu dựa trên mã thông báo, an toàn và có thể được điều chỉnh theo các quyền và khung thời gian cụ thể.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 96",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/96-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-97",
+    "questionNumber": 97,
+    "text": "Your company uses Azure DevOps and Microsoft Azure Active Directory (Azure AD), part of Microsoft Entra.  \n  \nOnly users who have accounts in Azure AD can access the Azure DevOps environment.  \n  \nYou need to ensure that only devices that are connected to the on-premises network can access the Azure DevOps environment.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assign the Stakeholder access level to all users."
+      },
+      {
+        "key": "B",
+        "text": "In Azure DevOps, configure Security in Project Settings."
+      },
+      {
+        "key": "C",
+        "text": "In Azure AD, configure conditional access."
+      },
+      {
+        "key": "D",
+        "text": "In Azure AD, configure risky sign-ins."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Truy cập có điều kiện trong Azure AD cho phép bạn xác định các chính sách truy cập chi tiết dựa trên vị trí thiết bị, điều kiện mạng và các yếu tố khác. Bằng cách định cấu hình chính sách truy cập có điều kiện để yêu cầu kết nối mạng tại chỗ, bạn có thể đảm bảo rằng chỉ những thiết bị được kết nối với mạng tại chỗ của bạn mới có thể truy cập Azure DevOps, bất kể danh tính hoặc cấp độ truy cập của người dùng. Đây là cơ chế chính trong Azure AD để kiểm soát quyền truy cập dựa trên vị trí.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 97",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/97-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-98",
+    "questionNumber": 98,
+    "text": "Your company has multiple microservices-based apps that use the following tracing libraries:  \n  \n• OpenTelemetry  \n\n• OpenCensus  \n\n• OpenTracing  \n\n• Honeycomb  \n\n• Jaeger  \n  \nThe company purchases an Azure subscription and implements Application Insights in Azure Monitor.  \n  \nYou plan to centralize distributed tracing for the apps.  \n  \nYou need to identify which libraries can integrate directly with Application Insights.  \n  \nWhich two libraries should you identify? Each correct answer presents a complete solution.  \n  \nNOTE: Each correct solution is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Honeycomb"
+      },
+      {
+        "key": "B",
+        "text": "OpenTracing"
+      },
+      {
+        "key": "C",
+        "text": "Jaeger"
+      },
+      {
+        "key": "D",
+        "text": "OpenTelemtry"
+      },
+      {
+        "key": "E",
+        "text": "OpenCensus"
+      }
+    ],
+    "correctAnswers": [
+      "D",
+      "E"
+    ],
+    "explanation": "Application Insights hỗ trợ theo dõi phân tán thông qua cả OpenTelemetry và OpenCensus. OpenTelemetry là tiêu chuẩn dành cho thiết bị đo đạc trung lập với nhà cung cấp và OpenCensus cung cấp các số liệu và khả năng theo dõi. OpenTracing, Jaeger và Honeycomb không tích hợp trực tiếp với Application Insights.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 98",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/98-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-99",
+    "questionNumber": 99,
+    "text": "You plan to deploy a solution that will include multiple microservices.  \n  \nYou need to recommend a deployment strategy for the microservices. The solution must meet the following requirements:  \n  \n• Enable users to test new features by using a specific URL.  \n\n• Minimize the effort required to promote a test version to production.  \n\n• Minimize the effort required to revert production code to the previous version.  \n  \nWhich strategy should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "A/B"
+      },
+      {
+        "key": "B",
+        "text": "feature toggle"
+      },
+      {
+        "key": "C",
+        "text": "progressive exposure"
+      },
+      {
+        "key": "D",
+        "text": "blue/green"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Triển khai xanh lam/xanh lục duy trì hai môi trường sản xuất giống hệt nhau, cho phép người thử nghiệm truy cập phiên bản mới thông qua một URL cụ thể trước khi phiên bản đó được đưa vào sản xuất. Khôi phục đơn giản như chuyển lưu lượng truy cập trở lại môi trường xanh, đáp ứng cả ba yêu cầu một cách hiệu quả. Thử nghiệm A/B dành cho thử nghiệm, chuyển đổi tính năng dành cho cờ tính năng và mức hiển thị lũy tiến dành cho triển khai dần dần—không có tính năng nào cung cấp khả năng khôi phục hoàn toàn, tức thì của màu xanh lam/xanh lục.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 99",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/99-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-100",
+    "questionNumber": 100,
+    "text": "You are automating the testing process for your company.  \n  \nYou need to automate UI testing of a web application.  \n  \nWhich framework should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "JaCoco"
+      },
+      {
+        "key": "B",
+        "text": "Playwright"
+      },
+      {
+        "key": "C",
+        "text": "Xamarin.UITest"
+      },
+      {
+        "key": "D",
+        "text": "Microsoft.CodeAnalysis"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Playwright là một khung tự động hóa web đa trình duyệt hiện đại được phát triển bởi Microsoft để tự động hóa việc kiểm tra giao diện người dùng trên Chrome, Firefox, Safari và các trình duyệt khác. Nó hỗ trợ nhiều ngôn ngữ lập trình và cung cấp bộ chọn phần tử mạnh mẽ cũng như thực hiện kiểm tra song song. JaCoco dành cho phạm vi bảo hiểm mã Java, Xamarin.UITest dành cho ứng dụng di động và Microsoft.CodeAnalysis dành cho phân tích mã tĩnh—không có cái nào phù hợp để kiểm tra giao diện người dùng ứng dụng web.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 100",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/100-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-101",
+    "questionNumber": 101,
+    "text": "You have an Azure DevOps project that includes a release pipeline and a Git repository.  \n  \nWhenever a new code revision is committed to the repository, a build and release are triggered.  \n  \nYou need to make sure that release information for the pipeline is automatically added to the work items associated with the Git commit.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Modify the Integrations options for the pipeline."
+      },
+      {
+        "key": "B",
+        "text": "Modify the post-deployment conditions for the last stage of the pipeline."
+      },
+      {
+        "key": "C",
+        "text": "Add an agentless job to the pipeline."
+      },
+      {
+        "key": "D",
+        "text": "Modify the service hooks for the project."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Quy trình phát hành Azure DevOps cung cấp tùy chọn cấu hình \"Tích hợp\", khi được bật, sẽ tự động báo cáo thông tin trạng thái triển khai/phát hành cho các mục công việc được liên kết với các cam kết và yêu cầu kéo có trong bản phát hành đó. Đây là cơ chế tích hợp sẵn để hiển thị chi tiết phát hành trên các mục công việc liên quan, khác với các móc dịch vụ (thông báo bên ngoài), điều kiện sau triển khai (cổng phê duyệt) hoặc công việc không cần tác nhân (nhiệm vụ phía máy chủ không bị ràng buộc với tác nhân).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 101",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/101-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-102",
+    "questionNumber": 102,
+    "text": "You plan to use Azure DevOps to build and deploy an app that will be hosted in a Kubernetes cluster.  \n  \nYou need to scan the app image for vulnerabilities before the image is deployed to the cluster.  \n  \nWhat should you include in the solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Microsoft Defender for Containers"
+      },
+      {
+        "key": "B",
+        "text": "Microsoft Defender for App Service"
+      },
+      {
+        "key": "C",
+        "text": "Microsoft Defender for DevOps"
+      },
+      {
+        "key": "D",
+        "text": "Microsoft Defender for Storage"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Bộ bảo vệ Microsoft dành cho Bộ chứa cung cấp chức năng quét lỗ hổng hình ảnh trong quá trình xây dựng trước khi triển khai. Nó quét hình ảnh vùng chứa để tìm các lỗ hổng bảo mật đã biết và cấu hình sai về bảo mật, cho phép khắc phục trước khi triển khai sản xuất tới các cụm Kubernetes.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 102",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/102-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-103",
+    "questionNumber": 103,
+    "text": "You use Azure Repos to manage source code and Azure Pipelines to implement continuous integration and continuous deployment (CI/CD).  \n  \nYou need to ensure that all comments on pull requests are resolved before the pull requests are included in a build. The solution must minimize administrative effort.  \n  \nWhat should you include in the solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a custom action"
+      },
+      {
+        "key": "B",
+        "text": "a post-deployment gate"
+      },
+      {
+        "key": "C",
+        "text": "a branch policy"
+      },
+      {
+        "key": "D",
+        "text": "a pre-deployment gate"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Chính sách chi nhánh trong Azure Repos thực thi các cổng chất lượng đối với các yêu cầu kéo, bao gồm yêu cầu tất cả nhận xét phải được giải quyết trước khi hoàn thành. Đây là tính năng tích hợp yêu cầu cấu hình tối thiểu và phát triển tùy chỉnh no. Các cổng trước khi triển khai và sau triển khai áp dụng để giải phóng quy trình sau khi hợp nhất PR, trong khi các hành động tùy chỉnh yêu cầu mã hóa bổ sung.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 103",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/103-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-104",
+    "questionNumber": 104,
+    "text": "You use Azure Pipelines to manage the build and deployment of apps.  \n  \nYou are planning the release strategies for a new app. You need to choose a strategy for each of the following scenarios:  \n  \n- Releases will be made available to users who are grouped by their tolerance for software faults.  \n- Code will be deployed to enable functionality that will be available in later releases of the app.  \n- When a new release occurs, the existing deployment will remain active to minimize recovery time if a return to the previous version is required.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783719571898-ps40xh94.png)  \n  \nWhich strategy should you choose for each scenario?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Mức độ tiếp xúc lũy tiến (vòng triển khai) nhóm người dùng theo mức độ chấp nhận rủi ro/lỗi, trước tiên phát hành phiên bản mới cho người dùng có khả năng chịu lỗi cao và dần dần mở rộng sang các nhóm rộng hơn, không thích rủi ro hơn khi độ tin cậy tăng lên — điều này kiểm soát 'bán kính vụ nổ' của một bản phát hành xấu. Cờ tính năng (bật tắt tính năng) cho phép bạn triển khai mã vào sản xuất trong khi vẫn ẩn hoặc tắt chức năng mới, do đó, chức năng này có thể được bật sau trong bản phát hành trong tương lai mà không yêu cầu triển khai mới — điều này tách biệt việc triển khai khỏi bản phát hành. Việc triển khai Xanh lam/xanh lá cây duy trì hai môi trường sản xuất giống hệt nhau (môi trường 'xanh lam' hiện đang hoạt động và môi trường mới 'xanh lá cây'). Vì môi trường cũ (xanh lam) vẫn hoạt động hoàn toàn và không bị ảnh hưởng trong khi phiên bản mới chạy màu xanh lục nên lưu lượng truy cập có thể được chuyển trở lại ngay lập tức, giảm thiểu thời gian phục hồi nếu cần khôi phục.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783719571898-ps40xh94.png",
+    "sourceTitle": "Examcademy AZ-400 Question 104",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/104-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-105",
+    "questionNumber": 105,
+    "text": "You use GitHub for source control.  \n  \nYou are evaluating whether to use proxying to add a private upstream MyGet package feed to your MyGet feed.  \n  \nWhat are two possible advantages of this approach? Each correct answer presents a complete solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "minimizes the impact of upstream source availability issues"
+      },
+      {
+        "key": "B",
+        "text": "minimizes latency when accessing the package"
+      },
+      {
+        "key": "C",
+        "text": "provides automatic authentication"
+      },
+      {
+        "key": "D",
+        "text": "minimizes the impact on your storage quota"
+      }
+    ],
+    "correctAnswers": [
+      "C",
+      "D"
+    ],
+    "explanation": "Việc ủy ​​quyền nguồn cấp dữ liệu MyGet ngược dòng cho phép nguồn cấp dữ liệu của bạn tự động xác thực với nguồn cấp dữ liệu riêng tư ngược dòng thay mặt người tiêu dùng, do đó, người dùng không cần thông tin xác thực riêng cho nguồn cấp dữ liệu đó và các gói được lấy qua proxy từ ngược dòng không được tính vào hạn mức lưu trữ của nguồn cấp dữ liệu của riêng bạn. **Tìm hiểu thêm:** [MyGet upstream sources](https://docs.myget.org/docs/reference/upstream-sources)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 105",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/105-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-106",
+    "questionNumber": 106,
+    "text": "Solution: You recommend defining a container job that uses a custom container with the JavaScript packages preinstalled.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Azure Pipelines kiểm tra mã nguồn trong không gian làm việc của công việc trong thời gian chạy, trong khi công việc trong bộ chứa chỉ cung cấp môi trường thực thi. Các gói được đưa vào hình ảnh vùng chứa tùy chỉnh không tự động trở thành phần phụ thuộc của ứng dụng React đã được kiểm tra, vì vậy phương pháp này không tránh được việc cài đặt các gói npm cho không gian làm việc đó. Cần có bộ đệm phụ thuộc để giảm thời gian cài đặt npm lặp đi lặp lại.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 106",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/106-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-107",
+    "questionNumber": 107,
+    "text": "Solution: You recommend that parallel jobs be enabled for the pipeline.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Năng lực công việc song song chạy đồng thời các công việc quy trình riêng biệt; nó không làm giảm thời gian cài đặt npm trong một đường ống chỉ chứa một công việc. Bộ nhớ đệm phụ thuộc npm giữa các lần chạy đường ống là cơ chế Đường ống Azure nhằm giảm thời gian tải xuống gói lặp lại.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 107",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/107-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-108",
+    "questionNumber": 108,
+    "text": "Solution: You recommend that pipeline caching be enabled.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Bộ nhớ đệm Azure Pipelines lưu trữ các tệp phụ thuộc giữa các lần chạy, cải thiện hiệu suất xây dựng. Đối với các dự án Node.js, Microsoft khuyên bạn nên lưu vào thư mục bộ nhớ đệm dùng chung của npm để quá trình cài đặt gói có thể sử dụng lại các gói đã tải xuống thay vì tải xuống lại chúng trong mỗi lần chạy quy trình.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 108",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/108-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-109",
+    "questionNumber": 109,
+    "text": "Solution: You recommend using pipeline artifacts.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các tạo phẩm đường ống được thiết kế để xuất bản và tải xuống các tệp giữa các công việc hoặc giai đoạn. Chúng không cung cấp bộ đệm phụ thuộc có thể sử dụng lại trong các lần chạy quy trình và một quy trình có một công việc duy nhất có công việc riêng no cần tạo phẩm. Bộ nhớ đệm phụ thuộc npm là cơ chế giúp giảm thời gian cài đặt gói lặp lại.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 109",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/109-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-110",
+    "questionNumber": 110,
+    "text": "You have an Azure subscription named Subscription1 that contains a custom Azure policy named Policy1. Policy1 is an audit policy that monitors naming convention compliance for the resources deployed to Subscription1.  \n\nYou have a pipeline named Pipeline1 in Azure Pipelines. Pipeline1 deploys Azure Resource Manager (ARM) resources to Subscription1.  \n\nYou need to ensure that the resources deployed by Pipeline1 comply with Policy1.  \n\nWhat should you add to Pipeline1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a pre-deployment task that runs a security and compliance assessment"
+      },
+      {
+        "key": "B",
+        "text": "a post-deployment task that runs a security and compliance assessment"
+      },
+      {
+        "key": "C",
+        "text": "an ARM template deployment task to assign Policy1 to Subscription1"
+      },
+      {
+        "key": "D",
+        "text": "an ARM template deployment task to deploy Policy1 to Subscription1"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Vì Chính sách1 có tác dụng kiểm tra thay vì tác động từ chối nên nó không chặn việc tạo tài nguyên không tuân thủ; nó chỉ ghi lại trạng thái tuân thủ của tài nguyên sau khi Chính sách Azure đánh giá nó, điều này xảy ra sau khi quá trình triển khai đã tồn tại. Do đó, nhiệm vụ sau triển khai chạy đánh giá tuân thủ là nhiệm vụ cho phép Pipeline1 xác nhận xem các tài nguyên mà nó vừa triển khai có thực sự đáp ứng Chính sách1 hay không.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 110",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/110-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-111",
+    "questionNumber": 111,
+    "text": "You have several Azure virtual machines that run Windows Server 2019. You need to identify the distinct event IDs of each virtual machine as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783719591806-8ml5nn2l.png)  \n  \nHow should you complete the Azure Monitor query? Each value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "blank1",
+        "text": "Slot 1:",
+        "correctAnswer": "G"
+      },
+      {
+        "id": "blank2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "count()"
+      },
+      {
+        "key": "B",
+        "text": "makelist(EventID)"
+      },
+      {
+        "key": "C",
+        "text": "makeset(EventID)"
+      },
+      {
+        "key": "D",
+        "text": "mv-expand"
+      },
+      {
+        "key": "E",
+        "text": "project"
+      },
+      {
+        "key": "F",
+        "text": "render"
+      },
+      {
+        "key": "G",
+        "text": "summarize"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "count()"
+      },
+      {
+        "key": "B",
+        "text": "makelist(EventID)"
+      },
+      {
+        "key": "C",
+        "text": "makeset(EventID)"
+      },
+      {
+        "key": "D",
+        "text": "mv-expand"
+      },
+      {
+        "key": "E",
+        "text": "project"
+      },
+      {
+        "key": "F",
+        "text": "render"
+      },
+      {
+        "key": "G",
+        "text": "summarize"
+      }
+    ],
+    "correctAnswers": [
+      "blank1=G",
+      "blank2=C"
+    ],
+    "explanation": "Trong Ngôn ngữ truy vấn Kusto (KQL) được Azure Monitor Log Analytics sử dụng, toán tử tóm tắt nhóm các hàng theo một khóa được chỉ định và áp dụng hàm tổng hợp cho mỗi nhóm, sử dụng cú pháp 'tóm tắt <Aggregation> theo <GroupExpression>'. Để chỉ lấy các ID sự kiện riêng biệt (không trùng lặp) được ghi trên mỗi máy tính, cần có hàm tổng hợp make_set()/makeset() vì nó tạo ra một mảng JSON động chỉ chứa các giá trị riêng biệt của biểu thức trong mỗi nhóm — không giống như makelist() vốn bảo toàn các giá trị trùng lặp. Việc nhóm theo Máy tính tạo ra một hàng cho mỗi máy ảo, mỗi hàng chứa dãy ID sự kiện duy nhất được ghi trên máy đó trong vòng 12 giờ qua, khớp với yêu cầu hiển thị cho VM1 và VM2 trong bảng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783719591806-8ml5nn2l.png",
+    "sourceTitle": "Examcademy AZ-400 Question 111",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/111-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-112",
+    "questionNumber": 112,
+    "text": "You have a GitHub repository named Repo1 and an app named App1. Repo1 stores App1’s source code.  \n  \nYou must perform the following tests:  \n  \n- **Test1:** Run a ZAP spider against App1 for one minute and wait for passive scanning to complete. The test must not perform active attacks.  \n- **Test2:** Run a ZAP spider against App1 and, when it completes, run an AJAX spider scan.  \n  \nWhich GitHub action should you use for each test?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Theo mặc định, ZAP Baseline Scan sử dụng trình thu thập dữ liệu kéo dài một phút, chờ quét thụ động và không thực hiện các cuộc tấn công. ZAP Full Scan chạy nhện truyền thống, theo sau là nhện AJAX theo mặc định.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 112",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/112-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-113",
+    "questionNumber": 113,
+    "text": "You have an Azure Resource Manager template that deploys a multi-tier application. You need to prevent the user who performs the deployment from viewing the account credentials and connection strings used by the application. What should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Key Vault"
+      },
+      {
+        "key": "B",
+        "text": "a Web.config file"
+      },
+      {
+        "key": "C",
+        "text": "an Appsettings.json file"
+      },
+      {
+        "key": "D",
+        "text": "an Azure Storage table"
+      },
+      {
+        "key": "E",
+        "text": "an Azure Resource Manager parameter file"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Key Vault cho phép bạn lưu trữ các bí mật, chẳng hạn như thông tin xác thực tài khoản và chuỗi kết nối, đồng thời tham chiếu chúng trong tệp tham số mẫu ARM bằng cách sử dụng tham chiếu Key Vault tĩnh hoặc động. Khi tham số tham chiếu bí mật Key Vault, Azure Resource Manager sẽ truy xuất giá trị bí mật một cách an toàn tại thời điểm triển khai mà không để lộ giá trị đó trong mẫu, kết quả triển khai hoặc lịch sử triển khai cho người thực hiện triển khai—trừ khi người đó được cấp quyền truy cập riêng để đọc bí mật từ vault. Điều này đảm bảo thông tin đăng nhập vẫn bị ẩn khỏi người triển khai trong khi vẫn có thể sử dụng được trong quá trình triển khai. Các tệp cấu hình như Web.config hoặc appsinstall.json lưu trữ bí mật ở dạng văn bản thuần túy trong ứng dụng, cung cấp khả năng bảo vệ no chống lại việc người dùng triển khai xem chúng, đồng thời các bảng Lưu trữ Azure và tệp tham số ARM đơn giản (không tích hợp Key Vault) cũng không cung cấp khả năng ẩn bí mật này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 113",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/113-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-114",
+    "questionNumber": 114,
+    "text": "You have configured an availability test in Azure Application Insights. You need to send an email notification to your company's customer services department whenever availability becomes degraded. To handle the email and any follow-up actions, you create an Azure logic app.  \n  \nWhich type of trigger should you use to invoke the logic app?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an HTTPWebhook trigger"
+      },
+      {
+        "key": "B",
+        "text": "an HTTP trigger"
+      },
+      {
+        "key": "C",
+        "text": "a Request trigger"
+      },
+      {
+        "key": "D",
+        "text": "an ApiConnection trigger"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Cảnh báo Azure Monitor (bao gồm cảnh báo về tính khả dụng của Application Insights) gọi Ứng dụng Logic thông qua nhóm hành động được định cấu hình với loại hành động 'Ứng dụng Logic'. Bản thân Ứng dụng Logic phải bắt đầu bằng trình kích hoạt 'Khi nhận được yêu cầu HTTP' tích hợp, trình kích hoạt này sẽ tạo URL điểm cuối mà công cụ cảnh báo gọi với tải trọng cảnh báo. Trong định nghĩa quy trình làm việc cơ bản của Ứng dụng Logic, loại của trình kích hoạt này là 'Yêu cầu' (loại: Http), khiến nó trở thành trình kích hoạt chính xác để chọn — như được ghi lại trong hướng dẫn của Microsoft về cách tùy chỉnh thông báo cảnh báo bằng Ứng dụng Logic.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 114",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/114-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-115",
+    "questionNumber": 115,
+    "text": "You have an Azure subscription containing an Azure key vault named Vault1, an Azure pipeline named Pipeline1, and an Azure SQL database named DB1.  \n  \nPipeline1 deploys an app that will authenticate to DB1 by using a password.  \n  \nYou must store the password in Vault1 while ensuring Pipeline1 can access it.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Key Vault lưu trữ các chuỗi nhạy cảm như mật khẩu dưới dạng bí mật. Theo mô hình cấp phép chính sách truy cập vault, quyền truy cập đọc bí mật cho service principal hoặc managed identity của đường ống được cấp thông qua các chính sách Truy cập của vault bằng cách chỉ định các quyền bí mật cần thiết, chẳng hạn như Nhận (và thường là Danh sách khi được yêu cầu bởi quá trình tích hợp đường ống).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 115",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/115-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-116",
+    "questionNumber": 116,
+    "text": "You have an Azure subscription containing an Azure Traffic Manager profile named ATM1 and a web app named App1. ATM1 manages traffic for App1 and is configured to send callers to the endpoint with the lowest latency.  \n  \nYou need to configure ATM1 so that all traffic from Asia is routed to an endpoint in Australia.  \n  \nWhich three actions should you perform, in order, in the Azure portal?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Slot 1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "slot2",
+        "text": "Slot 2:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "slot3",
+        "text": "Slot 3:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Add new endpoints that have geographic region mapping."
+      },
+      {
+        "key": "B",
+        "text": "Decrease the TTL value of the DNS records for App1."
+      },
+      {
+        "key": "C",
+        "text": "Configure performance routing."
+      },
+      {
+        "key": "D",
+        "text": "Delete all the existing endpoints."
+      },
+      {
+        "key": "E",
+        "text": "Configure geographic routing."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Add new endpoints that have geographic region mapping."
+      },
+      {
+        "key": "B",
+        "text": "Decrease the TTL value of the DNS records for App1."
+      },
+      {
+        "key": "C",
+        "text": "Configure performance routing."
+      },
+      {
+        "key": "D",
+        "text": "Delete all the existing endpoints."
+      },
+      {
+        "key": "E",
+        "text": "Configure geographic routing."
+      }
+    ],
+    "correctAnswers": [
+      "slot1=D",
+      "slot2=E",
+      "slot3=A"
+    ],
+    "explanation": "Định tuyến hiệu suất chọn điểm cuối có độ trễ thấp nhất và không thể đảm bảo rằng người gọi ở Châu Á sẽ được gửi đến Úc. Định tuyến địa lý chỉ đạo các yêu cầu theo khu vực địa lý của người gọi, sử dụng ánh xạ khu vực địa lý điểm cuối. Để chuyển đổi cấu hình hiện có dựa trên cổng thông tin, hãy xóa các điểm cuối hiện tại, thay đổi phương thức định tuyến thành Địa lý, sau đó thêm các điểm cuối có ánh xạ bắt buộc, bao gồm cả Châu Á trên điểm cuối Úc.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 116",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/116-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-117",
+    "questionNumber": 117,
+    "text": "You are configuring the Azure DevOps dashboard. The solution must meet the technical requirements. Determine which widget satisfies each of the following metrics: a comparison of team velocity against the plan, the status of environments in a release definition, and the total number of results returned by a work item query. Each widget may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Compares the work the team delivered against the sprint plan (team velocity)",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "Shows the status of the environments defined in a release pipeline",
+        "correctAnswer": "F"
+      },
+      {
+        "id": "3",
+        "text": "Shows the total count of work items returned by a saved query",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Velocity"
+      },
+      {
+        "key": "B",
+        "text": "Query tile"
+      },
+      {
+        "key": "C",
+        "text": "Query results"
+      },
+      {
+        "key": "D",
+        "text": "Sprint burndown"
+      },
+      {
+        "key": "E",
+        "text": "Cumulative flow diagram"
+      },
+      {
+        "key": "F",
+        "text": "Release pipeline overview"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Velocity"
+      },
+      {
+        "key": "B",
+        "text": "Query tile"
+      },
+      {
+        "key": "C",
+        "text": "Query results"
+      },
+      {
+        "key": "D",
+        "text": "Sprint burndown"
+      },
+      {
+        "key": "E",
+        "text": "Cumulative flow diagram"
+      },
+      {
+        "key": "F",
+        "text": "Release pipeline overview"
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=F",
+      "3=B"
+    ],
+    "explanation": "Tiện ích Vận tốc theo dõi khả năng của nhóm trong việc thực hiện chạy nước rút công việc sau khi chạy nước rút và hiển thị những gì nhóm đã thực hiện so với những gì đã được lên kế hoạch, khiến tiện ích này trở thành lựa chọn chính xác để so sánh việc phân phối thực tế với kế hoạch. Tiện ích Tổng quan về quy trình phát hành hiển thị trạng thái hiện tại của từng môi trường/giai đoạn được xác định trong quy trình phát hành, đáp ứng yêu cầu giám sát trạng thái môi trường phát hành. Tiện ích Ô truy vấn là một ngăn xếp có thể định cấu hình, hiển thị một giá trị tổng hợp duy nhất — tổng số mục công việc được truy vấn chia sẻ trả về — đây chính xác là những gì cần thiết để hiển thị nhanh số lượng kết quả truy vấn; Ngược lại, Kết quả truy vấn hiển thị danh sách chi tiết các mục thay vì số lượng tóm tắt nên không phù hợp với yêu cầu này. Sprint Burndown và Sơ đồ luồng tích lũy giải quyết các mối quan tâm khác nhau (công việc chạy nước rút còn lại và luồng mục công việc trên các trạng thái bảng) và không bắt buộc phải có trong ba chỉ số này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 117",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/117-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-118",
+    "questionNumber": 118,
+    "text": "While reviewing code, you find quality issues in a Java application.  \n  \nYou need to recommend a solution that can detect quality issues such as:  \n  \n- Unused variables  \n- Empty catch blocks  \n  \nWhat should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "In a Maven build task, select Run PMD."
+      },
+      {
+        "key": "B",
+        "text": "In an Xcode build task, select Use xcpretty from Advanced."
+      },
+      {
+        "key": "C",
+        "text": "In a Gulp build task, specify a custom condition expression."
+      },
+      {
+        "key": "D",
+        "text": "In a Grunt build task, select Enabled from Control Options."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "PMD là một công cụ phân tích mã nguồn cho Java, có chức năng tìm ra các lỗi lập trình phổ biến như các biến không được sử dụng, nội dung nhập không được sử dụng, khối bắt trống và việc tạo đối tượng không cần thiết. Trong tác vụ xây dựng Maven (chẳng hạn như trong Azure Pipelines), việc chọn tùy chọn 'Chạy PMD' sẽ cho phép phân tích tĩnh này như một phần của bản dựng, cho phép tự động phát hiện các vấn đề chất lượng cụ thể này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 118",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/118-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-119",
+    "questionNumber": 119,
+    "text": "You have a GitHub repository.  \n  \nYou need to create a tag named v3.0.5 and ensure that the tag is available in the remote repository.  \n  \nWhich two commands should you run? Each correct answer presents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "git push -force"
+      },
+      {
+        "key": "B",
+        "text": "git push origin v3.0.5"
+      },
+      {
+        "key": "C",
+        "text": "git tag v3.0.5"
+      },
+      {
+        "key": "D",
+        "text": "git commit -m ‘tag v3.0.5’"
+      },
+      {
+        "key": "E",
+        "text": "git add ‘tag v3.0.5’"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "C"
+    ],
+    "explanation": "Việc tạo và đẩy thẻ yêu cầu hai lệnh: đầu tiên, git tag v3.0.5 tạo thẻ cục bộ, sau đó git push Origin v3.0.5 đẩy thẻ đó vào kho lưu trữ từ xa. Hai lệnh này cùng nhau hoàn thành mục tiêu đầy đủ. Các tùy chọn khác không tạo thẻ (A dành cho dọn dẹp, D dành cho xác nhận, E dành cho dàn dựng).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 119",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/119-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-120",
+    "questionNumber": 120,
+    "text": "You need to use Azure Automation State Configuration to manage the ongoing consistency of virtual machine configurations.  \n  \nWhich five actions should you perform, and in what sequence? Move the appropriate actions from the list into the answer area and arrange them in the correct order.  \n  \nNote: More than one order of the answer choices is correct; you will receive credit for any of the correct orders.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "F"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "4",
+        "text": "Slot 4:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "5",
+        "text": "Slot 5:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Onboard the virtual machines to Azure Automation State Configuration."
+      },
+      {
+        "key": "B",
+        "text": "Check the compliance status of the node."
+      },
+      {
+        "key": "C",
+        "text": "Create a management group."
+      },
+      {
+        "key": "D",
+        "text": "Assign the node configuration."
+      },
+      {
+        "key": "E",
+        "text": "Compile a configuration into a node configuration."
+      },
+      {
+        "key": "F",
+        "text": "Upload a configuration to Azure Automation State Configuration."
+      },
+      {
+        "key": "G",
+        "text": "Assign tags to the virtual machines."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Onboard the virtual machines to Azure Automation State Configuration."
+      },
+      {
+        "key": "B",
+        "text": "Check the compliance status of the node."
+      },
+      {
+        "key": "C",
+        "text": "Create a management group."
+      },
+      {
+        "key": "D",
+        "text": "Assign the node configuration."
+      },
+      {
+        "key": "E",
+        "text": "Compile a configuration into a node configuration."
+      },
+      {
+        "key": "F",
+        "text": "Upload a configuration to Azure Automation State Configuration."
+      },
+      {
+        "key": "G",
+        "text": "Assign tags to the virtual machines."
+      }
+    ],
+    "correctAnswers": [
+      "1=F",
+      "2=E",
+      "3=A",
+      "4=D",
+      "5=B"
+    ],
+    "explanation": "Cấu hình trạng thái tự động hóa Azure (Azure DSC) tuân theo quy trình công việc đã xác định: bạn tạo tập lệnh cấu hình PowerShell DSC và tải tập lệnh đó lên tài khoản Tự động hóa; sau đó dịch vụ sẽ biên dịch cấu hình đó thành cấu hình nút (tệp MOF) có thể áp dụng cho máy; máy ảo được tích hợp dưới dạng nút DSC vào tài khoản Tự động hóa; cấu hình nút thích hợp được chỉ định cho từng nút tích hợp để nó được thực thi; và cuối cùng, trạng thái tuân thủ của từng nút được kiểm tra định kỳ để đảm bảo cấu hình máy vẫn nhất quán với cấu hình nút được chỉ định. Tạo nhóm quản lý và gán thẻ là các hành động tổ chức/quản trị Azure không liên quan đến vòng đời cấu hình DSC.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 120",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/120-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-121",
+    "questionNumber": 121,
+    "text": "You have an Azure DevOps project named Project1 and an Azure subscription named Sub1. Sub1 contains an Azure SQL database named DB1.  \n  \nYou need to build a release pipeline that uses the Azure SQL Database Deployment task to update DB1.  \n  \nWhich artifact type should you deploy?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a BACPAC"
+      },
+      {
+        "key": "B",
+        "text": "a DACPAC"
+      },
+      {
+        "key": "C",
+        "text": "an LDF file"
+      },
+      {
+        "key": "D",
+        "text": "an MDF file"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Nhiệm vụ Triển khai Azure SQL Database (một phần của nhiệm vụ Đường ống Azure) triển khai DACPAC để cập nhật sơ đồ của Azure SQL Database. DACPAC là một đơn vị triển khai lược đồ cơ sở dữ liệu SQL Server độc lập được tạo từ Dự án cơ sở dữ liệu SQL Server hoặc được trích xuất thông qua SqlPackage và đây là loại tạo phẩm mà tác vụ mong đợi cho việc triển khai lược đồ. BACPAC bao gồm cả lược đồ và dữ liệu, đồng thời được sử dụng để xuất/nhập hoặc di chuyển cơ sở dữ liệu chứ không phải cho nhiệm vụ triển khai này. MDF và LDF là các tệp cơ sở dữ liệu vật lý thô (tệp dữ liệu và nhật ký) không thể được triển khai trực tiếp thông qua tác vụ đường ống này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 121",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/121-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-122",
+    "questionNumber": 122,
+    "text": "You have an app named App1 that you release by using Azure Pipelines. App1 has the versions shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783721886008-n0ksz2a4.png)  \n  \nYou complete a code change to fix a bug that was introduced in version 3.4.3.  \n  \nWhich version number should you assign to the release?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "3.4.4"
+      },
+      {
+        "key": "B",
+        "text": "3.4.8"
+      },
+      {
+        "key": "C",
+        "text": "3.5.0"
+      },
+      {
+        "key": "D",
+        "text": "4.0.1"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Sau phiên bản ngữ nghĩa, bản phát hành sản xuất hiện tại là 4.0.0. Bản phát hành sửa lỗi chỉ tăng phiên bản vá lỗi (chữ số thứ ba), dẫn đến 4.0.1. Phiên bản có lỗi ban đầu (3.4.3) không liên quan đến việc xác định số phiên bản tiếp theo từ bản phát hành 4.0.0 hiện tại.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783721886008-n0ksz2a4.png",
+    "sourceTitle": "Examcademy AZ-400 Question 122",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/122-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-123",
+    "questionNumber": 123,
+    "text": "You have a private distribution group that contains provisioned and unprovisioned devices.  \n\nYou need to distribute a new iOS application to the distribution group by using Microsoft Visual Studio App Center.  \n\nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Select Register devices and sign my app."
+      },
+      {
+        "key": "B",
+        "text": "Create an active subscription in App Center Test."
+      },
+      {
+        "key": "C",
+        "text": "Add the device owner to the organization in App Center."
+      },
+      {
+        "key": "D",
+        "text": "Create an unsigned build."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Để phân phối ứng dụng iOS tới các thiết bị được cấp phép và không được cung cấp trong nhóm phân phối riêng thông qua Trung tâm ứng dụng, thiết bị phải được đăng ký và ứng dụng phải được ký. Việc chọn 'Đăng ký thiết bị và ký ứng dụng của tôi' sẽ bật tính năng tự động cấp phép thiết bị và xử lý việc ký ứng dụng để phân phối.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 123",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/123-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-124",
+    "questionNumber": 124,
+    "text": "You have a project in Azure DevOps.  \n\nYou need to push notifications about pull requests to a Microsoft Teams channel. The solution must minimize development effort.  \n\nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Install the Azure Pipelines app for Teams and configure a subscription to receive notifications in the channel."
+      },
+      {
+        "key": "B",
+        "text": "Use Azure Automation to connect to the Azure DevOps REST API and send messages to Teams."
+      },
+      {
+        "key": "C",
+        "text": "Install the Azure Repos app for Teams and configure a subscription to receive notifications in the channel."
+      },
+      {
+        "key": "D",
+        "text": "Use an Azure function to connect to the Azure DevOps REST API and send messages to Teams."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Ứng dụng Azure Repos dành cho Nhóm được thiết kế đặc biệt cho các thông báo liên quan đến mã bao gồm yêu cầu kéo, cam kết và đánh giá. Ứng dụng Azure Pipelines xử lý các sự kiện xây dựng và phát hành. Để có thông báo yêu cầu kéo với nỗ lực phát triển tối thiểu, ứng dụng Repos là lựa chọn chính xác.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 124",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/124-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-125",
+    "questionNumber": 125,
+    "text": "You are defining release strategies for two applications as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783717180756-e4edm1pj.png)  \n  \nWhich release strategy should you use for each application? Drag the appropriate release strategy to each application. Each release strategy may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "app1",
+        "text": "App1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "app2",
+        "text": "App2:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Blue/Green deployment"
+      },
+      {
+        "key": "B",
+        "text": "Canary deployment"
+      },
+      {
+        "key": "C",
+        "text": "Rolling deployment"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Blue/Green deployment"
+      },
+      {
+        "key": "B",
+        "text": "Canary deployment"
+      },
+      {
+        "key": "C",
+        "text": "Rolling deployment"
+      }
+    ],
+    "correctAnswers": [
+      "app1=B",
+      "app2=A"
+    ],
+    "explanation": "Triển khai Canary phát hành phiên bản mới cho một nhóm nhỏ người dùng được xác định (chẳng hạn như những người đã chọn tham gia thử nghiệm) trước khi triển khai rộng rãi, phù hợp với yêu cầu của App1 về việc hạn chế hiển thị ứng dụng có tác động cao đối với nhóm thử nghiệm được chọn tham gia nhỏ. Triển khai Xanh lam/Xanh lục duy trì hai môi trường sản xuất hoàn chỉnh, giống hệt nhau và chuyển đổi lưu lượng giữa chúng ngay lập tức, giảm thiểu thời gian triển khai và cho phép khôi phục gần như ngay lập tức bằng cách chuyển hướng lưu lượng truy cập trở lại môi trường trước đó — phù hợp với yêu cầu của App2 để giảm thiểu thời gian triển khai và khôi phục nhanh nhất có thể.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783717180756-e4edm1pj.png",
+    "sourceTitle": "Examcademy AZ-400 Question 125",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/125-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-126",
+    "questionNumber": 126,
+    "text": "You have a multi-tier application consisting of an Azure Web Apps front end and an Azure SQL Database back end.  \n  \nYou need to recommend a solution to capture and store telemetry data. The solution must meet the following requirements:  \n  \n- Support using ad-hoc queries to identify baselines.  \n- Trigger alerts when metrics in the baseline are exceeded.  \n- Store application and database metrics in a central location.  \n  \nWhat should you include in the recommendation?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Event Hubs"
+      },
+      {
+        "key": "B",
+        "text": "Azure SQL Database Intelligent Insights"
+      },
+      {
+        "key": "C",
+        "text": "Azure Application Insights"
+      },
+      {
+        "key": "D",
+        "text": "Azure Log Analytics"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Không gian làm việc Log Analytics thu thập tập trung các nhật ký và số liệu chẩn đoán từ cả giao diện người dùng Dịch vụ ứng dụng và giao diện phụ Azure SQL Database. Nó hỗ trợ Ngôn ngữ truy vấn Kusto cho các truy vấn đặc biệt để thiết lập đường cơ sở hiệu suất và có thể tạo quy tắc cảnh báo Azure Monitor dựa trên dữ liệu không gian làm việc để thông báo khi vượt quá ngưỡng cơ sở. Điều này làm cho nó trở thành lựa chọn duy nhất đáp ứng cả ba yêu cầu đã nêu — lưu trữ tập trung các số liệu nhiều tầng, truy vấn đặc biệt và cảnh báo về độ lệch đường cơ sở.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 126",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/126-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-127",
+    "questionNumber": 127,
+    "text": "You are preparing to deploy an Azure resource group using Terraform. To accomplish this, you need to install the necessary frameworks. Which of the following are the frameworks you should use?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Yeoman"
+      },
+      {
+        "key": "B",
+        "text": "Vault"
+      },
+      {
+        "key": "C",
+        "text": "Terratest"
+      },
+      {
+        "key": "D",
+        "text": "Tiller"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Yeoman"
+      },
+      {
+        "key": "B",
+        "text": "Vault"
+      },
+      {
+        "key": "C",
+        "text": "Terratest"
+      },
+      {
+        "key": "D",
+        "text": "Tiller"
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=C"
+    ],
+    "explanation": "Khi chuẩn bị triển khai cơ sở hạ tầng Azure với Terraform, quy trình làm việc được ghi lại của Microsoft sử dụng 'generator-az-terra-module' dựa trên Yeoman để xây dựng dự án mô-đun Terraform cơ bản một cách nhanh chóng và nhất quán, đồng thời trình tạo đó tích hợp Terratest, khung nguồn mở dựa trên Go, để tự động kiểm tra xem cơ sở hạ tầng Azure được cung cấp (chẳng hạn như nhóm tài nguyên) có phù hợp với mong đợi sau khi triển khai hay không. Vault là sản phẩm quản lý bí mật của HashiCorp dùng để lưu trữ và kiểm soát quyền truy cập vào thông tin xác thực và khóa — nó đóng vai trò no trong việc tạo hoặc thử nghiệm các mô-đun Terraform. Tiller là thành phần phía máy chủ của Helm v2 được sử dụng để triển khai biểu đồ Kubernetes; nó có mối quan hệ no với giàn giáo hoặc thử nghiệm mô-đun Terraform và đã bị xóa hoàn toàn trong Helm v3. Do đó, chỉ Yeoman và Terratest là khung cần thiết cho kịch bản này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 127",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/127-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-128",
+    "questionNumber": 128,
+    "text": "You use Azure Pipelines to automate Continuous Integration/Continuous Deployment (CI/CD) for an Azure web app named WebApp1.  \n  \nYou configure an Azure Monitor alert that is triggered when WebApp1 generates an error.  \n  \nYou need to configure the alert to forward details of the error to a third-party system. The solution must minimize administrative effort.  \n  \nWhich three actions should you perform in sequence? Move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Select the Recurrence trigger."
+      },
+      {
+        "key": "B",
+        "text": "Create an Azure event hub."
+      },
+      {
+        "key": "C",
+        "text": "Create an Azure logic app."
+      },
+      {
+        "key": "D",
+        "text": "Select the HTTP request trigger."
+      },
+      {
+        "key": "E",
+        "text": "Update the action group in Azure Monitor."
+      },
+      {
+        "key": "F",
+        "text": "Select the Sliding Window trigger."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Select the Recurrence trigger."
+      },
+      {
+        "key": "B",
+        "text": "Create an Azure event hub."
+      },
+      {
+        "key": "C",
+        "text": "Create an Azure logic app."
+      },
+      {
+        "key": "D",
+        "text": "Select the HTTP request trigger."
+      },
+      {
+        "key": "E",
+        "text": "Update the action group in Azure Monitor."
+      },
+      {
+        "key": "F",
+        "text": "Select the Sliding Window trigger."
+      }
+    ],
+    "correctAnswers": [
+      "1=C",
+      "2=D",
+      "3=E"
+    ],
+    "explanation": "Các nhóm hành động Azure Monitor vốn hỗ trợ loại hành động Ứng dụng Logic, cho phép cảnh báo kích hoạt quy trình làm việc của Ứng dụng Logic mà không cần cơ sở hạ tầng tùy chỉnh. Để thiết lập điều này với nỗ lực tối thiểu: trước tiên hãy tạo Ứng dụng Azure Logic, đặt cấu hình để bắt đầu bằng trình kích hoạt 'yêu cầu HTTP' (Khi nhận được yêu cầu HTTP) để ứng dụng có thể chấp nhận tải trọng cảnh báo, sau đó cập nhật nhóm hành động hiện có trong Azure Monitor để thêm Ứng dụng logic này làm hành động. Khi cảnh báo kích hoạt, Azure Monitor sẽ gọi nhóm hành động, nhóm này gọi Ứng dụng Logic qua HTTP và sau đó Ứng dụng Logic có thể chuyển đổi và chuyển tiếp các chi tiết lỗi đến hệ thống của bên thứ ba. Điều này tránh việc xây dựng các ứng dụng tiêu thụ trung tâm sự kiện tùy chỉnh hoặc trình kích hoạt dựa trên cuộc bỏ phiếu như Lặp lại hoặc Cửa sổ trượt, những điều không cần thiết đối với kịch bản đẩy dựa trên cảnh báo.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 128",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/128-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-129",
+    "questionNumber": 129,
+    "text": "Your company has an Azure DevOps project, which includes a build pipeline that makes use of roughly fifty open source libraries.  \n\nYou have been tasked with making sure that you are able to scan project for common security weaknesses in the open source libraries.  \n\nWhich of the following actions should you take?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "You should create a build task and use the WhiteSource Bolt service."
+      },
+      {
+        "key": "B",
+        "text": "You should create a deployment task and use the WhiteSource Bolt service."
+      },
+      {
+        "key": "C",
+        "text": "You should create a build task and use the Chef service."
+      },
+      {
+        "key": "D",
+        "text": "You should create a deployment task and use the Chef service."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Việc quét các lỗ hổng bảo mật trong thư viện nguồn mở sẽ diễn ra trong giai đoạn xây dựng chứ không phải giai đoạn triển khai để phát hiện sớm các vấn đề trong vòng đời phát triển. WhiteSource (nay là Mend) Bolt được thiết kế đặc biệt để quét các lỗ hổng và vấn đề tuân thủ giấy phép trong các phần phụ thuộc nguồn mở. Chef là công cụ quản lý cấu hình, không phải máy quét bảo mật.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 129",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/129-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-130",
+    "questionNumber": 130,
+    "text": "You have a web app named App1 that uses Application Insights in Azure Monitor.  \n  \nYou need to compare App1’s hourly CPU usage over the last 24 hours. The solution must include a graph with a threshold line at 75 percent.  \n  \nHow should you complete the query? Each value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "time_bin",
+        "text": "Slot 1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "threshold",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "bin(TimeGenerated, 1d)"
+      },
+      {
+        "key": "B",
+        "text": "bin(TimeGenerated, 1h)"
+      },
+      {
+        "key": "C",
+        "text": "extend"
+      },
+      {
+        "key": "D",
+        "text": "project"
+      },
+      {
+        "key": "E",
+        "text": "render"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "bin(TimeGenerated, 1d)"
+      },
+      {
+        "key": "B",
+        "text": "bin(TimeGenerated, 1h)"
+      },
+      {
+        "key": "C",
+        "text": "extend"
+      },
+      {
+        "key": "D",
+        "text": "project"
+      },
+      {
+        "key": "E",
+        "text": "render"
+      }
+    ],
+    "correctAnswers": [
+      "time_bin=B",
+      "threshold=C"
+    ],
+    "explanation": "`bin(TimeGenerated, 1h)` tạo một nhóm tổng hợp mỗi giờ. `extend Threshold = 75` thêm một chuỗi số không đổi có thể được biểu thị dưới dạng đường ngưỡng 75 phần trăm cùng với chuỗi CPU trung bình.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 130",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/130-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-131",
+    "questionNumber": 131,
+    "text": "You are making use of Azure DevOps to configure Azure Pipelines for project, named PROJ-01.  \n\nYou are preparing to use a version control system that allows for source code to be stored on a managed Windows server located on the company network.  \n\nWhich of the following is the version control system you should use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Github Enterprise"
+      },
+      {
+        "key": "B",
+        "text": "Bitbucket cloud"
+      },
+      {
+        "key": "C",
+        "text": "Github Professional"
+      },
+      {
+        "key": "D",
+        "text": "Git in Azure Repos"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "GitHub Enterprise Server là phiên bản GitHub tự lưu trữ mà một tổ chức cài đặt và chạy trên cơ sở hạ tầng được quản lý của riêng mình trong mạng công ty, phù hợp với yêu cầu giữ mã nguồn trên máy chủ mạng công ty. Ngược lại, Git trong Azure Repos là dịch vụ cung cấp Dịch vụ Azure DevOps được lưu trữ trên đám mây thay vì phần mềm được cài đặt trên máy chủ Windows do khách hàng quản lý.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 131",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/131-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-133",
+    "questionNumber": 133,
+    "text": "You have an Azure Repos repository named Repo1 that is used for source control.  \n  \nYou need to configure code scanning for Repo1.  \n  \nWhich three pipeline tasks should run in sequence? Arrange the appropriate tasks in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Slot 1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot3",
+        "text": "Slot 3:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Advanced Security Dependency Scanning"
+      },
+      {
+        "key": "B",
+        "text": "Advanced Security Initialize CodeQL"
+      },
+      {
+        "key": "C",
+        "text": "Advanced Security AutoBuild"
+      },
+      {
+        "key": "D",
+        "text": "Microsoft Purview Scan"
+      },
+      {
+        "key": "E",
+        "text": "Advanced Security Perform CodeQL Analysis"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Advanced Security Dependency Scanning"
+      },
+      {
+        "key": "B",
+        "text": "Advanced Security Initialize CodeQL"
+      },
+      {
+        "key": "C",
+        "text": "Advanced Security AutoBuild"
+      },
+      {
+        "key": "D",
+        "text": "Microsoft Purview Scan"
+      },
+      {
+        "key": "E",
+        "text": "Advanced Security Perform CodeQL Analysis"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=B",
+      "slot2=C",
+      "slot3=E"
+    ],
+    "explanation": "CodeQL phải khởi tạo cơ sở dữ liệu trước khi xây dựng dự án để có thể quan sát quá trình biên dịch. Sau đó, AutoBuild sẽ xây dựng các dự án được hỗ trợ, đồng thời tác vụ phân tích sẽ hoàn thiện cơ sở dữ liệu và chạy các truy vấn CodeQL. Quét phụ thuộc và quét Microsoft Purview là các tính năng riêng biệt.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 133",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/133-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-134",
+    "questionNumber": 134,
+    "text": "You have an Azure subscription that contains 50 virtual machines.  \n\nYou plan to manage the configuration of the virtual machines by using Azure Automation State Configuration.  \n\nYou need to create the Desired State Configuration (DSC) configuration files.  \n\nHow should you structure the code blocks?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Node > Configuration > Resource"
+      },
+      {
+        "key": "B",
+        "text": "Configuration > Resource > Node"
+      },
+      {
+        "key": "C",
+        "text": "Resource > Configuration > Node"
+      },
+      {
+        "key": "D",
+        "text": "Configuration > Node > Resource"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "DSC sử dụng cấu trúc phân cấp: Cấu hình (xác định cấu hình tổng thể), (các) Nút (chỉ định hệ thống đích), sau đó (các) Tài nguyên (xác định trạng thái mong muốn). Việc lồng nhau này cho phép một cấu hình duy nhất nhắm mục tiêu vào nhiều nút, mỗi nút có các tài nguyên tiềm năng khác nhau được định cấu hình.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 134",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/134-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-135",
+    "questionNumber": 135,
+    "text": "Your organization has a project in Azure DevOps. You need to make sure that when several builds are pending deployment at the same time, only the most recent build actually gets deployed.  \n  \nWhat should you use to accomplish this?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "deployment conditions"
+      },
+      {
+        "key": "B",
+        "text": "deployment queue settings"
+      },
+      {
+        "key": "C",
+        "text": "release gates"
+      },
+      {
+        "key": "D",
+        "text": "pull request triggers"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Quy trình phát hành Azure DevOps cho phép bạn định cấu hình, theo từng giai đoạn, cách xử lý triển khai theo hàng đợi thông qua cài đặt Hàng đợi triển khai. Một trong các tùy chọn có sẵn, 'Triển khai mới nhất và hủy các bản phát hành khác', tự động hủy hoặc bỏ qua các bản phát hành đã xếp hàng cũ hơn và chỉ triển khai bản phát hành gần đây nhất khi có nhiều bản phát hành đang chờ triển khai ở cùng một giai đoạn. Đây chính xác là cơ chế được thiết kế để ngăn việc triển khai các bản dựng lỗi thời sau khi bản dựng mới hơn đã được xếp hàng đợi.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 135",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/135-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-136",
+    "questionNumber": 136,
+    "text": "You have an Azure DevOps project that currently uses numerous package feeds.  \n  \nYou need to simplify the project so that it relies on a single feed that:  \n  \n- Stores packages produced by your company  \n- Stores packages consumed from remote feeds  \n- Supports public feeds  \n- Supports authenticated feeds  \n  \nWhat should you enable in DevOps?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Universal Packages"
+      },
+      {
+        "key": "B",
+        "text": "upstream sources"
+      },
+      {
+        "key": "C",
+        "text": "views in Azure Artifacts"
+      },
+      {
+        "key": "D",
+        "text": "a symbol server"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các nguồn ngược dòng trong Azure Artifacts cho phép một nguồn cấp dữ liệu duy nhất đóng vai trò là nơi duy nhất các nhà phát triển nhận các gói, cho dù các gói đó được xuất bản bởi nhóm của bạn hay được truy xuất từ ​​các vị trí khác như cơ quan đăng ký công khai (nuget.org, npmjs.com, PyPI) hoặc các nguồn cấp dữ liệu Azure DevOps/Artifactory đã được xác thực khác. Khi một gói được yêu cầu chưa có trong nguồn cấp dữ liệu, Azure Artifacts sẽ tự động lưu một bản sao từ nguồn ngược dòng đã được định cấu hình, hợp nhất quản lý gói vào một nguồn cấp dữ liệu trong khi vẫn hỗ trợ cả nguồn từ xa công khai và được xác thực.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 136",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/136-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-137",
+    "questionNumber": 137,
+    "text": "Solution: You recommend increasing test coverage.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Phạm vi thử nghiệm rộng hơn có thể giúp các thay đổi trong tương lai trở nên an toàn hơn và giúp tránh được khoản nợ bổ sung, nhưng bản thân nó không loại bỏ được khoản nợ kỹ thuật hiện tại vốn làm trì hoãn việc phát triển tính năng. Nợ hiện tại phải được giải quyết trực tiếp, chẳng hạn như thông qua công việc tái cấu trúc hoặc khắc phục.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 137",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/137-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-138",
+    "questionNumber": 138,
+    "text": "Solution: You propose reducing code complexity.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Độ phức tạp của mã thấp hơn sẽ cải thiện khả năng bảo trì và giảm nỗ lực cũng như rủi ro liên quan đến việc thay đổi, thử nghiệm và mở rộng phần mềm, từ đó giúp giảm nợ kỹ thuật tích lũy.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 138",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/138-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-139",
+    "questionNumber": 139,
+    "text": "Solution: You recommend increasing code duplication.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Sao chép mã làm tăng nỗ lực bảo trì và rủi ro không nhất quán vì logic tương đương phải được duy trì ở nhiều vị trí. Giảm trùng lặp là một cách phổ biến để giảm nợ kỹ thuật và tăng tốc độ phát triển tính năng trong tương lai.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 139",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/139-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-140",
+    "questionNumber": 140,
+    "text": "Solution: You recommend decreasing code coupling and dependency cycles.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Giảm việc ghép mã và loại bỏ các chu kỳ phụ thuộc giúp các thành phần trở nên độc lập hơn, dễ thay đổi, kiểm tra và bảo trì hơn. Điều này làm giảm nợ kỹ thuật tích lũy và giúp rút ngắn thời gian cần thiết để thêm các tính năng ứng dụng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 140",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/140-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-141",
+    "questionNumber": 141,
+    "text": "You are currently defining a release strategy for an app, named APP-01.  \n\nThe strategy should allow you to keep the time it takes to deploy new releases of the app to a minimum. The strategy should also allow you to roll back in the shortest time required.  \n\nWhich of the following is the release strategy you should use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Red/Black deployment"
+      },
+      {
+        "key": "B",
+        "text": "Rolling deployment"
+      },
+      {
+        "key": "C",
+        "text": "ג€Big Bangג€ deployment"
+      },
+      {
+        "key": "D",
+        "text": "Canary deployment"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Triển khai Đỏ/Đen (còn được gọi là Xanh lam/Xanh lục) duy trì hai môi trường sản xuất giống hệt nhau. Các bản phát hành mới triển khai đến môi trường không hoạt động, sau đó lưu lượng truy cập sẽ chuyển ngay lập tức sau khi được xác minh. Cách tiếp cận này giảm thiểu thời gian triển khai và cho phép khôi phục ngay lập tức bằng cách chuyển lưu lượng truy cập trở lại—cần chuyển đổi dần dần hoặc thời gian ngừng hoạt động của no. Triển khai luân phiên yêu cầu cập nhật dần dần; Việc triển khai Canary chậm hơn khi khôi phục; Big Bang có nguy cơ cao.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 141",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/141-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-142",
+    "questionNumber": 142,
+    "text": "You have a GitHub organization with three users named User1, User2, and User3, and a project containing a repository named repo1.  \n  \nYou need to configure permissions for repo1. The solution must meet these requirements:  \n  \n- Ensure that User1 can actively push to repo1.  \n- Ensure that User2 can manage issues and pull requests for repo1.  \n- Ensure that User3 can manage repo1.  \n- Prevent User3 from accessing sensitive data in repo1.  \n  \nWhich role should you assign to each user? Each role may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "user1",
+        "text": "User1:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "user2",
+        "text": "User2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "user3",
+        "text": "User3:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Admin"
+      },
+      {
+        "key": "B",
+        "text": "Maintain"
+      },
+      {
+        "key": "C",
+        "text": "Read"
+      },
+      {
+        "key": "D",
+        "text": "Triage"
+      },
+      {
+        "key": "E",
+        "text": "Write"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Admin"
+      },
+      {
+        "key": "B",
+        "text": "Maintain"
+      },
+      {
+        "key": "C",
+        "text": "Read"
+      },
+      {
+        "key": "D",
+        "text": "Triage"
+      },
+      {
+        "key": "E",
+        "text": "Write"
+      }
+    ],
+    "correctAnswers": [
+      "user1=E",
+      "user2=D",
+      "user3=B"
+    ],
+    "explanation": "Vai trò Viết của GitHub cho phép chủ động đẩy tới kho lưu trữ. Phân loại nhằm mục đích chủ động quản lý sự cố và lấy yêu cầu mà không cần quyền ghi. Duy trì quản lý kho lưu trữ giấy phép trong khi loại trừ các hành động nhạy cảm hoặc phá hoại.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 142",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/142-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-143",
+    "questionNumber": 143,
+    "text": "You manage the configuration of your virtual machines through Azure Automation State Configuration.  \n  \nYou need to identify which nodes are noncompliant.  \n  \nComplete the query below. Each value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "blank1",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "blank2",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "blank3",
+        "text": "Slot 3:",
+        "correctAnswer": "F"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Category"
+      },
+      {
+        "key": "B",
+        "text": "DscReportStatus"
+      },
+      {
+        "key": "C",
+        "text": "Message"
+      },
+      {
+        "key": "D",
+        "text": "OperationName"
+      },
+      {
+        "key": "E",
+        "text": "Resource"
+      },
+      {
+        "key": "F",
+        "text": "ResultType"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Category"
+      },
+      {
+        "key": "B",
+        "text": "DscReportStatus"
+      },
+      {
+        "key": "C",
+        "text": "Message"
+      },
+      {
+        "key": "D",
+        "text": "OperationName"
+      },
+      {
+        "key": "E",
+        "text": "Resource"
+      },
+      {
+        "key": "F",
+        "text": "ResultType"
+      }
+    ],
+    "correctAnswers": [
+      "blank1=A",
+      "blank2=D",
+      "blank3=F"
+    ],
+    "explanation": "Các bản ghi hoạt động DSC được chuyển tiếp từ Azure Automation sang không gian làm việc Log Analytics được lưu trữ trong bảng AzureDiagnostics. Theo tài liệu của Microsoft về việc tích hợp Cấu hình trạng thái tự động hóa Azure với Nhật ký Azure Monitor, trường Danh mục xác định loại bản ghi và bằng \"DscNodeStatus\" cho các bản ghi trạng thái nút. Trường OperationName được lọc 'chứa \"DSCNodeStatusData\"' để đưa kết quả đến các hoạt động trạng thái trên mỗi nút (ngược lại với các hoạt động trên mỗi tài nguyên sử dụng DscResourceStatusData). Trường Loại kết quả cho biết liệu kiểm tra tuân thủ của nút có đạt hay không; lọc trong đó ResultType!= \"Tuân thủ\" chỉ trả về các nút không tuân thủ. Các trường khác (DscReportStatus, Message, Resource) tồn tại trong lược đồ nhưng không được sử dụng trong truy vấn cụ thể này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 143",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/143-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-144",
+    "questionNumber": 144,
+    "text": "To resolve the current technical issue, what should you do to the Register-AzureRmAutomationDscNode command?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Change the value of the ConfigurationMode parameter."
+      },
+      {
+        "key": "B",
+        "text": "Replace the Register-AzureRmAutomationDscNode cmdlet with Register-AzureRmAutomationScheduledRunbook"
+      },
+      {
+        "key": "C",
+        "text": "Add the AllowModuleOverwrite parameter."
+      },
+      {
+        "key": "D",
+        "text": "Add the DefaultProfile parameter."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Tham số ConfigurationMode của lệnh ghép ngắn Register-AzureRmAutomationDscNode xác định cách Cấu hình trạng thái tự động hóa Azure (DSC) áp dụng và duy trì cấu hình của nút. Việc đặt nó thành ApplyOnly sẽ khiến DSC áp dụng cấu hình một lần duy nhất và không bao giờ kiểm tra hoặc sửa lỗi sai lệch sau đó, đó là lý do tại sao các máy chủ được định cấu hình chính xác trước đây dần không còn tuân thủ nữa. Việc thay đổi giá trị ConfigurationMode thành ApplyAndAutoCorreg khiến DSC kiểm tra định kỳ nút theo cấu hình mong muốn và tự động sửa bất kỳ sai lệch nào được phát hiện, giải quyết vấn đề.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 144",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/144-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-145",
+    "questionNumber": 145,
+    "text": "You have an Azure subscription that contains the resources shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783721759755-rd2p7edp.png)  \n  \nDepPipeline1 and ADFPipeline1 use a single credential that is stored in Vault1.  \n  \nYou need to configure ADFPipeline1 to retrieve the credential from Vault1.  \n  \nWhich type of activity should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Lookup"
+      },
+      {
+        "key": "B",
+        "text": "Get Metadata"
+      },
+      {
+        "key": "C",
+        "text": "Сoрy"
+      },
+      {
+        "key": "D",
+        "text": "Web"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Hoạt động Web trong Azure Data Factory được thiết kế để thực hiện các yêu cầu HTTP tới các điểm cuối bên ngoài, bao gồm Azure Key Vault. Bằng cách định cấu hình hoạt động Web để truy vấn API Key Vault REST, bạn có thể truy xuất các bí mật và lưu trữ chúng để sử dụng cho các hoạt động quy trình khác. Các hoạt động Tra cứu, Lấy siêu dữ liệu và Sao chép phục vụ các mục đích khác nhau trong việc di chuyển và truy xuất dữ liệu nhưng không được thiết kế để truy xuất thông tin xác thực.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783721759755-rd2p7edp.png",
+    "sourceTitle": "Examcademy AZ-400 Question 145",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/145-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-146",
+    "questionNumber": 146,
+    "text": "You have an Azure web app named webapp1 that uses the .NET Core runtime stack. You have an Azure Application Insights resource named AppInsights1. Webapp1 sends telemetry data to AppInsights1.  \n  \nYou need to ensure that webapp1 sends the telemetry data at a fixed sampling rate.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From the code repository of webapp1, modify the ApplicationInsights.config file."
+      },
+      {
+        "key": "B",
+        "text": "From the code repository of webapp1, modify the Startup.cs file."
+      },
+      {
+        "key": "C",
+        "text": "From AppInsights1, modify the Usage and estimated costs settings."
+      },
+      {
+        "key": "D",
+        "text": "From AppInsights1, configure the Continuous export settings."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các ứng dụng.NET Core sử dụng tệp Startup.cs (hoặc Program.cs trong các phiên bản mới hơn) để định cấu hình lấy mẫu Application Insights. ApplicationInsights.config dành riêng cho.NET Framework và không áp dụng cho.NET Core. Cài đặt trong Cổng thông tin Azure ảnh hưởng đến toàn bộ tài nguyên chứ không ảnh hưởng đến tốc độ lấy mẫu của ứng dụng cụ thể.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 146",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/146-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-147",
+    "questionNumber": 147,
+    "text": "You are planning projects for three customers. Each customer's preferred process for work items is shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783717251994-1m4nv48x.png)  \n  \nAll customers plan to use Azure DevOps for work item management. Which work item process should be used for each customer? Each work item process may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "litware",
+        "text": "Litware",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "contoso",
+        "text": "Contoso:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "datum",
+        "text": "A. Datum:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Agile"
+      },
+      {
+        "key": "B",
+        "text": "CMMI"
+      },
+      {
+        "key": "C",
+        "text": "Scrum"
+      },
+      {
+        "key": "D",
+        "text": "XP"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Agile"
+      },
+      {
+        "key": "B",
+        "text": "CMMI"
+      },
+      {
+        "key": "C",
+        "text": "Scrum"
+      },
+      {
+        "key": "D",
+        "text": "XP"
+      }
+    ],
+    "correctAnswers": [
+      "litware=C",
+      "contoso=A",
+      "datum=B"
+    ],
+    "explanation": "Azure DevOps cung cấp một số quy trình mục công việc mặc định, mỗi quy trình được phân biệt chủ yếu theo loại mục công việc và thuật ngữ tồn đọng. Quy trình Scrum sử dụng 'Mục tồn đọng sản phẩm (PBI)' làm loại mục công việc tồn đọng cốt lõi của nó và cho phép theo dõi PBI và Lỗi trên bảng Kanban, sau đó chia nhỏ thành Nhiệm vụ trên bảng tác vụ - khớp chính xác với yêu cầu của Litware. Quy trình Agile sử dụng 'Câu chuyện của người dùng' làm loại mục công việc tồn đọng cốt lõi, theo dõi Câu chuyện của người dùng và Lỗi trên bảng Kanban cũng như Lỗi/Nhiệm vụ trên bảng tác vụ — phù hợp với yêu cầu của Contoso. Quy trình CMMI được thiết kế cho các phương pháp dự án chính thức, có thể kiểm tra và cung cấp duy nhất các loại mục công việc Yêu cầu, Yêu cầu thay đổi, Rủi ro và Đánh giá, phù hợp với yêu cầu của A. Datum để theo dõi các yêu cầu, yêu cầu thay đổi, rủi ro và đánh giá. XP không phải là mẫu quy trình Azure DevOps gốc và không được sử dụng trong bất kỳ trường hợp nào trong ba trường hợp này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783717251994-1m4nv48x.png",
+    "sourceTitle": "Examcademy AZ-400 Question 147",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/147-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-148",
+    "questionNumber": 148,
+    "text": "You have a build pipeline in Azure Pipelines that uses separate jobs to compile an application for 10 different architectures. The build pipeline currently takes approximately one day to complete.  \n  \nYou need to reduce the time it takes to run the build pipeline.  \n  \nWhich two actions should you perform? Each correct answer presents part of the solution.  \n  \n*(Choose two.)*",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Move to a blue/green deployment pattern"
+      },
+      {
+        "key": "B",
+        "text": "Create a deployment group"
+      },
+      {
+        "key": "C",
+        "text": "Increase the number of parallel jobs"
+      },
+      {
+        "key": "D",
+        "text": "Reduce the size of the repository"
+      },
+      {
+        "key": "E",
+        "text": "Create an agent pool"
+      }
+    ],
+    "correctAnswers": [
+      "C",
+      "E"
+    ],
+    "explanation": "Để giảm quy trình xây dựng song song 10 kiến ​​trúc trong một ngày: (C) tăng số lượng công việc song song cho phép nhiều công việc trong số 10 công việc kiến ​​trúc độc lập chạy đồng thời thay vì xếp hàng và (E) việc tạo nhóm tác nhân cung cấp khả năng tính toán để hỗ trợ tính song song đó. Những điều này cùng nhau trực tiếp giảm tổng thời lượng đường ống bằng cách chạy các công việc đồng thời. Giảm kích thước kho lưu trữ (D) có ích nhưng chỉ là tối ưu hóa thứ cấp; các nhóm triển khai và quản lý (A, B) không liên quan đến tốc độ biên dịch build.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 148",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/148-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-149",
+    "questionNumber": 149,
+    "text": "You have set up an Azure DevOps project for a new application that will be deployed across several Windows Server 2016 Azure virtual machines.  \n  \nYou need to design a deployment solution that:  \n  \n- Ensures the virtual machines maintain a uniform configuration  \n- Keeps the administrative effort required to configure the virtual machines to a minimum  \n  \nWhich two of the following should be part of your solution? (Choose two.)",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Resource Manager templates"
+      },
+      {
+        "key": "B",
+        "text": "The PowerShell Desired State Configuration (DSC) extension for Windows"
+      },
+      {
+        "key": "C",
+        "text": "Azure pipeline deployment groups"
+      },
+      {
+        "key": "D",
+        "text": "The Custom Script Extension for Windows"
+      },
+      {
+        "key": "E",
+        "text": "Azure pipeline stage templates"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "B"
+    ],
+    "explanation": "Các mẫu ARM cung cấp một cách khai báo, bình thường để cung cấp các máy ảo để mọi phiên bản đều được tạo với cùng cấu hình cơ bản, loại bỏ các bước thiết lập thủ công. Sau đó, tiện ích mở rộng PowerShell DSC dành cho Windows sẽ áp dụng và liên tục thực thi trạng thái cấu hình mong muốn trên mỗi máy ảo, tự động khắc phục mọi sai lệch cấu hình, giúp máy luôn đồng nhất theo thời gian với nỗ lực quản trị liên tục ở mức tối thiểu. Hai công nghệ này cùng nhau xử lý cả tính nhất quán cung cấp ban đầu và quản lý cấu hình liên tục, trong khi Tiện ích mở rộng tập lệnh tùy chỉnh chỉ thực thi tập lệnh một lần và không duy trì trạng thái, còn các nhóm triển khai/mẫu giai đoạn quy trình là các cấu trúc điều phối phát hành thay vì các công cụ quản lý cấu hình.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 149",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/149-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-150",
+    "questionNumber": 150,
+    "text": "You have a Microsoft Azure Active Directory (Azure AD), part of Microsoft Entra, tenant that contains three groups named Group1, Group2, and Group3.  \n  \nYou create a new Azure DevOps project named Project1.  \n  \nYou need to secure Project1 service connections. The solution must meet these requirements:  \n  \n- Members of Group1 must be able to share and unshare a service connection with other projects.  \n- Members of Group2 must be able to rename a service connection and update its description.  \n- Members of Group3 must be able to use the service connection in build or release pipelines.  \n- Follow the principle of least privilege.  \n  \nEach permission may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "group1",
+        "text": "Group1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "group2",
+        "text": "Group2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "group3",
+        "text": "Group3:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Contributor"
+      },
+      {
+        "key": "B",
+        "text": "Creator"
+      },
+      {
+        "key": "C",
+        "text": "Organization-level Administrator"
+      },
+      {
+        "key": "D",
+        "text": "Project-level Administrator"
+      },
+      {
+        "key": "E",
+        "text": "User"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Contributor"
+      },
+      {
+        "key": "B",
+        "text": "Creator"
+      },
+      {
+        "key": "C",
+        "text": "Organization-level Administrator"
+      },
+      {
+        "key": "D",
+        "text": "Project-level Administrator"
+      },
+      {
+        "key": "E",
+        "text": "User"
+      }
+    ],
+    "correctAnswers": [
+      "group1=C",
+      "group2=D",
+      "group3=E"
+    ],
+    "explanation": "Chỉ quản trị viên cấp tổ chức mới có thể chia sẻ kết nối dịch vụ với các dự án khác và có thể hủy chia sẻ kết nối đó. Quản trị viên cấp dự án có thể đổi tên kết nối dịch vụ và cập nhật mô tả của nó. Vai trò Người dùng cho phép sử dụng kết nối dịch vụ trong quy trình xây dựng và phát hành YAML cổ điển và YAML. Mục đích của Creator là tạo các kết nối dịch vụ, trong khi Contributor không cấp các quyền cần thiết của vai trò kết nối dịch vụ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 150",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/150-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-151",
+    "questionNumber": 151,
+    "text": "You have an Azure Repos repository containing large PSD files.  \n  \nYou need to configure Git LFS to manage all the files.  \n  \nComplete the script. Each value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "blank1",
+        "text": "Slot 1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "blank2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "blank3",
+        "text": "Slot 3:",
+        "correctAnswer": "F"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "git fetch"
+      },
+      {
+        "key": "B",
+        "text": "git lfs config add \"*.psd\""
+      },
+      {
+        "key": "C",
+        "text": "git lfs migrate import --include=\"*.psd\" --everything"
+      },
+      {
+        "key": "D",
+        "text": "git lfs track \"*.psd\""
+      },
+      {
+        "key": "E",
+        "text": "git lfs update"
+      },
+      {
+        "key": "F",
+        "text": "git push"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "git fetch"
+      },
+      {
+        "key": "B",
+        "text": "git lfs config add \"*.psd\""
+      },
+      {
+        "key": "C",
+        "text": "git lfs migrate import --include=\"*.psd\" --everything"
+      },
+      {
+        "key": "D",
+        "text": "git lfs track \"*.psd\""
+      },
+      {
+        "key": "E",
+        "text": "git lfs update"
+      },
+      {
+        "key": "F",
+        "text": "git push"
+      }
+    ],
+    "correctAnswers": [
+      "blank1=D",
+      "blank2=C",
+      "blank3=F"
+    ],
+    "explanation": "`git lfs track` ghi lại mẫu PSD trong `.gitattributes`, mẫu này phải được cam kết. Vì các tệp PSD đã tồn tại nên `git lfs migrate import --include=\"*.psd\" --everything` chuyển đổi các tệp phù hợp trong lịch sử kho lưu trữ thành con trỏ LFS. Sau đó, việc đẩy sẽ gửi các tham chiếu được viết lại và các đối tượng LFS của chúng tới Azure Repos.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 151",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/151-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-153",
+    "questionNumber": 153,
+    "text": "Solution: Set the `-ConfigurationMode` parameter to `ApplyAndMonitor`.  \n  \nDoes this solution satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "`ApplyAndMonitor` áp dụng cấu hình ban đầu và báo cáo độ lệch cấu hình tiếp theo, nhưng nó không tự động điều chỉnh độ lệch cấu hình đó. Máy chủ vẫn không tuân thủ cho đến khi được khắc phục theo cách thủ công trừ khi chế độ cấu hình là `ApplyAndAutoCorrect`.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 153",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/153-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-154",
+    "questionNumber": 154,
+    "text": "Solution: You configure the `-ConfigurationMode` parameter as `ApplyAndAutocorrect`.  \n  \nDoes this solution achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "`ApplyAndAutocorrect` tự động áp dụng lại cấu hình DSC mong muốn khi một nút di chuyển khỏi trạng thái tuân thủ, từ đó khắc phục tình trạng sai lệch và giữ cho máy chủ được cấu hình chính xác.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 154",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/154-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-155",
+    "questionNumber": 155,
+    "text": "Solution: Set the `-ConfigurationMode` parameter to `ApplyOnly`.  \n  \nDoes this solution achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "`ApplyOnly` áp dụng cấu hình ban đầu nhưng sau đó không kiểm tra hoặc khắc phục tình trạng lệch cấu hình. Việc duy trì cấu hình cần thiết bất chấp sự trôi dạt cần có `ApplyAndAutoCorrect`.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 155",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/155-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-156",
+    "questionNumber": 156,
+    "text": "You plan to use Azure DevOps for development processes.  \n  \nYou identify these issues in the existing development processes:  \n  \n- Frequent discovery of bugs in production  \n- Increasing detection of bugs by customers  \n- Slow resolution of bugs and slow resumption of production  \n  \nYou need to implement Key Performance Indicators (KPIs) to track each issue.  \n  \nEach KPI may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "frequent_production_bugs",
+        "text": "Frequent discovery of bugs in production:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "customer_detection",
+        "text": "Increasing detection of bugs by customers:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slow_resolution",
+        "text": "Slow resolution of bugs and slow resumption of production:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Application failure rates"
+      },
+      {
+        "key": "B",
+        "text": "Bug report rates"
+      },
+      {
+        "key": "C",
+        "text": "Defect escape rate"
+      },
+      {
+        "key": "D",
+        "text": "Deployment failure rates"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Application failure rates"
+      },
+      {
+        "key": "B",
+        "text": "Bug report rates"
+      },
+      {
+        "key": "C",
+        "text": "Defect escape rate"
+      },
+      {
+        "key": "D",
+        "text": "Deployment failure rates"
+      }
+    ],
+    "correctAnswers": [
+      "frequent_production_bugs=C",
+      "customer_detection=B",
+      "slow_resolution=A"
+    ],
+    "explanation": "Tỷ lệ thoát lỗi đo lường các lỗi thoát khỏi các biện pháp kiểm soát trước khi phát hành và được phát hiện trong quá trình sản xuất. Tỷ lệ báo cáo lỗi xác định xu hướng lỗi được báo cáo, bao gồm cả lỗi do khách hàng báo cáo. Tỷ lệ lỗi ứng dụng đo lường các lỗi ứng dụng sản xuất làm gián đoạn tính khả dụng và yêu cầu khôi phục; thay vào đó, tỷ lệ thất bại khi triển khai đo lường các lần thử triển khai không thành công.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 156",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/156-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-157",
+    "questionNumber": 157,
+    "text": "You are configuring an alert rule in Azure Monitor for the ASP-9bb7 resource, as shown in the exhibit below.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783719579988-bthtqarc.jpg)  \n  \nWhich action will cause this alert to fire?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a failed attempt to delete the ASP-9bb7 resource"
+      },
+      {
+        "key": "B",
+        "text": "a change to a role assignment for the ASP-9bb7 resource"
+      },
+      {
+        "key": "C",
+        "text": "a successful attempt to delete the ASP-9bb7 resource"
+      },
+      {
+        "key": "D",
+        "text": "a failed attempt to scale up the ASP-9bb7 resource"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Điều kiện của quy tắc cảnh báo là: Nhật ký hoạt động, Danh mục='Quản trị', Tên tín hiệu='Tất cả hoạt động quản trị', Trạng thái='thất bại'. Danh mục Quản trị trong bản ghi Nhật ký hoạt động Azure tạo, cập nhật, xóa và thực hiện các hoạt động hành động thông qua Trình quản lý tài nguyên Azure, đồng thời cả kết quả bắt đầu và kết quả thành công/thất bại của từng hoạt động đó đều được ghi lại. Vì bộ lọc Trạng thái của quy tắc được đặt cụ thể là 'không thành công' nên chỉ thao tác quản trị không thành công trên ASP-9bb7 (chẳng hạn như xóa không thành công) mới thỏa mãn điều kiện. Xóa thành công có Trạng thái='Thành công' và không khớp. Các hoạt động của cân (dù là thủ công hay thông qua thang đo tự động) đều được ghi lại trong danh mục Nhật ký hoạt động 'Tự động chia tỷ lệ' riêng biệt, không phải 'Quản trị', do đó, nỗ lực mở rộng quy mô không thành công sẽ không được ghi lại theo quy tắc này. Một thay đổi về phân công vai trò được ghi lại trong Quản trị nhưng không được cho là đã thất bại, do đó, nó không đáp ứng một cách đáng tin cậy yêu cầu Trạng thái='không thành công' giống như cách một nỗ lực xóa rõ ràng không thành công.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783719579988-bthtqarc.jpg",
+    "sourceTitle": "Examcademy AZ-400 Question 157",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/157-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-158",
+    "questionNumber": 158,
+    "text": "Your company follows an Agile development approach and you are planning to hold retrospectives at the end of each sprint.  \n  \nWhich three questions should be included in the retrospective? Each correct answer presents part of the solution. (Choose three.)  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Who performed well?"
+      },
+      {
+        "key": "B",
+        "text": "Who should have performed better?"
+      },
+      {
+        "key": "C",
+        "text": "What could have gone better?"
+      },
+      {
+        "key": "D",
+        "text": "What went well?"
+      },
+      {
+        "key": "E",
+        "text": "What should we try next?"
+      }
+    ],
+    "correctAnswers": [
+      "C",
+      "D",
+      "E"
+    ],
+    "explanation": "Hồi tưởng Sprint là một cuộc họp tập trung vào nhóm được sử dụng để kiểm tra xem Sprint cuối cùng đã diễn ra như thế nào về mặt con người, mối quan hệ, quy trình và công cụ cũng như để xác định các cải tiến. Bộ câu hỏi hồi tưởng tiêu chuẩn hỏi: Điều gì đã diễn ra tốt đẹp?, Điều gì có thể đã diễn ra tốt hơn?, và Chúng ta nên thử điều gì tiếp theo (hoặc làm khác đi)? Những câu hỏi này tập trung vào quá trình và kết quả của nhóm thay vì chỉ ra hiệu suất của từng thành viên trong nhóm, đó là lý do tại sao các câu hỏi về ai đã thực hiện tốt hoặc lẽ ra phải thực hiện tốt hơn không phải là một phần của định dạng hồi cứu phù hợp.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 158",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/158-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-159",
+    "questionNumber": 159,
+    "text": "You use GitHub for source control and project-related discussions.  \n\nYou receive a notification when an entry is made to any team discussion.  \n\nYou need to ensure that you receive email notifications only for discussions in which you commented or in which you are mentioned.  \n\nWhich two Notifications settings should you clear? Each correct answer presents part of the solution.  \n\nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Automatically watch teams"
+      },
+      {
+        "key": "B",
+        "text": "Participating"
+      },
+      {
+        "key": "C",
+        "text": "Automatically watch repositories"
+      },
+      {
+        "key": "D",
+        "text": "Watching"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "D"
+    ],
+    "explanation": "\"Tự động theo dõi các nhóm\" là tính năng âm thầm đăng ký cho bạn tham gia các cuộc thảo luận của mọi nhóm ngay khi bạn tham gia và \"Xem\" là cài đặt gửi email cho bạn về mọi thứ bạn đã đăng ký, bao gồm cả các nhóm được xem tự động đó; việc xóa cả hai sẽ dừng các email thảo luận nhóm chung chung. Việc chọn \"Tham gia và @đề cập\" sẽ giữ lại các email bạn thực sự muốn và \"Tự động xem kho lưu trữ\" không liên quan vì nó chi phối các kho lưu trữ chứ không phải các cuộc thảo luận nhóm.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 159",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/159-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-160",
+    "questionNumber": 160,
+    "text": "You are creating a container for an ASP.NET Core app.  \n  \nYou need to create a Dockerfile to build the image, ensuring the resulting image size is minimized.  \n  \nHow should you configure the file? Each value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "from1",
+        "text": "Slot 1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "run1",
+        "text": "Slot 2:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "from2",
+        "text": "Slot 3:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "dotnet publish -c Release -o out"
+      },
+      {
+        "key": "B",
+        "text": "dotnet restore"
+      },
+      {
+        "key": "C",
+        "text": "mcr.microsoft.com/dotnet/aspnet:5.0"
+      },
+      {
+        "key": "D",
+        "text": "mcr.microsoft.com/dotnet/sdk:5.0"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "dotnet publish -c Release -o out"
+      },
+      {
+        "key": "B",
+        "text": "dotnet restore"
+      },
+      {
+        "key": "C",
+        "text": "mcr.microsoft.com/dotnet/aspnet:5.0"
+      },
+      {
+        "key": "D",
+        "text": "mcr.microsoft.com/dotnet/sdk:5.0"
+      }
+    ],
+    "correctAnswers": [
+      "from1=D",
+      "run1=A",
+      "from2=C"
+    ],
+    "explanation": "Bản dựng Docker nhiều giai đoạn giảm thiểu kích thước hình ảnh cuối cùng bằng cách tách môi trường xây dựng khỏi môi trường thời gian chạy. Giai đoạn xây dựng sử dụng hình ảnh SDK đầy đủ (mcr.microsoft.com/dotnet/sdk:5.0), bao gồm các trình biên dịch và công cụ xây dựng cần thiết để biên dịch và xuất bản ứng dụng thông qua 'dotnet Publish -c Release -o out'. Giai đoạn cuối cùng sử dụng hình ảnh chỉ dành cho thời gian chạy ASP.NET Core nhỏ hơn nhiều (mcr.microsoft.com/dotnet/aspnet:5.0), chỉ chứa những gì cần thiết để chạy ứng dụng đã biên dịch chứ không phải SDK hay công cụ xây dựng. Chỉ sao chép kết quả đã xuất bản (COPY --from=build-env) vào hình ảnh thời gian chạy nhẹ này để đảm bảo vùng chứa được vận chuyển nhỏ nhất có thể, tuân theo hướng dẫn xây dựng nhiều giai đoạn.NET Docker được ghi lại của Microsoft.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 160",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/160-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-161",
+    "questionNumber": 161,
+    "text": "You use Calendar Versioning (CalVer) for code assets.  \n  \nYou need to store an optional tag of beta as part of the version.  \n  \nWhich part of the version should you use for the tag?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "minor"
+      },
+      {
+        "key": "B",
+        "text": "major"
+      },
+      {
+        "key": "C",
+        "text": "micro"
+      },
+      {
+        "key": "D",
+        "text": "modifier"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Trong Lập phiên bản Lịch (CalVer), phân đoạn sửa đổi chứa các thẻ văn bản tùy chọn như 'alpha', 'beta', 'rc' hoặc 'dev' để biểu thị trạng thái trước khi phát hành. Định dạng đầy đủ là MAJOR.MINOR.MICRO-MODIFIER (ví dụ: 2024.07.15-beta). Công cụ sửa đổi khác biệt với các thành phần phiên bản chính, phụ và vi mô.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 161",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/161-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-162",
+    "questionNumber": 162,
+    "text": "You have a project in Azure DevOps named Project1.  \n  \nYou implement a Continuous Integration/Continuous Deployment (CI/CD) pipeline that uses PowerShell Desired State Configuration (DSC) to configure the application infrastructure.  \n  \nYou need to perform a unit test and an integration test of the configuration before Project1 is deployed.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the PSScriptAnalyzer tool"
+      },
+      {
+        "key": "B",
+        "text": "the Pester test framework"
+      },
+      {
+        "key": "C",
+        "text": "the PSCodeHealth module"
+      },
+      {
+        "key": "D",
+        "text": "the Test-DscConfiguration cmdlet"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Pester là khung thử nghiệm dành riêng cho PowerShell, được thiết kế đặc biệt để viết các bài kiểm tra đơn vị và tích hợp cho tập lệnh PowerShell và Cấu hình trạng thái mong muốn (DSC). Nó tích hợp trực tiếp vào các đường dẫn CI/CD và cung cấp khả năng kiểm tra toàn diện để xác thực cấu hình DSC trước khi triển khai. PSScriptAnalyzer, PSCodeHealth và Test-DscConfiguration phục vụ các mục đích khác nhau (phân tích mã, theo dõi tình trạng và xác minh tương ứng) nhưng không phải là các khung kiểm tra toàn diện.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 162",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/162-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-163",
+    "questionNumber": 163,
+    "text": "You have a pipeline named Pipeline1 in Azure Pipelines.  \n  \nYou need to create a service connection to enable Pipeline1 to download a public container image.  \n  \nWhich type of service connection should you create?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a Docker host"
+      },
+      {
+        "key": "B",
+        "text": "a Docker registry"
+      },
+      {
+        "key": "C",
+        "text": "Azure Service Fabric"
+      },
+      {
+        "key": "D",
+        "text": "Azure Kubernetes Service (AKS)"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Kết nối dịch vụ đăng ký Docker cho phép các quy trình xác thực và lấy hình ảnh vùng chứa từ các cơ quan đăng ký (Docker Hub, Azure Container Register, v.v.). Điều này khác với kết nối máy chủ Docker, kết nối này quản lý quyền truy cập daemon Docker từ xa để chạy các container.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 163",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/163-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-164",
+    "questionNumber": 164,
+    "text": "You have a project in Azure DevOps.  \n\nYou plan to deploy a self-hosted agent by using an unattended configuration script.  \n\nWhich two values should you define in the configuration script? Each correct answer presents part of the solution.  \n\nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "authorization credentials"
+      },
+      {
+        "key": "B",
+        "text": "the project name"
+      },
+      {
+        "key": "C",
+        "text": "the deployment group name"
+      },
+      {
+        "key": "D",
+        "text": "the organization URL"
+      },
+      {
+        "key": "E",
+        "text": "the agent pool name"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "D"
+    ],
+    "explanation": "Đối với cấu hình tác nhân tự lưu trữ không được giám sát, bạn phải chỉ định URL tổ chức (nơi tác nhân đăng ký) và thông tin xác thực ủy quyền (PAT, tên người dùng/mật khẩu hoặc Windows Auth). Các giá trị khác như tên dự án và tên nhóm là tùy chọn hoặc có thể được đặt một cách tương tác.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 164",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/164-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-165",
+    "questionNumber": 165,
+    "text": "You are developing a full Microsoft .NET Framework solution that includes unit tests. You need to configure SonarQube to perform a code quality validation of the C# code as part of the build pipeline. Which four tasks should you perform, and in what order?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "4",
+        "text": "Slot 4:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Run Code Analysis"
+      },
+      {
+        "key": "B",
+        "text": "Visual Studio Test"
+      },
+      {
+        "key": "C",
+        "text": "Publish Build Artifacts"
+      },
+      {
+        "key": "D",
+        "text": "Visual Studio Build"
+      },
+      {
+        "key": "E",
+        "text": "Prepare Analysis Configuration"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Run Code Analysis"
+      },
+      {
+        "key": "B",
+        "text": "Visual Studio Test"
+      },
+      {
+        "key": "C",
+        "text": "Publish Build Artifacts"
+      },
+      {
+        "key": "D",
+        "text": "Visual Studio Build"
+      },
+      {
+        "key": "E",
+        "text": "Prepare Analysis Configuration"
+      }
+    ],
+    "correctAnswers": [
+      "1=E",
+      "2=D",
+      "3=B",
+      "4=A"
+    ],
+    "explanation": "Trong bản dựng Azure Pipelines cho giải pháp.NET Framework, phân tích SonarQube được tích hợp bằng các tác vụ mở rộng SonarQube theo thứ tự sau: SonarQubePrepare (Chuẩn bị cấu hình phân tích) phải chạy trước để thiết lập thuộc tính máy quét trước khi biên dịch; sau đó tác vụ Visual Studio Build (MSBuild) biên dịch mã trong khi máy quét xử lý mã đó; sau đó Visual Studio Test (VSTest) thực hiện các bài kiểm tra đơn vị để có kết quả kiểm tra/phạm vi bảo hiểm; cuối cùng SonarQubeAnalyze (Run Code Analysis) thực hiện phân tích thực tế và gửi kết quả đến máy chủ SonarQube. Xuất bản Build Artifacts không nằm trong quy trình phân tích SonarQube.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 165",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/165-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-166",
+    "questionNumber": 166,
+    "text": "You manage code by using GitHub.  \n  \nYou plan to ensure that all GitHub Actions are validated by a security team.  \n  \nYou create a branch protection rule requiring that code changes be reviewed by code owners.  \n  \nYou need to create the CODEOWNERS file.  \n  \nWhere should you create the file?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": ".github/actions/"
+      },
+      {
+        "key": "B",
+        "text": ".github/"
+      },
+      {
+        "key": "C",
+        "text": ".git/"
+      },
+      {
+        "key": "D",
+        "text": ".github/workflows/"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Tệp CODEOWNERS của GitHub chỉ định quyền sở hữu mã và có thể được đặt trong thư mục gốc của kho lưu trữ, docs/ hoặc.github/. Thư mục.github/ là vị trí tiêu chuẩn cho các tệp cấu hình GitHub và là lựa chọn hợp lệ cho tệp CODEOWNERS.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 166",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/166-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-167",
+    "questionNumber": 167,
+    "text": "You manage projects by using Azure Boards.  \n  \nYou have a current work item named itemA that is dependent on a work item named itemB.  \n  \nYou need to define the dependency for itemA.  \n  \nWhat should you do in the web portal for Azure DevOps?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a Parent link to the user story of itemA."
+      },
+      {
+        "key": "B",
+        "text": "From Backlogs, open the context menu, select Add link, and then select itemA. Set Link type to Successor and add the ID of itemB."
+      },
+      {
+        "key": "C",
+        "text": "From Backlogs, open the context menu, select Add link, and then select itemB. Set Link type to Related and add the ID of itemA."
+      },
+      {
+        "key": "D",
+        "text": "From itemA, open the Links tab, and then select Add link. Set Link type to References and add the ID of itemB."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Từ chế độ xem Tồn đọng, bạn có thể nhấp chuột phải vào một mục công việc để mở menu ngữ cảnh, chọn Thêm liên kết, chọn mục liên quan và đặt loại Liên kết thành Kế thừa/Tiền nhiệm để ghi lại rằng một mục không thể tiếp tục cho đến khi mục kia hoàn thành, ghi lại sự phụ thuộc trực tiếp từ tồn đọng với sự điều hướng tối thiểu. Liên kết gốc chỉ thể hiện thứ bậc và các liên kết Liên quan/Tham khảo mang ngữ nghĩa thứ tự no, vì vậy chúng không mô hình hóa một sự phụ thuộc thực sự.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 167",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/167-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-168",
+    "questionNumber": 168,
+    "text": "You have an Azure subscription that contains an Azure Pipelines pipeline named Pipeline1 and an app named App1. Pipeline1 is used to automate the building of App1.  \n  \nYou have a Slack channel named App1chat that includes an incoming webhook.  \n  \nYou need to ensure that when a successful build of App1 is created, a notification is sent to App1chat by using the webhook.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a notification"
+      },
+      {
+        "key": "B",
+        "text": "an alert rule"
+      },
+      {
+        "key": "C",
+        "text": "a subscription"
+      },
+      {
+        "key": "D",
+        "text": "an action group"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Đăng ký hook dịch vụ trong Azure DevOps được sử dụng để kết nối các sự kiện xây dựng/phát hành với các dịch vụ bên ngoài như Slack bằng webhook. Đây là cơ chế tiêu chuẩn để gửi thông báo bản dựng tới các hệ thống bên ngoài. Thông báo dành cho cảnh báo nội bộ, quy tắc cảnh báo và nhóm hành động là cấu trúc Azure Monitor chứ không phải điểm tích hợp DevOps.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 168",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/168-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-169",
+    "questionNumber": 169,
+    "text": "You are configuring the settings of a new Git repository in Azure Repos.  \n  \nYou need to ensure that pull requests in a branch meet the following criteria before they are merged:  \n  \n- Committed code must compile successfully.  \n- Pull requests must have a Quality Gate status of Passed in SonarCloud.  \n  \nWhich policy type should you configure for each requirement? Each policy type may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Committed code must compile successfully:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "Pull requests must have a Quality Gate status of Passed in SonarCloud:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "A build policy"
+      },
+      {
+        "key": "B",
+        "text": "A check-in policy"
+      },
+      {
+        "key": "C",
+        "text": "A status policy"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "A build policy"
+      },
+      {
+        "key": "B",
+        "text": "A check-in policy"
+      },
+      {
+        "key": "C",
+        "text": "A status policy"
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=C"
+    ],
+    "explanation": "Trong Azure Repos, chính sách Xác thực bản dựng xếp hàng quy trình xây dựng dựa trên các thay đổi được đề xuất bất cứ khi nào yêu cầu kéo được tạo hoặc cập nhật; nếu quá trình xây dựng không thành công, yêu cầu kéo không thể được hoàn thành, điều này trực tiếp thực thi mã đã cam kết biên dịch thành công. Chính sách Kiểm tra trạng thái (trạng thái) cho phép bên thứ ba hoặc dịch vụ bên ngoài — chẳng hạn như SonarCloud — đăng trạng thái đạt/không đạt đối với yêu cầu kéo thông qua API trạng thái PR; khi được định cấu hình theo yêu cầu, PR không thể hợp nhất cho đến khi trạng thái bên ngoài đó (ví dụ: 'SonarCloud/cổng chất lượng' = Đã đạt) được báo cáo là thành công. Có 'chính sách đăng ký' no cho Azure Repos dựa trên Git (chính sách đăng ký chỉ áp dụng cho các kho lưu trữ TFVC cũ), vì vậy nó không được sử dụng ở đây.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 169",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/169-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-170",
+    "questionNumber": 170,
+    "text": "You have an Azure Automation account that contains a runbook. The runbook is used to configure the application infrastructure of an Azure subscription.  \n  \nYou have a project in Azure DevOps named Project1. Project1 contains a repository that stores code for the runbook.  \n  \nYou need to ensure that every committed change to the code will update automatically and publish the runbook to Azure Automation.  \n  \nWhat should you configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the Service hooks settings for Project1"
+      },
+      {
+        "key": "B",
+        "text": "the Connections settings for the Automation account"
+      },
+      {
+        "key": "C",
+        "text": "the Source control settings for the Automation account"
+      },
+      {
+        "key": "D",
+        "text": "the Service connections settings for Project1"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Tích hợp Kiểm soát nguồn của Azure Automation cho phép tự động đồng bộ hóa và xuất bản runbook từ kho lưu trữ Azure DevOps. Việc định cấu hình cài đặt kiểm soát nguồn sẽ thiết lập kết nối này, cho phép các thay đổi đã cam kết kích hoạt cập nhật sổ sách chạy tự động.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 170",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/170-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-171",
+    "questionNumber": 171,
+    "text": "You are implementing a package management solution for a Node.js application by using Azure Artifacts.  \n  \nYou need to configure the development environment to connect to the package repository. The solution must minimize the likelihood that credentials will be leaked.  \n  \nWhich file should you use to configure each connection? Each file may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Feed registry information:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "Credentials:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "The .npmrc file in the project"
+      },
+      {
+        "key": "B",
+        "text": "The .npmrc file in the user's home folder"
+      },
+      {
+        "key": "C",
+        "text": "The Package.json file in the project"
+      },
+      {
+        "key": "D",
+        "text": "The Project.json file in the project"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "The .npmrc file in the project"
+      },
+      {
+        "key": "B",
+        "text": "The .npmrc file in the user's home folder"
+      },
+      {
+        "key": "C",
+        "text": "The Package.json file in the project"
+      },
+      {
+        "key": "D",
+        "text": "The Project.json file in the project"
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=B"
+    ],
+    "explanation": "Azure Artifacts đề xuất chiến lược.npmrc hai tệp để xác thực npm: một.npmrc cấp dự án (được lưu trữ bên cạnh package.json và được kiểm tra trong kiểm soát nguồn) chỉ chứa URL đăng ký và một.npmrc cấp người dùng (trong thư mục chính của người dùng, không bao giờ được cam kết) lưu trữ thông tin xác thực thực tế/mã thông báo truy cập cá nhân. Việc tách cấu hình đăng ký khỏi thông tin xác thực theo cách này sẽ ngăn chặn các bí mật vô tình bị xâm phạm hoặc chia sẻ, từ đó giảm thiểu nguy cơ rò rỉ thông tin xác thực.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 171",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/171-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-172",
+    "questionNumber": 172,
+    "text": "You are designing a versioning strategy for Git-based packages, using a Semantic Versioning (SemVer)-based approach.  \n  \nYou need to identify when to change the build version for each of the following scenarios. Each version may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "You rename a parameter in an API:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "You deprecate functionality in an API:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "3",
+        "text": "You add a feature and maintain backwards compatibility:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Major"
+      },
+      {
+        "key": "B",
+        "text": "Minor"
+      },
+      {
+        "key": "C",
+        "text": "Patch"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Major"
+      },
+      {
+        "key": "B",
+        "text": "Minor"
+      },
+      {
+        "key": "C",
+        "text": "Patch"
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=B",
+      "3=B"
+    ],
+    "explanation": "Trong Phiên bản ngữ nghĩa (SemVer 2.0.0), phiên bản CHÍNH được tăng lên khi các thay đổi API không tương thích (phá vỡ) được đưa ra; việc đổi tên một tham số sẽ phá vỡ mọi mã hiện có tham chiếu đến tên tham số đó, do đó cần phải thay đổi phiên bản Chính. Phiên bản MINOR được tăng lên khi chức năng tương thích ngược mới được thêm vào — 'Bạn thêm tính năng và duy trì khả năng tương thích ngược' là ví dụ điển hình về bản phát hành Nhỏ. Câu hỏi thường gặp riêng của đặc tả SemVer cũng nêu rõ rằng khi một phần của API công khai không được dùng nữa, cách làm đúng là ghi lại thay đổi và 'phát hành một bản phát hành nhỏ mới với việc không dùng nữa' trước khi loại bỏ hoàn toàn chức năng trong bản phát hành chính sau này - vì tính năng không được dùng nữa vẫn hoạt động và chưa có gì bị hỏng, đây là một thay đổi nhỏ, không phải thay đổi chính. Các phiên bản bản vá được dành riêng cho các bản sửa lỗi tương thích ngược, không có trường hợp nào trong ba trường hợp này mô tả.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 172",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/172-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-174",
+    "questionNumber": 174,
+    "text": "You need to configure access to Azure DevOps agent pools to meet the following requirements:  \n  \n- Use a project agent pool when authoring build or release pipelines.  \n- View the agent pool and agents of the organization.  \n- Use the principle of least privilege.  \n  \nWhich role memberships are required for the Azure DevOps organization and the project? Each role membership may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "org",
+        "text": "Organization:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "proj",
+        "text": "Project:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Administrator"
+      },
+      {
+        "key": "B",
+        "text": "Reader"
+      },
+      {
+        "key": "C",
+        "text": "Service Account"
+      },
+      {
+        "key": "D",
+        "text": "User"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Administrator"
+      },
+      {
+        "key": "B",
+        "text": "Reader"
+      },
+      {
+        "key": "C",
+        "text": "Service Account"
+      },
+      {
+        "key": "D",
+        "text": "User"
+      }
+    ],
+    "correctAnswers": [
+      "org=B",
+      "proj=D"
+    ],
+    "explanation": "Azure DevOps xác định các vai trò bảo mật riêng biệt ở cấp tổ chức và cấp dự án cho nhóm đại lý. Ở cấp tổ chức, vai trò Người đọc cho phép các thành viên xem nhóm đại lý và tổng đài viên — điều này đáp ứng yêu cầu xem nhóm đại lý và tổng đài viên của tổ chức mà không cấp các quyền rộng hơn của vai trò Tài khoản dịch vụ (cho phép tạo nhóm đại lý dự án từ nhóm tổ chức) hoặc vai trò Quản trị viên (cho phép đăng ký/hủy đăng ký tổng đài viên và quản lý tư cách thành viên). Do đó, Reader là lựa chọn có ít đặc quyền nhất cho yêu cầu này. Ở cấp độ dự án, vai trò Người dùng cho phép các thành viên sử dụng nhóm tác nhân dự án khi tạo đường dẫn - điều này đáp ứng chính xác yêu cầu sử dụng nhóm tác nhân dự án khi tạo hoặc phát hành đường ống. Ngoài ra, vai trò Quản trị viên ở cấp dự án còn cho phép quản lý vai trò thành viên, điều này không cần thiết và vi phạm đặc quyền tối thiểu, vì vậy Người dùng là vai trò tối thiểu chính xác.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 174",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/174-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-175",
+    "questionNumber": 175,
+    "text": "You have recently created a web application for your company.  \n  \nYou have been tasked with making sure that a summary of the exceptions that transpire in the application is automatically sent to Microsoft Teams on a daily basis.  \n  \nWhich of the following Azure services should you use?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Collects and aggregates the exceptions from the web application",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "2",
+        "text": "Automates the scheduled delivery of the exception summary to Microsoft Teams",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure DevOps Project"
+      },
+      {
+        "key": "B",
+        "text": "Azure Logic Apps"
+      },
+      {
+        "key": "C",
+        "text": "Azure Pipelines"
+      },
+      {
+        "key": "D",
+        "text": "Azure Application Insights"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Azure DevOps Project"
+      },
+      {
+        "key": "B",
+        "text": "Azure Logic Apps"
+      },
+      {
+        "key": "C",
+        "text": "Azure Pipelines"
+      },
+      {
+        "key": "D",
+        "text": "Azure Application Insights"
+      }
+    ],
+    "correctAnswers": [
+      "1=D",
+      "2=B"
+    ],
+    "explanation": "Azure Application Insights, một phần của Azure Monitor, tự động thu thập dữ liệu đo từ xa, chẳng hạn như các trường hợp ngoại lệ do ứng dụng web đưa ra, cho phép bạn truy vấn và tóm tắt chúng (ví dụ: thông qua truy vấn Analytics/Kusto). Ứng dụng Azure Logic cung cấp trình kích hoạt (lịch trình) lặp lại và trình kết nối Microsoft Teams gốc, cho phép bạn xây dựng quy trình công việc chạy hàng ngày, truy vấn dữ liệu ngoại lệ Application Insights và đăng bản tóm tắt dưới dạng thông báo lên kênh Teams. Dự án Azure DevOps và Azure Pipelines được sử dụng cho CI/CD và giàn giáo dự án, không phải để giám sát các trường hợp ngoại lệ hoặc tích hợp với thông báo của Teams.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 175",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/175-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-176",
+    "questionNumber": 176,
+    "text": "You have the Azure DevOps pipeline shown in the exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783720219526-oqn0a85q.jpg)  \n  \nUse the drop-down menus to select the answer choice that completes each statement based on the information presented in the graphic.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Trong Azure DevOps, một quy trình bao gồm các giai đoạn, trong đó chứa các công việc, sau đó chứa các nhiệm vụ. Giai đoạn tác nhân (được hiển thị ở đây là 'Tác nhân đám mây') đại diện cho một công việc duy nhất chạy trên tác nhân. Vì quy trình hiển thị chỉ có một giai đoạn tác nhân nên nó có chính xác 1 công việc. Trong công việc đó, bốn tác vụ riêng lẻ được xác định và sẽ thực hiện tuần tự: Khôi phục NuGet, Ứng dụng biên dịch (.NET Core), Sao chép tệp và Xuất bản tạo tác - đưa ra tổng cộng 4 tác vụ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783720219526-oqn0a85q.jpg",
+    "sourceTitle": "Examcademy AZ-400 Question 176",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/176-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-177",
+    "questionNumber": 177,
+    "text": "You have a project hosted in Azure DevOps. Within Visual Studio, you have an Azure Resource Group deployment project that has been checked in to that Azure DevOps project.  \n  \nYou need to create a release pipeline that will deploy resources using Azure Resource Manager templates. The solution must minimize administrative effort.  \n  \nWhich task type should you include in the solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Cloud Service Deployment"
+      },
+      {
+        "key": "B",
+        "text": "Azure RM Web App Deployment"
+      },
+      {
+        "key": "C",
+        "text": "Azure PowerShell"
+      },
+      {
+        "key": "D",
+        "text": "Azure App Service Manage"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Dự án triển khai Nhóm tài nguyên Azure của Visual Studio tự động bao gồm tập lệnh PowerShell Deploy-AzureResourceGroup.ps1 (cùng với mẫu ARM và các tệp tham số) đã chứa logic để triển khai mẫu cho nhóm tài nguyên bằng lệnh ghép ngắn như New-AzResourceGroupDeployment. Vì tập lệnh này đã được kiểm tra trong kiểm soát nguồn như một phần của dự án nên quy trình phát hành chỉ cần đặt cấu hình tác vụ Azure PowerShell để chạy tệp tập lệnh hiện có đó dựa trên đăng ký Azure mục tiêu — logic triển khai tùy chỉnh no hoặc các tác vụ bổ sung dành riêng cho tài nguyên cần được xây dựng, giúp giảm thiểu nỗ lực quản trị. Các loại tác vụ khác (Triển khai dịch vụ đám mây, Triển khai ứng dụng web RM, Quản lý dịch vụ ứng dụng) được thiết kế cho các loại tài nguyên khác nhau và không sử dụng tập lệnh triển khai được tạo này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 177",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/177-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-178",
+    "questionNumber": 178,
+    "text": "SIMULATION  \n  \n- Initialize the default main branch if it does not already exist.  \n  \nIn the **User1-12345678** organization, install the **Microsoft Security DevOps** extension.  \n  \nThen create a new starter pipeline named **starter1** using the supplied starter code.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1785601164079-pr80trw4.png)  \n  \nEnsure that **starter1** includes a task that runs the extension with these inputs:  \n  \n- Command: `run`  \n- Policy: `azuredevops`  \n- Publish: `true`  \n  \nSave the pipeline in a new branch named **starter**.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Cài đặt tiện ích mở rộng Microsoft Security DevOps ở cấp tổ chức, sau đó thêm tác vụ quy trình `MicrosoftSecurityDevOps@1`. Lệnh `run` chạy các công cụ bảo mật, `azuredevops` chọn chính sách Azure DevOps và `publish: true` xuất bản kết quả SARIF. Nhiệm vụ cần có là: Nhánh ```yaml\n- task: MicrosoftSecurityDevOps@1 displayName: 'Microsoft Security DevOps' inputs: command: run policy: azuredevops publish: true\n``` The pipeline is named `starter1` and committed to the new `starter`.\n\n**Tài liệu tham khảo:**\n[Configure the Microsoft Security DevOps Azure DevOps extension](https://learn.microsoft.com/en-us/azure/defender-for-cloud/configure-azure-devops-extension)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785601164079-pr80trw4.png",
+    "sourceTitle": "Examcademy AZ-400 Question 178",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/178-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-179",
+    "questionNumber": 179,
+    "text": "You are making use of Azure DevOps manage build pipelines, and also deploy pipelines.  \n\nThe development team is quite large, and is regularly added to.  \n\nYou have been informed that the management of users and licenses must be automated when it can be.  \n\nWhich of the following is a task that can't be automated?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Group membership changes"
+      },
+      {
+        "key": "B",
+        "text": "License assignment"
+      },
+      {
+        "key": "C",
+        "text": "Assigning entitlements"
+      },
+      {
+        "key": "D",
+        "text": "License procurement"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Mua giấy phép—mua giấy phép từ nhà cung cấp—yêu cầu quy trình kinh doanh thủ công bao gồm đàm phán nhà cung cấp, đánh giá hợp đồng và phê duyệt mua hàng. Nó không thể được tự động hóa. Ngược lại, các thay đổi về tư cách thành viên nhóm, chuyển nhượng giấy phép cho người dùng và cung cấp quyền đều có thể được tự động hóa thông qua các công cụ tự động hóa Azure Active Directory và Azure DevOps.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 179",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/179-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-180",
+    "questionNumber": 180,
+    "text": "You manage a project by using Azure Boards, and you manage the project code by using GitHub repositories.  \n  \nYou have a work item that has an ID of 123.  \n  \nYou need to link a commit message in GitHub to work item 123 on the board.  \n  \nWhat are two ways to achieve the goal? Each correct answer presents a complete solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From the Development settings of work item 123, select Add link, and then enter the URL of the commit."
+      },
+      {
+        "key": "B",
+        "text": "Add AB#123 to the text of the commit message."
+      },
+      {
+        "key": "C",
+        "text": "Add GH-123 to the text of the commit message."
+      },
+      {
+        "key": "D",
+        "text": "From the Links settings of work item 123, select Add link, select Existing item, and then enter the URL of the commit."
+      },
+      {
+        "key": "E",
+        "text": "To work item 123, add a comment that includes the URL of the commit."
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "B"
+    ],
+    "explanation": "Nhập AB#123 vào thông báo yêu cầu kéo hoặc cam kết GitHub sẽ tự động liên kết cam kết đó với mục công việc 123 của Azure Boards. Bạn cũng có thể mở mục công việc 123, mở rộng phần Phát triển của nó, chọn Thêm liên kết và dán trực tiếp URL của cam kết; Luồng \"Thêm liên kết > Mục hiện có\" của tab Liên kết nhằm mục đích liên kết một mục công việc của Azure Boards với một mục công việc khác, chứ không phải để đính kèm các URL cam kết GitHub bên ngoài.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 180",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/180-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-181",
+    "questionNumber": 181,
+    "text": "You are planning to consume a NuGet package within a project hosted in Azure DevOps. This NuGet package resides in a feed that requires authentication.  \n  \nYou need to make sure the project can restore the NuGet package automatically.  \n  \nWhat should the project use to automate the authentication process?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an Azure Automation account"
+      },
+      {
+        "key": "B",
+        "text": "an Azure Artifacts Credential Provider"
+      },
+      {
+        "key": "C",
+        "text": "an Azure Active Directory (Azure AD) account that has multi-factor authentication (MFA) enabled"
+      },
+      {
+        "key": "D",
+        "text": "an Azure Active Directory (Azure AD) service principal"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Nhà cung cấp thông tin xác thực Azure Artifacts tự động hóa quy trình lấy thông tin xác thực cần thiết cho các công cụ máy khách NuGet (chẳng hạn như dotnet, nuget.exe và MSBuild) để xác thực với nguồn cấp dữ liệu Azure Artifacts. Nó xử lý xác thực một cách minh bạch để các hoạt động khôi phục gói có thể hoàn tất tự động mà không yêu cầu đăng nhập tương tác, khiến nó trở thành cơ chế chính xác để tự động hóa việc khôi phục gói NuGet từ nguồn cấp dữ liệu được xác thực trong Azure DevOps.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 181",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/181-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-182",
+    "questionNumber": 182,
+    "text": "You have an app named App1 that uses Application Insights to monitor application performance.  \n  \nYou need to analyze how often a page in App1 is accessed.  \n  \nWhich pane in Application Insights should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Events"
+      },
+      {
+        "key": "B",
+        "text": "Sessions"
+      },
+      {
+        "key": "C",
+        "text": "Impact"
+      },
+      {
+        "key": "D",
+        "text": "Users"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Ngăn Sự kiện trong Application Insights theo dõi tần suất sử dụng các trang và tính năng cụ thể. Lượt xem trang được ghi lại khi trang được tải, biến Sự kiện thành công cụ thích hợp để phân tích tần suất truy cập. Phiên (B) theo dõi phiên của người dùng, Tác động (C) đo lường sự phụ thuộc vào tính năng và Người dùng (D) hiển thị số lượng người dùng—không có biện pháp nào trực tiếp đo lường tần suất truy cập.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 182",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/182-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-183",
+    "questionNumber": 183,
+    "text": "You have an Azure DevOps organization named Contoso.  \n\nYou need to receive Microsoft Teams notifications when work items are updated.  \n\nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From Azure DevOps, configure a service hook subscription"
+      },
+      {
+        "key": "B",
+        "text": "From Microsoft Teams, configure a connector"
+      },
+      {
+        "key": "C",
+        "text": "From the Microsoft Teams admin center, configure external access"
+      },
+      {
+        "key": "D",
+        "text": "From Microsoft Teams, add a channel"
+      },
+      {
+        "key": "E",
+        "text": "From Azure DevOps, install an extension"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Việc tích hợp thông báo giữa Azure DevOps và Microsoft Teams cho các sự kiện mục công việc được thiết lập bằng cách đặt cấu hình trình kết nối đầu tiên bên trong kênh Microsoft Teams mục tiêu; việc cố gắng tạo đăng ký trực tiếp từ Azure DevOps sẽ chuyển hướng bạn đến Nhóm, vì quyền sở hữu đăng ký đó thuộc về dịch vụ tiêu thụ (Nhóm).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 183",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/183-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-184",
+    "questionNumber": 184,
+    "text": "Your organization, Contoso, has an Azure DevOps organization and an Azure subscription. Azure DevOps is used to build and deploy a web app named App1. Azure Monitor is configured to send an email notification whenever an alert is triggered because App1 generates a server-side error.  \n  \nYou need to ensure that notifications are also sent to Microsoft Teams whenever an Azure Monitor alert is generated.  \n  \nWhich two actions should you perform? Each correct answer presents part of the solution.  \n  \n*Note: Each correct selection is worth one point.*",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an Azure Monitor workbook."
+      },
+      {
+        "key": "B",
+        "text": "Create an Azure logic app that has an HTTP request trigger."
+      },
+      {
+        "key": "C",
+        "text": "Create an Azure logic app that has an Azure DevOps trigger."
+      },
+      {
+        "key": "D",
+        "text": "Modify an action group in Azure Monitor."
+      },
+      {
+        "key": "E",
+        "text": "Modify the Diagnostics settings in Azure Monitor."
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "D"
+    ],
+    "explanation": "Các nhóm hành động Azure Monitor về cơ bản không hỗ trợ đăng lên Microsoft Teams, do đó, Ứng dụng Logic phải được sử dụng làm trung gian. Ứng dụng Logic cần có trình kích hoạt yêu cầu HTTP để nhóm hành động của Azure Monitor có thể gọi nó dưới dạng webhook khi cảnh báo kích hoạt; Sau đó, quy trình làm việc của Ứng dụng Logic sử dụng trình kết nối Microsoft Teams để đăng thông báo cảnh báo lên một kênh. Để kết nối khả năng mới này với thiết lập cảnh báo hiện có, nhóm hành động hiện tại phải được sửa đổi để thêm một hành động (Ứng dụng Logic/webhook) gọi điểm cuối HTTP của Ứng dụng Logic bất cứ khi nào đáp ứng điều kiện cảnh báo. Ứng dụng logic được kích hoạt Azure DevOps sẽ không phản hồi với cảnh báo Azure Monitor, sổ làm việc chỉ trực quan hóa dữ liệu và cài đặt chẩn đoán định tuyến nhật ký/số liệu thay vì kích hoạt hành động thông báo.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 184",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/184-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-185",
+    "questionNumber": 185,
+    "text": "You manage an Azure subscription that contains resources spread across multiple resource groups.  \n  \nYou need to design a monitoring strategy that provides a consolidated view. The solution must meet the following requirements:  \n  \n- Support role-based access control (RBAC) using Azure Active Directory (Azure AD) identities.  \n- Include visuals generated from Azure Monitor data using the Kusto query language.  \n- Support documentation written in markdown.  \n- Always use the latest data available for each visual.  \n  \nWhat should you use to create the consolidated view?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Monitor"
+      },
+      {
+        "key": "B",
+        "text": "Microsoft Power BI"
+      },
+      {
+        "key": "C",
+        "text": "Azure Data Explorer"
+      },
+      {
+        "key": "D",
+        "text": "Azure dashboards"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Sổ làm việc Azure Monitor cho phép bạn kết hợp văn bản đánh dấu, tham số và hình ảnh trực quan được điều khiển bởi các truy vấn Ngôn ngữ truy vấn Kusto (KQL) vào một báo cáo tương tác duy nhất. Quyền truy cập vào sổ làm việc được quản lý bởi Azure RBAC bằng cách sử dụng nhận dạng Azure AD và vì dữ liệu truy vấn sổ làm việc trực tiếp mỗi khi chúng được mở nên hình ảnh luôn phản ánh dữ liệu mới nhất. Sự kết hợp giữa hỗ trợ RBAC, hình ảnh dựa trên KQL, tài liệu đánh dấu và dữ liệu trực tiếp này đáp ứng tất cả các yêu cầu đã nêu mà các tùy chọn khác (Power BI, riêng Azure Data Explorer hoặc bảng điều khiển Azure) không cung cấp đầy đủ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 185",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/185-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-186",
+    "questionNumber": 186,
+    "text": "You are creating a YAML-based Azure pipeline to deploy an Azure Data Factory instance with these requirements:  \n  \n- If a Data Factory instance already exists, overwrite it.  \n- Do not affect any other resources in the resource group named Fabrikam.  \n  \nHow should you complete the code?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Tác vụ triển khai Trình quản lý tài nguyên Azure sử dụng Tạo hoặc cập nhật nhóm tài nguyên để triển khai vào nhóm tài nguyên được đặt tên. Triển khai gia tăng tạo ra các tài nguyên không tồn tại và cập nhật các tài nguyên tồn tại nhưng không thay đổi các tài nguyên không được chỉ định bởi mẫu. Chế độ hoàn chỉnh có thể xóa các tài nguyên không có trong mẫu; Xác thực Chỉ thực hiện triển khai no.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 186",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/186-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-187",
+    "questionNumber": 187,
+    "text": "You have an existing project in Azure DevOps. You are planning to integrate GitHub as the repository for this project. You need to ensure that Azure Pipelines runs under the Azure Pipelines identity.  \n  \nWhich authentication mechanism should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "personal access token (PAT)"
+      },
+      {
+        "key": "B",
+        "text": "GitHub App"
+      },
+      {
+        "key": "C",
+        "text": "Azure Active Directory (Azure AD)"
+      },
+      {
+        "key": "D",
+        "text": "OAuth"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Ứng dụng Azure Pipelines GitHub là cơ chế xác thực được đề xuất để kết nối Azure Pipelines với kho lưu trữ GitHub. Sau khi được cài đặt trong tài khoản hoặc tổ chức GitHub, nó sẽ trở thành phương thức xác thực mặc định cho quy trình và khiến các bản dựng cũng như cập nhật trạng thái GitHub chạy dưới danh tính dịch vụ Azure Pipelines chuyên dụng, thay vì dưới danh tính cá nhân của người dùng đã thiết lập kết nối. Ngược lại, cả xác thực OAuth và mã thông báo truy cập cá nhân (PAT) đều liên kết quy trình với danh tính GitHub của từng người dùng, nghĩa là quy trình có thể bị hỏng nếu quyền truy cập của người dùng đó thay đổi hoặc bị thu hồi. Azure AD không áp dụng được cho kịch bản tích hợp GitHub này. Điều này làm cho Ứng dụng GitHub trở thành lựa chọn chính xác để đảm bảo các quy trình chạy sử dụng danh tính Azure Pipelines.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 187",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/187-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-188",
+    "questionNumber": 188,
+    "text": "You have a GitHub repository named repo1 that stores the code of an app named App1.  \n  \nYou need to deploy a workflow for repo1 by using GitHub Actions. The solution must meet the following requirements:  \n  \n- Scan on pushes to the main branch.  \n- Scan on pull requests to the main branch.  \n- Scan on pull requests to any branch that has a prefix of releases/.  \n- Scan all the files in the subdirectories of the src directory.  \n- Exclude scanning of markdown files.  \n  \nHow should you complete the code? Each value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "branches2",
+        "text": "Slot 1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "paths",
+        "text": "Slot 2:",
+        "correctAnswer": "F"
+      },
+      {
+        "id": "pathsignore",
+        "text": "Slot 3:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "'**/*.md'"
+      },
+      {
+        "key": "B",
+        "text": "'*.md'"
+      },
+      {
+        "key": "C",
+        "text": "'release*'"
+      },
+      {
+        "key": "D",
+        "text": "'releases/**'"
+      },
+      {
+        "key": "E",
+        "text": "'src/*'"
+      },
+      {
+        "key": "F",
+        "text": "'src/**'"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "'**/*.md'"
+      },
+      {
+        "key": "B",
+        "text": "'*.md'"
+      },
+      {
+        "key": "C",
+        "text": "'release*'"
+      },
+      {
+        "key": "D",
+        "text": "'releases/**'"
+      },
+      {
+        "key": "E",
+        "text": "'src/*'"
+      },
+      {
+        "key": "F",
+        "text": "'src/**'"
+      }
+    ],
+    "correctAnswers": [
+      "branches2=D",
+      "paths=F",
+      "pathsignore=A"
+    ],
+    "explanation": "Trong các bộ lọc kích hoạt quy trình làm việc của GitHub Actions, các mẫu hình cầu sử dụng dấu hoa thị kép (**) để khớp giữa các cấp thư mục, trong khi dấu hoa thị đơn (*) chỉ khớp trong một đoạn đường dẫn duy nhất. Để kích hoạt các yêu cầu kéo tới các nhánh có tiền tố là 'releases/', mẫu 'releases/**' là bắt buộc vì nó khớp với bất kỳ tên nhánh nào bắt đầu bằng tiền tố đó bất kể các phân đoạn đường dẫn bổ sung (ví dụ: bản phát hành/2023, bản phát hành/2023/hotfix). Đối với bộ lọc đường dẫn, việc quét tất cả các tệp trong thư mục con của src yêu cầu 'src/**', vì 'src/*' chỉ khớp với các tệp trực tiếp bên trong src chứ không phải các thư mục con lồng nhau. Đối với việc bỏ qua đường dẫn, việc loại trừ tất cả các tệp đánh dấu ở bất kỳ đâu trong kho lưu trữ (không chỉ ở thư mục gốc) yêu cầu '**/*.md', vì '*.md' chỉ khớp với các tệp đánh dấu trong thư mục gốc. Các ngữ nghĩa toàn cầu này được ghi lại trong tài liệu tham khảo cú pháp quy trình làm việc của GitHub để lọc các nhánh và đường dẫn.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 188",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/188-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-189",
+    "questionNumber": 189,
+    "text": "Your company deploys applications using Docker containers. You want to detect known exploits in the Docker images used to provision the Docker containers. You need to integrate image scanning into the application lifecycle, and the solution must expose the exploits as early as possible during the application lifecycle.  \n  \nWhat should you configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a task executed in the continuous integration pipeline and a scheduled task that analyzes the image registry"
+      },
+      {
+        "key": "B",
+        "text": "manual tasks performed during the planning phase and the deployment phase"
+      },
+      {
+        "key": "C",
+        "text": "a task executed in the continuous deployment pipeline and a scheduled task against a running production container"
+      },
+      {
+        "key": "D",
+        "text": "a task executed in the continuous integration pipeline and a scheduled task that analyzes the production container"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Quét hình ảnh như một phần của quy trình tích hợp liên tục sẽ phát hiện các lỗ hổng đã biết tại thời điểm xây dựng, đây là thời điểm sớm nhất có thể có trong vòng đời ứng dụng — trước khi hình ảnh được đẩy hoặc triển khai. Do các CVE mới được phát hiện liên tục sau khi hình ảnh được tạo nên tác vụ được lập lịch để phân tích lại sổ đăng ký hình ảnh đảm bảo rằng các hình ảnh đã được lưu trữ (và có thể đã triển khai) được đánh giá lại dựa trên dữ liệu về lỗ hổng bảo mật mới được công bố, do đó, các hoạt động khai thác được phát hiện sau lần quét CI ban đầu vẫn được phát hiện. Sự kết hợp này (quét thời gian CI cộng với quét sổ đăng ký liên tục) cung cấp cả tính năng phát hiện sớm và phạm vi bao phủ liên tục, đây là phương pháp được sử dụng bởi các dịch vụ như quét lỗ hổng Đăng ký vùng chứa/Đăng ký giả của Google thông qua API phân tích vùng chứa.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 189",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/189-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-190",
+    "questionNumber": 190,
+    "text": "Your company has an Azure DevOps project. The source code for the project is stored in an on-premises repository and uses an on-premises build server.  \n  \nYou plan to use Azure DevOps to control the build process on the build server by using a self-hosted agent.  \n  \nYou need to implement the self-hosted agent. You download and install the agent on the build server.  \n  \nWhich two actions should you perform next? (Each correct answer presents part of the solution.)",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From Azure, create a shared access signature (SAS)."
+      },
+      {
+        "key": "B",
+        "text": "From the build server, create a certificate, and then upload the certificate to Azure Storage."
+      },
+      {
+        "key": "C",
+        "text": "From the build server, create a certificate, and then upload the certificate to Azure Key Vault."
+      },
+      {
+        "key": "D",
+        "text": "From DevOps, create a personal access token (PAT)."
+      },
+      {
+        "key": "E",
+        "text": "From the build server, run config.cmd."
+      }
+    ],
+    "correctAnswers": [
+      "D",
+      "E"
+    ],
+    "explanation": "Sau khi tải xuống và cài đặt một tác nhân tự lưu trữ, bạn phải xác thực tác nhân đó với tổ chức Azure DevOps của mình rồi đặt cấu hình cho tác nhân đó. Azure DevOps sử dụng Mã thông báo truy cập cá nhân (PAT) làm cơ chế xác thực tiêu chuẩn để các tổng đài viên tự lưu trữ đăng ký dịch vụ — bạn tạo PAT từ Azure DevOps và cung cấp nó trong quá trình cấu hình đại lý. Bản thân cấu hình được thực hiện bằng cách chạy config.cmd (trên Windows) hoặc config.sh (trên Linux/macOS) từ thư mục cài đặt của tác nhân trên máy chủ bản dựng; tập lệnh này sẽ nhắc URL tổ chức, loại xác thực (PAT), giá trị PAT, nhóm tác nhân và tên tác nhân, đồng thời đăng ký tác nhân với Azure DevOps. Các chứng chỉ được tải lên Azure Storage hoặc Key Vault và mã thông báo SAS không phải là một phần của quy trình đăng ký đại lý tự lưu trữ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 190",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/190-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-191",
+    "questionNumber": 191,
+    "text": "You need to consider the underlined segment to establish whether it is accurate.  \n\nWhen moving to Azure DevOps, JIRA must be replaced with the build pipelines Azure DevOps service.  \n\nSelect `No adjustment required` if the underlined segment is accurate. If the underlined segment is inaccurate, select the accurate option.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "No adjustment required."
+      },
+      {
+        "key": "B",
+        "text": "repos"
+      },
+      {
+        "key": "C",
+        "text": "release pipelines"
+      },
+      {
+        "key": "D",
+        "text": "boards"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "JIRA là một công cụ quản lý dự án và nhiệm vụ, không phải là công cụ xây dựng quy trình. Khi di chuyển sang Azure DevOps, JIRA nên được thay thế bằng Azure Boards, cung cấp khả năng theo dõi mục công việc và quản lý dự án linh hoạt tương đương.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 191",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/191-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-192",
+    "questionNumber": 192,
+    "text": "Solution: On the build pipeline’s **Triggers** tab, you select **Enable continuous integration**.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Trình kích hoạt tích hợp liên tục được bật sẽ tự động xếp hàng bản dựng bất cứ khi nào mã được đăng ký vào nhánh được trình kích hoạt bao trùm.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 192",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/192-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-193",
+    "questionNumber": 193,
+    "text": "Solution: In the release pipeline’s **Pre-deployment conditions** settings, select **Batch changes while a build is in progress**.  \n  \nDoes this accomplish the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các bản dựng tự động khi đăng ký mã yêu cầu trình kích hoạt tích hợp (CI) liên tục trên quy trình xây dựng. Các điều kiện trước khi triển khai đường ống phát hành kiểm soát hành vi triển khai ở giai đoạn phát hành; họ không đặt cấu hình bản dựng để bắt đầu khi mã nguồn được kiểm tra. Tài liệu về Đường ống Azure phân biệt trình kích hoạt CI, chạy đường dẫn khi đẩy, với trình kích hoạt triển khai liên tục, bắt đầu các bản phát hành cổ điển sau khi bản dựng hoàn tất.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 193",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/193-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-194",
+    "questionNumber": 194,
+    "text": "Solution: In the Continuous deployment trigger settings for the release pipeline, enable the **Pull request trigger** setting.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Trình kích hoạt yêu cầu kéo quy trình phát hành không khiến bản dựng chạy bất cứ khi nào mã được kiểm tra. Việc tự động xây dựng khi đăng ký yêu cầu trình kích hoạt tích hợp liên tục được định cấu hình trên quy trình xây dựng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 194",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/194-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-195",
+    "questionNumber": 195,
+    "text": "Solution: You deploy a Docker build to an on-premises server and add a Download Build Artifacts task to the deployment pipeline.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Tác vụ Tải xuống cấu phần phần mềm bản dựng tải xuống các tệp được lưu dưới dạng cấu phần phần mềm từ một bản dựng đã hoàn thành đến tác nhân hoặc mục tiêu triển khai. Nó không triển khai hoặc chạy hình ảnh Docker; Việc triển khai Docker yêu cầu cơ chế bổ sung để cung cấp hình ảnh và chạy nó trên máy chủ tại chỗ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 195",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/195-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-196",
+    "questionNumber": 196,
+    "text": "Solution: Deploy an Azure self-hosted agent to an on-premises server, and add a Copy and Publish Build Artifacts task to the deployment pipeline.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Tác nhân tự lưu trữ thực hiện các tác vụ quy trình trên máy chủ tại chỗ của nó. Nhiệm vụ Sao chép và xuất bản Cấu phần phần mềm xây dựng có thể sao chép kết quả đầu ra của bản dựng vào một tệp chia sẻ mà tác nhân xây dựng có thể truy cập được, cho phép đặt các tạo phẩm trong môi trường tại chỗ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 196",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/196-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-197",
+    "questionNumber": 197,
+    "text": "Solution: You deploy an on-premises Kubernetes cluster. You deploy a Helm agent to that cluster. You add a Download Build Artifacts task to the deployment pipeline.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Tải xuống Build Artifacts tải xuống các tệp được lưu từ bản dựng đã hoàn thành; nó không triển khai chúng lên Kubernetes. Quá trình triển khai yêu cầu một bước thực thi, chẳng hạn như lệnh hoặc tác vụ triển khai Helm, để cài đặt hoặc nâng cấp khối lượng công việc trong cụm.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 197",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/197-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-198",
+    "questionNumber": 198,
+    "text": "Solution: Add a code-coverage step to the build pipelines.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Bước xây dựng phạm vi mã thu thập thông tin về phạm vi kiểm thử; nó không kiểm soát ai có thể sửa đổi cấu hình dự án Azure DevOps. Quyền cấp dự án chi phối các thay đổi đối với thông tin, thuộc tính và cấu hình liên quan của dự án.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 198",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/198-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-199",
+    "questionNumber": 199,
+    "text": "Solution: In the release pipeline's **Pre-deployment conditions** settings, select **After stage**.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Cần có trình kích hoạt tích hợp liên tục để chạy bản dựng khi mã được đẩy hoặc kiểm tra. Trình kích hoạt trước khi triển khai **Sau giai đoạn** kiểm soát tiến trình giữa các giai đoạn trong quy trình phát hành cổ điển sau khi giai đoạn đã chọn triển khai thành công; nó không kích hoạt quá trình xây dựng từ quá trình đăng ký mã. [Triggers in Azure Pipelines](https://learn.microsoft.com/en-us/azure/devops/pipelines/build/triggers?view=azure-devops), [Classic release triggers](https://learn.microsoft.com/en-us/azure/devops/pipelines/release/triggers?view=azure-devops-2022)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 199",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/199-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-200",
+    "questionNumber": 200,
+    "text": "Solution: Implement Continuous Integration for the project.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Tích hợp liên tục tự động hóa việc xây dựng và xác thực các thay đổi mã tích hợp; nó không ngăn cản những thay đổi đối với cấu hình của dự án Azure DevOps theo thời gian.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 200",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/200-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-201",
+    "questionNumber": 201,
+    "text": "Solution: Implement Continuous Assurance for the project.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Bảo đảm liên tục liên tục kiểm tra cấu hình của dự án dựa trên đường cơ sở đã được phê duyệt để phát hiện sai lệch cấu hình, giúp duy trì trạng thái cấu hình cần thiết theo thời gian.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 201",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/201-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-202",
+    "questionNumber": 202,
+    "text": "Solution: You deploy an Octopus Deploy server. You install a polling Tentacle agent on an on-premises server. You add an Octopus task to the deployment pipeline.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Octopus Deploy sử dụng Tentacle làm tác nhân cho các mục tiêu triển khai để triển khai các gói và chạy các tác vụ triển khai. Tentacle thăm dò truy xuất công việc từ Máy chủ Octopus, hỗ trợ triển khai tới máy chủ tại chỗ đồng thời cung cấp các mạng không cho phép kết nối gửi đến máy chủ đó.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 202",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/202-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-203",
+    "questionNumber": 203,
+    "text": "Solution: On the build pipeline’s **Triggers** tab, select **Batch changes while a build is in progress**.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Tùy chọn **Thay đổi hàng loạt trong khi quá trình xây dựng đang diễn ra** kiểm soát cách nhóm các thay đổi bổ sung khi bản dựng tích hợp liên tục đang chạy. Bản thân nó không kích hoạt trình kích hoạt tích hợp liên tục cần thiết để tự động chạy bản dựng khi mã được kiểm tra. [Build GitHub repositories - Azure Pipelines](https://learn.microsoft.com/en-us/azure/devops/pipelines/repos/github?view=azure-devops)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 203",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/203-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-204",
+    "questionNumber": 204,
+    "text": "Solution: Run a Subscription Health scan when packages are created.  \n  \nDoes this meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Chạy quét Tình trạng đăng ký khi các gói được tạo không thực thi tính bất biến hoặc từ chối các thay đổi cấu hình trong dự án Azure DevOps. Các thay đổi về cấu hình yêu cầu quyền thích hợp để ngăn chặn chúng; khả năng kiểm toán ghi lại những thay đổi thay vì chặn chúng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 204",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/204-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-205",
+    "questionNumber": 205,
+    "text": "You have a containerized solution running in Azure Container Instances. The solution includes a frontend container named App1 and a backend container named DB1. DB1 loads a large amount of data during startup.  \n  \nYou need to confirm that DB1 is able to handle incoming requests before users are allowed to submit requests to App1.  \n  \nWhat should you configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a liveness probe"
+      },
+      {
+        "key": "B",
+        "text": "a performance log"
+      },
+      {
+        "key": "C",
+        "text": "a readiness probe"
+      },
+      {
+        "key": "D",
+        "text": "an Azure Load Balancer health probe"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Azure Container Instances hỗ trợ các đầu dò sẵn sàng, xác định xem một container có sẵn sàng chấp nhận lưu lượng truy cập đến hay không. Cho đến khi readiness probe thành công, vùng chứa không được coi là có sẵn để phục vụ các yêu cầu, đây chính xác là những gì cần thiết để đảm bảo DB1 đã tải xong dữ liệu khởi động trước khi App1 bắt đầu chấp nhận yêu cầu của người dùng. liveness probe chỉ kiểm tra xem có nên khởi động lại một container đang chạy do trạng thái không phản hồi và không chuyển sang trạng thái sẵn sàng ban đầu hay không; nhật ký hiệu suất cung cấp dữ liệu chẩn đoán thay vì kiểm soát lưu lượng; và các thăm dò tình trạng Azure Load Balancer áp dụng cho nhóm phụ trợ cân bằng tải, không áp dụng cho các nhóm vùng chứa trong Azure Container Instances.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 205",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/205-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-206",
+    "questionNumber": 206,
+    "text": "You have an Azure virtual machine named web1.  \n  \nYou need to query the amount of free memory available on web1 during the previous seven days. The solution must:  \n  \n- Display the data as a time chart.  \n- Calculate the average value each hour.  \n  \nHow should you complete the KQL query?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "`ago(7d)` chỉ định một điểm bảy ngày trước thời gian truy vấn, do đó việc lọc bằng `TimeGenerated > ago(7d)` sẽ giữ lại bảy ngày trước đó. `bin(TimeGenerated, 1h)` đặt các bản ghi vào các khoảng thời gian hàng giờ trước khi `avg(CounterValue)` được tính toán. `render timechart` sau đó hiển thị mức trung bình hàng giờ đó.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 206",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/206-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-207",
+    "questionNumber": 207,
+    "text": "You have an Azure Pipelines pipeline named Pipeline1 with the following YAML definition.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784205822018-msg7nhb3.png)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Pipeline1 consists of three stages.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "$$(BuildPlatform) is a predefined variable.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "$$(System.DefaultWorkingDirectory) is a predefined variable.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Một quy trình YAML xác định các bước cấp cao nhất không có khối giai đoạn có một giai đoạn ẩn; ba mục nhiệm vụ là các bước, không phải giai đoạn. BuildPlatform không phải là biến Azure Pipelines được xác định trước và yêu cầu giá trị do người dùng xác định. System.DefaultWorkingDirectory là một biến hệ thống được xác định trước cho đường dẫn tác nhân nơi tệp nguồn được tải xuống.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784205822018-msg7nhb3.png",
+    "sourceTitle": "Examcademy AZ-400 Question 207",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/207-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-208",
+    "questionNumber": 208,
+    "text": "Your organization has a project in Azure DevOps. You are planning to build a release pipeline that deploys resources using Azure Resource Manager templates, where the templates reference secrets stored in Azure Key Vault.  \n  \nYou need to recommend a solution for accessing the secrets stored in the key vault during deployments, applying the principle of least privilege.  \n  \nWhat should you include in your recommendation? Each configuration may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Restrict access to delete the key vault:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "2",
+        "text": "Restrict access to the secrets in Key Vault by using:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "an Azure Key Vault access policy"
+      },
+      {
+        "key": "B",
+        "text": "a personal access token (PAT)"
+      },
+      {
+        "key": "C",
+        "text": "RBAC"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "an Azure Key Vault access policy"
+      },
+      {
+        "key": "B",
+        "text": "a personal access token (PAT)"
+      },
+      {
+        "key": "C",
+        "text": "RBAC"
+      }
+    ],
+    "correctAnswers": [
+      "1=C",
+      "2=A"
+    ],
+    "explanation": "Azure Key Vault tách biệt các hoạt động quản lý (mặt phẳng điều khiển), chẳng hạn như xóa vault, khỏi các hoạt động trên mặt phẳng dữ liệu, chẳng hạn như đọc các bí mật. Các hoạt động của mặt phẳng điều khiển, bao gồm quyền truy cập xóa vào tài nguyên vault, bị hạn chế bằng cách sử dụng các nhiệm vụ vai trò Azure role-based access control (RBAC) trong phạm vi tài nguyên Key Vault. Quyền truy cập mặt phẳng dữ liệu vào các bí mật bị hạn chế bằng cách sử dụng chính sách truy cập Key Vault chỉ cấp các quyền cụ thể (ví dụ: Nhận/Liệt kê các bí mật) theo yêu cầu của service principal của quy trình phát hành, đáp ứng đặc quyền tối thiểu. Mã thông báo truy cập cá nhân được sử dụng để xác thực API Azure DevOps, không phải để kiểm soát quyền truy cập Key Vault nên không thể áp dụng ở đây.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 208",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/208-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-209",
+    "questionNumber": 209,
+    "text": "You have the repositories shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784186883193-5bsxixyq.png)  \n  \nYou need to migrate the contents of the GitHub repository to the Azure Repos repository. The solution must ensure that the Azure Repos repository only contains branches and history from the GitHub repository.  \n  \nWhich three commands should you run in sequence? Move the appropriate commands to the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "git clone --bare https://dev.azure.com/contoso/project1/_git/proj"
+      },
+      {
+        "key": "B",
+        "text": "cd project1"
+      },
+      {
+        "key": "C",
+        "text": "git clone --bare https://github.com/contoso/project1.git"
+      },
+      {
+        "key": "D",
+        "text": "git push --mirror https://dev.azure.com/contoso/project1/_git/proj"
+      },
+      {
+        "key": "E",
+        "text": "cd project1.git"
+      },
+      {
+        "key": "F",
+        "text": "git push --mirror https://github.com/contoso/project1.git"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "git clone --bare https://dev.azure.com/contoso/project1/_git/proj"
+      },
+      {
+        "key": "B",
+        "text": "cd project1"
+      },
+      {
+        "key": "C",
+        "text": "git clone --bare https://github.com/contoso/project1.git"
+      },
+      {
+        "key": "D",
+        "text": "git push --mirror https://dev.azure.com/contoso/project1/_git/proj"
+      },
+      {
+        "key": "E",
+        "text": "cd project1.git"
+      },
+      {
+        "key": "F",
+        "text": "git push --mirror https://github.com/contoso/project1.git"
+      }
+    ],
+    "correctAnswers": [
+      "1=C",
+      "2=E",
+      "3=D"
+    ],
+    "explanation": "Di chuyển kho lưu trữ Git trong khi bảo toàn tất cả các nhánh, thẻ và toàn bộ lịch sử yêu cầu tạo một bản sao trần (nhân bản) của kho lưu trữ nguồn và sau đó đẩy bản sao trần đó bằng --mirror đến đích. git clone --bare tải xuống tất cả các ref (nhánh, thẻ) từ nguồn GitHub mà không cần thư mục hoạt động, tạo một thư mục cục bộ có tên project1.git. Cần phải thay đổi thư mục đó (cd project1.git) trước khi đẩy. Cuối cùng, git push --mirror tới URL Azure Repos sẽ đẩy mọi tham chiếu chính xác như nó tồn tại trong nguồn và vì --mirror biến đích đến thành một bản sao chính xác của nguồn, nên kho lưu trữ Azure Repos cuối cùng chỉ chứa các nhánh và lịch sử tồn tại trong kho GitHub (ghi đè/xóa bất kỳ thứ gì khác có thể đã có ở đó).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784186883193-5bsxixyq.png",
+    "sourceTitle": "Examcademy AZ-400 Question 209",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/209-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-210",
+    "questionNumber": 210,
+    "text": "Solution: You include the following elements in the pipeline’s YAML definition.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1785752203983-2blzw6ge.png)  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các giai đoạn của Quy trình Azure chạy tuần tự theo mặc định, nghĩa là một giai đoạn không có sự phụ thuộc rõ ràng sẽ phụ thuộc vào giai đoạn ngay trước đó. Do đó, `Publish_Test_Results` không chờ cả hai giai đoạn thử nghiệm; nó cần `dependsOn` cho cả `Test_App` và `Test_Database`. Nó cũng thiếu `condition: always()`, vì vậy nó không được đảm bảo chạy khi phần phụ thuộc không thành công.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785752203983-2blzw6ge.png",
+    "sourceTitle": "Examcademy AZ-400 Question 210",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/210-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-211",
+    "questionNumber": 211,
+    "text": "Solution: The following elements are included in the pipeline's YAML definition.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1785752205798-9ln8hzrp.png)  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Trong Azure Pipelines, `dependsOn: []` loại bỏ rõ ràng sự phụ thuộc của một giai đoạn vào giai đoạn trước đó. Do đó, `Test_App` và `Test_Database` có thể chạy song song nhưng chúng có thể khởi động mà không cần đợi `Build_App` hoàn tất thành công. Điều này vi phạm yêu cầu cả hai giai đoạn thử nghiệm chỉ chạy sau khi xây dựng thành công. Giai đoạn kết quả chờ các giai đoạn được liệt kê và `succeededOrFailed()` cho phép nó chạy sau các lỗi phụ thuộc, nhưng phần phụ thuộc xây dựng để kiểm tra bị thiếu có nghĩa là thiết kế tổng thể không đáp ứng yêu cầu.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785752205798-9ln8hzrp.png",
+    "sourceTitle": "Examcademy AZ-400 Question 211",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/211-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-212",
+    "questionNumber": 212,
+    "text": "Solution: You include the following elements in the pipeline’s YAML definition.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1785752209674-u30fp9cb.png)  \n  \nDoes this meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "`Test_App` và `Test_Database` đều chỉ phụ thuộc vào `Build_App`, vì vậy chúng có thể chạy đồng thời sau khi quá trình xây dựng thành công. `Publish_Test_Results` phụ thuộc vào cả hai giai đoạn thử nghiệm, đảm bảo rằng nó chỉ bắt đầu sau khi chúng hoàn thành và `condition: always()` khiến nó chạy bất kể kết quả của chúng như thế nào. [Stages in Azure Pipelines](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/stages?view=azure-devops)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785752209674-u30fp9cb.png",
+    "sourceTitle": "Examcademy AZ-400 Question 212",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/212-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-213",
+    "questionNumber": 213,
+    "text": "You manage code by using GitHub.  \n  \nYou plan to use Dependabot to scan for code dependencies.  \n  \nYou need to identify when scanning will be triggered automatically.  \n  \nWhich two actions will trigger a scan? Each correct answer presents a complete solution.  \n  \nNOTE: Each correct solution is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "The dependency graph of a repository changes."
+      },
+      {
+        "key": "B",
+        "text": "A pull request is created."
+      },
+      {
+        "key": "C",
+        "text": "A branch is forked."
+      },
+      {
+        "key": "D",
+        "text": "Any commit is pushed."
+      },
+      {
+        "key": "E",
+        "text": "A new advisory is added."
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "E"
+    ],
+    "explanation": "Dependabot tự động quét khi biểu đồ phụ thuộc thay đổi (chẳng hạn như thêm hoặc cập nhật các phần phụ thuộc) và khi có lời khuyên mới được thêm vào Cơ sở dữ liệu tư vấn GitHub. Hai sự kiện này kích hoạt Dependabot để kiểm tra các phần phụ thuộc dễ bị tấn công và thông báo cho kho lưu trữ. Yêu cầu kéo, phân nhánh và cam kết không tự động kích hoạt quét.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 213",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/213-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-214",
+    "questionNumber": 214,
+    "text": "You have an Azure Key Vault that contains an encryption key named key1.  \n  \nYou plan to create a Log Analytics workspace that will store logging data. You need to encrypt the workspace by using key1.  \n  \nWhich four actions should you perform in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "step4",
+        "text": "Slot 4:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Link the workspace."
+      },
+      {
+        "key": "B",
+        "text": "Register the Azure subscription to allow cluster creation."
+      },
+      {
+        "key": "C",
+        "text": "Grant permissions to the key vault."
+      },
+      {
+        "key": "D",
+        "text": "Create a Log Analytics cluster."
+      },
+      {
+        "key": "E",
+        "text": "Enable soft delete for the key vault."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Link the workspace."
+      },
+      {
+        "key": "B",
+        "text": "Register the Azure subscription to allow cluster creation."
+      },
+      {
+        "key": "C",
+        "text": "Grant permissions to the key vault."
+      },
+      {
+        "key": "D",
+        "text": "Create a Log Analytics cluster."
+      },
+      {
+        "key": "E",
+        "text": "Enable soft delete for the key vault."
+      }
+    ],
+    "correctAnswers": [
+      "step1=E",
+      "step2=D",
+      "step3=C",
+      "step4=A"
+    ],
+    "explanation": "Mã hóa do khách hàng quản lý cho Log Analytics sử dụng một cụm chuyên dụng và managed identity của nó để truy cập vào khóa Key Vault. Vault phải được cấu hình là có thể phục hồi được, bao gồm cả xóa mềm. Sau khi tạo cụm, hãy cấp quyền cho managed identity Key Vault cho các hoạt động chính; sau đó liên kết không gian làm việc để dữ liệu không gian làm việc mới được nhập được mã hóa thông qua cụm đó bằng khóa do khách hàng quản lý.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 214",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/214-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-215",
+    "questionNumber": 215,
+    "text": "Your company is building a new solution in Java.  \n\nThe company currently uses a SonarQube server to analyze the code of .NET solutions.  \n\nYou need to analyze and monitor the code quality of the Java solution.  \n\nWhich task types should you add to the build pipeline?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Octopus"
+      },
+      {
+        "key": "B",
+        "text": "Chef"
+      },
+      {
+        "key": "C",
+        "text": "CocoaPods"
+      },
+      {
+        "key": "D",
+        "text": "Gradle"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Gradle là công cụ xây dựng JVM được sử dụng cho các dự án Java và plugin SonarQube của nó tích hợp trực tiếp vào bản dựng Gradle để chạy phân tích tĩnh như một phần của quy trình. Octopus là một công cụ triển khai/phát hành, Chef là một công cụ quản lý cấu hình và CocoaPods là một trình quản lý phụ thuộc iOS/Swift, không có công cụ nào trong số đó xây dựng hoặc phân tích mã Java.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 215",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/215-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-216",
+    "questionNumber": 216,
+    "text": "You have an Azure Kubernetes Service (AKS) cluster. You need to deploy an application to the cluster by using Azure DevOps. Which three actions should you perform in sequence? Move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "F"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a service account in the cluster."
+      },
+      {
+        "key": "B",
+        "text": "Create a service principal in Azure Active Directory (Azure AD)."
+      },
+      {
+        "key": "C",
+        "text": "Add an Azure Function App for Container task to the deployment pipeline."
+      },
+      {
+        "key": "D",
+        "text": "Add a Helm package and deploy a task to the deployment pipeline."
+      },
+      {
+        "key": "E",
+        "text": "Add a Docker Compose task to the deployment pipeline."
+      },
+      {
+        "key": "F",
+        "text": "Configure RBAC roles in the cluster."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create a service account in the cluster."
+      },
+      {
+        "key": "B",
+        "text": "Create a service principal in Azure Active Directory (Azure AD)."
+      },
+      {
+        "key": "C",
+        "text": "Add an Azure Function App for Container task to the deployment pipeline."
+      },
+      {
+        "key": "D",
+        "text": "Add a Helm package and deploy a task to the deployment pipeline."
+      },
+      {
+        "key": "E",
+        "text": "Add a Docker Compose task to the deployment pipeline."
+      },
+      {
+        "key": "F",
+        "text": "Configure RBAC roles in the cluster."
+      }
+    ],
+    "correctAnswers": [
+      "1=B",
+      "2=F",
+      "3=D"
+    ],
+    "explanation": "Việc triển khai AKS thông qua Azure DevOps yêu cầu thiết lập danh tính mà Azure DevOps có thể sử dụng để giao tiếp với Azure và cụm: trước tiên hãy tạo service principal trong Azure AD để xác thực. Tiếp theo, định cấu hình các vai trò RBAC trong cụm AKS để ủy quyền cho service principal đó với các quyền cần thiết để triển khai khối lượng công việc. Cuối cùng, thêm gói Helm và tác vụ triển khai trong quy trình phát hành/triển khai để đóng gói ứng dụng dưới dạng biểu đồ Helm và triển khai nó vào cụm bằng danh tính được ủy quyền. Điều này phù hợp với hướng dẫn của Microsoft về cách sử dụng service principal với AKS và triển khai qua Helm trong Azure Pipelines.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 216",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/216-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-217",
+    "questionNumber": 217,
+    "text": "You have an Azure subscription.  \n  \nYou need to create a storage account by using a Bicep file.  \n  \nHow should you complete the file?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Đối với tài nguyên `Microsoft.Storage/storageAccounts`, `kind` là thuộc tính tài nguyên cấp cao nhất và `StorageV2` là loại tài khoản lưu trữ v2 có mục đích chung. `supportsHttpsTrafficOnly` là cài đặt trong đối tượng `properties` của tài nguyên.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 217",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/217-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-218",
+    "questionNumber": 218,
+    "text": "You are designing a YAML template for use with Azure Pipelines. The template will include the outputfile parameter.  \n\nWhich two methods can you use to reference the parameter? Each correct answer presents a complete solution.  \n\nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "$${{parameters.outputfile}}"
+      },
+      {
+        "key": "B",
+        "text": "$$(parameters['outputfile'])"
+      },
+      {
+        "key": "C",
+        "text": "$$(parameters.outputfile)"
+      },
+      {
+        "key": "D",
+        "text": "$$(parameters[outputfile])"
+      },
+      {
+        "key": "E",
+        "text": "$${{parameters['outputfile']}}"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "E"
+    ],
+    "explanation": "Biểu thức mẫu trong Azure Pipelines sử dụng cú pháp dấu ngoặc kép (${{ }}). Cả cú pháp quy định thuộc tính (${{parameters.outputfile}}) và cú pháp chỉ mục (${{parameters['outputfile']}}) đều hợp lệ để tham chiếu các tham số. Cú pháp dấu ngoặc đơn ($(biến)) dành cho mở rộng thời gian chạy/macro, không phải cho tham số mẫu.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 218",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/218-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-219",
+    "questionNumber": 219,
+    "text": "You use an Azure Pipelines pipeline to build, test, and deploy an app named App1.  \n  \nYou need to reduce how long it takes to complete unit and integration tests for App1. The solution must ensure that the code coverage testing ratio is maintained.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable flaky test management."
+      },
+      {
+        "key": "B",
+        "text": "Purchase additional parallel jobs."
+      },
+      {
+        "key": "C",
+        "text": "Enable Test Impact Analysis (TIA)."
+      },
+      {
+        "key": "D",
+        "text": "Add an agent pool."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Phân tích tác động thử nghiệm (TIA) chỉ chọn một cách thông minh tập hợp con các thử nghiệm bị ảnh hưởng bởi thay đổi mã, giảm thời gian thực hiện trong khi vẫn duy trì phạm vi bao phủ. Điều này tránh việc chạy thử nghiệm không cần thiết trên mã không thay đổi. Việc quản lý thử nghiệm không ổn định không tăng tốc độ thử nghiệm, việc mua các công việc song song rất tốn kém và các tác nhân bổ sung vốn không làm giảm thời gian thử nghiệm.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 219",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/219-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-220",
+    "questionNumber": 220,
+    "text": "You have a project in Azure DevOps named Project1.  \n  \nYou need to ensure that all new pipelines in Project1 execute three specific tasks during pipeline execution.  \n  \nWhat should you create?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a task group"
+      },
+      {
+        "key": "B",
+        "text": "a JSON template"
+      },
+      {
+        "key": "C",
+        "text": "a YAML template"
+      },
+      {
+        "key": "D",
+        "text": "a PowerShell task"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Mẫu YAML là phương pháp hiện đại để xác định logic quy trình có thể tái sử dụng trong Azure DevOps. Chúng cho phép bạn xác định các nhiệm vụ cụ thể một lần và tham chiếu chúng trên nhiều quy trình, đảm bảo tính nhất quán và giảm nỗ lực bảo trì. Các nhóm nhiệm vụ phục vụ mục đích tương tự nhưng được liên kết với các quy trình cổ điển, khiến mẫu YAML trở thành giải pháp ưu tiên cho các phương pháp thực hành Azure DevOps hiện tại.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 220",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/220-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-221",
+    "questionNumber": 221,
+    "text": "You have a project in Azure DevOps named Project1 that contains a Kanban board named Board1.  \n  \nYou create a Microsoft Teams channel and add the Azure Boards app to the channel.  \n  \nYou need to ensure that users can create work items in Board1 from Microsoft Teams.  \n  \nWhich command should you run?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "@azure boards subscriptions"
+      },
+      {
+        "key": "B",
+        "text": "@azure boards create"
+      },
+      {
+        "key": "C",
+        "text": "@azure boards sign in"
+      },
+      {
+        "key": "D",
+        "text": "@azure boards link"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Để liên kết dự án Azure Boards từ Microsoft Teams, bước đầu tiên là chạy 'liên kết bảng @azure' với URL dự án. Việc này sẽ thiết lập kết nối và cho phép tạo mục công việc tiếp theo thông qua '@azure board create'. Lệnh liên kết phải đi trước bất kỳ thao tác hạng mục công việc nào.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 221",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/221-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-222",
+    "questionNumber": 222,
+    "text": "You have a project in Azure DevOps that has a release pipeline.  \n\nYou need to integrate work item tracking and an Agile project management system to meet the following requirements:  \n\n✑ Ensure that developers can track whether their commits are deployed to production.  \n\n✑ Report the deployment status.  \n\n✑ Minimize integration effort.  \n\nWhich system should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Asana"
+      },
+      {
+        "key": "B",
+        "text": "Basecamp"
+      },
+      {
+        "key": "C",
+        "text": "Trello"
+      },
+      {
+        "key": "D",
+        "text": "Jira"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Jira là một nền tảng quản lý dự án linh hoạt hoàn thiện tích hợp với Azure DevOps. Nó cung cấp tính năng theo dõi mục công việc, bảng linh hoạt, theo dõi bản phát hành và báo cáo trạng thái triển khai. Các công cụ khác (Asana, Basecamp, Trello) không tích hợp sâu với quy trình Azure DevOps.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 222",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/222-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-223",
+    "questionNumber": 223,
+    "text": "You have an Azure subscription that contains a storage account and 20 virtual machines.  \n  \nYou plan to use LogRhythm for aggregation and analysis of the virtual machine logs.  \n  \nYou need to configure AzLog to export the logs and push them to the storage account.  \n  \nIn which format should you export the logs?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "JSON"
+      },
+      {
+        "key": "B",
+        "text": "EVTX"
+      },
+      {
+        "key": "C",
+        "text": "EVT"
+      },
+      {
+        "key": "D",
+        "text": "binary"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "LogRhythm Open Collector chấp nhận nhật ký ở định dạng JSON cho các nguồn đám mây hiện đại. JSON là định dạng có cấu trúc tiêu chuẩn để tích hợp nhật ký đám mây vào LogRhythm SIEM. EVTX và EVT là các định dạng nhật ký sự kiện của Windows không phù hợp để nhập nhật ký đám mây; nhị phân cũng không phải là định dạng chuẩn cho mục đích này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 223",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/223-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-224",
+    "questionNumber": 224,
+    "text": "You have a GitHub repository named repo1 and an Azure Key Vault named kv1.  \n  \nIn repo1, you plan to create a workflow named Workflow1 that deploys a database server by using credentials stored in kv1.  \n  \nYou need to ensure that Workflow1 can retrieve the credentials from kv1.  \n  \nWhich three actions should you take, in sequence?  \n  \n*Note: More than one ordering of the answer choices is valid. You will receive credit for any valid order.*",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Slot 1:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "slot2",
+        "text": "Slot 2:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot3",
+        "text": "Slot 3:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Grant secret permissions to kv1."
+      },
+      {
+        "key": "B",
+        "text": "Reference the credentials in Workflow1."
+      },
+      {
+        "key": "C",
+        "text": "Create a personal access token (PAT) in GitHub."
+      },
+      {
+        "key": "D",
+        "text": "Grant key permissions to kv1."
+      },
+      {
+        "key": "E",
+        "text": "Create a service principal in Microsoft Entra ID."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Grant secret permissions to kv1."
+      },
+      {
+        "key": "B",
+        "text": "Reference the credentials in Workflow1."
+      },
+      {
+        "key": "C",
+        "text": "Create a personal access token (PAT) in GitHub."
+      },
+      {
+        "key": "D",
+        "text": "Grant key permissions to kv1."
+      },
+      {
+        "key": "E",
+        "text": "Create a service principal in Microsoft Entra ID."
+      }
+    ],
+    "correctAnswers": [
+      "slot1=E",
+      "slot2=A",
+      "slot3=B"
+    ],
+    "explanation": "Microsoft Entra service principal cung cấp nhận dạng khối lượng công việc Azure được quy trình làm việc GitHub sử dụng. Danh tính đó phải có quyền bí mật Key Vault để đọc các giá trị thông tin xác thực; các quyền chính áp dụng cho các hoạt động khóa mật mã và GitHub PAT không cho phép truy cập Key Vault. Sau khi định cấu hình danh tính và quyền truy cập Key Vault của nó, Workflow1 có thể tham chiếu thông tin xác thực của nó.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 224",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/224-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-225",
+    "questionNumber": 225,
+    "text": "Your organization is worried that when developers add open source libraries to a project, it can introduce licensing compliance problems.  \n  \nYou need to add an automated step to the build pipeline that detects when common open source libraries are added to the codebase.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "OWASP ZAP"
+      },
+      {
+        "key": "B",
+        "text": "Jenkins"
+      },
+      {
+        "key": "C",
+        "text": "Code Style"
+      },
+      {
+        "key": "D",
+        "text": "WhiteSource Bolt"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "WhiteSource Bolt là công cụ phân tích thành phần phần mềm (SCA) được thiết kế để tích hợp trực tiếp vào quy trình xây dựng (chẳng hạn như Azure DevOps hoặc Jenkins) để tự động quét cơ sở mã, xác định các thành phần và thư viện nguồn mở đang được sử dụng, đồng thời gắn cờ các giấy phép liên quan của chúng để có thể phát hiện sớm các vấn đề về tuân thủ cấp phép trong quá trình phát triển. OWASP ZAP là một công cụ kiểm tra bảo mật ứng dụng động (DAST) tập trung vào việc tìm kiếm các lỗ hổng web trong thời gian chạy chứ không phải phát hiện giấy phép hoặc sự phụ thuộc. Jenkins là một máy chủ tự động hóa CI/CD có mục đích chung và bản thân nó không thực hiện phát hiện thư viện nguồn mở hoặc giấy phép. Công cụ Kiểu Mã thực thi các quy ước và định dạng mã hóa, không liên quan đến việc quét tuân thủ giấy phép.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 225",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/225-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-226",
+    "questionNumber": 226,
+    "text": "You use GitHub for source control and Microsoft Teams for collaboration.  \n  \nYou need to send a notification to a Teams channel for each commit. The solution must minimize development effort.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use Azure Automation to connect to the GitHub Actions API and send a message to the Teams channel."
+      },
+      {
+        "key": "B",
+        "text": "Use the Microsoft Teams for GitHub app and configure a subscription to receive notifications in the Teams channel."
+      },
+      {
+        "key": "C",
+        "text": "Use GitHub Actions with a dispatch to send a message to the Teams channel by using the Teams API."
+      },
+      {
+        "key": "D",
+        "text": "Use Azure Functions to connect to the GitHub REST API and send a message to the Teams channel."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Ứng dụng Microsoft Teams dành cho GitHub cung cấp tính năng tích hợp trực tiếp, tích hợp sẵn, tự động gửi thông báo cam kết đến các kênh Teams với thiết lập tối thiểu. Đây là một giải pháp sẵn dùng được hỗ trợ, yêu cầu phát triển tùy chỉnh no. Các giải pháp thay thế như Azure Automation, GitHub Actions với công văn tùy chỉnh hoặc Azure Functions sẽ yêu cầu nỗ lực mã hóa và bảo trì bổ sung.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 226",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/226-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-227",
+    "questionNumber": 227,
+    "text": "You plan to create an image that will contain a .NET Core application.  \n\nYou have a Dockerfile file that contains the following code. (Line numbers are included for reference only.)  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783716826645-04xtiw0t.png)  \n  \nYou need to ensure that the image is as small as possible when the image is built.  \n\nWhich line should you modify in the file?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "1"
+      },
+      {
+        "key": "B",
+        "text": "3"
+      },
+      {
+        "key": "C",
+        "text": "4"
+      },
+      {
+        "key": "D",
+        "text": "7"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Các bản dựng nhiều giai đoạn của Docker tối ưu hóa kích thước hình ảnh bằng cách sử dụng giai đoạn phát triển (với SDK và các công cụ) để biên dịch và giai đoạn thời gian chạy riêng để thực thi. Hình ảnh cuối cùng chỉ sử dụng thời gian chạy chứ không sử dụng SDK, giúp giảm kích thước đáng kể. Dòng 4 (câu lệnh FROM cuối cùng) phải chỉ định hình ảnh thời gian chạy.NET thay vì SDK để loại bỏ các công cụ xây dựng không cần thiết khỏi hình ảnh sản xuất.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783716826645-04xtiw0t.png",
+    "sourceTitle": "Examcademy AZ-400 Question 227",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/227-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-228",
+    "questionNumber": 228,
+    "text": "Your company is developing a mobile application intended for both Android and iOS platforms.  \n  \nYour team relies on Azure DevOps to manage all work items and release cycles.  \n  \nYou need to recommend a solution that can:  \n  \n- Collect crash reports for issue analysis.  \n- Distribute beta releases to testers.  \n- Gather user feedback on the functionality of new apps.  \n  \nWhat should you include in the recommendation?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the Microsoft Test & Feedback extension"
+      },
+      {
+        "key": "B",
+        "text": "Microsoft Visual Studio App Center integration"
+      },
+      {
+        "key": "C",
+        "text": "Azure Application Insights widgets"
+      },
+      {
+        "key": "D",
+        "text": "Jenkins integration"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Trung tâm ứng dụng Visual Studio cung cấp giải pháp DevOps di động toàn diện tích hợp với quy trình Azure DevOps. Nó cung cấp tính năng Chẩn đoán để tự động báo cáo sự cố và lỗi, Phân phối để cung cấp bản dựng beta cho người thử nghiệm trên Android và iOS cũng như khả năng phản hồi trong ứng dụng/phản hồi của người thử nghiệm beta để thu thập thông tin đầu vào về chức năng ứng dụng mới. Sự kết hợp này trực tiếp đáp ứng cả ba yêu cầu, không nằm trong tiện ích Kiểm tra & Phản hồi (được thiết kế để thử nghiệm khám phá bởi các nhóm nội bộ, không phải phân phối beta trên thiết bị di động), Application Insights (chủ yếu dành cho đo từ xa web/dịch vụ) hoặc tích hợp Jenkins (công cụ CI/CD không liên quan đến báo cáo sự cố di động và phân phối beta).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 228",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/228-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-229",
+    "questionNumber": 229,
+    "text": "You have a large repository named Repo1 that contains a directory named directory1.  \n  \nYou plan to modify files in directory1.  \n  \nYou need to create a clone of Repo1 while minimizing the amount of transferred data.  \n  \nHow should you complete the script? Each value may be used once, multiple times, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "cmd1",
+        "text": "Slot 1:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "cmd2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "git clone"
+      },
+      {
+        "key": "B",
+        "text": "git fetch"
+      },
+      {
+        "key": "C",
+        "text": "git sparse-checkout"
+      },
+      {
+        "key": "D",
+        "text": "git worktree"
+      },
+      {
+        "key": "E",
+        "text": "scalar clone"
+      },
+      {
+        "key": "F",
+        "text": "scalar run"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "git clone"
+      },
+      {
+        "key": "B",
+        "text": "git fetch"
+      },
+      {
+        "key": "C",
+        "text": "git sparse-checkout"
+      },
+      {
+        "key": "D",
+        "text": "git worktree"
+      },
+      {
+        "key": "E",
+        "text": "scalar clone"
+      },
+      {
+        "key": "F",
+        "text": "scalar run"
+      }
+    ],
+    "correctAnswers": [
+      "cmd1=E",
+      "cmd2=C"
+    ],
+    "explanation": "Scalar dành cho các kho lưu trữ lớn và theo mặc định, chỉ sao chép các đối tượng cam kết và cây, làm giảm dữ liệu được truyền. Nó cho phép thanh toán thưa thớt; `git sparse-checkout set directory1` định cấu hình cây làm việc để bao gồm thư mục1 để sửa đổi.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 229",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/229-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-231",
+    "questionNumber": 231,
+    "text": "You plan to onboard 10 new developers.  \n\nYou need to recommend a development environment that meets the following requirements:  \n\n✑ Integrates with GitHub  \n\n✑ Provides integrated debugging tools  \n\n✑ Supports remote workers and hot-desking environments  \n\n✑ Supports developers who use browsers, tablets, and Chromebooks  \n\nWhat should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VS Code"
+      },
+      {
+        "key": "B",
+        "text": "Xamarin Studio"
+      },
+      {
+        "key": "C",
+        "text": "MonoDevelop"
+      },
+      {
+        "key": "D",
+        "text": "Github Codespaces"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "GitHub Codespaces cung cấp môi trường phát triển dựa trên đám mây tích hợp với GitHub, bao gồm các công cụ gỡ lỗi và chạy trong trình duyệt trên mọi thiết bị (bao gồm cả máy tính bảng và Chromebook). Nó hỗ trợ công việc bàn nóng và làm việc từ xa bằng cách cung cấp môi trường phát triển nhất quán có thể truy cập từ mọi nơi.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 231",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/231-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-232",
+    "questionNumber": 232,
+    "text": "Your company has created a new Azure DevOps team, and you plan to use Azure DevOps for sprint planning.  \n  \nYou need to visualize the flow of your work by using an agile methodology.  \n  \nWhich Azure DevOps component should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Kanban boards"
+      },
+      {
+        "key": "B",
+        "text": "sprint planning"
+      },
+      {
+        "key": "C",
+        "text": "delivery plans"
+      },
+      {
+        "key": "D",
+        "text": "portfolio backlogs"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Bảng Kanban trong Azure DevOps được thiết kế đặc biệt để trực quan hóa luồng mục công việc thông qua các cột có thể tùy chỉnh thể hiện các giai đoạn khác nhau của quy trình làm việc, phù hợp với nguyên tắc cốt lõi của phương pháp linh hoạt Kanban là trực quan hóa công việc đang tiến hành. Điều này khác với lập kế hoạch chạy nước rút (tổ chức công việc thành các lần lặp được đóng khung theo thời gian), kế hoạch phân phối (chế độ xem lập lịch giữa các nhóm dựa trên lịch) và tồn đọng danh mục đầu tư (phân nhóm các mục công việc theo cấp độ công việc tồn đọng), không có kế hoạch nào chủ yếu tập trung vào trực quan hóa quy trình làm việc.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 232",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/232-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-234",
+    "questionNumber": 234,
+    "text": "You plan to create a GitHub workflow that will use GitHub Actions. The actions will require a 256-KB secret.  \n  \nYou need to recommend a solution to store and encrypt the secret. The secret value must be accessible only to the workflow. The solution must minimize administrative effort  \n  \nWhat should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Store the secret in the organization-level GitHub secrets."
+      },
+      {
+        "key": "B",
+        "text": "Store the secret in the repository-level GitHub secrets."
+      },
+      {
+        "key": "C",
+        "text": "Encrypt the secret value and store the value in the repository. Store the decryption key in the repository-level GitHub secrets."
+      },
+      {
+        "key": "D",
+        "text": "Encrypt the secret value and store the value in the repository. Store the decryption key in the organization-level GitHub secrets."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "GitHub Actions có giới hạn kích thước bí mật 48-KB tích hợp sẵn. Đối với các bí mật lớn hơn 48 KB, phương pháp được đề xuất là tự mã hóa giá trị bí mật và lưu trữ nó trong kho lưu trữ, sau đó lưu khóa giải mã trong các bí mật GitHub cấp kho lưu trữ. Bằng cách này, bí mật được mã hóa ở trạng thái lưu trữ và chỉ có thể giải mã được bằng quy trình làm việc sử dụng khóa từ bí mật kho lưu trữ, giảm thiểu chi phí quản trị so với quản lý cấp tổ chức.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 234",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/234-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-236",
+    "questionNumber": 236,
+    "text": "You have a project in Azure DevOps.  \n\nYou create the following YAML template named Template1.yml.  \n\nsteps:  \n\n- script: npm install  \n- script: yarn install  \n- script: npm run compile  \n\nYou create the following pipeline named File1.yml.  \n\nparameters:  \n\nusersteps:  \n\n- task: MyTask@1  \n- script: echo Done  \n\nYou need to ensure that Template1.yaml runs before File1.yml.  \n\nHow should you update File1.yml?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "parameters: usersteps: extends: template: template1.yml - task: MyTask@1 - script: echo Done"
+      },
+      {
+        "key": "B",
+        "text": "template: template1.yml parameters: usersteps: - task: MyTask@1 - script: echo Done"
+      },
+      {
+        "key": "C",
+        "text": "extends: template: templatel.yml parameters: usersteps: - task: MyTask@1 - script: echo Done"
+      },
+      {
+        "key": "D",
+        "text": "parameters: usersteps: - template: templatel.yml - task: MyTask@1 - script: echo Done"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "File1.yml phải sử dụng từ khóa `extends` cấp cao nhất để buộc template1.yml chạy dưới dạng mẫu kiểm soát của đường dẫn, với các tham số chuyển danh sách `usersteps` dành riêng cho người gọi trở lại mẫu. Tham chiếu template1.yml dưới dạng bước `template:` thông thường (không có `extends`) chỉ chèn các bước và không thể buộc các bước của mẫu thực thi trước hoặc bao bọc các bước riêng của đường dẫn gọi.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 236",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/236-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-237",
+    "questionNumber": 237,
+    "text": "You have an app named App1 and a Log Analytics workspace named Workspace1. Workspace1 contains a table named AppEvents, and App1 writes logs to Workspace1.  \n  \nYou need to query the AppEvents table. The solution must meet these requirements:  \n  \n- Query only rows where the **Name** column starts with \"Clicked Create New Ticket.\"  \n- Calculate daily clicks per user.  \n- Return the top 10 users by their number of clicks on any day.  \n- Sort the results by the highest click count.  \n- Exclude users with fewer than three daily clicks.  \n  \nIn which order should the query statements be arranged?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "step4",
+        "text": "Slot 4:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "step5",
+        "text": "Slot 5:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "| summarize NumberOfClicks = count() by bin(TimeGenerated, 1d), UserId"
+      },
+      {
+        "key": "B",
+        "text": "AppEvents"
+      },
+      {
+        "key": "C",
+        "text": "| top 10 by NumberOfClicks desc"
+      },
+      {
+        "key": "D",
+        "text": "| where NumberOfClicks >= 3"
+      },
+      {
+        "key": "E",
+        "text": "| where Name startswith \"Clicked Create New Ticket"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "| summarize NumberOfClicks = count() by bin(TimeGenerated, 1d), UserId"
+      },
+      {
+        "key": "B",
+        "text": "AppEvents"
+      },
+      {
+        "key": "C",
+        "text": "| top 10 by NumberOfClicks desc"
+      },
+      {
+        "key": "D",
+        "text": "| where NumberOfClicks >= 3"
+      },
+      {
+        "key": "E",
+        "text": "| where Name startswith \"Clicked Create New Ticket"
+      }
+    ],
+    "correctAnswers": [
+      "step1=B",
+      "step2=E",
+      "step3=A",
+      "step4=D",
+      "step5=C"
+    ],
+    "explanation": "Kusto lọc các hàng nguồn bằng `where` trước khi `summarize` tổng hợp chúng. Việc nhóm `count()` theo `bin(TimeGenerated, 1d)` và `UserId` sẽ tạo ra tổng số lần nhấp chuột hàng ngày của mỗi người dùng. Việc lọc tổng hợp đó thành `NumberOfClicks >= 3` loại trừ các tổng thấp hơn và `top 10 by NumberOfClicks desc` trả về 10 tổng lớn nhất theo thứ tự giảm dần.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 237",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/237-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.014Z"
+  },
+  {
+    "id": "az400-238",
+    "questionNumber": 238,
+    "text": "Your company has a project in Azure DevOps.  \n  \nYou plan to create a release pipeline that will deploy resources by using Azure Resource Manager templates. The templates will reference secrets stored in Azure Key Vault.  \n  \nYou need to recommend a solution for accessing the secrets stored in the key vault during deployments. The solution must use the principle of least privilege.  \n  \nWhat should you include in the recommendation? Each configuration may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Enable key vaults for template deployment by using:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot2",
+        "text": "Restrict access to the secrets in Key Vault by using:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "A Key Vault access policy"
+      },
+      {
+        "key": "B",
+        "text": "A Key Vault advanced access policy"
+      },
+      {
+        "key": "C",
+        "text": "RBAC"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "A Key Vault access policy"
+      },
+      {
+        "key": "B",
+        "text": "A Key Vault advanced access policy"
+      },
+      {
+        "key": "C",
+        "text": "RBAC"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=B",
+      "slot2=A"
+    ],
+    "explanation": "Để cho phép Azure Resource Manager truy xuất các bí mật từ kho khóa trong quá trình triển khai mẫu, thuộc tính EnableForTemplateDeployment của vault phải được đặt thành true. Cài đặt này được hiển thị trong cổng Azure dưới dạng hộp kiểm 'Chính sách truy cập nâng cao' ('Cho phép truy cập vào Trình quản lý tài nguyên Azure để triển khai mẫu') và có thể được đặt thông qua Set-AzKeyVaultAccessPolicy -EnabledForTemplateDeployment hoặc az keyvault update --enabled-for-template-deployment true. Sau khi triển khai mẫu được bật trên vault, quyền truy cập vào các bí mật riêng lẻ vẫn được quản lý riêng. Để tuân theo đặc quyền tối thiểu, bạn chỉ cấp các quyền cụ thể cần thiết (thường chỉ Nhận bí mật) cho người dùng, nhóm cụ thể hoặc service principal thực hiện triển khai bằng cách định cấu hình chính sách truy cập Key Vault tiêu chuẩn (az keyvault set-policy / Set-AzKeyVaultAccessPolicy -PermissionsToSecrets), thay vì cấp các quyền quản lý Key Vault rộng rãi.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 238",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/238-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-239",
+    "questionNumber": 239,
+    "text": "You manage a project by using Azure Boards. You manage the project code by using GitHub.  \n  \nYou have three work items that have IDs of 456, 457, and 458.  \n  \nYou need to create a pull request that will be linked to all the work items. The solution must set the state of work item 456 to done.  \n  \nWhat should you add to the commit message?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Done #456, #457, #458"
+      },
+      {
+        "key": "B",
+        "text": "#AB456, #AB457, #AB458"
+      },
+      {
+        "key": "C",
+        "text": "#456, #457, #458Completed #456"
+      },
+      {
+        "key": "D",
+        "text": "#AB456, #AB457, #AB458Completed #AB456"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Tích hợp Azure Boards với GitHub sử dụng tiền tố AB# để tham chiếu các mục công việc. Để liên kết nhiều mục công việc (456, 457, 458) và đặt một mục là hoàn thành, hãy bao gồm cả tham chiếu liên kết (#AB456, #AB457, #AB458) và từ khóa hoàn thành (Đã hoàn thành #AB456). Cú pháp này xử lý cả hai yêu cầu trong một thông báo cam kết.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 239",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/239-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-240",
+    "questionNumber": 240,
+    "text": "You manage a project by using Azure Boards. You manage the project code by using GitHub.  \n  \nYou have three work items that have IDs of 456, 457, and 458.  \n  \nYou need to create a pull request that will be linked to all the work items. The solution must set the state of work item 456 to done.  \n  \nWhat should you add to the commit message?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Done #456, #457, #458"
+      },
+      {
+        "key": "B",
+        "text": "Fixes #456, #457, #458"
+      },
+      {
+        "key": "C",
+        "text": "Fixes #AB456, #A8457, #A8458"
+      },
+      {
+        "key": "D",
+        "text": "#AB456, #AB457, #AB458Completed #AB456"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Khi mã tồn tại trong GitHub nhưng các mục công việc lại tồn tại trong Azure Boards, một thông báo cam kết hoặc PR sẽ liên kết nhiều mục công việc bằng cách sử dụng tiền tố AB# và chỉ áp dụng từ khóa giải quyết cho ID đầu tiên (ví dụ: \"Sửa AB#456, AB#457, AB#458\") chỉ đóng mục đó trong khi vẫn liên kết các mục khác—phù hợp với mục đích của tùy chọn này bất chấp sự không nhất quán về mặt đánh máy của nó. Các lựa chọn còn lại hoặc bỏ qua hoàn toàn tiền tố AB bắt buộc hoặc cắt xén cú pháp đến mức tạo ra liên kết hợp lệ no.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 240",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/240-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-241",
+    "questionNumber": 241,
+    "text": "You have an Azure subscription containing an Azure DevOps project named Project1. Three Azure AD users require access to Project1 as shown below.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784186883925-kuqw1egi.png)  \n  \nYou need to ensure each user has the appropriate permissions, applying the principle of least privilege. Drag the appropriate permission group to each user. A permission group may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "user1",
+        "text": "User1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "user2",
+        "text": "User2:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "user3",
+        "text": "User3:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Build Administrators"
+      },
+      {
+        "key": "B",
+        "text": "Contributors"
+      },
+      {
+        "key": "C",
+        "text": "Project Administrators"
+      },
+      {
+        "key": "D",
+        "text": "Readers"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Build Administrators"
+      },
+      {
+        "key": "B",
+        "text": "Contributors"
+      },
+      {
+        "key": "C",
+        "text": "Project Administrators"
+      },
+      {
+        "key": "D",
+        "text": "Readers"
+      }
+    ],
+    "correctAnswers": [
+      "user1=D",
+      "user2=C",
+      "user3=B"
+    ],
+    "explanation": "Các nhóm bảo mật mặc định của Azure DevOps cấp quyền theo cấp độ: Người đọc chỉ có thể xem/đọc các kho lưu trữ, đáp ứng nhu cầu của Người dùng1 (Người quản lý dự án) để xem các kho lưu trữ với ít đặc quyền nhất. Quản trị viên dự án có thể tạo kho lưu trữ và quản lý bảo mật/quyền trong dự án, điều này được yêu cầu đối với Người dùng2 (Trưởng nhóm phát triển), người phải tạo kho lưu trữ và quản lý quyền—các khả năng không có sẵn cho Người đóng góp. Những người đóng góp có quyền mặc định để tạo nhánh, tạo thẻ và đóng góp mã cho các kho lưu trữ hiện có, đáp ứng yêu cầu của Người dùng3 (Nhà phát triển) mà không cấp các quyền quản trị không cần thiết.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784186883925-kuqw1egi.png",
+    "sourceTitle": "Examcademy AZ-400 Question 241",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/241-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-242",
+    "questionNumber": 242,
+    "text": "You have a project in Azure DevOps. You need to associate an automated test with a test case. Which three actions should you perform in sequence? Move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Debug the project"
+      },
+      {
+        "key": "B",
+        "text": "Create a test project"
+      },
+      {
+        "key": "C",
+        "text": "Create a work item"
+      },
+      {
+        "key": "D",
+        "text": "Check in a project to the Azure DevOps repository"
+      },
+      {
+        "key": "E",
+        "text": "Add the automated test to a build pipeline"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Debug the project"
+      },
+      {
+        "key": "B",
+        "text": "Create a test project"
+      },
+      {
+        "key": "C",
+        "text": "Create a work item"
+      },
+      {
+        "key": "D",
+        "text": "Check in a project to the Azure DevOps repository"
+      },
+      {
+        "key": "E",
+        "text": "Add the automated test to a build pipeline"
+      }
+    ],
+    "correctAnswers": [
+      "1=B",
+      "2=D",
+      "3=E"
+    ],
+    "explanation": "Để liên kết kiểm thử tự động với một trường hợp kiểm thử trong Kế hoạch kiểm thử Azure, trước tiên bạn phải tạo một dự án kiểm thử chứa các kiểm thử tự động (sử dụng khung được hỗ trợ như MSTest, NUnit, xUnit, v.v.). Sau đó, bạn kiểm tra dự án thử nghiệm đó vào Azure Repos (hoặc kho lưu trữ GitHub được kết nối) để nó nằm trong tầm kiểm soát nguồn. Cuối cùng, bạn tạo/đặt cấu hình quy trình xây dựng cho dự án bao gồm và chạy các thử nghiệm tự động — thử nghiệm phải thực thi ít nhất một lần thông qua nhiệm vụ Kiểm tra Visual Studio hoặc nhiệm vụ Xuất bản kết quả kiểm tra trước khi có sẵn để liên kết. Chỉ sau ba bước này, bạn mới có thể liên kết phương pháp thử nghiệm tự động với một trường hợp thử nghiệm, từ Test Explorer của Visual Studio hoặc từ cổng web Azure DevOps (Pipelines > tab Tests > Associate Test Case hoặc từ tab Associated Automation của trường hợp thử nghiệm).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 242",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/242-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-243",
+    "questionNumber": 243,
+    "text": "Your company is developing a new solution using Java. Currently, the company uses a SonarQube server to analyze the code of its .NET solutions. You need to analyze and monitor the code quality of the Java solution. Which task type should you add to the build pipeline?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Gradle"
+      },
+      {
+        "key": "B",
+        "text": "CocoaPods"
+      },
+      {
+        "key": "C",
+        "text": "Grunt"
+      },
+      {
+        "key": "D",
+        "text": "Gulp"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Gradle là một công cụ tự động hóa bản dựng Java và tác vụ xây dựng Gradle trong Azure Pipelines tích hợp trực tiếp với SonarQube để phân tích mã tĩnh của các dự án Java (sử dụng plugin SonarQube Scanner cho Gradle, thường được ghép nối với các tác vụ SonarQube 'Chuẩn bị phân tích' và 'Chạy phân tích mã'). CocoaPods quản lý các phần phụ thuộc cho các dự án iOS (Swift/Objective-C), còn Grunt và Gulp là các trình chạy tác vụ JavaScript để tự động hóa giao diện người dùng — không cái nào trong số này áp dụng cho việc xây dựng hoặc phân tích mã Java, khiến Gradle trở thành loại tác vụ chính xác để thêm vào quy trình.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 243",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/243-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-244",
+    "questionNumber": 244,
+    "text": "You use Git for source control.  \n  \nYou need to commit a 3-GB ZIP file that contains virtual machines used for testing. The solution must meet the following requirements:  \n  \n• The file must be versioned.  \n\n• The file must be associated with the corresponding code commits.  \n  \nWhich two actions should you include in the solution? Each correct answer presents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Install the git-fat extension and associate the extension to ZIP files."
+      },
+      {
+        "key": "B",
+        "text": "Install the Git LFS extension and associate the extension to ZIP files."
+      },
+      {
+        "key": "C",
+        "text": "Install the git-stash extension and associate the extension to ZIP files."
+      },
+      {
+        "key": "D",
+        "text": "Use GZip to compress the file before committing the file."
+      },
+      {
+        "key": "E",
+        "text": "Store files in Azure Storage and enable blob versions."
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "E"
+    ],
+    "explanation": "Cài đặt Git LFS và liên kết nó với phần mở rộng ZIP chỉ giữ một tệp con trỏ nhỏ trong kho Git trong khi tệp nhị phân lớn thực tế được lưu trữ và tạo phiên bản bên ngoài kho lưu trữ, đáp ứng yêu cầu tệp luôn được gắn với mã cam kết tương ứng mà không làm đầy kho lưu trữ. Việc ghép nối tính năng này với phiên bản blob Azure Storage sẽ cung cấp cho tệp 3 GB lịch sử phiên bản chính hãng, chi phí thấp, mà Git đơn giản (ngay cả chỉ với LFS) không cung cấp hiệu quả cho các tệp nhị phân rất lớn. **Tìm hiểu thêm:** [Git Large File Storage](https://git-lfs.com/)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 244",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/244-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-245",
+    "questionNumber": 245,
+    "text": "Your company has a hybrid cloud between Azure and Azure Stack.  \n\nThe company uses Azure DevOps for its full CI/CD pipelines. Some applications are built by using Erlang and Hack.  \n\nYou need to ensure that Erlang and Hack are supported as part of the build strategy across the hybrid cloud. The solution must minimize management overhead.  \n\nWhat should you use to execute the build pipeline?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a Microsoft-hosted agent"
+      },
+      {
+        "key": "B",
+        "text": "Azure DevOps self-hosted agents on Azure DevTest Labs virtual machines."
+      },
+      {
+        "key": "C",
+        "text": "Azure DevOps self-hosted agents on Hyper-V virtual machines"
+      },
+      {
+        "key": "D",
+        "text": "Azure DevOps self-hosted agents on virtual machines that run on Azure Stack"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Các ngôn ngữ tùy chỉnh như Erlang và Hack yêu cầu môi trường xây dựng được định cấu hình với thời gian chạy ngôn ngữ đó. Tác nhân do Microsoft lưu trữ (A) chỉ hỗ trợ các ngôn ngữ tiêu chuẩn và DevTest Labs (B) hoặc Hyper-V (C) không giải quyết được yêu cầu về đám mây lai. Các tác nhân tự lưu trữ (D) của Azure Stack chạy trong môi trường tại chỗ/hỗn hợp nơi các công cụ Erlang và Hack được cài đặt, cho phép xây dựng trên cơ sở hạ tầng đám mây lai.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 245",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/245-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-247",
+    "questionNumber": 247,
+    "text": "You are querying logs by using KQL.  \n  \nRun the query shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1785752188952-p9k00urm.png)",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "`project` giữ lại năm cột được chỉ định và `extend` nối thêm `Duration`, tạo ra sáu cột đầu ra. Trong KQL, việc trừ `StartTime` khỏi `EndTime` (cả hai giá trị ngày giờ) sẽ trả về một khoảng thời gian.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785752188952-p9k00urm.png",
+    "sourceTitle": "Examcademy AZ-400 Question 247",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/247-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-248",
+    "questionNumber": 248,
+    "text": "You use Agile process methodologies and Azure Boards in Azure DevOps.  \n  \nYou import the work items shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784204511036-st43g18v.png)  \n  \nYou need to categorize the items. Each state may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "item1",
+        "text": "Item1:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "item2",
+        "text": "Item2:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "item3",
+        "text": "Item3:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Completed"
+      },
+      {
+        "key": "B",
+        "text": "In Progress"
+      },
+      {
+        "key": "C",
+        "text": "Proposed"
+      },
+      {
+        "key": "D",
+        "text": "Removed"
+      },
+      {
+        "key": "E",
+        "text": "Resolved"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Completed"
+      },
+      {
+        "key": "B",
+        "text": "In Progress"
+      },
+      {
+        "key": "C",
+        "text": "Proposed"
+      },
+      {
+        "key": "D",
+        "text": "Removed"
+      },
+      {
+        "key": "E",
+        "text": "Resolved"
+      }
+    ],
+    "correctAnswers": [
+      "item1=E",
+      "item2=C",
+      "item3=A"
+    ],
+    "explanation": "Trong quy trình Azure DevOps Agile, Đề xuất dành cho công việc chưa bắt đầu, Đã giải quyết dành cho công việc có giải pháp đã triển khai đang chờ xác minh và Đã hoàn thành dành cho công việc đã hoàn thành. Các mục đã Giải quyết và Đề xuất vẫn còn trong hồ sơ tồn đọng, trong khi các mục Đã hoàn thành có no dài hơn trong hồ sơ tồn đọng và được hiển thị trên bảng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784204511036-st43g18v.png",
+    "sourceTitle": "Examcademy AZ-400 Question 248",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/248-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-249",
+    "questionNumber": 249,
+    "text": "You manage projects by using Azure Boards.  \n  \nYou have a current work item name itemA that is dependant on a work item named itemB.  \n  \nYou need to define the dependency for itemA.  \n  \nWhat should you do in the web portal for Azure DevOps?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a Parent link to the user story of itemA."
+      },
+      {
+        "key": "B",
+        "text": "From Backlogs, open the context menu, select Add link, and then select itemA. Set Link type to References and add the ID of itemB."
+      },
+      {
+        "key": "C",
+        "text": "From itemA, open the Links tab, and then select Add link. Set Link type to References and add the ID of itemB."
+      },
+      {
+        "key": "D",
+        "text": "From itemA, open the Links tab, and then select Add link. Set Link type to Successor and add the ID of itemB."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Bảng Azure mô hình hóa sự phụ thuộc giữa hai mục công việc bằng cách sử dụng cặp loại liên kết Người tiền nhiệm-Người kế nhiệm định hướng, được thêm từ tab Liên kết của mục thông qua Thêm liên kết. \"Tham khảo\" không phải là loại liên kết phụ thuộc được công nhận trong Bảng Azure (nó được sử dụng cho các tham số thử nghiệm được chia sẻ), do đó, trong số các tùy chọn đã cho, chỉ ghép nối Người kế nhiệm/Người tiền nhiệm mới thực sự thiết lập mối quan hệ phụ thuộc được theo dõi giữa itemA và itemB. **Tìm hiểu thêm:** [Link type reference — Successor-Predecessor](https://learn.microsoft.com/en-us/azure/devops/boards/queries/link-type-reference?view=azure-devops)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 249",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/249-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-250",
+    "questionNumber": 250,
+    "text": "You manage an Azure DevOps project that contains package feeds.  \n  \nYou need to make sure developers are able to unlist and deprecate packages, while adhering to the principle of least privilege.  \n  \nWhich access level should you assign to the developers?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Collaborator"
+      },
+      {
+        "key": "B",
+        "text": "Contributor"
+      },
+      {
+        "key": "C",
+        "text": "Owner"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Trong Azure Artifacts, vai trò Người đóng góp trên nguồn cấp dữ liệu cấp khả năng đẩy, hủy niêm yết và ngừng sử dụng các gói, đây chính xác là quyền cần thiết ở đây. Vai trò Người đọc và Cộng tác viên không bao gồm quyền hủy niêm yết hoặc ngừng sử dụng gói—Cộng tác viên chỉ thêm khả năng lưu gói từ các nguồn ngược dòng. Vai trò Chủ sở hữu cũng bao gồm những khả năng này nhưng cũng cấp toàn quyền kiểm soát quản trị (xóa nguồn cấp dữ liệu, thay đổi cài đặt nguồn cấp dữ liệu, quản lý quyền), vượt quá những gì được yêu cầu và vi phạm nguyên tắc đặc quyền tối thiểu. Vì vậy, Contributor là vai trò tối thiểu đáp ứng được yêu cầu.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 250",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/250-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-251",
+    "questionNumber": 251,
+    "text": "You have an Azure web app that is deployed by using Azure Pipelines.  \n  \nYou need to ensure that when a new version of the app is deployed to production, you can roll back to the previous version. The solution must meet the following requirements:  \n  \n• Minimize downtime during the deployment.  \n\n• Minimize the time it takes for the rollback.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a single web app and two deployment slots"
+      },
+      {
+        "key": "B",
+        "text": "a single web app and two deployment pipelines"
+      },
+      {
+        "key": "C",
+        "text": "two web apps and an Azure Standard Load Balancer"
+      },
+      {
+        "key": "D",
+        "text": "two web apps and an Azure Traffic Manager instance"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Các vị trí triển khai Azure App Service cho phép bạn triển khai phiên bản mới vào một vị trí chạy thử và sau đó thực hiện hoán đổi với quá trình sản xuất, giảm thiểu thời gian ngừng hoạt động. Nếu sự cố xảy ra, bạn có thể nhanh chóng quay lại phiên bản trước đó để khôi phục nhanh chóng. Cách tiếp cận này chỉ yêu cầu một ứng dụng web có hai vị trí, giúp tiết kiệm chi phí trong khi đáp ứng cả hai yêu cầu.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 251",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/251-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-252",
+    "questionNumber": 252,
+    "text": "Which branching strategy should you recommend for the investment planning applications suite?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "release isolation"
+      },
+      {
+        "key": "B",
+        "text": "main only"
+      },
+      {
+        "key": "C",
+        "text": "development isolation"
+      },
+      {
+        "key": "D",
+        "text": "feature isolation"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Cách ly tính năng là chiến lược phân nhánh trong đó một hoặc nhiều nhánh tính năng được tạo ra khỏi nhánh chính (hoặc nhánh phát triển) đặc biệt để phát triển một phần chức năng mới tách biệt với phần còn lại của công việc của nhóm. Điều này đáp ứng yêu cầu kỹ thuật đã nêu rằng chức năng mới sẽ được phát triển riêng biệt, vì những thay đổi được thực hiện trong nhánh tính năng không ảnh hưởng đến các nhà phát triển khác cho đến khi tính năng này hoàn tất và được hợp nhất trở lại, cho phép quản lý xung đột và lỗi độc lập với công việc đang diễn ra trong nhánh chính hoặc các nhánh khác. Xem hướng dẫn Azure Repos của Microsoft về chiến lược phân nhánh và cách ly tính năng để biết thêm chi tiết.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 252",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/252-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-253",
+    "questionNumber": 253,
+    "text": "Your company has an Azure DevOps project that produces Node Package Manager (npm) packages. Multiple projects consume the packages.  \n  \nYou need to minimize the amount of disk space used by older packages in Azure Artifacts.  \n  \nWhat should you modify?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the retention settings of the project’s release"
+      },
+      {
+        "key": "B",
+        "text": "the retention settings of the project’s pipeline"
+      },
+      {
+        "key": "C",
+        "text": "the retention settings of the project’s tests"
+      },
+      {
+        "key": "D",
+        "text": "the retention settings of the company pipeline"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Chính sách lưu giữ của Azure Pipelines, được đặt cấu hình ở cấp dự án, sẽ tự động xóa các thành phần lạ của bản dựng cũ và các gói liên quan để giải phóng dung lượng ổ đĩa. Mặc dù nguồn cấp dữ liệu gói có khả năng xóa riêng biệt nhưng cài đặt lưu giữ quy trình là cơ chế chính để giảm thiểu mức sử dụng ổ đĩa của các gói npm liên quan đến bản dựng trong Azure Artifacts.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 253",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/253-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-254",
+    "questionNumber": 254,
+    "text": "Your organization uses Azure DevOps for Git source control. You have a project named Contoso App containing the following repositories:  \n  \n- https://dev.azure.com/contoso/contoso-app/core-api  \n- https://dev.azure.com/contoso/contoso-app/core-spa  \n- https://dev.azure.com/contoso/contoso-app/core-db  \n  \nYou need to ensure that developers receive Slack notifications when pull requests are created for Contoso App. What command should you run in Slack?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Ứng dụng tích hợp Azure Boards/Azure Repos Slack sử dụng '/azrepos subscribe <URL>' để tạo đăng ký cho các sự kiện như tạo, cập nhật và hoàn thành yêu cầu kéo. Việc cung cấp URL cấp dự án (https://dev.azure.com/contoso/contoso-app) sẽ xác định phạm vi đăng ký cho tất cả các kho lưu trữ trong dự án Ứng dụng Contoso, đảm bảo kích hoạt thông báo cho các yêu cầu kéo được tạo trong core-api, core-spa và core-db. Việc cung cấp URL dành riêng cho kho lưu trữ sẽ giới hạn thông báo chỉ ở một kho lưu trữ đó, điều này sẽ không đáp ứng yêu cầu bao trùm toàn bộ dự án.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 254",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/254-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-255",
+    "questionNumber": 255,
+    "text": "You have an Azure subscription that includes Azure DevOps build pipelines.  \n  \nYou need to implement pipeline caching by using the cache task.  \n  \nHow should you complete the YAML definition?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Cache@2 sử dụng `key` làm mã định danh bộ đệm và `path` làm thư mục để lưu vào bộ đệm. Khóa có thể được phân đoạn bằng `|`, do đó, tên Sợi, hệ điều hành tác nhân và tệp `yarn.lock` tạo thành khóa thích hợp; `$(YARN_CACHE_FOLDER)` cung cấp đường dẫn thư mục.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 255",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/255-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-256",
+    "questionNumber": 256,
+    "text": "You have a private distribution group that includes both provisioned and unprovisioned devices.  \n  \nYou need to distribute a new iOS application to this distribution group by using Microsoft Visual Studio App Center.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Request the Apple ID associated with the user of each device."
+      },
+      {
+        "key": "B",
+        "text": "Register the devices on the Apple Developer portal."
+      },
+      {
+        "key": "C",
+        "text": "Create an active subscription in App Center Test."
+      },
+      {
+        "key": "D",
+        "text": "Add the device owner to the organization in App Center."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Phân phối ứng dụng đặc biệt trên iOS yêu cầu UDID của mọi thiết bị mục tiêu phải được đưa vào hồ sơ cung cấp của ứng dụng. Các thiết bị chưa được cung cấp trước tiên phải được đăng ký trên cổng thông tin Nhà phát triển Apple để UDID của chúng có thể được thêm vào hồ sơ cung cấp; chỉ khi đó App Center mới có thể cài đặt thành công ứng dụng trên các thiết bị đó. Đây là yêu cầu cơ bản của mô hình phân phối đặc biệt của Apple, độc lập với chính Trung tâm ứng dụng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 256",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/256-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-257",
+    "questionNumber": 257,
+    "text": "You are configuring an Azure DevOps deployment pipeline. The deployed application will authenticate to a web service by using a secret stored in an Azure key vault.  \n  \nYou need to use the secret in the deployment pipeline.  \n  \nWhich three actions should you perform in sequence? Move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a service principal in Azure Active Directory (Azure AD)."
+      },
+      {
+        "key": "B",
+        "text": "Add an app registration in Azure Active Directory (Azure AD)."
+      },
+      {
+        "key": "C",
+        "text": "Configure an access policy in the key vault."
+      },
+      {
+        "key": "D",
+        "text": "Generate a self-signed certificate."
+      },
+      {
+        "key": "E",
+        "text": "Add an Azure Resource Manager service connection to the pipeline."
+      },
+      {
+        "key": "F",
+        "text": "Export a certificate from the key vault."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create a service principal in Azure Active Directory (Azure AD)."
+      },
+      {
+        "key": "B",
+        "text": "Add an app registration in Azure Active Directory (Azure AD)."
+      },
+      {
+        "key": "C",
+        "text": "Configure an access policy in the key vault."
+      },
+      {
+        "key": "D",
+        "text": "Generate a self-signed certificate."
+      },
+      {
+        "key": "E",
+        "text": "Add an Azure Resource Manager service connection to the pipeline."
+      },
+      {
+        "key": "F",
+        "text": "Export a certificate from the key vault."
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=C",
+      "3=E"
+    ],
+    "explanation": "Việc sử dụng bí mật Key Vault từ quy trình Azure DevOps yêu cầu danh tính Azure AD mà quy trình có thể sử dụng, quyền cho danh tính đó đọc bí mật và cách để quy trình xác thực là danh tính đó. Đầu tiên, tạo service principal trong Azure AD để thể hiện danh tính của quy trình. Thứ hai, định cấu hình chính sách truy cập trên kho khóa cấp cho service principal quyền Nhận/Liệt kê các bí mật để được phép truy xuất chúng. Thứ ba, thêm kết nối dịch vụ Azure Resource Manager trong đường dẫn (được hỗ trợ bởi service principal) để các tác vụ như tác vụ Azure Key Vault có thể xác thực và đưa bí mật vào đường dẫn tại thời điểm triển khai. Tạo đăng ký ứng dụng, tạo chứng chỉ tự ký hoặc xuất chứng chỉ từ vault không phải là các bước bắt buộc trong quy trình làm việc tiêu chuẩn này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 257",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/257-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-258",
+    "questionNumber": 258,
+    "text": "Your company is building an iOS application, and every user of the app has a device that belongs to a private distribution group configured in Microsoft Visual Studio App Center.  \n  \nYou are preparing to distribute a new release of the app through App Center.  \n  \nYou need to determine which certificate file you must upload to App Center in order to distribute this new release.  \n  \nWhich file type should you upload to App Center?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": ".cer"
+      },
+      {
+        "key": "B",
+        "text": ".pfx"
+      },
+      {
+        "key": "C",
+        "text": ".p12"
+      },
+      {
+        "key": "D",
+        "text": ".pvk"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Quá trình tự động cấp phép thiết bị và phân phối iOS của Trung tâm ứng dụng sẽ ký lại ứng dụng cho các thiết bị đã đăng ký trong nhóm phân phối, yêu cầu chứng chỉ phân phối cùng với khóa riêng của nó. Trên macOS, cặp khóa và chứng chỉ này được xuất từ ​​Chuỗi khóa truy cập dưới dạng vùng chứa PKCS#12 bằng cách sử dụng phần mở rộng tệp.p12, đây là loại tệp Trung tâm ứng dụng yêu cầu bạn tải lên để quản lý bản phát hành iOS. Tệp.cer chỉ chứa chứng chỉ công khai không có khóa riêng tư,.pfx là tiện ích mở rộng PKCS#12 kiểu Windows không được sử dụng trong hệ sinh thái Apple và.pvk là định dạng tệp khóa riêng tư riêng biệt được sử dụng với các công cụ ký mã của Microsoft, không có công cụ nào trong số đó được Trung tâm ứng dụng chấp nhận cho mục đích này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 258",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/258-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-259",
+    "questionNumber": 259,
+    "text": "You are building a pipeline in Azure Pipelines. Several of the tests you have defined may fail because of the third-party applications they depend on. You need to make sure the build pipeline still completes successfully even when those third-party applications are unavailable.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure the build pipeline to use parallel jobs"
+      },
+      {
+        "key": "B",
+        "text": "Configure flaky tests"
+      },
+      {
+        "key": "C",
+        "text": "Increase the test pass percentage"
+      },
+      {
+        "key": "D",
+        "text": "Add the Requirements quality widget to your dashboard"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Azure DevOps cung cấp tính năng quản lý thử nghiệm không ổn định (được bật trong Cài đặt dự án > Quản lý thử nghiệm) đặc biệt để xử lý các thử nghiệm tạo ra kết quả đạt/không đạt không nhất quán do các yếu tố bên ngoài chính mã, chẳng hạn như các phần phụ thuộc của bên thứ ba không đáng tin cậy hoặc không khả dụng. Sau khi phát hiện hoặc đánh dấu thử nghiệm là không ổn định theo cách thủ công, bạn có thể định cấu hình các tùy chọn kiểm tra không ổn định để loại trừ các lỗi kiểm tra không ổn định khỏi phần tóm tắt/tỷ lệ vượt qua thử nghiệm và lỗi được ngăn chặn, cho phép quy trình tổng thể hoàn thành thành công thay vì bị đánh dấu là không thành công. Điều này trực tiếp giải quyết các lỗi do không có sẵn ứng dụng của bên thứ ba, không giống như các công việc song song (chỉ ảnh hưởng đến tốc độ thực thi/đồng thời), nâng cao ngưỡng phần trăm vượt qua (là cài đặt dung sai cùn, trên toàn quy trình không gắn với việc xác định các thử nghiệm không đáng tin cậy cụ thể) hoặc tiện ích bảng điều khiển chất lượng Yêu cầu (hình ảnh báo cáo với hiệu ứng no đối với kết quả quy trình).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 259",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/259-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-261",
+    "questionNumber": 261,
+    "text": "You are integrating an Azure Boards project and a GitHub repository.  \n  \nYou need to authenticate Azure Boards to GitHub.  \n  \nWhich two authentication methods can you use? Each correct answer presents a complete solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a publisher certificate"
+      },
+      {
+        "key": "B",
+        "text": "a trusted root certificate"
+      },
+      {
+        "key": "C",
+        "text": "Microsoft Azure Active Directory (Azure AD), part of Microsoft Entra"
+      },
+      {
+        "key": "D",
+        "text": "GitHub user credentials"
+      },
+      {
+        "key": "E",
+        "text": "a personal access token (PAT)"
+      }
+    ],
+    "correctAnswers": [
+      "D",
+      "E"
+    ],
+    "explanation": "Azure Boards tích hợp với GitHub bằng hai phương thức xác thực chính: thông tin xác thực người dùng GitHub hoặc mã thông báo truy cập cá nhân (PAT). Cả hai đều cung cấp các giải pháp hoàn chỉnh để xác thực Bảng Azure cho GitHub. Chứng chỉ nhà xuất bản, chứng chỉ gốc đáng tin cậy và Azure AD không được sử dụng để xác thực GitHub trong bối cảnh tích hợp này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 261",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/261-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-262",
+    "questionNumber": 262,
+    "text": "You must satisfy the technical requirements for controlling access to Azure DevOps.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Multi-Factor Authentication (MFA)"
+      },
+      {
+        "key": "B",
+        "text": "on-premises firewall rules"
+      },
+      {
+        "key": "C",
+        "text": "conditional access policies in Azure AD"
+      },
+      {
+        "key": "D",
+        "text": "Azure role-based access control (Azure RBAC)"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Chính sách Truy cập có điều kiện trong Azure AD/Microsoft Entra ID kiểm soát quyền truy cập vào Azure DevOps bằng cách đánh giá các điều kiện như tư cách thành viên nhóm hoặc người dùng, vị trí mạng, tuân thủ thiết bị và xác thực đa yếu tố, đồng thời có thể cấp hoặc chặn quyền truy cập tương ứng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 262",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/262-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-263",
+    "questionNumber": 263,
+    "text": "You are planning to provision a self-hosted Linux agent.  \n  \nWhich authentication mechanism should you use to register the self-hosted agent?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "personal access token (PAT)"
+      },
+      {
+        "key": "B",
+        "text": "SSH key"
+      },
+      {
+        "key": "C",
+        "text": "Alternate credentials"
+      },
+      {
+        "key": "D",
+        "text": "certificate"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Khi bạn định cấu hình một tác nhân tự lưu trữ trên Linux bằng tập lệnh config.sh, Azure Pipelines yêu cầu Mã thông báo truy cập cá nhân (PAT) để xác thực và đăng ký tác nhân với tổ chức Azure DevOps của bạn. Tài liệu cấu hình tác nhân chính thức của Microsoft liệt kê PAT là phương thức xác thực được hỗ trợ cho các tác nhân Linux và macOS (Thông tin xác thực thay thế và xác thực thương lượng/tích hợp Windows chỉ áp dụng cho các tác nhân dựa trên Windows và khóa/chứng chỉ SSH không liên quan đến đăng ký tác nhân).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 263",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/263-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-264",
+    "questionNumber": 264,
+    "text": "You manage projects by using Azure Boards and manage project code by using GitHub.  \n  \nYou have a work item with the ID **123**.  \n  \nYou need to link work item 123 to a new pull request.  \n  \nWhat are two ways to accomplish this goal? Each correct answer provides a complete solution.  \n  \n**NOTE:** Each correct solution is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "In the Development section for work item 123, select Add link, and then enter the URL of the pull request."
+      },
+      {
+        "key": "B",
+        "text": "To the description of the pull request, add #AB123."
+      },
+      {
+        "key": "C",
+        "text": "To work item 123 add a comment that includes the URL of the pull request."
+      },
+      {
+        "key": "D",
+        "text": "From work item 123, open the Links tab, select Add link, select Existing item, and then enter the URL of the commit."
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "B"
+    ],
+    "explanation": "Azure Boards hỗ trợ thêm trực tiếp liên kết yêu cầu kéo GitHub từ một mục công việc và tích hợp GitHub của nó nhận ra `AB#123` trong mô tả yêu cầu kéo dưới dạng liên kết đến mục công việc 123. URL chỉ được đặt trong nhận xét mục công việc không thiết lập liên kết yêu cầu kéo chính thức đó.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 264",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/264-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-265",
+    "questionNumber": 265,
+    "text": "You are implementing a new project in Azure DevOps.  \n  \nYou need to evaluate the project's performance. The solution must identify these metrics:  \n  \n- How long it takes to complete a work item  \n- The percentage of defects found in production  \n  \nWhich DevOps KPI should you review for each metric? Each KPI may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "How long it takes to complete a work item:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "slot2",
+        "text": "The percentage of defects found in production:",
+        "correctAnswer": "F"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Lead time"
+      },
+      {
+        "key": "B",
+        "text": "Application failure rates"
+      },
+      {
+        "key": "C",
+        "text": "Bug report rates"
+      },
+      {
+        "key": "D",
+        "text": "Burndown trend"
+      },
+      {
+        "key": "E",
+        "text": "Cycle time"
+      },
+      {
+        "key": "F",
+        "text": "Defect escape rate"
+      },
+      {
+        "key": "G",
+        "text": "Deployment speed"
+      },
+      {
+        "key": "H",
+        "text": "Mean time to recover"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Lead time"
+      },
+      {
+        "key": "B",
+        "text": "Application failure rates"
+      },
+      {
+        "key": "C",
+        "text": "Bug report rates"
+      },
+      {
+        "key": "D",
+        "text": "Burndown trend"
+      },
+      {
+        "key": "E",
+        "text": "Cycle time"
+      },
+      {
+        "key": "F",
+        "text": "Defect escape rate"
+      },
+      {
+        "key": "G",
+        "text": "Deployment speed"
+      },
+      {
+        "key": "H",
+        "text": "Mean time to recover"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=E",
+      "slot2=F"
+    ],
+    "explanation": "Thời gian chu kỳ đo thời gian cần thiết để hoàn thành một hạng mục công việc. Tỷ lệ thoát khỏi lỗi đo lường các lỗi xảy ra hoặc được tìm thấy trong quá trình sản xuất theo tỷ lệ phần trăm của tổng số lỗi.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 265",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/265-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-266",
+    "questionNumber": 266,
+    "text": "You build an iOS app.  \n\nYou receive crash reports from Crashlytics.  \n\nYou need to capture the following data:  \n\n✑ Crash-free users  \n\n✑ Custom events  \n\n✑ Breadcrumbs  \n\nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure the xcworkspace file in the project"
+      },
+      {
+        "key": "B",
+        "text": "Add the GoogleAnalytics pod to the app."
+      },
+      {
+        "key": "C",
+        "text": "Configure the Crashlytics pod in the app."
+      },
+      {
+        "key": "D",
+        "text": "Import the Firebase module to UIApplicationDelegate."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Firebase Crashlytics yêu cầu tích hợp cả Crashlytics SDK và Google Analytics để thu hút người dùng, đường dẫn và sự kiện tùy chỉnh không gặp sự cố. Nhập mô-đun Firebase vào UIApplicationDelegate cho phép tích hợp phân tích đầy đủ. Mặc dù cần có nhóm Crashlytics (C), nhưng nhập mô-đun Firebase (D) là bước cấu hình cụ thể để kích hoạt tất cả các tính năng cần thiết.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 266",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/266-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-267",
+    "questionNumber": 267,
+    "text": "You use the Dependency Tracker extension in an Azure DevOps project and generate a risk graph for the project.  \n  \nWhich elements should you use in the risk graph to identify the project’s number of dependencies and risk level?  \n  \nEach element may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "number_of_dependencies",
+        "text": "Number of dependencies",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "risk_level",
+        "text": "Risk level",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Link color"
+      },
+      {
+        "key": "B",
+        "text": "Link length"
+      },
+      {
+        "key": "C",
+        "text": "Link width"
+      },
+      {
+        "key": "D",
+        "text": "Node color"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Link color"
+      },
+      {
+        "key": "B",
+        "text": "Link length"
+      },
+      {
+        "key": "C",
+        "text": "Link width"
+      },
+      {
+        "key": "D",
+        "text": "Node color"
+      }
+    ],
+    "correctAnswers": [
+      "number_of_dependencies=C",
+      "risk_level=D"
+    ],
+    "explanation": "Trình theo dõi phụ thuộc sử dụng độ rộng của các liên kết biểu đồ rủi ro để hiển thị số lượng phụ thuộc: các liên kết dày hơn thể hiện nhiều phụ thuộc hơn. Mã màu nút của nó dựa trên trạng thái vật phẩm và truyền đạt mức độ rủi ro liên quan.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 267",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/267-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-268",
+    "questionNumber": 268,
+    "text": "You have several Azure Active Directory (Azure AD) accounts.  \n\nYou need to ensure that users use multi-factor authentication (MFA) to access Azure apps from untrusted networks.  \n\nWhat should you configure in Azure AD?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "access reviews"
+      },
+      {
+        "key": "B",
+        "text": "managed identities"
+      },
+      {
+        "key": "C",
+        "text": "entitlement management"
+      },
+      {
+        "key": "D",
+        "text": "conditional access"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Truy nhập có điều kiện của Azure AD là cơ chế thực thi MFA dựa trên các yếu tố rủi ro và điều kiện mạng. Nó cho phép bạn yêu cầu MFA khi người dùng cố gắng truy cập ứng dụng Azure từ các mạng không đáng tin cậy, giảm rủi ro truy cập.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 268",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/268-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-270",
+    "questionNumber": 270,
+    "text": "You plan to create alerts that will be triggered based on the page load performance of a home page. You have the Application Insights log query shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784167425708-bgiyr9br.png)  \n  \nSelect the answer choice that completes each statement based on the information presented in the exhibit.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Thời lượng phân vị thứ 90 (percentile_duration_90) biểu thị thời gian tải mà 90% người dùng trải qua, khiến đây trở thành số liệu thích hợp để cảnh báo khi mục tiêu là nắm bắt trải nghiệm của hầu hết người dùng thay vì chỉ một người dùng thông thường/trung bình (phân vị thứ 50) hoặc một trường hợp cực đoan (phân vị thứ 95). Lỗi xác thực trên biểu hiện máy chủ dưới dạng mã trạng thái HTTP (chẳng hạn như 401 Không được phép) được ghi trong trường resultCode của bảng yêu cầu trong Application Insights, do đó, việc lọc resultCode sẽ tách biệt các lỗi xác thực cho mục đích cảnh báo.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784167425708-bgiyr9br.png",
+    "sourceTitle": "Examcademy AZ-400 Question 270",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/270-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-271",
+    "questionNumber": 271,
+    "text": "Your company wants to use Azure Application Insights to understand how user behaviors affect an application.  \n  \nWhich Application Insights tool should you use to analyze each behavior? Each tool may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Feature usage:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "2",
+        "text": "Number of people who used the actions and its features:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "3",
+        "text": "The effect that the performance of the application has on the usage of a page or a feature:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Impact"
+      },
+      {
+        "key": "B",
+        "text": "User Flows"
+      },
+      {
+        "key": "C",
+        "text": "Users"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Impact"
+      },
+      {
+        "key": "B",
+        "text": "User Flows"
+      },
+      {
+        "key": "C",
+        "text": "Users"
+      }
+    ],
+    "correctAnswers": [
+      "1=B",
+      "2=C",
+      "3=A"
+    ],
+    "explanation": "Trong Azure Application Insights, công cụ Người dùng báo cáo số lượng người đã sử dụng ứng dụng hoặc tính năng nhất định bằng cách đếm ID người dùng ẩn danh duy nhất. Công cụ Luồng người dùng trực quan hóa cách người dùng điều hướng giữa các trang và tính năng, được sử dụng để hiểu các kiểu sử dụng tính năng. Công cụ Tác động đo lường mức độ ảnh hưởng của một thuộc tính như thời lượng tải trang (hiệu suất ứng dụng) đến mức sử dụng hoặc tỷ lệ chuyển đổi của một lượt xem trang hoặc tính năng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 271",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/271-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-272",
+    "questionNumber": 272,
+    "text": "You have an Azure subscription that contains four Azure virtual machines.  \n  \nYou need to configure the virtual machines to use a single identity. The solution must meet the following requirements:  \n  \n• Ensure that the credentials for the identity are managed automatically.  \n\n• Support granting privileges to the identity.  \n  \nWhich type of identity should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a system-assigned managed identity"
+      },
+      {
+        "key": "B",
+        "text": "a user-assigned managed identity"
+      },
+      {
+        "key": "C",
+        "text": "a service principal"
+      },
+      {
+        "key": "D",
+        "text": "a user account"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "User-assigned managed identity là tài nguyên Azure độc ​​lập có thể được gán cho nhiều tài nguyên Azure (VM), cho phép chúng chia sẻ một danh tính duy nhất với tính năng quản lý thông tin xác thực tự động. Danh tính được quản lý do hệ thống chỉ định chỉ có thể được liên kết với một tài nguyên. Để bốn máy ảo sử dụng một managed identity, bạn phải sử dụng user-assigned managed identity, role-based access control cũng hỗ trợ role-based access control để quản lý đặc quyền.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 272",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/272-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-273",
+    "questionNumber": 273,
+    "text": "Contoso is planning several Azure DevOps projects as described in the exhibit. ![Question Image](https://cdn.examcademy.com/images/questions/1784167362177-0tvrtnt5.png)  \n  \nBased on the technical requirements, you need to implement Project6.  \n  \nWhich three actions should you perform in sequence? Move the appropriate actions from the list to the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "F"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Open the release pipeline editor."
+      },
+      {
+        "key": "B",
+        "text": "Disable the continuous integration trigger."
+      },
+      {
+        "key": "C",
+        "text": "Enable Gates."
+      },
+      {
+        "key": "D",
+        "text": "Add a manual intervention task."
+      },
+      {
+        "key": "E",
+        "text": "Open the Triggers tab."
+      },
+      {
+        "key": "F",
+        "text": "Add Query Work Items."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Open the release pipeline editor."
+      },
+      {
+        "key": "B",
+        "text": "Disable the continuous integration trigger."
+      },
+      {
+        "key": "C",
+        "text": "Enable Gates."
+      },
+      {
+        "key": "D",
+        "text": "Add a manual intervention task."
+      },
+      {
+        "key": "E",
+        "text": "Open the Triggers tab."
+      },
+      {
+        "key": "F",
+        "text": "Add Query Work Items."
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=C",
+      "3=F"
+    ],
+    "explanation": "Project6 phải hỗ trợ các quy trình xây dựng và triển khai trong đó quá trình triển khai chỉ được tiến hành nếu số lượng mục công việc lỗi phần mềm đang hoạt động bằng 0. Điều này đạt được nhờ các cổng phát hành Azure Pipelines. Sau khi mở trình chỉnh sửa quy trình phát hành, bạn kích hoạt Gates ở các điều kiện trước khi triển khai cho giai đoạn mục tiêu, sau đó thêm chức năng cổng 'Truy vấn các mục công việc' để chạy truy vấn mục công việc đã lưu (ví dụ: các lỗi đang hoạt động) và chỉ cho phép quá trình triển khai tiếp tục tự động nếu số lượng mục được trả về đáp ứng ngưỡng đã định cấu hình (0 trong trường hợp này). Điều này tự động hóa yêu cầu mà không cần can thiệp thủ công, phù hợp với mục tiêu giảm thiểu nỗ lực hành chính.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784167362177-0tvrtnt5.png",
+    "sourceTitle": "Examcademy AZ-400 Question 273",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/273-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-276",
+    "questionNumber": 276,
+    "text": "You manage the Git repository for a large enterprise application. You need to minimize the data size of the repository. How should you complete the commands?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Chạy 'git gc --aggressive' thực hiện việc đóng gói lại và nén lại cơ sở dữ liệu đối tượng kỹ lưỡng hơn, giảm kích thước kho lưu trữ nhiều hơn so với 'git gc' tiêu chuẩn. Theo sau nó là 'git Prune --expire now' ngay lập tức loại bỏ tất cả các đối tượng lỏng lẻo mà no có thể truy cập lâu hơn từ bất kỳ tham chiếu nào mà không có thời gian gia hạn 2 tuần mặc định, điều này càng làm thu hẹp kho lưu trữ. Các lệnh này cùng nhau là cách tiếp cận tiêu chuẩn được Git ghi lại để giảm thiểu việc sử dụng đĩa lưu trữ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 276",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/276-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-277",
+    "questionNumber": 277,
+    "text": "You have an Azure Pipelines pipeline named Pipeline1 and a user named User1. Pipeline1 contains a temporary final stage named final1.  \n  \nYou need to ensure that User1 can delete final1 when testing is complete. The solution must follow the principle of least privilege.  \n  \nAt which level should you grant permissions to User1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "pipeline"
+      },
+      {
+        "key": "B",
+        "text": "organization"
+      },
+      {
+        "key": "C",
+        "text": "stage"
+      },
+      {
+        "key": "D",
+        "text": "project"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Azure DevOps cho phép bạn bảo mật một giai đoạn quy trình riêng lẻ một cách độc lập với phần còn lại của quy trình, do đó, bạn có thể cấp quyền cho Người dùng1 chỉ trong phạm vi giai đoạn cuối cùng thay vì toàn bộ quy trình, dự án hoặc tổ chức. Điều này đáp ứng đặc quyền tối thiểu vì Người dùng1 có được khả năng no để sửa đổi hoặc xóa bất kỳ thứ gì bên ngoài một giai đoạn đó.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 277",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/277-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-278",
+    "questionNumber": 278,
+    "text": "You use GitHub Enterprise Server as your source code repository. You have created an Azure DevOps organization named Contoso, and within it a project named Project1.  \n  \nYou need to link GitHub commits, pull requests, and issues to the work items in Project1. The solution must use OAuth-based authentication.  \n  \nWhich three actions should you perform, in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Step 1",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "Step 2",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "3",
+        "text": "Step 3",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "From Developer settings in GitHub Enterprise Server, register a new OAuth app."
+      },
+      {
+        "key": "B",
+        "text": "From Project Settings in Azure DevOps, create a service hook subscription."
+      },
+      {
+        "key": "C",
+        "text": "From Organization settings in Azure DevOps, connect to Azure Active Directory (Azure AD)."
+      },
+      {
+        "key": "D",
+        "text": "From Project Settings in Azure DevOps, add a GitHub connection."
+      },
+      {
+        "key": "E",
+        "text": "From Organization settings in Azure DevOps, add an OAuth configuration."
+      },
+      {
+        "key": "F",
+        "text": "From Developer settings in GitHub Enterprise Server, generate a private key."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "From Developer settings in GitHub Enterprise Server, register a new OAuth app."
+      },
+      {
+        "key": "B",
+        "text": "From Project Settings in Azure DevOps, create a service hook subscription."
+      },
+      {
+        "key": "C",
+        "text": "From Organization settings in Azure DevOps, connect to Azure Active Directory (Azure AD)."
+      },
+      {
+        "key": "D",
+        "text": "From Project Settings in Azure DevOps, add a GitHub connection."
+      },
+      {
+        "key": "E",
+        "text": "From Organization settings in Azure DevOps, add an OAuth configuration."
+      },
+      {
+        "key": "F",
+        "text": "From Developer settings in GitHub Enterprise Server, generate a private key."
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=E",
+      "3=D"
+    ],
+    "explanation": "Để liên kết hoạt động của GitHub Enterprise Server với các mục công việc của Azure Boards bằng OAuth, trước tiên bạn phải đăng ký Azure DevOps làm ứng dụng OAuth trong GitHub Enterprise Server (Cài đặt dành cho nhà phát triển > Ứng dụng OAuth), ứng dụng này tạo ra ID khách hàng và Bí mật khách hàng. Tiếp theo, trong tổ chức Azure DevOps, bạn đăng ký ID khách hàng/Bí mật này làm cấu hình OAuth (Cài đặt tổ chức > Cấu hình OAuth > Thêm cấu hình OAuth). Cuối cùng, ở cấp độ dự án, bạn thêm kết nối GitHub (Cài đặt dự án > Kết nối GitHub > Máy chủ doanh nghiệp GitHub), chọn 'Kết nối với OAuth' và chọn cấu hình OAuth đã tạo ở bước trước để hoàn thành liên kết xác thực giữa kho lưu trữ Máy chủ doanh nghiệp GitHub và các mục công việc trên Bảng Azure.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 278",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/278-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-279",
+    "questionNumber": 279,
+    "text": "You have an Azure subscription that contains multiple Azure pipelines.  \n\nYou need to deploy a monitoring solution for the pipelines. The solution must meet the following requirements:  \n\n✑ Parse logs from multiple sources.  \n\n✑ Identify the root cause of issues.  \n\nWhat advanced feature of a monitoring tool should you include in the solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "analytics"
+      },
+      {
+        "key": "B",
+        "text": "synthetic monitoring"
+      },
+      {
+        "key": "C",
+        "text": "directed monitoring"
+      },
+      {
+        "key": "D",
+        "text": "Alert Management"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Các tính năng phân tích trong công cụ giám sát sẽ phân tích cú pháp nhật ký từ nhiều nguồn, liên hệ các sự kiện và xác định nguyên nhân cốt lõi của lỗi đường ống. Tính sẵn có của dịch vụ kiểm tra giám sát tổng hợp; quản lý cảnh báo xử lý các thông báo; giám sát trực tiếp không phải là tính năng giám sát tiêu chuẩn để phân tích nguyên nhân gốc rễ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 279",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/279-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-280",
+    "questionNumber": 280,
+    "text": "You have a project in Azure DevOps named Project1. Project1 contains a published wiki.  \n\nYou need to change the order of pages in the navigation pane of the published wiki in the Azure DevOps portal.  \n\nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "At the root of the wiki, create a file named .order that defines the page hierarchy."
+      },
+      {
+        "key": "B",
+        "text": "At the root of the wiki, create a file named wiki.md that defines the page hierarchy."
+      },
+      {
+        "key": "C",
+        "text": "Rename the pages in the navigation pane."
+      },
+      {
+        "key": "D",
+        "text": "Drag and drop the pages in the navigation pane."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Sắp xếp lại bằng cách kéo và thả trong ngăn điều hướng chỉ khả dụng cho loại wiki được cung cấp riêng biệt. Đối với một wiki đã xuất bản (mã dưới dạng wiki), thứ tự trang và phân cấp trong ngăn điều hướng được kiểm soát bởi tệp `.order` được đặt ở thư mục gốc wiki và trong mỗi thư mục con.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 280",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/280-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-281",
+    "questionNumber": 281,
+    "text": "You have an Azure subscription.  \n  \nYou create two Bicep templates named Template1 and Template2 that will be used to create a virtual machine and a website.  \n  \nYou need to create a template named Template3 that will reuse logic from Template1 and Template2.  \n  \nWhat should you define first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "outputs"
+      },
+      {
+        "key": "B",
+        "text": "resources"
+      },
+      {
+        "key": "C",
+        "text": "modules"
+      },
+      {
+        "key": "D",
+        "text": "parameters"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Mô-đun bắp tay là cơ chế tiêu chuẩn để sử dụng lại logic từ các mẫu Bicept khác, tương tự như mô-đun Terraform. Chúng cho phép bạn tham khảo và sử dụng lại Mẫu1 và Mẫu2 trong Mẫu3. Các tham số xác định đầu vào, đầu ra xác định giá trị trả về và tài nguyên xác định những gì được triển khai—không có tham số nào cho phép sử dụng lại toàn bộ mẫu.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 281",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/281-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-282",
+    "questionNumber": 282,
+    "text": "You have an Azure DevOps project named Project1 and an Azure subscription named Sub1.  \n  \nYou need to ensure that releases are not deployed unless they meet the Azure Policy rules assigned to Sub1.  \n  \nWhat should you configure in the release pipeline of Project1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a deployment gate."
+      },
+      {
+        "key": "B",
+        "text": "Modify the Deployment queue settings."
+      },
+      {
+        "key": "C",
+        "text": "Configure a deployment trigger."
+      },
+      {
+        "key": "D",
+        "text": "Create a pipeline variable."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Cổng triển khai trong Azure Pipelines cho phép bạn thêm các bước kiểm tra tự động (chẳng hạn như lệnh gọi tới Hàm Azure, cảnh báo Azure Monitor hoặc API REST) ​​phải thành công trước khi bản phát hành được phép chuyển sang một giai đoạn. Bằng cách định cấu hình cổng truy vấn trạng thái tuân thủ Chính sách Azure cho tài nguyên đích, bạn có thể chặn triển khai bản phát hành cho đến khi nó đáp ứng các quy tắc Chính sách Azure được gán cho Sub1. Cài đặt hàng đợi triển khai chỉ kiểm soát cách xếp hàng các bản phát hành đồng thời, trình kích hoạt triển khai kiểm soát thời điểm tạo/bắt đầu một bản phát hành và các biến quy trình chỉ lưu trữ các giá trị cấu hình—không có cài đặt nào trong số này thực thi việc kiểm tra tuân thủ chính sách trước khi triển khai.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 282",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/282-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-283",
+    "questionNumber": 283,
+    "text": "You have a private project in Azure DevOps with two users, User1 and User2. You need to add User1 and User2 to groups so that:  \n  \n- User1 can create a code wiki.  \n- User2 can edit wiki pages.  \n- The solution follows the principle of least privilege.  \n  \nDrag the appropriate group to each user. A group may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "user1",
+        "text": "User1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "user2",
+        "text": "User2:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Build Administrators"
+      },
+      {
+        "key": "B",
+        "text": "Contributors"
+      },
+      {
+        "key": "C",
+        "text": "Project Administrators"
+      },
+      {
+        "key": "D",
+        "text": "Project Valid Users"
+      },
+      {
+        "key": "E",
+        "text": "Stakeholders"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Build Administrators"
+      },
+      {
+        "key": "B",
+        "text": "Contributors"
+      },
+      {
+        "key": "C",
+        "text": "Project Administrators"
+      },
+      {
+        "key": "D",
+        "text": "Project Valid Users"
+      },
+      {
+        "key": "E",
+        "text": "Stakeholders"
+      }
+    ],
+    "correctAnswers": [
+      "user1=B",
+      "user2=B"
+    ],
+    "explanation": "Azure DevOps yêu cầu tư cách thành viên trong nhóm Người đóng góp để xuất bản kho lưu trữ Git dưới dạng wiki mã. Những người đóng góp có quyền Đóng góp cho kho lưu trữ, cho phép họ tạo và chỉnh sửa nội dung wiki mà không cần cấp các quyền quản trị rộng hơn của Quản trị viên dự án.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 283",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/283-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-284",
+    "questionNumber": 284,
+    "text": "You are designing an Azure DevOps strategy for your company's development team. You suspect that the team's productivity is low because of accumulated technical debt. You need to recommend a metric to assess the amount of the team's technical debt. What should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the number of code modules in an application"
+      },
+      {
+        "key": "B",
+        "text": "the number of unit test failures"
+      },
+      {
+        "key": "C",
+        "text": "the percentage of unit test failures"
+      },
+      {
+        "key": "D",
+        "text": "the percentage of overall time spent on rework"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Nợ kỹ thuật tích lũy khi các giải pháp nhanh chóng, kém lý tưởng được lựa chọn theo thời gian, đòi hỏi phải làm lại trong tương lai để khắc phục hoặc cải thiện. Tỷ lệ phần trăm tổng thời gian mà một nhóm dành cho việc làm lại (trái ngược với việc xây dựng chức năng mới) phản ánh trực tiếp mức độ nợ kỹ thuật đang kéo theo năng suất, khiến nó trở thành thước đo thích hợp để đánh giá nợ kỹ thuật. Các số liệu như số lượng mô-đun hoặc tỷ lệ lỗi kiểm tra đơn vị đo lường kích thước mã hoặc chất lượng lỗi/bản dựng hiện tại thay vì gánh nặng của các phím tắt lịch sử tạo thành nợ kỹ thuật.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 284",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/284-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-286",
+    "questionNumber": 286,
+    "text": "Solution: You include the following elements in the YAML definition of the pipeline.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1785752188914-mhi3y5rm.png)  \n  \nDoes this meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Tác vụ sử dụng `condition: always()`, chạy bước ngay cả khi quá trình chạy quy trình bị hủy — yêu cầu là các thử nghiệm phải chạy cho mỗi lần chạy *trừ khi* nó bị hủy, đó là những gì `succeededOrFailed()` thể hiện. YAML cũng thiết lập `failTaskOnMissingResultsFile`, tác vụ này không thực hiện được khi tạo tệp kết quả no; không chạy được khi kiểm tra thất bại yêu cầu `failTaskOnFailedTests`.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785752188914-mhi3y5rm.png",
+    "sourceTitle": "Examcademy AZ-400 Question 286",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/286-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-287",
+    "questionNumber": 287,
+    "text": "Solution: You add the following elements to the pipeline’s YAML definition.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1785752192601-wri4a9lu.png)  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "`PublishTestResults@2` xuất bản các tệp kết quả kiểm tra JUnit lên Azure Pipelines. Cài đặt `failTaskOnFailedTests: true` khiến tác vụ không thành công nếu bất kỳ thử nghiệm nào được báo cáo đều không thành công. Điều kiện `not(canceled())` cho phép tác vụ chạy trừ khi quá trình chạy đường ống bị hủy, kể cả khi công việc trước đó không thành công. [PublishTestResults@2 – Publish Test Results v2 task](https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/publish-test-results-v2?view=azure-pipelines) và [Task types and usage – Azure Pipelines](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/tasks?view=azure-devops)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785752192601-wri4a9lu.png",
+    "sourceTitle": "Examcademy AZ-400 Question 287",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/287-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-288",
+    "questionNumber": 288,
+    "text": "Solution: You include the following elements in the pipeline YAML definition.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1785752203973-dcdyq205.png)  \n  \nDoes this meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Điều kiện `succeededOrFailed()` là đúng — nó chạy tác vụ sau khi thành công hoặc thất bại nhưng không chạy khi bị hủy. Đầu vào không phải: YAML đặt `failTaskOnFailureToPublishResults`, nhiệm vụ này chỉ thực hiện được khi bản thân việc xuất bản không thành công. Để không thực hiện được quy trình khi quá trình kiểm tra không thành công, tác vụ cần có `failTaskOnFailedTests: true`.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785752203973-dcdyq205.png",
+    "sourceTitle": "Examcademy AZ-400 Question 288",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/288-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-289",
+    "questionNumber": 289,
+    "text": "You have a project in Azure DevOps that has three teams as shown in the Teams exhibit. (Click the Teams tab.)  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784167537735-oevtp20r.jpg)  \n  \nYou create a new dashboard named Dash1. You configure the dashboard permissions for the Contoso project as shown in the Permissions exhibit. (Click the Permissions tab.)  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784167540771-lzf6pc36.png)  \n  \nAll other permissions retain their default values.  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Web Team can delete Dash1.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "Contoso Team can view Dash1.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "Project administrators can create new dashboards.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Tất cả các thành viên của nhóm Người dùng hợp lệ của dự án (Người đọc, Người đóng góp, Quản trị viên nhóm, Quản trị viên dự án) đều có thể xem được bảng thông tin Azure DevOps, bất kể nút bật/tắt quyền của bảng điều khiển nhóm Tạo/Chỉnh sửa/Xóa, vì vậy, bất kỳ nhóm nào, kể cả Nhóm Contoso, đều có thể xem Dash1. Nút bật/tắt bảng thông tin Tạo/Chỉnh sửa/Xóa trên trang cài đặt Bảng thông tin nhóm kiểm soát xem các thành viên nhóm thông thường của nhóm đó có thể tạo, chỉnh sửa hoặc xóa bảng thông tin hay không; vì nút chuyển đổi Xóa bảng thông tin bị tắt nên các thành viên trong nhóm không thể xóa bảng thông tin, do đó Nhóm Web không thể xóa Dash1. Quản trị viên dự án (và Quản trị viên bộ sưu tập dự án) luôn có khả năng thêm, chỉnh sửa và quản lý bảng thông tin cho mọi nhóm và dự án, đồng thời cũng có thể đặt quyền bảng thông tin mặc định cho tất cả các nhóm, để họ luôn có thể tạo bảng thông tin mới bất kể cấu hình chuyển đổi của mỗi nhóm.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784167537735-oevtp20r.jpg",
+    "sourceTitle": "Examcademy AZ-400 Question 289",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/289-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-290",
+    "questionNumber": 290,
+    "text": "You are deploying a new application that uses Azure virtual machines. You plan to use the Desired State Configuration (DSC) extension on the virtual machines. You need to ensure that the virtual machines always have the same Windows feature installed.  \n  \nWhich three actions should you perform in sequence?  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783719550493-kekx42mt.png)",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "F"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure the DSC extension on the virtual machines."
+      },
+      {
+        "key": "B",
+        "text": "Create a YAML configuration file."
+      },
+      {
+        "key": "C",
+        "text": "Load the file to Azure Blob storage."
+      },
+      {
+        "key": "D",
+        "text": "Configure the Custom Script Extension on the virtual machines."
+      },
+      {
+        "key": "E",
+        "text": "Load the file to Azure Files."
+      },
+      {
+        "key": "F",
+        "text": "Create a PowerShell configuration file."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Configure the DSC extension on the virtual machines."
+      },
+      {
+        "key": "B",
+        "text": "Create a YAML configuration file."
+      },
+      {
+        "key": "C",
+        "text": "Load the file to Azure Blob storage."
+      },
+      {
+        "key": "D",
+        "text": "Configure the Custom Script Extension on the virtual machines."
+      },
+      {
+        "key": "E",
+        "text": "Load the file to Azure Files."
+      },
+      {
+        "key": "F",
+        "text": "Create a PowerShell configuration file."
+      }
+    ],
+    "correctAnswers": [
+      "1=F",
+      "2=C",
+      "3=A"
+    ],
+    "explanation": "Cấu hình trạng thái mong muốn của Azure PowerShell (DSC) yêu cầu tập lệnh cấu hình PowerShell (.ps1) xác định trạng thái mong muốn, chẳng hạn như đảm bảo cài đặt tính năng Windows. Cấu hình này được đóng gói (nén) và xuất bản đến một vị trí có thể truy cập — Azure Blob storage là mục tiêu tiêu chuẩn và được ghi lại bằng tài liệu được sử dụng bởi các lệnh ghép ngắn như Publish-AzVMDscConfiguration, lệnh này tải gói lên và bảo mật gói đó bằng mã thông báo SAS. Cuối cùng, tiện ích mở rộng DSC được định cấu hình trên các máy ảo, trỏ đến gói cấu hình được lưu trữ blob để Tác nhân VM tải xuống và áp dụng nó, đồng thời tiếp tục thực thi rằng tính năng Windows đã chỉ định vẫn được cài đặt (tự sửa lỗi cấu hình). Việc sử dụng YAML, Tiện ích mở rộng tập lệnh tùy chỉnh hoặc Azure Files không phù hợp với cách thiết kế tiện ích mở rộng Azure DSC để hoạt động.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783719550493-kekx42mt.png",
+    "sourceTitle": "Examcademy AZ-400 Question 290",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/290-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-291",
+    "questionNumber": 291,
+    "text": "Your company uses Azure DevOps to deploy infrastructure to Azure. Pipelines are developed using YAML. You run a pipeline and view the results in the Azure Pipelines web portal, as shown in the exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783719565170-629r34yk.jpg)  \n  \nBased on the information shown, select the answer choice that completes each statement.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Trong Azure Pipelines YAML, một quy trình được tổ chức thành các giai đoạn, mỗi giai đoạn chứa một hoặc nhiều công việc và mỗi công việc đều chứa các bước. Trong quá trình chạy được hiển thị, các nhóm cấp cao nhất — build vm, triển khai_to_dev, triển khai_to_uat và Hoàn thiện bản dựng — đại diện cho bốn giai đoạn của quy trình. Trong giai đoạn 'build vm', chỉ có một công việc duy nhất, 'khởi tạo bản dựng', được liệt kê (chứa các bước Khởi tạo công việc, Checkout, CmdLine, Post-job: Checkout và Finalize Job), do đó giai đoạn đó chứa chính xác một công việc.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783719565170-629r34yk.jpg",
+    "sourceTitle": "Examcademy AZ-400 Question 291",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/291-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-292",
+    "questionNumber": 292,
+    "text": "You are developing a mobile application targeting both Android and iOS platforms. All work items and release cycles for the project are managed using Azure DevOps.  \n  \nYou need to ensure that:  \n\n- Crash reports are collected for issue analysis.  \n- Beta releases are distributed to your testers.  \n- User feedback on the functionality of new app features is gathered.  \n  \nWhich of the following must be included as part of your solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "The Microsoft Test & Feedback extension."
+      },
+      {
+        "key": "B",
+        "text": "OWASP ZAP"
+      },
+      {
+        "key": "C",
+        "text": "TFS Integration Platform"
+      },
+      {
+        "key": "D",
+        "text": "Code Style"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Tiện ích mở rộng Kiểm tra & Phản hồi của Microsoft tích hợp với Azure DevOps để cho phép thử nghiệm thăm dò, thu thập báo cáo sự cố (dưới dạng mục công việc có cấu trúc), phối hợp phân phối phiên bản beta và thu thập phản hồi của người dùng. Mặc dù Trung tâm ứng dụng Visual Studio là một giải pháp thay thế cho các kịch bản tập trung vào thiết bị di động, tiện ích Kiểm tra & Phản hồi đáp ứng tất cả các yêu cầu đã nêu thông qua tích hợp với Azure DevOps. OWASP ZAP là một trình quét bảo mật, Nền tảng tích hợp TFS xử lý việc di chuyển dữ liệu và Kiểu mã dùng để tìm lỗi mã nguồn—không có phản hồi địa chỉ hoặc thu thập sự cố.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 292",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/292-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-293",
+    "questionNumber": 293,
+    "text": "You manage a build pipeline in Azure Pipelines that occasionally fails. You determine that a test which measures the response time of an API endpoint is the cause of these failures. You need to stop the build pipeline from failing because of this test.  \n  \nWhich two actions should you take? Each correct answer presents part of the solution. (Choose two.)  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Set Flaky test detection to Off."
+      },
+      {
+        "key": "B",
+        "text": "Clear Flaky tests included in test pass percentage."
+      },
+      {
+        "key": "C",
+        "text": "Enable Test Impact Analysis (TIA)."
+      },
+      {
+        "key": "D",
+        "text": "Manually mark the test as flaky."
+      },
+      {
+        "key": "E",
+        "text": "Enable test slicing."
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "D"
+    ],
+    "explanation": "Tính năng quản lý thử nghiệm không ổn định của Azure Pipelines cho phép một thử nghiệm cụ thể được gắn cờ là không ổn định theo cách thủ công, sau đó Azure DevOps tiếp tục coi thử nghiệm đó là không ổn định trong các lần chạy sau này cho đến khi nó không được đánh dấu. Riêng biệt, trong các tùy chọn kiểm tra không ổn định, việc xóa 'Kiểm tra không ổn định được bao gồm trong tỷ lệ phần trăm vượt qua kiểm tra' sẽ loại bỏ cả kết quả đạt và không đạt của các kiểm tra không ổn định khỏi phép tính tỷ lệ phần trăm đạt (thay vào đó, chúng xuất hiện trong 'Thử nghiệm không được báo cáo'), điều này giúp ngăn lỗi gián đoạn trong kiểm thử đó khỏi bản dựng. Việc vô hiệu hóa hoàn toàn tính năng phát hiện kiểm thử không ổn định sẽ loại bỏ khả năng quản lý này và khiến mọi thất bại của kiểm thử đều được tính là thất bại thực sự. Phân tích tác động thử nghiệm chỉ giới hạn những thử nghiệm nào chạy dựa trên thay đổi mã và chỉ thử nghiệm cắt các thử nghiệm phân vùng để thực thi song song - không ảnh hưởng đến cách tính các lỗi không ổn định vào thành công hay thất bại của quy trình.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 293",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/293-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-294",
+    "questionNumber": 294,
+    "text": "You plan to use Azure Artifacts to share packages that you have written, tested, validated, and deployed.  \n  \nYou want to use a single feed to release multiple builds of each package, while ensuring that packages still in development are restricted from being released.  \n  \nWhich of the following actions should you take?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "You should make use of static code analysis."
+      },
+      {
+        "key": "B",
+        "text": "You should make use of views."
+      },
+      {
+        "key": "C",
+        "text": "You should make use of dynamic code analysis."
+      },
+      {
+        "key": "D",
+        "text": "You should make use of upstream sources."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Nguồn cấp dữ liệu Azure Artifacts hỗ trợ khái niệm về chế độ xem (chẳng hạn như @Local, @Prerelease và @Release), cho phép bạn quảng bá gói qua các giai đoạn khác nhau trong một nguồn cấp dữ liệu. Bằng cách xuất bản tất cả các bản dựng lên cùng một nguồn cấp dữ liệu nhưng chỉ hiển thị các gói đã vượt qua quá trình xác thực ở chế độ xem bản phát hành, bạn có thể kiểm soát phiên bản gói nào được hiển thị cho người tiêu dùng, hạn chế phát hành một cách hiệu quả các gói đang trong quá trình phát triển trong khi vẫn cho phép nhiều bản dựng chia sẻ một nguồn cấp dữ liệu. Thay vào đó, các nguồn ngược dòng cho phép nguồn cấp dữ liệu lấy các gói từ nguồn cấp dữ liệu khác hoặc cơ quan đăng ký công khai và không giải quyết việc hạn chế khả năng hiển thị phát hành của các gói trong nguồn cấp dữ liệu của riêng bạn.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 294",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/294-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-295",
+    "questionNumber": 295,
+    "text": "You have an app named App1 that is built by using Azure Pipelines. The source code for App1 is stored in Azure Repos and contains open source libraries.  \n  \nYou need to identify security vulnerabilities in the open source code.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Mend Bolt"
+      },
+      {
+        "key": "B",
+        "text": "Rollbar"
+      },
+      {
+        "key": "C",
+        "text": "Code Climate"
+      },
+      {
+        "key": "D",
+        "text": "DeepSource"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Mend Bolt (trước đây là WhiteSource Bolt) là một tiện ích mở rộng Azure DevOps miễn phí giúp quét tất cả các phần phụ thuộc của dự án để phát hiện các thành phần nguồn mở, các vấn đề tuân thủ giấy phép và các lỗ hổng bảo mật đã biết. Nó được thiết kế đặc biệt để xác định các lỗ hổng trong thư viện nguồn mở của bên thứ ba được sử dụng trong ứng dụng của bạn.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 295",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/295-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-296",
+    "questionNumber": 296,
+    "text": "You are building a multi-tier application. The front end will be an Azure App Service web app, and the back end will be an Azure SQL database.  \n  \nThe application will also use Azure Functions to write some data to Azure Storage.  \n  \nYou need to send an email to the Azure DevOps team whenever the front end fails to return an HTTP status code of 200.  \n  \nWhich feature should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Service Map in Azure Log Analytics"
+      },
+      {
+        "key": "B",
+        "text": "availability tests in Azure Application Insights"
+      },
+      {
+        "key": "C",
+        "text": "Profiler in Azure Application Insights"
+      },
+      {
+        "key": "D",
+        "text": "Application Map in Azure Application Insights"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Kiểm tra tính khả dụng trong Azure Application Insights cho phép bạn định cấu hình các kiểm tra tổng hợp (chẳng hạn như kiểm tra ping URL) định kỳ gửi yêu cầu đến điểm cuối ứng dụng web của bạn từ nhiều vị trí địa lý và xác minh rằng nó trả về mã trạng thái HTTP thành công (200) trong thời gian phản hồi dự kiến. Khi thử nghiệm thất bại—chẳng hạn như khi trả về mã trạng thái không phải 200—Application Insights sẽ đưa ra cảnh báo về tính khả dụng. Cảnh báo này có thể được định cấu hình với một nhóm hành động để gửi thông báo qua email đến nhóm DevOps. Bản đồ dịch vụ và Bản đồ ứng dụng được sử dụng để trực quan hóa các phần phụ thuộc của thành phần ứng dụng và chẩn đoán mối tương quan giữa hiệu suất/lỗi, không phải để theo dõi trạng thái điểm cuối tổng hợp và Profiler được sử dụng để ghi lại dấu vết hiệu suất cấp mã chi tiết của các yêu cầu trực tiếp chứ không phải để kiểm tra tính khả dụng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 296",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/296-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-297",
+    "questionNumber": 297,
+    "text": "You have an existing build pipeline configured in Azure Pipelines.  \n  \nYou need to enable incremental builds so that the environment is not purged between pipeline executions.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a self-hosted agent"
+      },
+      {
+        "key": "B",
+        "text": "Microsoft-hosted parallel jobs"
+      },
+      {
+        "key": "C",
+        "text": "a File Transform task"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Tác nhân tự lưu trữ là một cỗ máy bạn tự thiết lập và bảo trì để thực hiện các công việc đường ống. Không giống như các tác nhân do Microsoft lưu trữ, vốn cung cấp một máy ảo mới cho mọi công việc và loại bỏ nó sau đó, một tác nhân tự lưu trữ sẽ giữ lại các thư mục hoạt động giữa các lần chạy theo mặc định (chỉ thư mục dàn dựng giả tạo và thư mục kết quả kiểm tra mới được làm sạch). Tính bền vững này cho phép các công cụ xây dựng sử dụng lại các tệp hiện có và kết quả đầu ra trung gian, cho phép xây dựng và triển khai tăng dần trong quá trình thực thi quy trình mà không cần thanh lọc môi trường mỗi lần.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 297",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/297-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-299",
+    "questionNumber": 299,
+    "text": "You have an Azure DevOps organization named Contoso and an Azure subscription. The subscription includes an Azure virtual machine scale set named VMSS1 and an Azure Standard Load Balancer named LB1, where LB1 distributes incoming requests across the VMSS1 instances.  \n  \nYou use Azure DevOps to build a web app named App1 and deploy it to VMSS1. App1 is accessible only over HTTPS and is configured to require mutual authentication using a client certificate.  \n  \nYou need to recommend a solution for implementing a health check for App1 that meets the following requirements:  \n  \n- Identifies whether individual VMSS1 instances are eligible for an upgrade operation.  \n- Minimizes administrative effort.  \n  \nWhat should you include in the recommendation?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an Azure Load Balancer health probe"
+      },
+      {
+        "key": "B",
+        "text": "Azure Monitor autoscale"
+      },
+      {
+        "key": "C",
+        "text": "the Custom Script Extension"
+      },
+      {
+        "key": "D",
+        "text": "the Application Health extension"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Tiện ích mở rộng Tình trạng ứng dụng chạy trên từng phiên bản tập hợp quy mô máy ảo và thăm dò điểm cuối ứng dụng được chỉ định (sử dụng TCP, HTTP hoặc HTTPS), báo cáo trạng thái tình trạng của ứng dụng trở lại nền tảng Azure. Azure sử dụng tín hiệu trạng thái này một cách tự nhiên để xác định xem một phiên bản có hoạt động tốt và đủ điều kiện cho các hoạt động nâng cấp hay không (cũng như để sửa chữa phiên bản tự động) mà không yêu cầu tập lệnh tùy chỉnh hoặc logic kiểm tra tình trạng thủ công. Ngược lại, thăm dò tình trạng của Cân bằng tải chỉ thông báo các quyết định về lưu lượng cân bằng tải và không được thiết kế để báo hiệu khả năng đủ điều kiện nâng cấp theo phiên bản đối với việc điều phối của bộ quy mô, Azure Monitor tự động chia tỷ lệ địa chỉ thay vì nâng cấp tình trạng và Tiện ích tập lệnh tùy chỉnh sẽ yêu cầu xây dựng và duy trì mã kiểm tra tình trạng tùy chỉnh, tăng chi phí quản trị.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 299",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/299-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-300",
+    "questionNumber": 300,
+    "text": "Solution: You implement continuous integration.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Tích hợp liên tục tự xây dựng và kiểm tra mã nhưng không phát hiện các vi phạm cấp phép hoặc thư viện bị cấm. Những điều này yêu cầu sự phụ thuộc, giấy phép hoặc quét/kiểm tra tuân thủ tùy chỉnh được định cấu hình trong quy trình phát triển.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 300",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/300-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-301",
+    "questionNumber": 301,
+    "text": "Solution: You configure pre-deployment gates.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các cổng trước khi triển khai kiểm soát xem bản phát hành có thể tiến hành triển khai hay không bằng cách đánh giá các điều kiện đã định cấu hình ở giai đoạn phát hành. Chúng không cung cấp khả năng phát hiện liên tục các vi phạm giấy phép hoặc thư viện phần mềm bị cấm trong quá trình phát triển; quét phụ thuộc và giấy phép phải được tích hợp vào quy trình phát triển hoặc xây dựng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 301",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/301-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-302",
+    "questionNumber": 302,
+    "text": "Solution: Automated security testing is implemented.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Kiểm tra bảo mật tự động có thể bao gồm phân tích thành phần phần mềm nhằm phát hiện các thành phần của bên thứ ba và đánh giá chúng theo các chính sách tuân thủ giấy phép và thư viện bị cấm.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 302",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/302-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-303",
+    "questionNumber": 303,
+    "text": "Solution: You implement continuous deployment.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Triển khai liên tục tự động phát hành các bản cập nhật đã được xác thực cho sản xuất; nó không phát hiện các vi phạm cấp phép hoặc các thư viện bị cấm. Quản trị Thành phần cho CI/CD cung cấp khả năng kiểm tra việc tuân thủ giấy phép và thực thi chính sách của thành phần nguồn mở.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 303",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/303-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-304",
+    "questionNumber": 304,
+    "text": "You have a free-tier Azure DevOps organization named Contoso that contains 10 private projects. Each project has multiple jobs, and there are no dependencies between the jobs. The build process requires access to resource files that reside in an on-premises file system.  \n  \nYou frequently run the jobs on five self-hosted agents, but you experience long build times and builds that are frequently queued.  \n  \nYou need to minimize both the number of queued builds and the time it takes to run the builds.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure the pipelines to use the Microsoft-hosted agents."
+      },
+      {
+        "key": "B",
+        "text": "Register additional self-hosted agents."
+      },
+      {
+        "key": "C",
+        "text": "Purchase self-hosted parallel jobs."
+      },
+      {
+        "key": "D",
+        "text": "Purchase Microsoft-hosted parallel jobs."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Vì các đường dẫn phải truy cập các tệp trên hệ thống tệp tại chỗ nên chúng phải tiếp tục chạy trên các tác nhân tự lưu trữ thay vì các tác nhân do Microsoft lưu trữ. Trong Azure DevOps, số lượng công việc có thể thực thi đồng thời được điều chỉnh bởi số lượng công việc song song (khe song song) mà tổ chức có chứ không phải bởi số lượng tổng đài viên đã đăng ký trong một nhóm. Một tổ chức cấp miễn phí chỉ được cấp một công việc song song tự lưu trữ miễn phí, do đó, ngay cả khi có sẵn năm tổng đài viên, mỗi lần chỉ có một công việc chạy trong khi các công việc còn lại xếp hàng. Việc thêm nhiều tổng đài viên tự lưu trữ sẽ không thay đổi giới hạn này vì các tổng đài viên sẽ vẫn bị hạn chế trong một vị trí công việc song song có sẵn. Mua thêm các công việc song song tự lưu trữ sẽ tăng số lượng công việc có thể chạy đồng thời trên nhóm tác nhân hiện có, trực tiếp giảm thời gian xếp hàng và xây dựng tổng thể.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 304",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/304-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-305",
+    "questionNumber": 305,
+    "text": "You have a GitHub repository that uses GitHub Actions and stores access keys by using GitHub encrypted secrets.  \n  \nYou plan to update the secrets by using the GitHub REST API.  \n  \nYou need to wrap the secrets before adding them to a REST-based call.  \n  \nWhich encryption library should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "CryptoNet"
+      },
+      {
+        "key": "B",
+        "text": "BouncyCastle"
+      },
+      {
+        "key": "C",
+        "text": "libsodium"
+      },
+      {
+        "key": "D",
+        "text": "hashlib"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "GitHub khuyên bạn nên sử dụng libsodium để mã hóa bí mật trước khi thêm chúng vào lệnh gọi API REST. Libsodium là thư viện mã hóa mà API của GitHub mong đợi để quản lý bí mật và là phương pháp tiêu chuẩn để xử lý bí mật an toàn trong quy trình làm việc của Hành động GitHub.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 305",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/305-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-306",
+    "questionNumber": 306,
+    "text": "You have an Azure DevOps organization that contains a project named Project1.  \n  \nYou need to create a published wiki in Project1.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Modify the Storage settings of Project1."
+      },
+      {
+        "key": "B",
+        "text": "In Project1, create an Azure DevOps pipeline."
+      },
+      {
+        "key": "C",
+        "text": "In Project1, create an Azure DevOps repository."
+      },
+      {
+        "key": "D",
+        "text": "Modify the Team configuration settings of Project1."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Wiki (mã) đã xuất bản trong Azure DevOps xuất bản các tệp Markdown đã nằm trong kho lưu trữ Git hiện có trong dự án — nó không tạo kho lưu trữ wiki chuyên dụng của riêng mình theo cách mà wiki được cung cấp thực hiện. Theo tài liệu của Microsoft, điều kiện tiên quyết để xuất bản mã dưới dạng wiki là phải xác định kho lưu trữ Git trong dự án nhóm, lý tưởng nhất là chứa ít nhất một tệp Markdown. Nếu kho lưu trữ Git no tồn tại trong dự án, tùy chọn 'Xuất bản mã dưới dạng wiki' sẽ không khả dụng cho đến khi mã được tạo. Do đó, bước đầu tiên là tạo kho lưu trữ Azure DevOps trong Project1.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 306",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/306-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-308",
+    "questionNumber": 308,
+    "text": "You have an Azure DevOps project used to build and test an app named App1.  \n  \nYou need to troubleshoot these issues:  \n  \n- Most bugs are detected and reported by customers.  \n- It takes a long time to detect failures.  \n  \nWhich metric should you review for each issue?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Tỷ lệ thoát lỗi đo lường các lỗi không được phát hiện trước khi phát hành và thay vào đó đến tay khách hàng. Thời gian trung bình để phát hiện đo lường khoảng thời gian cần thiết để xác định lỗi sau khi nó xảy ra.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 308",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/308-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-309",
+    "questionNumber": 309,
+    "text": "You have multiple teams that work on multiple projects in Azure DevOps.  \n  \nYou need to plan and manage the consumers and producers for each project. The solution must provide an overview of all the projects.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a Predecessor or Successor link to the feature or user story for the items of each project."
+      },
+      {
+        "key": "B",
+        "text": "Add a Parent or Child link to the feature or user story for the items of each project."
+      },
+      {
+        "key": "C",
+        "text": "Install the Dependency Tracker extension and create dependencies for each project."
+      },
+      {
+        "key": "D",
+        "text": "Create a custom query to show the consumers and producers and add a widget to a dashboard."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Tiện ích mở rộng Trình theo dõi phụ thuộc xác định và theo dõi rõ ràng mối quan hệ giữa người tiêu dùng và nhà sản xuất đối với các phần phụ thuộc trong các dự án. Mặc dù Microsoft đã đề xuất Kế hoạch phân phối như một giải pháp thay thế cho các hoạt động triển khai mới hơn, tiện ích mở rộng Trình theo dõi phụ thuộc trực tiếp giải quyết các yêu cầu đã nêu để lập kế hoạch và theo dõi người tiêu dùng cũng như nhà sản xuất.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 309",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/309-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-310",
+    "questionNumber": 310,
+    "text": "You have an Azure DevOps project that produces Node Package Manager (npm) packages. Multiple projects consume the packages.  \n\nYou need to configure Azure Artifacts to ensure that both the latest and pre-release versions of the packages are available for consumption.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create two feed views named @prerelease and @release, Set @release as the default view. Configure a release pipeline that tags the packages as release after successful testing."
+      },
+      {
+        "key": "B",
+        "text": "Create a feed view named @prerelease. Configure a release pipeline that tags the packages as release after successful testing."
+      },
+      {
+        "key": "C",
+        "text": "Create two feed views named @prerelease and @default. Configure a release pipeline that promotes a package to the @default view after successful testing."
+      },
+      {
+        "key": "D",
+        "text": "Create two feed views named @prerelease and @release. Set @release as the default view. Configure a release pipeline that promotes a package to the @release view after successful testing."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure Artifacts quản lý khả năng hiển thị gói npm thông qua chế độ xem nguồn cấp dữ liệu. Tạo các chế độ xem @prerelease và @release riêng biệt, đặt @release làm mặc định và sử dụng quảng cáo (không gắn thẻ) cho phép cả phiên bản ổn định và phiên bản tiền phát hành mới nhất có sẵn cho người tiêu dùng. Quảng cáo các gói giữa các lượt xem là phương pháp được đề xuất.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 310",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/310-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-311",
+    "questionNumber": 311,
+    "text": "Your company builds a multi-tier web application. You use Azure DevOps and host the production application on Azure virtual machines. Your team prepares an Azure Resource Manager template of the virtual machine that will be used to test new features.  \n  \nYou need to create a staging environment in Azure that meets the following requirements:  \n  \n- Minimizes the cost of Azure hosting  \n- Provisions the virtual machines automatically  \n- Uses the custom Azure Resource Manager template to provision the virtual machines  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "In Azure Cloud Shell, run Azure CLI commands to create and delete the new virtual machines in a staging resource group."
+      },
+      {
+        "key": "B",
+        "text": "In Azure DevOps, configure new tasks in the release pipeline to deploy to Azure Cloud Services."
+      },
+      {
+        "key": "C",
+        "text": "From Azure Cloud Shell, run Azure PowerShell commands to create and delete the new virtual machines in a staging resource group."
+      },
+      {
+        "key": "D",
+        "text": "In Azure DevOps, configure new tasks in the release pipeline to create and delete the virtual machines in Azure DevTest Labs."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure DevTest Labs được xây dựng nhằm mục đích tạo ra các môi trường thử nghiệm/dàn dựng theo yêu cầu, được kiểm soát chi phí. Nó hỗ trợ cung cấp máy ảo từ các mẫu ARM tùy chỉnh và quy trình phát hành Azure DevOps bao gồm các tác vụ DevTest Labs chuyên dụng để tự động tạo và xóa máy ảo như một phần của bản phát hành. DevTest Labs cũng cung cấp các tính năng quản lý chi phí như chính sách tự động tắt và khởi động, hạn mức và công thức giúp giảm thiểu chi phí lưu trữ. Việc chạy các lệnh CLI hoặc PowerShell đặc biệt từ Cloud Shell không cung cấp khả năng cung cấp tự động, tích hợp theo đường dẫn gắn liền với các giai đoạn phát hành và Dịch vụ đám mây Azure là một dịch vụ điện toán PaaS không liên quan, không phù hợp cho việc triển khai mẫu ARM dựa trên VM.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 311",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/311-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-312",
+    "questionNumber": 312,
+    "text": "You need to configure Azure Automation for the computers in Pool7.  \n  \nWhich three actions should you perform in sequence? Move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784167360939-9x76x52u.png)",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Run the Import-AzureRmAutomationDscConfiguration Azure PowerShell cmdlet."
+      },
+      {
+        "key": "B",
+        "text": "Create a Desired State Configuration (DSC) configuration file that has an extension of .ps1."
+      },
+      {
+        "key": "C",
+        "text": "Run the New-AzureRmResourceGroupDeployment Azure PowerShell cmdlet."
+      },
+      {
+        "key": "D",
+        "text": "Run the Start-AzureRmAutomationDscCompilationJob Azure PowerShell cmdlet."
+      },
+      {
+        "key": "E",
+        "text": "Create an Azure Resource Manager template file that has an extension of .json."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Run the Import-AzureRmAutomationDscConfiguration Azure PowerShell cmdlet."
+      },
+      {
+        "key": "B",
+        "text": "Create a Desired State Configuration (DSC) configuration file that has an extension of .ps1."
+      },
+      {
+        "key": "C",
+        "text": "Run the New-AzureRmResourceGroupDeployment Azure PowerShell cmdlet."
+      },
+      {
+        "key": "D",
+        "text": "Run the Start-AzureRmAutomationDscCompilationJob Azure PowerShell cmdlet."
+      },
+      {
+        "key": "E",
+        "text": "Create an Azure Resource Manager template file that has an extension of .json."
+      }
+    ],
+    "correctAnswers": [
+      "1=B",
+      "2=A",
+      "3=D"
+    ],
+    "explanation": "Quy trình công việc chính xác cho Cấu hình trạng thái tự động hóa Azure (DSC) là trước tiên tạo cấu hình dưới dạng tệp tập lệnh PowerShell (.ps1), sau đó nhập tệp cấu hình đó vào tài khoản Tự động hóa bằng cách sử dụng Import-AzureRmAutomationDscConfiguration và cuối cùng biên dịch cấu hình thành các tệp MOF dành riêng cho nút bằng cách sử dụng Start-AzureRmAutomationDscCompilationJob để có thể áp dụng cấu hình đó cho các nút mục tiêu như trong Pool7. Việc triển khai mẫu Trình quản lý tài nguyên (New-AzureRmResourceGroupDeployment và mẫu.json) không liên quan đến việc soạn thảo và biên dịch cấu hình DSC, vì vậy những mục đó không thuộc trình tự này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784167360939-9x76x52u.png",
+    "sourceTitle": "Examcademy AZ-400 Question 312",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/312-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-313",
+    "questionNumber": 313,
+    "text": "You have an Azure DevOps project that uses an Azure Boards board and stores its code in a GitHub repository. The repository includes a file named `README.md`.  \n  \nYou need to ensure that `README.md` displays the status of the work items on the board. The solution must require minimal administrative effort.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a GitHub personal access token (PAT)."
+      },
+      {
+        "key": "B",
+        "text": "Enable GitHub annotations for the board."
+      },
+      {
+        "key": "C",
+        "text": "Install the Azure Boards app for GitHub."
+      },
+      {
+        "key": "D",
+        "text": "Select Allow anonymous users to access the status badge."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Huy hiệu trạng thái Bảng Azure được thêm bằng cách sao chép Markdown do bảng tạo vào `README.md` của kho lưu trữ GitHub. Dự án Azure DevOps trước tiên phải được kết nối với kho GitHub đó; cài đặt và ủy quyền ứng dụng Azure Boards sẽ thiết lập sự tích hợp đó. Quyền truy cập ẩn danh chỉ là cài đặt huy hiệu tùy chọn, trong khi mã thông báo truy cập cá nhân và chú thích GitHub là không cần thiết cho mục đích này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 313",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/313-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-314",
+    "questionNumber": 314,
+    "text": "You need to evaluate whether the underlined portion of the statement below is correct.  \n  \nThe Burnup widget measures the elapsed time from creation of work items to their completion.  \n  \nSelect **No adjustment required** if the underlined segment is accurate. If it is not accurate, select the choice that correctly replaces it.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "No adjustment required."
+      },
+      {
+        "key": "B",
+        "text": "Lead time"
+      },
+      {
+        "key": "C",
+        "text": "Test results trend"
+      },
+      {
+        "key": "D",
+        "text": "Burndown"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Trong Azure DevOps, tiện ích Burnup theo dõi công việc đã hoàn thành trong phạm vi tổng thể trong một khoảng thời gian (hữu ích cho việc ghi lại bản phát hành, bản ghi lỗi, v.v.), chứ không phải thời gian trôi qua cho mỗi mục công việc. Số liệu đo lường cụ thể thời gian trôi qua từ khi một mục công việc được tạo cho đến khi nó được đóng được gọi là Thời gian thực hiện. Bởi vì mô tả trong câu lệnh khớp với Thời gian thực hiện chứ không phải là Burnup, nên đoạn được gạch chân phải được sửa thành 'Thời gian thực hiện'.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 314",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/314-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-315",
+    "questionNumber": 315,
+    "text": "You have a GitHub organization.  \n  \nYou are creating a GitHub Actions workflow.  \n  \nYou need to make authenticated API requests by using a GitHub app named App1.  \n  \nWhich four actions should you carry out, in sequence? Arrange the appropriate actions in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot3",
+        "text": "Slot 3:",
+        "correctAnswer": "F"
+      },
+      {
+        "id": "slot4",
+        "text": "Slot 4:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Register App1 and store the app ID as a GitHub Actions secret."
+      },
+      {
+        "key": "B",
+        "text": "Generate a JSON Web Token (JWT)."
+      },
+      {
+        "key": "C",
+        "text": "Generate a private key and store the key as a secret."
+      },
+      {
+        "key": "D",
+        "text": "Create an app manifest."
+      },
+      {
+        "key": "E",
+        "text": "Generate an installation access token."
+      },
+      {
+        "key": "F",
+        "text": "Install App1 in your organization."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Register App1 and store the app ID as a GitHub Actions secret."
+      },
+      {
+        "key": "B",
+        "text": "Generate a JSON Web Token (JWT)."
+      },
+      {
+        "key": "C",
+        "text": "Generate a private key and store the key as a secret."
+      },
+      {
+        "key": "D",
+        "text": "Create an app manifest."
+      },
+      {
+        "key": "E",
+        "text": "Generate an installation access token."
+      },
+      {
+        "key": "F",
+        "text": "Install App1 in your organization."
+      }
+    ],
+    "correctAnswers": [
+      "slot1=A",
+      "slot2=C",
+      "slot3=F",
+      "slot4=E"
+    ],
+    "explanation": "Ứng dụng GitHub phải được đăng ký, gán khóa riêng và được cài đặt trên tổ chức trước khi ứng dụng có thể hoạt động trên tài nguyên của tổ chức đó. Quy trình làm việc lưu trữ ID ứng dụng và khóa riêng tư dưới dạng bí mật, sau đó lấy mã thông báo truy cập cài đặt cho các yêu cầu API GitHub đã được xác thực. JWT được sử dụng để yêu cầu mã thông báo cài đặt, trong khi mã thông báo truy cập cài đặt là thông tin xác thực được sử dụng cho lệnh gọi API dưới dạng cài đặt của tổ chức.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 315",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/315-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-316",
+    "questionNumber": 316,
+    "text": "You are designing a strategy to monitor baseline metrics for Azure virtual machines running Windows Server.  \n  \nYou need to collect detailed data about the processes running inside the guest operating system.  \n  \nWhich two agents should you deploy? Each correct answer presents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the Telegraf agent"
+      },
+      {
+        "key": "B",
+        "text": "the Azure Log Analytics agent"
+      },
+      {
+        "key": "C",
+        "text": "the Azure Network Watcher Agent for Windows"
+      },
+      {
+        "key": "D",
+        "text": "the Dependency agent"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "D"
+    ],
+    "explanation": "Tính năng Bản đồ của thông tin chuyên sâu về VM, hiển thị thông tin chi tiết về quy trình và phụ thuộc chạy bên trong hệ điều hành khách của VM, yêu cầu cả tác nhân Log Analytics (để thu thập và chuyển tiếp dữ liệu giám sát đến không gian làm việc Log Analytics) và tác nhân phụ thuộc (phát hiện các quy trình cũng như các kết nối giữa các quy trình/mạng của chúng và chuyển dữ liệu đó qua tác nhân Log Analytics). Cả tác nhân đều không cung cấp khả năng này - tác nhân phụ thuộc có kênh dữ liệu độc lập no và phụ thuộc vào tác nhân Log Analytics được cài đặt trên cùng một VM. Tác nhân Telegraf được sử dụng để gửi số liệu tùy chỉnh tới Số liệu Azure Monitor chứ không phải dữ liệu khách cấp quy trình và tác nhân Network Watcher xử lý các chẩn đoán mạng như chụp gói và nhật ký luồng thay vì giám sát quy trình.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 316",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/316-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-317",
+    "questionNumber": 317,
+    "text": "Your team follows an agile development approach.  \n  \nYou need to recommend a branching strategy for the team's Git repository. The strategy must meet the following requirements:  \n  \n- Provide the ability to work on multiple independent tasks in parallel.  \n- Ensure that checked-in code remains in a releasable state at all times.  \n- Ensure that new features can be abandoned at any time.  \n- Encourage experimentation.  \n  \nWhat should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a single long-running branch without forking"
+      },
+      {
+        "key": "B",
+        "text": "multiple long-running branches"
+      },
+      {
+        "key": "C",
+        "text": "a single fork per team member"
+      },
+      {
+        "key": "D",
+        "text": "a single long-running branch with multiple short-lived feature branches"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Cách tiếp cận dựa trên đường trục sử dụng một nhánh chính dài hạn cùng với nhiều nhánh tính năng tồn tại trong thời gian ngắn đáp ứng tất cả các yêu cầu đã nêu. Mỗi nhiệm vụ hoặc tính năng được phát triển trong nhánh tồn tại trong thời gian ngắn của riêng nó, cho phép một số nhiệm vụ tiến hành song song mà không can thiệp lẫn nhau. Bởi vì nhánh chính chỉ nhận được công việc đã hoàn thành, được xem xét và thử nghiệm thông qua việc hợp nhất nên nó luôn ở trạng thái có thể phát hành được. Vì mỗi tính năng nằm trong nhánh riêng biệt của nó nên nhánh đó (và tính năng) có thể bị bỏ qua hoặc xóa bất kỳ lúc nào mà không ảnh hưởng đến nhánh chính hoặc công việc đang thực hiện khác. Sự cô lập cũng khuyến khích thử nghiệm vì các nhà phát triển có thể thử các thay đổi trong một nhánh dùng một lần mà không gây rủi ro cho cơ sở mã ổn định. Đây là mô hình phân nhánh được đề xuất trong hướng dẫn Azure Repos/Azure DevOps của Microsoft dành cho các nhóm linh hoạt, trái ngược với mô hình một nhánh duy nhất có phân nhánh no (cách ly no), nhiều nhánh chạy dài (tích hợp và hợp nhất phức tạp, khó duy trì khả năng phát hành hơn) hoặc một nhánh cho mỗi thành viên trong nhóm (định hướng tới quy trình làm việc đóng góp phân tán/nguồn mở thay vì phân phối linh hoạt nhanh chóng, có thể phát hành).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 317",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/317-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-318",
+    "questionNumber": 318,
+    "text": "You need to increase the security of your team's development process.  \n  \nWhich type of security tool should you recommend for each stage of the development process? Drag the appropriate security tools to the correct stages. Each security tool may be used once, more than once, or not at all.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784167346612-km3nrojg.jpg)",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "pr",
+        "text": "Pull request:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "ci",
+        "text": "Continuous integration:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "cd",
+        "text": "Continuous delivery:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Penetration testing"
+      },
+      {
+        "key": "B",
+        "text": "Static code analysis"
+      },
+      {
+        "key": "C",
+        "text": "Threat modeling"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Penetration testing"
+      },
+      {
+        "key": "B",
+        "text": "Static code analysis"
+      },
+      {
+        "key": "C",
+        "text": "Threat modeling"
+      }
+    ],
+    "correctAnswers": [
+      "pr=B",
+      "ci=B",
+      "cd=A"
+    ],
+    "explanation": "Các công cụ phân tích mã tĩnh (SAST) có tốc độ nhanh và tự động, khiến chúng phù hợp để chạy trong bước xác thực yêu cầu kéo nhằm phát hiện các lỗ hổng trước khi mã được hợp nhất và lặp lại trong quá trình xây dựng Tích hợp liên tục để liên tục xác minh chất lượng và bảo mật mã khi các thay đổi tích lũy. Kiểm tra thâm nhập yêu cầu một phiên bản đang chạy của ứng dụng và do đó được thực hiện sau trong quy trình, trong quá trình Phân phối liên tục, dựa trên môi trường thử nghiệm hoặc dàn dựng đã triển khai. Lập mô hình mối đe dọa là hoạt động ở giai đoạn thiết kế chủ động được thực hiện trước khi bắt đầu phát triển, do đó, nó không tương ứng với bất kỳ giai đoạn yêu cầu kéo, CI hoặc CD nào được liệt kê ở đây.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784167346612-km3nrojg.jpg",
+    "sourceTitle": "Examcademy AZ-400 Question 318",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/318-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-319",
+    "questionNumber": 319,
+    "text": "You have an Azure DevOps project. You are creating a build pipeline that deploys resources using Azure Resource Manager templates, and the templates reference secrets stored in Azure Key Vault.  \n  \nYou need to ensure that the resource ID of the key vault can be generated dynamically during template deployment.  \n  \nWhat should you include in the template?  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784162317382-mbdpq9hg.png)",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Triển khai lồng nhau ARM sử dụng loại tài nguyên `Microsoft.Resources/deployments`. Thuộc tính `template` của nó nhúng mẫu con, cho phép đánh giá biểu thức `resourceId()` cho `Microsoft.KeyVault/vaults` trong quá trình triển khai và cung cấp cho tham chiếu bí mật Key Vault. `templateLink` chỉ trỏ đến mẫu được lưu trữ bên ngoài và không phải là mẫu mẫu lồng nhau nội tuyến được sử dụng để tạo động ID Vault khóa.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784162317382-mbdpq9hg.png",
+    "sourceTitle": "Examcademy AZ-400 Question 319",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/319-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-320",
+    "questionNumber": 320,
+    "text": "Your company intends to adopt an agile approach to software development.  \n  \nYou need to recommend an application that will enable communication among development team members located around the world. The application must meet the following requirements:  \n  \n- Allow members of different project teams to be isolated into separate communication channels, while retaining a history of the chats within those channels.  \n- Be available on Windows 10, Mac OS, iOS, and Android.  \n- Allow external contractors and suppliers to be added to projects.  \n- Integrate directly with Azure DevOps.  \n  \nWhat should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Microsoft Project"
+      },
+      {
+        "key": "B",
+        "text": "Bamboo"
+      },
+      {
+        "key": "C",
+        "text": "Microsoft Lync"
+      },
+      {
+        "key": "D",
+        "text": "Microsoft Teams"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Microsoft Teams cung cấp khả năng liên lạc dựa trên kênh với lịch sử trò chuyện liên tục để tách biệt các nhóm dự án, chạy nguyên bản trên Windows 10, macOS, iOS và Android, hỗ trợ quyền truy cập của khách để các nhà thầu và nhà cung cấp bên ngoài có thể được thêm vào nhóm và có tích hợp bên thứ nhất (ứng dụng Azure Boards) kết nối trực tiếp với Azure DevOps để tích hợp mục công việc và thông báo. Microsoft Project là một công cụ lập kế hoạch/quản lý dự án, không phải là một nền tảng truyền thông; Bamboo là công cụ xây dựng CI/CD của Atlassian có tích hợp no Azure DevOps; và Microsoft Lync (Skype for Business) thiếu lịch sử kênh liên tục và tích hợp Azure DevOps gốc mà Teams cung cấp.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 320",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/320-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-321",
+    "questionNumber": 321,
+    "text": "Your company builds a client banking application that handles a large volume of data. Code quality has been an ongoing concern, and it has recently worsened due to increased time pressure on the development team.  \n  \nYou need to implement static code analysis.  \n  \nDuring which phase should you use static code analysis?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "integration testing"
+      },
+      {
+        "key": "B",
+        "text": "staging"
+      },
+      {
+        "key": "C",
+        "text": "production release"
+      },
+      {
+        "key": "D",
+        "text": "build"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Các công cụ phân tích mã tĩnh được thiết kế để tự động kiểm tra mã nguồn mà không cần thực thi mã đó và chúng hiệu quả nhất khi được tích hợp trực tiếp vào quy trình xây dựng (ví dụ: dưới dạng bước xây dựng trong quy trình CI/CD). Điều này đảm bảo rằng mọi thay đổi mã đều được phân tích về chất lượng, kiểu dáng và các lỗi tiềm ẩn ngay khi biên dịch, cho phép phát hiện và giải quyết các vấn đề ngay lập tức—trước khi mã tiến tới thử nghiệm tích hợp, dàn dựng hoặc phát hành sản xuất. Việc nhúng phân tích tĩnh trong giai đoạn xây dựng sẽ tạo ra phản hồi nhanh, liên tục cho các nhà phát triển, giúp giải quyết trực tiếp các vấn đề về chất lượng mã do áp lực thời gian gây ra, vì các vấn đề được phát hiện sớm thay vì được phát hiện muộn hơn trong quá trình phát hành.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 321",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/321-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-322",
+    "questionNumber": 322,
+    "text": "You have a GitHub repository containing a workflow named WF1. WF1 builds code for an app named App1.  \n  \nYou need to add a build-status badge to the repository's README.md file for App1.  \n  \nHow should you complete the badge URL?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Huy hiệu trạng thái Tác vụ GitHub sử dụng đường dẫn kho lưu trữ theo thứ tự `OWNER/REPOSITORY`, theo sau là điểm cuối huy hiệu quy trình công việc. Do đó, biến đầu tiên là chủ sở hữu kho lưu trữ và biến thứ hai là tên kho lưu trữ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 322",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/322-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-323",
+    "questionNumber": 323,
+    "text": "You have an on-premises Bitbucket Server with a firewall configured to block inbound Internet traffic. The server is used for Git-based source control.  \n  \nYou intend to manage the build and release processes using Azure DevOps. This plan requires you to integrate Azure DevOps and Bitbucket.  \n  \nWhich of the following will allow for this integration?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "A self-hosted agent"
+      },
+      {
+        "key": "B",
+        "text": "A Microsoft-hosted agent"
+      },
+      {
+        "key": "C",
+        "text": "An External Git service connection"
+      },
+      {
+        "key": "D",
+        "text": "Service hooks"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "A self-hosted agent"
+      },
+      {
+        "key": "B",
+        "text": "A Microsoft-hosted agent"
+      },
+      {
+        "key": "C",
+        "text": "An External Git service connection"
+      },
+      {
+        "key": "D",
+        "text": "Service hooks"
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=C"
+    ],
+    "explanation": "Vì tường lửa chặn lưu lượng truy cập Internet gửi đến Máy chủ Bitbucket tại chỗ nên chỉ có thể thực hiện các kết nối gửi đi từ mạng đó. Tác nhân xây dựng tự lưu trữ được cài đặt tại chỗ có thể truy cập Máy chủ Bitbucket cục bộ và liên lạc ra bên ngoài với Azure Pipelines, do đó, nó không yêu cầu bất kỳ ngoại lệ tường lửa gửi đến nào; một tác nhân do Microsoft lưu trữ, chạy trên đám mây của Azure, sẽ cần quyền truy cập vào máy chủ tại chỗ, điều này bị tường lửa ngăn chặn. Vì Azure Pipelines không hỗ trợ nguyên bản Máy chủ Bitbucket (tại chỗ) dưới dạng loại kho lưu trữ - hỗ trợ riêng chỉ tồn tại cho Bitbucket Cloud - bạn phải định cấu hình kết nối dịch vụ Git bên ngoài để trỏ đến URL Máy chủ Bitbucket tại chỗ. Móc dịch vụ không liên quan đến tình huống này vì chúng đẩy thông báo từ Bitbucket Cloud đến các dịch vụ bên ngoài thay vì cho phép xây dựng quy trình dựa trên kho lưu trữ Git tại chỗ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 323",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/323-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-324",
+    "questionNumber": 324,
+    "text": "You are configuring project metrics for dashboards in Azure DevOps.  \n\nYou need to configure a chart widget that measures the elapsed time to complete work items once they become active.  \n\nWhich of the following is the widget you should use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Cumulative Flow Diagram"
+      },
+      {
+        "key": "B",
+        "text": "Burnup"
+      },
+      {
+        "key": "C",
+        "text": "Cycle time"
+      },
+      {
+        "key": "D",
+        "text": "Burndown"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Thời gian chu kỳ là số liệu đo cụ thể thời gian đã trôi qua kể từ khi một mục công việc chuyển sang trạng thái hoạt động cho đến khi hoàn thành. Nó phản ánh trực tiếp thời gian giữa kích hoạt và đóng cửa. Sơ đồ dòng tích lũy hiển thị số lượng trạng thái theo thời gian, Burnup hiển thị công việc đã hoàn thành và Burndown hiển thị công việc còn lại—không có thước đo thời gian đã trôi qua cho mỗi mục.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 324",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/324-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-325",
+    "questionNumber": 325,
+    "text": "Your company is planning to adopt an agile approach to software development.  \n  \nYou need to recommend an application that will provide communication between members of the development team, who are located in various places around the world. The application must meet the following requirements:  \n  \n- Allow members of different project teams to be isolated into separate communication channels and retain a history of the chats within those channels.  \n- Be available on Windows 10, Mac OS, iOS, and Android operating systems.  \n- Allow external contractors and suppliers to be added to projects.  \n- Integrate directly with Azure DevOps.  \n  \nWhat should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Skype for Business"
+      },
+      {
+        "key": "B",
+        "text": "Bamboo"
+      },
+      {
+        "key": "C",
+        "text": "Octopus"
+      },
+      {
+        "key": "D",
+        "text": "Slack"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Slack đáp ứng tất cả các yêu cầu đã nêu: nó cung cấp giao tiếp dựa trên kênh giúp tách biệt các nhóm dự án trong khi vẫn giữ lại lịch sử trò chuyện có thể tìm kiếm, nó chạy nguyên bản trên Windows 10, macOS, iOS và Android, nó cho phép người dùng bên ngoài như nhà thầu và nhà cung cấp được mời làm khách đến các kênh cụ thể và nó cung cấp khả năng tích hợp trực tiếp với Azure DevOps (thông qua ứng dụng Azure Boards cho Slack) để đăng thông báo về mục công việc và quy trình lên các kênh. Skype for Business không cung cấp cùng một mô hình lịch sử dựa trên kênh biệt lập, liên tục hoặc tích hợp Azure DevOps gốc. Bamboo và Octopus là những công cụ tích hợp/triển khai liên tục chứ không phải nền tảng giao tiếp nhóm nên không đáp ứng được yêu cầu gì cả.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 325",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/325-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-326",
+    "questionNumber": 326,
+    "text": "Solution: Create a main template that deploys the resources in one resource group and a nested template that deploys the resources in the other resource group.  \n  \nDoes this meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Mẫu ARM có thể triển khai cho nhiều nhóm tài nguyên bằng cách đặt tài nguyên cho nhóm tài nguyên đích của quá trình triển khai trong mẫu chính và sử dụng triển khai lồng nhau nhắm mục tiêu đến nhóm tài nguyên khác. Việc triển khai lồng nhau chỉ định nhóm tài nguyên đích, cho phép các máy ảo và cơ sở dữ liệu SQL được triển khai vào các nhóm tương ứng của chúng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 326",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/326-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-327",
+    "questionNumber": 327,
+    "text": "Solution: Create a main template containing two linked templates, with each template deploying the resources in its corresponding group.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Mẫu ARM cấp đăng ký có thể tạo hai nhóm tài nguyên và sử dụng các triển khai được liên kết nhắm mục tiêu vào các nhóm tài nguyên đó. Các mẫu được liên kết hỗ trợ triển khai tài nguyên cho nhiều nhóm tài nguyên trong một lần triển khai duy nhất, do đó, các mẫu được liên kết riêng biệt có thể triển khai các máy ảo và cơ sở dữ liệu Azure SQL cho các nhóm tương ứng của chúng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 327",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/327-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-328",
+    "questionNumber": 328,
+    "text": "Solution: Create two standalone templates, each of which deploys the resources in its respective group.  \n  \nDoes this meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Việc triển khai mẫu ARM trong phạm vi nhóm tài nguyên yêu cầu nhóm tài nguyên đích phải tồn tại. Việc tạo nhóm tài nguyên yêu cầu triển khai phạm vi đăng ký; tài nguyên sau đó có thể được triển khai cho các nhóm đó thông qua các mẫu lồng nhau hoặc được liên kết. Hai mẫu độc lập chỉ triển khai tài nguyên vào các nhóm tương ứng sẽ không tạo ra hai nhóm tài nguyên bắt buộc.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 328",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/328-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-329",
+    "questionNumber": 329,
+    "text": "Solution: Create one standalone template to deploy all of the resources.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các tài nguyên được nhắm mục tiêu vào nhiều nhóm tài nguyên yêu cầu triển khai trong phạm vi các nhóm đó, sử dụng các mẫu lồng nhau hoặc được liên kết để nhắm mục tiêu một nhóm tài nguyên bổ sung. Một mẫu triển khai độc lập không cung cấp các phạm vi nhóm tài nguyên riêng biệt đó.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 329",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/329-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-330",
+    "questionNumber": 330,
+    "text": "You must configure authentication for App1. The solution must accommodate the planned changes.  \n  \nWhich three actions should be performed in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot2",
+        "text": "Slot 2:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot3",
+        "text": "Slot 3:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an app."
+      },
+      {
+        "key": "B",
+        "text": "Add a secret."
+      },
+      {
+        "key": "C",
+        "text": "Create a credential."
+      },
+      {
+        "key": "D",
+        "text": "Configure the ID and secret for App1."
+      },
+      {
+        "key": "E",
+        "text": "Create a managed service identity."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create an app."
+      },
+      {
+        "key": "B",
+        "text": "Add a secret."
+      },
+      {
+        "key": "C",
+        "text": "Create a credential."
+      },
+      {
+        "key": "D",
+        "text": "Configure the ID and secret for App1."
+      },
+      {
+        "key": "E",
+        "text": "Create a managed service identity."
+      }
+    ],
+    "correctAnswers": [
+      "slot1=A",
+      "slot2=B",
+      "slot3=D"
+    ],
+    "explanation": "Định cấu hình ứng dụng để xác thực bằng đăng ký ứng dụng Azure AD và thông tin xác thực bí mật ứng dụng khách (service principal cổ điển, như được yêu cầu khi các thay đổi theo kế hoạch yêu cầu App1 sử dụng service principal một cách rõ ràng) theo ba bước: đăng ký ứng dụng (tạo đăng ký ứng dụng, tự động tạo bản sao lưu service principal), thêm bí mật ứng dụng khách vào đăng ký ứng dụng đó, sau đó định cấu hình chính App1 với ứng dụng (ứng dụng khách) ID và bí mật được tạo để nó có thể xác thực với Azure AD và nhận mã thông báo. managed identity hoàn toàn không sử dụng cặp ID/bí mật được định cấu hình thủ công — Azure tự động tạo và xoay vòng thông tin xác thực của nó — vì vậy, cách tiếp cận được xây dựng xung quanh 'cấu hình ID và bí mật cho App1' chỉ nhất quán nội bộ với bí mật đăng ký ứng dụng/bí mật chính dịch vụ chứ không phải managed identity.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 330",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/330-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-331",
+    "questionNumber": 331,
+    "text": "You have a GitHub repository containing the source code for an app named App1.  \n  \nYou need to create process documentation for App1. The solution must include a diagram showing the relationships between App1 phases as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784203072235-xgk22cdc.png)  \n  \nComplete the Markdown code. Each value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "diagramType",
+        "text": "Slot 1:",
+        "correctAnswer": "F"
+      },
+      {
+        "id": "compositeState",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Failed"
+      },
+      {
+        "key": "B",
+        "text": "flowChart"
+      },
+      {
+        "key": "C",
+        "text": "Incomplete"
+      },
+      {
+        "key": "D",
+        "text": "Processing"
+      },
+      {
+        "key": "E",
+        "text": "sequenceDiagram"
+      },
+      {
+        "key": "F",
+        "text": "stateDiagram"
+      },
+      {
+        "key": "G",
+        "text": "Waiting"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Failed"
+      },
+      {
+        "key": "B",
+        "text": "flowChart"
+      },
+      {
+        "key": "C",
+        "text": "Incomplete"
+      },
+      {
+        "key": "D",
+        "text": "Processing"
+      },
+      {
+        "key": "E",
+        "text": "sequenceDiagram"
+      },
+      {
+        "key": "F",
+        "text": "stateDiagram"
+      },
+      {
+        "key": "G",
+        "text": "Waiting"
+      }
+    ],
+    "correctAnswers": [
+      "diagramType=F",
+      "compositeState=D"
+    ],
+    "explanation": "Sơ đồ trạng thái Nàng tiên cá được khai báo bằng `stateDiagram`. Trạng thái tổng hợp được xác định bằng `state <name> {. }`; đặt tên trạng thái đó là `Processing` nhóm quá trình chuyển đổi `Incomplete --> Complete` bên trong trong khi vẫn giữ lại các chuyển đổi bên ngoài từ Đang xử lý sang Thành công và Thất bại.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784203072235-xgk22cdc.png",
+    "sourceTitle": "Examcademy AZ-400 Question 331",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/331-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-332",
+    "questionNumber": 332,
+    "text": "Your organization uses GitHub for source control. The GitHub repositories hold both source code and process documentation. The process documentation is authored as Microsoft Word documents that embed simple flow charts saved as .bmp files.  \n  \nYou need to optimize how the process documentation and flow charts are integrated and versioned. The solution must meet these requirements:  \n  \n- Store documents as plain text.  \n- Minimize the number of files that must be maintained.  \n- Simplify the modification, merging, and reuse of flow charts.  \n- Simplify the modification, merging, and reuse of documents.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784178118801-6js37qkr.png)  \n  \nFor each requirement in the answer area, select the appropriate conversion option.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Markdown (.md) là định dạng văn bản thuần túy mà GitHub hiển thị nguyên bản, giúp đơn giản hóa việc phân biệt, hợp nhất và sử dụng lại so với các tệp Word.docx nhị phân, đáp ứng trực tiếp yêu cầu 'lưu trữ tài liệu dưới dạng văn bản thuần túy' và 'đơn giản hóa việc sửa đổi, hợp nhất và tái sử dụng các yêu cầu của tài liệu. Nàng tiên cá là một cú pháp lập sơ đồ dựa trên văn bản mà GitHub hiển thị nội tuyến trong các tệp Markdown (bên trong các khối mã có hàng rào với mã nhận dạng ngôn ngữ của nàng tiên cá). Vì sơ đồ Nàng tiên cá là văn bản thuần túy nên chúng có thể được nhúng trực tiếp vào cùng một tệp Markdown làm tài liệu, loại bỏ nhu cầu về các tệp hình ảnh.bmp riêng biệt (giảm thiểu số lượng tệp cần duy trì) và cho phép các sơ đồ được kiểm soát theo phiên bản, khác biệt và hợp nhất giống như bất kỳ văn bản nào khác, giúp đơn giản hóa việc sửa đổi, hợp nhất và tái sử dụng chúng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784178118801-6js37qkr.png",
+    "sourceTitle": "Examcademy AZ-400 Question 332",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/332-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-333",
+    "questionNumber": 333,
+    "text": "Which feature should be used to enforce the code quality restriction on the release pipeline for the investment planning applications suite?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a pre-deployment approval"
+      },
+      {
+        "key": "B",
+        "text": "a deployment gate"
+      },
+      {
+        "key": "C",
+        "text": "a post-deployment approval"
+      },
+      {
+        "key": "D",
+        "text": "a trigger"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Cổng triển khai trong Azure Pipelines là các bước kiểm tra tự động được định cấu hình dưới dạng điều kiện trước hoặc sau triển khai ở giai đoạn phát hành. Họ truy vấn các dịch vụ bên ngoài hoặc số liệu quy trình—chẳng hạn như phạm vi mã, tỷ lệ vượt qua hoặc các tín hiệu chất lượng khác—và chỉ cho phép bản phát hành chuyển sang giai đoạn tiếp theo nếu những số liệu đó đáp ứng ngưỡng được xác định trước. Điều này làm cho các cổng trở thành cơ chế thích hợp để thực thi hạn chế chất lượng mã tự động, khách quan, trái ngược với phê duyệt (trước hoặc sau khi triển khai), yêu cầu con người đăng xuất hoặc trình kích hoạt thủ công, chỉ đơn giản là bắt đầu thực thi quy trình dựa trên các sự kiện như cam kết hoặc lịch trình.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 333",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/333-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-334",
+    "questionNumber": 334,
+    "text": "You use Azure Pipelines to manage build pipelines, GitHub to store source code, and Dependabot to manage dependencies.  \n  \nYou have an app named App1. Dependabot detects a dependency in App1 that requires an update.  \n  \nWhat should you do first to apply the update?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a pull request."
+      },
+      {
+        "key": "B",
+        "text": "Approve the pull request."
+      },
+      {
+        "key": "C",
+        "text": "Create a branch."
+      },
+      {
+        "key": "D",
+        "text": "Perform a commit."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Dependabot tự động quét các tệp phụ thuộc của kho lưu trữ và khi tìm thấy phần phụ thuộc lỗi thời hoặc dễ bị tổn thương, nó sẽ tạo một nhánh mới với thay đổi phiên bản được yêu cầu và tự mở yêu cầu kéo cho thay đổi đó - cần tạo nhánh thủ công no hoặc tạo PR. Hành động bắt buộc đầu tiên của kỹ sư để chuyển bản cập nhật về phía trước là xem xét và phê duyệt yêu cầu kéo được tạo tự động đó, sau đó bản dựng Azure Pipelines được liên kết có thể xác thực thay đổi và nó có thể được hợp nhất/cam kết.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 334",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/334-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-335",
+    "questionNumber": 335,
+    "text": "You use Semantic Versioning (SemVer) as a dependency-versioning strategy.  \n  \nYou make code changes as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784204334064-na78un28.png)  \n  \nWhich version part should you increment for each change? Each part may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "change1",
+        "text": "Change1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "change2",
+        "text": "Change2:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "change3",
+        "text": "Change3:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Major"
+      },
+      {
+        "key": "B",
+        "text": "Minor"
+      },
+      {
+        "key": "C",
+        "text": "Patch"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Major"
+      },
+      {
+        "key": "B",
+        "text": "Minor"
+      },
+      {
+        "key": "C",
+        "text": "Patch"
+      }
+    ],
+    "correctAnswers": [
+      "change1=B",
+      "change2=A",
+      "change3=C"
+    ],
+    "explanation": "Sự gia tăng phiên bản chính được sử dụng cho một thay đổi đáng kể về khả năng tương thích. Một mức tăng nhỏ thể hiện chức năng bổ sung chỉ có tác động tương thích nhỏ. Bản vá tăng dần được áp dụng khi chức năng mới của no được thêm vào và thay đổi này chỉ có tác động nhỏ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784204334064-na78un28.png",
+    "sourceTitle": "Examcademy AZ-400 Question 335",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/335-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-336",
+    "questionNumber": 336,
+    "text": "You have an Azure DevOps organization named Contoso and an Azure DevOps project named Project1.  \n  \nYou plan to use Microsoft-hosted agents to build container images that will host full Microsoft .NET Framework apps in a YAML pipeline within Project1.  \n  \nWhich two virtual machine images can you use for the Microsoft-hosted agent pool? Each correct answer presents a complete solution. (Choose two.)  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "vs2017-win2016"
+      },
+      {
+        "key": "B",
+        "text": "ubuntu-16.04"
+      },
+      {
+        "key": "C",
+        "text": "win1803"
+      },
+      {
+        "key": "D",
+        "text": "macOS-10.13"
+      },
+      {
+        "key": "E",
+        "text": "vs.2015-win2012r2"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "C"
+    ],
+    "explanation": "Tác nhân do Microsoft lưu trữ cung cấp một tập hợp các hình ảnh VM được xác định trước, mỗi hình ảnh được xác định bằng tên hình ảnh mà bạn chỉ định trong thuộc tính pool.vmImage của quy trình YAML. Để xây dựng và lưu trữ các hình ảnh vùng chứa chứa.NET Framework đầy đủ, cần có một hình ảnh dựa trên Windows với cơ sở Windows Server/Windows 10 thích hợp và công cụ Docker. Hình ảnh 'vs2017-win2016' (Windows Server 2016 có hỗ trợ Visual Studio 2017 và Docker) và hình ảnh 'win1803' (Windows 10 phiên bản 1803) đều là các hình ảnh hợp lệ do Microsoft lưu trữ phù hợp để xây dựng hình ảnh vùng chứa.NET Framework đầy đủ. Hình ảnh Linux (ubuntu-16.04) và macOS (macOS-10.13) không thể chạy hoặc xây dựng bộ chứa.NET Framework Windows đầy đủ và 'vs.2015-win2012r2' không được cung cấp/phù hợp cho kịch bản xây dựng bộ chứa này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 336",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/336-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-337",
+    "questionNumber": 337,
+    "text": "You have an Azure key vault named KV1 and three web servers.  \n  \nYou plan to deploy an app named App1 to the web servers.  \n  \nYou need to ensure that App1 can retrieve a secret from KV1. The solution must meet the following requirements:  \n  \n• Minimize the number of permission grants required.  \n\n• Follow the principle of least privilege.  \n  \nWhat should you include in the solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "role-based access control (RBAC) permission"
+      },
+      {
+        "key": "B",
+        "text": "a system-assigned managed identity"
+      },
+      {
+        "key": "C",
+        "text": "a user-assigned managed identity"
+      },
+      {
+        "key": "D",
+        "text": "a service principal"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "user-assigned managed identity có thể được chia sẻ trên nhiều tài nguyên và được cấp quyền một lần, đáp ứng yêu cầu giảm thiểu việc cấp quyền. Danh tính do hệ thống chỉ định (B) là duy nhất cho mỗi tài nguyên, yêu cầu các quyền riêng biệt cho từng máy chủ trong số ba máy chủ web. Danh tính do người dùng chỉ định tuân theo đặc quyền tối thiểu bằng cách cho phép kiểm soát quyền truy cập chi tiết thông qua một danh tính chung duy nhất.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 337",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/337-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-338",
+    "questionNumber": 338,
+    "text": "Your company has an Azure subscription named Subscription1, associated with an Azure Active Directory tenant named contoso.com.  \n  \nYou need to provision an Azure Kubernetes Service (AKS) cluster in Subscription1 and configure permissions for the cluster using RBAC roles that reference identities in contoso.com.  \n  \nWhich three objects should you create, and in what sequence? Move the appropriate objects from the list to the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "a system-assigned managed identity"
+      },
+      {
+        "key": "B",
+        "text": "a cluster"
+      },
+      {
+        "key": "C",
+        "text": "an application registration in contoso.com"
+      },
+      {
+        "key": "D",
+        "text": "an RBAC binding"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "a system-assigned managed identity"
+      },
+      {
+        "key": "B",
+        "text": "a cluster"
+      },
+      {
+        "key": "C",
+        "text": "an application registration in contoso.com"
+      },
+      {
+        "key": "D",
+        "text": "an RBAC binding"
+      }
+    ],
+    "correctAnswers": [
+      "1=C",
+      "2=B",
+      "3=D"
+    ],
+    "explanation": "Để tích hợp cụm AKS với Azure Active Directory để Kubernetes RBAC có thể tham chiếu danh tính AAD, trước tiên bạn phải đăng ký một ứng dụng trong đối tượng thuê Azure AD (contoso.com); ứng dụng này (ứng dụng máy chủ/máy khách) được AKS sử dụng để xác thực Azure AD. Sau đó, bạn cung cấp cụm AKS, cho phép tích hợp Azure AD và trỏ nó tới đăng ký ứng dụng đã tạo trước đó. Cuối cùng, sau khi cụm đang chạy, bạn tạo liên kết vai trò RBAC (hoặc liên kết vai trò cụm) trong Kubernetes để ánh xạ đối tượng nhóm hoặc người dùng Azure AD tới Vai trò Kubernetes hoặc ClusterRole, cấp các quyền mong muốn. system-assigned managed identity không liên quan đến việc tham chiếu danh tính nhóm/người dùng AAD cho mục đích RBAC và không phải là một phần của trình tự bắt buộc này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 338",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/338-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-339",
+    "questionNumber": 339,
+    "text": "You have an Azure subscription that contains an Azure pipeline named Pipeline1 and a GitHub repository named Repo1. Repo1 contains Bicep modules. Pipeline1 deploys Azure resources by using the Bicep modules.  \n  \nYou need to ensure that all releases comply with Azure Policy before they are deployed to production.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "To Pipeline1, add a step that runs a What if deployment before the deployment step."
+      },
+      {
+        "key": "B",
+        "text": "Configure a deployment gate for Pipeline1 that uses Azure Automation to run a What If deployment."
+      },
+      {
+        "key": "C",
+        "text": "Create an Azure DevOps build that runs on the creation of a pull request and assesses the code for compliance."
+      },
+      {
+        "key": "D",
+        "text": "Configure a deployment gate for Pipeline1 and include the Azure DevOps Security and compliance assessment task."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Cổng triển khai tạm dừng quá trình thực hiện quy trình trong khi chờ kết quả của các cổng được xác định. Nhiệm vụ Đánh giá tuân thủ và bảo mật của Azure DevOps trong cổng triển khai sẽ đánh giá các mẫu và tài nguyên Bicept theo yêu cầu của Chính sách Azure trước khi cho phép triển khai sản xuất. Điều này đảm bảo việc tuân thủ được xác minh trước khi triển khai tài nguyên.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 339",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/339-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-340",
+    "questionNumber": 340,
+    "text": "You are developing a Microsoft ASP.NET application that needs to support authentication. You need to authenticate users through Azure Active Directory (Azure AD). What should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assign an enterprise application to users and groups"
+      },
+      {
+        "key": "B",
+        "text": "Create an app registration in Azure AD"
+      },
+      {
+        "key": "C",
+        "text": "Configure the application to use a SAML endpoint"
+      },
+      {
+        "key": "D",
+        "text": "Create a new OAuth token from the application"
+      },
+      {
+        "key": "E",
+        "text": "Create a membership database in an Azure SQL database"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Trước khi ứng dụng ASP.NET có thể xác thực người dùng dựa trên Azure AD, ứng dụng đó phải được đăng ký trong đối tượng thuê Azure AD thông qua đăng ký ứng dụng. Đăng ký này xác định danh tính của ứng dụng (ID ứng dụng/khách hàng và ID đối tượng thuê), đặt cấu hình URI chuyển hướng và thiết lập các quyền/phạm vi cần thiết cho luồng xác thực OpenID Connect/OAuth2 mà ứng dụng ASP.NET sử dụng với Azure AD. Nếu không có đăng ký này, danh tính ứng dụng no để Azure AD phát hành mã thông báo sẽ không thể thực hiện được các bước tiếp theo như đặt cấu hình thu thập mã thông báo hoặc chỉ định người dùng. Hướng dẫn chính thức của Microsoft để chuẩn bị ứng dụng web cho xác thực Azure AD bắt đầu bằng việc đăng ký ứng dụng trong nền tảng nhận dạng Microsoft (Azure AD) là bước bắt buộc đầu tiên.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 340",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/340-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-341",
+    "questionNumber": 341,
+    "text": "You are automating the build process for a Java-based application using Azure DevOps.  \n  \nYou need to add code coverage testing and publish the results to the pipeline.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Cobertura"
+      },
+      {
+        "key": "B",
+        "text": "Bullseye Coverage"
+      },
+      {
+        "key": "C",
+        "text": "MSTest"
+      },
+      {
+        "key": "D",
+        "text": "Coverlet"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Cobertura là một công cụ bao quát mã dành cho các ứng dụng Java tạo ra các báo cáo bao phủ XML (thường được tạo thông qua các plugin xây dựng Maven, Ant hoặc Gradle). Nhiệm vụ Kết quả phạm vi bảo hiểm mã xuất bản của Azure Pipelines về cơ bản hỗ trợ định dạng báo cáo Cobertura (cùng với JaCoCo) và sử dụng nó để tạo báo cáo phạm vi mã HTML được hiển thị trong tab Phạm vi mã của bản tóm tắt chạy quy trình. Các tùy chọn khác không áp dụng cho Java: Bullseye Coverage được thiết kế cho mã C/C++, MSTest là khung thử nghiệm.NET và Coverlet là thư viện bảo hiểm mã đa nền tảng chỉ dành cho.NET — không tùy chọn nào trong số này có thể công cụ hoặc báo cáo mức độ phù hợp cho mã Java.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 341",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/341-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-342",
+    "questionNumber": 342,
+    "text": "Your company has an Azure subscription. The company requires that all resource groups in the subscription have a tag named organization set to a value of Contoso. You need to implement a policy to meet the tagging requirement. Complete the policy definition by selecting the appropriate options.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783717181512-pzs3r7l6.png)",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Định nghĩa Chính sách Azure sử dụng trường 'loại' để xác định phạm vi chính sách cho một loại tài nguyên cụ thể; đối với các nhóm tài nguyên, giá trị loại tài nguyên chính xác là 'Microsoft.Resources/subscriptions/resourceGroups'. Khi chính sách cần tự động thêm giá trị thẻ bị thiếu thay vì chặn hành động, hiệu ứng 'Nối' sẽ được sử dụng cùng với mảng 'chi tiết' chỉ định trường và giá trị cần áp dụng. 'Từ chối' sẽ ngăn việc tạo các nhóm tài nguyên không tuân thủ thay vì thêm thẻ và 'DeployIfNotExists' được sử dụng để triển khai các tài nguyên/mẫu liên quan chứ không phải để thêm trực tiếp giá trị thẻ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783717181512-pzs3r7l6.png",
+    "sourceTitle": "Examcademy AZ-400 Question 342",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/342-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-343",
+    "questionNumber": 343,
+    "text": "You have an Azure Pipeline. You need to store configuration values as variables. At which four scopes can the variables be defined, and what is the precedence of the variables from highest to lowest? Move the appropriate scopes into the answer area and arrange them in the correct order of precedence.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784186892357-h4ut3j4r.png)",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "4",
+        "text": "Slot 4:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "stage"
+      },
+      {
+        "key": "B",
+        "text": "job"
+      },
+      {
+        "key": "C",
+        "text": "pipeline settings UI"
+      },
+      {
+        "key": "D",
+        "text": "pipeline root"
+      },
+      {
+        "key": "E",
+        "text": "task"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "stage"
+      },
+      {
+        "key": "B",
+        "text": "job"
+      },
+      {
+        "key": "C",
+        "text": "pipeline settings UI"
+      },
+      {
+        "key": "D",
+        "text": "pipeline root"
+      },
+      {
+        "key": "E",
+        "text": "task"
+      }
+    ],
+    "correctAnswers": [
+      "1=B",
+      "2=A",
+      "3=D",
+      "4=C"
+    ],
+    "explanation": "Các biến của Đường ống Azure có thể nằm trong phạm vi công việc, giai đoạn, gốc đường dẫn (trên cùng của YAML) và các cấp độ giao diện người dùng cài đặt đường ống. Khi một biến có cùng tên tồn tại ở nhiều phạm vi, thì giá trị có phạm vi cục bộ hơn sẽ được ưu tiên: biến cấp độ công việc ghi đè biến cấp độ giai đoạn, biến cấp độ giai đoạn ghi đè biến cấp gốc quy trình và biến cấp gốc quy trình ghi đè các giá trị được đặt trong giao diện người dùng cài đặt quy trình. Do đó, mức độ ưu tiên từ cao nhất đến thấp nhất là công việc, giai đoạn, gốc quy trình, giao diện người dùng cài đặt quy trình, như được mô tả trong tài liệu của Microsoft về việc xác định các biến trong Azure Pipelines.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784186892357-h4ut3j4r.png",
+    "sourceTitle": "Examcademy AZ-400 Question 343",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/343-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-344",
+    "questionNumber": 344,
+    "text": "You manage build and release pipelines using Azure DevOps, with your entire managed environment residing in Azure. You need to configure a service endpoint for accessing Azure Key Vault secrets, ensuring that the secrets can be retrieved by Azure DevOps while avoiding the persistence of credentials and tokens within Azure DevOps.  \n  \nHow should you configure the service endpoint?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Kết nối dịch vụ Azure Resource Manager là loại điểm cuối chính xác để truy cập các tài nguyên Azure như Key Vault từ quy trình Azure DevOps. Để đáp ứng yêu cầu không lưu giữ thông tin xác thực hoặc mã thông báo trong Azure DevOps, kết nối phải sử dụng xác thực Nhận dạng dịch vụ được quản lý (hiện được gọi là liên kết nhận dạng khối lượng công việc trong các phiên bản mới hơn), dựa trên Azure AD managed identity thay vì bí mật được lưu trữ, khóa hoặc thông tin xác thực service principal để xác thực và truy xuất bí mật từ Key Vault.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 344",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/344-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-345",
+    "questionNumber": 345,
+    "text": "You plan to deploy a solution that will include multiple microservices.  \n  \nYou need to recommend a deployment strategy for the microservices. The solution must meet the following requirements:  \n  \n• Enable testing and monitoring of changes during a gradual rollout.  \n\n• Control the number of users that will receive new code releases.  \n  \nWhich strategy should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "progressive exposure"
+      },
+      {
+        "key": "B",
+        "text": "A/B"
+      },
+      {
+        "key": "C",
+        "text": "feature toggle"
+      },
+      {
+        "key": "D",
+        "text": "blue/green"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Trước tiên, mức độ hiển thị lũy tiến (phát hành hoàng yến) thực hiện thay đổi đối với một nhóm nhỏ người dùng có thể kiểm soát được, cho phép các nhóm kiểm tra và giám sát hành vi trước khi mở rộng triển khai, điều này trực tiếp đáp ứng cả hai yêu cầu. Màu xanh lam/xanh lục chuyển đổi tất cả lưu lượng truy cập cùng một lúc, thử nghiệm A/B so sánh các biến thể cho số liệu kinh doanh thay vì triển khai kỹ thuật dần dần và tính năng chuyển đổi kiểm soát khả năng hiển thị chức năng nhưng vốn không quản lý mức độ hiển thị của người dùng theo từng giai đoạn trên cơ sở hạ tầng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 345",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/345-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-346",
+    "questionNumber": 346,
+    "text": "You use GitHub Enterprise for source control repositories. The repositories store C# code.  \n  \nYou need to enable CodeQL scanning for the repositories.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable Dependabot security updates."
+      },
+      {
+        "key": "B",
+        "text": "Enable Dependabot alerts."
+      },
+      {
+        "key": "C",
+        "text": "Configure a required GitHub Actions workflow for all the repositories."
+      },
+      {
+        "key": "D",
+        "text": "Push a GitHub Actions workflow to all the repositories."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Quét CodeQL trong GitHub Enterprise được triển khai thông qua quy trình công việc GitHub Actions thực hiện phân tích mã. Để bật chức năng quét, bạn phải đẩy/thêm tệp quy trình làm việc CodeQL vào từng kho lưu trữ. Dependabot xử lý các lỗ hổng phụ thuộc chứ không phải quét mã; quy trình công việc bắt buộc thực thi nhưng không tự tạo ra khả năng quét.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 346",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/346-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-347",
+    "questionNumber": 347,
+    "text": "You plan to use Azure Kubernetes Service (AKS) to host containers deployed from images stored in a Docker Trusted Registry.  \n  \nYou need to recommend a solution for provisioning and connecting to AKS. The solution must ensure that AKS is RBAC-enabled and uses a custom service principal.  \n  \nWhich three commands should be run in sequence? Move the appropriate commands to the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "az role assignment create"
+      },
+      {
+        "key": "B",
+        "text": "az aks get-credentials"
+      },
+      {
+        "key": "C",
+        "text": "az aks create"
+      },
+      {
+        "key": "D",
+        "text": "az ad sp create-for-rbac"
+      },
+      {
+        "key": "E",
+        "text": "kubectl create"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "az role assignment create"
+      },
+      {
+        "key": "B",
+        "text": "az aks get-credentials"
+      },
+      {
+        "key": "C",
+        "text": "az aks create"
+      },
+      {
+        "key": "D",
+        "text": "az ad sp create-for-rbac"
+      },
+      {
+        "key": "E",
+        "text": "kubectl create"
+      }
+    ],
+    "correctAnswers": [
+      "1=D",
+      "2=C",
+      "3=B"
+    ],
+    "explanation": "Việc cung cấp cụm RBAC hỗ trợ AKS với service principal tùy chỉnh (do người dùng xác định) trước tiên yêu cầu tạo service principal đó bằng 'az ad sp create-for-rbac', cụm này sẽ xuất ra appId và mật khẩu cần thiết. Tiếp theo, 'az aks create' được chạy với các tham số --service-principal và --client-secret (và RBAC được bật theo mặc định/--enable-rbac) để cung cấp cụm bằng cách sử dụng danh tính đó thay vì danh tính do hệ thống tạo. Cuối cùng, 'az aks get-credentials' tải xuống và hợp nhất thông tin xác thực của cụm vào kubeconfig cục bộ để kubectl và các công cụ khác có thể kết nối với cụm.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 347",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/347-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-348",
+    "questionNumber": 348,
+    "text": "You are deploying a server application that will run on a Server Core installation of Windows Server 2019.  \n  \nYou create an Azure key vault and a secret.  \n  \nYou need to use the key vault to secure API secrets used for integrations with third-party services.  \n  \nWhich three actions should you perform? Each correct answer presents part of the solution.  \n  \n(Choose three. Each correct selection is worth one point.)",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure RBAC for the key vault."
+      },
+      {
+        "key": "B",
+        "text": "Modify the application to access the key vault."
+      },
+      {
+        "key": "C",
+        "text": "Configure a Key Vault access policy."
+      },
+      {
+        "key": "D",
+        "text": "Deploy an Azure Desired State Configuration (DSC) extension."
+      },
+      {
+        "key": "E",
+        "text": "Deploy a virtual machine that uses a system-assigned managed identity."
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "Để cho phép VM truy xuất bí mật từ Key Vault mà không cần nhúng thông tin đăng nhập, bạn hãy triển khai VM bằng system-assigned managed identity, cung cấp cho VM danh tính Azure AD được quản lý tự động. Sau đó, bạn định cấu hình chính sách truy cập Key Vault cấp cho managed identity các quyền thích hợp (ví dụ: nhận/liệt kê các bí mật). Cuối cùng, bản thân ứng dụng phải được sửa đổi để gọi điểm cuối/SDK của Key Vault bằng cách sử dụng mã thông báo của managed identity để tìm nạp bí mật khi chạy. RBAC là cơ chế kiểm soát truy cập thay thế cho Key Vault và không bắt buộc khi sử dụng chính sách truy cập, đồng thời việc triển khai tiện ích mở rộng DSC không giải quyết việc truy xuất bí mật qua managed identity.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 348",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/348-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-349",
+    "questionNumber": 349,
+    "text": "Your company uses the following resources:  \n  \n- Windows Server 2019 container images hosted in an Azure Container Registry  \n- Azure virtual machines running the latest version of Ubuntu  \n- An Azure Log Analytics workspace  \n- Azure Active Directory (Azure AD)  \n- An Azure key vault  \n  \nFor which two of these resources can you receive vulnerability assessments in Azure Security Center? Each correct answer presents part of the solution. (Choose two.)  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the Azure Log Analytics workspace"
+      },
+      {
+        "key": "B",
+        "text": "the Azure key vault"
+      },
+      {
+        "key": "C",
+        "text": "the Azure virtual machines that run the latest version of Ubuntu"
+      },
+      {
+        "key": "D",
+        "text": "Azure Active Directory (Azure AD)"
+      },
+      {
+        "key": "E",
+        "text": "The Windows Server 2019 container images hosted in the Azure Container Registry."
+      }
+    ],
+    "correctAnswers": [
+      "C",
+      "E"
+    ],
+    "explanation": "Trung tâm bảo mật Azure (Microsoft Defender for Cloud) cung cấp đánh giá lỗ hổng gốc cho Azure virtual machines thông qua trình quét lỗ hổng tích hợp (dựa trên công cụ Quản lý lỗ hổng bảo vệ Microsoft/Qualys), hỗ trợ cả máy ảo Windows và Linux, bao gồm cả Ubuntu. Nó cũng cung cấp đánh giá lỗ hổng bảo mật cho các hình ảnh vùng chứa được lưu trữ trong Azure Container Register thông qua Microsoft Defender dành cho cơ quan đăng ký vùng chứa, quét hình ảnh ACR—bao gồm cả hình ảnh vùng chứa Windows Server—để tìm các lỗ hổng đã biết khi chúng được đẩy hoặc liên tục trong sổ đăng ký. Không gian làm việc Log Analytics, Azure AD và Key Vault không nhận được tính năng quét loại lỗ hổng bảo mật (CVE) này từ Trung tâm bảo mật; thay vào đó họ nhận được các đề xuất bảo mật chung và hướng dẫn tăng cường cấu hình.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 349",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/349-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-350",
+    "questionNumber": 350,
+    "text": "You are creating a dashboard in Azure Boards.  \n  \nYou need to visualize the time from when work starts on a work item until the work item is closed.  \n  \nWhich type of widget should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "cycle time"
+      },
+      {
+        "key": "B",
+        "text": "velocity"
+      },
+      {
+        "key": "C",
+        "text": "cumulative flow"
+      },
+      {
+        "key": "D",
+        "text": "lead time"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Thời gian chu kỳ đo thời gian từ khi công việc bắt đầu trên một hạng mục công việc cho đến khi nó được đóng lại, ghi lại thời lượng công việc đang hoạt động. Ngược lại, thời gian thực hiện đo lường từ khi hạng mục công việc được tạo cho đến khi nó được đóng, bao gồm cả thời gian chờ đợi. Tốc độ và luồng tích lũy đo lường năng suất của nhóm và trạng thái quy trình làm việc tương ứng, chứ không phải thời lượng của từng hạng mục công việc.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 350",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/350-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-352",
+    "questionNumber": 352,
+    "text": "Your company currently uses Team Foundation Server 2013 (TFS 2013) and plans to migrate to Azure DevOps.  \n  \nYou need to recommend a migration strategy that satisfies the following requirements:  \n  \n- Preserves the dates of Team Foundation Version Control changesets  \n- Preserves the changed dates of work item revisions  \n- Minimizes migration effort  \n- Migrates all TFS artifacts  \n  \nWhat should you recommend?  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784167348828-l2p5tqyb.png)",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Việc di chuyển TFS 2013 sang Dịch vụ Azure DevOps trong khi vẫn giữ nguyên ngày sửa đổi mục công việc và tập hợp thay đổi, di chuyển tất cả các tạo phẩm và giảm thiểu nỗ lực yêu cầu sử dụng Dịch vụ nhập cơ sở dữ liệu của Công cụ di chuyển dữ liệu Azure DevOps, dịch vụ nhập cơ sở dữ liệu thu thập TFS đầy đủ và lưu giữ lịch sử/dấu thời gian ban đầu. Dịch vụ này chỉ hỗ trợ nhập từ bản phát hành RTW gần đây được hỗ trợ của TFS/Azure DevOps Server, do đó, máy chủ tại chỗ trước tiên phải được nâng cấp lên bản phát hành RTW mới nhất trước khi chạy quá trình nhập. Sao chép thủ công hoặc di chuyển dựa trên API tùy chỉnh sẽ đòi hỏi nhiều nỗ lực hơn và thường đặt lại dấu thời gian về ngày di chuyển, đồng thời Nền tảng tích hợp TFS không đáp ứng các yêu cầu về bảo toàn ngày và tốn ít công sức.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784167348828-l2p5tqyb.png",
+    "sourceTitle": "Examcademy AZ-400 Question 352",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/352-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-353",
+    "questionNumber": 353,
+    "text": "You are developing an Azure Pipelines pipeline.  \n  \nYou need to configure a check in the pipeline that will query Azure Boards to ensure that there are no active work item issues before the pipeline deploys a build to production.  \n  \nWhich type of check should you implement?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "post-deployment approvals"
+      },
+      {
+        "key": "B",
+        "text": "manual validations"
+      },
+      {
+        "key": "C",
+        "text": "pre-deployment gates"
+      },
+      {
+        "key": "D",
+        "text": "pre-deployment approvals"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Cổng trước khi triển khai cho phép bạn đặt cấu hình kiểm tra tự động để truy vấn hệ thống (như Bảng Azure) trước khi tiến hành triển khai. Cơ chế kiểm tra này có thể truy vấn các mục công việc đang hoạt động và ngăn chặn việc triển khai nếu có sự cố. Phê duyệt sau triển khai diễn ra sau khi triển khai, xác thực thủ công là lời nhắc tương tác và phê duyệt dành cho việc ra quyết định của con người chứ không phải truy vấn tự động.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 353",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/353-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-354",
+    "questionNumber": 354,
+    "text": "Solution: Implement a pull request strategy that uses fast-forward merges.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Việc hợp nhất chuyển tiếp nhanh sẽ bảo toàn tất cả các cam kết từ nhánh nguồn trong nhánh đích và chỉ di chuyển con trỏ nhánh đích về phía trước. Do đó, nó không làm giảm số lượng cam kết trong nhánh chính; hợp nhất bí được sử dụng khi lịch sử yêu cầu kéo phải được cô đọng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 354",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/354-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-355",
+    "questionNumber": 355,
+    "text": "Solution: You implement a pull request strategy that uses squash merges.  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Hợp nhất nén sẽ ngưng tụ tất cả các cam kết từ nhánh nguồn của yêu cầu kéo thành một cam kết mới trên nhánh đích. Điều này tạo ra lịch sử nhánh mục tiêu tuyến tính với ít lần xác nhận hơn, giảm khối lượng lịch sử trong nhánh chính.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 355",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/355-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-356",
+    "questionNumber": 356,
+    "text": "Solution: You implement a pull request strategy that uses an explicit merge.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Việc hợp nhất rõ ràng sẽ bảo toàn các cam kết riêng lẻ khỏi yêu cầu kéo và thêm một cam kết hợp nhất vào lịch sử nhánh đích. Điều này làm tăng thay vì giảm khối lượng lịch sử của nhánh chính; hợp nhất bí là chiến lược kết hợp các thay đổi yêu cầu kéo thành một cam kết duy nhất.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 356",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/356-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-357",
+    "questionNumber": 357,
+    "text": "Solution: Implement a pull request strategy that uses a three-way merge.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Hợp nhất ba chiều sẽ bảo tồn lịch sử cam kết của nhánh nguồn và thêm cam kết hợp nhất vào nhánh đích, thay vì thu gọn lịch sử. Việc giảm khối lượng lịch sử yêu cầu hợp nhất bí, kết hợp các thay đổi của yêu cầu kéo thành một cam kết trên nhánh mục tiêu.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 357",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/357-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-358",
+    "questionNumber": 358,
+    "text": "You need to run inline testing for an Azure DevOps pipeline that uses a Docker deployment model. Your solution must ensure that the test results are not published to the pipeline.  \n  \nWhat should you use to perform the inline testing?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a single stage Dockerfile"
+      },
+      {
+        "key": "B",
+        "text": "an Azure Kubernetes Service (AKS) pod"
+      },
+      {
+        "key": "C",
+        "text": "a multi-stage Dockerfile"
+      },
+      {
+        "key": "D",
+        "text": "a Docker Compose file"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Với các ứng dụng dựa trên Docker trong Azure Pipelines, một phương pháp được ghi lại là xây dựng và thử nghiệm bằng cách sử dụng Dockerfile nhiều giai đoạn: các bước xây dựng và thử nghiệm chạy bên trong vùng chứa dưới dạng các giai đoạn riêng biệt và vì kết quả đầu ra thử nghiệm nằm trong (các) giai đoạn xây dựng trung gian nên chúng không bao giờ được sao chép hoặc xuất bản trở lại quy trình Azure DevOps. Điều này khác với các phương pháp sử dụng tác vụ Xuất bản kết quả kiểm tra (hoặc sao chép các tệp kết quả kiểm tra ra khỏi vùng chứa) để hiển thị rõ ràng các kết quả kiểm tra trong tab Kiểm tra của quy trình. Dockerfile một giai đoạn thiếu khả năng cách ly giai đoạn này, nhóm AKS là một cấu trúc triển khai/thời gian chạy thay vì cơ chế kiểm tra thời gian xây dựng và tệp Docker Compose được sử dụng để sắp xếp nhiều vùng chứa thay vì để tách biệt quá trình thực thi kiểm tra trong một bản dựng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 358",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/358-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-359",
+    "questionNumber": 359,
+    "text": "You are developing an ASP.NET Core application.  \n  \nYou want to create an application utilization baseline by collecting telemetry data.  \n  \nYou need to add code to the application so that it captures the telemetry data. The solution must minimize the cost of storing the telemetry data.  \n  \nWhich two actions should you take? Each correct answer presents part of the solution.  \n  \n(Choose two.)",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add the <InitialSamplingPercentage>99</InitialSamplingPercentage> parameter to the ApplicationInsights.config file."
+      },
+      {
+        "key": "B",
+        "text": "From the code of the application, enable adaptive sampling."
+      },
+      {
+        "key": "C",
+        "text": "From the code of the application, add Azure Application Insights telemetry."
+      },
+      {
+        "key": "D",
+        "text": "Add the <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond> parameter to the ApplicationInsights.config file."
+      },
+      {
+        "key": "E",
+        "text": "From the code of the application, disable adaptive sampling."
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "C"
+    ],
+    "explanation": "Việc thu thập dữ liệu đo từ xa cho đường cơ sở sử dụng yêu cầu trang bị ứng dụng bằng bộ sưu tập dữ liệu đo từ xa Azure Application Insights trong mã. Để giữ chi phí lưu trữ ở mức thấp trong khi vẫn thu thập dữ liệu đại diện, nên bật lấy mẫu thích ứng của Application Insights (đó là hành vi mặc định của SDK), vì nó tự động giảm khối lượng dữ liệu đo từ xa được gửi đến dịch vụ dựa trên lưu lượng truy cập trong khi vẫn duy trì các số liệu tổng hợp chính xác, từ đó giảm thiểu chi phí lưu trữ và nhập dữ liệu. Việc đặt thủ công tỷ lệ phần trăm lấy mẫu cố định hoặc giới hạn số mục trên giây trong tệp cấu hình hoặc tắt tính năng lấy mẫu thích ứng sẽ không đạt được mức giảm âm lượng đo từ xa có hiệu quả về mặt chi phí và tự điều chỉnh.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 359",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/359-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-360",
+    "questionNumber": 360,
+    "text": "You use a Git repository in Azure Repos to manage the source code of a web application. Developers currently commit changes directly to the default branch.  \n  \nYou need to implement a change management procedure that meets the following requirements:  \n  \n- The default branch must be protected, and new changes must first be built in feature branches.  \n- Changes must be reviewed and approved by at least one release manager before each merge.  \n- Changes must be brought into the default branch by using pull requests.  \n  \nWhat should you configure in Azure Repos?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "branch policies of the default branch"
+      },
+      {
+        "key": "B",
+        "text": "Services in Project Settings"
+      },
+      {
+        "key": "C",
+        "text": "Deployment pools in Project Settings"
+      },
+      {
+        "key": "D",
+        "text": "branch security of the default branch"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Chính sách nhánh trong Azure Repos cho phép bạn bảo vệ một nhánh (chẳng hạn như nhánh chính) bằng cách yêu cầu gửi các thay đổi thông qua yêu cầu kéo, thực thi số lượng người đánh giá tối thiểu phải phê duyệt yêu cầu kéo và ngăn chặn việc đẩy trực tiếp đến nhánh được bảo vệ. Điều này trực tiếp đáp ứng cả ba yêu cầu: bảo vệ nhánh mặc định, bắt buộc sáp nhập dựa trên PR và yêu cầu sự chấp thuận của người đánh giá (người quản lý phát hành). Bảo mật chi nhánh kiểm soát quyền của người dùng/nhóm trên chi nhánh nhưng không thực thi quy trình công việc PR hoặc cổng phê duyệt, đồng thời cài đặt nhóm Dịch vụ và Triển khai trong Cài đặt dự án liên quan đến kết nối dịch vụ và nhóm tác nhân xây dựng/phát hành, chứ không phải bảo vệ chi nhánh hoặc thực thi đánh giá mã.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 360",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/360-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-361",
+    "questionNumber": 361,
+    "text": "Your company has four projects. The version control requirements for each project are shown in the table below.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784167418804-le0wmq3a.png)  \n  \nYou plan to use Azure Repos for all the projects. Which version control system should you use for each project? Each version control system may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "Project 1",
+        "text": "Project 1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "Project 2",
+        "text": "Project 2:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "Project 3",
+        "text": "Project 3:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "Project 4",
+        "text": "Project 4:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Git"
+      },
+      {
+        "key": "B",
+        "text": "Perforce"
+      },
+      {
+        "key": "C",
+        "text": "Subversion"
+      },
+      {
+        "key": "D",
+        "text": "Team Foundation Version Control"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Git"
+      },
+      {
+        "key": "B",
+        "text": "Perforce"
+      },
+      {
+        "key": "C",
+        "text": "Subversion"
+      },
+      {
+        "key": "D",
+        "text": "Team Foundation Version Control"
+      }
+    ],
+    "correctAnswers": [
+      "Project 1=D",
+      "Project 2=A",
+      "Project 3=A",
+      "Project 4=D"
+    ],
+    "explanation": "TFVC cung cấp các quyền dựa trên đường dẫn (cấp thư mục/tệp), giúp nó phù hợp để hạn chế quyền truy cập vào các tệp/thư mục riêng lẻ (Dự án 1) và hạn chế nhánh phát hành chỉ cho các trưởng dự án (Dự án 4). Azure Repos Git hỗ trợ các chính sách nhánh phía máy chủ có thể yêu cầu số lượng người đánh giá tối thiểu và ủy quyền các mục công việc được liên kết trước khi hợp nhất vào nhánh chính, đáp ứng yêu cầu của Dự án 2. Xcode có tích hợp kiểm soát nguồn Git gốc tích hợp, do đó, Git là bắt buộc đối với Project 3, vì TFVC không được công cụ tích hợp sẵn của Xcode hỗ trợ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784167418804-le0wmq3a.png",
+    "sourceTitle": "Examcademy AZ-400 Question 361",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/361-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-362",
+    "questionNumber": 362,
+    "text": "You are designing YAML-based Azure Pipelines for the applications shown in the table below.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784167437334-p1fqgzs9.png)  \n  \nYou need to configure the YAML strategy value for each app so that app downtime is minimized. Which value should you configure for each app?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Chiến lược triển khai luân phiên thay thế các phiên bản của phiên bản trước của ứng dụng bằng các phiên bản của phiên bản mới trên một bộ máy cố định (bộ luân phiên) trong mỗi lần lặp, phù hợp với yêu cầu của App1 để thay thế một tập hợp cố định các phiên bản VM hiện có bằng phiên bản mới trong mỗi lần lặp đồng thời giảm thiểu thời gian ngừng hoạt động. Chiến lược triển khai canary trước tiên sẽ triển khai các thay đổi đối với một tập hợp con nhỏ máy chủ hoặc nhóm để xác thực chức năng, sau đó mở rộng triển khai sau khi xác thực thành công — phù hợp với yêu cầu của App2 về triển khai AKS có giới hạn sẽ mở rộng sau khi thử nghiệm thành công. Chiến lược runOnce triển khai tất cả các móc nối vòng đời một lần cho tất cả các mục tiêu cùng một lúc. Chiến lược này không hỗ trợ thay thế lặp lại được thiết lập cố định (App1) hoặc triển khai xác thực giới hạn/mở rộng (App2) và sẽ không giảm thiểu thời gian ngừng hoạt động một cách hiệu quả.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784167437334-p1fqgzs9.png",
+    "sourceTitle": "Examcademy AZ-400 Question 362",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/362-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-363",
+    "questionNumber": 363,
+    "text": "You have an Azure Kubernetes Service (AKS) implementation that is RBAC-enabled.  \n  \nYou plan to use Azure Container Instances as a hosted development environment to run containers in the AKS implementation.  \n  \nYou need to configure Azure Container Instances as a hosted environment for running the containers in AKS.  \n  \nWhich three actions should you perform in sequence? Move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Step 1",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "2",
+        "text": "Step 2",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "3",
+        "text": "Step 3",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Run helm init."
+      },
+      {
+        "key": "B",
+        "text": "Run az aks install-connector."
+      },
+      {
+        "key": "C",
+        "text": "Create a YAML file."
+      },
+      {
+        "key": "D",
+        "text": "Run az role assignment create."
+      },
+      {
+        "key": "E",
+        "text": "Run kubectl apply."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Run helm init."
+      },
+      {
+        "key": "B",
+        "text": "Run az aks install-connector."
+      },
+      {
+        "key": "C",
+        "text": "Create a YAML file."
+      },
+      {
+        "key": "D",
+        "text": "Run az role assignment create."
+      },
+      {
+        "key": "E",
+        "text": "Run kubectl apply."
+      }
+    ],
+    "correctAnswers": [
+      "1=C",
+      "2=E",
+      "3=A"
+    ],
+    "explanation": "Đối với cụm AKS hỗ trợ RBAC sử dụng quy trình làm việc kubelet ảo ACI dựa trên Helm v2 kế thừa, Tiller phải có tài khoản dịch vụ Kubernetes được ủy quyền. Xác định tài khoản dịch vụ và ràng buộc vai trò của nó trong tệp kê khai YAML, áp dụng tệp kê khai đó cho cụm, sau đó khởi tạo Helm được định cấu hình để sử dụng tài khoản dịch vụ Tiller. Điều này cấp cho Helm các quyền cần thiết trước khi có thể tiến hành cài đặt trình kết nối ACI.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 363",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/363-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-364",
+    "questionNumber": 364,
+    "text": "Your company has built a web application. You need to recommend a solution that will automatically send a daily summary of the exceptions occurring in the application to Microsoft Teams.  \n  \nWhich two Azure services should you recommend? Each correct answer presents part of the solution.  \n  \n*(Note: Each correct selection is worth one point.)*",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Logic Apps"
+      },
+      {
+        "key": "B",
+        "text": "Azure Pipelines"
+      },
+      {
+        "key": "C",
+        "text": "Microsoft Visual Studio App Center"
+      },
+      {
+        "key": "D",
+        "text": "Azure DevOps Project"
+      },
+      {
+        "key": "E",
+        "text": "Azure Application Insights"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "E"
+    ],
+    "explanation": "Azure Application Insights tự động thu thập dữ liệu đo từ xa từ ứng dụng web, bao gồm các chi tiết ngoại lệ và lưu trữ dữ liệu đó để có thể truy vấn bằng Ngôn ngữ truy vấn Kusto (KQL). Ứng dụng Azure Logic cung cấp khả năng tự động hóa quy trình làm việc với trình kích hoạt lặp lại để chạy theo lịch (hàng ngày), một hành động để chạy truy vấn nhật ký Application Insights và trình kết nối Microsoft Teams tích hợp sẵn để đăng bản tóm tắt kết quả dưới dạng thông báo lên kênh Teams. Hai dịch vụ này cùng nhau đáp ứng yêu cầu tự động tạo và gửi bản tóm tắt ngoại lệ hàng ngày cho Nhóm, trong khi Azure Pipelines, Azure DevOps Project và Visual Studio App Center không cung cấp sự kết hợp giữa thu thập dữ liệu đo từ xa và khả năng nhắn tin dịch vụ chéo theo lịch trình.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 364",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/364-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-365",
+    "questionNumber": 365,
+    "text": "You have an Azure Pipelines application CI/CD pipeline named Pipeline1.  \n  \nYou need to add OWASP ZAP testing to Pipeline1.  \n  \nWhich four actions should be added to Pipeline1, in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Slot 1:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "slot2",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "slot3",
+        "text": "Slot 3:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot4",
+        "text": "Slot 4:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Spider the site."
+      },
+      {
+        "key": "B",
+        "text": "Report the results."
+      },
+      {
+        "key": "C",
+        "text": "Run the baseline."
+      },
+      {
+        "key": "D",
+        "text": "Start a container."
+      },
+      {
+        "key": "E",
+        "text": "Pull OWASP ZAP weekly."
+      },
+      {
+        "key": "F",
+        "text": "Run an active scan."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Spider the site."
+      },
+      {
+        "key": "B",
+        "text": "Report the results."
+      },
+      {
+        "key": "C",
+        "text": "Run the baseline."
+      },
+      {
+        "key": "D",
+        "text": "Start a container."
+      },
+      {
+        "key": "E",
+        "text": "Pull OWASP ZAP weekly."
+      },
+      {
+        "key": "F",
+        "text": "Run an active scan."
+      }
+    ],
+    "correctAnswers": [
+      "slot1=E",
+      "slot2=D",
+      "slot3=C",
+      "slot4=B"
+    ],
+    "explanation": "Hình ảnh Docker hàng tuần của OWASP ZAP phải có sẵn trước khi khởi động vùng chứa ZAP. Quá trình quét cơ sở thực hiện quét nhện và quét thụ động có giới hạn thời gian, sau đó tạo ra kết quả; nó không thực hiện các cuộc tấn công tích cực. Quét chủ động là một phần của quá trình quét toàn bộ, do đó không bắt buộc phải thực hiện kiểm tra CI/CD cơ bản. [ZAP Docker User Guide](https://www.zaproxy.org/docs/docker/about/), [ZAP Baseline Scan](https://www.zaproxy.org/docs/docker/baseline-scan/)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 365",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/365-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-366",
+    "questionNumber": 366,
+    "text": "You use GitHub for source control and Azure Boards for project management. GitHub and Azure Boards are integrated.  \n  \nYou plan to create a pull request in GitHub.  \n  \nYou need to automatically link the request to an existing Azure Boards work item by using the text of AB#.  \n  \nTo which two elements can you add the text? Each correct answer presents a complete solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "milestone"
+      },
+      {
+        "key": "B",
+        "text": "label"
+      },
+      {
+        "key": "C",
+        "text": "title"
+      },
+      {
+        "key": "D",
+        "text": "comment"
+      },
+      {
+        "key": "E",
+        "text": "description"
+      }
+    ],
+    "correctAnswers": [
+      "C",
+      "E"
+    ],
+    "explanation": "Khi tích hợp các yêu cầu kéo GitHub với Azure Boards, cú pháp AB# phải xuất hiện trong tiêu đề hoặc mô tả PR để tự động liên kết với một mục công việc. Các cột mốc, nhãn và nhận xét không hỗ trợ liên kết mục công việc thông qua cơ chế này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 366",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/366-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-367",
+    "questionNumber": 367,
+    "text": "You have a Microsoft ASP.NET Core web application hosted in Azure that is accessed by users worldwide.  \n  \nYou need to:  \n\n- Run a URL ping test once every five minutes.  \n- Create an alert that triggers when the web app is unavailable, as detected from specific Azure regions.  \n  \nThe solution must minimize development time.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an Azure Monitor Availability metric and alert."
+      },
+      {
+        "key": "B",
+        "text": "Create an Azure Application Insights availability test and alert."
+      },
+      {
+        "key": "C",
+        "text": "Write an Azure function and deploy the function to the specific regions."
+      },
+      {
+        "key": "D",
+        "text": "Create an Azure Service Health alert for the specific regions."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Kiểm tra tính khả dụng của Azure Application Insights (kiểm tra ping/tiêu chuẩn URL) về cơ bản hỗ trợ chạy kiểm tra ping trong khoảng thời gian có thể định cấu hình, bao gồm 5 phút một lần và cho phép bạn chọn các vùng Azure cụ thể (vị trí kiểm tra) để thực hiện kiểm tra. Sau đó, quy tắc cảnh báo liên quan có thể được định cấu hình để kích hoạt dựa trên các lỗi được phát hiện từ các vị trí đã chọn đó, tất cả đều thông qua cấu hình cổng/ARM mà không cần viết mã giám sát tùy chỉnh, đáp ứng yêu cầu giảm thiểu thời gian phát triển. Việc triển khai Hàm Azure tùy chỉnh cho nhiều vùng (option C) sẽ yêu cầu phát triển tùy chỉnh đáng kể. Tình trạng dịch vụ Azure (option D) báo cáo về các sự cố nền tảng Azure và hoạt động bảo trì theo kế hoạch, chứ không phải tính khả dụng của điểm cuối cấp ứng dụng. Có tính năng \"Chỉ số khả dụng no\" riêng biệt của no (option A) khác với các bài kiểm tra tính khả dụng của Application Insights cung cấp cảnh báo và kiểm tra ping theo từng khu vực.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 367",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/367-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-368",
+    "questionNumber": 368,
+    "text": "You use an Azure Pipelines pipeline to build and deploy an app.  \n  \nYou have a custom test task that has the following inputs:  \n  \n• testResultsFiles: **/TEST-*.trx  \n\n• searchFolder: $(System.DefaultWorkingDirectory)  \n\n• mergeTestResults: true  \n  \nWhich format should you use for the input data of testResultsFiles?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "VSTest"
+      },
+      {
+        "key": "B",
+        "text": "NUnit"
+      },
+      {
+        "key": "C",
+        "text": "CTest"
+      },
+      {
+        "key": "D",
+        "text": "JUnit"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Tiện ích mở rộng.trx được tạo bởi Visual Studio Test Platform (VSTest), do đó, đầu vào testResultsFormat/testResultsFiles của nhiệm vụ Xuất bản kết quả kiểm tra phải chỉ định định dạng VSTest để phân tích cú pháp và xuất bản chính xác các tệp `**/TEST-*.trx`. NUnit, CTest và JUnit yêu cầu các định dạng XML có các lược đồ khác nhau không khớp với đầu ra.trx.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 368",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/368-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-369",
+    "questionNumber": 369,
+    "text": "You manage source code control and versioning by using GitHub.  \n  \nA large file is committed to a repository accidentally.  \n  \nYou need to reduce the size of the repository. The solution must remove the file from the repository.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "bfg"
+      },
+      {
+        "key": "B",
+        "text": "lfs"
+      },
+      {
+        "key": "C",
+        "text": "gvfs"
+      },
+      {
+        "key": "D",
+        "text": "init"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "BFG Repo-Cleaner là một công cụ được xây dựng có mục đích để xóa các tệp lớn khỏi lịch sử kho lưu trữ Git một cách hiệu quả. Nó viết lại lịch sử để loại trừ các tệp được chỉ định, giảm kích thước kho lưu trữ. Mặc dù Git LFS (B) quản lý các tệp lớn trong tương lai nhưng nó không xóa chúng khỏi lịch sử hiện có.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 369",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/369-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-370",
+    "questionNumber": 370,
+    "text": "App1 is an application that manages events across multiple locations and writes logs to a Log Analytics workspace named Workspace1, which contains two tables: Events and Logs.  \n  \nYou need to construct a query against Workspace1 that returns all log entries related to Asia that occurred within the last two days.  \n  \nArrange the query statements in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "4",
+        "text": "Slot 4:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "5",
+        "text": "Slot 5:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "| where continent == 'Asia'"
+      },
+      {
+        "key": "B",
+        "text": "| join ( Events"
+      },
+      {
+        "key": "C",
+        "text": "Logs"
+      },
+      {
+        "key": "D",
+        "text": "| where timestamp > ago(2d)"
+      },
+      {
+        "key": "E",
+        "text": ") on RequestId"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "| where continent == 'Asia'"
+      },
+      {
+        "key": "B",
+        "text": "| join ( Events"
+      },
+      {
+        "key": "C",
+        "text": "Logs"
+      },
+      {
+        "key": "D",
+        "text": "| where timestamp > ago(2d)"
+      },
+      {
+        "key": "E",
+        "text": ") on RequestId"
+      }
+    ],
+    "correctAnswers": [
+      "1=C",
+      "2=D",
+      "3=B",
+      "4=A",
+      "5=E"
+    ],
+    "explanation": "Toán tử KQL `where` lọc đầu vào dạng bảng, do đó, bảng Nhật ký trước tiên bị hạn chế bởi `timestamp > ago(2d)`. Cú pháp toán tử `join` là `LeftTable | join (RightTable) on Column`; do đó, Sự kiện là biểu thức bên phải được đặt trong ngoặc đơn, được lọc theo `continent == 'Asia'` và khớp với Nhật ký bằng `RequestId`.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 370",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/370-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-371",
+    "questionNumber": 371,
+    "text": "You have an Azure Pipelines pipeline with the following definition.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784205953889-w9jirdyv.png)  \n  \nFor each statement, select **Yes** when it is true; otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Job E can start before job C completes.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "Job B can run concurrently with job C.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "Job D can start before job B completes.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Công việc E phụ thuộc vào D và D phụ thuộc vào C nên C phải hoàn thành trước khi E có thể bắt đầu. Công việc B và C đều chỉ phụ thuộc vào A và có sự phụ thuộc no lẫn nhau nên chúng có thể chạy đồng thời sau khi A hoàn thành. Công việc D rõ ràng phụ thuộc vào B, vì vậy nó không thể bắt đầu cho đến khi B hoàn thành.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784205953889-w9jirdyv.png",
+    "sourceTitle": "Examcademy AZ-400 Question 371",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/371-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-373",
+    "questionNumber": 373,
+    "text": "Your company is creating a suite of three mobile applications. You need to control access to the application builds, and the solution must be managed at the organization level. What should you use?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Trung tâm ứng dụng Visual Studio kiểm soát quyền truy cập vào bản dựng ứng dụng thông qua các nhóm phân phối. Theo mặc định, các nhóm phân phối được tạo ở cấp ứng dụng và ở chế độ riêng tư (chỉ những người thử nghiệm được mời mới có thể truy cập) hoặc công khai (có thể truy cập thông qua liên kết công khai chưa được xác thực). Để quản lý quyền truy cập trên nhiều ứng dụng từ một vị trí cấp tổ chức, Trung tâm ứng dụng cung cấp 'nhóm phân phối dùng chung', được tạo trong trang Mọi người của tổ chức và có thể được liên kết với bất kỳ tổ hợp ứng dụng nào trong tổ chức đó, loại bỏ nhu cầu sao chép nhóm phân phối cho mỗi ứng dụng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 373",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/373-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-374",
+    "questionNumber": 374,
+    "text": "You have an Azure subscription containing a resource group named RG1. RG1 includes the following resources:  \n  \n- Four Azure virtual machines running Windows Server with Internet Information Services (IIS) installed  \n- SQL Server on an Azure virtual machine  \n- An Azure Load Balancer  \n  \nYou need to deploy an application to the virtual machines in RG1 by using Azure Pipelines.  \n  \nWhich four actions should you perform, in sequence? Move the appropriate actions to the answer area and arrange them in order.  \n  \nNote: More than one order of answer choices is correct. You will receive credit for any of the correct orders you select.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Step 1",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "2",
+        "text": "Step 2",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "3",
+        "text": "Step 3",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "4",
+        "text": "Step 4",
+        "correctAnswer": "F"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an agent pool"
+      },
+      {
+        "key": "B",
+        "text": "Add the Puppet Agent extension to the virtual machines"
+      },
+      {
+        "key": "C",
+        "text": "Add and configure a deployment group job for the pipeline"
+      },
+      {
+        "key": "D",
+        "text": "Add the Azure Pipelines Agent extension to the virtual machines"
+      },
+      {
+        "key": "E",
+        "text": "Create a deployment group"
+      },
+      {
+        "key": "F",
+        "text": "Execute the pipeline"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create an agent pool"
+      },
+      {
+        "key": "B",
+        "text": "Add the Puppet Agent extension to the virtual machines"
+      },
+      {
+        "key": "C",
+        "text": "Add and configure a deployment group job for the pipeline"
+      },
+      {
+        "key": "D",
+        "text": "Add the Azure Pipelines Agent extension to the virtual machines"
+      },
+      {
+        "key": "E",
+        "text": "Create a deployment group"
+      },
+      {
+        "key": "F",
+        "text": "Execute the pipeline"
+      }
+    ],
+    "correctAnswers": [
+      "1=E",
+      "2=D",
+      "3=C",
+      "4=F"
+    ],
+    "explanation": "Việc triển khai trên nhiều máy ảo Azure bằng Đường ống Azure được thực hiện bằng Nhóm triển khai. Trước tiên, bạn tạo một nhóm triển khai trong Azure DevOps (Quy trình > Nhóm triển khai), nhóm này cung cấp tập lệnh đăng ký và định nghĩa mục tiêu. Tiếp theo, bạn thêm tiện ích mở rộng Azure Pipelines Agent vào từng máy ảo (bằng cách chạy tập lệnh đăng ký được tạo trên mỗi VM hoặc bằng cách thêm tiện ích mở rộng trực tiếp thông qua lưỡi Tiện ích mở rộng của Azure VM), cài đặt và đăng ký tác nhân với nhóm triển khai để VM trở thành mục tiêu triển khai. Sau đó, trong định nghĩa bản phát hành/đường dẫn, bạn thêm và đặt cấu hình công việc của nhóm triển khai, chỉ định nhóm triển khai làm mục tiêu để các tác vụ của đường dẫn chạy dựa trên tất cả các máy ảo đã đăng ký. Cuối cùng, bạn thực thi (xếp hàng) quy trình để thực hiện triển khai ứng dụng thực tế trên các máy ảo. Việc tạo nhóm tác nhân không liên quan đến các nhóm triển khai (nhóm tác nhân phục vụ các tác nhân được lưu trữ xây dựng/phát hành) và tiện ích mở rộng Tác nhân rối không phải là một phần của công cụ triển khai Azure Pipelines.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 374",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/374-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-375",
+    "questionNumber": 375,
+    "text": "Your company has an Azure DevOps environment that can only be accessed by Azure Active Directory users.  \n\nYou are instructed to make sure that the Azure DevOps environment can only be accessed from devices connected to the company's on-premises network.  \n\nWhich of the following actions should you take?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assign the devices to a security group."
+      },
+      {
+        "key": "B",
+        "text": "Create a GPO."
+      },
+      {
+        "key": "C",
+        "text": "Configure Security in Project Settings from Azure DevOps."
+      },
+      {
+        "key": "D",
+        "text": "Configure conditional access in Azure Active Directory."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Chính sách Truy cập có điều kiện của Azure AD cho phép bạn xác định các yêu cầu truy cập dựa trên vị trí thiết bị. Bằng cách tạo chính sách truy cập có điều kiện yêu cầu các thiết bị phải được kết nối với mạng tại chỗ, bạn có thể thực thi kiểm soát truy cập dựa trên vị trí cho Azure DevOps.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 375",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/375-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-376",
+    "questionNumber": 376,
+    "text": "You have a project in Azure DevOps named Project1 that contains two Azure DevOps pipelines named Pipeline1 and Pipeline2.  \n  \nYou need to ensure that Pipeline1 can deploy code successfully to an Azure web app named webapp1. The solution must also ensure that Pipeline2 does not have permission to webapp1.  \n  \nWhich three actions should you perform in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a service principal in Azure Active Directory."
+      },
+      {
+        "key": "B",
+        "text": "In Project1, create a service connection."
+      },
+      {
+        "key": "C",
+        "text": "In Pipeline1, authorize the service connection."
+      },
+      {
+        "key": "D",
+        "text": "Create a system-assigned managed identity in Azure Active Directory."
+      },
+      {
+        "key": "E",
+        "text": "In Project1, configure permissions."
+      },
+      {
+        "key": "F",
+        "text": "In Pipeline1, create a variable."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create a service principal in Azure Active Directory."
+      },
+      {
+        "key": "B",
+        "text": "In Project1, create a service connection."
+      },
+      {
+        "key": "C",
+        "text": "In Pipeline1, authorize the service connection."
+      },
+      {
+        "key": "D",
+        "text": "Create a system-assigned managed identity in Azure Active Directory."
+      },
+      {
+        "key": "E",
+        "text": "In Project1, configure permissions."
+      },
+      {
+        "key": "F",
+        "text": "In Pipeline1, create a variable."
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=B",
+      "3=C"
+    ],
+    "explanation": "Các kết nối dịch vụ Azure DevOps xác thực tài nguyên Azure bằng thông tin xác thực như service principal. Để cho phép Pipeline1 triển khai lên webapp1 trong khi từ chối rõ ràng quyền truy cập Pipeline2, trước tiên bạn tạo service principal trong Azure AD có các quyền cần thiết trên ứng dụng web. Tiếp theo, trong Project1, bạn tạo một kết nối dịch vụ (Azure Resource Manager) sử dụng service principal này — nếu bạn không bật 'Cấp quyền truy cập cho tất cả các đường dẫn' trong khi tạo, kết nối sẽ bị hạn chế và đường dẫn no có thể sử dụng kết nối đó theo mặc định. Cuối cùng, trong Pipeline1, bạn ủy quyền rõ ràng cho kết nối dịch vụ đó, điều này chỉ cấp cho Pipeline1 quyền sử dụng kết nối đó để triển khai. Vì Pipeline2 không bao giờ được cấp phép đối với kết nối dịch vụ này nên nó có quyền truy cập no vào webapp1, đáp ứng cả hai yêu cầu.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 376",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/376-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-377",
+    "questionNumber": 377,
+    "text": "You use GitHub to host container packages that use Semantic Versioning (SemVer).  \n  \nYou have an app named App1. The current version of App1 is 11.2.0.  \n  \nYou change the code of App1 to fix a bug that was introduced in version 10.5.1.  \n  \nWhich version number should you assign to the release?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "10.5.1-PATCH"
+      },
+      {
+        "key": "B",
+        "text": "11.2.1"
+      },
+      {
+        "key": "C",
+        "text": "10.5.2"
+      },
+      {
+        "key": "D",
+        "text": "10.6.0"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Theo phiên bản ngữ nghĩa, khi phiên bản sản xuất hiện tại là 11.2.0 và bạn đang phát hành bản sửa lỗi (bất kể phiên bản cũ nào đã gây ra lỗi), bạn chỉ tăng số bản vá (chữ số thứ ba). Do đó phiên bản trở thành 11.2.1. Phiên bản gốc có lỗi không ảnh hưởng đến phiên bản của bản phát hành hiện tại.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 377",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/377-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-378",
+    "questionNumber": 378,
+    "text": "Your company is building a new web application. You plan to collect feedback from pilot users on the features being delivered. All pilot users have a corporate computer with Google Chrome and the Microsoft Test & Feedback extension installed, and they will test the application using Chrome. You need to identify the access levels required so that developers can request and gather feedback from the pilot users, applying the principle of least privilege. Which access levels in Azure DevOps should you identify?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Yêu cầu phản hồi trong Azure DevOps (tạo và gửi mục công việc Yêu cầu phản hồi chính thức) yêu cầu ít nhất quyền truy cập Cơ bản vì quyền truy cập của Bên liên quan không bao gồm khả năng yêu cầu phản hồi. Do đó, các nhà phát triển cần gửi yêu cầu phản hồi tới người dùng thí điểm phải được cấp quyền truy cập Cơ bản. Mặt khác, người dùng thử nghiệm chỉ cần phản hồi các yêu cầu phản hồi bằng cách sử dụng tiện ích mở rộng trình duyệt Kiểm tra & Phản hồi (chụp ảnh chụp màn hình, ghi chú và tạo lỗi/nhiệm vụ), được hỗ trợ đầy đủ bởi cấp độ truy cập miễn phí của Bên liên quan. Việc chỉ định quyền truy cập của Bên liên quan cho người dùng thí điểm đáp ứng nguyên tắc đặc quyền tối thiểu trong khi vẫn cho phép họ cung cấp phản hồi.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 378",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/378-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-379",
+    "questionNumber": 379,
+    "text": "You must deploy a new Azure DevOps project with these requirements:  \n  \n- The lead developer must be able to create repositories, manage permissions, manage policies, and contribute to the repository.  \n- Developers must be able to contribute to the repository and create branches, but must not bypass policies when pushing builds.  \n- Project managers must be able only to view the repository.  \n- Use the principle of least privilege.  \n  \nA new Azure DevOps project team is created for each role. Add each team to the appropriate Azure DevOps group. Each group can be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "project_manager",
+        "text": "Project manager:",
+        "correctAnswer": "F"
+      },
+      {
+        "id": "lead_developer",
+        "text": "Lead developer:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "developer",
+        "text": "Developer:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Build Administrators"
+      },
+      {
+        "key": "B",
+        "text": "Contributors"
+      },
+      {
+        "key": "C",
+        "text": "Project Administrators"
+      },
+      {
+        "key": "D",
+        "text": "Project Collection Administrators"
+      },
+      {
+        "key": "E",
+        "text": "Project Collection Valid Users"
+      },
+      {
+        "key": "F",
+        "text": "Readers"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Build Administrators"
+      },
+      {
+        "key": "B",
+        "text": "Contributors"
+      },
+      {
+        "key": "C",
+        "text": "Project Administrators"
+      },
+      {
+        "key": "D",
+        "text": "Project Collection Administrators"
+      },
+      {
+        "key": "E",
+        "text": "Project Collection Valid Users"
+      },
+      {
+        "key": "F",
+        "text": "Readers"
+      }
+    ],
+    "correctAnswers": [
+      "project_manager=F",
+      "lead_developer=C",
+      "developer=B"
+    ],
+    "explanation": "Người đọc có quyền truy cập chỉ đọc vào kho lưu trữ. Những người đóng góp có thể đóng góp vào kho Git và tạo các nhánh, trong khi các quyền của chính sách bỏ qua không được cấp theo mặc định. Quản trị viên dự án có các quyền quản trị cấp dự án cần thiết để tạo kho lưu trữ và quản lý các chính sách và quyền của kho lưu trữ. Quản trị viên Bộ sưu tập Dự án cấp quyền trên toàn bộ bộ sưu tập rộng hơn mức cần thiết.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 379",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/379-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-380",
+    "questionNumber": 380,
+    "text": "Your company is concerned that when developers introduce open source libraries, it creates licensing compliance issues.  \n\nYou need to add an automated process to the build pipeline to detect when common open source libraries are added to the code base.  \n\nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Microsoft Visual SourceSafe"
+      },
+      {
+        "key": "B",
+        "text": "Code Style"
+      },
+      {
+        "key": "C",
+        "text": "Black Duck"
+      },
+      {
+        "key": "D",
+        "text": "Jenkins"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Black Duck là một công cụ phân tích thành phần phần mềm giúp phát hiện các thành phần nguồn mở và kiểm tra chúng theo chính sách cấp phép của công ty. Nó có thể được tích hợp vào quy trình xây dựng Azure DevOps để tự động quét và cảnh báo về các vi phạm tuân thủ giấy phép.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 380",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/380-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-381",
+    "questionNumber": 381,
+    "text": "You use GitHub for source control.  \n\nA file that contains sensitive data is committed accidentally to the Git repository of a project.  \n\nYou need to delete the file and its history form the repository.  \n\nWhich two tools can you use? Each correct answer presents a complete solution.  \n\nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the git filter-branch command"
+      },
+      {
+        "key": "B",
+        "text": "BFG Repo-Cleaner"
+      },
+      {
+        "key": "C",
+        "text": "the git rebase command"
+      },
+      {
+        "key": "D",
+        "text": "GitHub Desktop"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "B"
+    ],
+    "explanation": "Cả nhánh bộ lọc git và BFG Repo-Cleaner đều có thể xóa hoàn toàn các tệp và lịch sử của chúng khỏi kho lưu trữ Git. BFG thường nhanh hơn đối với các kho lưu trữ lớn, trong khi nhánh bộ lọc git cung cấp khả năng kiểm soát chi tiết hơn. GitHub đề xuất một trong hai công cụ này như một giải pháp hoàn chỉnh để xóa dữ liệu nhạy cảm.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 381",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/381-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-382",
+    "questionNumber": 382,
+    "text": "You have a GitHub repository that contains multiple versions of an Azure Pipelines template.  \n  \nYou plan to deploy multiple pipelines that will use a template stored in the repository.  \n  \nYou need to ensure that you use a fixed version of the template.  \n  \nWhat should you use to reference which version of the template repository to use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the serial"
+      },
+      {
+        "key": "B",
+        "text": "the SHA-based hashes"
+      },
+      {
+        "key": "C",
+        "text": "the runner"
+      },
+      {
+        "key": "D",
+        "text": "the branch"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Tài liệu mẫu khuyến nghị rõ ràng việc ghim tài nguyên kho lưu trữ vào Git SHA gồm 40 ký tự của một cam kết cụ thể khi cần có một phiên bản thực sự cố định; tham chiếu nhánh không cố định vì đầu nhánh tiếp tục di chuyển khi các cam kết mới tiếp cận nó.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 382",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/382-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-383",
+    "questionNumber": 383,
+    "text": "For the investment planning applications suite, determine which package feed access level should be given to the Developers group and which should be given to the Team Leaders group. Each access level can be applied once, more than once, or not used at all.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783717191589-w8d9l2q8.png)",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "developers",
+        "text": "Developers:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "teamleaders",
+        "text": "Team Leaders:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Collaborator"
+      },
+      {
+        "key": "B",
+        "text": "Contributor"
+      },
+      {
+        "key": "C",
+        "text": "Owner"
+      },
+      {
+        "key": "D",
+        "text": "Reader"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Collaborator"
+      },
+      {
+        "key": "B",
+        "text": "Contributor"
+      },
+      {
+        "key": "C",
+        "text": "Owner"
+      },
+      {
+        "key": "D",
+        "text": "Reader"
+      }
+    ],
+    "correctAnswers": [
+      "developers=D",
+      "teamleaders=C"
+    ],
+    "explanation": "Cấp độ cấp phép của nguồn cấp dữ liệu Azure Artifacts cấp khả năng tích lũy: Trình đọc chỉ có thể liệt kê/tải xuống/cài đặt gói; Cộng tác viên bổ sung khả năng lưu các gói từ nguồn ngược dòng; Người đóng góp (Nhà xuất bản nguồn cấp dữ liệu) bổ sung khả năng xuất bản, quảng bá và ngừng sử dụng các gói; Chủ sở hữu bổ sung toàn bộ quyền kiểm soát quản trị, bao gồm chỉnh sửa cài đặt nguồn cấp dữ liệu, quản lý các nguồn ngược dòng và thay đổi quyền cấp nguồn cấp dữ liệu, bên cạnh tất cả các khả năng của Contributor. Vì nhóm Nhà phát triển chỉ cần cài đặt các gói nên Reader là vai trò có ít đặc quyền nhất. Vì nhóm Trưởng nhóm phải vừa xuất bản các gói mới vừa chỉnh sửa quyền cấp dữ liệu—và chỉ có vai trò Chủ sở hữu mới có thể sửa đổi quyền/cài đặt nguồn cấp dữ liệu—Trưởng nhóm phải được cấp quyền truy cập Chủ sở hữu.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783717191589-w8d9l2q8.png",
+    "sourceTitle": "Examcademy AZ-400 Question 383",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/383-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-384",
+    "questionNumber": 384,
+    "text": "Your company develops an application named App1 that is deployed in production.  \n  \nAs part of an update to App1, a new service is being added. This new service requires access to an application named App2, which is currently still in development.  \n  \nYou need to ensure that you can deploy the App1 update before App2 becomes available, while also being able to enable the new service in App1 once App2 has been deployed.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Implement a feature flag."
+      },
+      {
+        "key": "B",
+        "text": "Create a fork in the build."
+      },
+      {
+        "key": "C",
+        "text": "Create a branch in the build."
+      },
+      {
+        "key": "D",
+        "text": "Implement a branch policy."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Cờ tính năng (chuyển đổi tính năng) cho phép bạn triển khai mã cho một khả năng mới trong khi vẫn tắt nó trong quá trình sản xuất. Việc triển khai này tách biệt khỏi bản phát hành: App1 có thể được cập nhật và vận chuyển ngay lập tức, đồng thời sau khi App2 phụ thuộc có sẵn, bạn có thể chỉ cần bật cờ để kích hoạt dịch vụ mới—mà không cần triển khai mới. Các chính sách phân nhánh, phân nhánh và chi nhánh là các phương pháp xây dựng/kiểm soát nguồn để quản lý các thay đổi mã và thực thi các cổng chất lượng trong quá trình phát triển; chúng không cung cấp cơ chế để kiểm soát xem một tính năng có hoạt động trong ứng dụng sản xuất đang chạy hay không.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 384",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/384-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-385",
+    "questionNumber": 385,
+    "text": "Your application is made up of multiple Azure App Service web apps and Azure Functions.  \n  \nYou need to evaluate the security posture of these web apps and functions.  \n  \nWhich Azure feature would you use to obtain a recommendation regarding the security of the application?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Security & Compliance in Azure Log Analytics"
+      },
+      {
+        "key": "B",
+        "text": "Resource health in Azure Service Health"
+      },
+      {
+        "key": "C",
+        "text": "Smart Detection in Azure Application Insights"
+      },
+      {
+        "key": "D",
+        "text": "Compute & apps in Azure Security Center"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Trung tâm bảo mật Azure (hiện là một phần của Microsoft Defender for Cloud) bao gồm phần vệ sinh bảo mật tài nguyên 'Điện toán & ứng dụng' để đánh giá cụ thể các ứng dụng web Dịch vụ ứng dụng và Azure Functions, cung cấp các đề xuất bảo mật ưu tiên (chẳng hạn như chỉ bật HTTPS, vô hiệu hóa gỡ lỗi từ xa, sử dụng danh tính được quản lý và cập nhật các phiên bản TLS) cùng với điểm an toàn để giúp tăng cường ứng dụng. Đây là khả năng Azure tích hợp được thiết kế để đánh giá và đề xuất các cải tiến bảo mật cho các tài nguyên điện toán này, không giống như giải pháp Tuân thủ & Bảo mật của Log Analytics, Tình trạng Tài nguyên của Service Health (theo dõi tính khả dụng, không phải bảo mật) hoặc Phát hiện thông minh Application Insights (cờ các bất thường về hiệu suất/lỗi thay vì các vấn đề về cấu hình bảo mật).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 385",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/385-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-386",
+    "questionNumber": 386,
+    "text": "You have a project in Azure DevOps.  \n  \nYou need to implement a new branching solution. The solution must ensure that all pull requests meet the following requirements:  \n  \n• Include linked work items.  \n\n• Pass build validation policies.  \n\n• Require at least three reviewers.  \n  \nWhat should you include in the solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "branch policies"
+      },
+      {
+        "key": "B",
+        "text": "pull request templates"
+      },
+      {
+        "key": "C",
+        "text": "branch security"
+      },
+      {
+        "key": "D",
+        "text": "pull request permissions"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Chính sách chi nhánh trong Azure DevOps là cơ chế thực thi các yêu cầu yêu cầu kéo. Chúng cho phép bạn định cấu hình các yêu cầu về mục công việc được liên kết, xây dựng chính sách xác thực và yêu cầu về số lượng người đánh giá. Mẫu PR chỉ là tài liệu, quyền truy cập kiểm soát bảo mật chi nhánh và kiểm soát quyền PR ai có thể phê duyệt—không có mẫu nào trong số này thực thi các yêu cầu cụ thể được đề cập.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 386",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/386-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-387",
+    "questionNumber": 387,
+    "text": "You have a GitHub organization named org1 and an Azure tenant named Tenant1.  \n  \nYou need to enable single sign-on (SSO) in Azure Active Directory (Azure AD) for the users in org1.  \n  \nWhich URIs should you use for the SAML configuration in Azure AD? Each URI may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Identifier (Entity ID):",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "Reply URL (Assertion Consumer Service URL):",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "3",
+        "text": "Sign on URL:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "https://github.com/orgs/org1"
+      },
+      {
+        "key": "B",
+        "text": "https://github.com/orgs/org1/sso"
+      },
+      {
+        "key": "C",
+        "text": "https://login.microsoftonline.com/tenant1"
+      },
+      {
+        "key": "D",
+        "text": "https://github.com/orgs/org1/saml/consume"
+      },
+      {
+        "key": "E",
+        "text": "https://login.microsoftonline.com/tenant1.com"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "https://github.com/orgs/org1"
+      },
+      {
+        "key": "B",
+        "text": "https://github.com/orgs/org1/sso"
+      },
+      {
+        "key": "C",
+        "text": "https://login.microsoftonline.com/tenant1"
+      },
+      {
+        "key": "D",
+        "text": "https://github.com/orgs/org1/saml/consume"
+      },
+      {
+        "key": "E",
+        "text": "https://login.microsoftonline.com/tenant1.com"
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=D",
+      "3=B"
+    ],
+    "explanation": "Khi định cấu hình tổ chức GitHub Enterprise Cloud để đăng nhập một lần SAML bằng Azure AD (Microsoft Entra ID), phần Cấu hình SAML cơ bản yêu cầu ba URL dành riêng cho tổ chức ở phía GitHub: Mã định danh (ID thực thể) là https://github.com/orgs/<organization>, xác định duy nhất tổ chức GitHub là nhà cung cấp dịch vụ SAML; URL trả lời (URL dịch vụ người tiêu dùng xác nhận) là https://github.com/orgs/<organization>/saml/consume, điểm cuối nơi Azure AD đăng xác nhận SAML sau khi xác thực thành công; và URL đăng nhập là https://github.com/orgs/<organization>/sso,, URL mà người dùng được chuyển hướng đến để đăng nhập dựa trên tổ chức. Việc thay thế org1 cho <tổ chức> sẽ mang lại giá trị chính xác cho từng trường. URL login.microsoftonline.com là điểm cuối phía Azure AD và không được sử dụng trong các trường cấu hình GitHub SP này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 387",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/387-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-388",
+    "questionNumber": 388,
+    "text": "You manage package feeds by using Azure Artifacts.  \n  \nYou plan to create a new package feed that will include the following views:  \n  \n• @Local  \n\n• @Latest  \n\n• @Release  \n\n• @Prerelease  \n  \nWhich view should you create manually?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "@Local"
+      },
+      {
+        "key": "B",
+        "text": "@Latest"
+      },
+      {
+        "key": "C",
+        "text": "@Release"
+      },
+      {
+        "key": "D",
+        "text": "@Prerelease"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Nguồn cấp dữ liệu Azure Artifacts có ba chế độ xem mặc định: @Local, @Prerelease và @Release. Tất cả các chế độ xem khác phải được tạo thủ công. @Latest không được tạo tự động, vì vậy nó phải được cấu hình thủ công nếu cần. Các tùy chọn khác (@Local, @Release, @Prerelease) được tạo theo mặc định.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 388",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/388-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-389",
+    "questionNumber": 389,
+    "text": "You have a GitHub organization.  \n  \nThe personal access token (PAT) policy is configured as shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784205820190-y23xaqzr.png)  \n  \nUse the drop-down menus to choose the option that completes each statement according to the graphic.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Việc hạn chế quyền truy cập PAT cổ điển sẽ chặn quyền truy cập vào tài nguyên do tổ chức sở hữu thông qua mã thông báo, nhưng không chặn quyền truy cập vào tài nguyên của tổ chức công. Khóa SSH được tạo bởi mã thông báo truy cập cá nhân tiếp tục hoạt động ngay cả khi tổ chức hạn chế quyền truy cập PAT.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784205820190-y23xaqzr.png",
+    "sourceTitle": "Examcademy AZ-400 Question 389",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/389-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-390",
+    "questionNumber": 390,
+    "text": "Given a multi-tier application whose front end is hosted in Azure App Service, you need to determine the average load times of the application's pages. Which tool should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Application Insights"
+      },
+      {
+        "key": "B",
+        "text": "the activity log of the App Service"
+      },
+      {
+        "key": "C",
+        "text": "the diagnostics logs of the App Service"
+      },
+      {
+        "key": "D",
+        "text": "Azure Advisor"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Application Insights là dịch vụ Quản lý hiệu suất ứng dụng (APM) thu thập dữ liệu đo từ xa từ các ứng dụng web, bao gồm dữ liệu đo từ xa của trình duyệt phía máy khách như thời gian tải trang, thời lượng cuộc gọi AJAX và thời gian phản hồi của máy chủ. Nó cung cấp các số liệu và báo cáo tích hợp (ví dụ: số liệu Thời gian tải của trình duyệt/xem trang trong phần Hiệu suất và Trình duyệt) cho phép bạn theo dõi và phân tích thời gian tải trang trung bình theo thời gian. Nhật ký hoạt động Dịch vụ ứng dụng chỉ ghi lại các hoạt động trên mặt phẳng điều khiển ở cấp đăng ký (ví dụ: tạo tài nguyên, thay đổi cấu hình), nhật ký chẩn đoán ghi lại nhật ký nền tảng/ứng dụng chứ không ghi lại dữ liệu đo từ xa về hiệu suất tải trang chi tiết và Azure Advisor chỉ cung cấp cấu hình và đề xuất phương pháp thực hành tốt nhất thay vì đo lường hiệu suất theo thời gian thực.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 390",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/390-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-391",
+    "questionNumber": 391,
+    "text": "You are finalizing a release in GitHub. You need to apply the following labels to the release: Name, Email, Release v3.0, and Release date. How should you complete the git command?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Tạo thẻ chú thích bằng 'git tag -a <tagname> -m \"<message>\"' lưu trữ một đối tượng thẻ đầy đủ trong cơ sở dữ liệu Git bao gồm tên của người gắn thẻ, địa chỉ email của người gắn thẻ, ngày tạo thẻ và thông báo thẻ. Thẻ nhẹ (được tạo bằng 'thẻ git <tagname>' đơn giản) không lưu trữ siêu dữ liệu này - nó chỉ là một tham chiếu đến một cam kết. Vì bản phát hành yêu cầu phải ghi lại Tên, Email, Ngày phát hành và thông báo 'Bản phát hành v3.0' nên tùy chọn thẻ chú thích '-a' phải được sử dụng cùng với '-m' để cung cấp nội dung thông báo. Lệnh kết quả là 'git tag -a v3.0 -m \"Release v3.0\"'.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 391",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/391-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-392",
+    "questionNumber": 392,
+    "text": "You use GitHub for source control of .NET applications.  \n\nYou need to deploy a documentation solution that meets the following requirements:  \n\n✑ Documents will be written in Markdown as developers make code changes.  \n\n✑ Changes to the documents will trigger the recompilation of a static website.  \n\n✑ Users will access the documents from the static website.  \n\n✑ Documents will be stored in a GitHub repository.  \n\nWhich two tools can you use to compile the website? Each correct answer presents a complete solution.  \n\nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Word Press"
+      },
+      {
+        "key": "B",
+        "text": "Jekyll"
+      },
+      {
+        "key": "C",
+        "text": "DocFX"
+      },
+      {
+        "key": "D",
+        "text": "caret"
+      },
+      {
+        "key": "E",
+        "text": "Medium"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "C"
+    ],
+    "explanation": "Jekyll là một trình tạo trang tĩnh được sử dụng rộng rãi cho tài liệu dựa trên Markdown, thường được sử dụng với Trang GitHub. DocFX được thiết kế đặc biệt cho các dự án.NET và tạo tài liệu API tĩnh từ các tệp nguồn Markdown và C#. WordPress rất năng động; dấu mũ và Phương tiện không phải là trình tạo trang tĩnh để biên dịch cục bộ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 392",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/392-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-393",
+    "questionNumber": 393,
+    "text": "You are responsible for managing build and deployment pipelines in Azure DevOps.  \n  \nYour organization has a team of 500 developers, and new members are continually being added to this team.  \n  \nYou need to automate the management of users and licenses wherever possible.  \n  \nWhich of the following tasks must you still perform manually?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "modifying group memberships"
+      },
+      {
+        "key": "B",
+        "text": "adding users"
+      },
+      {
+        "key": "C",
+        "text": "assigning entitlements"
+      },
+      {
+        "key": "D",
+        "text": "procuring licenses"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure DevOps có thể tự động thêm người dùng, chỉ định quyền và cập nhật tư cách thành viên nhóm bằng cách sử dụng quy tắc nhóm Microsoft Entra ID (Azure AD), tự động cấp cấp truy cập và quyền cho người dùng dựa trên tư cách thành viên nhóm của họ khi họ đăng nhập lần đầu. Tuy nhiên, việc tự mua giấy phép — xác định số lượng và loại giấy phép cần mua và hoàn tất giao dịch mua đó — là một quyết định thương mại/hành chính mà Azure DevOps không thể tự động hóa; quản trị viên phải có được giấy phép theo cách thủ công trước khi có thể được chỉ định thông qua các quy tắc nhóm.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 393",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/393-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-394",
+    "questionNumber": 394,
+    "text": "You need to recommend a procedure to implement the build agent for Project1.  \n  \nWhich three actions should be performed in sequence? Move the appropriate actions from the list to the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Step 1",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "2",
+        "text": "Step 2",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "3",
+        "text": "Step 3",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Sign in to Azure DevOps by using an account that is assigned the Administrator service connection security role."
+      },
+      {
+        "key": "B",
+        "text": "Install the Azure Pipelines agent on on-premises virtual machine."
+      },
+      {
+        "key": "C",
+        "text": "Create a personal access token in the Azure DevOps organization of Contoso."
+      },
+      {
+        "key": "D",
+        "text": "Install and register the Azure Pipelines agent on an Azure virtual machine."
+      },
+      {
+        "key": "E",
+        "text": "Sign in to Azure DevOps by using an account that is assigned the agent pool administrator role."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Sign in to Azure DevOps by using an account that is assigned the Administrator service connection security role."
+      },
+      {
+        "key": "B",
+        "text": "Install the Azure Pipelines agent on on-premises virtual machine."
+      },
+      {
+        "key": "C",
+        "text": "Create a personal access token in the Azure DevOps organization of Contoso."
+      },
+      {
+        "key": "D",
+        "text": "Install and register the Azure Pipelines agent on an Azure virtual machine."
+      },
+      {
+        "key": "E",
+        "text": "Sign in to Azure DevOps by using an account that is assigned the agent pool administrator role."
+      }
+    ],
+    "correctAnswers": [
+      "1=E",
+      "2=C",
+      "3=B"
+    ],
+    "explanation": "Việc đăng ký tác nhân Azure Pipelines tự lưu trữ yêu cầu tài khoản có vai trò quản trị viên nhóm tác nhân (không phải vai trò bảo mật kết nối dịch vụ, vai trò này chi phối các kết nối dịch vụ thay vì nhóm tác nhân). Tiếp theo, Mã thông báo truy cập cá nhân (PAT) phải được tạo trong tổ chức Azure DevOps để xác thực tác nhân khi đăng ký với nhóm. Cuối cùng, phần mềm đại lý Azure Pipelines được tải xuống và cài đặt trên máy ảo tại chỗ, sử dụng PAT để hoàn tất đăng ký với nhóm đại lý của tổ chức. Việc cài đặt tác nhân trên Azure virtual machine sẽ không đáp ứng yêu cầu về tác nhân xây dựng tại chỗ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 394",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/394-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-395",
+    "questionNumber": 395,
+    "text": "You need to replace the existing DevOps tools to support the planned changes. What should you use? Each tool may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "trello",
+        "text": "Trello:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "bamboo",
+        "text": "Bamboo:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "bitbucket",
+        "text": "BitBucket:",
+        "correctAnswer": "F"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Boards"
+      },
+      {
+        "key": "B",
+        "text": "Azure Artifacts"
+      },
+      {
+        "key": "C",
+        "text": "GitHub Actions"
+      },
+      {
+        "key": "D",
+        "text": "Azure Pipelines"
+      },
+      {
+        "key": "E",
+        "text": "Azure Test Plans"
+      },
+      {
+        "key": "F",
+        "text": "GitHub repositories"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Azure Boards"
+      },
+      {
+        "key": "B",
+        "text": "Azure Artifacts"
+      },
+      {
+        "key": "C",
+        "text": "GitHub Actions"
+      },
+      {
+        "key": "D",
+        "text": "Azure Pipelines"
+      },
+      {
+        "key": "E",
+        "text": "Azure Test Plans"
+      },
+      {
+        "key": "F",
+        "text": "GitHub repositories"
+      }
+    ],
+    "correctAnswers": [
+      "trello=A",
+      "bamboo=D",
+      "bitbucket=F"
+    ],
+    "explanation": "Azure Boards cung cấp khả năng lập kế hoạch tồn đọng, mục công việc và Kanban-board tương đương với Trello. Azure Pipelines cung cấp khả năng CI/CD tương đương với Bamboo. Kho lưu trữ GitHub cung cấp dịch vụ lưu trữ mã nguồn Git có thể so sánh với Bitbucket.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 395",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/395-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-396",
+    "questionNumber": 396,
+    "text": "You have an Azure DevOps organization named Contoso and an Azure subscription.  \n  \nYou use Azure DevOps to build a containerized app named App1 and deploy App1 to an Azure container instance named ACI1.  \n  \nYou need to configure ACI1 so that it restarts automatically when App1 stops responding.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a liveness probe to the YAML configuration of App1."
+      },
+      {
+        "key": "B",
+        "text": "Add a readiness probe to the YAML configuration of App1."
+      },
+      {
+        "key": "C",
+        "text": "Use Connection Monitor in Azure Network Watcher."
+      },
+      {
+        "key": "D",
+        "text": "Use IP flow verify in Azure Network Watcher."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "liveness probe kiểm tra định kỳ xem ứng dụng đang chạy trong phiên bản vùng chứa có còn hoạt động chính xác hay không. Nếu thăm dò không thành công (ví dụ: do ứng dụng ngừng phản hồi), Azure Container Instances sẽ tắt vùng chứa và khởi động lại vùng chứa đó, theo chính sách khởi động lại của nhóm. readiness probe chỉ xác định xem vùng chứa có sẵn sàng nhận lưu lượng truy cập hay không và không gây ra lỗi khởi động lại. Trình giám sát kết nối và xác minh luồng IP của Network Watcher là các công cụ chẩn đoán mạng được sử dụng để kiểm tra các quy tắc bảo mật và kết nối, chứ không phải để theo dõi tình trạng ứng dụng hoặc kích hoạt khởi động lại vùng chứa. Do đó, việc định cấu hình phần livenessProbe trong quá trình triển khai ACI YAML là cơ chế chính xác để khởi động lại ACI1 khi App1 không phản hồi.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 396",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/396-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-397",
+    "questionNumber": 397,
+    "text": "You need to deploy Internet Information Services (IIS) to an Azure virtual machine running Windows Server 2019.  \n  \nHow should you complete the Desired State Configuration (DSC) configuration script? Each value may be used once, multiple times, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "blank1",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "blank2",
+        "text": "Slot 2:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Configuration"
+      },
+      {
+        "key": "B",
+        "text": "DependsOn"
+      },
+      {
+        "key": "C",
+        "text": "File"
+      },
+      {
+        "key": "D",
+        "text": "IncludeAllSubFeature"
+      },
+      {
+        "key": "E",
+        "text": "WindowsFeature"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Configuration"
+      },
+      {
+        "key": "B",
+        "text": "DependsOn"
+      },
+      {
+        "key": "C",
+        "text": "File"
+      },
+      {
+        "key": "D",
+        "text": "IncludeAllSubFeature"
+      },
+      {
+        "key": "E",
+        "text": "WindowsFeature"
+      }
+    ],
+    "correctAnswers": [
+      "blank1=A",
+      "blank2=E"
+    ],
+    "explanation": "`WindowsFeature` là tài nguyên DSC được sử dụng trên Windows Server để đảm bảo rằng vai trò hoặc tính năng của máy chủ được cài đặt hoặc xóa. Đặt `Name` thành `Web-Server` và `Ensure` thành `Present` sẽ cài đặt vai trò Máy chủ Web IIS. `Configuration` khai báo khối cấu hình DSC.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 397",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/397-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-398",
+    "questionNumber": 398,
+    "text": "You have Azure Pipelines and GitHub integrated as a source code repository.  \n\nThe build pipeline has continuous integration enabled.  \n\nYou plan to trigger an automated build whenever code changes are committed to the repository.  \n\nYou need to ensure that the system will wait until a build completes before queuing another build.  \n\nWhat should you implement?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "path filters"
+      },
+      {
+        "key": "B",
+        "text": "batch changes"
+      },
+      {
+        "key": "C",
+        "text": "scheduled builds"
+      },
+      {
+        "key": "D",
+        "text": "branch filters"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các thay đổi hàng loạt (lô: đúng) trong Đường ống Azure khiến hệ thống phải đợi cho đến khi bản dựng hiện tại hoàn tất trước khi xếp hàng một bản dựng khác có các thay đổi tích lũy, ngăn chặn các bản dựng đồng thời. Bộ lọc đường dẫn, bản dựng theo lịch trình và bộ lọc nhánh không kiểm soát hành vi xếp hàng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 398",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/398-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-399",
+    "questionNumber": 399,
+    "text": "You plan to build an app named App1 by using GitHub.  \n  \nYou need to recommend a build and deployment solution for App1. The solution must meet the following requirements:",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Công việc Hành động GitHub có thể phụ thuộc vào công việc xây dựng thông qua `needs`, điều này ngăn công việc thử nghiệm chạy cho đến khi quá trình xây dựng được yêu cầu thành công. Một môi trường có thể được bảo vệ bằng những người đánh giá cần thiết hoặc các quy tắc bảo vệ triển khai khác, vì vậy nhóm quản lý thay đổi phải phê duyệt công việc phát hành trước khi tiến hành.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 399",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/399-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-400",
+    "questionNumber": 400,
+    "text": "You have a GitHub repository containing the code for an app named App1. App1 depends on a library of functions from a repository located at https://github.com/contoso/afeed. You need to keep a clone of the afeed repository as a subdirectory of the App1 repository. How should you complete the Git command? Each value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "add"
+      },
+      {
+        "key": "B",
+        "text": "branch"
+      },
+      {
+        "key": "C",
+        "text": "clone"
+      },
+      {
+        "key": "D",
+        "text": "pull"
+      },
+      {
+        "key": "E",
+        "text": "submodule"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "add"
+      },
+      {
+        "key": "B",
+        "text": "branch"
+      },
+      {
+        "key": "C",
+        "text": "clone"
+      },
+      {
+        "key": "D",
+        "text": "pull"
+      },
+      {
+        "key": "E",
+        "text": "submodule"
+      }
+    ],
+    "correctAnswers": [
+      "1=E",
+      "2=A"
+    ],
+    "explanation": "Các mô-đun con Git cho phép bạn giữ bản sao của một kho lưu trữ Git dưới dạng thư mục con bên trong kho lưu trữ Git khác, đồng thời theo dõi thư mục con đó ở một cam kết cụ thể và giữ lịch sử của nó tách biệt với kho lưu trữ chính. Lệnh 'git submodule add <repository-url>' sao chép kho lưu trữ được chỉ định vào thư mục con của kho lưu trữ hiện tại và đăng ký nó trong tệp.gitmodules, đây chính xác là hành vi cần thiết để nhúng kho lưu trữ afeed bên trong kho lưu trữ App1. Một 'bản sao git' đơn giản sẽ chỉ tạo một bản sao afeed độc lập và sẽ không liên kết nó như một thành phần được theo dõi của kho lưu trữ của App1.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 400",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/400-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-401",
+    "questionNumber": 401,
+    "text": "How should you configure the release retention policy for the investment planning depletions suite?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Việc mở rộng khả năng lưu giữ bản phát hành ngoài cửa sổ lưu giữ Azure DevOps tích hợp sẵn thường yêu cầu một tập lệnh hoặc tác vụ quy trình sao chép các tạo phẩm phát hành sang Azure Blob Storage bên ngoài trước khi chúng bị xóa. Việc ủy ​​quyền các yêu cầu của tập lệnh đó đối với tài khoản lưu trữ cần có Chữ ký truy cập được chia sẻ ('Mã thông báo ủy quyền truy cập được chia sẻ'), vì nó cấp quyền truy cập trong phạm vi, có giới hạn thời gian mà không để lộ khóa tài khoản lưu trữ, không giống như mã thông báo truy cập cá nhân (xác thực dựa trên Azure DevOps, không phải Azure Storage) hoặc cặp chứng chỉ/tên người dùng-mật khẩu. Các phương pháp thực hành tốt nhất về Bộ lưu trữ Microsoft Azure yêu cầu rõ ràng rằng mã thông báo SAS chỉ được tạo và truyền qua HTTPS, vì SAS được gửi qua HTTP đơn giản có thể bị kẻ tấn công chặn và sử dụng lại để truy cập vào tài khoản lưu trữ. Azure Data Lake và Azure Key Vault không phù hợp ở đây vì Data Lake được thiết kế để lưu trữ phân tích dữ liệu lớn và Key Vault nhằm mục đích lưu trữ bí mật/khóa/chứng chỉ chứ không phải các tạo phẩm phát hành được lưu trữ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 401",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/401-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-402",
+    "questionNumber": 402,
+    "text": "Consider the following Azure Policy definition:  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783719550992-eth39d7i.png)  \n  \nYou assign this policy to the Tenant Root Group.  \n  \nWhat effect does this policy have?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "prevents all HTTP traffic to existing Azure Storage accounts"
+      },
+      {
+        "key": "B",
+        "text": "ensures that all traffic to new Azure Storage accounts is encrypted"
+      },
+      {
+        "key": "C",
+        "text": "prevents HTTPS traffic to new Azure Storage accounts when the accounts are accessed over the Internet"
+      },
+      {
+        "key": "D",
+        "text": "ensures that all data for new Azure Storage accounts is encrypted at rest"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Điều kiện của chính sách sẽ kiểm tra xem tài nguyên có thuộc loại Microsoft.Storage/storageAccounts hay không và liệu thuộc tính supportHttpsTrafficOnly của nó có bằng true hay không; khi cả hai điều kiện đều được đáp ứng, hiệu lực sẽ bị từ chối. Vì việc từ chối được đánh giá trong quá trình tạo hoặc cập nhật tài nguyên ở chế độ Trình quản lý tài nguyên, nên nó sẽ chặn việc tạo (hoặc sửa đổi) bất kỳ tài khoản lưu trữ nào không được hỗ trợHttpsTrafficOnly đặt thành true, yêu cầu tất cả các tài khoản lưu trữ mới phải thực thi lưu lượng truy cập chỉ HTTPS (được mã hóa). Nó không ảnh hưởng đến lưu lượng truy cập đến các tài khoản lưu trữ đã tồn tại (những tài khoản này chỉ được gắn cờ là không tuân thủ) và supportHttpsTrafficOnly quản lý việc mã hóa dữ liệu khi truyền chứ không phải mã hóa khi lưu trữ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783719550992-eth39d7i.png",
+    "sourceTitle": "Examcademy AZ-400 Question 402",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/402-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-403",
+    "questionNumber": 403,
+    "text": "You use Git for source control.  \n  \nYou enable GitHub code scanning.  \n  \nYou raise a pull request from a non-default branch. In the code scanning output, you receive the following error message: “Analysis not found.”  \n  \nYou need to ensure that the code scanning completes successfully for the pull request.  \n  \nWhich two actions should you perform? Each correct answer presents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add the name of the default branch to the on: push specification in the code scanning workflow."
+      },
+      {
+        "key": "B",
+        "text": "Add the name of the non-default branch to the on:push specification in the code scanning workflow."
+      },
+      {
+        "key": "C",
+        "text": "Delete the pull request, and then raise the request again from the default branch."
+      },
+      {
+        "key": "D",
+        "text": "Update the code in the pull request."
+      },
+      {
+        "key": "E",
+        "text": "Add a new workflow for code scanning."
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "D"
+    ],
+    "explanation": "Khi quét mã GitHub báo cáo 'Không tìm thấy phân tích' cho yêu cầu kéo từ nhánh không mặc định, cần có hai bước: (1) Thêm tên nhánh không mặc định vào đặc tả on:push trong quy trình làm việc để mã chạy trên nhánh đó và (2) Cập nhật mã trong yêu cầu kéo để kích hoạt chạy phân tích mới. Điều này đảm bảo nhánh được phân tích trước khi so sánh với nhánh mặc định.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 403",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/403-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-404",
+    "questionNumber": 404,
+    "text": "You use Azure Pipelines to build and deploy an app named App1.  \n  \nYou plan to monitor App1 by using Application Insights.  \n  \nYou create an Application Insights instance named AI1.  \n  \nYou need to configure App1 to use AI1.  \n  \nWhich file should you modify?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "appsettings.json"
+      },
+      {
+        "key": "B",
+        "text": "launchSettings.json"
+      },
+      {
+        "key": "C",
+        "text": "startup.cs"
+      },
+      {
+        "key": "D",
+        "text": "project.json"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Khóa công cụ hoặc chuỗi kết nối Application Insights cho ứng dụng biết tài nguyên AI cần gửi dữ liệu đo từ xa là giá trị cấu hình chứ không phải mã, vì vậy nó thuộc về appsinstall.json. Hệ thống SDK trong Startup.cs chỉ cần được thêm một lần và không thay đổi khi bạn trỏ ứng dụng vào một phiên bản Application Insights khác.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 404",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/404-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-405",
+    "questionNumber": 405,
+    "text": "You are integrating Azure Pipelines with Microsoft Teams.  \n  \nYou install the Azure Pipelines app in Microsoft Teams.  \n  \nYou have an Azure DevOps organization named Contoso that contains a project named Project1.  \n  \nYou have already subscribed to Project1 in Microsoft Teams.  \n  \nYou need to make sure that Microsoft Teams only shows you events for builds that fail.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From Microsoft Teams, run @azure pipelines subscribe https://dev.azure.com/Contoso/Project1."
+      },
+      {
+        "key": "B",
+        "text": "From Azure Pipelines, add a Publish Build Artifacts task to Project1."
+      },
+      {
+        "key": "C",
+        "text": "From Microsoft Teams, run @azure pipelines subscriptions."
+      },
+      {
+        "key": "D",
+        "text": "From Azure Pipelines, enable continuous integration for Project1."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Khi bạn đăng ký lần đầu tiên vào một dự án hoặc quy trình bằng lệnh `@azure pipelines subscribe`, Teams sẽ tạo một đăng ký mặc định với các bộ lọc no được áp dụng để báo cáo về tất cả các sự kiện hoàn thành bản dựng bất kể kết quả như thế nào. Để thu hẹp thông báo chỉ còn các bản dựng không thành công, bạn phải mở quản lý đăng ký bằng cách chạy `@azure pipelines subscriptions` trong kênh. Điều này liệt kê các đăng ký hiện có cho kênh, cho phép bạn chọn đăng ký, áp dụng bộ lọc thích hợp (Trạng thái xây dựng = Không thành công) và lưu thay đổi (hoặc xóa đăng ký cũ chưa được lọc và thêm đăng ký mới được lọc). Đây là quy trình làm việc được ghi lại để tùy chỉnh những sự kiện mà ứng dụng Azure Pipelines Teams báo cáo, như được mô tả trong tài liệu tích hợp Azure Pipelines Microsoft Teams của Microsoft.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 405",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/405-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-406",
+    "questionNumber": 406,
+    "text": "You are using an Azure Pipelines pipeline to build and deploy a web app.  \n  \nYou need to implement a testing strategy that meets these requirements:  \n  \n- Validates the scalability of the app  \n- Tests a code module without testing the module's dependencies  \n- Validates the interactions and dependencies between the app and its dependent services  \n  \nWhich test type should be implemented for each requirement?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Kiểm tra tải đo lường hành vi theo nhu cầu gia tăng và do đó xác nhận khả năng mở rộng. Kiểm thử đơn vị tách biệt đơn vị mã khỏi các phần phụ thuộc của nó. Kiểm tra tích hợp xác minh rằng các thành phần ứng dụng và dịch vụ phụ thuộc hoạt động chính xác với nhau.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 406",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/406-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-407",
+    "questionNumber": 407,
+    "text": "You are configuring Azure Pipelines for three Azure DevOps projects, as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784201590786-6uorkn5a.png)  \n  \nWhich version-control system should you recommend for each project? Each system may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "project1",
+        "text": "Project1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "project2",
+        "text": "Project2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "project3",
+        "text": "Project3:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Assembla Subversion"
+      },
+      {
+        "key": "B",
+        "text": "Bitbucket Cloud"
+      },
+      {
+        "key": "C",
+        "text": "Git in Azure Repos"
+      },
+      {
+        "key": "D",
+        "text": "GitHub Enterprise"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Assembla Subversion"
+      },
+      {
+        "key": "B",
+        "text": "Bitbucket Cloud"
+      },
+      {
+        "key": "C",
+        "text": "Git in Azure Repos"
+      },
+      {
+        "key": "D",
+        "text": "GitHub Enterprise"
+      }
+    ],
+    "correctAnswers": [
+      "project1=C",
+      "project2=D",
+      "project3=A"
+    ],
+    "explanation": "Azure Repos Git lưu trữ các định nghĩa đường dẫn YAML với kho lưu trữ nguồn. GitHub Enterprise cung cấp khả năng kiểm soát nguồn tự lưu trữ phù hợp với môi trường mạng được quản lý nội bộ. Subversion sử dụng mô hình kho lưu trữ tập trung, đáp ứng yêu cầu kiểm soát phiên bản tập trung.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784201590786-6uorkn5a.png",
+    "sourceTitle": "Examcademy AZ-400 Question 407",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/407-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-408",
+    "questionNumber": 408,
+    "text": "You have an Azure DevOps pipeline used to deploy a Node.js application. You need to make sure the dependencies are cached between builds. How should you configure the deployment YAML? Drag the appropriate values to the correct targets in the pipeline definition. Each value may be used once, more than once, or not at all.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784186900511-aiyxlwr4.png)",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "script",
+        "text": "script:",
+        "correctAnswer": "F"
+      },
+      {
+        "id": "condition",
+        "text": "condition:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "always()"
+      },
+      {
+        "key": "B",
+        "text": "build.sh"
+      },
+      {
+        "key": "C",
+        "text": "eq(variables.CACHE_RESTORED, 'true')"
+      },
+      {
+        "key": "D",
+        "text": "integrationtest.sh"
+      },
+      {
+        "key": "E",
+        "text": "ne(variables.CACHE_RESTORED, 'true')"
+      },
+      {
+        "key": "F",
+        "text": "npm install"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "always()"
+      },
+      {
+        "key": "B",
+        "text": "build.sh"
+      },
+      {
+        "key": "C",
+        "text": "eq(variables.CACHE_RESTORED, 'true')"
+      },
+      {
+        "key": "D",
+        "text": "integrationtest.sh"
+      },
+      {
+        "key": "E",
+        "text": "ne(variables.CACHE_RESTORED, 'true')"
+      },
+      {
+        "key": "F",
+        "text": "npm install"
+      }
+    ],
+    "correctAnswers": [
+      "script=F",
+      "condition=E"
+    ],
+    "explanation": "Biến đầu ra cacheHitVar của tác vụ Cache@2 (CACHE_RESTORED) cho biết liệu bộ đệm npm có được khôi phục thành công hay không. Để đảm bảo các phần phụ thuộc được lưu vào bộ đệm giữa các bản dựng trong khi vẫn cài đặt chúng khi cần, quy trình chỉ nên chạy 'npm install' khi bộ đệm chưa được khôi phục, sử dụng điều kiện: ne(variables.CACHE_RESTORED, 'true'). Mẫu này bỏ qua bước cài đặt khi truy cập vào bộ đệm (tiết kiệm thời gian xây dựng) và chạy nó khi thiếu bộ nhớ đệm (đảm bảo tồn tại các phần phụ thuộc), đáp ứng yêu cầu về bộ đệm phụ thuộc giữa các bản dựng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784186900511-aiyxlwr4.png",
+    "sourceTitle": "Examcademy AZ-400 Question 408",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/408-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-410",
+    "questionNumber": 410,
+    "text": "You have a web app named App1 that uses Application Insights in Azure Monitor to store log data. App1 has users in several locations.  \n  \nYou need to query App1 requests from London and Paris that return a 404 error. The solution must meet these requirements:  \n  \n- Return the timestamp url, resultCode, and duration fields.  \n- Show only requests made during the last hour.  \n  \nEach value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "time_filter",
+        "text": "Slot 1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "projection",
+        "text": "Slot 2:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "extend"
+      },
+      {
+        "key": "B",
+        "text": "project"
+      },
+      {
+        "key": "C",
+        "text": "select"
+      },
+      {
+        "key": "D",
+        "text": "timestamp >= ago(1hr)"
+      },
+      {
+        "key": "E",
+        "text": "timestamp -gt ago(1hr)"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "extend"
+      },
+      {
+        "key": "B",
+        "text": "project"
+      },
+      {
+        "key": "C",
+        "text": "select"
+      },
+      {
+        "key": "D",
+        "text": "timestamp >= ago(1hr)"
+      },
+      {
+        "key": "E",
+        "text": "timestamp -gt ago(1hr)"
+      }
+    ],
+    "correctAnswers": [
+      "time_filter=D",
+      "projection=B"
+    ],
+    "explanation": "Phép đo từ xa yêu cầu Application Insights được truy vấn từ bảng `requests`. Vị từ `where timestamp >= ago(1hr)` giữ lại các bản ghi từ giờ trước, vị từ hiện tại thu hẹp chúng thành 404 phản hồi từ London hoặc Paris và `project` chỉ trả về dấu thời gian, url, Mã kết quả và thời lượng. `-gt` không phải là toán tử so sánh Kusto hợp lệ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 410",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/410-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-411",
+    "questionNumber": 411,
+    "text": "You have an Azure DevOps project that contains a build pipeline. The build pipeline uses approximately 50 open source libraries.  \n\nYou need to ensure that all the open source libraries comply with your company's licensing standards.  \n\nWhich service should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "NuGet"
+      },
+      {
+        "key": "B",
+        "text": "Maven"
+      },
+      {
+        "key": "C",
+        "text": "Black Duck"
+      },
+      {
+        "key": "D",
+        "text": "Helm"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Black Duck được xây dựng có mục đích để tuân thủ giấy phép nguồn mở, quét các phần phụ thuộc và xác minh chúng đáp ứng các tiêu chuẩn cấp phép. Sự khác biệt của cộng đồng rất rõ ràng: sử dụng Black Duck để kiểm tra việc tuân thủ giấy phép và WhiteSource Bolt để quét lỗ hổng nguồn mở rộng hơn trong các quy trình.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 411",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/411-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-414",
+    "questionNumber": 414,
+    "text": "Your company is building a new solution in Java. The company currently uses a SonarQube server to analyze the code of .NET solutions. You need to analyze and monitor the code quality of the Java solution. Which task types should you add to the build pipeline?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Grunt"
+      },
+      {
+        "key": "B",
+        "text": "Octopus"
+      },
+      {
+        "key": "C",
+        "text": "Maven"
+      },
+      {
+        "key": "D",
+        "text": "Gulp"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Tác vụ Maven trong Azure Pipelines được thiết kế để xây dựng các dự án Java và có hỗ trợ tích hợp để tích hợp với phân tích SonarQube (thông qua tùy chọn 'Chạy SonarQube hoặc SonarCloud Analysis' và tác vụ Chuẩn bị cấu hình phân tích). Điều này cho phép quy trình biên dịch mã Java bằng Maven và đồng thời gửi số liệu chất lượng mã đến máy chủ SonarQube hiện có. Grunt và Gulp là các trình chạy tác vụ JavaScript/Node.js không liên quan đến các bản dựng Java và Octopus là một công cụ triển khai, không phải là một tác vụ xây dựng hoặc phân tích mã, vì vậy không có tác vụ nào trong số này phù hợp để phân tích chất lượng mã Java bằng SonarQube.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 414",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/414-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-415",
+    "questionNumber": 415,
+    "text": "You manage a project by using Azure Boards, and you manage the project code by using Azure Repos.  \n  \nYou have a bug work item that has an ID of 123.  \n  \nYou need to set the work item state to Resolved.  \n  \nWhat should you add to the commit message?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "#123 fixed"
+      },
+      {
+        "key": "B",
+        "text": "#123 Resolved-"
+      },
+      {
+        "key": "C",
+        "text": "Verifies #123-"
+      },
+      {
+        "key": "D",
+        "text": "Resolves #123-"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Bảng Azure chỉ nhận ra các từ khóa giải quyết (Sửa lỗi, Đã sửa, Sửa, Giải quyết, Giải quyết, Đã giải quyết, Đóng, Đóng, Đã đóng) chỉ khi chúng đứng trước đề cập đến mục công việc, ví dụ: \"Giải quyết #123\" và việc sử dụng từ khóa thuộc họ Giải quyết sẽ chuyển lỗi được liên kết sang trạng thái Đã giải quyết. Các lựa chọn khác đặt ID trước từ khóa hoặc sử dụng từ khóa không được hỗ trợ (\"Xác minh\") mà Azure DevOps không phân tích cú pháp dưới dạng đề cập thay đổi trạng thái. **Tìm hiểu thêm:** [Link work items to commits, pull requests, and changesets](https://learn.microsoft.com/en-us/azure/devops/repos/git/resolution-mentions)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 415",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/415-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-416",
+    "questionNumber": 416,
+    "text": "You have a project in Azure DevOps that uses packages from multiple public feeds. Some of the feeds are unreliable. You need to consolidate the packages into a single feed. Which three actions should you perform in sequence? Move the appropriate actions to the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Modify the configuration files to reference the Azure Artifacts feed."
+      },
+      {
+        "key": "B",
+        "text": "Run an initial package restore."
+      },
+      {
+        "key": "C",
+        "text": "Create a Microsoft Visual Studio project that includes all the packages."
+      },
+      {
+        "key": "D",
+        "text": "Create an Azure Artifacts feed that uses upstream sources."
+      },
+      {
+        "key": "E",
+        "text": "Create a NuGet package."
+      },
+      {
+        "key": "F",
+        "text": "Create an npm package."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Modify the configuration files to reference the Azure Artifacts feed."
+      },
+      {
+        "key": "B",
+        "text": "Run an initial package restore."
+      },
+      {
+        "key": "C",
+        "text": "Create a Microsoft Visual Studio project that includes all the packages."
+      },
+      {
+        "key": "D",
+        "text": "Create an Azure Artifacts feed that uses upstream sources."
+      },
+      {
+        "key": "E",
+        "text": "Create a NuGet package."
+      },
+      {
+        "key": "F",
+        "text": "Create an npm package."
+      }
+    ],
+    "correctAnswers": [
+      "1=D",
+      "2=A",
+      "3=B"
+    ],
+    "explanation": "Các nguồn ngược dòng của Azure Artifacts cho phép bạn hợp nhất các gói từ nhiều cơ quan đăng ký công khai (npm, NuGet, v.v.) vào một nguồn cấp dữ liệu duy nhất, cung cấp một nguồn duy nhất đáng tin cậy và các gói bộ nhớ đệm để các nguồn cấp dữ liệu công khai không đáng tin cậy no ảnh hưởng lâu hơn đến các bản dựng. Quy trình làm việc đúng là trước tiên tạo nguồn cấp dữ liệu Azure Artifacts được đặt cấu hình bằng các nguồn ngược dòng, sau đó cập nhật các tệp cấu hình gói của dự án (chẳng hạn như nuget.config hoặc.npmrc) để trỏ đến nguồn cấp dữ liệu Azure Artifacts đó và cuối cùng chạy khôi phục gói ban đầu để nguồn cấp dữ liệu tìm nạp và lưu vào bộ nhớ đệm tất cả các gói cần thiết từ các nguồn ngược dòng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 416",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/416-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-417",
+    "questionNumber": 417,
+    "text": "You use Exabeam Fusion SIEM together with the Azure cloud platform.  \n  \nYou need to integrate Exabeam with Azure, and the solution must use OAuth authentication.  \n  \nWhich three actions should you perform, and in what order? Move the appropriate actions to the answer area and arrange them in the correct sequence.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Upload a certificate."
+      },
+      {
+        "key": "B",
+        "text": "Create a client secret."
+      },
+      {
+        "key": "C",
+        "text": "Register an Exabeam application in Microsoft Azure Active Directory (Azure AD), part of Microsoft Entra."
+      },
+      {
+        "key": "D",
+        "text": "Configure the Exabeam Azure cloud connector."
+      },
+      {
+        "key": "E",
+        "text": "Configure API permissions."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Upload a certificate."
+      },
+      {
+        "key": "B",
+        "text": "Create a client secret."
+      },
+      {
+        "key": "C",
+        "text": "Register an Exabeam application in Microsoft Azure Active Directory (Azure AD), part of Microsoft Entra."
+      },
+      {
+        "key": "D",
+        "text": "Configure the Exabeam Azure cloud connector."
+      },
+      {
+        "key": "E",
+        "text": "Configure API permissions."
+      }
+    ],
+    "correctAnswers": [
+      "1=C",
+      "2=E",
+      "3=B"
+    ],
+    "explanation": "Theo tài liệu thiết lập Azure Cloud Connector của Exabeam, việc tích hợp với Azure AD bằng xác thực OAuth2 bắt đầu bằng cách đăng ký ứng dụng Exabeam trong Azure Active Directory (Microsoft Entra ID) để lấy ID ứng dụng/ứng dụng. Tiếp theo, các quyền API bắt buộc (chẳng hạn như Microsoft Graph Directory.Read.All, Group.Read.All, User.Read.All và SecurityEvents.Read.All) được thêm vào đăng ký ứng dụng và sự đồng ý của quản trị viên sẽ được cấp, vì nếu không có quyền chấp thuận, ứng dụng không thể gọi API Azure/Graph mà trình kết nối cần. Cuối cùng, bí mật ứng dụng khách được tạo trong Chứng chỉ & Bí mật để dùng làm thông tin xác thực mà trình kết nối xác thực, thay thế cho việc tải chứng chỉ lên.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 417",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/417-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-418",
+    "questionNumber": 418,
+    "text": "You need to determine whether the underlined segment is correct.  \n  \nYour company has a multi-tier application that has its front end hosted in Azure App Service.  \n  \nTo pinpoint the average load times of the application pages, you should make use of *Azure Event Hubs*.  \n  \nSelect `No adjustment required` if the underlined segment is accurate. If the underlined segment is inaccurate, select the accurate option.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "No adjustment required."
+      },
+      {
+        "key": "B",
+        "text": "Azure Application Insights"
+      },
+      {
+        "key": "C",
+        "text": "Azure Log Analytics"
+      },
+      {
+        "key": "D",
+        "text": "Azure Advisor"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Azure Application Insights là tính năng Quản lý hiệu suất ứng dụng (APM) của Azure Monitor được thiết kế để giám sát các ứng dụng web trực tiếp. Nó tự động phát hiện các điểm bất thường về hiệu suất và bao gồm các công cụ phân tích để giúp chẩn đoán sự cố, bao gồm theo dõi thời gian tải của lượt xem trang thông qua SDK JavaScript, công cụ đo lường từ xa phía máy khách, chẳng hạn như thời lượng tải trang. Ngược lại, Azure Event Hubs là một nền tảng truyền dữ liệu lớn và dịch vụ nhập sự kiện được sử dụng để thu thập và xử lý khối lượng dữ liệu lớn, đồng thời không cung cấp các khả năng giám sát hiệu suất ứng dụng như theo dõi thời gian tải trang.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 418",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/418-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-420",
+    "questionNumber": 420,
+    "text": "You have a GitHub repository named repo1 that contains the code for an app named App1. You must deploy a workflow for repo1 by using GitHub Actions. The solution must meet these requirements:  \n  \n- Scan pushes to the main branch.  \n- Scan pull requests to the main branch.  \n- Scan pull requests to any branch whose prefix is `releases/`.  \n- Scan every file in subdirectories of the `src` directory.  \n  \nHow should you complete the code? Each value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "branch_pattern",
+        "text": "Slot 1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "paths_pattern",
+        "text": "Slot 2:",
+        "correctAnswer": "F"
+      },
+      {
+        "id": "paths_ignore_pattern",
+        "text": "Slot 3:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "`**/*.md`"
+      },
+      {
+        "key": "B",
+        "text": "`*.md`"
+      },
+      {
+        "key": "C",
+        "text": "`release*`"
+      },
+      {
+        "key": "D",
+        "text": "`releases/**`"
+      },
+      {
+        "key": "E",
+        "text": "`src/*`"
+      },
+      {
+        "key": "F",
+        "text": "`src/**`"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "`**/*.md`"
+      },
+      {
+        "key": "B",
+        "text": "`*.md`"
+      },
+      {
+        "key": "C",
+        "text": "`release*`"
+      },
+      {
+        "key": "D",
+        "text": "`releases/**`"
+      },
+      {
+        "key": "E",
+        "text": "`src/*`"
+      },
+      {
+        "key": "F",
+        "text": "`src/**`"
+      }
+    ],
+    "correctAnswers": [
+      "branch_pattern=D",
+      "paths_pattern=F",
+      "paths_ignore_pattern=A"
+    ],
+    "explanation": "Bộ lọc nhánh của GitHub Actions sử dụng các mẫu hình cầu đối với nhánh mục tiêu của yêu cầu kéo; `releases/**` bao gồm tất cả các nhánh có tiền tố `releases/`. Toàn cầu đường dẫn `src/**` bao gồm các tệp trong cây thư mục `src`. Toàn cầu `**/*.md` xác định các tệp Markdown ở bất kỳ độ sâu nào để loại trừ. GitHub ghi lại ví dụ về nhánh `releases/**` và ngữ nghĩa của việc khớp đường dẫn `**` trong tài liệu kích hoạt quy trình làm việc của nó.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 420",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/420-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-421",
+    "questionNumber": 421,
+    "text": "You configure Azure Application Insights and the shared service plan tier for a web app.  \n\nYou enable Smart Detection.  \n\nYou confirm that standard metrics are visible in the logs, but when you test a failure, you do not receive a Smart Detection notification.  \n\nWhat prevents the Smart Detection notification from being sent?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "You must enable the Snapshot Debugger for the web app."
+      },
+      {
+        "key": "B",
+        "text": "Smart Detection uses the first 24 hours to establish the normal behavior of the web app."
+      },
+      {
+        "key": "C",
+        "text": "The web app is configured to use the shared service plan tier."
+      },
+      {
+        "key": "D",
+        "text": "You must restart the web app before Smart Detection is enabled."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Tính năng Phát hiện Thông minh yêu cầu khoảng thời gian 24 giờ ban đầu để thiết lập đường cơ sở về hành vi thông thường của ứng dụng trước khi có thể phát hiện và cảnh báo một cách đáng tin cậy về các điểm bất thường. Sự chậm trễ này là cần thiết để phân biệt những hư hỏng thực sự với những biến động thông thường.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 421",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/421-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-422",
+    "questionNumber": 422,
+    "text": "You have a repository hosted on GitHub.  \n  \nYou create a new (empty) repository in Azure DevOps.  \n  \nYou need to recommend a procedure to clone the GitHub repository into the Azure DevOps repository.  \n  \nWhat should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a pull request."
+      },
+      {
+        "key": "B",
+        "text": "Create a webhook."
+      },
+      {
+        "key": "C",
+        "text": "Create a service connection for GitHub."
+      },
+      {
+        "key": "D",
+        "text": "From Import a Git repository, click Import."
+      },
+      {
+        "key": "E",
+        "text": "Create a personal access token in Azure DevOps."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure DevOps Repos bao gồm khả năng 'Nhập kho lưu trữ Git' gốc. Trên trang Tệp của kho lưu trữ Azure DevOps (trống) mới, hãy chọn Nhập và cung cấp URL bản sao của kho lưu trữ GitHub (có thông tin xác thực nếu nguồn là riêng tư) sao chép tất cả các đối tượng, nhánh và lịch sử Git từ GitHub vào kho lưu trữ Azure DevOps, sao chép nó một cách hiệu quả. Đây được ghi lại là phương pháp tiêu chuẩn để nhập/sao chép kho lưu trữ Git bên ngoài, chẳng hạn như kho lưu trữ từ GitHub, vào dự án Azure DevOps.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 422",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/422-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-423",
+    "questionNumber": 423,
+    "text": "You have an application named App1 that uses the custom domain `app.contoso.com`. You create an Azure Application Insights test as shown.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1785750860784-l6mlze4n.jpg)",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Kiểm tra tính khả dụng của ping URL chạy từ mỗi vị trí được định cấu hình với tần suất 5 phút đã định cấu hình. Việc bật phân tích cú pháp yêu cầu phụ thuộc yêu cầu trang HTML và các tài nguyên phụ thuộc như JavaScript và hình ảnh phải tải trong thời gian chờ; ICMP và các mục tiêu siêu liên kết thông thường không phải là các biện pháp kiểm tra có thể áp dụng được.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785750860784-l6mlze4n.jpg",
+    "sourceTitle": "Examcademy AZ-400 Question 423",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/423-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-424",
+    "questionNumber": 424,
+    "text": "You are using GitHub as a source code repository.  \n\nYou create a client-side Git hook on the commit-msg event. The hook requires that each commit message contain a custom work item tag.  \n\nYou need to make a commit that does not have a work item tag.  \n\nWhich git commit parameter should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "--squash"
+      },
+      {
+        "key": "B",
+        "text": "--no-verify"
+      },
+      {
+        "key": "C",
+        "text": "--message ''"
+      },
+      {
+        "key": "D",
+        "text": "--no-post-rewrite"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Cờ xác minh --no bỏ qua móc Git, cho phép xác nhận ngay cả khi xác thực trước cam kết thường không thành công. Tham số này được ghi lại trong tài liệu git-commit và git-hooks như một cách tiêu chuẩn để bỏ qua xác minh hook.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 424",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/424-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-425",
+    "questionNumber": 425,
+    "text": "You manage a project by using Azure Boards. You manage the project code by using GitHub.  \n  \nYou have three work items that have IDs of 456, 457, and 458.  \n  \nYou need to create a pull request that will be linked to all the work items. The solution must set the state of work item 456 to done.  \n  \nWhat should you add to the commit message?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Fixes #456, #457, #458"
+      },
+      {
+        "key": "B",
+        "text": "Fixes #AB456, #AB457, #AB458"
+      },
+      {
+        "key": "C",
+        "text": "#456, #457, #458Completed #456"
+      },
+      {
+        "key": "D",
+        "text": "#AB456, #AB457, #AB458"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Để liên kết yêu cầu kéo hoặc cam kết GitHub với các mục công việc của Azure Boards và chuyển đổi một trong số chúng, mỗi ID mục công việc phải có tiền tố \"AB#\" và trước danh sách phải có từ khóa chuyển trạng thái như Bản sửa lỗi, Đã sửa hoặc Đã giải quyết. Từ khóa đó chỉ chuyển mục công việc được tham chiếu đầu tiên (456) sang danh mục trạng thái Đã hoàn thành/Đã giải quyết trong khi vẫn tạo tham chiếu liên kết đến hai mục còn lại. **Tìm hiểu thêm:** [Link GitHub commits, pull requests, and issues to work items](https://learn.microsoft.com/en-us/azure/devops/boards/github/link-to-from-github)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 425",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/425-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-426",
+    "questionNumber": 426,
+    "text": "You must perform a GitHub code migration. The solution must accommodate the planned changes to the DevOps environment.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "git clone"
+      },
+      {
+        "key": "B",
+        "text": "GitHub Importer"
+      },
+      {
+        "key": "C",
+        "text": "Import repository in Azure Repos"
+      },
+      {
+        "key": "D",
+        "text": "git-tfs"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "GitHub Importer nhanh chóng nhập kho lưu trữ từ một dịch vụ lưu trữ dựa trên Git khác vào GitHub, bao gồm mã nguồn và lịch sử cam kết. Điều này trực tiếp hỗ trợ di chuyển mã GitHub.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 426",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/426-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-427",
+    "questionNumber": 427,
+    "text": "Your team uses Azure Pipelines to deploy applications.  \n\nYou need to ensure that when a failure occurs during the build or release process, all the team members are notified by using Microsoft Teams. The solution must minimize development effort.  \n\nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Install the Azure Boards app for Teams and configure a subscription to receive notifications in a channel."
+      },
+      {
+        "key": "B",
+        "text": "Use Azure Automation to connect to the Azure DevOps REST API and notify the team members."
+      },
+      {
+        "key": "C",
+        "text": "Use an Azure function to connect to the Azure DevOps REST API and notify the team members."
+      },
+      {
+        "key": "D",
+        "text": "Install the Azure Pipelines app for Teams and configure a subscription to receive notifications in a channel."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Ứng dụng Azure Pipelines dành cho Teams cho phép thông báo về các sự kiện xây dựng và phát hành với thiết lập tối thiểu—chỉ cần cài đặt và đăng ký sự kiện. Azure Boards xử lý các hạng mục công việc; Các giải pháp Tự động hóa hoặc Chức năng tùy chỉnh yêu cầu nỗ lực phát triển và tích hợp API bổ sung.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 427",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/427-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-428",
+    "questionNumber": 428,
+    "text": "You have been tasked with strengthening the security of your team's development process.  \n\nYou need to suggest a security tool type for the Continuous Integration (CI) phase of the development process.  \n\nWhich of the following is the option you would suggest?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Penetration testing"
+      },
+      {
+        "key": "B",
+        "text": "Static code analysis"
+      },
+      {
+        "key": "C",
+        "text": "Threat modeling"
+      },
+      {
+        "key": "D",
+        "text": "Dynamic code analysis"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Phân tích mã tĩnh quét mã nguồn mà không thực thi mã đó trong giai đoạn CI, phát hiện các lỗ hổng bảo mật trước khi tích hợp vào cơ sở mã chính. Kiểm tra thâm nhập và phân tích mã động yêu cầu môi trường thời gian chạy trực tiếp. Lập mô hình mối đe dọa là hoạt động trong thời gian thiết kế, không phải là công cụ CI.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 428",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/428-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-429",
+    "questionNumber": 429,
+    "text": "You use an Azure pipeline to build a .NET app with NuGet dependencies.  \n  \nYou need to ensure the pipeline caches the required NuGet packages. Configure the pipeline as follows.  \n  \nEach value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "key",
+        "text": "Slot 1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "restore_os",
+        "text": "Slot 2:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "path",
+        "text": "Slot 3:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "$$(Agent.Id)"
+      },
+      {
+        "key": "B",
+        "text": "$$(Agent.OS)"
+      },
+      {
+        "key": "C",
+        "text": "$$(Build.ArtifactStagingDirectory)"
+      },
+      {
+        "key": "D",
+        "text": "$$(Build.SourcesDirectory)/**/packages.lock.json'"
+      },
+      {
+        "key": "E",
+        "text": "$$(NUGET_PACKAGES)"
+      },
+      {
+        "key": "F",
+        "text": "cache/packages"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "$$(Agent.Id)"
+      },
+      {
+        "key": "B",
+        "text": "$$(Agent.OS)"
+      },
+      {
+        "key": "C",
+        "text": "$$(Build.ArtifactStagingDirectory)"
+      },
+      {
+        "key": "D",
+        "text": "$$(Build.SourcesDirectory)/**/packages.lock.json'"
+      },
+      {
+        "key": "E",
+        "text": "$$(NUGET_PACKAGES)"
+      },
+      {
+        "key": "F",
+        "text": "cache/packages"
+      }
+    ],
+    "correctAnswers": [
+      "key=D",
+      "restore_os=B",
+      "path=E"
+    ],
+    "explanation": "Cache@2 lấy khóa bộ đệm động từ nội dung của packages.lock.json. Việc bao gồm hệ điều hành tác nhân sẽ tách các bộ đệm gói không tương thích, trong khi các khóa khôi phục ngắn dần dần cho phép dự phòng vào bộ đệm NuGet chung hoặc dành riêng cho hệ điều hành. Đường dẫn phải là $(NUGET_PACKAGES), đường dẫn này phân giải tới thư mục gói-cache được xác định trong đường dẫn.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 429",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/429-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-430",
+    "questionNumber": 430,
+    "text": "![Question Image](https://cdn.examcademy.com/images/questions/1784206370942-yphzzckl.png)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "App1 is an ASP.NET Core app.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "The build uses a debug configuration.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "The Dockerfile uses the Docker multi-stage build feature.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Cổng 80 và 443 là các cổng HTTP và HTTPS thường được hiển thị cho bộ chứa web ASP.NET Core. `-c Release` chọn rõ ràng cấu hình Bản dựng phát hành thay vì Gỡ lỗi. Các giai đoạn được đặt tên là `FROM` và `COPY --from=publish` tạo ra một bản dựng nhiều giai đoạn, tách biệt công việc xây dựng/xuất bản khỏi hình ảnh thời gian chạy cuối cùng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784206370942-yphzzckl.png",
+    "sourceTitle": "Examcademy AZ-400 Question 430",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/430-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-431",
+    "questionNumber": 431,
+    "text": "Your development team is building a new web solution using the Microsoft Visual Studio IDE.  \n  \nYou need to make a custom package available to all the developers. The package must be managed centrally, and the latest version must be automatically available for consumption in Visual Studio.  \n  \nWhich three actions should you perform? Each correct answer presents part of the solution.  \n  \n(Note: Each correct selection is worth one point.)",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Publish the package to a feed."
+      },
+      {
+        "key": "B",
+        "text": "Create a new feed in Azure Artifacts."
+      },
+      {
+        "key": "C",
+        "text": "Upload a package to a Git repository."
+      },
+      {
+        "key": "D",
+        "text": "Add the package URL to the Environment settings in Visual Studio."
+      },
+      {
+        "key": "E",
+        "text": "Add the package URL to the NuGet Package Manager settings in Visual Studio."
+      },
+      {
+        "key": "F",
+        "text": "Create a Git repository in Azure Repos."
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "E"
+    ],
+    "explanation": "Nguồn cấp dữ liệu Azure Artifacts cung cấp một vị trí tập trung để lưu trữ và quản lý các gói (NuGet, npm, Maven, v.v.) cho một nhóm hoặc tổ chức. Để đáp ứng yêu cầu, trước tiên, bạn tạo nguồn cấp dữ liệu trong Azure Artifacts (kho gói tập trung), sau đó xuất bản gói tùy chỉnh lên nguồn cấp dữ liệu đó để được lập phiên bản và quản lý tập trung, cuối cùng đặt cấu hình cài đặt Trình quản lý gói NuGet trong Visual Studio để tham chiếu URL của nguồn cấp dữ liệu đó dưới dạng nguồn gói — điều này cho phép Visual Studio tự động phân giải và truy xuất phiên bản mới nhất của gói cho tất cả các nhà phát triển. Kho lưu trữ Git không phải là nguồn cấp dữ liệu gói và không cung cấp các tính năng tiêu thụ/phiên bản gói và Visual Studio có khu vực 'Cài đặt môi trường' no để chỉ định URL gói.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 431",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/431-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-432",
+    "questionNumber": 432,
+    "text": "You use Azure Artifacts to host NuGet packages that you create.  \n  \nYou need to make one of the packages available to anonymous users outside your organization. The solution must minimize the number of publication points.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Change the feed URL of the package"
+      },
+      {
+        "key": "B",
+        "text": "Create a new feed for the package"
+      },
+      {
+        "key": "C",
+        "text": "Promote the package to a release view."
+      },
+      {
+        "key": "D",
+        "text": "Publish the package to a public NuGet repository."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Nguồn cấp dữ liệu Azure Artifacts nằm trong tổ chức Azure DevOps và yêu cầu quyền truy cập được xác thực; chúng không thể được mở ra để người dùng bên ngoài tổ chức sử dụng ẩn danh, không được xác thực. Cách duy nhất để cung cấp gói cho người dùng bên ngoài ẩn danh là xuất bản gói đó lên kho lưu trữ NuGet công khai (chẳng hạn như nuget.org), được thiết kế để sử dụng công khai, ẩn danh. Điều này chỉ yêu cầu một hành động xuất bản bổ sung, giảm thiểu điểm xuất bản, trong khi việc thay đổi URL nguồn cấp dữ liệu hoặc tạo nguồn cấp dữ liệu mới sẽ giữ gói trong ranh giới Azure DevOps đã được xác thực và việc nâng cấp lên chế độ xem bản phát hành chỉ ảnh hưởng đến trạng thái chế độ xem của gói trong nguồn cấp dữ liệu hiện tại chứ không ảnh hưởng đến khả năng hiển thị bên ngoài của gói.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 432",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/432-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-433",
+    "questionNumber": 433,
+    "text": "You use Git for source control and need to optimize a repository's performance. The solution must meet these requirements:  \n  \n- Permanently remove all items referenced only in the reflog.  \n- Remove history that is not part of any current branch.  \n  \nHow should you complete the commands?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "'git reflog hết hạn --expire-unreachable=now --all' ngay lập tức hết hạn (xóa) các mục nhập lại nhật ký trỏ đến các cam kết không thể truy cập được trên tất cả các lượt giới thiệu, điều này sẽ xóa vĩnh viễn các mục chỉ được tham chiếu trong nhật ký lại. 'git gc --prune=now' chạy tính năng thu thập rác và ngay lập tức cắt bớt tất cả các đối tượng mà no có thể truy cập lâu hơn từ bất kỳ nhánh hoặc thẻ nào (bỏ qua thời gian gia hạn 2 tuần mặc định được sử dụng bởi --prune=<date>), thao tác này sẽ xóa lịch sử không thuộc bất kỳ nhánh hiện tại nào. Việc sử dụng --prune=now đảm bảo các cam kết không thể truy cập được, bao gồm cả những cam kết vừa hết hạn từ reflog, sẽ bị xóa ngay lập tức thay vì được giữ lại tạm thời.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 433",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/433-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-434",
+    "questionNumber": 434,
+    "text": "HOTSPOT –  \n  \nYou have a virtual machine running Windows Server 2019 that is managed by using Desired State Configuration (DSC). You have the following DSC configuration.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784202618297-uyej4ky0.jpg)  \n  \nYou have the following Local Configuration Manager (LCM) configuration.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784202620350-ztwzry4v.jpg)  \n  \nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "The Index.htm file will be copied to the C:\\Test folder before the Web-Server Windows feature is installed.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "If manual changes are made to the configuration of the virtual machine, the configuration will reapply automatically.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "If the Web-Server Windows feature is uninstalled from the virtual machine, the discrepancy will be reported in a log entry within 60 minutes.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "`DependsOn` thiết lập thứ tự tài nguyên: Tài nguyên tệp chờ `[WindowsFeature]Web-Server`, do đó IIS được cài đặt trước khi sao chép Index.htm. `ApplyAndMonitor` phát hiện và báo cáo độ lệch nhưng không tự động sửa; tự động sửa yêu cầu `ApplyAndAutoCorrect`. Khoảng thời gian kiểm tra tính nhất quán của LCM là `ConfigurationModeFrequencyMins = 60`, do đó việc loại bỏ tính năng Máy chủ Web được phát hiện và ghi lại trong lần kiểm tra tính nhất quán tiếp theo, trong vòng 60 phút.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784202618297-uyej4ky0.jpg",
+    "sourceTitle": "Examcademy AZ-400 Question 434",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/434-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-435",
+    "questionNumber": 435,
+    "text": "You have a project in Azure DevOps named Project1. Project1 contains a pipeline that builds a container image named Image1 and pushes Image1 to an Azure container registry named ACR1. Image1 uses a base image that is stored in Docker Hub.  \n  \nYou need to ensure that Image1 is updated automatically whenever the base image is updated.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable the Azure Event Grid resource provider and subscribe to registry events."
+      },
+      {
+        "key": "B",
+        "text": "Add a Docker Hub service connection to Azure Pipelines."
+      },
+      {
+        "key": "C",
+        "text": "Create and run an Azure Container Registry task."
+      },
+      {
+        "key": "D",
+        "text": "Create a service hook in Project1."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Nhiệm vụ đăng ký bộ chứa Azure cung cấp khả năng kích hoạt cập nhật hình ảnh cơ sở: Nhiệm vụ ACR có thể theo dõi các phần phụ thuộc của hình ảnh (bao gồm các hình ảnh cơ sở được tham chiếu từ các cơ quan đăng ký bên ngoài như Docker Hub) và tự động xây dựng lại cũng như đẩy hình ảnh dẫn xuất bất cứ khi nào hình ảnh cơ sở thay đổi. Việc tạo và chạy Tác vụ ACR được định cấu hình bằng trình kích hoạt này sẽ đáp ứng yêu cầu giữ cho Image1 tự động cập nhật khi hình ảnh cơ sở Docker Hub của nó thay đổi mà không cần chạy quy trình thủ công, đăng ký Lưới sự kiện, kết nối dịch vụ hoặc móc dịch vụ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 435",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/435-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-436",
+    "questionNumber": 436,
+    "text": "You have an Azure pipeline that is used to deploy an app named App1.  \n  \nYou need to ensure that new versions of App1 are released only if they exceed performance baselines. The solution must minimize administrative effort.  \n  \nWhat should you configure?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an Azure Pipelines release artifact"
+      },
+      {
+        "key": "B",
+        "text": "an Azure Repos branch policy"
+      },
+      {
+        "key": "C",
+        "text": "an Azure Monitor alert"
+      },
+      {
+        "key": "D",
+        "text": "an Azure Pipelines deployment gate"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Cổng triển khai là cơ chế trong Azure Pipelines tự động đánh giá các tiêu chí bên ngoài—chẳng hạn như truy vấn Azure Monitor dựa trên số liệu hiệu suất—trước khi cho phép tiếp tục phát hành, cần có tập lệnh tùy chỉnh no hoặc đánh giá thủ công. Bản thân cảnh báo Azure Monitor chỉ thông báo về sự cố; nó không chặn hoặc chặn một bản phát hành, do đó, bản thân nó không thể ngăn việc quảng bá một bản dựng không đạt tiêu chuẩn. **Tìm hiểu thêm:** [Release gates and approvals overview](https://learn.microsoft.com/en-us/azure/devops/pipelines/release/approvals/gates)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 436",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/436-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-437",
+    "questionNumber": 437,
+    "text": "You have an Azure DevOps project named Project with a release pipeline in Azure Pipeline named ReleaseP1.  \n  \nEnsure that every new release generated for ReleaseP1 creates a release-notes document containing new features and bug fixes.  \n  \nWhich three actions should you perform, in sequence?  \n  \nMore than one ordering of the answer choices is correct; any valid ordering receives credit.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a personal access token (PAT)."
+      },
+      {
+        "key": "B",
+        "text": "Create a service principal."
+      },
+      {
+        "key": "C",
+        "text": "Create a PowerShell task in ReleaseP1 that writes the retrieved data to a markdown file."
+      },
+      {
+        "key": "D",
+        "text": "Create a query that retrieves the feature and bug fix information."
+      },
+      {
+        "key": "E",
+        "text": "Add a dashboard widget that retrieves the feature and bug fix information."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create a personal access token (PAT)."
+      },
+      {
+        "key": "B",
+        "text": "Create a service principal."
+      },
+      {
+        "key": "C",
+        "text": "Create a PowerShell task in ReleaseP1 that writes the retrieved data to a markdown file."
+      },
+      {
+        "key": "D",
+        "text": "Create a query that retrieves the feature and bug fix information."
+      },
+      {
+        "key": "E",
+        "text": "Add a dashboard widget that retrieves the feature and bug fix information."
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=D",
+      "3=C"
+    ],
+    "explanation": "PAT có thể xác thực tập lệnh với API Azure DevOps REST. Truy vấn mục công việc sẽ chọn thông tin về Tính năng và Lỗi cho ghi chú phát hành, đồng thời tác vụ PowerShell trong quy trình phát hành có thể truy xuất dữ liệu đó và tạo tệp Markdown. Tiện ích bảng điều khiển chỉ hiển thị dữ liệu, trong khi service principal không cần thiết cho quy trình làm việc dựa trên PAT này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 437",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/437-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-438",
+    "questionNumber": 438,
+    "text": "You are monitoring the health and performance of an Azure web app using Azure Application Insights.  \n  \nYou need to ensure that an alert is sent when the web app experiences a sudden increase in performance issues and failures.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "custom events"
+      },
+      {
+        "key": "B",
+        "text": "Application Insights Profiler"
+      },
+      {
+        "key": "C",
+        "text": "usage analysis"
+      },
+      {
+        "key": "D",
+        "text": "Smart Detection"
+      },
+      {
+        "key": "E",
+        "text": "Continuous export"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Phát hiện thông minh trong Application Insights tự động phân tích dữ liệu đo từ xa mà ứng dụng của bạn gửi và phát hiện các điểm bất thường như tỷ lệ lỗi tăng đột ngột hoặc suy giảm hiệu suất bất thường so với các mẫu thông thường. Khi phát hiện sự cố như vậy, nó sẽ chủ động gửi cảnh báo gần thời gian thực (qua email hoặc cổng Azure) mà không yêu cầu bạn đặt cấu hình ngưỡng cảnh báo theo cách thủ công. Điều này khác với các sự kiện tùy chỉnh (dùng để ghi nhật ký đo từ xa tùy chỉnh theo cách thủ công), Trình tạo hồ sơ Application Insights (dùng để theo dõi và xác định đường dẫn mã chậm trong yêu cầu), phân tích mức sử dụng (dùng để phân tích hành vi và mức độ tương tác của người dùng) và xuất liên tục (dùng để xuất dữ liệu đo từ xa thô sang bộ nhớ ngoài).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 438",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/438-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-439",
+    "questionNumber": 439,
+    "text": "After adding the virtual machines as managed nodes in Azure Automation State Configuration, you need to configure the managed computers in Pool7.  \n  \nWhat should you do next?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Modify the RefreshMode property of the Local Configuration Manager (LCM)."
+      },
+      {
+        "key": "B",
+        "text": "Run the Register-AzureRmAutomationDscNode Azure Powershell cmdlet."
+      },
+      {
+        "key": "C",
+        "text": "Modify the ConfigurationMode property of the Local Configuration Manager (LCM)."
+      },
+      {
+        "key": "D",
+        "text": "Install PowerShell Core."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Trình quản lý cấu hình cục bộ (LCM) chạy trên mọi nút mục tiêu DSC và thuộc tính ConfigurationMode của nó xác định cách nút áp dụng và duy trì cấu hình trạng thái mong muốn của nó. Các giá trị khả dụng là ApplyOnly (áp dụng một lần, liên tục sửa lỗi sai lệch no), ApplyAndMonitor (chỉ áp dụng và ghi nhật ký sai lệch, mặc định) và ApplyAndAutoCorreg (áp dụng, phát hiện sai lệch và tự động áp dụng lại cấu hình để sửa nó). Vì các máy ảo trong Pool7 đã được đăng ký làm nút được quản lý nên bước còn lại cần thiết để đảm bảo các máy chủ tiếp tục tuân thủ cấu hình được chỉ định—sửa bất kỳ sai lệch nào xảy ra sau khi triển khai ban đầu—là sửa đổi thuộc tính ConfigurationMode của LCM (thường đặt nó thành ApplyAndAutoCorreg). Thay đổi cài đặt này hiện yêu cầu đăng ký lại nút, vì các giá trị DSC LCM được đặt trong quá trình đăng ký ban đầu chỉ có thể được thay đổi thông qua đăng ký lại.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 439",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/439-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-440",
+    "questionNumber": 440,
+    "text": "You have an Azure Repos repository named `repo1`.  \n  \nYou must clone `repo1`, but only the directory named `src/web` should be cloned.  \n  \nComplete the script. Each value can be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "clone_url",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "working_directory",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "sparse_directory",
+        "text": "Slot 3:",
+        "correctAnswer": "F"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "https://dev.azure.com/organization/project/_git/repo1"
+      },
+      {
+        "key": "B",
+        "text": "git@ssh.dev.azure.com:v3/organization/project/repo1"
+      },
+      {
+        "key": "C",
+        "text": "repo1/src"
+      },
+      {
+        "key": "D",
+        "text": "src/web"
+      },
+      {
+        "key": "E",
+        "text": "repo1/src/web"
+      },
+      {
+        "key": "F",
+        "text": "web"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "https://dev.azure.com/organization/project/_git/repo1"
+      },
+      {
+        "key": "B",
+        "text": "git@ssh.dev.azure.com:v3/organization/project/repo1"
+      },
+      {
+        "key": "C",
+        "text": "repo1/src"
+      },
+      {
+        "key": "D",
+        "text": "src/web"
+      },
+      {
+        "key": "E",
+        "text": "repo1/src/web"
+      },
+      {
+        "key": "F",
+        "text": "web"
+      }
+    ],
+    "correctAnswers": [
+      "clone_url=A",
+      "working_directory=C",
+      "sparse_directory=F"
+    ],
+    "explanation": "Giá trị HTTPS là URL bản sao Azure Repos. Sau khi Scalar tạo kho lưu trữ cục bộ, kiểm tra thưa thớt được định cấu hình từ `repo1/src`; cài đặt `web` chọn cây con `src/web` thay vì cây làm việc hoàn chỉnh.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 440",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/440-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-441",
+    "questionNumber": 441,
+    "text": "You have an Azure subscription that contains a Log Analytics workspace named WS1 and a virtual machine named VM1.  \n  \nYou need to install the Microsoft Enterprise Cloud Monitoring extension on VM1.  \n  \nWhich two values are required to configure the extension? Each correct answer presents part of the solution.  \n  \nNOTE: Each correct answer is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the secret key of WS1"
+      },
+      {
+        "key": "B",
+        "text": "the ID of the subscription"
+      },
+      {
+        "key": "C",
+        "text": "the system-assigned managed identity of VM1"
+      },
+      {
+        "key": "D",
+        "text": "the ID of WS1"
+      },
+      {
+        "key": "E",
+        "text": "the resource ID of VM1"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "D"
+    ],
+    "explanation": "Tiện ích mở rộng Giám sát đám mây doanh nghiệp (OMS) của Microsoft dành cho máy ảo Azure yêu cầu ID không gian làm việc và khóa chính/bí mật để xác thực và kết nối với không gian làm việc Log Analytics. ID không gian làm việc xác định không gian làm việc nào nhận dữ liệu giám sát và khóa bí mật xác thực kết nối. Các số nhận dạng khác như ID đăng ký hoặc ID tài nguyên không bắt buộc đối với cấu hình tiện ích mở rộng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 441",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/441-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-442",
+    "questionNumber": 442,
+    "text": "You use Azure DevOps processes to build and deploy code.  \n  \nYou need to compare how much time is spent troubleshooting issues found during development and how much time is spent troubleshooting issues found in released code.  \n  \nWhich KPI should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "defect escape rate"
+      },
+      {
+        "key": "B",
+        "text": "unplanned work rate"
+      },
+      {
+        "key": "C",
+        "text": "defect rate"
+      },
+      {
+        "key": "D",
+        "text": "rework rate"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Tỷ lệ thoát lỗi đo lường tỷ lệ các lỗi được phát hiện trong quá trình sản xuất so với các lỗi được tìm thấy trong quá trình phát triển và thử nghiệm. KPI này so sánh trực tiếp nỗ lực khắc phục sự cố trong mã đã phát hành với quá trình phát triển và là thước đo tiêu chuẩn để đánh giá chất lượng quy trình phát triển.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 442",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/442-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-443",
+    "questionNumber": 443,
+    "text": "Your company has an on-premises Bitbucket Server that is used for Git-based source control. The server is protected by a firewall that blocks inbound Internet traffic.  \n\nYou plan to use Azure DevOps to manage the build and release processes.  \n\nWhich two components are required to integrate Azure DevOps and Bitbucket? Each correct answer presents part of the solution.  \n\nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a deployment group"
+      },
+      {
+        "key": "B",
+        "text": "a Microsoft-hosted agent"
+      },
+      {
+        "key": "C",
+        "text": "service hooks"
+      },
+      {
+        "key": "D",
+        "text": "a self-hosted agent"
+      },
+      {
+        "key": "E",
+        "text": "an External Git service connection"
+      }
+    ],
+    "correctAnswers": [
+      "D",
+      "E"
+    ],
+    "explanation": "Để tích hợp Máy chủ Bitbucket tại chỗ (bị tường lửa chặn) với Azure DevOps: (D) một tác nhân tự lưu trữ được triển khai tại chỗ hoặc trong mạng có quyền truy cập Bitbucket có thể thực thi các bản dựng và (E) kết nối dịch vụ Git bên ngoài định cấu hình liên kết SCM từ Azure DevOps đến kho lưu trữ Bitbucket. Hai thành phần này cùng nhau cho phép tích hợp CI/CD qua ranh giới tường lửa mà không cần truy cập trực tiếp từ đám mây đến cơ sở.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 443",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/443-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-444",
+    "questionNumber": 444,
+    "text": "You plan to publish build artifacts by using an Azure pipeline.  \n  \nYou need to create an .artifactignore file that meets the following requirements:  \n  \n• Includes all files in the build output folder and all subfolders  \n\n• Excludes files that have the .dll extension  \n  \nWhat should you include in the file?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "./**!*.dll"
+      },
+      {
+        "key": "B",
+        "text": "**/*!*.dll"
+      },
+      {
+        "key": "C",
+        "text": "*/***.dll"
+      },
+      {
+        "key": "D",
+        "text": "**/*#*.dll"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Mẫu **/*!*.dll trong.artifactignore khớp với tất cả các tệp trong tất cả các thư mục ngoại trừ những tệp kết thúc bằng.dll. Mẫu ** toàn cầu nắm bắt tất cả các thư mục theo cách đệ quy, trong khi mẫu phủ định (!*.dll) loại trừ các tệp có phần mở rộng.dll, đạt được yêu cầu bao gồm tất cả các tệp nhưng loại trừ DLL.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 444",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/444-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-445",
+    "questionNumber": 445,
+    "text": "Your company has two virtual machines that run Linux hosted in a third-party public cloud.  \n  \nYou plan to use the company's Azure Automation State Configuration implementation to manage the two virtual machines and detect configuration drift.  \n  \nYou need to onboard the Linux virtual machines. You install PowerShell Desired State Configuration (DSC) on the virtual machines, and then run register.py.  \n  \nWhich three actions should you perform next, in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a DSC metaconfiguration"
+      },
+      {
+        "key": "B",
+        "text": "Copy the metaconfiguration to the virtual machines"
+      },
+      {
+        "key": "C",
+        "text": "Add the virtual machines as DSC nodes in Azure Automation"
+      },
+      {
+        "key": "D",
+        "text": "Install Windows Management Framework 5.1 on the virtual machines"
+      },
+      {
+        "key": "E",
+        "text": "From the virtual machines, run setdsclocalconfigurationmanager.py"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create a DSC metaconfiguration"
+      },
+      {
+        "key": "B",
+        "text": "Copy the metaconfiguration to the virtual machines"
+      },
+      {
+        "key": "C",
+        "text": "Add the virtual machines as DSC nodes in Azure Automation"
+      },
+      {
+        "key": "D",
+        "text": "Install Windows Management Framework 5.1 on the virtual machines"
+      },
+      {
+        "key": "E",
+        "text": "From the virtual machines, run setdsclocalconfigurationmanager.py"
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=B",
+      "3=E"
+    ],
+    "explanation": "Sau khi cài đặt PowerShell DSC cho Linux và chạy register.py để chuẩn bị LCM, các bước triển khai còn lại cho Cấu hình trạng thái tự động hóa Azure là tạo siêu cấu hình DSC chứa chi tiết đăng ký tài khoản tự động hóa, sao chép tệp siêu cấu hình đó vào máy ảo Linux rồi chạy setdsclocalconfigurationmanager.py trên mỗi VM để áp dụng. Việc áp dụng siêu cấu hình sẽ khiến máy tự động đăng ký làm nút DSC trong Azure Automation, do đó bước đó là kết quả chứ không phải là hành động thủ công và Windows Management Framework 5.1 không liên quan đến các nút Linux.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 445",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/445-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-446",
+    "questionNumber": 446,
+    "text": "You have a GitHub repository.  \n  \nYou need to ensure that all the code in the repository is scanned for vulnerabilities.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Dependabot alerts"
+      },
+      {
+        "key": "B",
+        "text": "branch protection rules"
+      },
+      {
+        "key": "C",
+        "text": "CodeQL actions"
+      },
+      {
+        "key": "D",
+        "text": "GitHub Advisory Database databases"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "CodeQL là một công cụ phân tích mã ngữ nghĩa, thực hiện phân tích tĩnh để phát hiện các lỗ hổng bảo mật, lỗi mã hóa và lỗi logic trong cơ sở mã của riêng bạn. Dependabot (A) tập trung vào các phần phụ thuộc, các quy tắc bảo vệ nhánh (B) thực thi các đánh giá và Cơ sở dữ liệu tư vấn (D) là một công cụ tham khảo—chỉ CodeQL quét mã nguồn của kho lưu trữ để tìm lỗ hổng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 446",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/446-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-447",
+    "questionNumber": 447,
+    "text": "You plan to use Desired State Configuration (DSC) to maintain the configuration state of virtual machines running Windows Server. You need to:  \n  \n- Install Internet Information Services (IIS) on the virtual machines.  \n- Update the default home page of the IIS web server.  \n  \nHow should you configure the DSC configuration file?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Tài nguyên WindowsFeature DSC được sử dụng để cài đặt hoặc xóa các vai trò và tính năng của Windows Server, chẳng hạn như vai trò Máy chủ Web (IIS), sử dụng các thuộc tính Đảm bảo và Tên như được hiển thị. Tài nguyên Tệp DSC quản lý các tệp và thư mục trên nút đích; Các thuộc tính SourcePath và DestinationPath của nó được sử dụng để sao chép một tệp, chẳng hạn như index.htm, từ một mạng chia sẻ tới đường dẫn đích (c:\\inetpub\\wwwroot), cập nhật trang chủ mặc định của IIS. Đây là các tài nguyên PSDesiredStateConfiguration được tích hợp sẵn tiêu chuẩn.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 447",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/447-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-448",
+    "questionNumber": 448,
+    "text": "You have an Azure virtual machine that is monitored by using Azure Monitor.  \n\nThe virtual machine has the Azure Log Analytics agent installed.  \n\nYou plan to deploy the Service Map solution from the Azure Marketplace.  \n\nWhat should you deploy to the virtual machine to support the Service Map solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the Dependency agent"
+      },
+      {
+        "key": "B",
+        "text": "the Telegraf agent"
+      },
+      {
+        "key": "C",
+        "text": "the Windows Azure diagnostics extension (WAD)"
+      },
+      {
+        "key": "D",
+        "text": "the Azure monitor agent"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Cần có tác nhân phụ thuộc để Bản đồ dịch vụ hoạt động cùng với tác nhân Log Analytics. Nó ánh xạ các phụ thuộc của quy trình và kết nối mạng giữa các hệ thống. Telegraf dành cho việc thu thập số liệu; WAD dành cho chẩn đoán; Tác nhân Azure Monitor (vẫn đang phát triển) chưa thay thế hoàn toàn tác nhân Phụ thuộc cho Bản đồ dịch vụ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 448",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/448-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-449",
+    "questionNumber": 449,
+    "text": "Your company is building a new solution in Java.  \n\nThe company currently uses a SonarQube server to analyze the code of .NET solutions.  \n\nYou need to analyze and monitor the code quality of the Java solution.  \n\nWhich task types should you add to the build pipeline?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Maven"
+      },
+      {
+        "key": "B",
+        "text": "CocoaPods"
+      },
+      {
+        "key": "C",
+        "text": "Xcode"
+      },
+      {
+        "key": "D",
+        "text": "Gulp"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Maven là công cụ xây dựng Java có hỗ trợ phân tích SonarQube tích hợp. Nó cung cấp các loại tác vụ để biên dịch, kiểm tra và phân tích mã Java bằng SonarQube. CocoaPods (iOS), Xcode (macOS) và Gulp (JavaScript) dành cho các nền tảng và ngôn ngữ khác nhau.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 449",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/449-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-450",
+    "questionNumber": 450,
+    "text": "You have an Azure DevOps project named Project1 and an Azure subscription named Sub1. Sub1 contains an Azure virtual machine scale set named VMSS1.  \n\nVMSS1 hosts a web application named WebApp1. WebApp1 uses stateful sessions.  \n\nThe WebApp1 installation is managed by using the Custom Script extension. The script resides in an Azure Storage account named sa1.  \n\nYou plan to make a minor change to a UI element of WebApp1 and to gather user feedback about the change.  \n\nYou need to implement limited user testing for the new version of WebApp1 on VMSS1.  \n\nWhich three actions should you perform? Each correct answer presents part of the solution.  \n\nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Modify the load balancer settings of VMSS1."
+      },
+      {
+        "key": "B",
+        "text": "Redeploy VMSS1."
+      },
+      {
+        "key": "C",
+        "text": "Upload a custom script file to sa1."
+      },
+      {
+        "key": "D",
+        "text": "Modify the Custom Script extension settings of VMSS1."
+      },
+      {
+        "key": "E",
+        "text": "Update the configuration of a virtual machine in VMSS1."
+      }
+    ],
+    "correctAnswers": [
+      "C",
+      "D",
+      "E"
+    ],
+    "explanation": "Thử nghiệm kiểu canary có giới hạn cho Bộ quy mô VM có ứng dụng được Tiện ích mở rộng tập lệnh tùy chỉnh quản lý được thực hiện bằng cách sắp xếp tập lệnh của phiên bản mới trong tài khoản lưu trữ (C), chỉ định lại cấu hình tiện ích mở rộng cho tập lệnh mới (D) và chỉ nâng cấp thủ công một phiên bản duy nhất (hoặc một vài) thay vì toàn bộ (E) — mẫu Microsoft được ghi lại để triển khai canary trên VMSS. Việc thay đổi bộ cân bằng tải (A) không kiểm soát phiên bản nào chạy mã mới và việc triển khai lại toàn bộ bộ thang đo (B) sẽ đẩy thay đổi đến mọi VM thay vì một tập hợp con giới hạn.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 450",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/450-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-451",
+    "questionNumber": 451,
+    "text": "You are configuring Azure DevOps build pipelines and plan to use hosted build agents. Determine which build agent pool should be used to compile each application type. A build agent pool may be used once, more than once, or not at all.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783719559205-fgzxanm2.png)",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "An application that runs on iOS:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "2",
+        "text": "An Internet Information Services (IIS) web application that runs in Docker:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Hosted Windows Container"
+      },
+      {
+        "key": "B",
+        "text": "Hosted Linux"
+      },
+      {
+        "key": "C",
+        "text": "Hosted macOS"
+      },
+      {
+        "key": "D",
+        "text": "Hosted"
+      },
+      {
+        "key": "E",
+        "text": "Default"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Hosted Windows Container"
+      },
+      {
+        "key": "B",
+        "text": "Hosted Linux"
+      },
+      {
+        "key": "C",
+        "text": "Hosted macOS"
+      },
+      {
+        "key": "D",
+        "text": "Hosted"
+      },
+      {
+        "key": "E",
+        "text": "Default"
+      }
+    ],
+    "correctAnswers": [
+      "1=C",
+      "2=A"
+    ],
+    "explanation": "Việc biên dịch ứng dụng iOS yêu cầu Xcode và chuỗi công cụ macOS, chỉ khả dụng trên nhóm tác nhân macOS được lưu trữ trong Azure Pipelines. Ứng dụng web IIS được đóng gói để chạy bên trong bộ chứa Docker (Windows) yêu cầu máy chủ dựa trên Windows có hỗ trợ bộ chứa mà Nhóm bộ chứa Windows được lưu trữ cung cấp, vì bộ chứa Windows phải chạy trên hình ảnh tác nhân dựa trên Windows.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783719559205-fgzxanm2.png",
+    "sourceTitle": "Examcademy AZ-400 Question 451",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/451-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-452",
+    "questionNumber": 452,
+    "text": "Your company has a project in Azure DevOps for a new web application.  \n\nThe company identifies security as one of the highest priorities.  \n\nYou need to recommend a solution to minimize the likelihood that infrastructure credentials will be leaked.  \n\nWhat should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a Run Inline Azure PowerShell task to the pipeline."
+      },
+      {
+        "key": "B",
+        "text": "Add a PowerShell task to the pipeline and run Set-AzureKeyVaultSecret."
+      },
+      {
+        "key": "C",
+        "text": "Add an Azure Key Vault task to the pipeline."
+      },
+      {
+        "key": "D",
+        "text": "Add Azure Key Vault references to Azure Resource Manger templates."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Tác vụ Azure Key Vault trong quy trình Azure DevOps truy xuất các bí mật từ Key Vault trong thời gian chạy và đưa chúng dưới dạng các biến quy trình bảo mật, ngăn chặn việc lộ thông tin xác thực trong nhật ký hoặc cấu hình quy trình. Đây là giải pháp cấp quy trình trực tiếp để ngăn chặn rò rỉ thông tin xác thực cơ sở hạ tầng. Tham chiếu mẫu ARM (option D) dành cho việc triển khai cơ sở hạ tầng, không phải để bảo mật đường ống và các tùy chọn dựa trên PowerShell có nhiều rủi ro hơn.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 452",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/452-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-453",
+    "questionNumber": 453,
+    "text": "You have an Azure DevOps organization named Contoso that includes a project named Project1.  \n  \nYou provision an Azure key vault named Keyvault1.  \n  \nYou need to reference secrets from Keyvault1 in a build pipeline belonging to Project1.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a secure file to Project1."
+      },
+      {
+        "key": "B",
+        "text": "Create an XAML build service."
+      },
+      {
+        "key": "C",
+        "text": "Create a variable group in Project1."
+      },
+      {
+        "key": "D",
+        "text": "Configure the security policy of Contoso."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Để sử dụng bí mật Azure Key Vault trong bản dựng Đường ống Azure, trước tiên bạn phải tạo một nhóm biến trong Thư viện đường ống của dự án, sau đó định cấu hình nhóm đó để liên kết các bí mật từ Azure key vault bằng cách chỉ định đăng ký Azure (kết nối dịch vụ) và chọn Keyvault1, sau đó chọn những bí mật cần hiển thị dưới dạng biến đường ống. Nhóm biến này sau đó được tham chiếu trong định nghĩa quy trình để cung cấp các bí mật trong quá trình xây dựng. Việc tạo tệp bảo mật không liên quan đến tích hợp Key Vault, dịch vụ xây dựng XAML là một tính năng không được dùng nữa, không được sử dụng cho trường hợp này và việc sửa đổi chính sách bảo mật của tổ chức không phải là điều kiện tiên quyết để liên kết kho khóa với một nhóm biến.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 453",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/453-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-454",
+    "questionNumber": 454,
+    "text": "A project in Azure DevOps is used to build a new web application. The company relies on ServiceNow for change management. You need to make sure a change request is processed before any components can be deployed to the production environment.  \n  \nWhich two approaches can be used to integrate ServiceNow into the Azure DevOps release pipeline? Each correct answer presents a complete solution.  \n  \n(Choose two. Each correct selection is worth one point.)",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Define a deployment control that invokes the ServiceNow REST API."
+      },
+      {
+        "key": "B",
+        "text": "Define a pre-deployment gate before the deployment to the Prod stage."
+      },
+      {
+        "key": "C",
+        "text": "Define a deployment control that invokes the ServiceNow SOAP API."
+      },
+      {
+        "key": "D",
+        "text": "Define a post-deployment gate after the deployment to the QA stage."
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "B"
+    ],
+    "explanation": "Tiện ích mở rộng Quản lý thay đổi ServiceNow chính thức cho Azure Pipelines cung cấp hai cơ chế tích hợp: một cổng trước khi triển khai chặn tiến trình đến một giai đoạn (chẳng hạn như Prod) cho đến khi yêu cầu thay đổi ServiceNow được liên kết đáp ứng điều kiện đã định cấu hình và một tác vụ/kiểm soát triển khai không cần tác nhân gọi API ServiceNow REST để tạo, truy vấn hoặc cập nhật yêu cầu thay đổi trong quá trình phát hành. Việc sử dụng một trong hai cơ chế trên các điều kiện trước khi triển khai của giai đoạn Prod sẽ đảm bảo việc triển khai không thể tiếp tục cho đến khi yêu cầu thay đổi được xử lý. Việc tích hợp giao tiếp với ServiceNow qua API REST (không phải SOAP) và quyền kiểm soát phải được áp dụng trước khi triển khai Prod chứ không phải sau khi triển khai QA để thực sự chuyển sang bản phát hành sản xuất.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 454",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/454-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-455",
+    "questionNumber": 455,
+    "text": "You are building an open-source solution hosted in a GitHub repository. You create a new public project in Azure DevOps and plan to use Azure Pipelines for continuous integration builds. The solution must use the GitHub Checks API.  \n  \nWhich authentication type should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "OpenID"
+      },
+      {
+        "key": "B",
+        "text": "GitHub App"
+      },
+      {
+        "key": "C",
+        "text": "a personal access token (PAT)"
+      },
+      {
+        "key": "D",
+        "text": "SAML"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Azure Pipelines hỗ trợ ba cách để cấp quyền truy cập vào kho lưu trữ GitHub: Ứng dụng GitHub, OAuth hoặc mã thông báo truy cập cá nhân (PAT). Chỉ loại ủy quyền Ứng dụng GitHub mới hỗ trợ API Kiểm tra GitHub, hiển thị các kết quả, chú thích và trạng thái xây dựng/kiểm tra chi tiết trực tiếp trong các yêu cầu kéo GitHub. Vì yêu cầu chỉ định việc sử dụng API kiểm tra nên phải sử dụng tích hợp Ứng dụng GitHub.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 455",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/455-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-456",
+    "questionNumber": 456,
+    "text": "You plan to create an image that will contain a .NET Core application.  \n  \nYou have a Dockerfile file that contains the following code. (Line numbers are included for reference only.)  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783710785566-vwnjioxr.png)  \n  \nYou need to ensure that the image is as small as possible when the image is built.  \n  \nWhich line should you modify in the file?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "1"
+      },
+      {
+        "key": "B",
+        "text": "3"
+      },
+      {
+        "key": "C",
+        "text": "4"
+      },
+      {
+        "key": "D",
+        "text": "7"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Dòng 4 phải được sửa đổi từ hình ảnh SDK (mcr.microsoft.com/dotnet/sdk:7.0) thành hình ảnh thời gian chạy (mcr.microsoft.com/dotnet/aspnet:7.0). Trong bản dựng nhiều giai đoạn này, giai đoạn đầu tiên sử dụng SDK để biên dịch, sau đó giai đoạn cuối cùng chỉ nên sử dụng thời gian chạy để thực thi ứng dụng đã biên dịch. SDK (~1GB) lớn hơn đáng kể so với thời gian chạy (~200-500 MB), do đó thay đổi này làm giảm đáng kể kích thước hình ảnh cuối cùng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783710785566-vwnjioxr.png",
+    "sourceTitle": "Examcademy AZ-400 Question 456",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/456-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.015Z"
+  },
+  {
+    "id": "az400-457",
+    "questionNumber": 457,
+    "text": "You are developing an iOS application using Azure DevOps.  \n  \nYou need to test the application manually on 10 devices without releasing the application to the public.  \n  \nWhich two actions should you perform? Each correct answer presents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a Microsoft Intune device compliance policy."
+      },
+      {
+        "key": "B",
+        "text": "Deploy a certificate from an internal certification authority (CA) to each device."
+      },
+      {
+        "key": "C",
+        "text": "Register the application in the iTunes store."
+      },
+      {
+        "key": "D",
+        "text": "Onboard the devices into Microsoft Intune."
+      },
+      {
+        "key": "E",
+        "text": "Distribute a new release of the application."
+      },
+      {
+        "key": "F",
+        "text": "Register the IDs of the devices in the Apple Developer portal."
+      }
+    ],
+    "correctAnswers": [
+      "E",
+      "F"
+    ],
+    "explanation": "Để kiểm tra thủ công ứng dụng iOS trên một nhóm thiết bị vật lý giới hạn mà không cần phát hành công khai, bạn phải sử dụng mô hình phân phối đặc biệt của Apple. Điều này yêu cầu đăng ký UDID của các thiết bị thử nghiệm cụ thể trong cổng Nhà phát triển Apple để chúng có thể được đưa vào hồ sơ cung cấp đặc biệt, sau đó phân phối bản dựng/bản phát hành mới của ứng dụng (ví dụ: thông qua Phân phối Trung tâm Ứng dụng được kết nối với quy trình phát hành Azure DevOps) cho những người thử nghiệm đã đăng ký đó. Việc đăng ký ứng dụng trong cửa hàng iTunes sẽ làm cho ứng dụng đó có sẵn công khai, điều này mâu thuẫn với yêu cầu cũng như các chính sách đăng ký/tuân thủ Intune và việc triển khai chứng chỉ CA giải quyết vấn đề quản lý thiết bị chứ không phải phân phối thử nghiệm ứng dụng đặc biệt cho iOS.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 457",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/457-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-458",
+    "questionNumber": 458,
+    "text": "You have an on-premises app named App1 that accesses Azure resources by using credentials stored in a configuration file.  \n\nYou plan to upgrade App1 to use an Azure service principal.  \n\nWhat is required for App1 to programmatically sign in to Azure Active Directory (Azure AD)?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the application ID, a client secret, and the object ID"
+      },
+      {
+        "key": "B",
+        "text": "a client secret, the object ID, and the tenant ID"
+      },
+      {
+        "key": "C",
+        "text": "the application ID, a client secret, and the tenant ID"
+      },
+      {
+        "key": "D",
+        "text": "the application ID, a client secret, and the subscription ID"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Xác thực Service principal yêu cầu ba thành phần: ID ứng dụng (ID khách hàng xác định service principal), bí mật khách hàng (thông tin xác thực) và ID đối tượng thuê (mã định danh đối tượng thuê Azure AD). ID đối tượng là nội bộ của Azure AD; ID đăng ký là để quản lý tài nguyên, không phải để xác thực.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 458",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/458-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-460",
+    "questionNumber": 460,
+    "text": "You are designing a configuration management solution to support five apps hosted on Azure App Service. Each app is available in the following three environments: development, test, and production.  \n\nYou need to recommend a configuration management solution that meets the following requirements:  \n\n✑ Supports feature flags  \n\n✑ Tracks configuration changes from the past 30 days  \n\n✑ Stores hierarchically structured configuration values  \n\n✑ Controls access to the configurations by using role-based access control (RBAC) permissions  \n\n✑ Stores shared values as key/value pairs that can be used by all the apps  \n\nWhich Azure service should you recommend as the configuration management solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Cosmos DB"
+      },
+      {
+        "key": "B",
+        "text": "Azure App Service"
+      },
+      {
+        "key": "C",
+        "text": "Azure App Configuration"
+      },
+      {
+        "key": "D",
+        "text": "Azure Key Vault"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Cấu hình ứng dụng Azure được xây dựng nhằm mục đích quản lý dữ liệu cấu hình trên các ứng dụng. Nó hỗ trợ cờ tính năng, cặp khóa-giá trị phân cấp, theo dõi thay đổi (kiểm tra các thay đổi trong 30 ngày), role-based access control (RBAC) và chia sẻ tập trung các giá trị cấu hình trên nhiều ứng dụng. Azure Key Vault tập trung vào bí mật, Cosmos DB dành cho lưu trữ dữ liệu và App Service là nền tảng điện toán.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 460",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/460-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-461",
+    "questionNumber": 461,
+    "text": "You have a management group that contains four Azure subscriptions. Each subscription has four resource groups.  \n  \nYou develop a new web app named App1 and plan to deploy one instance of App1 to every resource group.  \n  \nCreate a Bicep template to deploy App1 that meets these requirements:  \n  \n- Each App1 instance name is consistent for its subscription and resource group.  \n- Each App Service plan name used to host App1 is consistent.  \n  \nHow should you complete the template?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "`uniqueString` mang tính quyết định đối với các giá trị được cung cấp cho nó. ID nhóm tài nguyên kết hợp ID đăng ký và tên nhóm tài nguyên, do đó `uniqueString(resourceGroup().id)` tạo tên ứng dụng ổn định cho mỗi nhóm tài nguyên trong mỗi đăng ký. `uniqueString(subscription().id)` tạo tên gói Dịch vụ ứng dụng ổn định trong gói đăng ký, bất kể việc triển khai nhóm tài nguyên.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 461",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/461-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-462",
+    "questionNumber": 462,
+    "text": "You have an Azure DevOps subscription that contains the projects shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783710880333-emva642c.png)  \n  \nYou build apps for the projects by using Azure Pipelines.  \n  \nWhich two projects meet the criteria for granting free parallel jobs? Each correct answer presents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Project1"
+      },
+      {
+        "key": "B",
+        "text": "Project3"
+      },
+      {
+        "key": "C",
+        "text": "Project4"
+      },
+      {
+        "key": "D",
+        "text": "Project2"
+      },
+      {
+        "key": "E",
+        "text": "Project5"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "D"
+    ],
+    "explanation": "Các công việc song song miễn phí trong Azure Pipelines được cấp cho các dự án công cộng có khả năng hiển thị công khai. Cả Project1 và Project2 đều có kho lưu trữ Azure Repos công khai với khả năng hiển thị công khai, giúp chúng đủ điều kiện nhận các công việc song song miễn phí. Project3 là riêng tư, Project5 có chế độ hiển thị riêng tư và trong khi Project4 có kho lưu trữ GitHub công khai và chế độ hiển thị công khai, sự đồng thuận hỗ trợ Dự án 1 và 2 là các dự án đủ điều kiện chính.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783710880333-emva642c.png",
+    "sourceTitle": "Examcademy AZ-400 Question 462",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/462-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-463",
+    "questionNumber": 463,
+    "text": "You have a GitHub repository.  \n  \nYou need to ensure that all changes to code are validated by your company’s security department before the main branch is deployed.  \n  \nWhich two actions can you perform? Each correct answer presents a complete solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Require signed commits."
+      },
+      {
+        "key": "B",
+        "text": "Create a branch protection rule for the feature branches."
+      },
+      {
+        "key": "C",
+        "text": "Create a LICENSE file."
+      },
+      {
+        "key": "D",
+        "text": "Create a branch protection rule for the main branch."
+      },
+      {
+        "key": "E",
+        "text": "Create a CODEOWNERS file."
+      }
+    ],
+    "correctAnswers": [
+      "D",
+      "E"
+    ],
+    "explanation": "Tệp CODEOWNERS cho phép bạn chỉ định bộ phận bảo mật làm người đánh giá bắt buộc cho các đường dẫn có liên quan và quy tắc bảo vệ nhánh trên nhánh chính yêu cầu sự phê duyệt của họ (cộng với kiểm tra trạng thái) sẽ chặn mọi yêu cầu kéo hợp nhất cho đến khi việc đánh giá đó diễn ra. Các cam kết đã ký chỉ xác minh quyền tác giả/tính toàn vẹn và không thực thi cổng đánh giá, đồng thời việc bảo vệ các nhánh tính năng có tác dụng no đối với những gì được phép hợp nhất vào chính.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 463",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/463-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-464",
+    "questionNumber": 464,
+    "text": "You use an Azure Pipelines pipeline to build and test an app named App1.  \n  \nYour company’s development department works in the feature branches.  \n  \nYou need to ensure that a pull request will merge into the main branch only when testing covers more than 90 percent of the code.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure a branch policy for the feature branches."
+      },
+      {
+        "key": "B",
+        "text": "Configure a branch policy for the main branch."
+      },
+      {
+        "key": "C",
+        "text": "Create a Publish Test Results task,"
+      },
+      {
+        "key": "D",
+        "text": "Create a code coverage configuration YAML file."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Chính sách chi nhánh được cấu hình trên nhánh mục tiêu (chính) để thực thi các yêu cầu trước khi hợp nhất. Để yêu cầu mức độ bao phủ mã >90% trước khi PR có thể hợp nhất vào nhánh chính, bạn hãy định cấu hình chính sách trên chính nhánh chính. Chính sách nhánh tính năng sẽ ngăn việc hợp nhất vào các tính năng (không cần thiết). Các tác vụ và tệp cấu hình thiết lập bộ sưu tập bảo hiểm, không hợp nhất các chính sách.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 464",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/464-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-466",
+    "questionNumber": 466,
+    "text": "You manage source control by using GitHub.  \n  \nYou have a file named Data.txt that contains sensitive data. A user pushes Data.txt to a repository.  \n  \nYou need to purge the file from the repository.  \n  \nWhich two commands can you use? Each correct answer presents a complete solution.  \n  \nNOTE: Each correct solution is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "git checkoutgit reset -hard -pathspec data.txt"
+      },
+      {
+        "key": "B",
+        "text": "git checkoutgit clean -d data.txt --force"
+      },
+      {
+        "key": "C",
+        "text": "bfg --delete-files data.txtgit push --force"
+      },
+      {
+        "key": "D",
+        "text": "git rm data.txtgit push --force"
+      },
+      {
+        "key": "E",
+        "text": "git filter-repo --invert-paths --path data.txtgit push origin --force --all"
+      },
+      {
+        "key": "F",
+        "text": "git revert -edit data.txtgit push -force"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "BFG Repo-Cleaner và git filter-repo đều là những công cụ hợp lệ để xóa các tệp nhạy cảm khỏi lịch sử git. BFG (option C) thường được ưu tiên cho các trường hợp đơn giản hơn như xóa một tệp duy nhất và yêu cầu ép buộc để viết lại lịch sử. Option E (git filter-repo) mạnh hơn khi viết lại lịch sử phức tạp. Cả hai đều có thể hoạt động, nhưng BFG là giải pháp đơn giản hơn cho việc xóa tệp đơn giản này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 466",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/466-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-467",
+    "questionNumber": 467,
+    "text": "You have a public GitHub repository named Public1.  \n  \nA commit is made to Public1. The commit contains a pattern that matches a regular expression.  \n  \nWho is notified first when the commit is made?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the administrator of the GitHub organization"
+      },
+      {
+        "key": "B",
+        "text": "the committer"
+      },
+      {
+        "key": "C",
+        "text": "the owner of Public1"
+      },
+      {
+        "key": "D",
+        "text": "the secret scanning partner"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Dịch vụ quét bí mật của GitHub phát hiện các mẫu khớp với các định dạng bí mật đã biết và thông báo trước cho nhà cung cấp dịch vụ liên quan (đối tác quét bí mật), trực tiếp từ phía nhà cung cấp. Điều này xảy ra trước khi bất kỳ thông báo nào đến được với chủ sở hữu kho lưu trữ, người ủy quyền hoặc quản trị viên. Sau đó, đối tác có thể thực hiện hành động ngay lập tức để thu hồi thông tin xác thực bị xâm phạm.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 467",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/467-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-468",
+    "questionNumber": 468,
+    "text": "Your organization uses Azure DevOps to manage build and release processes for its applications, with source control handled through a Git repository.  \n  \nYou are planning to create a new branch based on an existing pull request. Afterward, you intend to merge this new branch into the pull request's target branch.  \n  \nYou need to select a pull request action to create the new branch, ensuring that the branch includes only part of the code contained in the pull request.  \n  \nWhich pull request action should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Set as default branch"
+      },
+      {
+        "key": "B",
+        "text": "Approve with suggestions"
+      },
+      {
+        "key": "C",
+        "text": "Cherry-pick"
+      },
+      {
+        "key": "D",
+        "text": "Reactivate"
+      },
+      {
+        "key": "E",
+        "text": "Revert"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Hành động yêu cầu kéo Cherry-pick trong Azure DevOps cho phép bạn thực hiện một cam kết cụ thể (hoặc một tập hợp con các cam kết) từ yêu cầu kéo và áp dụng nó cho một nhánh mới, thay vì bao gồm tất cả các thay đổi từ toàn bộ yêu cầu kéo. Điều này cho phép bạn tạo một nhánh chỉ chứa một phần mã của PR, sau đó có thể được hợp nhất vào nhánh mục tiêu. Các hành động khác như Hoàn nguyên áp dụng cho toàn bộ thay đổi của PR, Kích hoạt lại mở lại một PR bị bỏ rơi và Phê duyệt với các đề xuất chỉ đơn thuần là một tùy chọn bỏ phiếu đánh giá — không có hành động nào trong số này tạo ra một nhánh với một phần các thay đổi của PR.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 468",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/468-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-469",
+    "questionNumber": 469,
+    "text": "You have an Azure web app named Webapp1. You need to write an Azure Monitor query to generate a report showing the top 10 pages of Webapp1 that failed. How should you complete the query?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Đo từ xa yêu cầu HTTP cho một ứng dụng web, bao gồm cả việc mỗi yêu cầu thành công hay thất bại, được lưu trữ trong bảng 'yêu cầu' Application Insights. Bảng 'ngoại lệ' lưu trữ dữ liệu đo từ xa ngoại lệ, 'pageViews' lưu trữ các sự kiện xem trang phía máy khách (trạng thái lỗi no) và 'dấu vết' lưu trữ thông báo chẩn đoán/nhật ký tùy chỉnh — không có thông báo theo dõi nào trong số này yêu cầu thành công/thất bại bằng mã kết quả HTTP. Trường boolean 'thành công' được SDK Application Insights tự động điền dựa trên mã trạng thái HTTP được trả về (4xx/5xx được đánh dấu là không thành công), do đó, việc lọc bằng 'thành công == false' sẽ tách biệt chính xác các yêu cầu không thành công. Các bộ lọc ứng cử viên khác không liên quan: 'duration == 0' kiểm tra thời lượng yêu cầu, 'itemType == \"availabilityResult\"' liên quan đến kết quả kiểm tra tính khả dụng và 'resultCode == \"200\"' thực sự xác định các yêu cầu thành công (không thất bại). Điều này khớp với truy vấn mẫu được ghi lại trong tài liệu của Microsoft về 'Yêu cầu không thành công – top 10' đối với bảng yêu cầu/AppRequests.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 469",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/469-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-470",
+    "questionNumber": 470,
+    "text": "You are planning to deploy a new database environment, and the solution must satisfy the technical requirements.  \n  \nYou need to prepare the database for deployment.  \n  \nIn which format should you export it?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "NDF"
+      },
+      {
+        "key": "B",
+        "text": "BACPAC"
+      },
+      {
+        "key": "C",
+        "text": "DACPAC"
+      },
+      {
+        "key": "D",
+        "text": "MDF"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "BACPAC là định dạng xuất cơ sở dữ liệu dùng để đóng gói dữ liệu bảng và lược đồ của cơ sở dữ liệu để nhập vào môi trường mới. Công cụ SQL của Microsoft phân biệt điều này với DACPAC, được sử dụng chủ yếu để trích xuất và xuất bản lược đồ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 470",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/470-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-471",
+    "questionNumber": 471,
+    "text": "You have an Azure DevOps project with two users, User1 and User2.  \n  \nYou plan to use Azure Monitor to manage logs.  \n  \nEnsure that the users can perform the actions shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784204506533-m6tu5wvb.png)  \n  \nThe solution must adhere to the principle of least privilege.  \n  \nWhich role should be assigned to each user?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Người đóng góp giám sát có thể đọc dữ liệu giám sát và tạo hoặc sửa đổi cài đặt giám sát, bao gồm cả việc tạo bảng điều khiển giám sát riêng tư. Đầu đọc giám sát ở chế độ chỉ đọc và đặc biệt cho phép xem các cài đặt tỷ lệ tự động cũng như hoạt động và cài đặt cảnh báo; nó tránh cấp cho User2 quyền truy cập ghi không cần thiết.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784204506533-m6tu5wvb.png",
+    "sourceTitle": "Examcademy AZ-400 Question 471",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/471-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-472",
+    "questionNumber": 472,
+    "text": "You are developing an application that includes the following assets:  \n  \n- Source code  \n- Logs generated from automated tests and builds  \n- Large binary assets that are updated frequently  \n- A shared library consumed by several applications  \n  \nDetermine which Azure service should be used to store each asset. Each service can be used only once.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Source code:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "2",
+        "text": "A common library used by multiple applications:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "3",
+        "text": "Logs from automated tests and builds:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "4",
+        "text": "Large and frequently updated binary assets:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Artifacts"
+      },
+      {
+        "key": "B",
+        "text": "Azure Pipelines"
+      },
+      {
+        "key": "C",
+        "text": "Azure Repos"
+      },
+      {
+        "key": "D",
+        "text": "Azure Storage"
+      },
+      {
+        "key": "E",
+        "text": "Azure Test Plans"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Azure Artifacts"
+      },
+      {
+        "key": "B",
+        "text": "Azure Pipelines"
+      },
+      {
+        "key": "C",
+        "text": "Azure Repos"
+      },
+      {
+        "key": "D",
+        "text": "Azure Storage"
+      },
+      {
+        "key": "E",
+        "text": "Azure Test Plans"
+      }
+    ],
+    "correctAnswers": [
+      "1=C",
+      "2=A",
+      "3=B",
+      "4=D"
+    ],
+    "explanation": "Azure Repos cung cấp kho lưu trữ Git/TFVC để lưu trữ và lập phiên bản mã nguồn ứng dụng. Azure Artifacts cung cấp nguồn cấp dữ liệu gói (NuGet, npm, Maven, Universal Packages) cho phép xây dựng một thư viện chung một lần và sử dụng dưới dạng phụ thuộc được phiên bản bởi nhiều ứng dụng. Azure Pipelines chạy các công việc xây dựng và kiểm tra tự động, đồng thời ghi lại/xuất bản nhật ký kiểm tra và xây dựng kết quả như một phần của quy trình CI. Bộ lưu trữ Azure (Bộ lưu trữ Blob) được thiết kế cho các đối tượng nhị phân lớn, thường xuyên thay đổi, cần được đặt ngoài kho lưu trữ nguồn để tránh làm đầy chúng; Kế hoạch kiểm tra Azure, được sử dụng để quản lý thử nghiệm thủ công và thử nghiệm thăm dò, không được áp dụng ở đây.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 472",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/472-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-473",
+    "questionNumber": 473,
+    "text": "As part of your application build process, you need to deploy a group of resources to Azure by using an Azure Resource Manager template located on GitHub.  \n  \nWhich three actions should you perform in sequence? Move the appropriate actions into the answer area and arrange them in the correct order.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Set the template parameters."
+      },
+      {
+        "key": "B",
+        "text": "Create a package."
+      },
+      {
+        "key": "C",
+        "text": "Create a release pipeline."
+      },
+      {
+        "key": "D",
+        "text": "Create a job agent."
+      },
+      {
+        "key": "E",
+        "text": "Add an Azure Resource Group Deployment task."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Set the template parameters."
+      },
+      {
+        "key": "B",
+        "text": "Create a package."
+      },
+      {
+        "key": "C",
+        "text": "Create a release pipeline."
+      },
+      {
+        "key": "D",
+        "text": "Create a job agent."
+      },
+      {
+        "key": "E",
+        "text": "Add an Azure Resource Group Deployment task."
+      }
+    ],
+    "correctAnswers": [
+      "1=C",
+      "2=E",
+      "3=A"
+    ],
+    "explanation": "Để triển khai tài nguyên lên Azure từ mẫu ARM được lưu trữ trên GitHub như một phần của quy trình CI/CD, trước tiên bạn phải tạo quy trình phát hành trong Quy trình Azure kết nối với kho lưu trữ GitHub dưới dạng nguồn tạo phẩm của nó. Tiếp theo, trong quy trình đó, bạn thêm tác vụ Triển khai nhóm tài nguyên Azure (tác vụ triển khai mẫu ARM), định cấu hình hành động của nó là 'Tạo hoặc cập nhật nhóm tài nguyên' và trỏ nó vào tệp mẫu. Cuối cùng, bạn đặt các tham số mẫu — thông qua liên kết tệp tham số hoặc bằng cách nhập các giá trị vào trường Ghi đè tham số mẫu — để tác vụ triển khai có thể điền các đầu vào cần thiết khi nó chạy. 'Tạo gói' liên quan đến việc xây dựng gói phần mềm (không liên quan đến việc triển khai ARM) và 'Tạo tác nhân công việc' liên quan đến Công việc cơ sở dữ liệu đàn hồi Azure SQL chứ không phải triển khai nhóm tài nguyên, do đó, cả hai đều không thuộc trình tự này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 473",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/473-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-474",
+    "questionNumber": 474,
+    "text": "You currently use JIRA, Jenkins, and Octopus as part of your DevOps processes. You plan to replace these tools with Azure DevOps. Which Azure DevOps service should you use to replace each tool?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Bảng Azure cung cấp tính năng theo dõi mục công việc, hồ sơ tồn đọng và bảng Kanban, thay thế trực tiếp chức năng theo dõi dự án và vấn đề của JIRA. Jenkins chủ yếu được sử dụng để tự động hóa quá trình xây dựng/tích hợp liên tục, tương ứng với tính năng quy trình xây dựng của Azure Pipelines. Octopus Deploy là một công cụ tự động hóa triển khai được sử dụng để phát hành ứng dụng sang nhiều môi trường khác nhau, tương ứng với tính năng quy trình phát hành của Azure Pipelines. Azure Repos, dịch vụ kiểm soát nguồn Git/TFVC, không được sử dụng ở đây vì không có JIRA, Jenkins hoặc Octopus nào hoạt động như hệ thống kiểm soát nguồn.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 474",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/474-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-475",
+    "questionNumber": 475,
+    "text": "You have 50 Node.js-based projects that you scan by using WhiteSource. Each project includes Package.json, Package-lock.json, and Npm-shrinkwrap.json files.  \n\nYou need to minimize the number of libraries reports by WhiteSource to only the libraries that you explicitly reference.  \n\nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure the File System Agent plug-in."
+      },
+      {
+        "key": "B",
+        "text": "Add a devDependencies section to Package-lock.json."
+      },
+      {
+        "key": "C",
+        "text": "Configure the Artifactory plug-in."
+      },
+      {
+        "key": "D",
+        "text": "Delete Package-lock.json."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Để giảm thiểu báo cáo WhiteSource chỉ cho các thư viện được tham chiếu rõ ràng, hãy định cấu hình WhiteSource để loại trừ các phụ thuộc phát triển. Các tham chiếu câu trả lời dự định không bao gồm devDependency (chỉ cần cho phát triển, không cần cho sản xuất); tuy nhiên, có một sự khác biệt đáng chú ý trong câu hỏi trong đó nó tham chiếu package-lock.json thay vì pack.json. Nguyên tắc giải pháp là chính xác: lọc ra các phần phụ thuộc bắc cầu và chỉ dành cho phát triển để chỉ báo cáo các thư viện sản xuất được tham chiếu trực tiếp.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 475",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/475-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-476",
+    "questionNumber": 476,
+    "text": "You have a build pipeline configured in Azure Pipelines. You create a Slack App Integration. You need to send build notifications to a Slack channel named #Development. What should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a project-level notification."
+      },
+      {
+        "key": "B",
+        "text": "Configure a service connection."
+      },
+      {
+        "key": "C",
+        "text": "Create a global notification."
+      },
+      {
+        "key": "D",
+        "text": "Creates a service hook subscription."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Việc gửi thông báo xây dựng Azure Pipelines tới kênh Slack thông qua ứng dụng Slack tùy chỉnh (webhook đến) yêu cầu tạo đăng ký hook dịch vụ trong dự án Azure DevOps. Trên trang Service Hooks của dự án, bạn tạo đăng ký, chọn sự kiện kích hoạt liên quan đến bản dựng và cung cấp URL webhook Slack thu được từ tích hợp ứng dụng Slack để thông báo bản dựng được đăng lên kênh đã chỉ định. Các kết nối dịch vụ không liên quan đến việc gửi thông báo (chúng ủy quyền cho các quy trình truy cập các tài nguyên bên ngoài như đăng ký Azure hoặc cơ quan đăng ký vùng chứa) và định tuyến thông báo cấp dự án hoặc toàn cầu thông qua hệ thống thông báo Nhóm/email tích hợp của Azure DevOps thay vì webhook của Slack.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 476",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/476-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-477",
+    "questionNumber": 477,
+    "text": "You manage projects by using Azure Boards.  \n  \nYou have a current work item name itemA that is dependant on a work item named itemB.  \n  \nYou need to define the dependency for itemA.  \n  \nWhat should you do in the web portal for Azure DevOps?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "From itemA, open the Links tab, and then select Add link. Set Link type to Related and add the ID of itemB."
+      },
+      {
+        "key": "B",
+        "text": "From Backlogs, open the context menu, select Add link, and then select itemA. Set Link type to Successor and add the ID of itemB."
+      },
+      {
+        "key": "C",
+        "text": "From itemA, open the Links tab, and then select Add link. Set Link type to References and add the ID of itemB."
+      },
+      {
+        "key": "D",
+        "text": "From Queries, open the context menu, select Add link, and then select Existing Item. Set Link type to Affected By and add the ID of itemB."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Trong Azure DevOps, các phần phụ thuộc được xác định bằng cách sử dụng các loại liên kết tiền nhiệm/kế nhiệm. Vì itemA phụ thuộc vào itemB nên itemB là phần trước và itemA là phần kế tiếp. Từ Backlog, chọn itemA, thêm liên kết, đặt loại liên kết thành 'Người kế nhiệm' và tham chiếu ID của itemB để xác định rằng itemA thành công (phụ thuộc vào) itemB.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 477",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/477-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-478",
+    "questionNumber": 478,
+    "text": "You have an Azure DevOps project containing a build pipeline that uses roughly 50 open source libraries. You need to make sure the project can be scanned for known security vulnerabilities in these open source libraries. What should you do?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "WhiteSource Bolt (hiện được gọi là Mend Bolt) là một tiện ích mở rộng Azure DevOps Marketplace giúp quét các thành phần nguồn mở của dự án để tìm các lỗ hổng bảo mật đã biết, thư viện lỗi thời và các vấn đề tuân thủ giấy phép. Nó được tích hợp vào quy trình xây dựng bằng cách thêm nó dưới dạng tác vụ xây dựng; sau khi được định cấu hình, nó sẽ chạy trong quá trình xây dựng và tạo ra báo cáo về lỗ hổng và kiểm kê. Kho lưu trữ tạo phẩm chỉ lưu trữ kết quả đầu ra của bản dựng và không thực hiện quét, tác vụ triển khai chạy trong khi phát hành thay vì bản dựng và Bamboo, CMake và Chef là các công cụ quản lý cấu hình/xây dựng/CI không liên quan và không cung cấp tính năng tích hợp quét lỗ hổng mã nguồn mở với Azure DevOps.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 478",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/478-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-479",
+    "questionNumber": 479,
+    "text": "You plan to share packages that you have written, tested, validated, and deployed by using Azure Artifacts.  \n  \nYou need to release multiple builds of each package through a single feed. The solution must limit the release of packages that are still in development.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "local symbols"
+      },
+      {
+        "key": "B",
+        "text": "views"
+      },
+      {
+        "key": "C",
+        "text": "global symbols"
+      },
+      {
+        "key": "D",
+        "text": "upstream sources"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Nguồn cấp dữ liệu Azure Artifacts cho phép tồn tại nhiều phiên bản gói trong một nguồn cấp dữ liệu và mỗi nguồn cấp dữ liệu tự động bao gồm ba chế độ xem: @Local, @Prerelease và @Release. Bằng cách quảng cáo các gói thông qua các chế độ xem này khi chúng vượt qua quá trình kiểm tra và xác thực, bạn có thể hạn chế người tiêu dùng chỉ ở chế độ xem @Release, đảm bảo rằng các bản dựng đang phát triển hoặc chưa được xác thực (vẫn ở @Local) không bị lộ. Điều này cho phép một nguồn cấp dữ liệu lưu trữ nhiều bản dựng của một gói trong khi kiểm soát những bản dựng nào được phát hành cho người tiêu dùng.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 479",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/479-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-480",
+    "questionNumber": 480,
+    "text": "During a code review, you find numerous quality issues, including many modules that contain unused variables and empty catch blocks. You need to recommend a solution to improve the quality of the code. What should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "In a Grunt build task, select Enabled from Control Options."
+      },
+      {
+        "key": "B",
+        "text": "In a Maven build task, select Run PMD."
+      },
+      {
+        "key": "C",
+        "text": "In a Xcode build task, select Use xcpretty from Advanced."
+      },
+      {
+        "key": "D",
+        "text": "In a Gradle build task, select Run Checkstyle."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "PMD là một bộ phân tích mã tĩnh được thiết kế để phát hiện các lỗi lập trình phổ biến trong mã Java, bao gồm các biến không được sử dụng, các tham số không được sử dụng, việc tạo đối tượng không cần thiết và các khối bắt trống. Tác vụ xây dựng Azure DevOps Maven bao gồm tùy chọn 'Chạy PMD' (Chạy phân tích PMD) tích hợp để chạy phân tích này như một phần của bản dựng và tạo báo cáo liệt kê tất cả các vi phạm được tìm thấy, bao gồm số lượng biến không được sử dụng và khối bắt trống. Checkstyle, được sử dụng trong tác vụ Gradle, tập trung vào việc thực thi kiểu mã hóa và các quy ước định dạng thay vì phát hiện các lỗi cấp logic cụ thể này, khiến nó ít phù hợp hơn với tình huống này. Các tùy chọn Grunt và Xcode được liệt kê không liên quan đến phân tích tĩnh Java.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 480",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/480-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-481",
+    "questionNumber": 481,
+    "text": "You manage code by using GitHub.  \n  \nYou need to ensure that repository owners are notified if a new vulnerable dependency or malware is found in their repository.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure CodeQL scanning actions."
+      },
+      {
+        "key": "B",
+        "text": "Configure Dependabot alerts."
+      },
+      {
+        "key": "C",
+        "text": "Configure branch protection rules for each repository."
+      },
+      {
+        "key": "D",
+        "text": "Subscribe all the repository owners to the GitHub Advisory Database."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Dependabot là công cụ quét phần phụ thuộc tự động của GitHub giúp phát hiện các phần phụ thuộc dễ bị tổn thương và phần mềm độc hại trong kho lưu trữ và cảnh báo cho chủ sở hữu kho lưu trữ. Nó cũng cung cấp các yêu cầu kéo tự động để khắc phục các lỗ hổng. Quét CodeQL dùng để phân tích bảo mật mã, các quy tắc bảo vệ nhánh dùng để kiểm soát hợp nhất và Cơ sở dữ liệu tư vấn GitHub là tài nguyên tham khảo, không phải là cơ chế thông báo.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 481",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/481-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-482",
+    "questionNumber": 482,
+    "text": "You have an Azure subscription containing the resources shown in the table below.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784174161371-6xg6zgd3.png)  \n  \nYou plan to create a linked service in DF1 that will connect to SQL1 using SQL Server authentication, with the SQL Server login password stored in KV1.  \n  \nYou need to configure DF1 to retrieve the password when Data Factory connects to SQL1, applying the principle of least privilege.  \n  \nHow should you configure DF1? Select the appropriate options in the answer area.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Mật khẩu đăng nhập SQL được lưu trữ dưới dạng bí mật trong Azure Key Vault, do đó dịch vụ được liên kết phải được cấp loại quyền 'Bí mật' trong KV1, chứ không phải các quyền Khóa hoặc Chứng chỉ. Để tôn trọng đặc quyền tối thiểu, managed identity của Data Factory chỉ nên được chỉ định quyền 'Nhận' tối thiểu cần thiết đối với các bí mật thông qua chính sách truy cập Key Vault dành riêng cho các bí mật, thay vì sử dụng vai trò RBAC rộng hơn có thể cấp quyền truy cập không cần thiết vào các hoạt động kho tiền hoặc loại đối tượng khác. Điều này phù hợp với cách tiếp cận được ghi lại bằng tài liệu của Azure Data Factory để lấy bí mật từ Key Vault nhằm xác thực dịch vụ được liên kết.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784174161371-6xg6zgd3.png",
+    "sourceTitle": "Examcademy AZ-400 Question 482",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/482-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-483",
+    "questionNumber": 483,
+    "text": "Your company uses Git as a source control system for a complex application named App1.  \n  \nYou are planning to add new functionality to App1 and need to design a branching model for this new feature.  \n  \nWhich branch lifetime and branch type should be used in the branching model?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Khi thêm chức năng mới vào một ứng dụng, phương pháp phân nhánh Git được khuyến nghị là tạo một nhánh tính năng chuyên dụng ngoài nhánh chính/phát triển. Các nhánh tính năng tồn tại trong thời gian ngắn theo thiết kế: chúng được tạo đặc biệt để phát triển một phần chức năng, chỉ được sử dụng trong suốt thời gian thực hiện công việc đó, sau đó được hợp nhất vào dòng chính và bị xóa sau khi tính năng hoàn tất. Điều này trái ngược với các nhánh tồn tại lâu dài như nhánh chính/chính hoặc nhánh tích hợp (ví dụ: phát triển), tồn tại trong suốt vòng đời của dự án. Do đó, đối với chức năng mới, loại nhánh chính xác là 'Tính năng' và thời gian tồn tại của nhánh chính xác là 'Tồn tại trong thời gian ngắn'.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 483",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/483-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-484",
+    "questionNumber": 484,
+    "text": "Your Azure subscription includes an Azure Active Directory (Azure AD) tenant.  \n  \nYou are setting up a build pipeline in Azure Pipelines that will contain a task named Task1. Task1 will authenticate using an Azure AD service principal.  \n  \nWhich three values should you configure for Task1? Each correct answer presents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the tenant ID"
+      },
+      {
+        "key": "B",
+        "text": "the subscription ID"
+      },
+      {
+        "key": "C",
+        "text": "the client secret"
+      },
+      {
+        "key": "D",
+        "text": "the app ID"
+      },
+      {
+        "key": "E",
+        "text": "the object ID"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "Xác thực bằng Azure AD service principal yêu cầu thông tin xác thực và xác thực của hiệu trưởng: ID đối tượng thuê (thư mục) chỉ định đối tượng thuê Azure AD nào mà service principal được đăng ký, ID ứng dụng (ứng dụng khách) — ID ứng dụng — xác định duy nhất đăng ký service principal/ứng dụng và bí mật ứng dụng khách đóng vai trò là thông tin xác thực tương đương với mật khẩu chứng minh Danh tính của service principal. ID đăng ký được sử dụng để xác định phạm vi tài nguyên Azure mục tiêu nhưng không phải là một phần trong thông tin xác thực của service principal và ID đối tượng không được sử dụng trong cấu hình xác thực này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 484",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/484-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-485",
+    "questionNumber": 485,
+    "text": "You have a project in Azure DevOps containing a Continuous Integration/Continuous Deployment (CI/CD) pipeline. You need to enable detailed logging by defining a pipeline variable. How should you configure the variable?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Đường ống Azure hiển thị một biến đặc biệt, System.Debug, khi được đặt thành true sẽ cho phép ghi nhật ký chẩn đoán chi tiết cho quá trình chạy đường ống, tương tự như việc chọn hộp kiểm 'Bật chẩn đoán hệ thống' khi xếp hàng bản dựng theo cách thủ công. Đây được Microsoft ghi lại là cách tiêu chuẩn để bật ghi nhật ký chi tiết/gỡ lỗi để khắc phục sự cố đường ống.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 485",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/485-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-486",
+    "questionNumber": 486,
+    "text": "You have an Azure DevOps organization named Contoso.  \n\nYou need to recommend an authentication mechanism that meets the following requirements:  \n\n✑ Supports authentication from Git  \n\n✑ Minimizes the need to provide credentials during authentication  \n\nWhat should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "personal access tokens (PATs) in Azure DevOps"
+      },
+      {
+        "key": "B",
+        "text": "Alternate credentials in Azure DevOps"
+      },
+      {
+        "key": "C",
+        "text": "user accounts in Azure Active Directory (Azure AD)"
+      },
+      {
+        "key": "D",
+        "text": "managed identities in Azure Active Directory (Azure AD)"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Mã thông báo truy cập cá nhân cho phép người dùng xác thực các hoạt động Git với Azure Repos mà không cần cung cấp nhiều lần tên người dùng và mật khẩu tổ chức của họ — sau khi được Git hoặc người quản lý thông tin xác thực lưu vào bộ nhớ đệm, PAT sẽ tự động được sử dụng lại cho đến khi hết hạn. Điều này đáp ứng cả hai yêu cầu (xác thực tương thích với Git và giảm thiểu nhắc nhở về thông tin xác thực) tốt hơn so với thông tin xác thực thay thế sử dụng lại mật khẩu tài khoản trực tiếp trên mỗi lời nhắc.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 486",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/486-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-487",
+    "questionNumber": 487,
+    "text": "You use Azure Pipelines pipeline to build and deploy an app named App1.  \n  \nYou need to ensure that before App1 is deployed, all the code for the app passes a security validation by using a custom tool.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a status check to the policies of the branch used by your company's development department."
+      },
+      {
+        "key": "B",
+        "text": "Add a status check to the policies of the main branch."
+      },
+      {
+        "key": "C",
+        "text": "Add a service hook to the project."
+      },
+      {
+        "key": "D",
+        "text": "Limit the job authorization scope to the current project for all the release pipelines."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Vì App1 được triển khai từ mã nằm trên nhánh chính nên việc yêu cầu công cụ bảo mật tùy chỉnh làm kiểm tra trạng thái trong chính sách của nhánh chính đảm bảo yêu cầu kéo no có thể hoàn thành và do đó, mã no có thể đạt đến giai đoạn triển khai cho đến khi công cụ báo cáo thành công. Việc chỉ kiểm soát nhánh được bộ phận phát triển sử dụng sẽ không chọn các đường dẫn khác vào chính (chẳng hạn như các hotfix hoặc hợp nhất từ ​​các nhóm khác), do đó mã đã triển khai sẽ không được xác thực một cách đáng tin cậy.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 487",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/487-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-488",
+    "questionNumber": 488,
+    "text": "You have a project in Azure DevOps named Project1. Project1 contains a build pipeline named Pipe1 that builds an application named App1.  \n  \nYou have an agent pool named Pool1 that contains a Windows Server 2019-based self-hosted agent. Pipe1 uses Pool1.  \n  \nYou are planning to implement another project named Project2. Project2 will have a build pipeline named Pipe2 that builds an application named App2.  \n  \nApp1 and App2 have conflicting dependencies.  \n  \nYou need to minimize the possibility that the two build pipelines will conflict with each other. The solution must also minimize infrastructure costs.  \n  \nWhat should you do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add another self-hosted agent."
+      },
+      {
+        "key": "B",
+        "text": "Add a Docker Compose task to the build pipelines."
+      },
+      {
+        "key": "C",
+        "text": "Change the self-hosted agent to use Red Hat Enterprise Linux (RHEL) 8."
+      },
+      {
+        "key": "D",
+        "text": "Create two container jobs."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure Pipelines cho phép một công việc chạy bên trong bộ chứa Docker trên một tác nhân tự lưu trữ bằng cách xác định công việc trong bộ chứa. Điều này tách biệt các công cụ xây dựng và phần phụ thuộc của từng quy trình trong vùng chứa riêng của chúng, do đó, các phần phụ thuộc xung đột của App1 và App2 không bao giờ tương tác, mặc dù cả hai quy trình vẫn sử dụng cùng một tác nhân tự lưu trữ cơ bản trong Pool1. Điều này giúp tránh chi phí cung cấp và duy trì cơ sở hạ tầng tác nhân bổ sung (không giống như thêm một tác nhân tự lưu trữ khác) và trực tiếp giải quyết vấn đề cách ly phần phụ thuộc mà tác vụ Docker Compose (dành cho việc xây dựng/điều phối đẩy hình ảnh nhiều vùng chứa) hoặc thay đổi hệ điều hành đối với tác nhân sẽ không giải quyết được.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 488",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/488-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-489",
+    "questionNumber": 489,
+    "text": "You have a Linux Azure virtual machine named VM1. You plan to deploy the Desired State Configuration (DSC) extension to VM1. You need to grant the Log Analytics agent the appropriate directory permissions. How should you complete the command?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Tác nhân Log Analytics (OMS) dành cho Linux chạy với tư cách là người dùng omsagent. Trong quá trình triển khai tiện ích mở rộng DSC, các mô-đun như nxautomation được tải xuống thư mục /tmp để xác minh trước khi cài đặt. Để quá trình này thành công, tài khoản omsagent phải được cấp quyền đọc, ghi và thực thi (rwx) ACL trên /tmp bằng lệnh setfacl -m u:omsagent:rwx /tmp. Điều này được ghi lại trong hướng dẫn khắc phục sự cố tác nhân Linux Log Analytics của Microsoft đối với các sự cố triển khai DSC/Tự động hóa.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 489",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/489-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-490",
+    "questionNumber": 490,
+    "text": "You have an Azure subscription that contains an Azure Pipelines pipeline named Pipeline1 and a user named User1. Pipeline1 is used to build and test an app named App1. User1 is assigned the Contributors role for Pipeline1.  \n  \nYou plan to test App1 by using an Azure Deployment Environments environment.  \n  \nYou need to ensure that User1 can provision the environment. The solution must follow the principle of least privilege.  \n  \nWhich role should you assign to User1?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "DevCenter Project Admin"
+      },
+      {
+        "key": "B",
+        "text": "Deployment Environments User"
+      },
+      {
+        "key": "C",
+        "text": "Contributors"
+      },
+      {
+        "key": "D",
+        "text": "Build Administrators"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Vai trò Người dùng Môi trường Triển khai là vai trò tối thiểu cần có để cung cấp môi trường trong Môi trường Triển khai Azure. Khi được chỉ định ở cấp dự án, vai trò này cho phép người dùng xem các loại môi trường, tạo môi trường và quản lý hoạt động triển khai của riêng họ trong khi vẫn tuân thủ nguyên tắc đặc quyền tối thiểu. Quản trị viên dự án DevCenter sẽ quá mức, Người đóng góp quá rộng và Quản trị viên xây dựng không liên quan đến việc cung cấp môi trường.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 490",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/490-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-491",
+    "questionNumber": 491,
+    "text": "You need to deploy Azure Kubernetes Service (AKS) to host an application. The solution must meet the following requirements:  \n  \n- Containers must only be published internally.  \n- AKS clusters must be able to create and manage containers in Azure.  \n  \nWhat should you use for each requirement?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Cơ quan đăng ký vùng chứa Azure (ACR) cung cấp sổ đăng ký Docker nội bộ, riêng tư trong đăng ký Azure của bạn, do đó, các hình ảnh được đẩy lên đó không được công khai, đáp ứng yêu cầu 'được xuất bản nội bộ'. Azure Container Instances là dịch vụ điện toán lưu trữ vùng chứa và Dockerfile chỉ xác định cách tạo hình ảnh nên không giải quyết vấn đề chỉ xuất bản nội bộ. Riêng biệt, AKS yêu cầu danh tính để cung cấp và quản lý các tài nguyên Azure như bộ cân bằng tải, ổ đĩa và kết nối mạng thay mặt cho cụm; danh tính này là Azure AD service principal (hoặc managed identity) được gán cho cụm, đây là thứ cấp cho AKS quyền tạo và quản lý các tài nguyên này trong Azure.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 491",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/491-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-492",
+    "questionNumber": 492,
+    "text": "You have a project in Azure DevOps named App Project that is used to develop an app named App1. App1Project has an Azure Boards team dashboard that is used to monitor the progress of App1 and track work items.  \n  \nYou need to track how long it takes to close a work item once work for the item has commenced.  \n  \nWhich type of widget should you add to the dashboard?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "sprint burndown"
+      },
+      {
+        "key": "B",
+        "text": "velocity"
+      },
+      {
+        "key": "C",
+        "text": "lead time"
+      },
+      {
+        "key": "D",
+        "text": "cycle time"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Thời gian chu kỳ đo khoảng thời gian từ khi công việc bắt đầu (bắt đầu) đến khi hoàn thành hoặc kết thúc. Điều này trực tiếp giải quyết yêu cầu theo dõi thời gian thực hiện các mục khi công việc bắt đầu. Các thước đo thời gian thực hiện từ khi yêu cầu đến khi hoàn thành, các đường đo tiêu hao chạy nước rút hoạt động trong một khoảng thời gian chạy nước rút và các thước đo tốc độ hoàn thành công việc trong mỗi lần chạy nước rút—không có thước đo nào ghi lại khoảng thời gian từ khi bắt đầu đến khi kết thúc.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 492",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/492-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-493",
+    "questionNumber": 493,
+    "text": "You are setting up a new project in Azure DevOps that multiple developers will work on. These developers will often be offline and need to be able to access the complete project history even when they don't have a network connection.  \n  \nWhich version control solution should you choose?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Team Foundation Version Control"
+      },
+      {
+        "key": "B",
+        "text": "Git"
+      },
+      {
+        "key": "C",
+        "text": "TortoiseSVN"
+      },
+      {
+        "key": "D",
+        "text": "Subversion"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Git là một hệ thống kiểm soát phiên bản phân tán, nghĩa là kho lưu trữ cục bộ của mọi nhà phát triển đều chứa bản sao đầy đủ về lịch sử của dự án. Điều này cho phép các nhà phát triển thực hiện các thay đổi, tạo nhánh và duyệt toàn bộ lịch sử ngoại tuyến, sau đó đồng bộ hóa với kho lưu trữ từ xa được chia sẻ sau khi kết nối được khôi phục. Ngược lại, Team Foundation Version Control (TFVC) là một hệ thống tập trung thường yêu cầu kết nối với máy chủ để thực hiện lịch sử và hầu hết các hoạt động kiểm soát nguồn, khiến hệ thống này không phù hợp để làm việc ngoại tuyến thường xuyên với quyền truy cập toàn bộ lịch sử.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 493",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/493-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-494",
+    "questionNumber": 494,
+    "text": "You have a GitHub repository.  \n  \nYou need to configure Dependabot dependency scanning. The solution must meet the following requirements:  \n  \n- Automatically open a pull request to resolve an alert.  \n- Automatically open a pull request when a dependency is updated.  \n  \nWhat should you enable for each requirement? Each feature may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "resolve_alert",
+        "text": "Automatically open a pull request to resolve an alert:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "dependency_updated",
+        "text": "Automatically open a pull request when a dependency is updated:",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Alerts"
+      },
+      {
+        "key": "B",
+        "text": "A dependency graph"
+      },
+      {
+        "key": "C",
+        "text": "Security updates"
+      },
+      {
+        "key": "D",
+        "text": "Version updates"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Alerts"
+      },
+      {
+        "key": "B",
+        "text": "A dependency graph"
+      },
+      {
+        "key": "C",
+        "text": "Security updates"
+      },
+      {
+        "key": "D",
+        "text": "Version updates"
+      }
+    ],
+    "correctAnswers": [
+      "resolve_alert=C",
+      "dependency_updated=D"
+    ],
+    "explanation": "Cập nhật bảo mật Dependabot mở các yêu cầu kéo cho các phần phụ thuộc dễ bị tổn thương, giải quyết các cảnh báo Dependabot. Phiên bản Dependabot cập nhật các yêu cầu kéo mở cập nhật các phần phụ thuộc lên phiên bản mới hơn.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 494",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/494-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-495",
+    "questionNumber": 495,
+    "text": "Your company hosts a web application in Azure and uses Azure Pipelines for build and release management of the application.  \n  \nStakeholders report that the past few releases have negatively affected system performance.  \n  \nYou configure alerts in Azure Monitor.  \n  \nYou need to ensure that new releases are only deployed to production if they meet defined performance baseline criteria in the staging environment first.  \n  \nWhat should you use to prevent the deployment of releases that fail to meet the performance baseline?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an Azure Scheduler job"
+      },
+      {
+        "key": "B",
+        "text": "a trigger"
+      },
+      {
+        "key": "C",
+        "text": "a gate"
+      },
+      {
+        "key": "D",
+        "text": "an Azure function"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Cổng phát hành Azure Pipelines cho phép bạn chỉ định các điều kiện phải được đáp ứng trước khi bản phát hành được chuyển sang giai đoạn tiếp theo (chẳng hạn như giai đoạn sản xuất). Gates có thể tự động truy vấn các dịch vụ bên ngoài—bao gồm cảnh báo Azure Monitor—như một phần của điều kiện trước khi triển khai và quá trình phát hành sẽ bị chặn nếu không đáp ứng các tiêu chí. Điều này trực tiếp hỗ trợ xác thực các đường cơ sở về hiệu suất trong quá trình chạy thử trước khi cho phép triển khai vào sản xuất. Trình kích hoạt chỉ kiểm soát khi giai đoạn quy trình bắt đầu, chứ không phải liệu giai đoạn đó có vượt qua thanh chất lượng hay không và bản thân các công việc của Bộ lập lịch Azure/Azure Functions không phải là cơ chế kiểm soát trong Azure Pipelines.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 495",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/495-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-496",
+    "questionNumber": 496,
+    "text": "Your company plans to deploy an application to the following endpoints:  \n  \n- Ten virtual machines hosted in Azure  \n- Ten virtual machines hosted in an on-premises data center environment  \n  \nAll the virtual machines have the Azure Pipelines agent installed.  \n  \nYou need to recommend a release strategy for deploying the application to these endpoints. Which components should be used to deploy the application to each set of endpoints? Each component may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Ten virtual machines hosted in Azure:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "Ten virtual machines hosted in an on-premises data center environment:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "A deployment group"
+      },
+      {
+        "key": "B",
+        "text": "A management group"
+      },
+      {
+        "key": "C",
+        "text": "A resource group"
+      },
+      {
+        "key": "D",
+        "text": "Application roles"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "A deployment group"
+      },
+      {
+        "key": "B",
+        "text": "A management group"
+      },
+      {
+        "key": "C",
+        "text": "A resource group"
+      },
+      {
+        "key": "D",
+        "text": "Application roles"
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=A"
+    ],
+    "explanation": "Nhóm triển khai là một tập hợp logic các máy đích, mỗi máy chạy một tác nhân triển khai, giao tiếp với Azure Pipelines để điều phối việc triển khai ứng dụng. Các nhóm triển khai hoạt động giống hệt nhau đối với các máy được lưu trữ trong Azure và các máy được lưu trữ tại chỗ — yêu cầu duy nhất là tác nhân Azure Pipelines (nhóm triển khai) phải được cài đặt và đăng ký trên từng mục tiêu, điều này đã đúng với tất cả 20 máy trong trường hợp này. Điều này làm cho một nhóm triển khai duy nhất (hoặc các nhóm triển khai nói chung) trở thành cơ chế thích hợp để triển khai bản phát hành cho cả hai bộ máy ảo bất kể vị trí thực tế. Nhóm quản lý và nhóm tài nguyên là các cấu trúc tổ chức/quản trị Azure Resource Manager được sử dụng để quản lý quyền truy cập, chính sách và vòng đời của tài nguyên Azure — chúng không phải là cơ chế phát hành/triển khai trong Azure Pipelines và một nhóm tài nguyên thậm chí không thể đại diện cho các máy tại chỗ. Các vai trò ứng dụng liên quan đến Azure AD role-based access control để ủy quyền chứ không phải để triển khai mã ứng dụng cho các mục tiêu VM.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 496",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/496-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-497",
+    "questionNumber": 497,
+    "text": "You need to create deployment files for an Azure Kubernetes Service (AKS) cluster. The deployments must meet the provisioning storage requirements shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784174158505-4myuwvwp.png)  \n  \nWhich resource type should you use for each deployment?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Files là dịch vụ chia sẻ tệp dựa trên SMB (và NFS); trong các lớp lưu trữ Kubernetes, nó được định cấu hình với 'nhà cung cấp: kubernetes.io/azure-file', khiến nó trở thành lựa chọn chính xác cho hoạt động triển khai cần chia sẻ dựa trên SMB được gắn vào hệ thống tệp của vùng chứa. Azure Disk cung cấp bộ lưu trữ đĩa được quản lý ở cấp khối được gắn vào một nút/nhóm duy nhất và được định cấu hình với 'nhà cung cấp: kubernetes.io/azure-disk', phù hợp với yêu cầu đối với các tệp được lưu trữ trên đĩa được quản lý. Trình điều khiển CSI của Secrets Store ('driver: secret-store.csi.k8s.io') tích hợp AKS với Azure Key Vault để gắn các bí mật, khóa và chứng chỉ (bao gồm chứng chỉ X.509) một cách an toàn dưới dạng tệp bên trong hệ thống tệp của vùng chứa, đáp ứng yêu cầu truy cập chứng chỉ an toàn.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784174158505-4myuwvwp.png",
+    "sourceTitle": "Examcademy AZ-400 Question 497",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/497-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-498",
+    "questionNumber": 498,
+    "text": "You have a GitHub repository that contains workflows. The workflows contain steps that execute predefined actions. Each action has one or more versions.  \n\nYou need to request the specific version of an action to execute.  \n\nWhich three attributes can you use to identify the version? Each correct answer presents a complete solution.  \n\nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the SHA-based hashes"
+      },
+      {
+        "key": "B",
+        "text": "the tag"
+      },
+      {
+        "key": "C",
+        "text": "the runner"
+      },
+      {
+        "key": "D",
+        "text": "the branch"
+      },
+      {
+        "key": "E",
+        "text": "the serial"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "Các hành động GitHub có thể được tạo phiên bản bằng cách sử dụng: (A) cam kết băm SHA (đáng tin cậy nhất cho tham chiếu bất biến), (B) thẻ Git (nhãn phiên bản ngữ nghĩa thân thiện với con người) và (D) tên nhánh (tham chiếu cam kết mới nhất trên nhánh đó). Runner chỉ định môi trường thực thi; serial không phải là cơ chế tạo phiên bản có thể áp dụng được.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 498",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/498-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-499",
+    "questionNumber": 499,
+    "text": "You need to locate and isolate shared code that will be maintained in a series of packages.  \n  \nWhich three actions should you carry out, in sequence?",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Group the related components."
+      },
+      {
+        "key": "B",
+        "text": "Assign ownership to each component group."
+      },
+      {
+        "key": "C",
+        "text": "Create a dependency graph for the application."
+      },
+      {
+        "key": "D",
+        "text": "Identify the most common language used."
+      },
+      {
+        "key": "E",
+        "text": "Rewrite the components in the most common language."
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Group the related components."
+      },
+      {
+        "key": "B",
+        "text": "Assign ownership to each component group."
+      },
+      {
+        "key": "C",
+        "text": "Create a dependency graph for the application."
+      },
+      {
+        "key": "D",
+        "text": "Identify the most common language used."
+      },
+      {
+        "key": "E",
+        "text": "Rewrite the components in the most common language."
+      }
+    ],
+    "correctAnswers": [
+      "step1=C",
+      "step2=A",
+      "step3=B"
+    ],
+    "explanation": "Biểu đồ phụ thuộc xác định hướng ghép và hướng phụ thuộc trước khi chọn ranh giới gói. Sau đó, các thành phần liên quan có thể được nhóm thành các gói chia sẻ gắn kết và việc chỉ định quyền sở hữu đảm bảo mỗi gói đều có người bảo trì chịu trách nhiệm. Không cần phải viết lại sang một ngôn ngữ phổ biến nhất để xác định, tách biệt hoặc duy trì mã được chia sẻ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 499",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/499-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-500",
+    "questionNumber": 500,
+    "text": "You have an Azure subscription that uses Azure Monitor and contains a Log Analytics workspace.  \n  \nYou have an encryption key.  \n  \nYou need to configure Azure Monitor to use the key for encrypting log data.  \n  \nWhich five actions should you perform in sequence?  \n  \nMore than one ordering is correct; you receive credit for any correct ordering.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "step1",
+        "text": "Slot 1:",
+        "correctAnswer": "F"
+      },
+      {
+        "id": "step2",
+        "text": "Slot 2:",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "step3",
+        "text": "Slot 3:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "step4",
+        "text": "Slot 4:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "step5",
+        "text": "Slot 5:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure the key vault properties for the cluster"
+      },
+      {
+        "key": "B",
+        "text": "Link the Log Analytics workspace to the cluster"
+      },
+      {
+        "key": "C",
+        "text": "Grant the system-assigned managed identity Key permissions for the key vault"
+      },
+      {
+        "key": "D",
+        "text": "Grant the system-assigned managed identity Certificate permissions for the key vault"
+      },
+      {
+        "key": "E",
+        "text": "Create an Azure Monitor Logs dedicated cluster that has a system-assigned managed identity"
+      },
+      {
+        "key": "F",
+        "text": "Create an Azure key vault and store the key"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Configure the key vault properties for the cluster"
+      },
+      {
+        "key": "B",
+        "text": "Link the Log Analytics workspace to the cluster"
+      },
+      {
+        "key": "C",
+        "text": "Grant the system-assigned managed identity Key permissions for the key vault"
+      },
+      {
+        "key": "D",
+        "text": "Grant the system-assigned managed identity Certificate permissions for the key vault"
+      },
+      {
+        "key": "E",
+        "text": "Create an Azure Monitor Logs dedicated cluster that has a system-assigned managed identity"
+      },
+      {
+        "key": "F",
+        "text": "Create an Azure key vault and store the key"
+      }
+    ],
+    "correctAnswers": [
+      "step1=F",
+      "step2=E",
+      "step3=C",
+      "step4=A",
+      "step5=B"
+    ],
+    "explanation": "Khóa do khách hàng quản lý Azure Monitor yêu cầu cụm chuyên dụng Log Analytics với managed identity có thể sử dụng khóa mã hóa Key Vault. Tạo vault và khóa, tạo danh tính do hệ thống chỉ định với cụm, cấp quyền truy cập khóa Key Vault nhận dạng đó, cập nhật KeyVaultProperties của cụm bằng mã định danh khóa và liên kết không gian làm việc với cụm. Quyền chứng chỉ không cho phép sử dụng khóa mã hóa.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 500",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/500-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-501",
+    "questionNumber": 501,
+    "text": "You have a private GitHub repository.  \n  \nYou need to display the commit status of the repository on Azure Boards.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure multi-factor authentication (MFA) for your GitHub account."
+      },
+      {
+        "key": "B",
+        "text": "Add the Azure Pipelines app to the GitHub repository."
+      },
+      {
+        "key": "C",
+        "text": "Add the Azure Boards app to the repository."
+      },
+      {
+        "key": "D",
+        "text": "Create a GitHub action in GitHub."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Ứng dụng Azure Pipelines, có sẵn trên GitHub Marketplace, là thành phần tích hợp Azure Pipelines với kho lưu trữ GitHub. Việc cài đặt (thêm) ứng dụng này vào kho lưu trữ sẽ cho phép Azure DevOps truy cập vào kho lưu trữ và cho phép Azure Pipelines đăng thông tin trạng thái bản dựng và cam kết trở lại GitHub (dưới dạng Kiểm tra GitHub/trạng thái cam kết), điều này cho phép theo dõi và hiển thị trạng thái đó thông qua các tính năng truy xuất nguồn gốc của Azure Boards (chẳng hạn như các điều khiển Phát triển/Triển khai trên các mục công việc). Đối với kho lưu trữ riêng tư, ứng dụng này phải được thêm/ủy quyền rõ ràng trước khi có thể báo cáo bất kỳ trạng thái cam kết nào, đây là bước bắt buộc đầu tiên. Thay vào đó, ứng dụng Azure Boards (option C) xử lý việc liên kết các cam kết GitHub, yêu cầu kéo và sự cố với các mục công việc — ứng dụng này không báo cáo trạng thái cam kết/xây dựng. Cấu hình MFA và Tác vụ GitHub không liên quan đến sự tích hợp này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 501",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/501-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-502",
+    "questionNumber": 502,
+    "text": "You manage a project by using Azure Board, and you manage the project code by using Azure Repos.  \n  \nYou have a bug work item that has an ID of 123.  \n  \nYou need to set the work item state to Resolved.  \n  \nWhat should you add to the commit message?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "#123 completes"
+      },
+      {
+        "key": "B",
+        "text": "Resolves #AB-123"
+      },
+      {
+        "key": "C",
+        "text": "Verifies #123"
+      },
+      {
+        "key": "D",
+        "text": "Fixes #123"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Trong Azure Repos, các từ khóa 'Khắc phục', 'Sửa lỗi' hoặc 'Đã sửa' theo sau là ID mục công việc sẽ tự động liên kết các cam kết với các mục công việc và chuyển chúng sang trạng thái đã giải quyết. Định dạng là 'Sửa lỗi #123' cho mục công việc 123. Option B sử dụng định dạng không chính xác (tiền tố AB-123) và từ khóa 'Giải quyết', không được Azure Repos công nhận cho mục đích này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 502",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/502-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-503",
+    "questionNumber": 503,
+    "text": "You need to consider the underlined segment to establish whether it is accurate.  \n\nBlack Duck can be used to make sure that all the open source libraries conform to your company's licensing criteria.  \n\nSelect `No adjustment required` if the underlined segment is accurate. If the underlined segment is inaccurate, select the accurate option.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "No adjustment required."
+      },
+      {
+        "key": "B",
+        "text": "Maven"
+      },
+      {
+        "key": "C",
+        "text": "Bamboo"
+      },
+      {
+        "key": "D",
+        "text": "CMAKE"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Black Duck là một công cụ phân tích thành phần phần mềm (SCA) được sử dụng rộng rãi để quét các cơ sở mã để xác định các thành phần nguồn mở và xác minh giấy phép của chúng theo chính sách của công ty. Nó được thiết kế đặc biệt để quản lý tuân thủ giấy phép nguồn mở.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 503",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/503-develop-a-security-and-compliance-plan",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-504",
+    "questionNumber": 504,
+    "text": "You need to consider the underlined segment to establish whether it is accurate.  \n\nTo compile an Internet Information Services (IIS) web application that runs docker, you should use a Default build agent pool.  \n\nSelect `No adjustment required` if the underlined segment is accurate. If the underlined segment is inaccurate, select the accurate option.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "No adjustment required."
+      },
+      {
+        "key": "B",
+        "text": "Hosted Windows Container"
+      },
+      {
+        "key": "C",
+        "text": "Hosted"
+      },
+      {
+        "key": "D",
+        "text": "Hosted macOS"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Để biên dịch một ứng dụng web Dịch vụ thông tin Internet (IIS) chạy trong bộ chứa Docker, bạn phải sử dụng nhóm tác nhân Bộ chứa Windows được lưu trữ chứ không phải nhóm mặc định. IIS chỉ chạy trên Windows và các bộ chứa Docker dành cho Windows yêu cầu môi trường máy chủ dựa trên Windows. Nhóm Bộ chứa Windows được lưu trữ cung cấp hỗ trợ cả Windows và Docker cần thiết cho trường hợp này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 504",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/504-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-505",
+    "questionNumber": 505,
+    "text": "You have a GitHub repository that contains multiple workflows and a secret stored at the environment level.  \n  \nYou need to ensure that the secret can be used by all the workflows.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Recreate the secret at the organization level."
+      },
+      {
+        "key": "B",
+        "text": "Recreate the secret at the repository level."
+      },
+      {
+        "key": "C",
+        "text": "Enable required reviewers."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Bí mật môi trường của GitHub Actions chỉ được hiển thị với các công việc có quy trình làm việc nhắm mục tiêu rõ ràng đến môi trường đó thông qua khóa môi trường: nên các quy trình làm việc khác trong kho lưu trữ không thể đọc được chúng. Việc tạo lại bí mật dưới dạng bí mật của kho lưu trữ sẽ giúp bí mật đó có sẵn cho mọi quy trình làm việc trong kho lưu trữ đó mà không yêu cầu mỗi quy trình làm việc phải tham chiếu môi trường; việc chuyển nó lên cấp tổ chức sẽ là việc mở rộng phạm vi không cần thiết vì chỉ có một kho lưu trữ cần quyền truy cập. **Tìm hiểu thêm:** [Using secrets in GitHub Actions](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 505",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/505-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-506",
+    "questionNumber": 506,
+    "text": "You have an Azure Repos Git repository named repo1.  \n  \nYou need to ensure that you can authenticate to repo1 by using SSH.  \n  \nWhich four actions should you perform in sequence? Move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.  \n  \nNote: More than one order of answer choices is correct. You will receive credit for any of the correct orders you select.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "2",
+        "text": "Slot 2:",
+        "correctAnswer": "F"
+      },
+      {
+        "id": "3",
+        "text": "Slot 3:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "4",
+        "text": "Slot 4:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Sign in to Azure DevOps."
+      },
+      {
+        "key": "B",
+        "text": "Add the SSH public key."
+      },
+      {
+        "key": "C",
+        "text": "Clone repo1."
+      },
+      {
+        "key": "D",
+        "text": "Save the SSH key to the root of repo1."
+      },
+      {
+        "key": "E",
+        "text": "Add the SSH private key."
+      },
+      {
+        "key": "F",
+        "text": "Create SSH keys by using ssh-keygen"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Sign in to Azure DevOps."
+      },
+      {
+        "key": "B",
+        "text": "Add the SSH public key."
+      },
+      {
+        "key": "C",
+        "text": "Clone repo1."
+      },
+      {
+        "key": "D",
+        "text": "Save the SSH key to the root of repo1."
+      },
+      {
+        "key": "E",
+        "text": "Add the SSH private key."
+      },
+      {
+        "key": "F",
+        "text": "Create SSH keys by using ssh-keygen"
+      }
+    ],
+    "correctAnswers": [
+      "1=A",
+      "2=F",
+      "3=B",
+      "4=C"
+    ],
+    "explanation": "Để xác thực kho lưu trữ Azure Repos Git bằng SSH, trước tiên bạn phải đăng nhập vào Azure DevOps, sau đó tạo cặp khóa SSH cục bộ bằng tiện ích ssh-keygen. Tiếp theo, bạn thêm khóa chung đã tạo vào hồ sơ người dùng Azure DevOps của mình (trong phần khóa chung SSH), điều này cho phép Azure DevOps xác minh danh tính của bạn khi bạn kết nối qua SSH. Cuối cùng, bạn sao chép kho lưu trữ bằng URL bản sao SSH của nó, tại thời điểm đó, Git sử dụng khóa riêng cục bộ (được ghép nối với khóa chung đã đăng ký trong Azure DevOps) để xác thực. Khóa riêng tư không bao giờ được tải lên Azure DevOps hoặc được lưu trữ trong kho lưu trữ — nó chỉ tồn tại trên máy khách, vì vậy 'Thêm khóa riêng SSH' và 'Lưu khóa SSH vào thư mục gốc của repo1' không phải là các bước hợp lệ.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 506",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/506-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-508",
+    "questionNumber": 508,
+    "text": "You have an Azure Kubernetes Service (AKS) pod. You need to configure a probe that:  \n  \n- Confirms the pod is responding to service requests  \n- Checks the status of the pod four times a minute  \n- Initiates a shutdown if the pod is unresponsive  \n  \nHow should you complete the YAML configuration file shown below?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "livenessProbe là loại thăm dò Kubernetes được sử dụng để xác định xem có nên khởi động lại vùng chứa hay không (tức là yêu cầu Kubernetes bắt đầu tắt/khởi động lại nhóm) khi nó ngừng phản hồi yêu cầu; sẵn sàngProbe chỉ kiểm soát xem nhóm có nhận được lưu lượng truy cập hay không và không khởi động lại nó, đồng thời 'ShutdownProbe' không tồn tại dưới dạng loại thăm dò Kubernetes. Trường PeriodSeconds kiểm soát tần suất (tính bằng giây) kubelet thực hiện thăm dò; để kiểm tra trạng thái của nhóm bốn lần mỗi phút, bạn cần khoảng thời gian 60/4 = 15 giây, tức là chu kỳGiây: 15.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 508",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/508-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-509",
+    "questionNumber": 509,
+    "text": "You are automating the build process for a Java-based application using Azure DevOps.  \n  \nYou need to add code coverage testing and publish the results to the pipeline.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Bullseye Coverage"
+      },
+      {
+        "key": "B",
+        "text": "JUnit"
+      },
+      {
+        "key": "C",
+        "text": "JaCoCo"
+      },
+      {
+        "key": "D",
+        "text": "MSTest"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "JaCoCo (Java Code Coverage) là công cụ bao phủ mã tiêu chuẩn cho các ứng dụng Java. Nó tích hợp với các bản dựng Maven hoặc Gradle để đo lường mức độ bao phủ mã trong quá trình thực hiện thử nghiệm và tạo báo cáo XML/HTML. Đường ống Azure bao gồm nhiệm vụ Xuất bản kết quả phạm vi bảo hiểm mã, vốn hỗ trợ các định dạng báo cáo JaCoCo (và Cobertura), cho phép xuất bản và xem kết quả phạm vi bảo hiểm trong tab Phạm vi mã của đường ống. Bullseye Coverage nhắm đến phạm vi bao phủ mã C/C++, JUnit là khung kiểm tra đơn vị chứ không phải là công cụ kiểm tra và MSTest là khung kiểm tra.NET, không có khung nào phù hợp để báo cáo phạm vi mã Java trong kịch bản này.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 509",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/509-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-511",
+    "questionNumber": 511,
+    "text": "How should you complete the code that initializes App Center in the mobile application? Select the appropriate options in the answer area.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "SDK Trung tâm ứng dụng dành cho iOS được khởi tạo bằng cách gọi MSAppCenter.start với bí mật ứng dụng và một loạt các lớp dịch vụ được chuyển qua withServices. Chỉ những dịch vụ được liệt kê rõ ràng trong mảng này mới có sẵn cho ứng dụng và cuộc gọi chỉ có thể được thực hiện một lần trong vòng đời của ứng dụng. Ví dụ về bắt đầu nhanh tiêu chuẩn sẽ bật cả Analytics và Sự cố: MSAppCenter.start(\"{Your App Secret}\", withServices: [MSAnalytics.self, MSCrashes.self]).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 511",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/511-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-512",
+    "questionNumber": 512,
+    "text": "You use Azure Pipelines to manage project builds and deployments.  \n  \nYou plan to use Azure Pipelines for Microsoft Teams to notify the legal team when a new build is ready for release.  \n  \nYou need to configure the Organization Settings in Azure DevOps to support Azure Pipelines for Microsoft Teams.  \n  \nWhat should you turn on?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Third-party application access via OAuth"
+      },
+      {
+        "key": "B",
+        "text": "Azure Active Directory Conditional Access Policy Validation"
+      },
+      {
+        "key": "C",
+        "text": "Alternate authentication credentials"
+      },
+      {
+        "key": "D",
+        "text": "SSH authentication"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Để sử dụng ứng dụng Azure Pipelines cho Microsoft Teams, tổ chức Azure DevOps phải cho phép các ứng dụng của bên thứ ba xác thực qua OAuth. Cài đặt này được tìm thấy trong Cài đặt tổ chức > Bảo mật > Chính sách dưới dạng \"Quyền truy cập ứng dụng của bên thứ ba qua OAuth\" và phải được bật trước khi ứng dụng tích hợp Teams (hoặc Slack) có thể kết nối với tổ chức và đăng thông báo xây dựng/phát hành. Các chính sách được liệt kê khác chi phối các tính năng bảo mật không liên quan (xác thực Quyền truy cập có điều kiện, thông tin xác thực thay thế cho xác thực cũ và xác thực khóa SSH) và có no hỗ trợ tích hợp thông báo Nhóm.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 512",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/512-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-513",
+    "questionNumber": 513,
+    "text": "Solution: You use Azure Log Analytics.  \n  \nDoes this solution meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Log Analytics là công cụ cổng thông tin Azure để viết, kiểm tra và chạy các truy vấn nhật ký Azure Monitor một cách tương tác. Nó sử dụng Ngôn ngữ truy vấn Kusto (KQL), hỗ trợ phân tích đặc biệt dữ liệu Azure Monitor, bao gồm dữ liệu đo từ xa Application Insights và dữ liệu giám sát Azure SQL được thu thập trong không gian làm việc Log Analytics.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 513",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/513-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-514",
+    "questionNumber": 514,
+    "text": "Solution: You use Transact-SQL.  \n  \nDoes this solution meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Nhật ký Azure Monitor và Log Analytics sử dụng Ngôn ngữ truy vấn Kusto (KQL) để truy vấn và phân tích dữ liệu giám sát. Dữ liệu giám sát Azure SQL Database có thể được phân tích trong Nhật ký Azure Monitor bằng KQL, do đó Transact-SQL không đáp ứng yêu cầu đối với các truy vấn giám sát đặc biệt.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 514",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/514-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-515",
+    "questionNumber": 515,
+    "text": "Solution: You use the Contextual Query Language (CQL).  \n  \nDoes this solution meet the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Giám sát Azure và dữ liệu nhật ký Application Insights được phân tích bằng Ngôn ngữ truy vấn Kusto (KQL). Ngôn ngữ truy vấn theo ngữ cảnh (CQL) không phải là ngôn ngữ truy vấn được sử dụng cho các dịch vụ giám sát Azure này, do đó, nó không đáp ứng yêu cầu đối với các truy vấn giám sát đặc biệt.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 515",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/515-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-516",
+    "questionNumber": 516,
+    "text": "Your company has 60 developers who are assigned to four teams. Each team has 15 members.  \n\nThe company uses an agile development methodology.  \n\nYou need to structure the work of the development teams so that each team owns their respective work while working together to reach a common goal.  \n\nWhich parts of the taxonomy should you enable the team to perform autonomously?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Features and Tasks"
+      },
+      {
+        "key": "B",
+        "text": "Initiatives and Epics"
+      },
+      {
+        "key": "C",
+        "text": "Epics and Features"
+      },
+      {
+        "key": "D",
+        "text": "Stories and Tasks"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Trong 'dòng quyền tự chủ' của Agile có quy mô lớn, các nhóm phát triển làm việc tự chủ về các câu chuyện và nhiệm vụ của người dùng (cấp phân loại thấp hơn), trong khi ban quản lý quản lý các tính năng và sử thi (cấp cao hơn) để điều chỉnh chiến lược. Cấu trúc này cân bằng tính độc lập của nhóm với sự gắn kết của tổ chức.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 516",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/516-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-517",
+    "questionNumber": 517,
+    "text": "You create an Azure Repos Git repository named Repo1.  \n  \nConfigure Repo1 to meet these requirements:  \n  \n- Work items must be linked to a pull request.  \n- Pull requests must have at least two reviewers.  \n- Pull requests must complete a code review by using a third-party tool.  \n  \nChoose the policy type for each requirement. A policy type may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "linked_work_items",
+        "text": "Work items must be linked to a pull request:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "third_party_review",
+        "text": "Pull requests must complete a code review by a third party tool:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "two_reviewers",
+        "text": "Pull requests must have a minimum of two reviewers:",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Branch"
+      },
+      {
+        "key": "B",
+        "text": "Build"
+      },
+      {
+        "key": "C",
+        "text": "Check-in"
+      },
+      {
+        "key": "D",
+        "text": "Status"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Branch"
+      },
+      {
+        "key": "B",
+        "text": "Build"
+      },
+      {
+        "key": "C",
+        "text": "Check-in"
+      },
+      {
+        "key": "D",
+        "text": "Status"
+      }
+    ],
+    "correctAnswers": [
+      "linked_work_items=A",
+      "third_party_review=D",
+      "two_reviewers=A"
+    ],
+    "explanation": "Các chính sách của nhánh Azure Repos bao gồm cả Kiểm tra các mục công việc được liên kết, yêu cầu yêu cầu kéo để có các mục công việc được liên kết trước khi hoàn thành và Yêu cầu số lượng người đánh giá tối thiểu, có thể được đặt thành hai phê duyệt. Các dịch vụ bên ngoài tích hợp thông qua kiểm tra trạng thái yêu cầu kéo; chính sách Trạng thái bắt buộc sẽ chặn việc hoàn thành cho đến khi dịch vụ báo cáo thành công.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 517",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/517-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-518",
+    "questionNumber": 518,
+    "text": "Solution: You configure the pipeline definition by using these elements.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1785752198125-09yakj0z.png)  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "`trigger` xác định trình kích hoạt CI, chạy khi mã được đẩy đến nhánh khớp với bộ lọc của nó. Nó không tạo ra một trình kích hoạt yêu cầu kéo. Các lần chạy yêu cầu kéo phải được định cấu hình với `pr` nếu được hỗ trợ; Azure Repos Git sử dụng chính sách nhánh xác thực xây dựng để xác thực PR. Do đó, cấu hình không thể đảm bảo việc chạy chỉ xảy ra khi PR được tạo.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785752198125-09yakj0z.png",
+    "sourceTitle": "Examcademy AZ-400 Question 518",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/518-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-519",
+    "questionNumber": 519,
+    "text": "Solution: You configure the pipeline definition using the following elements.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1785752200457-tdf1n9mp.png)  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "`trigger` định cấu hình các lần chạy tích hợp liên tục cho các lần xác nhận. Bộ lọc `branches` của nó khớp với tên nhánh, do đó `pr` được coi là tên nhánh thay vì trình kích hoạt yêu cầu kéo. Các lần chạy yêu cầu kéo phải được định cấu hình bằng từ khóa `pr` (hoặc, đối với Azure Repos Git, chính sách nhánh xác thực bản dựng).",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785752200457-tdf1n9mp.png",
+    "sourceTitle": "Examcademy AZ-400 Question 519",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/519-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-520",
+    "questionNumber": 520,
+    "text": "Solution: You configure the pipeline definition using the following elements.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1785752199490-9b4bc7sz.png)  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Trình kích hoạt Azure Pipelines PR hỗ trợ `branches` và `paths` riêng biệt bao gồm các bộ lọc. Bộ lọc đường dẫn được hiển thị bao gồm `/pr`, thay vì `/webapp` được yêu cầu, do đó các thay đổi đối với thư mục được yêu cầu sẽ không được chọn. Trình kích hoạt PR cũng chạy khi yêu cầu kéo được mở và khi yêu cầu đó được cập nhật, không chỉ ở lần tạo đầu tiên. [Microsoft Learn: PR trigger definition](https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/pr?view=azure-pipelines)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785752199490-9b4bc7sz.png",
+    "sourceTitle": "Examcademy AZ-400 Question 520",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/520-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-521",
+    "questionNumber": 521,
+    "text": "You need to set up GitHub so that it uses Azure Active Directory (Azure AD) for authentication.  \n  \nWhat should you do first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a conditional access policy in Azure AD."
+      },
+      {
+        "key": "B",
+        "text": "Register GitHub in Azure AD."
+      },
+      {
+        "key": "C",
+        "text": "Create an Azure Active Directory B2C (Azure AD B2C) tenant."
+      },
+      {
+        "key": "D",
+        "text": "Modify the Security settings of the GitHub organization."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Để tích hợp GitHub Enterprise Cloud với Microsoft Entra ID (Azure AD) cho đăng nhập một lần, bước đầu tiên là thêm GitHub từ thư viện ứng dụng Azure AD làm ứng dụng doanh nghiệp (đăng ký GitHub trong Azure AD). Việc đăng ký này tạo ra các giá trị cấu hình SAML (Mã định danh Entra, URL đăng nhập và chứng chỉ ký) được yêu cầu sau này khi bật xác thực SAML trong cài đặt Bảo mật của tổ chức GitHub. Chỉ sau khi GitHub được đăng ký làm ứng dụng trong Azure AD thì cấu hình SAML mới có thể được hoàn thành ở cả phía Azure AD và phía GitHub.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 521",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/521-design-and-implement-a-source-control-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-522",
+    "questionNumber": 522,
+    "text": "You are configuring a release pipeline in Azure DevOps as shown in the exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784162297804-2oevq3wf.jpg)  \n  \nUse the drop-down menus to select the answer choice that answers each question based on the information presented in the graphic.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Quy trình phát hành cổ điển định cấu hình trình kích hoạt triển khai cho từng giai đoạn thông qua các điều kiện trước khi triển khai. Trình kích hoạt có thể là Sau khi phát hành, Sau giai đoạn hoặc Chỉ thủ công; do đó tất cả bảy giai đoạn đều có cấu hình kích hoạt. Phân phối liên tục yêu cầu lộ trình triển khai được tiến hành tự động: với trình kích hoạt giả tạo đã được bật, trình kích hoạt chỉ thủ công của giai đoạn Đánh giá nội bộ là phần gián đoạn còn lại và phải được thay đổi thành trình kích hoạt giai đoạn tự động. Các tài liệu của Microsoft cho biết việc triển khai liên tục được bật từ cài đặt kích hoạt của tạo phẩm và trình kích hoạt giai đoạn đó được đặt cấu hình trong các điều kiện trước khi triển khai của từng giai đoạn.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784162297804-2oevq3wf.jpg",
+    "sourceTitle": "Examcademy AZ-400 Question 522",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/522-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-523",
+    "questionNumber": 523,
+    "text": "Solution: Implement the Test Results Trend widget.  \n  \nDoes this accomplish the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Tiện ích Xu hướng Kết quả Kiểm tra theo dõi kết quả kiểm tra theo thời gian và xác định các kiểu lỗi, bao gồm cả hành vi không xác định. Điều này giúp tách biệt các lỗi kiểm tra không liên tục, không ổn định và giảm nỗ lực khắc phục sự cố. [Configure the Test Results Trend (Advanced) widget](https://learn.microsoft.com/en-us/azure/devops/report/dashboards/configure-test-results-trend?view=azure-devops)",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 523",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/523-implement-an-instrumentation-strategy",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-524",
+    "questionNumber": 524,
+    "text": "Solution: Enable flaky test management.  \n  \nDoes this achieve the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Quản lý kiểm tra không ổn định nhằm mục đích kiểm tra tạo ra kết quả đạt/không đạt không nhất quán mà không thay đổi mã nguồn hoặc môi trường thực thi. Nó phát hiện và theo dõi các thử nghiệm đó trong suốt quá trình chạy quy trình, giúp cách ly và khắc phục sự cố gián đoạn mà tốn ít công sức hơn.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 524",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/524-design-and-implement-build-and-release-pipelines",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  },
+  {
+    "id": "az400-525",
+    "questionNumber": 525,
+    "text": "Solution: Enable Test Impact Analysis (TIA).  \n  \nDoes this satisfy the goal?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Phân tích tác động thử nghiệm tăng tốc quá trình xác thực quy trình bằng cách chọn các thử nghiệm bị ảnh hưởng bởi thay đổi mã. Nó không phân tích các lỗi kiểm tra định kỳ, không xác định không liên quan đến thay đổi mã hoặc môi trường; phân tích xu hướng thất bại là cần thiết để điều tra các thử nghiệm không ổn định.",
+    "category": "General",
+    "tags": [
+      "AZ-400",
+      "General"
+    ],
+    "sourceTitle": "Examcademy AZ-400 Question 525",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/az-400/q/525-design-and-implement-processes-and-communications",
+    "lastVerifiedAt": "2026-09-14T15:08:07.016Z"
+  }
+];

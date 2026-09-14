@@ -20,6 +20,7 @@ export const BUILTIN_QUESTION_COUNTS: Record<string, number> = {
   'dp-900': 322,
   'az-204': 348,
   'az-500': 347,
+  'az-400': 495,
 };
 
 export const BUILTIN_CERT_IDS = Object.keys(BUILTIN_QUESTION_COUNTS);
@@ -36,6 +37,7 @@ const loaders: Record<string, () => Promise<Question[]>> = {
   'dp-900': async () => (await import('./dp900Questions')).dp900Questions,
   'az-204': async () => (await import('./az204Questions')).az204Questions,
   'az-500': async () => (await import('./az500Questions')).az500Questions,
+  'az-400': async () => (await import('./az400Questions')).az400Questions,
   'cca-f': async () => (await import('./ccaQuestions')).ccaQuestions,
   'dp-800': async () => (await import('./dp800Questions')).dp800Questions,
   'istqb-ai': async () => (await import('./istqbAiQuestions')).istqbAiQuestions,
