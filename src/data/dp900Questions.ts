@@ -1,0 +1,11247 @@
+import { Question } from '../types';
+
+export const dp900Questions: Question[] = [
+  {
+    "id": "dp900-1",
+    "questionNumber": 1,
+    "text": "Which Azure storage solution natively supports POSIX-compliant access control lists (ACLs)?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Table storage"
+      },
+      {
+        "key": "B",
+        "text": "Azure Data Lake Storage"
+      },
+      {
+        "key": "C",
+        "text": "Azure Queue storage"
+      },
+      {
+        "key": "D",
+        "text": "Azure Files"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Azure Data Lake Storage hỗ trợ danh sách kiểm soát truy cập chi tiết cho các tệp và thư mục thông qua không gian tên phân cấp của nó, sử dụng mô hình POSIX ACL cùng với Azure RBAC. [Microsoft Learn: Access control model in Azure Data Lake Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control-model)",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 1",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/1-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-2",
+    "questionNumber": 2,
+    "text": "Select the answer that correctly finishes the sentence.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "JSON lưu trữ các trường được đặt tên và có thể chứa các đối tượng và mảng lồng nhau mà không yêu cầu lược đồ quan hệ cố định, vì vậy đây là dữ liệu bán cấu trúc.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 2",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/2-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-3",
+    "questionNumber": 3,
+    "text": "Match the Azure services with the appropriate locations in the architecture.  \n  \nEach service may be used once, multiple times, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "etl_service",
+        "text": "Extract Transform Load (ETL)",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "data_warehouse_service",
+        "text": "Data warehouse",
+        "correctAnswer": "E"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Analysis Services"
+      },
+      {
+        "key": "B",
+        "text": "Azure Data Factory"
+      },
+      {
+        "key": "C",
+        "text": "Azure Table storage"
+      },
+      {
+        "key": "D",
+        "text": "Azure Cosmos DB"
+      },
+      {
+        "key": "E",
+        "text": "Azure Synapse Analytics"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Azure Analysis Services"
+      },
+      {
+        "key": "B",
+        "text": "Azure Data Factory"
+      },
+      {
+        "key": "C",
+        "text": "Azure Table storage"
+      },
+      {
+        "key": "D",
+        "text": "Azure Cosmos DB"
+      },
+      {
+        "key": "E",
+        "text": "Azure Synapse Analytics"
+      }
+    ],
+    "correctAnswers": [
+      "etl_service=B",
+      "data_warehouse_service=E"
+    ],
+    "explanation": "Azure Data Factory là dịch vụ tích hợp dữ liệu được quản lý dùng để tạo, lên lịch và điều phối các đường dẫn ETL/ELT. Azure Synapse Analytics cung cấp kho dữ liệu doanh nghiệp thông qua nhóm SQL chuyên dụng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 3",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/3-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-4",
+    "questionNumber": 4,
+    "text": "Which type of non-relational data store supports a flexible schema, stores data as JSON files, and keeps all data for an entity within the same document?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "document"
+      },
+      {
+        "key": "B",
+        "text": "columnar"
+      },
+      {
+        "key": "C",
+        "text": "graph"
+      },
+      {
+        "key": "D",
+        "text": "time series"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Kho lưu trữ dữ liệu tài liệu sử dụng các tài liệu linh hoạt giống JSON và có thể lưu giữ dữ liệu liên quan của một thực thể trong một tài liệu duy nhất.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 4",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/4-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-5",
+    "questionNumber": 5,
+    "text": "Question 5",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure SQL Managed Instance là công cụ cơ sở dữ liệu PaaS được quản lý hoàn toàn, sử dụng mô hình triển khai ở phạm vi phiên bản. Nó hỗ trợ nhiều cơ sở dữ liệu trong một phiên bản và các công việc của Tác nhân SQL Server, không giống như Azure SQL Database, trong đó Tác nhân SQL Server không khả dụng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 5",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/5-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-6",
+    "questionNumber": 6,
+    "text": "Match the security components to their appropriate scenarios.  \n  \nEach component may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Prevent access to an Azure SQL database from another network.",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot2",
+        "text": "Support Azure Active Directory (Azure AD) sign-ins to an Azure SQL database.",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot3",
+        "text": "Ensure that sensitive data never appears as plain text in an Azure SQL database.",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Authentication"
+      },
+      {
+        "key": "B",
+        "text": "Firewall"
+      },
+      {
+        "key": "C",
+        "text": "Encryption"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Authentication"
+      },
+      {
+        "key": "B",
+        "text": "Firewall"
+      },
+      {
+        "key": "C",
+        "text": "Encryption"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=B",
+      "slot2=A",
+      "slot3=C"
+    ],
+    "explanation": "Quy tắc tường lửa Azure SQL kiểm soát kết nối mạng bằng địa chỉ IP và quy tắc mạng ảo. Xác thực Azure AD (Microsoft Entra ID) cung cấp thông tin đăng nhập dựa trên danh tính vào Azure SQL. Mã hóa bảo vệ dữ liệu cơ sở dữ liệu nhạy cảm ở phần còn lại khỏi bị lưu trữ dưới dạng văn bản gốc có thể đọc được.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 6",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/6-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-7",
+    "questionNumber": 7,
+    "text": "For each of the following statements, select **Yes** if the statement is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "You must apply operating system updates to Azure SQL databases regularly.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "You need a Microsoft 365 subscription to create an Azure SQL database.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "You can use existing Microsoft SQL Server licenses to reduce the cost of Azure SQL databases.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Azure SQL Database được quản lý hoàn toàn: Microsoft vá và cập nhật mã hệ điều hành và SQL cơ bản. Đăng ký Microsoft 365 không phải là điều kiện tiên quyết đối với tài nguyên Azure. Azure Hybrid Benefit có thể áp dụng giấy phép SQL Server đủ điều kiện để giảm chi phí cấp phép Azure SQL Database.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 7",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/7-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-8",
+    "questionNumber": 8,
+    "text": "Which clause should be used in a `SELECT` statement to combine rows from one table with rows from another table?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "SET"
+      },
+      {
+        "key": "B",
+        "text": "VALUES"
+      },
+      {
+        "key": "C",
+        "text": "KEY"
+      },
+      {
+        "key": "D",
+        "text": "JOIN"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Mệnh đề `JOIN` kết hợp các hàng từ các bảng riêng biệt, thường bằng cách khớp các giá trị cột liên quan thông qua điều kiện nối.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 8",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/8-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-9",
+    "questionNumber": 9,
+    "text": "Match the analytics types that can be used to answer the business questions. Each analytics type may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "sales_increase",
+        "text": "Why did sales increase last month?",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "budget_allocation",
+        "text": "How do I allocate my budget to buy different inventory items?",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "people_mentions",
+        "text": "Which people are mentioned in a company's business documents?",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Cognitive"
+      },
+      {
+        "key": "B",
+        "text": "Diagnostic"
+      },
+      {
+        "key": "C",
+        "text": "Descriptive"
+      },
+      {
+        "key": "D",
+        "text": "Predictive"
+      },
+      {
+        "key": "E",
+        "text": "Prescriptive"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Cognitive"
+      },
+      {
+        "key": "B",
+        "text": "Diagnostic"
+      },
+      {
+        "key": "C",
+        "text": "Descriptive"
+      },
+      {
+        "key": "D",
+        "text": "Predictive"
+      },
+      {
+        "key": "E",
+        "text": "Prescriptive"
+      }
+    ],
+    "correctAnswers": [
+      "sales_increase=B",
+      "budget_allocation=E",
+      "people_mentions=A"
+    ],
+    "explanation": "Phân tích chẩn đoán xác định nguyên nhân của các kết quả trong quá khứ. Phân tích theo quy định đề xuất các quyết định như phân bổ ngân sách. Phân tích nhận thức có thể áp dụng xử lý ngôn ngữ tự nhiên để trích xuất những người được đặt tên từ các tài liệu kinh doanh phi cấu trúc.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 9",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/9-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-10",
+    "questionNumber": 10,
+    "text": "Question 10",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "PolyBase truy cập dữ liệu ngoài trong Azure Blob Storage và Azure Data Lake Storage bằng cách sử dụng Transact-SQL, cho phép nhóm Synapse SQL tải hoặc truy vấn dữ liệu đó.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 10",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/10-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-11",
+    "questionNumber": 11,
+    "text": "For each statement below, select **Yes** when it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "A job that processes sales data once daily is an example of a batch workload.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "A job that calculates a rolling average temperature reading is an example of a streaming workload.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "A job that calculates average revenue per product for the last month is an example of a streaming workload.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Quá trình xử lý hàng ngày và tổng hợp doanh thu tháng trước hoạt động dựa trên dữ liệu được thu thập trong một khoảng thời gian xác định, do đó chúng là khối lượng công việc theo đợt. Giá trị trung bình luân phiên của các chỉ số nhiệt độ được cập nhật khi có các chỉ số mới, đây là khối lượng công việc phát trực tuyến.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 11",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/11-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-12",
+    "questionNumber": 12,
+    "text": "For each statement below, select **Yes** when it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Relational database tables contain columns and rows",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Indexes in a relational database describe the data types in a table",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "A database view is a virtual table whose content is defined by a query",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Các bảng quan hệ bao gồm các hàng và cột. Các chỉ mục hỗ trợ truy cập dữ liệu hiệu quả hơn là xác định các kiểu dữ liệu cột thuộc về lược đồ bảng. Chế độ xem là một bảng ảo có kết quả được xác định bằng một truy vấn.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 12",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/12-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-13",
+    "questionNumber": 13,
+    "text": "Which statement is an example of Data Definition Language (DDL)?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "SELECT"
+      },
+      {
+        "key": "B",
+        "text": "INSERT"
+      },
+      {
+        "key": "C",
+        "text": "CREATE"
+      },
+      {
+        "key": "D",
+        "text": "MERGE"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Câu lệnh CREATE xác định một đối tượng cơ sở dữ liệu, chẳng hạn như bảng, dạng xem hoặc lược đồ, vì vậy đây là lệnh Ngôn ngữ định nghĩa dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 13",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/13-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-14",
+    "questionNumber": 14,
+    "text": "Question 14",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Quản trị viên cơ sở dữ liệu chịu trách nhiệm vận hành và duy trì cơ sở dữ liệu, bao gồm định cấu hình, thực hiện và xác thực các quy trình sao lưu và khôi phục.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 14",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/14-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-15",
+    "questionNumber": 15,
+    "text": "Select the answer that correctly finishes the sentence.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Power BI Desktop là công cụ soạn thảo đầy đủ tính năng để kết nối với dữ liệu, chuyển đổi dữ liệu, xây dựng mô hình dữ liệu và tạo hoặc chỉnh sửa báo cáo. Dịch vụ Power BI tập trung vào xuất bản, chia sẻ và cộng tác trên nội dung đó và ứng dụng điện thoại dành cho thiết bị di động.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 15",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/15-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-16",
+    "questionNumber": 16,
+    "text": "HOTSPOT – Select the answer that correctly completes the sentence.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "SQL Server trên Azure Virtual Machines là một sản phẩm IaaS. Nó cung cấp quyền kiểm soát quản trị đối với phiên bản SQL Server và hệ điều hành cơ bản, với trách nhiệm liên quan là quản lý máy ảo.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 16",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/16-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-17",
+    "questionNumber": 17,
+    "text": "For each of the following statements, select **Yes** if the statement is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "A pipeline is a representation of a data structure within Azure Data Factory",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "Azure Data Factory pipelines can execute other pipelines",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "A processing step within an Azure Data Factory pipeline is an activity",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Trong Azure Data Factory, quy trình là một nhóm hoạt động hợp lý; một tập dữ liệu đại diện cho cấu trúc dữ liệu trong kho dữ liệu. Hoạt động Đường ống thực thi có thể gọi một đường ống khác và một hoạt động là một bước xử lý trong đường ống.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 17",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/17-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-18",
+    "questionNumber": 18,
+    "text": "You intend to deploy an app. The app needs a nonrelational data service that provides latency guarantees of less than 10 ms for reads and writes.  \n  \nWhat should you include in the solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Blob storage"
+      },
+      {
+        "key": "B",
+        "text": "Azure Files"
+      },
+      {
+        "key": "C",
+        "text": "Azure Table storage"
+      },
+      {
+        "key": "D",
+        "text": "Azure Cosmos DB"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure Cosmos DB là dịch vụ cơ sở dữ liệu phi quan hệ cung cấp độ trễ dưới 10 mili giây được hỗ trợ SLA cho hoạt động đọc và ghi ở phân vị thứ 99 trong các cấu hình hiện hành, đáp ứng đảm bảo độ trễ thấp bắt buộc.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 18",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/18-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-19",
+    "questionNumber": 19,
+    "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "In a transactional database that guarantees atomicity, all statements in a transaction must complete successfully or the transaction must roll back.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "In a transactional database that guarantees consistency, all data changes will be logged and accounted for.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "In a transactional database that guarantees isolation, processes can see only data in a consistent state.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Atomicity thực hiện một giao dịch được tất cả hoặc không có gì. Tính nhất quán duy trì tính toàn vẹn của dữ liệu và các ràng buộc về cơ sở dữ liệu, trong khi các thay đổi trong việc ghi nhật ký có liên quan đến độ bền. Sự cô lập ngăn các quá trình đồng thời nhìn thấy kết quả giao dịch không đầy đủ, do đó chúng thấy được dữ liệu nhất quán.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 19",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/19-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-20",
+    "questionNumber": 20,
+    "text": "For each of the following statements, select **Yes** if it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Platform as a service (PaaS) database offerings in Azure provide built-in high availability.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Platform as a service (PaaS) database offerings in Azure provide configurable scaling options.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "Platform as a service (PaaS) database offerings in Azure reduce the administrative overhead for managing hardware.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Các dịch vụ cơ sở dữ liệu Azure PaaS cung cấp tính sẵn sàng cao được quản lý, hỗ trợ mở rộng quy mô tài nguyên điện toán và lưu trữ cũng như chuyển dịch quản lý cơ sở hạ tầng cơ bản—bao gồm cả phần cứng—sang Microsoft. Do đó cả ba phát biểu đều đúng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 20",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/20-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-21",
+    "questionNumber": 21,
+    "text": "Your company has a reporting solution containing paginated reports. The reports query a dimensional model in a data warehouse.  \n  \nWhich type of processing does the reporting solution use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "stream processing"
+      },
+      {
+        "key": "B",
+        "text": "batch processing"
+      },
+      {
+        "key": "C",
+        "text": "Online Analytical Processing (OLAP)"
+      },
+      {
+        "key": "D",
+        "text": "Online Transaction Processing (OLTP)"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Xử lý phân tích trực tuyến (OLAP) hỗ trợ báo cáo phân tích và truy vấn trên các mô hình dữ liệu thứ nguyên trong dữ liệu warehouse.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 21",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/21-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-22",
+    "questionNumber": 22,
+    "text": "You are provided with the following data.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783775282127-9chcmk0r.png)  \n  \nWhat type of data is this?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "unstructured"
+      },
+      {
+        "key": "B",
+        "text": "semi-structured"
+      },
+      {
+        "key": "C",
+        "text": "structured"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "JSON sử dụng các cặp khóa-giá trị được gắn nhãn và các đối tượng hoặc mảng lồng nhau, cung cấp cấu trúc vốn có nhưng linh hoạt thay vì các hàng và cột cố định của dữ liệu quan hệ có cấu trúc. Do đó, nó là dữ liệu bán cấu trúc.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783775282127-9chcmk0r.png",
+    "sourceTitle": "Examcademy DP-900 Question 22",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/22-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-23",
+    "questionNumber": 23,
+    "text": "What can be used with built-in notebook support to query and visualize data through a web-based interface?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Databricks"
+      },
+      {
+        "key": "B",
+        "text": "pgAdmin"
+      },
+      {
+        "key": "C",
+        "text": "Microsoft Power BI"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Databricks bao gồm các sổ ghi chép gốc trong không gian làm việc dựa trên web, cho phép người dùng truy vấn, phân tích và trực quan hóa dữ liệu một cách tương tác.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 23",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/23-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-24",
+    "questionNumber": 24,
+    "text": "Question 24",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Nhà phân tích dữ liệu thường biến dữ liệu thành báo cáo, trang tổng quan, biểu đồ và các hình ảnh trực quan khác hỗ trợ việc ra quyết định kinh doanh.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 24",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/24-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-25",
+    "questionNumber": 25,
+    "text": "Question 25",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Microsoft Power BI hỗ trợ nhúng các báo cáo và bảng thông tin tương tác vào các trang web, bao gồm cả các kịch bản xuất bản lên web công khai cho người dùng bên ngoài. Dịch vụ Phân tích Azure cung cấp các mô hình ngữ nghĩa, Azure Automation điều phối các tác vụ và Azure Data Lake Analytics xử lý dữ liệu; không có dịch vụ nhúng trang web.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 25",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/25-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-26",
+    "questionNumber": 26,
+    "text": "Match each job role with its appropriate task.  \n  \nEach role may be used once, multiple times, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Database backup and recovery",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot2",
+        "text": "Enabling advanced analytic capabilities through reports",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot3",
+        "text": "Monitoring data pipelines",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Data analyst"
+      },
+      {
+        "key": "B",
+        "text": "Data engineer"
+      },
+      {
+        "key": "C",
+        "text": "Database administrator"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Data analyst"
+      },
+      {
+        "key": "B",
+        "text": "Data engineer"
+      },
+      {
+        "key": "C",
+        "text": "Database administrator"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=C",
+      "slot2=A",
+      "slot3=B"
+    ],
+    "explanation": "Quản trị viên cơ sở dữ liệu chịu trách nhiệm sao lưu và phục hồi cơ sở dữ liệu. Các nhà phân tích dữ liệu tạo báo cáo để hỗ trợ phân tích và ra quyết định. Kỹ sư dữ liệu vận hành và giám sát các đường ống dữ liệu di chuyển và chuẩn bị dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 26",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/26-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-27",
+    "questionNumber": 27,
+    "text": "Question 27",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Quản trị viên cơ sở dữ liệu quản lý và duy trì cơ sở dữ liệu, bao gồm tính khả dụng, điều chỉnh hiệu suất và tối ưu hóa.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 27",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/27-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-28",
+    "questionNumber": 28,
+    "text": "Which T-SQL statement should be used to tell a database management system to use an index rather than carry out a full table scan?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "SELECT"
+      },
+      {
+        "key": "B",
+        "text": "WHERE"
+      },
+      {
+        "key": "C",
+        "text": "JOIN"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Vị từ WHERE lọc các hàng theo một điều kiện. Khi một chỉ mục thích hợp tồn tại trên cột hoặc các cột được lọc, trình tối ưu hóa có thể sử dụng chỉ mục đó để định vị các hàng đủ điều kiện thay vì đọc toàn bộ bảng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 28",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/28-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-29",
+    "questionNumber": 29,
+    "text": "Question 29",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Mệnh đề WHERE xác định một điều kiện lọc các hàng bị ảnh hưởng hoặc được trả về bởi câu lệnh DML.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 29",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/29-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-30",
+    "questionNumber": 30,
+    "text": "You need to ingest and retain large volumes of streaming IoT data.  \n  \nWhich database solution should you choose?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Database for PostgreSQL"
+      },
+      {
+        "key": "B",
+        "text": "Azure Database for MariaDB"
+      },
+      {
+        "key": "C",
+        "text": "Azure Cache for Redis"
+      },
+      {
+        "key": "D",
+        "text": "Azure Cosmos DB"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure Cosmos DB cung cấp bộ lưu trữ NoSQL bền bỉ, có thể mở rộng với khả năng đọc và ghi thông lượng cao, độ trễ thấp, khiến bộ lưu trữ này rất phù hợp với khối lượng công việc truyền dữ liệu trực tuyến và đo từ xa IoT có khối lượng lớn.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 30",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/30-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-31",
+    "questionNumber": 31,
+    "text": "Question 31",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Chỉ mục được nhóm lưu trữ các hàng của bảng theo thứ tự các giá trị khóa của nó, do đó, nó tổ chức dữ liệu bảng theo (các) cột được lập chỉ mục về mặt vật lý.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 31",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/31-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-32",
+    "questionNumber": 32,
+    "text": "You have data in a tabular format, as shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1784211716713-7ommpdk7.png)  \n  \nWhat type of data is this an example of?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "unstructured data"
+      },
+      {
+        "key": "B",
+        "text": "semi-structured data"
+      },
+      {
+        "key": "C",
+        "text": "document"
+      },
+      {
+        "key": "D",
+        "text": "structured data"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Dữ liệu có cấu trúc được sắp xếp theo một lược đồ được xác định trước, chẳng hạn như các hàng bản ghi có các cột và trường dữ liệu được xác định nhất quán.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1784211716713-7ommpdk7.png",
+    "sourceTitle": "Examcademy DP-900 Question 32",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/32-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-33",
+    "questionNumber": 33,
+    "text": "Question 33",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Cơ sở dữ liệu phi quan hệ (NoSQL) sử dụng các mô hình dữ liệu linh hoạt và không yêu cầu mọi bản ghi phải tuân theo một lược đồ cố định. Ngược lại, cơ sở dữ liệu quan hệ lưu trữ dữ liệu trong các bảng và thường thực thi một lược đồ đã xác định.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 33",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/33-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-34",
+    "questionNumber": 34,
+    "text": "Question 34",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Xử lý hàng loạt xử lý dữ liệu tích lũy theo nhóm, do đó không cần phải gửi kết quả ngay lập tức và có thể chấp nhận được một số độ trễ xử lý.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 34",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/34-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-35",
+    "questionNumber": 35,
+    "text": "Match the data processing languages with the appropriate real-time analytics services.  \n  \nEach language may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "azure_data_explorer",
+        "text": "Azure Data Explorer",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "azure_stream_analytics",
+        "text": "Azure Stream Analytics",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "azure_synapse_analytics",
+        "text": "Azure Synapse Analytics",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "JavaScript"
+      },
+      {
+        "key": "B",
+        "text": "KQL"
+      },
+      {
+        "key": "C",
+        "text": "Python"
+      },
+      {
+        "key": "D",
+        "text": "SQL"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "JavaScript"
+      },
+      {
+        "key": "B",
+        "text": "KQL"
+      },
+      {
+        "key": "C",
+        "text": "Python"
+      },
+      {
+        "key": "D",
+        "text": "SQL"
+      }
+    ],
+    "correctAnswers": [
+      "azure_data_explorer=B",
+      "azure_stream_analytics=D",
+      "azure_synapse_analytics=C"
+    ],
+    "explanation": "Azure Data Explorer sử dụng Ngôn ngữ truy vấn Kusto (KQL) làm ngôn ngữ truy vấn chính. Azure Stream Analytics sử dụng ngôn ngữ truy vấn dựa trên SQL để chuyển đổi và tính toán qua các luồng sự kiện. Azure Synapse Analytics hỗ trợ PySpark (Python) để xử lý dữ liệu Apache Spark.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 35",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/35-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-36",
+    "questionNumber": 36,
+    "text": "Match the Azure Data Factory components to the appropriate descriptions. Each component may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "A representation of data structures within data stores",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot2",
+        "text": "The information used to connect to external resources",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot3",
+        "text": "A logical grouping of activities that performs a unit of work and can be scheduled",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Dataset"
+      },
+      {
+        "key": "B",
+        "text": "Linked service"
+      },
+      {
+        "key": "C",
+        "text": "Mapping data flow"
+      },
+      {
+        "key": "D",
+        "text": "Pipeline"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Dataset"
+      },
+      {
+        "key": "B",
+        "text": "Linked service"
+      },
+      {
+        "key": "C",
+        "text": "Mapping data flow"
+      },
+      {
+        "key": "D",
+        "text": "Pipeline"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=A",
+      "slot2=B",
+      "slot3=D"
+    ],
+    "explanation": "Tập dữ liệu thể hiện cấu trúc dữ liệu trong các kho dữ liệu được liên kết. Dịch vụ được liên kết cung cấp thông tin kết nối cho các tài nguyên bên ngoài. Quy trình nhóm các hoạt động thành một đơn vị công việc có thể được lên lịch. Ánh xạ các luồng dữ liệu xác định logic chuyển đổi dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 36",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/36-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-37",
+    "questionNumber": 37,
+    "text": "Which service can be used to create extract, transform, and load (ETL) pipelines?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Data Factory"
+      },
+      {
+        "key": "B",
+        "text": "Azure Pipelines"
+      },
+      {
+        "key": "C",
+        "text": "Azure SQL Database"
+      },
+      {
+        "key": "D",
+        "text": "Azure Cosmos DB"
+      },
+      {
+        "key": "E",
+        "text": "Azure Databricks"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Data Factory là dịch vụ ETL và tích hợp dữ liệu đám mây của Azure. Nó cung cấp các đường dẫn và hoạt động để nhập dữ liệu, chuyển đổi và tải dữ liệu vào kho lưu trữ dữ liệu mục tiêu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 37",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/37-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-38",
+    "questionNumber": 38,
+    "text": "Question 38",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Dữ liệu có cấu trúc được tổ chức theo lược đồ được xác định trước; do đó, các thực thể hoặc bản ghi của nó có chung các thuộc tính được xác định. Lược đồ khi đọc và các thuộc tính khác nhau là các đặc điểm liên quan nhiều hơn đến dữ liệu bán cấu trúc hoặc không cấu trúc.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 38",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/38-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-39",
+    "questionNumber": 39,
+    "text": "Match each data term with its appropriate description.  \n  \nA term may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Data storage optimized for read operations.",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot2",
+        "text": "Data storage optimized for both read and write operations.",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot3",
+        "text": "Purpose-built systems for storing vast volumes of historical data.",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Analytical processing"
+      },
+      {
+        "key": "B",
+        "text": "Data pipelines"
+      },
+      {
+        "key": "C",
+        "text": "Transactional processing"
+      },
+      {
+        "key": "D",
+        "text": "XML files"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Analytical processing"
+      },
+      {
+        "key": "B",
+        "text": "Data pipelines"
+      },
+      {
+        "key": "C",
+        "text": "Transactional processing"
+      },
+      {
+        "key": "D",
+        "text": "XML files"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=A",
+      "slot2=C",
+      "slot3=A"
+    ],
+    "explanation": "Xử lý phân tích (OLAP) được tối ưu hóa cho phân tích đọc nhiều và thường giữ lại dữ liệu lịch sử để báo cáo và phân tích chuỗi thời gian. Xử lý giao dịch (OLTP) hỗ trợ khối lượng công việc vận hành với khả năng đọc và ghi thường xuyên.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 39",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/39-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-40",
+    "questionNumber": 40,
+    "text": "Which Azure Cosmos DB API should be used for a graph database?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Cosmos DB for Table"
+      },
+      {
+        "key": "B",
+        "text": "Azure Cosmos DB for Apache Cassandra"
+      },
+      {
+        "key": "C",
+        "text": "Azure Cosmos DB for NoSQL"
+      },
+      {
+        "key": "D",
+        "text": "Azure Cosmos DB for Apache Gremlin"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure Cosmos DB dành cho Apache Gremlin là API cơ sở dữ liệu đồ thị. Nó lưu trữ và quản lý dữ liệu đồ thị thuộc tính, bao gồm các đỉnh và cạnh, đồng thời hỗ trợ các truy vấn và duyệt đồ thị Gremlin.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 40",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/40-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-41",
+    "questionNumber": 41,
+    "text": "Which benefit does hosting a database on Azure SQL Managed Instance provide compared with an Azure SQL Database?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "built-in high availability"
+      },
+      {
+        "key": "B",
+        "text": "native support for cross-database queries and transactions"
+      },
+      {
+        "key": "C",
+        "text": "system-initiated automatic backups"
+      },
+      {
+        "key": "D",
+        "text": "support for encryption at rest"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Azure SQL Managed Instance hỗ trợ các truy vấn cơ sở dữ liệu chéo gồm ba phần gốc và giao dịch cơ sở dữ liệu chéo trong cùng một phiên bản. Azure SQL Database không cung cấp các khả năng gốc đó; tính sẵn sàng cao, các bản sao lưu do hệ thống khởi tạo và mã hóa ở trạng thái lưu trữ cũng là các tính năng của dịch vụ được quản lý.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 41",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/41-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-42",
+    "questionNumber": 42,
+    "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Batch processing is optimized for handling large datasets.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Stream processing is optimized for performing complex analysis of datasets.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "The latency of batch processing is typically measured in seconds or milliseconds.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "Xử lý hàng loạt xử lý dữ liệu được tích lũy với khối lượng lớn và phù hợp với các tập dữ liệu lớn. Xử lý luồng tập trung vào dữ liệu đến liên tục và độ trễ thấp, thay vì được xác định bằng phân tích tập dữ liệu phức tạp. Xử lý hàng loạt thường có độ trễ cao hơn—thường là vài phút hoặc lâu hơn—trong khi giây hoặc mili giây là mục tiêu độ trễ xử lý luồng điển hình.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 42",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/42-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-43",
+    "questionNumber": 43,
+    "text": "Question 43",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "TDE mã hóa dữ liệu cơ sở dữ liệu và các tệp nhật ký giao dịch ở trạng thái lưu trữ. Nó không cung cấp mã hóa cho dữ liệu đang truyền hoặc nhắm mục tiêu vào các cột riêng lẻ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 43",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/43-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-44",
+    "questionNumber": 44,
+    "text": "What is the main purpose of a data warehouse?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "to provide answers to complex queries that rely on data from multiple sources"
+      },
+      {
+        "key": "B",
+        "text": "to provide transformation services between source and target data stores"
+      },
+      {
+        "key": "C",
+        "text": "to provide read-only storage of relational and non-relational historical data"
+      },
+      {
+        "key": "D",
+        "text": "to provide storage for transactional line-of-business (LOB) applications"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Dữ liệu warehouse tích hợp dữ liệu từ nhiều nguồn vào cấu trúc được tối ưu hóa cho phân tích, báo cáo và truy vấn phức tạp trên dữ liệu kết hợp đó.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 44",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/44-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-45",
+    "questionNumber": 45,
+    "text": "You have an Azure SQL database containing tables for customers and orders.  \n  \nYou need to create a query that returns the orders submitted by each customer.  \n  \nWhich two Transact-SQL statements should be included in the query? Each correct answer represents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "INDEX"
+      },
+      {
+        "key": "B",
+        "text": "EXISTS"
+      },
+      {
+        "key": "C",
+        "text": "JOIN"
+      },
+      {
+        "key": "D",
+        "text": "ORDERBY"
+      },
+      {
+        "key": "E",
+        "text": "SELECT"
+      }
+    ],
+    "correctAnswers": [
+      "C",
+      "E"
+    ],
+    "explanation": "`SELECT` truy xuất các hàng cho tập kết quả và `JOIN` kết hợp các bảng Khách hàng và Đơn hàng bằng khóa liên quan của chúng để mỗi đơn hàng được trả về đều được liên kết với khách hàng của nó. Microsoft ghi lại `SELECT` làm câu lệnh truy xuất các hàng và `JOIN` làm thao tác giữa các nguồn bảng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 45",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/45-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-46",
+    "questionNumber": 46,
+    "text": "In a fully normalized database, how are data read and written for one entity?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Data is read from multiple tables and written to multiple tables."
+      },
+      {
+        "key": "B",
+        "text": "Data is read from a single table and written to a single table."
+      },
+      {
+        "key": "C",
+        "text": "Data is read from a single table and written to multiple tables."
+      },
+      {
+        "key": "D",
+        "text": "Data is read from multiple tables and written to a single table."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Chuẩn hóa hoàn toàn phân phối các dữ kiện liên quan trên các bảng để tránh trùng lặp và duy trì sự phụ thuộc thích hợp. Do đó, việc đại diện cho một thực thể duy nhất có thể yêu cầu các phép nối đọc dữ liệu đầy đủ của nó và phối hợp ghi vào các bảng liên quan để lưu trữ dữ kiện của nó.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 46",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/46-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-47",
+    "questionNumber": 47,
+    "text": "Question 47",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Một bảng quan hệ có một lược đồ được xác định. Mỗi hàng tuân theo lược đồ đó và do đó chứa các cột giống nhau, mặc dù các giá trị trong các cột đó có thể khác nhau giữa các hàng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 47",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/47-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-48",
+    "questionNumber": 48,
+    "text": "Which service can you use to create data-ingestion pipelines?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure HDInsight"
+      },
+      {
+        "key": "B",
+        "text": "Azure SQL Database"
+      },
+      {
+        "key": "C",
+        "text": "Azure Data Factory"
+      },
+      {
+        "key": "D",
+        "text": "Azure Cosmos DB"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Azure Data Factory tạo và lên lịch các quy trình công việc (đường dẫn) dựa trên dữ liệu để nhập dữ liệu từ các kho lưu trữ dữ liệu khác nhau và có thể điều phối việc di chuyển và chuyển đổi dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 48",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/48-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-49",
+    "questionNumber": 49,
+    "text": "Match each job role with its appropriate task.  \n  \nEach role may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Create a pipeline to transfer data from a database to a data warehouse.",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot2",
+        "text": "Create a transactional database.",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "slot3",
+        "text": "Create a chart that shows sales transactions by week.",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Data analyst"
+      },
+      {
+        "key": "B",
+        "text": "Data architect"
+      },
+      {
+        "key": "C",
+        "text": "Data engineer"
+      },
+      {
+        "key": "D",
+        "text": "Database administrator"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Data analyst"
+      },
+      {
+        "key": "B",
+        "text": "Data architect"
+      },
+      {
+        "key": "C",
+        "text": "Data engineer"
+      },
+      {
+        "key": "D",
+        "text": "Database administrator"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=C",
+      "slot2=D",
+      "slot3=A"
+    ],
+    "explanation": "Các kỹ sư dữ liệu triển khai các quy trình truyền và chuyển đổi dữ liệu giữa các hệ thống, bao gồm từ cơ sở dữ liệu vận hành sang warehouse phân tích. Quản trị viên cơ sở dữ liệu cung cấp và vận hành cơ sở dữ liệu giao dịch. Các nhà phân tích dữ liệu khám phá dữ liệu và tạo trực quan hóa và biểu đồ để truyền đạt xu hướng, chẳng hạn như giao dịch bán hàng hàng tuần.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 49",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/49-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-50",
+    "questionNumber": 50,
+    "text": "Question 50",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Phân tích mô tả kiểm tra và tóm tắt dữ liệu lịch sử để báo cáo những gì đã xảy ra trong quá khứ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 50",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/50-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-51",
+    "questionNumber": 51,
+    "text": "Question 51",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Báo cáo phân trang Power BI hỗ trợ bố cục chính xác, được định dạng cao, sẵn sàng in và được tối ưu hóa để in hoặc xuất PDF.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 51",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/51-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-52",
+    "questionNumber": 52,
+    "text": "Question 52",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "SQL Server là một hệ thống quản lý cơ sở dữ liệu quan hệ. Các bảng của nó lưu trữ dữ liệu có cấu trúc theo hàng và cột, đồng thời các khóa và ràng buộc có thể xác định mối quan hệ giữa các bảng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 52",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/52-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-53",
+    "questionNumber": 53,
+    "text": "Question 53",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Một nhóm linh hoạt được thiết kế cho nhiều cơ sở dữ liệu Azure SQL với các kiểu sử dụng khác nhau để chia sẻ một nhóm tài nguyên xác định, giúp tối ưu hóa chi phí và hiệu suất.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 53",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/53-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-54",
+    "questionNumber": 54,
+    "text": "You need to create a solution that delivers data to executives. The solution must provide an interactive graphical interface, show various key performance indicators, and enable data exploration through drill-down.  \n  \nWhat should you use in Microsoft Power BI?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a view"
+      },
+      {
+        "key": "B",
+        "text": "a report"
+      },
+      {
+        "key": "C",
+        "text": "a dataflow"
+      },
+      {
+        "key": "D",
+        "text": "Microsoft Power Apps"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Báo cáo Power BI chứa hình ảnh tương tác có thể hiển thị các chỉ số hiệu suất chính và cho phép người dùng khám phá dữ liệu bằng cách lọc và truy sâu vào hệ thống phân cấp.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 54",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/54-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-55",
+    "questionNumber": 55,
+    "text": "What is used to define a query for stream-processing jobs in Azure Stream Analytics?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "YAML"
+      },
+      {
+        "key": "B",
+        "text": "KQL"
+      },
+      {
+        "key": "C",
+        "text": "SQL"
+      },
+      {
+        "key": "D",
+        "text": "XML"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Azure Stream Analytics sử dụng ngôn ngữ truy vấn SQL, dựa trên một tập hợp con của T-SQL và được mở rộng bằng các cấu trúc phát trực tuyến, để xác định các phép biến đổi và tính toán qua các luồng sự kiện.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 55",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/55-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-56",
+    "questionNumber": 56,
+    "text": "When you provision an Azure Cosmos DB account, which feature delivers redundancy inside an Azure region?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "multi-master replication"
+      },
+      {
+        "key": "B",
+        "text": "Availability Zones"
+      },
+      {
+        "key": "C",
+        "text": "the strong consistency level"
+      },
+      {
+        "key": "D",
+        "text": "automatic failover"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Availability Zones cung cấp khả năng dự phòng trong khu vực bằng cách phân phối bản sao dữ liệu Azure Cosmos DB trên nhiều availability zones riêng biệt về mặt vật lý, bảo vệ tài khoản khỏi lỗi một vùng. [Microsoft Learn: Reliability in Azure Cosmos DB](https://learn.microsoft.com/en-us/azure/reliability/reliability-cosmos-db)",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 56",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/56-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-57",
+    "questionNumber": 57,
+    "text": "You must design and model a database using a graphical tool that supports project-based, offline database development.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Microsoft SQL Server Data Tools (SSDT)"
+      },
+      {
+        "key": "B",
+        "text": "Microsoft SQL Server Management Studio (SSMS)"
+      },
+      {
+        "key": "C",
+        "text": "Azure Databricks"
+      },
+      {
+        "key": "D",
+        "text": "Azure Data Studio"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "SQL Server Data Tools (SSDT) ​​cung cấp các dự án cơ sở dữ liệu Visual Studio SQL để phát triển cơ sở dữ liệu ngoại tuyến, theo định hướng dự án và bao gồm giao diện đồ họa và trình thiết kế bảng trực quan để thiết kế cơ sở dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 57",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/57-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-58",
+    "questionNumber": 58,
+    "text": "You are reviewing the data model in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1785750867594-09a4l850.png)",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Bán hàng là bảng dữ kiện trung tâm, được liên kết trực tiếp với các bảng thứ nguyên Khách hàng, Sản phẩm, Người bán hàng và Warehouse. Khách hàng cung cấp các thuộc tính mô tả để phân tích doanh số bán hàng và do đó là một bảng thứ nguyên.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1785750867594-09a4l850.png",
+    "sourceTitle": "Examcademy DP-900 Question 58",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/58-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-59",
+    "questionNumber": 59,
+    "text": "Question 59",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Truyền phát có cấu trúc Spark được xây dựng trên API Spark SQL DataFrame/Dataset. DataFrame biểu thị dữ liệu dạng bảng với các cột được đặt tên, trong khi Delta Lake, hồ dữ liệu và dữ liệu warehouse là các khái niệm lưu trữ hoặc kiến ​​trúc thay vì trừu tượng hóa bảng được sử dụng bởi Truyền có cấu trúc.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 59",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/59-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-60",
+    "questionNumber": 60,
+    "text": "Your company is designing a database to store website session data. The data will include notifications, personalization attributes, and products added to a shopping cart.  \n  \nWhich type of data store provides the lowest latency for retrieving the data?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "key/value"
+      },
+      {
+        "key": "B",
+        "text": "graph"
+      },
+      {
+        "key": "C",
+        "text": "columnar"
+      },
+      {
+        "key": "D",
+        "text": "document"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Kho lưu trữ dữ liệu khóa/giá trị cung cấp khả năng truy xuất trực tiếp có độ trễ rất thấp bằng khóa phiên, phù hợp với trạng thái phiên như thông báo, thuộc tính cá nhân hóa và các mặt hàng trong giỏ hàng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 60",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/60-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-61",
+    "questionNumber": 61,
+    "text": "Which responsibility belongs to a database administrator?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "applying data cleaning routines"
+      },
+      {
+        "key": "B",
+        "text": "creating data visualizations"
+      },
+      {
+        "key": "C",
+        "text": "managing data integration processes"
+      },
+      {
+        "key": "D",
+        "text": "storing backup copies of data"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Quản trị viên cơ sở dữ liệu duy trì tính sẵn sàng, tính toàn vẹn, bảo mật và khả năng phục hồi của cơ sở dữ liệu. Tạo và giữ lại các bản sao lưu dữ liệu hỗ trợ phục hồi sau khi mất dữ liệu, hỏng hoặc lỗi hệ thống.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 61",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/61-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-62",
+    "questionNumber": 62,
+    "text": "You have the following two customer-data tables.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783769023212-u4q9t9us.jpg)  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783769026105-ezb2pkmm.jpg)  \n  \nWhat type of data do the tables contain?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "structured"
+      },
+      {
+        "key": "B",
+        "text": "non-relational"
+      },
+      {
+        "key": "C",
+        "text": "semi-structured"
+      },
+      {
+        "key": "D",
+        "text": "unstructured"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Dữ liệu có cấu trúc được tổ chức thành một lược đồ gồm các cột và hàng được xác định trước, với mỗi giá trị được lưu trữ trong một trường xác định. Hồ sơ khách hàng sử dụng các trường cố định như số nhận dạng, tên, địa chỉ và ngày tháng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783769023212-u4q9t9us.jpg",
+    "sourceTitle": "Examcademy DP-900 Question 62",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/62-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.562Z"
+  },
+  {
+    "id": "dp900-63",
+    "questionNumber": 63,
+    "text": "Which three characteristics describe an Online Transaction Processing (OLTP) workload? Each correct answer provides a complete solution.  \n  \n> **NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "denormalized data"
+      },
+      {
+        "key": "B",
+        "text": "heavy writes and moderate reads"
+      },
+      {
+        "key": "C",
+        "text": "light writes and heavy reads"
+      },
+      {
+        "key": "D",
+        "text": "schema defined in a database"
+      },
+      {
+        "key": "E",
+        "text": "schema defined when reading unstructured data from a database"
+      },
+      {
+        "key": "F",
+        "text": "normalized data"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "D",
+      "F"
+    ],
+    "explanation": "Hệ thống OLTP được thiết kế để xử lý giao dịch với lượng ghi lớn và số lần đọc vừa phải. Họ sử dụng thiết kế cơ sở dữ liệu lược đồ khi ghi được thực thi và dữ liệu được chuẩn hóa cao để giảm sự dư thừa và duy trì tính toàn vẹn của giao dịch. [Online Transaction Processing (OLTP) — Microsoft Learn](https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/online-transaction-processing)",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 63",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/63-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-64",
+    "questionNumber": 64,
+    "text": "At which two levels can throughput be configured for an Azure Cosmos DB account? Each correct answer provides a complete solution.  \n  \n> **NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "database"
+      },
+      {
+        "key": "B",
+        "text": "item"
+      },
+      {
+        "key": "C",
+        "text": "container"
+      },
+      {
+        "key": "D",
+        "text": "partition"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "C"
+    ],
+    "explanation": "Azure Cosmos DB cho phép bạn cung cấp thông lượng ở cấp vùng chứa hoặc ở cấp cơ sở dữ liệu. Thông lượng cấp cơ sở dữ liệu được chia sẻ bởi các bộ chứa trong cơ sở dữ liệu đó; các mục và phân vùng không phải là mức cấu hình thông lượng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 64",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/64-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-65",
+    "questionNumber": 65,
+    "text": "You need to change a view in a relational database by adding a new column.  \n  \nWhich statement should be used?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "MERGE"
+      },
+      {
+        "key": "B",
+        "text": "ALTER"
+      },
+      {
+        "key": "C",
+        "text": "INSERT"
+      },
+      {
+        "key": "D",
+        "text": "UPDATE"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Câu lệnh `ALTER` thay đổi định nghĩa của đối tượng cơ sở dữ liệu hiện có, bao gồm cả dạng xem. Việc thêm một cột vào một dạng xem yêu cầu thay đổi định nghĩa của nó.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 65",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/65-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-66",
+    "questionNumber": 66,
+    "text": "You plan to deploy a PostgreSQL database to Azure.  \n  \nWhich hosting model matches each available deployment option?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "PostgreSQL trên máy ảo Azure là IaaS vì bạn quản lý máy ảo, hệ điều hành và nhiều tác vụ quản trị cơ sở dữ liệu. Cơ sở dữ liệu Azure cho PostgreSQL là PaaS vì Azure quản lý nền tảng cơ bản và các tác vụ vận hành như vá lỗi, sao lưu và tính sẵn sàng cao.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 66",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/66-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-67",
+    "questionNumber": 67,
+    "text": "Which command-line utility can be used to query Azure SQL databases?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "sqlcmd"
+      },
+      {
+        "key": "B",
+        "text": "bcp"
+      },
+      {
+        "key": "C",
+        "text": "azdata"
+      },
+      {
+        "key": "D",
+        "text": "Azure CLI"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Tiện ích `sqlcmd` kết nối với cơ sở dữ liệu Azure SQL và thực thi các câu lệnh và tập lệnh Transact-SQL từ dòng lệnh.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 67",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/67-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-68",
+    "questionNumber": 68,
+    "text": "Match the activity types to the corresponding Azure Data Factory activities.  \n  \nAn activity type may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "copy",
+        "text": "Copy",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "mapping_data_flow",
+        "text": "Mapping data flow",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "lookup",
+        "text": "Lookup",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Control"
+      },
+      {
+        "key": "B",
+        "text": "Data movement"
+      },
+      {
+        "key": "C",
+        "text": "Data transformation"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Control"
+      },
+      {
+        "key": "B",
+        "text": "Data movement"
+      },
+      {
+        "key": "C",
+        "text": "Data transformation"
+      }
+    ],
+    "correctAnswers": [
+      "copy=B",
+      "mapping_data_flow=C",
+      "lookup=A"
+    ],
+    "explanation": "Copy activity chuyển dữ liệu giữa các kho dữ liệu, biến nó thành một hoạt động di chuyển dữ liệu. Mapping Data Flow thực hiện logic chuyển đổi, biến nó thành một hoạt động chuyển đổi dữ liệu. Tra cứu truy xuất dữ liệu hoặc siêu dữ liệu cho logic quy trình tiếp theo, biến nó thành hoạt động kiểm soát.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 68",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/68-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-69",
+    "questionNumber": 69,
+    "text": "For each statement, select **Yes** if it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "You can copy a dashboard between Microsoft Power BI workspaces.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "A Microsoft Power BI dashboard can only display visualizations from a single dataset.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "A Microsoft Power BI dashboard can display visualizations from a Microsoft Excel workbook.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Power BI hỗ trợ lưu bản sao báo cáo sang không gian làm việc khác, không sao chép bảng thông tin giữa các không gian làm việc. Trang tổng quan có thể kết hợp các ô được hỗ trợ bởi nhiều báo cáo và mô hình ngữ nghĩa. Phạm vi, bảng, PivotTable, biểu đồ và trang tính trong sổ làm việc Excel có thể được ghim vào bảng thông tin Power BI dưới dạng ô xếp.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 69",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/69-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-70",
+    "questionNumber": 70,
+    "text": "Question 70",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Chế độ xem là một bảng ảo có nội dung được xác định bởi một truy vấn. Đống là một bảng không có thứ tự, một thủ tục lưu sẵn sẽ thực thi một tập hợp các câu lệnh và một chỉ mục sẽ cải thiện hiệu suất truy cập dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 70",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/70-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-71",
+    "questionNumber": 71,
+    "text": "Question 71",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Phân tích mô tả trình bày và tóm tắt dữ liệu hiện tại hoặc quá khứ, chẳng hạn như số lượng tuyển sinh theo khoa sắp xếp.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 71",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/71-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-72",
+    "questionNumber": 72,
+    "text": "Data is stored in the following format.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783769421576-cfz08n5j.png)  \n  \nWhich format is being used?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "XML"
+      },
+      {
+        "key": "B",
+        "text": "HTML"
+      },
+      {
+        "key": "C",
+        "text": "YAML"
+      },
+      {
+        "key": "D",
+        "text": "JSON"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "JSON biểu thị các đối tượng có `{}` và các mảng có `[]`, với tên thuộc tính được trích dẫn và các giá trị được phân tách bằng dấu hai chấm.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783769421576-cfz08n5j.png",
+    "sourceTitle": "Examcademy DP-900 Question 72",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/72-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-73",
+    "questionNumber": 73,
+    "text": "For each statement, select **Yes** when it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Normalizing a database increases the throughput of writing transactions.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Analytics systems are more normalized than transactional systems.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Normalizing a database results in queries that require more joins.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Quá trình chuẩn hóa sẽ phân tách dữ liệu dư thừa thành các bảng có liên quan, do đó, thao tác ghi giao dịch thường cập nhật ít giá trị trùng lặp hơn và tránh công việc duy trì tính nhất quán. Hệ thống OLTP sử dụng chuẩn hóa để xử lý hiệu quả số lượng lớn giao dịch độc lập. Khối lượng công việc phân tích thường sử dụng các mô hình thứ nguyên không chuẩn hóa để đơn giản hóa và tăng tốc các truy vấn tổng hợp. Vì dữ liệu đã chuẩn hóa được phân phối trên các bảng liên quan nên việc truy xuất bản ghi kinh doanh kết hợp thường yêu cầu các phép nối bổ sung.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 73",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/73-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-74",
+    "questionNumber": 74,
+    "text": "You need to build a visualization showing running quarterly sales totals, as illustrated in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783769007790-5ow8m1mz.png)  \n  \nWhat should you create in Power BI Desktop?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a waterfall chart"
+      },
+      {
+        "key": "B",
+        "text": "a ribbon chart"
+      },
+      {
+        "key": "C",
+        "text": "a bar chart"
+      },
+      {
+        "key": "D",
+        "text": "a decomposition tree"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Biểu đồ thác nước hiển thị cách tích lũy các thay đổi tích cực hoặc tiêu cực tuần tự từ giá trị bắt đầu đến tổng giá trị cuối cùng. Nó phù hợp với những thay đổi về doanh số bán hàng hàng quý tạo nên tổng doanh số bán hàng tổng thể.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783769007790-5ow8m1mz.png",
+    "sourceTitle": "Examcademy DP-900 Question 74",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/74-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-75",
+    "questionNumber": 75,
+    "text": "Question 75",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Dữ liệu biểu đồ có cấu trúc tổ chức - các nút, cạnh và thuộc tính của chúng - nhưng no đã cố định lược đồ quan hệ mà mọi bản ghi phải tuân theo, điều này khiến nó có cấu trúc bán cấu trúc. Microsoft phân loại các cửa hàng biểu đồ như dữ liệu người dùng và người theo dõi trên mạng xã hội theo cách này, cùng với các tài liệu JSON và các cặp khóa-giá trị.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 75",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/75-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-76",
+    "questionNumber": 76,
+    "text": "Match each process to its corresponding scenario. Each process may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Data is retrieved and processed before being saved to a target system",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot2",
+        "text": "Data is saved to a target system, and then processed",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot3",
+        "text": "Data is extracted from a source system, and then saved to a target system",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Data ingestion"
+      },
+      {
+        "key": "B",
+        "text": "Extract, load, and transform (ELT) processing"
+      },
+      {
+        "key": "C",
+        "text": "Extract, transform, and load (ETL) processing"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Data ingestion"
+      },
+      {
+        "key": "B",
+        "text": "Extract, load, and transform (ELT) processing"
+      },
+      {
+        "key": "C",
+        "text": "Extract, transform, and load (ETL) processing"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=C",
+      "slot2=B",
+      "slot3=A"
+    ],
+    "explanation": "ETL chuyển đổi dữ liệu trước khi tải nó vào hệ thống đích, trong khi ELT tải dữ liệu vào mục tiêu và chuyển đổi dữ liệu sau đó. Việc nhập dữ liệu sẽ di chuyển dữ liệu được trích xuất từ ​​hệ thống nguồn sang hệ thống đích.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 76",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/76-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-77",
+    "questionNumber": 77,
+    "text": "Question 77",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "CSV lưu trữ dữ liệu dạng bảng dưới dạng văn bản được phân tách: các giá trị trường được phân tách bằng dấu phẩy và mỗi bản ghi kết thúc bằng dấu ngắt dòng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 77",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/77-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-78",
+    "questionNumber": 78,
+    "text": "Your company has recently reported sales from the third quarter.  \n  \nYou have the chart shown in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783768225959-2w50smu3.png)  \n  \nWhich type of analysis is displayed in the fourth quarter?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "predictive"
+      },
+      {
+        "key": "B",
+        "text": "prescriptive"
+      },
+      {
+        "key": "C",
+        "text": "descriptive"
+      },
+      {
+        "key": "D",
+        "text": "diagnostic"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Dự báo ước tính giá trị tương lai từ các xu hướng lịch sử, thường có khoảng tin cậy thể hiện sự không chắc chắn xung quanh kết quả được dự đoán. Đây là phân tích dự đoán.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783768225959-2w50smu3.png",
+    "sourceTitle": "Examcademy DP-900 Question 78",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/78-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-79",
+    "questionNumber": 79,
+    "text": "Match the workload types to the appropriate scenarios. Each workload type may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Data for a product catalog will be loaded every 12 hours to a data warehouse.",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot2",
+        "text": "Thousands of data sets per second for online purchases will be loaded into a data warehouse in real time",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot3",
+        "text": "Updates to inventory data will be loaded to a data warehouse every 1 million transactions.",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Batch"
+      },
+      {
+        "key": "B",
+        "text": "Streaming"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Batch"
+      },
+      {
+        "key": "B",
+        "text": "Streaming"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=A",
+      "slot2=B",
+      "slot3=A"
+    ],
+    "explanation": "Xử lý hàng loạt tải dữ liệu tích lũy theo khoảng thời gian đã lên lịch hoặc sau ngưỡng khối lượng giao dịch được xác định. Quá trình xử lý phát trực tuyến liên tục tải dữ liệu sự kiện khi nó đến, phù hợp với việc nhập mua hàng trực tuyến theo thời gian thực.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 79",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/79-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-80",
+    "questionNumber": 80,
+    "text": "For each statement below, select **Yes** when it is true; otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Database administrators apply data cleansing routines and turn data into useful information.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "Data engineers manage databases, store backup copies of data, and restore data in the event of a failure.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Data analysts create data visuals and enable companies to make data-driven decisions.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Áp dụng quy trình làm sạch dữ liệu và biến dữ liệu thành thông tin hữu ích là công việc của các kỹ sư dữ liệu và nhà phân tích dữ liệu, không phải quản trị viên cơ sở dữ liệu, vì vậy statement 1 là No. Quản lý cơ sở dữ liệu cũng như thực hiện sao lưu và khôi phục sau khi xảy ra lỗi là trách nhiệm của quản trị viên cơ sở dữ liệu cổ điển chứ không phải vai trò của kỹ sư dữ liệu (kỹ sư dữ liệu xây dựng đường dẫn nhập/chuyển đổi và kho lưu trữ dữ liệu cung cấp), vì vậy statement 2 là No. Các nhà phân tích dữ liệu tạo ra hình ảnh trực quan và cho phép các công ty đưa ra quyết định dựa trên dữ liệu, vì vậy statement 3 là Yes.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 80",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/80-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-81",
+    "questionNumber": 81,
+    "text": "Question 81",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Sơ đồ cây mã hóa các giá trị dưới dạng hình chữ nhật có diện tích tỷ lệ với các giá trị và nó có thể hiển thị thứ bậc thông qua các hình chữ nhật lồng nhau.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 81",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/81-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-82",
+    "questionNumber": 82,
+    "text": "Select the option that correctly finishes the sentence.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Cosmos DB dành cho NoSQL hỗ trợ ngôn ngữ truy vấn giống SQL trong đó SELECT dự án và truy xuất tài liệu JSON. Các API khác sử dụng các mô hình truy cập dữ liệu Gremlin, MongoDB hoặc Table tương ứng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 82",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/82-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-83",
+    "questionNumber": 83,
+    "text": "Question 83",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các hệ thống OLAP thường sử dụng các khối đa chiều hoặc mô hình ngữ nghĩa dạng bảng chứa dữ liệu được tổng hợp trước. Những tập hợp này tăng tốc các truy vấn phân tích phức tạp trên nhiều hàng và thứ nguyên; tối ưu hóa giao dịch là một đặc điểm của hệ thống OLTP.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 83",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/83-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-84",
+    "questionNumber": 84,
+    "text": "Question 84",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Thủ tục lưu trữ là một khối SQL hoặc mã thủ tục được đặt tên được lưu trữ và thực thi bởi hệ thống quản lý cơ sở dữ liệu. Bảng chứa dữ liệu, dạng xem thể hiện kết quả truy vấn đã lưu và chỉ mục cải thiện hiệu suất tra cứu truy vấn.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 84",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/84-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-85",
+    "questionNumber": 85,
+    "text": "For each of the following statements, select **Yes** if the statement is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Extract, transform, and load (ETL) can reduce the transfer of sensitive data to destination systems.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Extract, load, and transform (ELT) transforms data by using a compute resource independent of the source system and destination system.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Extract, load, and transform (ELT) minimizes the time it takes to copy large volumes of data to destination systems.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "ETL biến đổi dữ liệu trước khi tải, cho phép lọc, che hoặc xóa dữ liệu nhạy cảm trước khi chuyển đến đích. ELT tải dữ liệu trước rồi chuyển đổi dữ liệu đó bằng cách sử dụng tài nguyên điện toán trong hệ thống đích. Tải trước khi chuyển đổi cũng tránh làm trì hoãn thao tác sao chép đối với các chuyển đổi tải trước, điều này làm cho ELT phù hợp để di chuyển nhanh khối lượng dữ liệu lớn.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 85",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/85-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-86",
+    "questionNumber": 86,
+    "text": "Match each ACID term with its corresponding description.  \n  \nA term may be used once, multiple times, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Concurrent transactions cannot interfere with one another and must result in a consistent database state.",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot2",
+        "text": "Each transaction is treated as a single unit that succeeds completely or fails completely.",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot3",
+        "text": "Transactions can only take the data in a database from one valid state to another.",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot4",
+        "text": "When a transaction is committed, it will remain committed.",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Atomicity"
+      },
+      {
+        "key": "B",
+        "text": "Consistency"
+      },
+      {
+        "key": "C",
+        "text": "Isolation"
+      },
+      {
+        "key": "D",
+        "text": "Durability"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Atomicity"
+      },
+      {
+        "key": "B",
+        "text": "Consistency"
+      },
+      {
+        "key": "C",
+        "text": "Isolation"
+      },
+      {
+        "key": "D",
+        "text": "Durability"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=C",
+      "slot2=A",
+      "slot3=B",
+      "slot4=D"
+    ],
+    "explanation": "Sự cô lập tách biệt các giao dịch đồng thời; tính nguyên tử yêu cầu tất cả các hoạt động giao dịch phải thành công hoặc tất cả đều thất bại; tính nhất quán duy trì trạng thái cơ sở dữ liệu hợp lệ; và độ bền làm cho những thay đổi đã cam kết trở thành vĩnh viễn.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 86",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/86-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-87",
+    "questionNumber": 87,
+    "text": "You have the following JSON document.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783766107140-daa6328l.png)  \n  \nComplete each statement by choosing the appropriate answer based on the JSON document.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Trong JSON, dấu ngoặc nhọn xác định đối tượng và dấu ngoặc vuông xác định mảng. Giá trị khách hàng và địa chỉ sử dụng dấu ngoặc nhọn bên trong tài liệu bên ngoài, biến chúng thành các đối tượng lồng nhau. Giá trị phương tiện truyền thông xã hội sử dụng dấu ngoặc vuông, biến nó thành một mảng lồng nhau.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783766107140-daa6328l.png",
+    "sourceTitle": "Examcademy DP-900 Question 87",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/87-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-88",
+    "questionNumber": 88,
+    "text": "What are two traits of real-time data processing? Each correct answer provides a complete solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Data is processed periodically"
+      },
+      {
+        "key": "B",
+        "text": "Low latency is expected"
+      },
+      {
+        "key": "C",
+        "text": "High latency is acceptable"
+      },
+      {
+        "key": "D",
+        "text": "Data is processed as it is created"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "D"
+    ],
+    "explanation": "Quá trình xử lý dữ liệu theo thời gian thực xử lý dữ liệu ngay khi dữ liệu được tạo và hướng tới độ trễ thấp để có được kết quả với độ trễ tối thiểu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 88",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/88-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-89",
+    "questionNumber": 89,
+    "text": "Match the job roles with their appropriate tasks.  \n  \nEach role can be used once, multiple times, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Assign permissions to users.",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot2",
+        "text": "Derive meaning from data by creating visualizations and charts.",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot3",
+        "text": "Implement which pipelines to transfer and transform data between systems.",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Data analyst"
+      },
+      {
+        "key": "B",
+        "text": "Data engineer"
+      },
+      {
+        "key": "C",
+        "text": "Database administrator"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Data analyst"
+      },
+      {
+        "key": "B",
+        "text": "Data engineer"
+      },
+      {
+        "key": "C",
+        "text": "Database administrator"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=C",
+      "slot2=A",
+      "slot3=B"
+    ],
+    "explanation": "Quản trị viên cơ sở dữ liệu kiểm soát quyền truy cập cơ sở dữ liệu và phân quyền cho người dùng. Các nhà phân tích dữ liệu giải thích dữ liệu và truyền đạt các phát hiện thông qua trực quan hóa và biểu đồ. Kỹ sư dữ liệu xây dựng và vận hành các đường ống di chuyển và chuyển đổi dữ liệu giữa các hệ thống.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 89",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/89-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-90",
+    "questionNumber": 90,
+    "text": "Question 90",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "JSON biểu thị dữ liệu dưới dạng các trường và giá trị được đặt tên, nhưng tài liệu có thể có các nhóm trường khác nhau. Tổ chức tự mô tả, linh hoạt đó làm cho nó trở thành dữ liệu bán cấu trúc thay vì dữ liệu quan hệ, có cấu trúc đầy đủ hoặc không có cấu trúc.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 90",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/90-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-91",
+    "questionNumber": 91,
+    "text": "Question 91",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Synapse Analytics bao gồm khả năng tích hợp dữ liệu và đường dẫn tương tự như Azure Data Factory, cho phép tạo và điều phối các đường dẫn dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 91",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/91-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-92",
+    "questionNumber": 92,
+    "text": "You have an on-premises Microsoft SQL Server database that you need to migrate to the cloud. The solution must meet these requirements:  \n  \n- Minimize maintenance effort.  \n- Support the Database Mail and Service Broker features.  \n  \nWhat should you include in the solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure SQL Database single database"
+      },
+      {
+        "key": "B",
+        "text": "an Azure SQL Database elastic pool"
+      },
+      {
+        "key": "C",
+        "text": "Azure SQL Managed instance"
+      },
+      {
+        "key": "D",
+        "text": "SQL Server on Azure virtual machines"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Azure SQL Managed Instance cung cấp các khả năng của phiên bản SQL Server được quản lý đồng thời giảm thiểu việc bảo trì cơ sở hạ tầng và nền tảng. Nó hỗ trợ Nhà môi giới dịch vụ và thư cơ sở dữ liệu; Thư cơ sở dữ liệu không có sẵn trong cơ sở dữ liệu đơn lẻ hoặc nhóm đàn hồi Azure SQL Database.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 92",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/92-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-93",
+    "questionNumber": 93,
+    "text": "Question 93",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Tài khoản Azure Cosmos DB được tạo cho một API cụ thể, chẳng hạn như NoSQL, MongoDB, Cassandra, Gremlin hoặc Table. Cơ sở dữ liệu, vùng chứa và mục là các tài nguyên được tạo và quản lý trong tài khoản đó.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 93",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/93-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-94",
+    "questionNumber": 94,
+    "text": "What should you use to create a Microsoft Power BI paginated report?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Charticulator"
+      },
+      {
+        "key": "B",
+        "text": "Power BI Desktop"
+      },
+      {
+        "key": "C",
+        "text": "the Power BI service"
+      },
+      {
+        "key": "D",
+        "text": "Power BI Report Builder"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Trình tạo báo cáo Power BI là công cụ soạn thảo độc lập cho các báo cáo được phân trang Power BI. Nó được sử dụng để thiết kế định nghĩa báo cáo được phân trang trước khi có thể xuất bản lên dịch vụ Power BI.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 94",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/94-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-95",
+    "questionNumber": 95,
+    "text": "Question 95",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Kho lưu trữ dữ liệu khóa/giá trị sắp xếp dữ liệu xung quanh một khóa duy nhất và truy xuất trực tiếp giá trị được liên kết, thực hiện các hoạt động tra cứu dựa trên khóa đơn giản được tối ưu hóa chính. Việc nối bảng và các ràng buộc quan hệ là đặc điểm của cơ sở dữ liệu quan hệ, trong khi các giao dịch không phải là sự tối ưu hóa xác định của mô hình khóa/giá trị.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 95",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/95-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-96",
+    "questionNumber": 96,
+    "text": "Question 96",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Cơ sở dữ liệu quan hệ hỗ trợ các giao dịch ACID và tính nhất quán cao, làm cho chúng phù hợp khi cần có dữ liệu giao dịch nhất quán, đáng tin cậy.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 96",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/96-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-97",
+    "questionNumber": 97,
+    "text": "For each statement, select **Yes** when it is true; otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "The Azure Cosmos DB API is configured separately for each database in an Azure Cosmos DB account.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "Partition keys are used in Azure Cosmos DB to optimize queries.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "Items contained in the same Azure Cosmos DB logical partition can have different partition keys.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Tài khoản Azure Cosmos DB được tạo bằng một API duy nhất, do đó API không được định cấu hình độc lập cho mỗi cơ sở dữ liệu. Khóa phân vùng hỗ trợ phân phối dữ liệu và cho phép truy vấn hiệu quả trong phạm vi phân vùng hợp lý. Tất cả các mục trong một phân vùng logic đều có chung giá trị khóa phân vùng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 97",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/97-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-98",
+    "questionNumber": 98,
+    "text": "You have an e-commerce application that reads from and writes data to an Azure SQL database.  \n  \nWhich type of processing does the application use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "stream processing"
+      },
+      {
+        "key": "B",
+        "text": "batch processing"
+      },
+      {
+        "key": "C",
+        "text": "Online Analytical Processing (OLAP)"
+      },
+      {
+        "key": "D",
+        "text": "Online Transaction Processing (OLTP)"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Xử lý giao dịch trực tuyến (OLTP) hỗ trợ các hoạt động đọc và ghi thường xuyên, đồng thời cho các giao dịch kinh doanh riêng lẻ, chẳng hạn như các đơn đặt hàng thương mại điện tử và cập nhật trong cơ sở dữ liệu quan hệ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 98",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/98-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-99",
+    "questionNumber": 99,
+    "text": "Which type of Microsoft Power BI visual can you use to analyze trends over time for one or more series of values?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "funnel chart"
+      },
+      {
+        "key": "B",
+        "text": "pie chart"
+      },
+      {
+        "key": "C",
+        "text": "table"
+      },
+      {
+        "key": "D",
+        "text": "line chart"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Biểu đồ đường hiển thị dữ liệu liên tục dưới dạng các điểm được kết nối bằng đường và được thiết kế để hiển thị các xu hướng và mô hình theo thời gian. Họ có thể vẽ một hoặc nhiều chuỗi giá trị theo trục thời gian.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 99",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/99-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-100",
+    "questionNumber": 100,
+    "text": "Select the answer that correctly finishes the sentence.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Cơ sở dữ liệu đồ thị biểu diễn các thực thể và mối quan hệ của chúng một cách trực tiếp dưới dạng các nút và cạnh, làm cho việc duyệt và phân tích mối quan hệ trở thành một khả năng nguyên gốc.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 100",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/100-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-101",
+    "questionNumber": 101,
+    "text": "You have an inventory management database that includes the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783766115853-47snfklr.png)  \n  \nWhich SQL statement should you use to change Product1's inventory quantity to 270?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "INSERT"
+      },
+      {
+        "key": "B",
+        "text": "MERGE"
+      },
+      {
+        "key": "C",
+        "text": "UPDATE"
+      },
+      {
+        "key": "D",
+        "text": "CREATE"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Câu lệnh `UPDATE` sửa đổi các giá trị trong một hàng hiện có của bảng, chẳng hạn như đặt Số lượng cho Sản phẩm1 thành 270.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783766115853-47snfklr.png",
+    "sourceTitle": "Examcademy DP-900 Question 101",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/101-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-102",
+    "questionNumber": 102,
+    "text": "Match the Azure services to the relevant requirements. A service may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "output_parquet",
+        "text": "Output data to Parquet format",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "store_parquet",
+        "text": "Store data that is in Parquet format",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "persist_tabular_parquet",
+        "text": "Persist a tabular representation of data that is stored in Parquet format",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Data Lake Storage"
+      },
+      {
+        "key": "B",
+        "text": "Azure SQL Database"
+      },
+      {
+        "key": "C",
+        "text": "Azure Synapse Analytics"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Azure Data Lake Storage"
+      },
+      {
+        "key": "B",
+        "text": "Azure SQL Database"
+      },
+      {
+        "key": "C",
+        "text": "Azure Synapse Analytics"
+      }
+    ],
+    "correctAnswers": [
+      "output_parquet=C",
+      "store_parquet=A",
+      "persist_tabular_parquet=C"
+    ],
+    "explanation": "Azure Data Lake Storage lưu trữ các tệp Parquet. Azure Synapse Analytics có thể tạo các bảng bên ngoài trên dữ liệu Parquet và sử dụng CETAS để xuất kết quả truy vấn sang Azure Storage với định dạng tệp bên ngoài Parquet, cung cấp bản trình bày dạng bảng cho dữ liệu được lưu trữ dưới dạng Parquet.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 102",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/102-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-103",
+    "questionNumber": 103,
+    "text": "You are deploying a software-as-a-service (SaaS) application that needs a relational database for Online Transaction Processing (OLTP).  \n  \nWhich Azure service should you use to support the application?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Cosmos DB"
+      },
+      {
+        "key": "B",
+        "text": "Azure HDInsight"
+      },
+      {
+        "key": "C",
+        "text": "Azure SQL Database"
+      },
+      {
+        "key": "D",
+        "text": "Azure Synapse Analytics"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Azure SQL Database là dịch vụ cơ sở dữ liệu quan hệ được quản lý được thiết kế cho các ứng dụng đám mây hiện đại và khối lượng công việc giao dịch. Các tầng dịch vụ của nó bao gồm khả năng dành cho các ứng dụng OLTP với tốc độ giao dịch cao và yêu cầu I/O có độ trễ thấp.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 103",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/103-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-104",
+    "questionNumber": 104,
+    "text": "What is the typical read-operation latency for media files stored in the Cool access tier of Azure Blob Storage?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a few milliseconds"
+      },
+      {
+        "key": "B",
+        "text": "a few seconds"
+      },
+      {
+        "key": "C",
+        "text": "a few minutes"
+      },
+      {
+        "key": "D",
+        "text": "a few hours"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Blob Storage của Cool tier là tầng truy cập trực tuyến với độ trễ thời gian tính từ mili giây đến byte đầu tiên. Độ trễ truy xuất dài hơn, tính theo giờ được liên kết với Archive tier ngoại tuyến.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 104",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/104-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-105",
+    "questionNumber": 105,
+    "text": "For each of the following statements, select **Yes** if the statement is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Azure Databricks can consume data from Azure SQL Database",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Azure Databricks can consume data from Azure Event Hubs",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "Azure Databricks can consume data from Azure Cosmos DB",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Azure Databricks có thể đọc Azure SQL Database thông qua JDBC. Nó có thể sử dụng dữ liệu Azure Event Hubs thông qua tích hợp Trung tâm sự kiện, bao gồm cả khối lượng công việc phát trực tuyến. Azure Cosmos DB cung cấp trình kết nối Spark mà Azure Databricks có thể sử dụng để đọc dữ liệu. Vì vậy, cả ba nguồn đều được hỗ trợ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 105",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/105-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-106",
+    "questionNumber": 106,
+    "text": "Which statement is an example of Data Manipulation Language (DML)?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "REVOKE"
+      },
+      {
+        "key": "B",
+        "text": "DISABLE"
+      },
+      {
+        "key": "C",
+        "text": "CREATE"
+      },
+      {
+        "key": "D",
+        "text": "UPDATE"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "`UPDATE` là một câu lệnh DML vì nó sửa đổi dữ liệu hiện có trong bảng cơ sở dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 106",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/106-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-107",
+    "questionNumber": 107,
+    "text": "For each of the following statements, select **Yes** if the statement is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "The Cool access tier is the default tier of an Azure Storage account.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "Append blobs are optimized for random read and write operations.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Retrieving data from the Archive access tier takes hours to complete.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Tài khoản lưu trữ v2 đa năng mới sử dụng Hot làm cấp truy cập mặc định. Các đốm màu nối thêm được tối ưu hóa cho các hoạt động nối thêm các đốm màu cuối cùng; các đốm màu trang được tối ưu hóa cho các hoạt động đọc/ghi ngẫu nhiên. Các đốm màu cấp lưu trữ đang ngoại tuyến và cần được bù nước trước khi đọc, quá trình này có thể mất hàng giờ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 107",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/107-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-108",
+    "questionNumber": 108,
+    "text": "Match the data types to the appropriate Azure data services. Each data type may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "blob",
+        "text": "Azure Blob storage",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "gremlin",
+        "text": "Azure Cosmos DB Gremlin API",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "table",
+        "text": "Azure Table storage",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Image files"
+      },
+      {
+        "key": "B",
+        "text": "Key/value pairs"
+      },
+      {
+        "key": "C",
+        "text": "Relationships between employees"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Image files"
+      },
+      {
+        "key": "B",
+        "text": "Key/value pairs"
+      },
+      {
+        "key": "C",
+        "text": "Relationships between employees"
+      }
+    ],
+    "correctAnswers": [
+      "blob=A",
+      "gremlin=C",
+      "table=B"
+    ],
+    "explanation": "Azure Blob storage được tối ưu hóa cho dữ liệu phi cấu trúc, bao gồm cả hình ảnh. Azure Cosmos DB dành cho Apache Gremlin là một dịch vụ cơ sở dữ liệu đồ thị để lập mô hình và duyệt qua các mối quan hệ giữa các thực thể. Azure Table storage là kho lưu trữ khóa/giá trị.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 108",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/108-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-109",
+    "questionNumber": 109,
+    "text": "What are two applications of data visualization? Each correct answer provides a complete solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Represent trends and patterns over time"
+      },
+      {
+        "key": "B",
+        "text": "Implement machine learning to predict future values"
+      },
+      {
+        "key": "C",
+        "text": "Communicate the significance of data"
+      },
+      {
+        "key": "D",
+        "text": "Enforce business logic across reports"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "C"
+    ],
+    "explanation": "Trực quan hóa dữ liệu trình bày dữ liệu dưới dạng giúp xác định xu hướng và mô hình theo thời gian dễ dàng hơn và giúp truyền đạt tầm quan trọng của dữ liệu tới khán giả.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 109",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/109-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-110",
+    "questionNumber": 110,
+    "text": "Select the option that correctly finishes the sentence.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Báo cáo Power BI là một tập hợp nhiều trang trực quan. Trang tổng quan được giới hạn ở một khung vẽ duy nhất, trong khi tập dữ liệu cung cấp dữ liệu và ô là một hình ảnh trực quan được hiển thị trên trang tổng quan.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 110",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/110-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-111",
+    "questionNumber": 111,
+    "text": "Which three characteristics describe an Online Transaction Processing (OLTP) workload? Each correct answer represents a complete solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "denormalized data"
+      },
+      {
+        "key": "B",
+        "text": "heavy writes and moderate reads"
+      },
+      {
+        "key": "C",
+        "text": "light writes and heavy reads"
+      },
+      {
+        "key": "D",
+        "text": "schema on write"
+      },
+      {
+        "key": "E",
+        "text": "schema on read"
+      },
+      {
+        "key": "F",
+        "text": "normalized data"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "D",
+      "F"
+    ],
+    "explanation": "Khối lượng công việc OLTP xử lý nhiều giao dịch ngắn, đồng thời và thường liên quan đến hoạt động ghi nặng với số lần đọc vừa phải. Họ sử dụng lược đồ khi ghi để xác thực dữ liệu có cấu trúc trước khi lưu trữ và thường sử dụng các mô hình dữ liệu được chuẩn hóa để duy trì tính nhất quán trong giao dịch và giảm thiểu sự dư thừa.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 111",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/111-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-112",
+    "questionNumber": 112,
+    "text": "Which database type includes nodes and edges?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "graph"
+      },
+      {
+        "key": "B",
+        "text": "key/value"
+      },
+      {
+        "key": "C",
+        "text": "columnar"
+      },
+      {
+        "key": "D",
+        "text": "time series"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Cơ sở dữ liệu đồ thị mô hình hóa dữ liệu dưới dạng các nút (thực thể) và các cạnh (mối quan hệ), làm cho nó phù hợp để biểu diễn dữ liệu được kết nối.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 112",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/112-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-113",
+    "questionNumber": 113,
+    "text": "What is an advantage of the Azure Cosmos DB Table API compared with Azure Table storage?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "provides resiliency if an Azure region fails"
+      },
+      {
+        "key": "B",
+        "text": "supports partitioning"
+      },
+      {
+        "key": "C",
+        "text": "provides a higher storage capacity"
+      },
+      {
+        "key": "D",
+        "text": "supports a multi-master model"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure Cosmos DB cho Bảng có thể sử dụng phân phối toàn cầu Azure Cosmos DB với tính năng ghi nhiều vùng, cho phép nhiều vùng chấp nhận ghi trong cấu hình nhiều chủ. Azure Table storage sử dụng vùng ghi chính, ngay cả khi sao chép dự phòng địa lý được định cấu hình.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 113",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/113-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-114",
+    "questionNumber": 114,
+    "text": "For each statement below, select **Yes** if it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Each Azure SQL managed instance supports multiple databases that can be accessed by using cross-database queries.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Elastic pools are used to share resources across multiple instances of SQL Server on Azure Virtual Machines.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Azure SQL Database is fully compatible with both on-premises physical instances and virtualized instances of Microsoft SQL Server.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "Azure SQL Managed Instance hỗ trợ các tính năng ở phạm vi phiên bản như truy vấn cơ sở dữ liệu chéo. Nhóm đàn hồi Azure SQL Database chia sẻ tài nguyên điện toán giữa các cơ sở dữ liệu trên cùng một máy chủ, chứ không phải các phiên bản SQL Server trên Azure virtual machines. Azure SQL Database không khớp hoàn toàn với SQL Server: một số tính năng cấp phiên bản và khả năng T-SQL không được hỗ trợ hoặc chỉ được hỗ trợ một phần.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 114",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/114-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-115",
+    "questionNumber": 115,
+    "text": "Question 115",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các cạnh của cơ sở dữ liệu đồ thị mô hình hóa mối quan hệ giữa các đỉnh (nút), đại diện cho các thực thể trong biểu đồ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 115",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/115-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-116",
+    "questionNumber": 116,
+    "text": "Question 116",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Khối lượng công việc hàng loạt tích lũy dữ liệu và chạy xử lý sau, thường là theo lịch trình hoặc khi xảy ra điều kiện kích hoạt. Việc xử lý dữ liệu đến trong thời gian gần như thực mô tả khối lượng công việc phát trực tuyến.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 116",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/116-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-117",
+    "questionNumber": 117,
+    "text": "Which Azure Data Factory component starts a pipeline execution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a control flow"
+      },
+      {
+        "key": "B",
+        "text": "a trigger"
+      },
+      {
+        "key": "C",
+        "text": "a parameter"
+      },
+      {
+        "key": "D",
+        "text": "an activity"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Trình kích hoạt Azure Data Factory bắt đầu chạy quy trình theo lịch trình, sự kiện hoặc cửa sổ được định cấu hình của nó.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 117",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/117-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-118",
+    "questionNumber": 118,
+    "text": "Which statement correctly characterizes data processing?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Batch processing requires that data be processed immediately upon arrival."
+      },
+      {
+        "key": "B",
+        "text": "Stream processing is typically used for time-critical operations that require an instant response."
+      },
+      {
+        "key": "C",
+        "text": "Stream processing is typically used for analyzing larger datasets in less time."
+      },
+      {
+        "key": "D",
+        "text": "Batch processing is typically used for scenarios that require continuous, real-time insights from rapidly arriving data."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Xử lý luồng liên tục xử lý dữ liệu đến với độ trễ thấp và thường được sử dụng cho các hoạt động quan trọng về thời gian yêu cầu phản hồi ngay lập tức.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 118",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/118-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-119",
+    "questionNumber": 119,
+    "text": "Which Azure Cosmos DB API should be used for a graph database?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Table"
+      },
+      {
+        "key": "B",
+        "text": "Cassandra"
+      },
+      {
+        "key": "C",
+        "text": "Core (SQL)"
+      },
+      {
+        "key": "D",
+        "text": "Gremlin"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "API Gremlin của Azure Cosmos DB được thiết kế cho cơ sở dữ liệu đồ thị và hỗ trợ truy vấn truyền tải đồ thị bằng ngôn ngữ Apache TinkerPop Gremlin.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 119",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/119-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-120",
+    "questionNumber": 120,
+    "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Batch processing can output data to a file store",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Batch processing can output data to a relational database",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "Batch processing can output data to a NoSQL database",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Khối lượng công việc hàng loạt có thể ghi kết quả của chúng vào kho dữ liệu phù hợp với khối lượng công việc. Kho lưu trữ tệp/đối tượng là các mục tiêu đầu ra liên tục hợp lệ, cơ sở dữ liệu quan hệ hỗ trợ các ứng dụng xử lý hàng loạt và kho lưu trữ dữ liệu NoSQL cũng là đích đến hợp lệ cho dữ liệu đã xử lý.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 120",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/120-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-121",
+    "questionNumber": 121,
+    "text": "Which file format defines names and data types for every column and uses compressed columnar storage?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "HTML"
+      },
+      {
+        "key": "B",
+        "text": "CSV"
+      },
+      {
+        "key": "C",
+        "text": "Apache Parquet"
+      },
+      {
+        "key": "D",
+        "text": "JSON"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Apache Parquet là một định dạng tệp hướng theo cột, nhận biết lược đồ: nó lưu trữ các cột được đặt tên, được nhập và hỗ trợ nén ở cấp độ cột để lưu trữ và truy vấn phân tích hiệu quả.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 121",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/121-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-122",
+    "questionNumber": 122,
+    "text": "You have the following T-SQL statement:  \n  \n```sql  \nSELECT o.OrderNo, o.OrderDate, c.Address, c.City  \nFROM Order AS o  \nJOIN Customer AS c  \n    ON o.Customer = c.ID;  \n```  \n  \nWhat is the purpose of the `ON` clause?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "to update data in the Customer table"
+      },
+      {
+        "key": "B",
+        "text": "to match data in the Customer table to data in the Order table"
+      },
+      {
+        "key": "C",
+        "text": "to define an alias for the Customer table"
+      },
+      {
+        "key": "D",
+        "text": "to update data in the Order table"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Mệnh đề `ON` xác định điều kiện được sử dụng để nối các bảng: nó khớp giá trị `Customer` của mỗi hàng `Order` với giá trị `ID` của hàng `Customer` tương ứng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 122",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/122-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-123",
+    "questionNumber": 123,
+    "text": "You have the following SQL query.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783766254915-8yyh9kfk.png)  \n  \nWhat are dbo.Products and ProductName?",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Trong Transact-SQL, `INSERT INTO` đặt tên cho bảng mục tiêu. Các mã định danh trong ngoặc đơn sau tên bảng đó tạo thành danh sách cột của nó, vì vậy `ProductName` là một cột.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783766254915-8yyh9kfk.png",
+    "sourceTitle": "Examcademy DP-900 Question 123",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/123-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-124",
+    "questionNumber": 124,
+    "text": "Question 124",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Khóa chính xác định duy nhất mỗi hàng trong bảng cơ sở dữ liệu quan hệ và không thể chứa các giá trị trùng lặp.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 124",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/124-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-125",
+    "questionNumber": 125,
+    "text": "For each statement, select **Yes** when it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "In Azure Blob Storage, each block in a block blob is a fixed size.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "In an Azure Blob Storage account, blobs are stored in a container.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "In an Azure Blob Storage account that does NOT have a hierarchical namespace enabled, you can assign access at the folder level.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Các khối khối bao gồm các khối có kích thước thay đổi chứ không phải các khối có một kích thước cố định. Vùng chứa Blob sắp xếp các đốm màu trong tài khoản Azure Storage. ACL cấp thư mục phụ thuộc vào tính năng không gian tên phân cấp; không có nó, các thư mục chỉ có tiền tố tên và không hỗ trợ gán quyền truy cập cấp thư mục.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 125",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/125-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-126",
+    "questionNumber": 126,
+    "text": "Which statement is an example of Data Definition Language (DDL)?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "SELECT"
+      },
+      {
+        "key": "B",
+        "text": "JOIN"
+      },
+      {
+        "key": "C",
+        "text": "UPDATE"
+      },
+      {
+        "key": "D",
+        "text": "CREATE"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "`CREATE` là câu lệnh Ngôn ngữ định nghĩa dữ liệu vì nó tạo ra các đối tượng cơ sở dữ liệu như bảng, lược đồ, chỉ mục hoặc dạng xem. `SELECT` và `JOIN` truy xuất/kết hợp dữ liệu, trong khi `UPDATE` sửa đổi dữ liệu hiện có.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 126",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/126-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-127",
+    "questionNumber": 127,
+    "text": "You have a banking application that transfers money into and out of accounts.  \n  \nWhat type of solution is this an example of?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "online transaction processing (OLTP)"
+      },
+      {
+        "key": "B",
+        "text": "online analytical processing (OLAP)"
+      },
+      {
+        "key": "C",
+        "text": "extract, transform and load (ETL)"
+      },
+      {
+        "key": "D",
+        "text": "a data warehouse"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Hệ thống xử lý giao dịch trực tuyến (OLTP) xử lý các giao dịch hoạt động thường xuyên, theo thời gian thực như gửi tài khoản, rút ​​tiền và chuyển khoản trong khi vẫn duy trì tính nhất quán trong giao dịch.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 127",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/127-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-128",
+    "questionNumber": 128,
+    "text": "Question 128",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "API Gremlin của Azure Cosmos DB là một dịch vụ cơ sở dữ liệu đồ thị mô hình hóa dữ liệu dưới dạng các đỉnh và cạnh và được truy vấn bằng ngôn ngữ truyền tải Gremlin. Ngôn ngữ truy vấn Cassandra áp dụng cho API Cassandra, trong khi LINQ thường được sử dụng với API NoSQL.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 128",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/128-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-129",
+    "questionNumber": 129,
+    "text": "Which scenario illustrates a streaming workload?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "sending transactions that are older than a month to an archive"
+      },
+      {
+        "key": "B",
+        "text": "sending transactions daily from point of sale (POS) devices"
+      },
+      {
+        "key": "C",
+        "text": "sending telemetry data from edge devices"
+      },
+      {
+        "key": "D",
+        "text": "sending cloud infrastructure metadata every 30 minutes"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Dữ liệu đo từ xa do các thiết bị biên phát ra được tạo liên tục và thường được nhập và xử lý dưới dạng luồng sự kiện thời gian thực. Azure Event Hubs xác định cụ thể việc nhập dữ liệu đo từ xa IoT như một trường hợp sử dụng phát trực tuyến.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 129",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/129-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-130",
+    "questionNumber": 130,
+    "text": "Question 130",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Power BI Các mô hình dữ liệu và báo cáo của tác giả Máy tính để bàn được xuất bản lên dịch vụ Power BI để lưu trữ và chia sẻ. Power Query chuẩn bị dữ liệu và ứng dụng điện thoại Power BI dùng để xem nội dung.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 130",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/130-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-131",
+    "questionNumber": 131,
+    "text": "Which Azure Storage service uses the key/value model?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Queue"
+      },
+      {
+        "key": "B",
+        "text": "Azure Files"
+      },
+      {
+        "key": "C",
+        "text": "Azure Table"
+      },
+      {
+        "key": "D",
+        "text": "Azure Blob"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Azure Table storage cung cấp kho lưu trữ khóa/thuộc tính không có sơ đồ. Mỗi thực thể được xác định bởi `PartitionKey` và `RowKey` kết hợp, tạo thành khóa chính của nó.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 131",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/131-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-132",
+    "questionNumber": 132,
+    "text": "Question 132",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Databricks là nền tảng phân tích dựa trên Apache Spark dành cho kỹ thuật, phân tích và học máy quy mô lớn. Azure SQL Database là cơ sở dữ liệu quan hệ được quản lý, trong khi Azure Blob Storage cung cấp khả năng lưu trữ đối tượng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 132",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/132-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-133",
+    "questionNumber": 133,
+    "text": "You have an Azure SQL database that you access directly from the Internet.  \n  \nYou recently changed your computer’s public IP address. After the IP-address change, you can no longer access the database, although you can connect to other Azure resources.  \n  \nWhat could be causing this issue?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "role-based access control (RBAC)"
+      },
+      {
+        "key": "B",
+        "text": "Dynamic Host Configuration Protocol (DHCP)"
+      },
+      {
+        "key": "C",
+        "text": "Domain Name Service (DNS)"
+      },
+      {
+        "key": "D",
+        "text": "a database-level firewall"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure SQL Database đánh giá địa chỉ IP công cộng ban đầu dựa trên các quy tắc tường lửa IP của nó. Quy tắc tường lửa cấp cơ sở dữ liệu không bao gồm địa chỉ IP công cộng mới của máy tính sẽ chặn kết nối, mặc dù vẫn có khả năng kết nối với các tài nguyên Azure khác.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 133",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/133-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-134",
+    "questionNumber": 134,
+    "text": "Question 134",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "SQL Server trên Azure Virtual Machines là một triển khai IaaS hỗ trợ di chuyển nâng và dịch chuyển khối lượng công việc SQL Server hiện có với những thay đổi mã tối thiểu hoặc mã no. Cơ sở dữ liệu đơn lẻ và nhóm đàn hồi Azure SQL Database là các dịch vụ PaaS thường yêu cầu thích ứng thay vì di chuyển nguyên trạng môi trường máy chủ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 134",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/134-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-135",
+    "questionNumber": 135,
+    "text": "A development team has computers running Windows 10 and Ubuntu Desktop.  \n  \nThe developers must connect to and query an Azure SQL database from every computer. They require code-assistance features such as IntelliSense.  \n  \nWhat should the developers use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "sqlcmd"
+      },
+      {
+        "key": "B",
+        "text": "Microsoft SQL Server Management Studio (SSMS)"
+      },
+      {
+        "key": "C",
+        "text": "Azure Data Studio"
+      },
+      {
+        "key": "D",
+        "text": "Azure Data Explorer"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Azure Data Studio hỗ trợ Windows và Linux, kết nối với Azure SQL và cung cấp trình soạn thảo SQL hiện đại với IntelliSense. Do đó, nó đáp ứng cả yêu cầu truy cập đa nền tảng và yêu cầu hỗ trợ mã.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 135",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/135-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-137",
+    "questionNumber": 137,
+    "text": "Which statement is an example of Data Definition Language (DDL)?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "SELECT"
+      },
+      {
+        "key": "B",
+        "text": "INSERT"
+      },
+      {
+        "key": "C",
+        "text": "DELETE"
+      },
+      {
+        "key": "D",
+        "text": "DROP"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "`DROP` là câu lệnh Ngôn ngữ định nghĩa dữ liệu vì nó loại bỏ một đối tượng cơ sở dữ liệu, chẳng hạn như bảng, dạng xem hoặc cơ sở dữ liệu, khỏi lược đồ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 137",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/137-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-138",
+    "questionNumber": 138,
+    "text": "Which Azure Cosmos DB API should be used for a graph database?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Table"
+      },
+      {
+        "key": "B",
+        "text": "Cassandra"
+      },
+      {
+        "key": "C",
+        "text": "NoSQL"
+      },
+      {
+        "key": "D",
+        "text": "Gremlin"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure Cosmos DB dành cho Apache Gremlin là dịch vụ cơ sở dữ liệu đồ thị được quản lý. Nó lưu trữ, truy vấn và duyệt dữ liệu đồ thị bằng cách sử dụng ngôn ngữ truyền tải đồ thị Gremlin.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 138",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/138-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-139",
+    "questionNumber": 139,
+    "text": "Question 139",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Data Explorer sử dụng Ngôn ngữ truy vấn Kusto (KQL) làm ngôn ngữ truy vấn chính để khám phá, lọc và tổng hợp dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 139",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/139-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-140",
+    "questionNumber": 140,
+    "text": "Question 140",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Cơ sở dữ liệu quan hệ sử dụng khóa chính để xác định các hàng và khóa ngoại nhằm thiết lập và thực thi mối quan hệ giữa các bảng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 140",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/140-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-141",
+    "questionNumber": 141,
+    "text": "You have a Windows-based application that needs access to a mapped drive.  \n  \nWhich Azure service should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Files"
+      },
+      {
+        "key": "B",
+        "text": "Azure Blob storage"
+      },
+      {
+        "key": "C",
+        "text": "Azure Cosmos DB"
+      },
+      {
+        "key": "D",
+        "text": "Azure Table storage"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Files cung cấp tính năng chia sẻ tệp SMB được quản lý mà Windows có thể gắn kết và gán ký tự ổ đĩa, đáp ứng yêu cầu ứng dụng cho ổ đĩa được ánh xạ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 141",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/141-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-142",
+    "questionNumber": 142,
+    "text": "Question 142",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "JSON biểu thị dữ liệu với các trường được đặt tên và cấu trúc lồng nhau, đồng thời cho phép các bản ghi hoặc thực thể có các trường khác nhau. Lược đồ linh hoạt đó làm cho nó trở thành dữ liệu bán cấu trúc.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 142",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/142-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-143",
+    "questionNumber": 143,
+    "text": "Your company is developing an application that will write a large volume of JSON data and use an application-defined schema.  \n  \nWhich type of data store should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "columnar"
+      },
+      {
+        "key": "B",
+        "text": "key/value"
+      },
+      {
+        "key": "C",
+        "text": "document"
+      },
+      {
+        "key": "D",
+        "text": "graph"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Kho lưu trữ dữ liệu tài liệu được thiết kế cho khối lượng lớn dữ liệu JSON bán cấu trúc và hỗ trợ các lược đồ tài liệu linh hoạt, do ứng dụng xác định.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 143",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/143-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-144",
+    "questionNumber": 144,
+    "text": "You need to recommend a non-relational data store optimized to store and retrieve text files, videos, audio streams, and virtual disk images. The data store must retain the data, some metadata, and a unique ID for every file.  \n  \nWhich type of data store should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "key/value"
+      },
+      {
+        "key": "B",
+        "text": "columnar"
+      },
+      {
+        "key": "C",
+        "text": "object"
+      },
+      {
+        "key": "D",
+        "text": "document"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Lưu trữ đối tượng lưu trữ dữ liệu phi cấu trúc dưới dạng các đối tượng riêng biệt, mỗi đối tượng bao gồm chính dữ liệu đó, siêu dữ liệu liên quan và một mã định danh đối tượng duy nhất. Nó được thiết kế cho các tệp lớn như phương tiện và hình ảnh đĩa ảo.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 144",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/144-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-145",
+    "questionNumber": 145,
+    "text": "In a fully denormalized database, how are data read and written for one entity?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Data is read from a single table and written to a single table."
+      },
+      {
+        "key": "B",
+        "text": "Data is read from multiple tables and written to a single table."
+      },
+      {
+        "key": "C",
+        "text": "Data is read from a single table and written to multiple tables."
+      },
+      {
+        "key": "D",
+        "text": "Data is read from multiple tables and written to multiple tables."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Một thiết kế không chuẩn hóa hoàn toàn sẽ lưu trữ tất cả các thuộc tính của một thực thể cùng nhau trong một bảng, tránh việc kết hợp giữa các bảng có liên quan. Do đó, đọc và ghi cho thực thể đó nhắm mục tiêu vào một bảng duy nhất.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 145",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/145-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-146",
+    "questionNumber": 146,
+    "text": "Which task is a data engineer responsible for?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Explore data to identify trends."
+      },
+      {
+        "key": "B",
+        "text": "Implement policies, tools, and processes for backup and recovery plans."
+      },
+      {
+        "key": "C",
+        "text": "Design and build analytical models."
+      },
+      {
+        "key": "D",
+        "text": "Design and implement data stores for analytical workloads."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Kỹ sư dữ liệu triển khai các tạo phẩm liên quan đến dữ liệu, bao gồm các kho dữ liệu hỗ trợ khối lượng công việc phân tích. Vai trò của họ là cung cấp cơ sở hạ tầng dữ liệu đáng tin cậy, hiệu quả cho hoạt động phân tích tiếp theo.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 146",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/146-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-147",
+    "questionNumber": 147,
+    "text": "What is one function of a modern data warehouse?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "supports batch processing only"
+      },
+      {
+        "key": "B",
+        "text": "supports real-time and batch processing"
+      },
+      {
+        "key": "C",
+        "text": "provides built-in or native online analytical processing"
+      },
+      {
+        "key": "D",
+        "text": "stores raw data only"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Dữ liệu hiện đại warehouse hỗ trợ cả xử lý hàng loạt và theo thời gian thực để các tổ chức có thể phân tích dữ liệu mới đến cùng với dữ liệu được tải trong lịch sử.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 147",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/147-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-148",
+    "questionNumber": 148,
+    "text": "Which schema-design process reduces data duplication and ensures data integrity?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "normalization"
+      },
+      {
+        "key": "B",
+        "text": "batch processing"
+      },
+      {
+        "key": "C",
+        "text": "extraction"
+      },
+      {
+        "key": "D",
+        "text": "virtualization"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Chuẩn hóa cấu trúc các bảng quan hệ để giảm dữ liệu dư thừa và thực thi các phụ thuộc hợp lệ, giúp duy trì tính toàn vẹn của dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 148",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/148-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-149",
+    "questionNumber": 149,
+    "text": "For each of the following statements, select **Yes** if it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Processing salary payments once a month is an example of a batch workload.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "A wind turbine that sends 50 sensor readings per second is an example of a streaming workload.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "A home electricity meter that sends readings once a day to an energy provider is an example of a streaming workload.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Các khoản thanh toán lương hàng tháng được tích lũy và xử lý theo lịch trình, tức là xử lý theo đợt. Số đọc cảm biến đến 50 lần mỗi giây tạo thành một luồng sự kiện liên tục đang phát trực tuyến. Việc đọc đồng hồ đo hàng ngày là việc thu thập định kỳ, theo lịch trình chứ không phải là một đợt liên tục.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 149",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/149-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-150",
+    "questionNumber": 150,
+    "text": "Which two activities can be completed entirely by using the Microsoft Power BI service, without relying on Power BI Desktop? Each correct answer provides a complete solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "report and dashboard creation"
+      },
+      {
+        "key": "B",
+        "text": "report sharing and distribution"
+      },
+      {
+        "key": "C",
+        "text": "data modeling"
+      },
+      {
+        "key": "D",
+        "text": "data acquisition and preparation"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "B"
+    ],
+    "explanation": "Dịch vụ Power BI hỗ trợ tạo báo cáo trên trình duyệt và tạo bảng chỉ số từ báo cáo. Nó cũng cung cấp các tính năng cộng tác và phân phối để chia sẻ báo cáo và bảng chỉ số với những người dùng khác. Máy tính để bàn Power BI là môi trường chính để chuyển đổi và lập mô hình dữ liệu. [Microsoft Learn: What is Power BI?](https://learn.microsoft.com/en-us/power-bi/fundamentals/power-bi-overview)",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 150",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/150-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-151",
+    "questionNumber": 151,
+    "text": "You have a data store with the structure illustrated in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783769025515-29ixf62d.png)  \n  \nWhat type of data store is this?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "key/value"
+      },
+      {
+        "key": "B",
+        "text": "object data"
+      },
+      {
+        "key": "C",
+        "text": "graph"
+      },
+      {
+        "key": "D",
+        "text": "time series"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Kho dữ liệu đồ thị mô hình hóa các thực thể dưới dạng nút và các kết nối của chúng dưới dạng mối quan hệ. Nhân viên và các phòng ban được kết nối thông qua các mối quan hệ như đường dây báo cáo và thành viên phòng ban.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783769025515-29ixf62d.png",
+    "sourceTitle": "Examcademy DP-900 Question 151",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/151-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-152",
+    "questionNumber": 152,
+    "text": "Which Azure Cosmos DB API stores data in BSON format and uses MQL to query that data?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "MongoDB"
+      },
+      {
+        "key": "B",
+        "text": "Apache Gremlin"
+      },
+      {
+        "key": "C",
+        "text": "Table"
+      },
+      {
+        "key": "D",
+        "text": "PostgreSQL"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Cosmos DB dành cho MongoDB hỗ trợ các tài liệu được mã hóa ở định dạng BSON và truy vấn Ngôn ngữ truy vấn MongoDB (MQL).",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 152",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/152-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-153",
+    "questionNumber": 153,
+    "text": "What are two advantages of platform as a service (PaaS) relational database offerings in Azure, such as Azure SQL Database? Each correct answer provides a complete solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "access to the latest features"
+      },
+      {
+        "key": "B",
+        "text": "complete control over backup and restore processes"
+      },
+      {
+        "key": "C",
+        "text": "in-database machine learning services"
+      },
+      {
+        "key": "D",
+        "text": "reduced administrative effort for managing the server infrastructure"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "D"
+    ],
+    "explanation": "Azure SQL Database là một sản phẩm PaaS được quản lý hoàn toàn, được lưu giữ trên công cụ cơ sở dữ liệu SQL Server ổn định mới nhất và hệ điều hành được vá lỗi. Microsoft quản lý công cụ cơ sở dữ liệu, hệ điều hành và phần cứng cơ bản, giảm bớt công việc quản trị cần thiết để quản lý cơ sở hạ tầng máy chủ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 153",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/153-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-154",
+    "questionNumber": 154,
+    "text": "Your company must design a database that shows how network-traffic changes in one area of a network affect traffic in other network areas.  \n  \nWhich type of data store should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "graph"
+      },
+      {
+        "key": "B",
+        "text": "key/value"
+      },
+      {
+        "key": "C",
+        "text": "document"
+      },
+      {
+        "key": "D",
+        "text": "columnar"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Kho lưu trữ dữ liệu biểu đồ biểu thị các khu vực mạng dưới dạng nút và các kết nối hoặc phụ thuộc lưu lượng truy cập của chúng dưới dạng các cạnh, cho phép truyền tải và phân tích hiệu quả về cách thay đổi lan truyền qua các khu vực được kết nối. Cơ sở dữ liệu đồ thị được tối ưu hóa để lưu trữ và truy vấn mối quan hệ giữa các mục dữ liệu có tính kết nối cao.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 154",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/154-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-155",
+    "questionNumber": 155,
+    "text": "Within Azure Table storage, which two components uniquely identify each row in a table? Each correct answer represents part of the solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a partition key"
+      },
+      {
+        "key": "B",
+        "text": "a range"
+      },
+      {
+        "key": "C",
+        "text": "a row key"
+      },
+      {
+        "key": "D",
+        "text": "a timestamp"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "C"
+    ],
+    "explanation": "Một thực thể Azure Table Storage được xác định duy nhất bằng sự kết hợp giữa Khóa phân vùng và Khóa hàng của nó. DiskKey xác định phân vùng và RowKey xác định một thực thể trong phân vùng đó; Dấu thời gian được duy trì để hoạt động đồng thời lạc quan hơn là đóng vai trò như một phần của khóa thực thể.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 155",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/155-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-156",
+    "questionNumber": 156,
+    "text": "Which Azure Data Factory component supplies the compute environment for activities?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "SSIS packages"
+      },
+      {
+        "key": "B",
+        "text": "an integration runtime"
+      },
+      {
+        "key": "C",
+        "text": "a control flow"
+      },
+      {
+        "key": "D",
+        "text": "a pipeline"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "integration runtime cung cấp cơ sở hạ tầng điện toán và môi trường thực thi hoặc điều phối cho các hoạt động Azure Data Factory. Quy trình và luồng điều khiển xác định và điều phối công việc, trong khi các gói SSIS là khối lượng công việc thực thi có thể chạy trên Azure-SSIS integration runtime.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 156",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/156-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-157",
+    "questionNumber": 157,
+    "text": "You have a quality-assurance application that reads data from a data warehouse.  \n  \nWhat type of processing does the application use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Online Transaction Processing (OLTP)"
+      },
+      {
+        "key": "B",
+        "text": "batch processing"
+      },
+      {
+        "key": "C",
+        "text": "Online Analytical Processing (OLAP)"
+      },
+      {
+        "key": "D",
+        "text": "stream processing"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Xử lý phân tích trực tuyến (OLAP) được sử dụng để truy vấn và phân tích dữ liệu được lưu trữ trong dữ liệu warehouse để báo cáo, đảm bảo chất lượng và ra quyết định.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 157",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/157-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-158",
+    "questionNumber": 158,
+    "text": "Question 158",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Cosmos DB cho Apache Gremlin là API cơ sở dữ liệu đồ thị. Nó biểu diễn các đồ thị thuộc tính với các đỉnh (nút) và các cạnh, đồng thời các truy vấn và phép duyệt sử dụng ngôn ngữ Gremlin.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 158",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/158-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-159",
+    "questionNumber": 159,
+    "text": "For each of the following statements, select **Yes** when the statement is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "The pgAdmin tool can be used to manage Azure Database for PostgreSQL.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Azure Database for MariaDB offers point-in-time restore for up to 365 days.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Azure Database for MySQL always requires SSL connections.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "pgAdmin là ứng dụng khách được hỗ trợ để kết nối với Cơ sở dữ liệu Azure cho PostgreSQL và quản trị các đối tượng cơ sở dữ liệu. Cơ sở dữ liệu Azure để lưu giữ bản sao lưu MariaDB để khôi phục tại thời điểm được tính bằng ngày và không kéo dài đến 365 ngày. Cơ sở dữ liệu Azure cho MySQL cho phép vô hiệu hóa việc thực thi TLS, do đó có thể cho phép các kết nối không được mã hóa.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 159",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/159-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-160",
+    "questionNumber": 160,
+    "text": "Match the Azure Cosmos DB APIs with the corresponding data structures.  \n  \nAn API may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "graph-data",
+        "text": "Graph data",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "json-documents",
+        "text": "JSON documents",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "key-value-data",
+        "text": "Key/value data",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Cosmos DB for Apache Cassandra API"
+      },
+      {
+        "key": "B",
+        "text": "Azure Cosmos DB for Apache Gremlin API"
+      },
+      {
+        "key": "C",
+        "text": "Azure Cosmos DB for NoSQL API"
+      },
+      {
+        "key": "D",
+        "text": "Azure Cosmos DB for Table API"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Azure Cosmos DB for Apache Cassandra API"
+      },
+      {
+        "key": "B",
+        "text": "Azure Cosmos DB for Apache Gremlin API"
+      },
+      {
+        "key": "C",
+        "text": "Azure Cosmos DB for NoSQL API"
+      },
+      {
+        "key": "D",
+        "text": "Azure Cosmos DB for Table API"
+      }
+    ],
+    "correctAnswers": [
+      "graph-data=B",
+      "json-documents=C",
+      "key-value-data=D"
+    ],
+    "explanation": "Azure Cosmos DB dành cho Apache Gremlin được thiết kế cho dữ liệu biểu đồ thuộc tính, bao gồm các đỉnh và cạnh. Azure Cosmos DB dành cho NoSQL sử dụng các mục tài liệu JSON linh hoạt. Azure Cosmos DB dành cho Bảng được tối ưu hóa cho dữ liệu dạng bảng và khóa-giá trị, với các thực thể được xác định bằng các khóa phân vùng và hàng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 160",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/160-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-161",
+    "questionNumber": 161,
+    "text": "Question 161",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Phân tích mô tả tóm tắt hoặc trực quan hóa dữ liệu hiện tại và lịch sử. So sánh số lượng tuyển sinh hiện tại với số lượng tối đa sẽ mô tả mức độ sử dụng hiện tại của trường đại học; nó không dự đoán việc tuyển sinh trong tương lai cũng như không đưa ra quyết định.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 161",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/161-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-162",
+    "questionNumber": 162,
+    "text": "You need to implement an Azure platform-as-a-service (PaaS) offering to host a relational database. The solution must provide built-in autoscaling.  \n  \nWhich service should you implement?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure SQL Database"
+      },
+      {
+        "key": "B",
+        "text": "SQL Server on Azure Virtual Machines"
+      },
+      {
+        "key": "C",
+        "text": "Azure SQL Managed Instance"
+      },
+      {
+        "key": "D",
+        "text": "Azure SQL Edge"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure SQL Database là dịch vụ cơ sở dữ liệu quan hệ PaaS. Tầng điện toán không có máy chủ của nó tự động điều chỉnh quy mô tài nguyên điện toán trong phạm vi được định cấu hình theo nhu cầu khối lượng công việc, cung cấp tính năng tự động điều chỉnh quy mô tích hợp.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 162",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/162-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-163",
+    "questionNumber": 163,
+    "text": "For each of the following statements, select **Yes** when the statement is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "If you have a platform as a service (PaaS) database in Azure, you are responsible for applying operating system updates.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "If you have a platform as a service (PaaS) database in Azure, backups are performed automatically.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "If you have a platform as a service (PaaS) database in Azure, you are responsible for installation of the database engine.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Các dịch vụ cơ sở dữ liệu Azure PaaS được quản lý bởi Microsoft: Azure áp dụng các bản vá và nâng cấp hệ điều hành và công cụ cơ sở dữ liệu, đồng thời dịch vụ này tự động thực hiện sao lưu. Khách hàng quản lý dữ liệu, cấu hình, quyền truy cập và quản trị cơ sở dữ liệu cấp ứng dụng của họ thay vì cài đặt hoặc bảo trì công cụ và hệ điều hành cơ bản.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 163",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/163-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-164",
+    "questionNumber": 164,
+    "text": "Question 164",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "JSON biểu thị dữ liệu bằng cách sử dụng các đối tượng lồng nhau và các cặp tên/giá trị, cho phép các thực thể phân cấp có nhiều thuộc tính. CSV và TSV là các định dạng được phân cách bằng bảng và ORC là định dạng lưu trữ theo cột.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 164",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/164-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-165",
+    "questionNumber": 165,
+    "text": "You have a SQL query that joins customer data with order data and includes calculated columns.  \n  \nYou need to create a database object that enables other users to run the same SQL query again. What should you create?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an index"
+      },
+      {
+        "key": "B",
+        "text": "a view"
+      },
+      {
+        "key": "C",
+        "text": "a scalar function"
+      },
+      {
+        "key": "D",
+        "text": "a table"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Chế độ xem là một đối tượng cơ sở dữ liệu được xác định bởi truy vấn SQL đã lưu. Nó có thể kết hợp dữ liệu khách hàng và đơn đặt hàng, đồng thời bao gồm các cột được tính toán, cho phép người dùng chạy lại truy vấn bằng cách chọn từ chế độ xem.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 165",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/165-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-166",
+    "questionNumber": 166,
+    "text": "Which service is optimized for IoT scenarios involving streaming time-series data?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "SQL Server on Azure Virtual Machines"
+      },
+      {
+        "key": "B",
+        "text": "Azure SQL Managed Instance"
+      },
+      {
+        "key": "C",
+        "text": "Azure SQL Database"
+      },
+      {
+        "key": "D",
+        "text": "Azure SQL Edge"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure SQL Edge được tối ưu hóa cho việc triển khai IoT ở biên và cung cấp khả năng truyền phát tích hợp để phân tích thời gian thực và xử lý sự kiện phức tạp đối với dữ liệu chuỗi thời gian do thiết bị tạo.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 166",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/166-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-167",
+    "questionNumber": 167,
+    "text": "Match each storage solution with its appropriate description.  \n  \nEach solution can be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Stores a large amount of unstructured data.",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot2",
+        "text": "A cloud-based network share.",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot3",
+        "text": "A NoSQL storage solution that stores key/value data items.",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Blob storage"
+      },
+      {
+        "key": "B",
+        "text": "Azure Files"
+      },
+      {
+        "key": "C",
+        "text": "Azure SQL Database"
+      },
+      {
+        "key": "D",
+        "text": "Azure Table storage"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Azure Blob storage"
+      },
+      {
+        "key": "B",
+        "text": "Azure Files"
+      },
+      {
+        "key": "C",
+        "text": "Azure SQL Database"
+      },
+      {
+        "key": "D",
+        "text": "Azure Table storage"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=A",
+      "slot2=B",
+      "slot3=D"
+    ],
+    "explanation": "Azure Blob storage là một kho lưu trữ đối tượng được tối ưu hóa cho lượng lớn dữ liệu phi cấu trúc. Azure Files cung cấp khả năng chia sẻ tệp đám mây được quản lý hoàn toàn có thể truy cập được thông qua các giao thức chia sẻ tệp tiêu chuẩn. Azure Table storage là kho lưu trữ khóa/thuộc tính NoSQL không có sơ đồ. Azure SQL Database mang tính chất quan hệ và không phù hợp với những mô tả này.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 167",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/167-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-168",
+    "questionNumber": 168,
+    "text": "A bar chart that displays year-to-date sales by region is an example of which type of analytics?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "predictive"
+      },
+      {
+        "key": "B",
+        "text": "prescriptive"
+      },
+      {
+        "key": "C",
+        "text": "descriptive"
+      },
+      {
+        "key": "D",
+        "text": "diagnostic"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Phân tích mô tả tóm tắt dữ liệu lịch sử hoặc hiện tại để hiển thị những gì đã xảy ra, chẳng hạn như doanh số bán hàng từ đầu năm đến nay ở các khu vực.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 168",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/168-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-169",
+    "questionNumber": 169,
+    "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Azure Data Lake storage can be used as a staging area for ingested data before the data is converted into a format suitable for performing analytics.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Azure Data Factory is an analytics engine that uses a massively parallel processing (MPP) architecture.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Azure HDInsight enables you to build tabular models from multiple data sources to support online analytical processing (OLAP) queries.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "Azure Data Lake Storage có thể xử lý dữ liệu nguồn thô trước khi tải và chuyển đổi để phân tích. Azure Data Factory điều phối các quy trình chuyển đổi và di chuyển dữ liệu; Azure Synapse Analytics là công cụ phân tích MPP. Dịch vụ phân tích Azure, thay vì HDInsight, cung cấp các mô hình ngữ nghĩa dạng bảng để phân tích kiểu OLAP.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 169",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/169-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-170",
+    "questionNumber": 170,
+    "text": "Which two capabilities differentiate Delta Lake from Azure Data Lake Storage? Each correct answer provides a complete solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "support for batch data"
+      },
+      {
+        "key": "B",
+        "text": "schema enforcement"
+      },
+      {
+        "key": "C",
+        "text": "support for an Apache Spark runtime"
+      },
+      {
+        "key": "D",
+        "text": "transactional consistency"
+      },
+      {
+        "key": "E",
+        "text": "support for streaming data"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "D"
+    ],
+    "explanation": "Delta Lake bổ sung tính năng thực thi lược đồ để xác thực dữ liệu được ghi vào bảng và tính nhất quán của giao dịch ACID thông qua nhật ký giao dịch của nó. Azure Data Lake Storage là dịch vụ lưu trữ cơ bản; Delta Lake cung cấp các khả năng quản trị và độ tin cậy ở cấp độ bảng này.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 170",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/170-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-171",
+    "questionNumber": 171,
+    "text": "You have a database that stores data in the format shown in the following table.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783776382042-ez1qlfrm.png)  \n  \nWhat type of database does this represent?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "column family"
+      },
+      {
+        "key": "B",
+        "text": "relational"
+      },
+      {
+        "key": "C",
+        "text": "key-value"
+      },
+      {
+        "key": "D",
+        "text": "document"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Dữ liệu được sắp xếp dưới dạng khóa hàng (Khóa) cộng với hai nhóm cột liên quan - Khách hàng (Tên, Địa chỉ) và Sản phẩm (Tên, Giá). Việc nhóm các cột thành các họ có liên quan về mặt logic được xác định bằng khóa hàng là đặc điểm xác định của kho lưu trữ họ cột (cột rộng), chẳng hạn như Apache Cassandra hoặc Azure Cosmos DB cho Cassandra. Cơ sở dữ liệu tài liệu sẽ lưu trữ từng mục dưới dạng tài liệu JSON/BSON tự mô tả, kho lưu trữ khóa-giá trị sẽ ánh xạ khóa tới một giá trị mờ duy nhất và cơ sở dữ liệu quan hệ sử dụng các bảng phẳng với các mối quan hệ khóa ngoài thay vì các nhóm cột lồng nhau. Vì vậy, điều này đại diện cho một cơ sở dữ liệu họ cột.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783776382042-ez1qlfrm.png",
+    "sourceTitle": "Examcademy DP-900 Question 171",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/171-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-172",
+    "questionNumber": 172,
+    "text": "What is one primary characteristic of a relational database?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a flexible data structure"
+      },
+      {
+        "key": "B",
+        "text": "data is queried and manipulated by using a variant of the SQL language"
+      },
+      {
+        "key": "C",
+        "text": "a lack of dependencies between tables"
+      },
+      {
+        "key": "D",
+        "text": "a large amount of duplicate data"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Cơ sở dữ liệu quan hệ lưu trữ dữ liệu trong các bảng liên quan và sử dụng SQL hoặc một phương ngữ của SQL để truy vấn và thao tác dữ liệu đó.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 172",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/172-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-173",
+    "questionNumber": 173,
+    "text": "Question 173",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Cơ sở dữ liệu quan hệ lưu trữ thông tin trong các bảng (quan hệ), với các bản ghi được biểu thị dưới dạng hàng và các thuộc tính được biểu thị dưới dạng cột.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 173",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/173-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-174",
+    "questionNumber": 174,
+    "text": "Question 174",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Nhóm SQL chuyên dụng Azure Synapse Analytics sử dụng kiến ​​trúc MPP: nút điều khiển phối hợp và phân phối các truy vấn đến các nút tính toán, các nút này thực thi xử lý song song.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 174",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/174-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-175",
+    "questionNumber": 175,
+    "text": "Which Azure Blob Storage feature lets you synchronize a Blob Storage account with an external cache?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the Hot access tier"
+      },
+      {
+        "key": "B",
+        "text": "change feed"
+      },
+      {
+        "key": "C",
+        "text": "snapshots"
+      },
+      {
+        "key": "D",
+        "text": "versioning"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Nguồn cấp dữ liệu thay đổi cung cấp nhật ký lâu dài, có trật tự về các thay đổi đối với siêu dữ liệu blob và blob mà các ứng dụng khách có thể sử dụng để đồng bộ hóa bộ đệm. Microsoft Learn liệt kê việc đồng bộ hóa với bộ nhớ đệm dưới dạng kịch bản thay đổi nguồn cấp dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 175",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/175-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-176",
+    "questionNumber": 176,
+    "text": "In what form is raw data stored in a data lakehouse?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "as tables"
+      },
+      {
+        "key": "B",
+        "text": "as queues"
+      },
+      {
+        "key": "C",
+        "text": "as files"
+      },
+      {
+        "key": "D",
+        "text": "as disks"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Dữ liệu lakehouse giữ lại dữ liệu thô dưới dạng tệp trong đối tượng có thể mở rộng hoặc bộ lưu trữ phân tán. Các định nghĩa bảng cung cấp cấu trúc logic và lớp siêu dữ liệu trên các tệp cơ bản đó.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 176",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/176-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-177",
+    "questionNumber": 177,
+    "text": "Question 177",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "MAX và MIN là các hàm tổng hợp: chúng trả về giá trị tối đa và tối thiểu tương ứng trên một tập hợp các hàng hoặc giá trị.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 177",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/177-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-178",
+    "questionNumber": 178,
+    "text": "You need to create an Azure Storage account. Data in the account must be replicated automatically outside the Azure region.  \n  \nWhich two replication types can you use for the storage account? Each correct answer provides a complete solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "zone-redundant storage (ZRS)"
+      },
+      {
+        "key": "B",
+        "text": "read-access geo-redundant storage (RA-GRS)"
+      },
+      {
+        "key": "C",
+        "text": "locally-redundant storage (LRS)"
+      },
+      {
+        "key": "D",
+        "text": "geo-redundant storage (GRS)"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "D"
+    ],
+    "explanation": "Geo-redundant storage (GRS) sao chép không đồng bộ dữ liệu tài khoản lưu trữ sang vùng Azure phụ. Truy cập đọc geo-redundant storage (RA-GRS) cũng sao chép dữ liệu sang vùng thứ cấp và bổ sung cho phép quyền truy cập đọc vào điểm cuối phụ đó. LRS được giới hạn ở một trung tâm dữ liệu và ZRS đến availability zones trong khu vực chính.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 178",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/178-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-179",
+    "questionNumber": 179,
+    "text": "In Azure Blob Storage, blob rehydration happens when a blob moves between which access tiers?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Hot to Cool"
+      },
+      {
+        "key": "B",
+        "text": "Hot to Archive"
+      },
+      {
+        "key": "C",
+        "text": "Cool to Archive"
+      },
+      {
+        "key": "D",
+        "text": "Archive to Cool"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Archive tier đang ngoại tuyến. Việc di chuyển một blob đã lưu trữ sang Cool tier trực tuyến yêu cầu phải bù nước để blob có sẵn để truy cập.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 179",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/179-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-180",
+    "questionNumber": 180,
+    "text": "Question 180",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "CSV lưu trữ các giá trị dạng bảng ở định dạng văn bản được phân tách bằng dấu phân cách, thường sử dụng dấu phẩy.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 180",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/180-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-181",
+    "questionNumber": 181,
+    "text": "Question 181",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các tệp chứa đối tượng Avro lưu trữ lược đồ JSON trong tiêu đề của chúng và tuần tự hóa các bản ghi dữ liệu ở dạng nhị phân. Sàn gỗ và ORC là các định dạng lưu trữ theo cột; XML dựa trên văn bản.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 181",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/181-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-182",
+    "questionNumber": 182,
+    "text": "You need to run hybrid transactional and analytical processing (HTAP) queries against Azure Cosmos DB data sources by using Azure Synapse Analytics.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Synapse pipelines"
+      },
+      {
+        "key": "B",
+        "text": "a Synapse SQL pool"
+      },
+      {
+        "key": "C",
+        "text": "Synapse Link"
+      },
+      {
+        "key": "D",
+        "text": "Synapse Studio"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Azure Synapse Link cho Azure Cosmos DB cung cấp tích hợp HTAP trên nền tảng đám mây cho phép truy vấn phân tích gần như theo thời gian thực đối với dữ liệu Azure Cosmos DB đang hoạt động thông qua Azure Synapse Analytics.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 182",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/182-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-183",
+    "questionNumber": 183,
+    "text": "You need to analyze data by using Azure Databricks.  \n  \nWhich two methods can achieve this goal? Each correct answer provides a complete solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a Microsoft Power BI report."
+      },
+      {
+        "key": "B",
+        "text": "Create an Azure Data Factory pipeline."
+      },
+      {
+        "key": "C",
+        "text": "Use an Apache Spark job to process data stored in an Azure Cosmos DB database."
+      },
+      {
+        "key": "D",
+        "text": "Create a data flow in Azure Data Factory."
+      },
+      {
+        "key": "E",
+        "text": "Create an Apache Spark job that will run in a Spark cluster."
+      }
+    ],
+    "correctAnswers": [
+      "C",
+      "E"
+    ],
+    "explanation": "Azure Databricks chạy khối lượng công việc Apache Spark trên cụm điện toán Spark. Trình kết nối Azure Cosmos DB Spark cho phép Spark đọc và xử lý dữ liệu Azure Cosmos DB, do đó, công việc Spark có thể phân tích dữ liệu đó trong Azure Databricks.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 183",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/183-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-184",
+    "questionNumber": 184,
+    "text": "Match each workload type to its appropriate scenario.  \n  \nEach workload type may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Analyzing historical data containing web traffic collected during the previous year.",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot2",
+        "text": "Classifying images that were uploaded last month.",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot3",
+        "text": "Tracking in real time how many people are currently using a website.",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Batch"
+      },
+      {
+        "key": "B",
+        "text": "Streaming"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Batch"
+      },
+      {
+        "key": "B",
+        "text": "Streaming"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=A",
+      "slot2=A",
+      "slot3=B"
+    ],
+    "explanation": "Khối lượng công việc hàng loạt xử lý dữ liệu tích lũy theo khoảng thời gian đã lên lịch hoặc muộn hơn, phù hợp với lưu lượng truy cập web của năm trước và hình ảnh được tải lên vào tháng trước. Khối lượng công việc phát trực tuyến xử lý các sự kiện liên tục đến với độ trễ thấp, phù hợp với việc theo dõi thời gian thực của người dùng trang web đang hoạt động.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 184",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/184-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-185",
+    "questionNumber": 185,
+    "text": "Which Azure resource type supports configuring an Azure SQL database as serverless?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "SQL Server on Azure Virtual Machines"
+      },
+      {
+        "key": "B",
+        "text": "an Azure SQL Database elastic pool"
+      },
+      {
+        "key": "C",
+        "text": "a single database in Azure SQL Database"
+      },
+      {
+        "key": "D",
+        "text": "Azure SQL Managed Instance"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Tầng điện toán không có máy chủ có sẵn cho các cơ sở dữ liệu đơn lẻ trong Azure SQL Database. Nó tự động điều chỉnh quy mô điện toán theo nhu cầu khối lượng công việc và có thể tạm dừng khi không hoạt động; thay vào đó, các nhóm đàn hồi sử dụng tài nguyên điện toán được cung cấp chung.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 185",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/185-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-186",
+    "questionNumber": 186,
+    "text": "You need to store data by using Azure Table storage.  \n  \nWhat should you create initially?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "an Azure Cosmos DB instance"
+      },
+      {
+        "key": "B",
+        "text": "a storage account"
+      },
+      {
+        "key": "C",
+        "text": "a blob container"
+      },
+      {
+        "key": "D",
+        "text": "a table"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Tài khoản Azure Storage cung cấp không gian tên cho các dịch vụ Azure Storage, bao gồm Azure Table Storage. Một bảng được tạo trong tài khoản đó nên tài khoản lưu trữ phải được tạo trước.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 186",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/186-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-187",
+    "questionNumber": 187,
+    "text": "Question 187",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "CẬP NHẬT là một câu lệnh DML vì nó thay đổi dữ liệu trong các hàng hiện có của bảng. CREATE, DROP và RENAME sửa đổi các đối tượng cơ sở dữ liệu và là các câu lệnh DDL.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 187",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/187-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-188",
+    "questionNumber": 188,
+    "text": "Your company intends to load data from a customer relationship management (CRM) system into a data warehouse through an extract, load, and transform (ELT) process.  \n  \nIdentify where data processing takes place at each ELT stage. Each location may be used once, multiple times, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "extract",
+        "text": "Extract:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "load",
+        "text": "Load:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "transform",
+        "text": "Transform:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "An in-memory data integration tool"
+      },
+      {
+        "key": "B",
+        "text": "The CRM system"
+      },
+      {
+        "key": "C",
+        "text": "The data warehouse"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "An in-memory data integration tool"
+      },
+      {
+        "key": "B",
+        "text": "The CRM system"
+      },
+      {
+        "key": "C",
+        "text": "The data warehouse"
+      }
+    ],
+    "correctAnswers": [
+      "extract=B",
+      "load=C",
+      "transform=C"
+    ],
+    "explanation": "ELT trích xuất dữ liệu từ nguồn CRM và tải dữ liệu đó vào dữ liệu đích warehouse. Sau đó, các phép biến đổi sẽ chạy trong dữ liệu warehouse, sử dụng công cụ xử lý của nó thay vì công cụ tích hợp trong bộ nhớ bên ngoài.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 188",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/188-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-189",
+    "questionNumber": 189,
+    "text": "Question 189",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Dữ liệu warehouse là kho lưu trữ tập trung tích hợp dữ liệu từ nhiều nguồn cho khối lượng công việc báo cáo và phân tích.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 189",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/189-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-190",
+    "questionNumber": 190,
+    "text": "Match each term with its appropriate description.  \n  \nEach term may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "A solution that copies data from files and online transaction processing (OLTP) databases to an analytical processing system.",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot2",
+        "text": "Contains numeric values that can be analyzed.",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "slot3",
+        "text": "A solution that stores data in a relational schema that is optimized for read operations.",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Data warehouses"
+      },
+      {
+        "key": "B",
+        "text": "Dimension tables"
+      },
+      {
+        "key": "C",
+        "text": "Extract, transform, and load (ETL)"
+      },
+      {
+        "key": "D",
+        "text": "Fact tables"
+      },
+      {
+        "key": "E",
+        "text": "Online analytical processing (OLAP)"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Data warehouses"
+      },
+      {
+        "key": "B",
+        "text": "Dimension tables"
+      },
+      {
+        "key": "C",
+        "text": "Extract, transform, and load (ETL)"
+      },
+      {
+        "key": "D",
+        "text": "Fact tables"
+      },
+      {
+        "key": "E",
+        "text": "Online analytical processing (OLAP)"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=C",
+      "slot2=D",
+      "slot3=A"
+    ],
+    "explanation": "ETL trích xuất dữ liệu từ các nguồn hoạt động và dựa trên tệp, chuyển đổi dữ liệu và tải dữ liệu đó vào đích phân tích. Bảng sự kiện lưu trữ các thước đo định lượng để phân tích. Kho dữ liệu sử dụng các cấu trúc quan hệ được tối ưu hóa cho các truy vấn phân tích và khối lượng công việc đọc nhiều.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 190",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/190-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-191",
+    "questionNumber": 191,
+    "text": "Question 191",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các đốm màu trang Azure hỗ trợ các hoạt động đọc và ghi ngẫu nhiên và được tối ưu hóa cho các cập nhật thường xuyên ở các mức chênh lệch tùy ý, chẳng hạn như đĩa cứng ảo.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 191",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/191-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-192",
+    "questionNumber": 192,
+    "text": "Which activity is most typical of transactional workloads?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "recording small units of work events in real time"
+      },
+      {
+        "key": "B",
+        "text": "aggregating massive amounts of data"
+      },
+      {
+        "key": "C",
+        "text": "producing complex reports"
+      },
+      {
+        "key": "D",
+        "text": "performing self-service data exploration"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Khối lượng công việc giao dịch ghi lại và xử lý các sự kiện công việc nhỏ, riêng lẻ trong thời gian thực. Họ ưu tiên xử lý nhanh chóng, đáng tin cậy các hoạt động riêng biệt thay vì tổng hợp lớn, báo cáo phức tạp hoặc phân tích thăm dò.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 192",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/192-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-193",
+    "questionNumber": 193,
+    "text": "You must store data in Azure Blob storage for seven years to satisfy your company's compliance requirements. Data retrieval time is not important, and the solution must minimize storage costs.  \n  \nWhich storage tier should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Archive"
+      },
+      {
+        "key": "B",
+        "text": "Hot"
+      },
+      {
+        "key": "C",
+        "text": "Cool"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Archive tier được thiết kế cho dữ liệu dài hạn, hiếm khi được truy cập với độ trễ truy xuất linh hoạt. Nó có chi phí lưu trữ thấp nhất trong các tầng truy cập Azure Blob; độ trễ truy xuất cao hơn có thể chấp nhận được khi thời gian truy xuất không quan trọng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 193",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/193-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-194",
+    "questionNumber": 194,
+    "text": "Question 194",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Quá trình xử lý luồng đánh giá dữ liệu đến liên tục trong thời gian gần thực, giúp dữ liệu này phù hợp với các phân tích phức tạp yêu cầu độ trễ ngắn.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 194",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/194-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-195",
+    "questionNumber": 195,
+    "text": "You need to create an Azure resource that stores data in Azure Table storage.  \n  \nWhich command should you run?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "az storage share create"
+      },
+      {
+        "key": "B",
+        "text": "az storage account create"
+      },
+      {
+        "key": "C",
+        "text": "az cosmosdb create"
+      },
+      {
+        "key": "D",
+        "text": "az storage container create"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Tài khoản Azure Storage cung cấp không gian tên và điểm cuối dịch vụ cho các đối tượng dữ liệu Azure Storage, bao gồm cả bảng. Lệnh Azure CLI `az storage account create` tạo tài khoản đó. [Create an Azure storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create)",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 195",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/195-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-196",
+    "questionNumber": 196,
+    "text": "Question 196",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Hệ thống phân cấp thuộc tính sắp xếp các thuộc tính thứ nguyên thành các cấp theo thứ tự, cho phép người dùng đi sâu vào các giá trị chi tiết hơn hoặc đi sâu vào các giá trị tổng hợp trong Power BI.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 196",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/196-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-197",
+    "questionNumber": 197,
+    "text": "Question 197",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure SQL Edge là một công cụ dữ liệu SQL được tối ưu hóa cho việc triển khai biên IoT và xử lý cục bộ gần các thiết bị.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 197",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/197-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-198",
+    "questionNumber": 198,
+    "text": "Question 198",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Databricks là dịch vụ Azure dựa trên nền tảng phân tích Apache Spark. Nó là một phần của nền tảng Databricks, được cung cấp trên nhiều nhà cung cấp đám mây.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 198",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/198-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-199",
+    "questionNumber": 199,
+    "text": "What distinguishes structured data from semi-structured data?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Structured data has a fixed schema and semi-structured data has a flexible schema."
+      },
+      {
+        "key": "B",
+        "text": "Only Structured data supports entities."
+      },
+      {
+        "key": "C",
+        "text": "Structured data has a flexible schema and semi-structured data has a fixed schema."
+      },
+      {
+        "key": "D",
+        "text": "Only Structured data supports attributes."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Dữ liệu có cấu trúc tuân theo một lược đồ cố định, được xác định trước. Dữ liệu bán cấu trúc giữ lại một số tổ chức nhưng cho phép một lược đồ linh hoạt.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 199",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/199-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-200",
+    "questionNumber": 200,
+    "text": "For each of the following statements, select **Yes** if the statement is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Azure Table storage within a single Azure Storage account supports multiple concurrent reads in different Azure regions.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Azure Table storage within a single Azure Storage account supports multiple concurrent writes in different Azure regions.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "An Azure Cosmos DB account that uses the Table API supports multiple concurrent reads in different Azure regions.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "4",
+        "text": "An Azure Cosmos DB account that uses the Table API supports multiple concurrent writes in different Azure regions.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes",
+      "4:Yes"
+    ],
+    "explanation": "Với quyền truy cập đọc geo-redundant storage (RA-GRS), một tài khoản Azure Storage duy nhất sẽ sao chép dữ liệu lưu trữ Bảng sang một khu vực phụ nơi có thể đọc được, do đó hỗ trợ nhiều lần đọc đồng thời trên các khu vực (statement 1 Yes). Tuy nhiên, Azure Table storage chỉ chấp nhận ghi ở vùng chính; có no ghi nhiều vùng, vì vậy statement 2 là No. Azure Cosmos DB cho Bảng cung cấp khả năng phân phối toàn cầu theo hình thức chìa khóa trao tay với nhiều vùng có thể đọc được và ghi nhiều vùng chính (đa vùng), vì vậy cả hai câu lệnh 3 và 4 đều là Yes.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 200",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/200-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-201",
+    "questionNumber": 201,
+    "text": "Question 201",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Trong mô hình phân tích đa chiều, các kích thước tạo thành các trục được sử dụng để nhóm dữ liệu. Giao điểm của chúng là một ô chứa thước đo ở hạt chiều đó, thường là thước đo tổng hợp chẳng hạn như tổng doanh số hoặc số lượng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 201",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/201-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-202",
+    "questionNumber": 202,
+    "text": "You have data stored in the following format.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783769018972-axhs2uv9.png)  \n  \nWhich format is being used?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "YAML"
+      },
+      {
+        "key": "B",
+        "text": "CSV"
+      },
+      {
+        "key": "C",
+        "text": "JSON"
+      },
+      {
+        "key": "D",
+        "text": "HTML"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "CSV lưu trữ dữ liệu dạng bảng dưới dạng bản ghi trên các dòng riêng biệt, với các giá trị trong mỗi bản ghi được phân tách bằng dấu phẩy.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783769018972-axhs2uv9.png",
+    "sourceTitle": "Examcademy DP-900 Question 202",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/202-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-203",
+    "questionNumber": 203,
+    "text": "Match the database-normalization terms with the correct descriptions.  \n  \nEach term may be used once, multiple times, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Get separated into individual columns",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot2",
+        "text": "Get separated into individual tables",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot3",
+        "text": "Link two related entities",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Attributes"
+      },
+      {
+        "key": "B",
+        "text": "Entities"
+      },
+      {
+        "key": "C",
+        "text": "Foreign keys"
+      },
+      {
+        "key": "D",
+        "text": "Primary keys"
+      },
+      {
+        "key": "E",
+        "text": "Schemas"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Attributes"
+      },
+      {
+        "key": "B",
+        "text": "Entities"
+      },
+      {
+        "key": "C",
+        "text": "Foreign keys"
+      },
+      {
+        "key": "D",
+        "text": "Primary keys"
+      },
+      {
+        "key": "E",
+        "text": "Schemas"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=A",
+      "slot2=B",
+      "slot3=C"
+    ],
+    "explanation": "Thuộc tính là các trường của thực thể và được biểu diễn dưới dạng cột trong bảng. Các thực thể được mô hình hóa thành các bảng riêng biệt. Khóa ngoại tham chiếu khóa của bảng khác, thiết lập mối quan hệ giữa hai thực thể.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 203",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/203-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-204",
+    "questionNumber": 204,
+    "text": "Question 204",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Cosmos DB là dịch vụ cơ sở dữ liệu phân tán toàn cầu hỗ trợ ghi nhiều vùng, lập chỉ mục tự động và phân vùng theo chiều ngang, cho phép hiệu suất đọc và ghi có độ trễ thấp trên quy mô lớn.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 204",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/204-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-205",
+    "questionNumber": 205,
+    "text": "A bank operates a system that manages financial transactions.  \n  \nWhen money is transferred between accounts, the system must never retrieve a value for the source account that shows the balance before the transfer and a value for the destination account that shows the balance after the transfer.  \n  \nWhich ACID semantic does this illustrate?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "atomicity"
+      },
+      {
+        "key": "B",
+        "text": "durability"
+      },
+      {
+        "key": "C",
+        "text": "consistency"
+      },
+      {
+        "key": "D",
+        "text": "isolation"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Sự cô lập ngăn cản các hoạt động quan sát tác động một phần của giao dịch. Khoản ghi nợ và tín dụng của giao dịch chuyển khoản không được hiển thị ở trạng thái hỗn hợp trong đó một tài khoản phản ánh số dư trước khi chuyển khoản trong khi tài khoản kia phản ánh số dư sau giao dịch đó.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 205",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/205-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-206",
+    "questionNumber": 206,
+    "text": "You have a dedicated SQL pool in Azure Synapse Analytics that is actively used only for eight hours each night.  \n  \nYou need to minimize the dedicated SQL pool's cost as much as possible during idle periods. The solution must ensure the data remains intact.  \n  \nWhat should you do with the dedicated SQL pool?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Scale down the data warehouse units (DWUs)."
+      },
+      {
+        "key": "B",
+        "text": "Pause the pool."
+      },
+      {
+        "key": "C",
+        "text": "Create a user-defined restore point."
+      },
+      {
+        "key": "D",
+        "text": "Delete the pool"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Việc tạm dừng nhóm SQL chuyên dụng sẽ dừng và giải phóng tài nguyên điện toán, do đó chi phí tính toán DWU bằng 0 khi nhóm này bị tạm dừng. Dung lượng lưu trữ vẫn được tính phí riêng nhưng dữ liệu được lưu trữ không bị ảnh hưởng và vẫn nguyên vẹn cho đến khi nhóm được tiếp tục hoạt động.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 206",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/206-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-207",
+    "questionNumber": 207,
+    "text": "Question 207",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Nhà phân tích dữ liệu kiểm tra dữ liệu để tìm các mẫu và truyền đạt các phát hiện thông qua các báo cáo và hình ảnh trực quan. Kỹ sư dữ liệu tập trung vào cơ sở hạ tầng dữ liệu và quản trị viên cơ sở dữ liệu duy trì hoạt động của cơ sở dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 207",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/207-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-208",
+    "questionNumber": 208,
+    "text": "Question 208",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Cosmos DB dành cho Apache Gremlin sử dụng vùng chứa để lưu trữ dữ liệu biểu đồ và vùng chứa được biểu diễn dưới dạng biểu đồ trong API Gremlin.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 208",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/208-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-209",
+    "questionNumber": 209,
+    "text": "Which three services provide support for Apache Spark? Each correct answer represents a complete solution.  \n  \n> **NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Data Explorer"
+      },
+      {
+        "key": "B",
+        "text": "Azure Synapse Analytics"
+      },
+      {
+        "key": "C",
+        "text": "Azure Databricks"
+      },
+      {
+        "key": "D",
+        "text": "Azure Stream Analytics"
+      },
+      {
+        "key": "E",
+        "text": "Azure HDInsight"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "Azure Synapse Analytics hỗ trợ Apache Spark thông qua các nhóm Spark không có máy chủ. Azure Databricks chạy và tối ưu hóa khối lượng công việc Apache Spark và Azure HDInsight cung cấp các cụm Apache Spark được quản lý. Azure Data Explorer cung cấp một trình kết nối để trao đổi dữ liệu với các cụm Spark, thay vì lưu trữ chính Apache Spark.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 209",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/209-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-210",
+    "questionNumber": 210,
+    "text": "Match the visualization types with their corresponding descriptions.  \n  \nEach visualization type may be used once, multiple times, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "A chart of colored, nested rectangles that displays individual data points represented by the size and color of a relative rectangle.",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot2",
+        "text": "A chart that displays the major contributors of a selected result or value.",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot3",
+        "text": "A chart that shows the relationship between two numerical values.",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Key influencer"
+      },
+      {
+        "key": "B",
+        "text": "Scatter"
+      },
+      {
+        "key": "C",
+        "text": "Treemap"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Key influencer"
+      },
+      {
+        "key": "B",
+        "text": "Scatter"
+      },
+      {
+        "key": "C",
+        "text": "Treemap"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=C",
+      "slot2=A",
+      "slot3=B"
+    ],
+    "explanation": "Sơ đồ cây hiển thị các giá trị phân cấp hoặc tương đối dưới dạng hình chữ nhật lồng nhau, với kích thước hình chữ nhật và giá trị mã hóa màu. Hình ảnh trực quan của Người có ảnh hưởng chính xác định các yếu tố thúc đẩy chỉ số hoặc kết quả đã chọn. Biểu đồ phân tán vẽ hai thước đo bằng số để thể hiện mối quan hệ của chúng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 210",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/210-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-211",
+    "questionNumber": 211,
+    "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Stream processing can process all the data in a dataset at once.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "Batch processing occurs immediately, with latency in the order of seconds or milliseconds.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Stream processing is used for simple response functions, aggregates, or calculations, such as rolling averages.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Xử lý hàng loạt hoạt động trên tập dữ liệu tích lũy hoàn chỉnh, trong khi xử lý luồng xử lý các bản ghi liên tục khi chúng đến. Xử lý luồng được thiết kế để mang lại kết quả có độ trễ thấp và hỗ trợ tính toán tổng hợp và cuộn theo cửa sổ; xử lý hàng loạt không diễn ra ngay lập tức ở độ trễ vài giây hoặc mili giây.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 211",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/211-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-212",
+    "questionNumber": 212,
+    "text": "Match the analytics types that can answer the business questions. Each analytics type may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Why did sales increase last month?",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot2",
+        "text": "Provide specific guidance on how to allocate current budget to buy different inventory items.",
+        "correctAnswer": "E"
+      },
+      {
+        "id": "slot3",
+        "text": "Detect images of the company’s logo included in PDF documents",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Cognitive"
+      },
+      {
+        "key": "B",
+        "text": "Diagnostic"
+      },
+      {
+        "key": "C",
+        "text": "Descriptive"
+      },
+      {
+        "key": "D",
+        "text": "Predictive"
+      },
+      {
+        "key": "E",
+        "text": "Prescriptive"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Cognitive"
+      },
+      {
+        "key": "B",
+        "text": "Diagnostic"
+      },
+      {
+        "key": "C",
+        "text": "Descriptive"
+      },
+      {
+        "key": "D",
+        "text": "Predictive"
+      },
+      {
+        "key": "E",
+        "text": "Prescriptive"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=B",
+      "slot2=E",
+      "slot3=A"
+    ],
+    "explanation": "Phân tích chẩn đoán giải thích lý do xảy ra kết quả trong quá khứ. Phân tích theo quy định đề xuất một hành động, chẳng hạn như phân bổ ngân sách. Phân tích nhận thức có thể nhận dạng và giải thích nội dung hình ảnh phi cấu trúc, bao gồm hình ảnh logo được nhúng trong tài liệu PDF.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 212",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/212-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-213",
+    "questionNumber": 213,
+    "text": "Select the option that correctly finishes the sentence.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Power BI Desktop là ứng dụng soạn thảo chính để kết nối với dữ liệu, chuyển đổi và lập mô hình dữ liệu cũng như tạo báo cáo. Sau đó, những nội dung báo cáo đó có thể được xuất bản lên dịch vụ Power BI và được xem qua ứng dụng di động.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 213",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/213-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-214",
+    "questionNumber": 214,
+    "text": "Match the datastore services with their corresponding descriptions.  \n  \nEach service can be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Enables the use of SQL queries against data stored in JSON documents",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot2",
+        "text": "Enables users to access data by using the Server Message Block (SMB) version 3 protocol",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Blob storage"
+      },
+      {
+        "key": "B",
+        "text": "Azure Cosmos DB"
+      },
+      {
+        "key": "C",
+        "text": "Azure Files"
+      },
+      {
+        "key": "D",
+        "text": "Azure Table storage"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Azure Blob storage"
+      },
+      {
+        "key": "B",
+        "text": "Azure Cosmos DB"
+      },
+      {
+        "key": "C",
+        "text": "Azure Files"
+      },
+      {
+        "key": "D",
+        "text": "Azure Table storage"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=B",
+      "slot2=C"
+    ],
+    "explanation": "Azure Cosmos DB lưu trữ các mục dưới dạng JSON và cung cấp ngôn ngữ truy vấn SQL để truy vấn dữ liệu đó. Azure Files cung cấp tính năng chia sẻ tệp qua SMB và hỗ trợ các phiên bản giao thức SMB 3.x.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 214",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/214-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-215",
+    "questionNumber": 215,
+    "text": "A company needs to deploy a relational database in Azure while minimizing ongoing maintenance.  \n  \nWhich Azure service should it use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure SQL Database"
+      },
+      {
+        "key": "B",
+        "text": "Azure Cosmos DB"
+      },
+      {
+        "key": "C",
+        "text": "Azure Databricks"
+      },
+      {
+        "key": "D",
+        "text": "SQL Server on Azure Virtual Machines"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure SQL Database là nền tảng cơ sở dữ liệu quan hệ được quản lý hoàn toàn (PaaS). Microsoft quản lý các hoạt động thường lệ bao gồm vá lỗi, nâng cấp, sao lưu và giám sát, giúp giảm thiểu việc bảo trì liên tục.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 215",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/215-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-216",
+    "questionNumber": 216,
+    "text": "Question 216",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Khóa chính và khóa ngoài xác định mối quan hệ giữa các bảng quan hệ và thực thi tính toàn vẹn tham chiếu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 216",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/216-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-217",
+    "questionNumber": 217,
+    "text": "For each statement, select **Yes** when it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "In a relational database, the schema is defined before data is written to the table.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Key/value data stores are highly optimized for complex queries that contain multiple joins.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "A relational database is commonly used to store and query structured data.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Cơ sở dữ liệu quan hệ sử dụng lược đồ khi ghi, sắp xếp dữ liệu có cấu trúc trong bảng và hỗ trợ các truy vấn SQL phong phú bao gồm cả các phép nối. Các cửa hàng khóa/giá trị được tối ưu hóa để tra cứu điểm theo khóa thay vì các phép nối nhiều bảng phức tạp.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 217",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/217-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-218",
+    "questionNumber": 218,
+    "text": "Which transactional-workload property ensures that every transaction is handled as one unit, either completing entirely or failing entirely?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "atomicity"
+      },
+      {
+        "key": "B",
+        "text": "isolation"
+      },
+      {
+        "key": "C",
+        "text": "durability"
+      },
+      {
+        "key": "D",
+        "text": "consistency"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Tính nguyên tử đảm bảo một giao dịch là tất cả hoặc không có gì: các thay đổi của nó được thực hiện hoàn toàn hoặc tất cả chúng đều được khôi phục khi giao dịch thất bại.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 218",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/218-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-219",
+    "questionNumber": 219,
+    "text": "Question 219",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "ETL biến đổi và xử lý dữ liệu được trích xuất trước khi tải nó đến đích. Nguồn và đích không cần chia sẻ lược đồ, đích không thực hiện chuyển đổi và đích có thể không quan hệ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 219",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/219-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-220",
+    "questionNumber": 220,
+    "text": "What is one characteristic of batch processing?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "The data ingested during batch processing must be processed as soon as the data is received."
+      },
+      {
+        "key": "B",
+        "text": "Large datasets must be split into batches of less than 1 GB before the data can be processed."
+      },
+      {
+        "key": "C",
+        "text": "There is a noticeable time delay between ingesting data and obtaining the data processing results."
+      },
+      {
+        "key": "D",
+        "text": "Batch processing can only process data that is structured."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Quá trình xử lý hàng loạt sẽ tích lũy dữ liệu và xử lý dữ liệu đó theo các khoảng thời gian đã lên lịch hoặc theo nhóm, gây ra độ trễ đáng kể giữa quá trình nhập dữ liệu và kết quả đầu ra được xử lý.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 220",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/220-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-221",
+    "questionNumber": 221,
+    "text": "For each statement below, select **Yes** when it is true; otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Azure Data Studio can be used to query an Azure SQL database from a device that runs macOS.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Microsoft SQL Server Management Studio (SSMS) enables users to create and use SQL notebooks.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Azure Data Studio can be used to restore a database.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Azure Data Studio hỗ trợ macOS và có thể truy vấn Azure SQL Database. Sổ ghi chép SQL được tạo và chạy trong Azure Data Studio thay vì SQL Server Management Studio. Azure Data Studio bao gồm hỗ trợ sao lưu và khôi phục cho cơ sở dữ liệu SQL Server.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 221",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/221-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-222",
+    "questionNumber": 222,
+    "text": "Question 222",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "XML biểu diễn dữ liệu bằng cách sử dụng các thẻ lồng nhau, tự mô tả. Điều này mang lại sự tổ chức linh hoạt mà không áp đặt lược đồ bảng quan hệ cố định, vì vậy XML là dữ liệu bán cấu trúc.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 222",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/222-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-223",
+    "questionNumber": 223,
+    "text": "Match the Azure SQL services with the corresponding use cases. Each service can be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "A serverless configuration",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot2",
+        "text": "A database that has the highest compatibility with on-premises Microsoft SQL Server",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot3",
+        "text": "A low-cost, low-maintenance database",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure SQL Database elastic pool"
+      },
+      {
+        "key": "B",
+        "text": "Azure SQL Database single database"
+      },
+      {
+        "key": "C",
+        "text": "Azure SQL Managed instance"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Azure SQL Database elastic pool"
+      },
+      {
+        "key": "B",
+        "text": "Azure SQL Database single database"
+      },
+      {
+        "key": "C",
+        "text": "Azure SQL Managed instance"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=B",
+      "slot2=C",
+      "slot3=A"
+    ],
+    "explanation": "Cơ sở dữ liệu đơn Azure SQL Database hỗ trợ tầng điện toán serverless. Azure SQL Managed Instance cung cấp khả năng tương thích gần như hoàn toàn với công cụ cơ sở dữ liệu SQL Server, khiến nó phù hợp nhất cho khả năng tương thích SQL Server tại chỗ. Nhóm đàn hồi chia sẻ tài nguyên điện toán giữa các cơ sở dữ liệu Azure SQL, giảm chi phí và quản trị cho cơ sở dữ liệu có nhu cầu khác nhau.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 223",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/223-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-224",
+    "questionNumber": 224,
+    "text": "A company must deploy a relational database in Azure. The solution needs to minimize ongoing maintenance.  \n  \nWhich Azure service should be used?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure HDInsight"
+      },
+      {
+        "key": "B",
+        "text": "Azure SQL Database"
+      },
+      {
+        "key": "C",
+        "text": "Azure Cosmos DB"
+      },
+      {
+        "key": "D",
+        "text": "SQL Server on Azure Virtual Machines"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Azure SQL Database là dịch vụ cơ sở dữ liệu PaaS quan hệ được quản lý hoàn toàn. Nó giảm tải công việc quản lý cơ sở dữ liệu thông thường, bao gồm nâng cấp, vá lỗi, sao lưu và giám sát, giúp giảm thiểu việc bảo trì liên tục.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 224",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/224-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-225",
+    "questionNumber": 225,
+    "text": "Question 225",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "ELT tải dữ liệu thô vào kho lưu trữ dữ liệu đích trước khi chuyển đổi, do đó cửa hàng đó phải có khả năng thực hiện các chuyển đổi được yêu cầu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 225",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/225-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-226",
+    "questionNumber": 226,
+    "text": "When an Azure SQL database is created, which account can always connect to that database?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the Azure Active Directory (Azure AD) account that created the database"
+      },
+      {
+        "key": "B",
+        "text": "the server admin login account of the logical server"
+      },
+      {
+        "key": "C",
+        "text": "the Azure Active Directory (Azure AD) administrator account"
+      },
+      {
+        "key": "D",
+        "text": "the sa account"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Thông tin đăng nhập quản trị viên máy chủ của máy chủ logic được cung cấp đầy đủ quyền quản trị cho tất cả các cơ sở dữ liệu trên máy chủ đó, bao gồm cả cơ sở dữ liệu mới được tạo. Danh tính Azure AD của người tạo cơ sở dữ liệu không được tự động cấp quyền truy cập cơ sở dữ liệu; quản trị viên Azure AD là tùy chọn; và Azure SQL Database có tài khoản no `sa`.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 226",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/226-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-227",
+    "questionNumber": 227,
+    "text": "Question 227",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các thủ tục được lưu trữ chứa các câu lệnh cơ sở dữ liệu có thể thực thi được và đóng gói logic kinh doanh hoặc lập trình có thể tái sử dụng. Bảng lưu trữ dữ liệu, dạng xem xác định tập hợp kết quả và lập chỉ mục tối ưu hóa việc truy cập dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 227",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/227-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-228",
+    "questionNumber": 228,
+    "text": "Which database transaction property ensures that each individual transaction runs only once and either completes entirely or is rolled back?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "atomicity"
+      },
+      {
+        "key": "B",
+        "text": "durability"
+      },
+      {
+        "key": "C",
+        "text": "isolation"
+      },
+      {
+        "key": "D",
+        "text": "consistency"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Atomicity xử lý một giao dịch như một đơn vị công việc được làm tất cả hoặc không có gì: mọi thao tác đều thành công và cam kết, hoặc một thất bại khiến toàn bộ giao dịch bị quay trở lại.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 228",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/228-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-229",
+    "questionNumber": 229,
+    "text": "You need to store semi-structured event-log data as the logs are generated.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Table storage"
+      },
+      {
+        "key": "B",
+        "text": "Azure Queue storage"
+      },
+      {
+        "key": "C",
+        "text": "Azure Files"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Table storage cung cấp kho lưu trữ khóa/thuộc tính NoSQL không có sơ đồ cho dữ liệu không quan hệ, do đó, nó có thể lưu trữ các bản ghi nhật ký bán cấu trúc có thuộc tính có thể thay đổi theo thời gian. Lưu trữ hàng đợi dành cho nhắn tin không đồng bộ, trong khi Azure Files là dịch vụ chia sẻ tệp.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 229",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/229-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-230",
+    "questionNumber": 230,
+    "text": "Question 230",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Apache Parquet là một định dạng tệp hướng theo cột được tổ chức thành các nhóm hàng và các khối cột. Avro, JSON và XML không phải là các định dạng lưu trữ theo cột.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 230",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/230-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-231",
+    "questionNumber": 231,
+    "text": "Which schema type is used for structured data in which each row represents a single data entity?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "XML"
+      },
+      {
+        "key": "B",
+        "text": "tabular"
+      },
+      {
+        "key": "C",
+        "text": "blob"
+      },
+      {
+        "key": "D",
+        "text": "JSON"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Lược đồ dạng bảng lưu trữ dữ liệu theo hàng và cột, trong đó mỗi hàng là một thực thể hoặc bản ghi riêng biệt và các cột xác định các thuộc tính của thực thể đó.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 231",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/231-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-232",
+    "questionNumber": 232,
+    "text": "Which statement is an example of Data Manipulation Language (DML)?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "REVOKE"
+      },
+      {
+        "key": "B",
+        "text": "DISABLE"
+      },
+      {
+        "key": "C",
+        "text": "INSERT"
+      },
+      {
+        "key": "D",
+        "text": "GRANT"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "INSERT là một câu lệnh Ngôn ngữ thao tác dữ liệu vì nó thêm các hàng dữ liệu mới vào bảng cơ sở dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 232",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/232-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-233",
+    "questionNumber": 233,
+    "text": "Match the Azure Data Lake Storage Gen2 terms with the appropriate levels in the hierarchy.  \n  \nEach term may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "Slot 1:",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "slot2",
+        "text": "Slot 2:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Storage account"
+      },
+      {
+        "key": "B",
+        "text": "File share"
+      },
+      {
+        "key": "C",
+        "text": "Container"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Azure Storage account"
+      },
+      {
+        "key": "B",
+        "text": "File share"
+      },
+      {
+        "key": "C",
+        "text": "Container"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=A",
+      "slot2=C"
+    ],
+    "explanation": "Azure Data Lake Storage Gen2 được triển khai thông qua tài khoản Azure Storage với không gian tên phân cấp. Tài khoản lưu trữ chứa các thùng chứa và một thùng chứa có thể chứa các thư mục (thư mục) và tệp. Chia sẻ tệp Azure Files không phải là cấp độ phân cấp ADLS Gen2 tương đương.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 233",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/233-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-234",
+    "questionNumber": 234,
+    "text": "Question 234",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Synapse Analytics hợp nhất kho dữ liệu SQL doanh nghiệp, phân tích hồ dữ liệu và xử lý dữ liệu lớn Apache Spark.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 234",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/234-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-235",
+    "questionNumber": 235,
+    "text": "Question 235",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Danh sách kiểm soát truy cập Azure Data Lake Storage cung cấp các quyền giống POSIX cho từng tệp và thư mục riêng lẻ. Ủy quyền ACL được bật khi tài khoản lưu trữ đã bật không gian tên phân cấp.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 235",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/235-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-236",
+    "questionNumber": 236,
+    "text": "Question 236",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Việc kích hoạt không gian tên phân cấp sẽ kích hoạt các khả năng của Azure Data Lake Storage Gen2, bao gồm cấu trúc thư mục phân cấp, danh sách kiểm soát truy cập POSIX cấp thư mục và các hoạt động thư mục nguyên tử.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 236",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/236-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-237",
+    "questionNumber": 237,
+    "text": "Question 237",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Trong lược đồ hình sao, các thứ nguyên cung cấp các thuộc tính được sử dụng để lọc, nhóm, tổng hợp và cắt lát các thước đo thực tế.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 237",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/237-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-238",
+    "questionNumber": 238,
+    "text": "Question 238",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các hoạt động luồng điều khiển Azure Data Factory điều phối việc thực hiện quy trình thông qua các phần phụ thuộc của hoạt động và có thể chuyển đầu ra của hoạt động sang các hoạt động tiếp theo. Tập dữ liệu xác định dữ liệu, dịch vụ được liên kết xác định kết nối và integration runtime cung cấp khả năng tính toán hoặc kết nối thực thi.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 238",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/238-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-239",
+    "questionNumber": 239,
+    "text": "For each statement, select **Yes** when it is true; otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Copying data to Azure Data Lake Storage from another Azure region results in extra cost.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "You can use blob, table, and file storage in the same Azure Storage account.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "You implement Azure Data Lake Storage by creating an Azure Storage account.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Sao chép dữ liệu lưu trữ trên các vùng Azure sẽ phát sinh phí đầu ra mạng. Tài khoản lưu trữ v2 đa năng hỗ trợ các dịch vụ Blob, Table và Azure Files. Azure Data Lake Storage Gen2 được xây dựng trên Azure Storage và được kích hoạt bằng cách tạo tài khoản lưu trữ có hỗ trợ không gian tên phân cấp.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 239",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/239-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-240",
+    "questionNumber": 240,
+    "text": "Match each cloud service model to its appropriate Azure relational database service.  \n  \nEach model may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "azure_sql_database",
+        "text": "Azure SQL Database",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "azure_sql_managed_instance",
+        "text": "Azure SQL Managed Instance",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "sql_server_on_azure_virtual_machines",
+        "text": "SQL Server on Azure Virtual Machines",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Infrastructure as a service"
+      },
+      {
+        "key": "B",
+        "text": "Platform as a service"
+      },
+      {
+        "key": "C",
+        "text": "Software as a service"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Infrastructure as a service"
+      },
+      {
+        "key": "B",
+        "text": "Platform as a service"
+      },
+      {
+        "key": "C",
+        "text": "Software as a service"
+      }
+    ],
+    "correctAnswers": [
+      "azure_sql_database=B",
+      "azure_sql_managed_instance=B",
+      "sql_server_on_azure_virtual_machines=A"
+    ],
+    "explanation": "Azure SQL Database và Azure SQL Managed Instance là Nền tảng do Microsoft quản lý dưới dạng dịch vụ cơ sở dữ liệu Dịch vụ, bao gồm bản vá được quản lý, bản sao lưu và cơ sở hạ tầng cơ bản. SQL Server trên Azure Virtual Machines là Cơ sở hạ tầng dưới dạng Dịch vụ vì khách hàng quản lý phiên bản SQL Server và hệ điều hành trên VM.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 240",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/240-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-241",
+    "questionNumber": 241,
+    "text": "Your company must ensure that an Azure virtual machine can connect to Azure SQL databases without exposing those databases to the internet.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Application Gateway"
+      },
+      {
+        "key": "B",
+        "text": "Azure Traffic Manager"
+      },
+      {
+        "key": "C",
+        "text": "Azure DNS"
+      },
+      {
+        "key": "D",
+        "text": "Azure Private Link"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure Private Link sử dụng private endpoint với địa chỉ IP riêng trong mạng ảo, cho phép Azure virtual machines truy cập Azure SQL Database một cách riêng tư qua đường trục của Microsoft thay vì qua internet công cộng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 241",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/241-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-242",
+    "questionNumber": 242,
+    "text": "For each statement below, select **Yes** when it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Azure Table storage supports multiple read replicas.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "Azure Table storage supports multiple write regions.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "The Azure Cosmos DB Table API supports multiple read replicas.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "4",
+        "text": "The Azure Cosmos DB Table API supports multiple write regions.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:Yes",
+      "4:Yes"
+    ],
+    "explanation": "Azure Table storage hoạt động chủ động-thụ động giữa các khu vực: RA-GRS/RA-GZRS cung cấp quyền truy cập đọc vào một điểm cuối phụ duy nhất, trong khi hoạt động ghi vẫn ở khu vực chính. Azure Cosmos DB dành cho Bảng hỗ trợ các vùng đọc được phân phối trên toàn cầu và hỗ trợ ghi nhiều vùng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 242",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/242-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-243",
+    "questionNumber": 243,
+    "text": "You need to use Transact-SQL to query files in Azure Data Lake Storage Gen 2 from an Azure Synapse Analytics data warehouse.  \n  \nWhat should you use to query the files?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Functions"
+      },
+      {
+        "key": "B",
+        "text": "Microsoft SQL Server Integration Services (SSIS)"
+      },
+      {
+        "key": "C",
+        "text": "PolyBase"
+      },
+      {
+        "key": "D",
+        "text": "Azure Data Factory"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "PolyBase cho phép Azure Synapse Analytics truy cập dữ liệu ngoài được lưu trữ trong Azure Data Lake Storage thông qua Transact-SQL, sử dụng các đối tượng nguồn dữ liệu ngoài và bảng ngoài.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 243",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/243-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-244",
+    "questionNumber": 244,
+    "text": "Question 244",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các mô hình OLAP tối ưu hóa các truy vấn phân tích bằng cách lưu trữ hoặc sử dụng dữ liệu tóm tắt được tổng hợp trước, giúp tăng tốc độ phân tích và báo cáo đa chiều.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 244",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/244-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-245",
+    "questionNumber": 245,
+    "text": "For each statement below, select **Yes** when it is true; otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Azure SQL Database includes a managed backup service.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Azure SQL Database has built-in high availability.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "Azure SQL Database can use Azure Defender.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Azure SQL Database bao gồm các bản sao lưu được quản lý, tự động. Kiến trúc PaaS của nó cung cấp tính khả dụng tích hợp thông qua sao chép, phục hồi tự động và hành vi chuyển đổi dự phòng được quản lý bởi nền tảng. Bộ bảo vệ Microsoft dành cho Cơ sở dữ liệu Azure SQL bảo vệ các cơ sở dữ liệu đơn lẻ và vùng linh hoạt Azure SQL được hỗ trợ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 245",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/245-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-246",
+    "questionNumber": 246,
+    "text": "Your company intends to load data from a customer relationship management (CRM) system into a data warehouse by using an extract, load, and transform (ELT) process.  \n  \nWhere does data processing take place during each ELT stage? Each location may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "extract",
+        "text": "Extract:",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "load",
+        "text": "Load:",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "transform",
+        "text": "Transform:",
+        "correctAnswer": "C"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "A standalone data analysis tool"
+      },
+      {
+        "key": "B",
+        "text": "The CRM system"
+      },
+      {
+        "key": "C",
+        "text": "The data warehouse"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "A standalone data analysis tool"
+      },
+      {
+        "key": "B",
+        "text": "The CRM system"
+      },
+      {
+        "key": "C",
+        "text": "The data warehouse"
+      }
+    ],
+    "correctAnswers": [
+      "extract=B",
+      "load=C",
+      "transform=C"
+    ],
+    "explanation": "ELT trích xuất dữ liệu từ hệ thống CRM nguồn, tải dữ liệu đó vào dữ liệu đích warehouse, sau đó chuyển đổi dữ liệu đó bằng khả năng xử lý của kho dữ liệu đích. Không cần có công cụ phân tích dữ liệu riêng cho các giai đoạn ELT này.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 246",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/246-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-247",
+    "questionNumber": 247,
+    "text": "You manage an application that stores data in a shared folder on a Windows Server.  \n  \nYou need to migrate the shared folder to Azure Storage.  \n  \nWhich type of Azure Storage should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "queue"
+      },
+      {
+        "key": "B",
+        "text": "blob"
+      },
+      {
+        "key": "C",
+        "text": "file"
+      },
+      {
+        "key": "D",
+        "text": "table"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Azure Files cung cấp tính năng chia sẻ tệp được quản lý hoàn toàn mà Windows Server có thể truy cập thông qua giao thức SMB, biến nó thành loại Bộ lưu trữ Azure thích hợp để di chuyển thư mục dùng chung.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 247",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/247-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-248",
+    "questionNumber": 248,
+    "text": "Which setting can be configured only when creating an Azure Cosmos DB account?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "geo-redundancy"
+      },
+      {
+        "key": "B",
+        "text": "multi-region writes"
+      },
+      {
+        "key": "C",
+        "text": "production or non-production account type"
+      },
+      {
+        "key": "D",
+        "text": "API"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "API tài khoản Azure Cosmos DB xác định loại tài khoản và mô hình dữ liệu (chẳng hạn như NoSQL, MongoDB, Cassandra, Gremlin hoặc Table). Loại tài khoản này chỉ có thể được đặt khi tài khoản cơ sở dữ liệu được tạo; nó không thể được thay đổi sau đó.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 248",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/248-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-249",
+    "questionNumber": 249,
+    "text": "For each statement below, select Yes when it is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "You create Azure File Storage in a storage account.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "The Premium tier of Azure File Storage uses HDD-based hardware in a datacenter.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "The Standard tier of Azure File Storage uses SSDs.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "Azure Files được cung cấp thông qua tài khoản lưu trữ Azure. Azure Files cao cấp sử dụng ổ đĩa thể rắn (SSD), trong khi chia sẻ tệp Azure tiêu chuẩn được hỗ trợ bởi ổ đĩa cứng (HDD).",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 249",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/249-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.563Z"
+  },
+  {
+    "id": "dp900-250",
+    "questionNumber": 250,
+    "text": "Question 250",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Mô hình OLAP trình bày dữ liệu warehouse tổng hợp trong một khối đa chiều. Số đo là các giá trị số được phân tích trong khối, trong khi các thứ nguyên cung cấp các danh mục được sử dụng để phân tích chúng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 250",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/250-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-251",
+    "questionNumber": 251,
+    "text": "A bank must ensure that, once an account-transfer transaction has completed, the updated account balances persist even if the database system hosting that transaction is temporarily unavailable.  \n  \nWhich ACID semantic does this illustrate?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "durability"
+      },
+      {
+        "key": "B",
+        "text": "isolation"
+      },
+      {
+        "key": "C",
+        "text": "atomicity"
+      },
+      {
+        "key": "D",
+        "text": "consistency"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Độ bền đảm bảo rằng sau khi giao dịch được thực hiện, các thay đổi của nó sẽ được ghi lại vĩnh viễn và vẫn có sẵn ngay cả khi hệ thống cơ sở dữ liệu sau đó gặp lỗi hoặc ngừng hoạt động tạm thời.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 251",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/251-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-252",
+    "questionNumber": 252,
+    "text": "Question 252",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các cửa hàng khóa/giá trị liên kết mỗi giá trị với một khóa duy nhất và chủ yếu hỗ trợ các thao tác truy vấn, chèn và xóa đơn giản. Điểm mạnh của họ là tra cứu theo key nhanh, độ trễ thấp; các phép nối quan hệ và thực thi ràng buộc là các khả năng của cơ sở dữ liệu quan hệ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 252",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/252-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-253",
+    "questionNumber": 253,
+    "text": "For each following statement, select **Yes** if it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Normalization involves eliminating relationships between database tables.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "Normalizing a database reduces data redundancy.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "Normalization improves data integrity.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Bình thường hóa không loại bỏ các mối quan hệ; nó cấu trúc chúng bằng cách sử dụng các khóa và các bảng liên quan. Nó làm giảm dữ liệu dư thừa và giúp duy trì dữ liệu nhất quán, chính xác, cải thiện tính toàn vẹn.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 253",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/253-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-254",
+    "questionNumber": 254,
+    "text": "Question 254",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các khả năng của Azure Data Lake Storage được mở khóa bằng cách bật cài đặt không gian tên phân cấp trên tài khoản Azure Storage. Nó cung cấp thư mục phân cấp và ngữ nghĩa hệ thống tệp mà Data Lake Storage yêu cầu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 254",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/254-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-255",
+    "questionNumber": 255,
+    "text": "Your company is planning a data store that will hold student data. The data has the following format.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783766052989-k7w1rn97.png)  \n  \nWhich data-store type should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "graph"
+      },
+      {
+        "key": "B",
+        "text": "key/value"
+      },
+      {
+        "key": "C",
+        "text": "object"
+      },
+      {
+        "key": "D",
+        "text": "columnar"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Kho lưu trữ dữ liệu khóa/giá trị sử dụng mã số sinh viên làm khóa duy nhất và lưu trữ thông tin sinh viên liên quan làm giá trị. Nó hỗ trợ các bản ghi với các nhóm thuộc tính khác nhau, chẳng hạn như tên ưa thích, địa chỉ email, ID MCP hoặc số điện thoại.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783766052989-k7w1rn97.png",
+    "sourceTitle": "Examcademy DP-900 Question 255",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/255-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-256",
+    "questionNumber": 256,
+    "text": "Which feature characterizes a non-relational database?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "full support for Transact-SQL"
+      },
+      {
+        "key": "B",
+        "text": "a fixed schema"
+      },
+      {
+        "key": "C",
+        "text": "self-describing entities"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Cơ sở dữ liệu phi quan hệ thường sử dụng các thực thể linh hoạt, tự mô tả, có thể bao gồm các thuộc tính riêng của chúng và không yêu cầu lược đồ cố định, cứng nhắc.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 256",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/256-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-257",
+    "questionNumber": 257,
+    "text": "Which Azure service offers the greatest compatibility for databases migrated from Microsoft SQL Server 2019 Enterprise edition?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure SQL Database"
+      },
+      {
+        "key": "B",
+        "text": "Azure Database for MySQL"
+      },
+      {
+        "key": "C",
+        "text": "Azure SQL Managed Instance"
+      },
+      {
+        "key": "D",
+        "text": "an Azure SQL Database elastic pool"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Azure SQL Managed Instance cung cấp tính năng tương đương gần nhất và khả năng tương thích cấp phiên bản với SQL Server, cho phép các phiên bản và cơ sở dữ liệu SQL Server hiện có di chuyển với các vấn đề tương thích ở mức tối thiểu sang no. Azure SQL Database và vùng đàn hồi là các dịch vụ trong phạm vi cơ sở dữ liệu với bề mặt tính năng SQL Server hẹp hơn; Cơ sở dữ liệu Azure cho MySQL không phải là mục tiêu SQL Server.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 257",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/257-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-258",
+    "questionNumber": 258,
+    "text": "You have a transactional application that stores data in an Azure SQL Managed Instance.  \n  \nWhen should you deploy a read-only database replica?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "You need to generate reports without affecting the transactional workload."
+      },
+      {
+        "key": "B",
+        "text": "You need to audit the transactional application."
+      },
+      {
+        "key": "C",
+        "text": "You need to implement high availability in the event of a regional outage."
+      },
+      {
+        "key": "D",
+        "text": "You need to improve the recovery point objective (RPO)."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Bản sao chỉ đọc có thể giảm tải báo cáo và các truy vấn chỉ đọc khác khỏi khối lượng công việc đọc-ghi chính, duy trì hiệu suất giao dịch. Mở rộng quy mô đọc Azure SQL Managed Instance được thiết kế để tách biệt khối lượng công việc chỉ đọc như báo cáo và phân tích khỏi khối lượng công việc ghi.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 258",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/258-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-259",
+    "questionNumber": 259,
+    "text": "Match each data storage option with the appropriate type of data.  \n  \nEach data storage option may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "audio_files",
+        "text": "Audio files",
+        "correctAnswer": "A"
+      },
+      {
+        "id": "json_documents",
+        "text": "JSON documents",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "tabular_datasets",
+        "text": "Tabular datasets",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Blob Storage"
+      },
+      {
+        "key": "B",
+        "text": "Azure Cosmos DB for NoSQL"
+      },
+      {
+        "key": "C",
+        "text": "Azure Data Factory"
+      },
+      {
+        "key": "D",
+        "text": "Azure SQL Database"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Azure Blob Storage"
+      },
+      {
+        "key": "B",
+        "text": "Azure Cosmos DB for NoSQL"
+      },
+      {
+        "key": "C",
+        "text": "Azure Data Factory"
+      },
+      {
+        "key": "D",
+        "text": "Azure SQL Database"
+      }
+    ],
+    "correctAnswers": [
+      "audio_files=A",
+      "json_documents=B",
+      "tabular_datasets=D"
+    ],
+    "explanation": "Azure Blob Storage lưu trữ dữ liệu đối tượng phi cấu trúc, bao gồm các tệp âm thanh. Azure Cosmos DB dành cho NoSQL lưu trữ các mục JSON linh hoạt theo lược đồ. Azure SQL Database là một dịch vụ quan hệ được thiết kế cho dữ liệu dạng bảng có cấu trúc. Azure Data Factory điều phối và chuyển đổi dữ liệu nhưng không phải là dịch vụ lưu trữ phù hợp.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 259",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/259-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-260",
+    "questionNumber": 260,
+    "text": "Question 260",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Tính năng chuyển giọng nói thành văn bản tạo chú thích văn bản bằng cách nhận dạng và xử lý ngôn ngữ nói, đây là khả năng nhận thức của AI. Phân tích mô tả tóm tắt dữ liệu trong quá khứ, phân tích dự đoán dự đoán kết quả và phân tích mô tả đề xuất hành động.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 260",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/260-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-261",
+    "questionNumber": 261,
+    "text": "Question 261",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Chỉ mục được nhóm xác định thứ tự vật lý của dữ liệu bảng dựa trên các giá trị khóa của nó. Các lựa chọn khác không sắp xếp dữ liệu bảng theo khóa.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 261",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/261-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-262",
+    "questionNumber": 262,
+    "text": "What should be used to automatically delete blobs from Azure Blob Storage?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "archive storage"
+      },
+      {
+        "key": "B",
+        "text": "the change feed"
+      },
+      {
+        "key": "C",
+        "text": "soft delete"
+      },
+      {
+        "key": "D",
+        "text": "a lifecycle management policy"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Chính sách quản lý vòng đời Azure Blob Storage sử dụng các điều kiện dựa trên quy tắc để tự động xóa các đốm màu. Nó có thể áp dụng các hành động xóa theo độ tuổi blob, thời gian sửa đổi, cấp truy cập và các tiêu chí được hỗ trợ khác.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 262",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/262-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-263",
+    "questionNumber": 263,
+    "text": "Question 263",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Chế độ xem là một bảng ảo được xác định bởi một truy vấn; các hàng và cột của nó được lấy từ kết quả truy vấn cơ bản.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 263",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/263-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-264",
+    "questionNumber": 264,
+    "text": "Which storage solution provides access control lists (ACLs) at the file and folder level?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Data Lake Storage"
+      },
+      {
+        "key": "B",
+        "text": "Azure Queue storage"
+      },
+      {
+        "key": "C",
+        "text": "Azure Blob storage"
+      },
+      {
+        "key": "D",
+        "text": "Azure Cosmos DB"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure Data Lake Storage hỗ trợ các ACL giống POSIX cho các quyền chi tiết trên các tệp và thư mục riêng lẻ, bao gồm kiểm soát truy cập cấp thư mục.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 264",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/264-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-265",
+    "questionNumber": 265,
+    "text": "The data is stored in the following format.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783769412647-i9rigtb8.png)  \n  \nWhich format is being used?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "JSON"
+      },
+      {
+        "key": "B",
+        "text": "YAML"
+      },
+      {
+        "key": "C",
+        "text": "HTML"
+      },
+      {
+        "key": "D",
+        "text": "XML"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "XML thể hiện dữ liệu phân cấp với các phần tử lồng nhau, thẻ mở và đóng cũng như thuộc tính. `Person`, `FirstName`, `Hobby` và các phần tử được gắn thẻ khác, cùng với các thuộc tính như `Age` và `Type`, tuân theo cú pháp XML.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783769412647-i9rigtb8.png",
+    "sourceTitle": "Examcademy DP-900 Question 265",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/265-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-266",
+    "questionNumber": 266,
+    "text": "Match the Azure services with the appropriate locations in the architecture. Each service can be used once, multiple times, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "ingest",
+        "text": "Ingest",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "preprocess_model",
+        "text": "Preprocess & model",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Cognitive Search"
+      },
+      {
+        "key": "B",
+        "text": "Azure Data Catalog"
+      },
+      {
+        "key": "C",
+        "text": "Azure Data Factory"
+      },
+      {
+        "key": "D",
+        "text": "Azure Synapse Analytics"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Azure Cognitive Search"
+      },
+      {
+        "key": "B",
+        "text": "Azure Data Catalog"
+      },
+      {
+        "key": "C",
+        "text": "Azure Data Factory"
+      },
+      {
+        "key": "D",
+        "text": "Azure Synapse Analytics"
+      }
+    ],
+    "correctAnswers": [
+      "ingest=C",
+      "preprocess_model=D"
+    ],
+    "explanation": "Azure Data Factory nhập và điều phối chuyển động dữ liệu vào Azure Data Lake Storage. Azure Synapse Analytics hỗ trợ chuẩn bị, chuyển đổi và lập mô hình dữ liệu trên dữ liệu hồ trước khi được phân phát thông qua Dịch vụ phân tích Azure và Power BI.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 266",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/266-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-267",
+    "questionNumber": 267,
+    "text": "For each statement, select **Yes** when it is true; otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Azure Synapse Analytics scales storage and compute independently",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Azure Synapse Analytics can be paused to reduce compute costs",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "An Azure Synapse Analytics data warehouse has a fixed storage capacity",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Nhóm SQL chuyên dụng tách biệt lưu trữ khỏi điện toán, cho phép mở rộng quy mô độc lập. Việc tạm dừng sẽ giải phóng tài nguyên điện toán và ngừng tính phí điện toán, trong khi dung lượng lưu trữ vẫn được giữ nguyên và được tính phí riêng. Do đó, dung lượng lưu trữ không phải là dung lượng warehouse cố định.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 267",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/267-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-268",
+    "questionNumber": 268,
+    "text": "In an analytical data model, which table type holds entities used to aggregate numeric values, with each entity represented by a row that has a unique key value?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "bridge"
+      },
+      {
+        "key": "B",
+        "text": "dimension"
+      },
+      {
+        "key": "C",
+        "text": "fact"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Bảng thứ nguyên chứa các thực thể kinh doanh theo đó các thước đo số được phân loại, nhóm lại và tổng hợp. Mỗi thành viên thứ nguyên được lưu trữ dưới dạng một hàng với một khóa duy nhất tham chiếu đến các bảng thực tế.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 268",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/268-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-269",
+    "questionNumber": 269,
+    "text": "Which T-SQL statement should be used to tell a database management system to use an index rather than carry out a full table scan?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "WHERE"
+      },
+      {
+        "key": "B",
+        "text": "SELECT"
+      },
+      {
+        "key": "C",
+        "text": "UNION"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Mệnh đề `WHERE` cung cấp một vị từ tìm kiếm. Khi vị từ đó phù hợp với cột được lập chỉ mục, SQL Server có thể sử dụng tìm kiếm chỉ mục để truy xuất các hàng đủ điều kiện thay vì quét tất cả các hàng. `SELECT` dự án kết quả và `UNION` kết hợp các tập hợp kết quả; không cung cấp vị từ lọc này. Lựa chọn chỉ mục vẫn là quyết định tối ưu hóa trừ khi sử dụng gợi ý bảng rõ ràng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 269",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/269-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-270",
+    "questionNumber": 270,
+    "text": "Which database transaction property guarantees that transaction changes are retained through unexpected operating system restarts?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "consistency"
+      },
+      {
+        "key": "B",
+        "text": "atomicity"
+      },
+      {
+        "key": "C",
+        "text": "durability"
+      },
+      {
+        "key": "D",
+        "text": "isolation"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Độ bền đảm bảo rằng các thay đổi giao dịch đã cam kết được lưu trữ liên tục và tồn tại trong các lỗi như khởi động lại hệ điều hành bất ngờ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 270",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/270-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-271",
+    "questionNumber": 271,
+    "text": "GRANT, REVOKE, and DENY are examples of what type of SQL statement?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Data Definition language (DDL)"
+      },
+      {
+        "key": "B",
+        "text": "Data Control Language (DCL)"
+      },
+      {
+        "key": "C",
+        "text": "Data Manipulation Language (DML)"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Các quyền kiểm soát CẤP, THU HỒI và TỪ CHỐI cũng như các đặc quyền truy cập đối với các nguyên tắc cơ sở dữ liệu, đó là mục đích của Ngôn ngữ điều khiển dữ liệu (DCL).",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 271",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/271-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-272",
+    "questionNumber": 272,
+    "text": "A bank must ensure that a transaction that debits funds from a source account and credits the same funds to a destination account completes both actions. If either action fails to complete, the other action must also fail.  \n  \nWhich ACID semantic does this illustrate?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "consistency"
+      },
+      {
+        "key": "B",
+        "text": "durability"
+      },
+      {
+        "key": "C",
+        "text": "atomicity"
+      },
+      {
+        "key": "D",
+        "text": "isolation"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Atomicity làm cho một giao dịch không thể phân chia được: tất cả các hoạt động của nó được thực hiện cùng nhau hoặc toàn bộ giao dịch được khôi phục. Do đó, việc chuyển tiền không thể chỉ để lại khoản ghi nợ hoặc chỉ khoản tín dụng được hoàn thành.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 272",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/272-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-273",
+    "questionNumber": 273,
+    "text": "SELECT, INSERT, and UPDATE are examples of what type of SQL statement?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Data Definition Language (DDL)"
+      },
+      {
+        "key": "B",
+        "text": "Data Control Language (DCL)"
+      },
+      {
+        "key": "C",
+        "text": "Data Manipulation Language (DML)"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Ngôn ngữ thao tác dữ liệu (DML) bao gồm các câu lệnh được sử dụng để truy xuất hoặc thay đổi dữ liệu trong các bảng cơ sở dữ liệu, bao gồm CHỌN, CHÈN và CẬP NHẬT.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 273",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/273-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-274",
+    "questionNumber": 274,
+    "text": "Question 274",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Synapse Analytics chứa công cụ và trải nghiệm Tích hợp dữ liệu tương tự như Azure Data Factory, cho phép tạo và thực thi các đường dẫn ETL trong không gian làm việc Synapse.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 274",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/274-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-275",
+    "questionNumber": 275,
+    "text": "Which two Azure services can be used to provision Apache Spark clusters? Each correct answer provides a complete solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Time Series Insights"
+      },
+      {
+        "key": "B",
+        "text": "Azure HDInsight"
+      },
+      {
+        "key": "C",
+        "text": "Azure Databricks"
+      },
+      {
+        "key": "D",
+        "text": "Azure Log Analytics"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "C"
+    ],
+    "explanation": "Azure HDInsight hỗ trợ cung cấp loại cụm Apache Spark chuyên dụng. Azure Databricks sử dụng Apache Spark để cung cấp năng lượng cho các cụm điện toán của nó. Azure Time Series Insights và Azure Log Analytics là các dịch vụ giám sát và phân tích, không phải dịch vụ cung cấp cụm Apache Spark.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 275",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/275-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-276",
+    "questionNumber": 276,
+    "text": "Question 276",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Quản trị viên cơ sở dữ liệu quản lý quyền truy cập cơ sở dữ liệu, quyền và các biện pháp kiểm soát bảo mật khác để bảo vệ dữ liệu được lưu trữ trong cơ sở dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 276",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/276-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-277",
+    "questionNumber": 277,
+    "text": "Question 277",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Các hồ dữ liệu có thể mở rộng quy mô để lưu trữ và phân tích khối lượng lớn dữ liệu đa dạng, bao gồm dữ liệu có cấu trúc, bán cấu trúc và không cấu trúc.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 277",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/277-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-278",
+    "questionNumber": 278,
+    "text": "Question 278",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Chỉ mục được nhóm sắp xếp và lưu trữ các hàng dữ liệu của bảng theo thứ tự khóa chỉ mục được nhóm. Một bảng chỉ có thể có một chỉ mục được nhóm vì các hàng dữ liệu của nó chỉ có thể được lưu trữ theo một thứ tự vật lý.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 278",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/278-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-279",
+    "questionNumber": 279,
+    "text": "What type of database service is Azure Database for PostgreSQL?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Platform as a service (PaaS)"
+      },
+      {
+        "key": "B",
+        "text": "Infrastructure as a service (IaaS)"
+      },
+      {
+        "key": "C",
+        "text": "Microsoft SQL Server"
+      },
+      {
+        "key": "D",
+        "text": "on-premises"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Cơ sở dữ liệu Azure cho PostgreSQL là dịch vụ cơ sở dữ liệu PostgreSQL được quản lý hoàn toàn được cung cấp dưới dạng nền tảng dưới dạng dịch vụ (PaaS). Microsoft quản lý nền tảng cơ bản và các tác vụ vận hành, trong khi PostgreSQL được triển khai trên Azure virtual machines là giải pháp thay thế IaaS.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 279",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/279-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-280",
+    "questionNumber": 280,
+    "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Online transaction processing (OLTP) relies on a database system where data storage is optimized for both read and write operations.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Online analytical processing (OLAP) relies on a database system where data storage is optimized for both read and write operations.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Data warehouses are optimized for read operations.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Cơ sở dữ liệu OLTP được thiết kế để đọc và ghi giao dịch khối lượng lớn. Khối lượng công việc OLAP và kho dữ liệu được thiết kế chủ yếu để truy vấn và báo cáo phân tích, trong đó nhấn mạnh đến hiệu suất đọc hơn là hiệu suất ghi giao dịch.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 280",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/280-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-281",
+    "questionNumber": 281,
+    "text": "For each statement below, select **Yes** when it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Azure Databricks is an Apache Spark-based analytics platform.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Azure Analysis Services is used for transactional workloads.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Azure Data Factory orchestrates data integration workflows.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Azure Databricks là nền tảng phân tích dựa trên Apache Spark. Dịch vụ phân tích Azure hỗ trợ các mô hình dữ liệu ngữ nghĩa và phân tích thông tin doanh nghiệp thay vì khối lượng công việc giao dịch. Azure Data Factory là dịch vụ tích hợp dữ liệu đám mây giúp điều phối các quy trình chuyển đổi và di chuyển dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 281",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/281-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-282",
+    "questionNumber": 282,
+    "text": "You need to ensure that users use multi-factor authentication (MFA) when they connect to an Azure SQL database.  \n  \nWhich authentication type should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "service principal authentication"
+      },
+      {
+        "key": "B",
+        "text": "Azure Active Directory (Azure AD) authentication"
+      },
+      {
+        "key": "C",
+        "text": "SQL authentication"
+      },
+      {
+        "key": "D",
+        "text": "certificate authentication"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Xác thực Azure Active Directory (Azure AD) tích hợp đăng nhập Azure SQL Database bằng Microsoft Entra ID, trong đó các chính sách Truy cập có điều kiện có thể yêu cầu xác thực đa yếu tố cho người dùng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 282",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/282-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-283",
+    "questionNumber": 283,
+    "text": "Question 283",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Nhóm SQL chuyên dụng Azure Synapse Analytics sử dụng kiến ​​trúc xử lý song song quy mô lớn để phân phối công việc truy vấn trên các nút điện toán.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 283",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/283-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-284",
+    "questionNumber": 284,
+    "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "In non-relational databases, data is always stored in tables.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "In non-relational databases, data is always stored by using a fixed schema.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "In non-relational databases, two entities in the same collection can have different sets of fields.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Cơ sở dữ liệu phi quan hệ sử dụng nhiều mô hình dữ liệu khác nhau và không giới hạn ở các bảng quan hệ. Chúng thường cho phép các lược đồ linh hoạt, do đó các bản ghi trong cùng một bộ sưu tập có thể chứa các trường khác nhau.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 284",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/284-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-285",
+    "questionNumber": 285,
+    "text": "For each statement, select **Yes** when it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Data engineers identify data governance rules.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Data engineers create data ingestion pipelines.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "Data engineers implement backup and recovery processes for database systems.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:No"
+    ],
+    "explanation": "Các kỹ sư dữ liệu xác định các quy tắc quản trị và xây dựng quy trình nhập/tích hợp để di chuyển và chuyển đổi dữ liệu. Sao lưu và phục hồi cơ sở dữ liệu là trách nhiệm quản trị cơ sở dữ liệu cốt lõi chứ không phải là vai trò kỹ thuật dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 285",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/285-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-286",
+    "questionNumber": 286,
+    "text": "In what situation can you use an Azure Resource Manager template?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "to automate the creation of an interdependent group of Azure resources in a repeatable way"
+      },
+      {
+        "key": "B",
+        "text": "to apply Azure policies for multi-tenant deployments"
+      },
+      {
+        "key": "C",
+        "text": "to provision Azure subscriptions"
+      },
+      {
+        "key": "D",
+        "text": "to control which services and feature administrators and developers can deploy from the Azure portal"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Các mẫu Trình quản lý tài nguyên Azure cung cấp các triển khai khai báo, lặp lại của tài nguyên Azure và có thể thể hiện sự phụ thuộc giữa các tài nguyên đó để Trình quản lý tài nguyên triển khai chúng theo thứ tự bắt buộc.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 286",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/286-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-287",
+    "questionNumber": 287,
+    "text": "Question 287",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Nhóm đàn hồi Azure SQL Database cung cấp một nhóm tài nguyên lưu trữ và tính toán chung mà nhiều cơ sở dữ liệu có thể sử dụng. Nó dành cho các cơ sở dữ liệu có mô hình sử dụng khác nhau hoặc không thể đoán trước.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 287",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/287-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-288",
+    "questionNumber": 288,
+    "text": "Question 288",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Nhà phân tích dữ liệu xác định các yêu cầu kinh doanh và quy tắc kinh doanh phải chi phối dữ liệu để báo cáo và phân tích phù hợp với nhu cầu của tổ chức.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 288",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/288-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-289",
+    "questionNumber": 289,
+    "text": "Match the terms with the correct descriptions.  \n  \nEach term may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "A database object that holds data",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot2",
+        "text": "A database object whose content is defined by a query",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot3",
+        "text": "A database object that helps improve the speed of data retrieval",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Index"
+      },
+      {
+        "key": "B",
+        "text": "View"
+      },
+      {
+        "key": "C",
+        "text": "Table"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Index"
+      },
+      {
+        "key": "B",
+        "text": "View"
+      },
+      {
+        "key": "C",
+        "text": "Table"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=C",
+      "slot2=B",
+      "slot3=A"
+    ],
+    "explanation": "Bảng lưu trữ dữ liệu, dạng xem trình bày tập kết quả được xác định bởi truy vấn và chỉ mục cung cấp cấu trúc dữ liệu giúp cơ sở dữ liệu truy xuất dữ liệu hiệu quả hơn.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 289",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/289-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-290",
+    "questionNumber": 290,
+    "text": "For each statement below, select **Yes** if it is true; otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Stream processing has access to the most recent data received or data within a rolling time window.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Batch processing must occur immediately and have latency in the order of seconds or milliseconds.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "Stream processing is used for simple response functions, aggregates, or calculations such as rolling averages.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Xử lý luồng liên tục xử lý dữ liệu mới đến và hỗ trợ các hoạt động theo khung thời gian như trung bình luân phiên. Quá trình xử lý hàng loạt hoạt động trên dữ liệu được thu thập theo khoảng thời gian hoặc khi có sẵn một lô, do đó, nó không có độ trễ ngay lập tức hoặc độ trễ tính bằng mili giây/giây.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 290",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/290-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-291",
+    "questionNumber": 291,
+    "text": "Your company must design a database that shows the relationships between the utilization levels of individual network devices throughout a local area network.  \n  \nWhich type of data store should be used?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "graph"
+      },
+      {
+        "key": "B",
+        "text": "key/value"
+      },
+      {
+        "key": "C",
+        "text": "document"
+      },
+      {
+        "key": "D",
+        "text": "columnar"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Kho lưu trữ dữ liệu biểu đồ mô hình hóa các thiết bị riêng lẻ dưới dạng nút và kết nối mạng của chúng dưới dạng cạnh, đồng thời lưu trữ mức độ sử dụng dưới dạng thuộc tính. Nó được thiết kế để biểu diễn và duyệt qua dữ liệu có mối quan hệ nặng nề, được kết nối một cách hiệu quả. [Microsoft Learn: Graph Database Overview](https://learn.microsoft.com/en-us/fabric/graph/graph-database)",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 291",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/291-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-292",
+    "questionNumber": 292,
+    "text": "For each statement below, select **Yes** when it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Data stored in the Hot access tier of Azure Blob storage is stored on high-performance media.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "The Cool access tier in Azure Blob storage incurs higher storage costs compared to the Hot access tier.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "The Archive access tier in Azure Blob storage has the highest latency of the three available tiers.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Hot tier dành cho dữ liệu được truy cập thường xuyên và sử dụng phương tiện hiệu suất cao. Cool tier có chi phí lưu trữ thấp hơn Hot, mặc dù chi phí truy cập cao hơn. Lưu trữ là một cấp độ ngoại tuyến; Việc truy xuất yêu cầu bù nước và có thể mất hàng giờ, mang lại độ trễ cao nhất.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 292",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/292-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-293",
+    "questionNumber": 293,
+    "text": "What language is used to write queries in Azure Synapse Data Explorer?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Bash"
+      },
+      {
+        "key": "B",
+        "text": "PowerShell"
+      },
+      {
+        "key": "C",
+        "text": "KQL"
+      },
+      {
+        "key": "D",
+        "text": "SQL"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Azure Synapse Data Explorer sử dụng Ngôn ngữ truy vấn Kusto (KQL) để truy vấn và phân tích dữ liệu. Tài liệu Azure Synapse Data Explorer của Microsoft đặc biệt bao gồm việc sử dụng truy vấn KQL.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 293",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/293-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-294",
+    "questionNumber": 294,
+    "text": "You need to collect real-time telemetry data from a mobile application.  \n  \nWhich workload type describes this scenario?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Online Transaction Processing (OLTP)"
+      },
+      {
+        "key": "B",
+        "text": "batch"
+      },
+      {
+        "key": "C",
+        "text": "massively parallel processing (MPP)"
+      },
+      {
+        "key": "D",
+        "text": "streaming"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Truyền tải khối lượng công việc trực tiếp và xử lý các sự kiện đến liên tục với độ trễ thấp. Đo từ xa ứng dụng thời gian thực là trường hợp sử dụng truyền phát sự kiện; Microsoft mô tả Trung tâm sự kiện là một nền tảng truyền dữ liệu theo thời gian thực để đo từ xa và ghi nhật ký ứng dụng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 294",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/294-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-295",
+    "questionNumber": 295,
+    "text": "What must be enabled to provision Azure Data Lake Storage in an Azure Storage account?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Versioning must be disabled."
+      },
+      {
+        "key": "B",
+        "text": "Hierarchical namespace must be disabled."
+      },
+      {
+        "key": "C",
+        "text": "Versioning must be enabled."
+      },
+      {
+        "key": "D",
+        "text": "Hierarchical namespace must be enabled."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Các khả năng của Azure Data Lake Storage yêu cầu tài khoản Azure Storage có bật không gian tên phân cấp. Không gian tên này cung cấp hệ thống phân cấp thư mục và ngữ nghĩa hệ thống tệp được Data Lake Storage sử dụng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 295",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/295-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-296",
+    "questionNumber": 296,
+    "text": "You are creating a set of SQL queries that administrators will use to troubleshoot an Azure SQL database.  \n  \nYou need to embed documents and query results in a SQL notebook.  \n  \nWhat should you use?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Microsoft SQL Server Management Studio (SSMS)"
+      },
+      {
+        "key": "B",
+        "text": "Azure Data Studio"
+      },
+      {
+        "key": "C",
+        "text": "Azure CLI"
+      },
+      {
+        "key": "D",
+        "text": "Azure PowerShell"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Azure Data Studio hỗ trợ sổ ghi chép SQL kết hợp các ô văn bản Markdown để tạo tài liệu với các ô mã SQL chạy truy vấn và hiển thị nội tuyến kết quả của chúng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 296",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/296-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-297",
+    "questionNumber": 297,
+    "text": "Question 297",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure SQL Database sử dụng quy tắc tường lửa cấp máy chủ để kiểm soát địa chỉ IP nào có thể kết nối. Theo mặc định, các kết nối bị chặn cho đến khi quy tắc tường lửa được phép được định cấu hình; NSG, Azure Firewall và Azure Front Door không phải là cơ chế bảo vệ mặc định.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 297",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/297-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-298",
+    "questionNumber": 298,
+    "text": "What is one characteristic of non-relational data?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "no indexes"
+      },
+      {
+        "key": "B",
+        "text": "self-describing entities"
+      },
+      {
+        "key": "C",
+        "text": "a well-defined schema"
+      },
+      {
+        "key": "D",
+        "text": "no unique key values"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Dữ liệu phi quan hệ thường sử dụng các thực thể tự mô tả, trong đó mỗi bản ghi hoặc tài liệu có thể mang các thuộc tính riêng của nó và không cần phải tuân theo một lược đồ cứng nhắc, được xác định trước.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 298",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/298-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-299",
+    "questionNumber": 299,
+    "text": "You have structured data organized in a tabular format.  \n  \nWhat denotes a single instance of a data entity?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a column"
+      },
+      {
+        "key": "B",
+        "text": "a table"
+      },
+      {
+        "key": "C",
+        "text": "a cell"
+      },
+      {
+        "key": "D",
+        "text": "a row"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Một hàng là một bản ghi đại diện cho một phiên bản riêng lẻ của một thực thể, với các giá trị thuộc tính của nó được lưu trữ trên các cột.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 299",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/299-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-300",
+    "questionNumber": 300,
+    "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Platform as a service (PaaS) database offerings in Azure require less setup and configuration effort than infrastructure as a service (IaaS) database offerings.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "Platform as a service (PaaS) database offerings in Azure provide end users with the ability to control and update the operating system version.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "All relation and non-relational platform as a service (PaaS) database offerings in Azure can be paused to reduce costs.",
+        "correctAnswer": "No"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:No"
+    ],
+    "explanation": "Dịch vụ cơ sở dữ liệu Azure PaaS ủy quyền cơ sở hạ tầng, hệ điều hành, vá lỗi, sao lưu và các công việc quản lý khác cho Microsoft, giảm thiểu việc thiết lập và quản trị so với IaaS. Khách hàng không kiểm soát hoặc cập nhật hệ điều hành cơ bản trong PaaS; Máy ảo IaaS cung cấp khả năng kiểm soát đó. Việc tạm dừng dành riêng cho dịch vụ và cấp độ chứ không phải phổ biến: tính năng tự động tạm dừng Azure SQL Database chỉ khả dụng cho các cấu hình không có máy chủ được hỗ trợ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 300",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/300-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-301",
+    "questionNumber": 301,
+    "text": "For each statement below, select **Yes** if it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "A Microsoft Power BI dashboard is associated with a single workspace.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "A Microsoft Power BI dashboard can only display visualizations from a single dataset.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "A Microsoft Power BI dashboard can display visualizations from a Microsoft Excel workbook.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Không gian làm việc Power BI là nơi chứa các bảng thông tin và một bảng thông tin nằm trong một không gian làm việc. Trang tổng quan có thể kết hợp các ô từ nhiều báo cáo và mô hình ngữ nghĩa thay vì bị giới hạn ở một tập dữ liệu. Các lựa chọn sổ làm việc Excel có thể được ghim vào bảng điều khiển Power BI.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 301",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/301-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-302",
+    "questionNumber": 302,
+    "text": "You need to recommend a data-store service that meets these requirements:  \n  \n- Native SQL API access  \n- Configurable indexes  \n  \nWhat should you recommend?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Files"
+      },
+      {
+        "key": "B",
+        "text": "Azure Blob storage"
+      },
+      {
+        "key": "C",
+        "text": "Azure Table storage"
+      },
+      {
+        "key": "D",
+        "text": "Azure Cosmos DB"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Azure Cosmos DB hỗ trợ API SQL để truy vấn dữ liệu tài liệu và cho phép mỗi vùng chứa sử dụng chính sách lập chỉ mục có thể tùy chỉnh, bao gồm các đường dẫn thuộc tính được lập chỉ mục và loại trừ. Điều này đáp ứng cả yêu cầu về quyền truy cập API SQL gốc và chỉ mục có thể định cấu hình.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 302",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/302-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-303",
+    "questionNumber": 303,
+    "text": "Match the Azure Cosmos DB APIs with the applicable data structures.  \n  \nAn API may be used once, multiple times, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "graph_data",
+        "text": "Graph data",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "json_documents",
+        "text": "JSON documents",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "key_value_data",
+        "text": "Key/value data",
+        "correctAnswer": "D"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Cassandra API"
+      },
+      {
+        "key": "B",
+        "text": "Gremlin API"
+      },
+      {
+        "key": "C",
+        "text": "MongoDB API"
+      },
+      {
+        "key": "D",
+        "text": "Table API"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Cassandra API"
+      },
+      {
+        "key": "B",
+        "text": "Gremlin API"
+      },
+      {
+        "key": "C",
+        "text": "MongoDB API"
+      },
+      {
+        "key": "D",
+        "text": "Table API"
+      }
+    ],
+    "correctAnswers": [
+      "graph_data=B",
+      "json_documents=C",
+      "key_value_data=D"
+    ],
+    "explanation": "API của Azure Cosmos DB dành cho Gremlin lưu trữ các thực thể đồ thị dưới dạng các đỉnh và cạnh. API cho MongoDB của nó sử dụng các thực thể tài liệu và API bảng của nó sử dụng các mục trong bảng có quyền truy cập kiểu khóa/giá trị. API Cassandra là API cột rộng và không khớp với bất kỳ cấu trúc được liệt kê nào.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 303",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/303-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-304",
+    "questionNumber": 304,
+    "text": "Question 304",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Cơ sở dữ liệu quan hệ lưu trữ dữ liệu có cấu trúc trong các bảng (quan hệ), thường sử dụng các hàng, cột và một lược đồ được xác định.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 304",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/304-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-305",
+    "questionNumber": 305,
+    "text": "A retail point-of-sale (POS) system is an example of which type of solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a data warehouse"
+      },
+      {
+        "key": "B",
+        "text": "online analytical processing (OLAP)"
+      },
+      {
+        "key": "C",
+        "text": "extract, transform, and load (ETL)"
+      },
+      {
+        "key": "D",
+        "text": "online transaction processing (OLTP)"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Hệ thống xử lý giao dịch trực tuyến (OLTP) xử lý các giao dịch kinh doanh thông thường, theo thời gian thực như bán lẻ và xử lý thanh toán.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 305",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/305-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-306",
+    "questionNumber": 306,
+    "text": "Which Azure SQL offering delivers near-100 percent compatibility with on-premises Microsoft SQL Server instances while providing automated updates, backups, and maintenance tasks?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure SQL Managed Instance"
+      },
+      {
+        "key": "B",
+        "text": "SQL Server on Azure Virtual Machines"
+      },
+      {
+        "key": "C",
+        "text": "Azure SQL Database"
+      },
+      {
+        "key": "D",
+        "text": "Azure SQL Edge"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Azure SQL Managed Instance là công cụ cơ sở dữ liệu PaaS được quản lý hoàn toàn với khả năng tương thích tính năng gần như 100% với SQL Server. Nó thực hiện các chức năng quản lý như nâng cấp, vá lỗi, sao lưu và giám sát mà không cần sự tham gia của người dùng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 306",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/306-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-307",
+    "questionNumber": 307,
+    "text": "Which statement is an example of Data Manipulation Language (DML)?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "INSERT"
+      },
+      {
+        "key": "B",
+        "text": "ALTER"
+      },
+      {
+        "key": "C",
+        "text": "DROP"
+      },
+      {
+        "key": "D",
+        "text": "CREATE"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "`INSERT` là câu lệnh Ngôn ngữ thao tác dữ liệu vì nó thêm các hàng dữ liệu vào bảng. `ALTER`, `DROP` và `CREATE` là các câu lệnh Ngôn ngữ Định nghĩa Dữ liệu.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 307",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/307-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-308",
+    "questionNumber": 308,
+    "text": "Question 308",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Biểu đồ tán xạ vẽ các quan sát số theo cặp trên hai trục, làm cho mối quan hệ và mối tương quan giữa các thước đo có thể nhìn thấy được.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 308",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/308-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-309",
+    "questionNumber": 309,
+    "text": "Question 309",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Hệ thống cơ sở dữ liệu quan hệ hỗ trợ các giao dịch ACID và tính nhất quán giao dịch mạnh mẽ, khiến chúng phù hợp với khối lượng công việc ghi giao dịch có khối lượng lớn.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 309",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/309-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-310",
+    "questionNumber": 310,
+    "text": "Question 310",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Chỉ có thể tạo bảng thông tin Power BI trong dịch vụ Power BI. Power BI Desktop tạo báo cáo, trong khi ứng dụng di động Power BI hỗ trợ xem và chia sẻ trang tổng quan thay vì tạo chúng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 310",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/310-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-311",
+    "questionNumber": 311,
+    "text": "Which storage solution supports role-based access control (RBAC) at the file and folder levels?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Azure Disk Storage"
+      },
+      {
+        "key": "B",
+        "text": "Azure Data Lake Storage"
+      },
+      {
+        "key": "C",
+        "text": "Azure Blob storage"
+      },
+      {
+        "key": "D",
+        "text": "Azure Queue storage"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Azure Data Lake Storage hỗ trợ mô hình ủy quyền kết hợp Azure RBAC với danh sách kiểm soát truy cập (ACL) giống POSIX. RBAC có thể cấp quyền truy cập vào tài khoản lưu trữ hoặc vùng chứa và ACL cung cấp các quyền chi tiết cho từng thư mục và tệp riêng lẻ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 311",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/311-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-312",
+    "questionNumber": 312,
+    "text": "You have an Azure Cosmos DB account that uses the Core (SQL) API.  \n  \nWhich two settings can be configured at the container level? Each correct answer provides a complete solution.  \n  \nNOTE: Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "the throughput"
+      },
+      {
+        "key": "B",
+        "text": "the read region"
+      },
+      {
+        "key": "C",
+        "text": "the partition key"
+      },
+      {
+        "key": "D",
+        "text": "the API"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "C"
+    ],
+    "explanation": "Vùng chứa Azure Cosmos DB yêu cầu khóa phân vùng để phân phối các mục của nó trên các phân vùng và thông lượng có thể được cung cấp trực tiếp trên một vùng chứa riêng lẻ. Vùng đọc và API đã chọn là cài đặt cấp tài khoản.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 312",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/312-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-313",
+    "questionNumber": 313,
+    "text": "You have a table named Sales containing the following data.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783766659846-9x1hiqdr.png)  \n  \nYou need to query the table to return the average sales amount for each day. The output must return the following results.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1783766662796-hzfad5dd.png)  \n  \nComplete the query. Each value may be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "clause1",
+        "text": "Slot 1:",
+        "correctAnswer": "D"
+      },
+      {
+        "id": "clause2",
+        "text": "Slot 2:",
+        "correctAnswer": "B"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "CREATE"
+      },
+      {
+        "key": "B",
+        "text": "GROUP BY"
+      },
+      {
+        "key": "C",
+        "text": "ORDER BY"
+      },
+      {
+        "key": "D",
+        "text": "SELECT"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "CREATE"
+      },
+      {
+        "key": "B",
+        "text": "GROUP BY"
+      },
+      {
+        "key": "C",
+        "text": "ORDER BY"
+      },
+      {
+        "key": "D",
+        "text": "SELECT"
+      }
+    ],
+    "correctAnswers": [
+      "clause1=D",
+      "clause2=B"
+    ],
+    "explanation": "SELECT trả về ngày và AVG(SalesAmount). NHÓM THEO Ngày bán hàng tạo thành một nhóm tổng hợp cho mỗi ngày, tạo ra số liệu trung bình hàng ngày được yêu cầu; ĐẶT HÀNG THEO SalesDate sắp xếp các nhóm đó theo thứ tự thời gian.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "imageUrl": "https://cdn.examcademy.com/images/questions/1783766659846-9x1hiqdr.png",
+    "sourceTitle": "Examcademy DP-900 Question 313",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/313-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-314",
+    "questionNumber": 314,
+    "text": "For each statement below, select **Yes** when it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "Azure SQL Database has all the same features as SQL Server on Azure Virtual Machines.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "2",
+        "text": "In a platform as a service (PaaS) model, before you deploy a relational database, you must create a virtual machine and a virtual network.",
+        "correctAnswer": "No"
+      },
+      {
+        "id": "3",
+        "text": "In an infrastructure as a service (IaaS) model, before you deploy a relational database, you must create a virtual machine and a virtual network.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:No",
+      "2:No",
+      "3:Yes"
+    ],
+    "explanation": "Azure SQL Database là dịch vụ cơ sở dữ liệu PaaS được quản lý, không phải là phiên bản SQL Server đầy đủ trên máy ảo do khách hàng quản lý, do đó bộ tính năng của nó không giống với SQL Server trên máy ảo Azure. PaaS loại bỏ nhu cầu cung cấp máy ảo và mạng ảo cơ bản trước khi tạo cơ sở dữ liệu. IaaS đặt SQL Server trên máy ảo Azure và máy ảo yêu cầu cấu hình mạng ảo.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 314",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/314-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-315",
+    "questionNumber": 315,
+    "text": "HOTSPOT — Select the appropriate option in the answer area to complete the sentence.",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Azure Cosmos DB dành cho NoSQL (Core [SQL]) hỗ trợ ngôn ngữ truy vấn Cosmos DB SQL. Mệnh đề SELECT của nó truy xuất và chiếu các trường hoặc giá trị từ tài liệu JSON.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 315",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/315-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-316",
+    "questionNumber": 316,
+    "text": "Question 316",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Một bảng thực thể có một tập hợp các cột nhất quán cho tất cả các bản ghi. Việc thêm một thuộc tính sẽ thay đổi lược đồ bảng bằng cách thêm một cột; các bản ghi thiếu giá trị cho thuộc tính đó có thể sử dụng giá trị rỗng hoặc trống.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 316",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/316-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-317",
+    "questionNumber": 317,
+    "text": "Your company is designing a data store for internet-connected temperature sensors. The gathered data will be used to analyze temperature trends. Which type of data store should be used?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "relational"
+      },
+      {
+        "key": "B",
+        "text": "time series"
+      },
+      {
+        "key": "C",
+        "text": "graph"
+      },
+      {
+        "key": "D",
+        "text": "columnar"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Kho lưu trữ dữ liệu chuỗi thời gian được thiết kế để phục vụ các phép đo theo dấu thời gian như đọc nhiệt độ và hỗ trợ phân tích xu hướng hiệu quả theo thời gian.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 317",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/317-describe-considerations-for-working-with-non-relational-data",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-318",
+    "questionNumber": 318,
+    "text": "Match the data-store types with the appropriate scenarios. Each data-store type can be used once, more than once, or not at all.",
+    "questionType": "matching_drag_drop",
+    "statements": [
+      {
+        "id": "slot1",
+        "text": "A list of application user names and, for each, the default language",
+        "correctAnswer": "C"
+      },
+      {
+        "id": "slot2",
+        "text": "A collection of medical images and their associated metadata.",
+        "correctAnswer": "B"
+      },
+      {
+        "id": "slot3",
+        "text": "Employee data that shows the relationships between employees",
+        "correctAnswer": "A"
+      }
+    ],
+    "options": [
+      {
+        "key": "A",
+        "text": "Graph"
+      },
+      {
+        "key": "B",
+        "text": "Object"
+      },
+      {
+        "key": "C",
+        "text": "Key/value"
+      }
+    ],
+    "choices": [
+      {
+        "key": "A",
+        "text": "Graph"
+      },
+      {
+        "key": "B",
+        "text": "Object"
+      },
+      {
+        "key": "C",
+        "text": "Key/value"
+      }
+    ],
+    "correctAnswers": [
+      "slot1=C",
+      "slot2=B",
+      "slot3=A"
+    ],
+    "explanation": "Kho lưu trữ khóa/giá trị truy xuất hiệu quả ngôn ngữ mặc định của người dùng bằng khóa tên người dùng. Lưu trữ đối tượng và tệp được thiết kế cho các tệp nhị phân lớn có siêu dữ liệu, bao gồm cả hình ảnh y tế. Cửa hàng đồ thị biểu diễn nhân viên dưới dạng các nút và mối quan hệ của họ dưới dạng các cạnh.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 318",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/318-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-319",
+    "questionNumber": 319,
+    "text": "Which three objects can be added to a Microsoft Power BI dashboard? Each correct answer provides a complete solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "a report page"
+      },
+      {
+        "key": "B",
+        "text": "a Microsoft PowerPoint slide"
+      },
+      {
+        "key": "C",
+        "text": "a visualization from a report"
+      },
+      {
+        "key": "D",
+        "text": "a dataflow"
+      },
+      {
+        "key": "E",
+        "text": "a text box"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "C",
+      "E"
+    ],
+    "explanation": "Trang tổng quan Power BI có thể bao gồm trang báo cáo trực tiếp, các hình ảnh trực quan riêng lẻ được ghim từ báo cáo và các hộp văn bản được thêm dưới dạng ô trang tổng quan. Các trang chiếu và luồng dữ liệu PowerPoint không phải là các đối tượng ô bảng thông tin được hỗ trợ.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 319",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/319-describe-an-analytics-workload-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-320",
+    "questionNumber": 320,
+    "text": "For each statement below, select **Yes** when it is true. Otherwise, select **No**.",
+    "questionType": "statement_matrix",
+    "statements": [
+      {
+        "id": "1",
+        "text": "You can use Azure Data Studio to query a Microsoft SQL Server big data cluster.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "2",
+        "text": "You can use Microsoft SQL Server Management Studio (SSMS) to query an Azure Synapse Analytics data warehouse.",
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "3",
+        "text": "You can use MySQL Workbench to query Azure Database for MariaDB databases.",
+        "correctAnswer": "Yes"
+      }
+    ],
+    "options": [
+      {
+        "key": "Yes",
+        "text": "Yes"
+      },
+      {
+        "key": "No",
+        "text": "No"
+      }
+    ],
+    "correctAnswers": [
+      "1:Yes",
+      "2:Yes",
+      "3:Yes"
+    ],
+    "explanation": "Azure Data Studio hỗ trợ truy vấn cụm dữ liệu lớn SQL Server. SSMS có thể kết nối và truy vấn các nhóm SQL chuyên dụng của Azure Synapse (kho dữ liệu). MySQL Workbench là ứng dụng khách MySQL tương thích với Cơ sở dữ liệu Azure dành cho MariaDB.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 320",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/320-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-321",
+    "questionNumber": 321,
+    "text": "Question 321",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Phân tích nhận thức áp dụng các khả năng của AI như nhận dạng giọng nói cho âm thanh phi cấu trúc, cho phép nó được chuyển thành văn bản.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 321",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/321-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-322",
+    "questionNumber": 322,
+    "text": "You need to query a table named **Products** in an Azure SQL database.  \n  \nWhich three requirements must be satisfied to query the table from the internet? Each correct answer is part of the solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "You must be assigned the Reader role for the resource group that contains the database."
+      },
+      {
+        "key": "B",
+        "text": "You must have SELECT access to the Products table."
+      },
+      {
+        "key": "C",
+        "text": "You must have a user in the database."
+      },
+      {
+        "key": "D",
+        "text": "You must be assigned the Contributor role for the resource group that contains the database."
+      },
+      {
+        "key": "E",
+        "text": "Your IP address must be allowed to connect to the database."
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "Máy khách kết nối từ internet phải có địa chỉ IP được tường lửa Azure SQL Database cho phép. Hiệu trưởng được xác thực cần một người dùng cơ sở dữ liệu để kết nối và được ủy quyền trong cơ sở dữ liệu và nó phải có quyền `SELECT` trên bảng `Products` (trực tiếp hoặc thông qua một vai trò). Vai trò Người đọc và Người đóng góp trong nhóm tài nguyên Azure kiểm soát quyền truy cập vào mặt phẳng quản lý và không cấp quyền truy vấn dữ liệu bảng.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 322",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/322-identify-considerations-for-relational-data-on-azure",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  },
+  {
+    "id": "dp900-323",
+    "questionNumber": 323,
+    "text": "Question 323",
+    "questionType": "multiple_choice",
+    "options": [],
+    "correctAnswers": [],
+    "explanation": "Cơ sở dữ liệu quan hệ lưu trữ dữ liệu trong các bảng được xác định trước với các hàng, cột, mối quan hệ và lược đồ được xác định, làm cho chúng phù hợp với dữ liệu có cấu trúc.",
+    "category": "General",
+    "tags": [
+      "DP-900",
+      "General"
+    ],
+    "sourceTitle": "Examcademy DP-900 Question 323",
+    "sourceUrl": "https://examcademy.com/exams/microsoft/dp-900/q/323-describe-core-data-concepts",
+    "lastVerifiedAt": "2026-09-14T14:38:54.564Z"
+  }
+];

@@ -1873,20 +1873,26 @@ export default function App() {
             )}
             <div className="flex items-center gap-2.5 cursor-pointer group" onClick={() => setMode('home')}>
               <div className="relative">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-tr from-indigo-700 via-indigo-600 to-blue-500 text-white flex items-center justify-center shadow-md shadow-indigo-500/25 ring-2 ring-indigo-100 transition-all duration-300 group-hover:scale-105 group-hover:shadow-indigo-500/40">
-                  {mode === 'home' ? (
-                    <Award className="w-5 h-5 text-amber-300 drop-shadow-xs" />
-                  ) : mode === 'admin' ? (
-                    <Asterisk className="w-5 h-5 animate-spin text-rose-300" />
-                  ) : (
+                {mode === 'home' ? (
+                  <div className="relative">
+                    <img 
+                      src="./app-icon.svg" 
+                      alt="Cert Hub Logo" 
+                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl shadow-md shadow-indigo-500/25 ring-2 ring-indigo-100 object-cover transition-all duration-300 group-hover:scale-105 group-hover:shadow-indigo-500/40 shrink-0" 
+                    />
+                    <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500 shadow-xs"></span>
+                    </span>
+                  </div>
+                ) : mode === 'admin' ? (
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-tr from-rose-600 via-rose-500 to-pink-500 text-white flex items-center justify-center shadow-md shadow-rose-500/25 ring-2 ring-rose-100 transition-all duration-300 group-hover:scale-105">
+                    <Asterisk className="w-5 h-5 animate-spin text-white" />
+                  </div>
+                ) : (
+                  <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-2xl ${certificates.find(c => c.id === activeCertId)?.colorClass || 'bg-gradient-to-tr from-indigo-700 via-indigo-600 to-blue-500'} text-white flex items-center justify-center shadow-md shadow-indigo-500/25 ring-2 ring-indigo-100 transition-all duration-300 group-hover:scale-105`}>
                     <DynamicIcon name={certificates.find(c => c.id === activeCertId)?.iconName || 'Zap'} className="w-5 h-5 text-white drop-shadow-xs" />
-                  )}
-                </div>
-                {mode === 'home' && (
-                  <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500 shadow-xs"></span>
-                  </span>
+                  </div>
                 )}
               </div>
               <div className="min-w-0">
@@ -2183,12 +2189,19 @@ export default function App() {
             {/* Compact home overview: keeps the first certificate row above the fold */}
             <div className="overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-sm">
               <div className="flex flex-col gap-4 p-5 sm:p-6 md:flex-row md:items-center md:justify-between">
-                <div className="min-w-0 text-center md:text-left">
-                  <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-indigo-600">CERT PREP PORTAL</span>
-                  <h2 className="mt-2 text-xl font-black tracking-tight text-slate-900 md:text-2xl">Trung Tâm Ôn Luyện Đa Chứng Chỉ</h2>
-                  <p className="mt-1 max-w-2xl text-xs leading-relaxed text-slate-500">
-                    Chọn chứng chỉ bên dưới để luyện tập, thi thử hoặc xem cẩm nang ôn tập.
-                  </p>
+                <div className="flex items-center gap-3.5 sm:gap-4 min-w-0 text-left">
+                  <img 
+                    src="./app-icon.svg" 
+                    alt="Cert Hub Logo" 
+                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl shadow-md shadow-indigo-500/20 ring-2 ring-indigo-100 object-cover shrink-0" 
+                  />
+                  <div className="min-w-0">
+                    <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-indigo-600">CERT PREP PORTAL</span>
+                    <h2 className="mt-1 text-xl font-black tracking-tight text-slate-900 md:text-2xl">Trung Tâm Ôn Luyện Đa Chứng Chỉ</h2>
+                    <p className="mt-0.5 max-w-2xl text-xs leading-relaxed text-slate-500">
+                      Chọn chứng chỉ bên dưới để luyện tập, thi thử hoặc xem cẩm nang ôn tập.
+                    </p>
+                  </div>
                 </div>
                 <div className="flex shrink-0 items-center justify-center gap-2 rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2.5">
                   <div className="min-w-20 text-center px-2">
