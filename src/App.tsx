@@ -298,6 +298,71 @@ export default function App() {
       iconName: 'Layers',
       isVIP: false,
       badge: 'new'
+    },
+    {
+      id: 'az-104',
+      name: 'Microsoft Azure Administrator',
+      code: 'AZ-104',
+      description: 'Chinh phục chứng chỉ Microsoft Azure Administrator (AZ-104). Quản lý danh tính và quản trị Azure, lưu trữ, tài nguyên điện toán, mạng ảo, giám sát và sao lưu.',
+      difficulty: 'Trung cấp',
+      estimatedHours: '16-20 Giờ',
+      colorClass: 'bg-gradient-to-br from-blue-700 via-sky-800 to-slate-950 text-white',
+      iconName: 'ShieldCheck',
+      isVIP: false,
+      isDisabled: true,
+      badge: 'new'
+    },
+    {
+      id: 'dp-900',
+      name: 'Microsoft Azure Data Fundamentals',
+      code: 'DP-900',
+      description: 'Chinh phục chứng chỉ Microsoft Azure Data Fundamentals (DP-900). Nắm vững các khái niệm dữ liệu cốt lõi, dữ liệu quan hệ và phi quan hệ trên Azure, cùng các giải pháp phân tích dữ liệu hiện đại.',
+      difficulty: 'Cơ bản',
+      estimatedHours: '8-12 Giờ',
+      colorClass: 'bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white',
+      iconName: 'Database',
+      isVIP: false,
+      isDisabled: true,
+      badge: 'new'
+    },
+    {
+      id: 'az-204',
+      name: 'Developing Solutions for Microsoft Azure',
+      code: 'AZ-204',
+      description: 'Chinh phục chứng chỉ Microsoft Certified: Azure Developer Associate (AZ-204). Phát triển Azure compute, lưu trữ, bảo mật đám mây, giám sát và tối ưu hóa giải pháp.',
+      difficulty: 'Nâng cao',
+      estimatedHours: '18-24 Giờ',
+      colorClass: 'bg-gradient-to-br from-indigo-700 via-purple-800 to-slate-950 text-white',
+      iconName: 'Cpu',
+      isVIP: false,
+      isDisabled: true,
+      badge: 'new'
+    },
+    {
+      id: 'az-500',
+      name: 'Microsoft Azure Security Technologies',
+      code: 'AZ-500',
+      description: 'Chinh phục chứng chỉ Microsoft Azure Security Technologies (AZ-500). Quản lý danh tính và quyền truy cập, bảo mật mạng, bảo vệ dữ liệu và ứng dụng với Defender và Sentinel.',
+      difficulty: 'Nâng cao',
+      estimatedHours: '18-22 Giờ',
+      colorClass: 'bg-gradient-to-br from-rose-700 via-red-800 to-slate-950 text-white',
+      iconName: 'ShieldCheck',
+      isVIP: false,
+      isDisabled: true,
+      badge: 'new'
+    },
+    {
+      id: 'az-400',
+      name: 'Designing and Implementing Microsoft DevOps Solutions',
+      code: 'AZ-400',
+      description: 'Chinh phục chứng chỉ Microsoft Certified: DevOps Engineer Expert (AZ-400). Thiết kế và triển khai chiến lược CI/CD, quản lý mã nguồn, cơ sở hạ tầng dưới dạng mã (IaC), tuân thủ bảo mật DevSecOps và giám sát liên tục.',
+      difficulty: 'Nâng cao',
+      estimatedHours: '22-28 Giờ',
+      colorClass: 'bg-gradient-to-br from-amber-600 via-orange-800 to-slate-950 text-white',
+      iconName: 'Zap',
+      isVIP: false,
+      isDisabled: true,
+      badge: 'new'
     }
   ]);
 
