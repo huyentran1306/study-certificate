@@ -35,7 +35,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 1",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/1-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.883Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.455Z"
   },
   {
     "id": "pl300-2",
@@ -71,7 +71,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 2",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/2-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-3",
@@ -107,7 +107,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 3",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/3-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-4",
@@ -124,7 +124,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 4",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/4-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-5",
@@ -160,7 +160,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 5",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/5-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-6",
@@ -201,7 +201,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 6",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/6-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-7",
@@ -243,7 +243,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 7",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/7-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-8",
@@ -279,7 +279,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 8",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/8-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-9",
@@ -315,7 +315,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 9",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/9-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-10",
@@ -363,7 +363,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730502414-ee54xl52.jpg",
     "sourceTitle": "Examcademy PL-300 Question 10",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/10-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-11",
@@ -399,7 +399,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 11",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/11-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-12",
@@ -417,7 +417,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783732310292-q3uy0nml.png",
     "sourceTitle": "Examcademy PL-300 Question 12",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/12-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-13",
@@ -453,7 +453,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 13",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/13-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-14",
@@ -534,7 +534,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 14",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/14-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-15",
@@ -570,7 +570,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 15",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/15-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-16",
@@ -606,7 +606,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 16",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/16-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-17",
@@ -623,7 +623,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 17",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/17-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-18",
@@ -640,7 +640,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 18",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/18-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-19",
@@ -676,7 +676,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 19",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/19-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-20",
@@ -712,7 +712,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 20",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/20-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-21",
@@ -730,7 +730,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742680808-eanksodz.png",
     "sourceTitle": "Examcademy PL-300 Question 21",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/21-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-22",
@@ -766,7 +766,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 22",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/22-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-23",
@@ -803,7 +803,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730282838-xd3nrs6m.jpg",
     "sourceTitle": "Examcademy PL-300 Question 23",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/23-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-24",
@@ -820,7 +820,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 24",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/24-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-25",
@@ -837,7 +837,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 25",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/25-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-26",
@@ -873,7 +873,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 26",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/26-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-27",
@@ -890,7 +890,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 27",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/27-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-28",
@@ -926,7 +926,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 28",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/28-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-29",
@@ -944,7 +944,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785695720148-gskxitdq.jpg",
     "sourceTitle": "Examcademy PL-300 Question 29",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/29-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-30",
@@ -976,7 +976,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 30",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/30-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-31",
@@ -1024,7 +1024,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783729811107-i07pp5zf.png",
     "sourceTitle": "Examcademy PL-300 Question 31",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/31-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-32",
@@ -1042,7 +1042,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785752443249-iajpj8s8.png",
     "sourceTitle": "Examcademy PL-300 Question 32",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/32-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-33",
@@ -1078,7 +1078,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 33",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/33-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-34",
@@ -1114,7 +1114,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 34",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/34-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-35",
@@ -1131,7 +1131,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 35",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/35-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-36",
@@ -1168,7 +1168,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783732319420-zhn7bfsg.png",
     "sourceTitle": "Examcademy PL-300 Question 36",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/36-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-37",
@@ -1204,7 +1204,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 37",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/37-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-38",
@@ -1251,7 +1251,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 38",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/38-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-39",
@@ -1287,7 +1287,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 39",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/39-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-40",
@@ -1323,7 +1323,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 40",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/40-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-41",
@@ -1359,7 +1359,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 41",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/41-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-42",
@@ -1395,7 +1395,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 42",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/42-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-43",
@@ -1484,7 +1484,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 43",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/43-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-44",
@@ -1502,7 +1502,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783731093513-6iq73eio.jpg",
     "sourceTitle": "Examcademy PL-300 Question 44",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/44-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-45",
@@ -1591,7 +1591,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 45",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/45-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.884Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-46",
@@ -1627,7 +1627,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 46",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/46-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-47",
@@ -1700,7 +1700,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 47",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/47-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-48",
@@ -1718,7 +1718,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730258541-h70rmjl1.jpg",
     "sourceTitle": "Examcademy PL-300 Question 48",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/48-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-49",
@@ -1793,7 +1793,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 49",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/49-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-50",
@@ -1829,7 +1829,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 50",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/50-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-51",
@@ -1866,7 +1866,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783738924078-q6nr4rwz.png",
     "sourceTitle": "Examcademy PL-300 Question 51",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/51-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-52",
@@ -1903,7 +1903,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783738916220-72gbixhh.png",
     "sourceTitle": "Examcademy PL-300 Question 52",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/52-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-53",
@@ -1999,7 +1999,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730098130-h6u9bppw.jpg",
     "sourceTitle": "Examcademy PL-300 Question 53",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/53-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-54",
@@ -2037,7 +2037,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730127565-ob46oice.png",
     "sourceTitle": "Examcademy PL-300 Question 54",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/54-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-55",
@@ -2166,7 +2166,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 55",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/55-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-56",
@@ -2213,7 +2213,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742187610-kdf1clbj.png",
     "sourceTitle": "Examcademy PL-300 Question 56",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/56-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-57",
@@ -2231,7 +2231,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730798878-ud1ws9g9.jpg",
     "sourceTitle": "Examcademy PL-300 Question 57",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/57-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-58",
@@ -2248,7 +2248,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 58",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/58-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-59",
@@ -2284,7 +2284,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 59",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/59-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-60",
@@ -2321,7 +2321,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 60",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/60-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-61",
@@ -2357,7 +2357,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 61",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/61-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-62",
@@ -2394,7 +2394,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730136158-dt06ybuw.jpg",
     "sourceTitle": "Examcademy PL-300 Question 62",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/62-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-63",
@@ -2430,7 +2430,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 63",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/63-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-64",
@@ -2448,7 +2448,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742682979-dp5xcypx.png",
     "sourceTitle": "Examcademy PL-300 Question 64",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/64-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-65",
@@ -2465,7 +2465,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 65",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/65-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-66",
@@ -2482,7 +2482,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 66",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/66-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-67",
@@ -2519,7 +2519,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742684842-i4u8j76z.png",
     "sourceTitle": "Examcademy PL-300 Question 67",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/67-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-68",
@@ -2555,7 +2555,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 68",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/68-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-69",
@@ -2592,7 +2592,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730125400-rfc787dr.jpg",
     "sourceTitle": "Examcademy PL-300 Question 69",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/69-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-70",
@@ -2633,7 +2633,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 70",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/70-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-71",
@@ -2669,7 +2669,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 71",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/71-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-72",
@@ -2705,7 +2705,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 72",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/72-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-73",
@@ -2741,7 +2741,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 73",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/73-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-74",
@@ -2759,7 +2759,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785751600568-ryr4rxe1.jpg",
     "sourceTitle": "Examcademy PL-300 Question 74",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/74-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-75",
@@ -2795,7 +2795,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 75",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/75-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-76",
@@ -2831,7 +2831,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 76",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/76-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-77",
@@ -2867,7 +2867,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 77",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/77-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-78",
@@ -2908,7 +2908,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 78",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/78-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-79",
@@ -2995,7 +2995,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 79",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/79-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-80",
@@ -3013,7 +3013,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785752211397-z26ad9al.png",
     "sourceTitle": "Examcademy PL-300 Question 80",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/80-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-81",
@@ -3031,7 +3031,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783733381060-wtol8qfq.png",
     "sourceTitle": "Examcademy PL-300 Question 81",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/81-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-82",
@@ -3048,7 +3048,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 82",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/82-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-83",
@@ -3066,7 +3066,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785752212189-heskifks.png",
     "sourceTitle": "Examcademy PL-300 Question 83",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/83-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-84",
@@ -3084,7 +3084,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783745252018-drd68vqj.png",
     "sourceTitle": "Examcademy PL-300 Question 84",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/84-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-85",
@@ -3120,7 +3120,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 85",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/85-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-86",
@@ -3157,7 +3157,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783732310477-1h19ogum.png",
     "sourceTitle": "Examcademy PL-300 Question 86",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/86-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-87",
@@ -3193,7 +3193,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 87",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/87-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-88",
@@ -3229,7 +3229,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 88",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/88-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-89",
@@ -3266,7 +3266,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730797350-96urfhvk.jpg",
     "sourceTitle": "Examcademy PL-300 Question 89",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/89-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-90",
@@ -3302,7 +3302,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 90",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/90-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-91",
@@ -3338,7 +3338,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 91",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/91-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-92",
@@ -3374,7 +3374,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 92",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/92-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-93",
@@ -3391,7 +3391,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 93",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/93-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-94",
@@ -3428,7 +3428,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 94",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/94-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-95",
@@ -3465,7 +3465,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742684177-727v0tlj.png",
     "sourceTitle": "Examcademy PL-300 Question 95",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/95-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-96",
@@ -3482,7 +3482,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 96",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/96-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-97",
@@ -3518,7 +3518,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 97",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/97-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-98",
@@ -3535,7 +3535,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 98",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/98-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-99",
@@ -3573,7 +3573,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783732328654-a5dojjw9.png",
     "sourceTitle": "Examcademy PL-300 Question 99",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/99-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-100",
@@ -3591,7 +3591,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783745255157-0koy4l20.png",
     "sourceTitle": "Examcademy PL-300 Question 100",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/100-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-101",
@@ -3627,7 +3627,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 101",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/101-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-102",
@@ -3669,7 +3669,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783735454275-benqf7er.png",
     "sourceTitle": "Examcademy PL-300 Question 102",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/102-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-103",
@@ -3706,7 +3706,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742666106-z0irq6hx.png",
     "sourceTitle": "Examcademy PL-300 Question 103",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/103-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-104",
@@ -3788,7 +3788,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783732326727-rsxllcj0.png",
     "sourceTitle": "Examcademy PL-300 Question 104",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/104-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-105",
@@ -3824,7 +3824,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 105",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/105-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-106",
@@ -3860,7 +3860,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 106",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/106-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-107",
@@ -3877,7 +3877,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 107",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/107-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-108",
@@ -3895,7 +3895,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785751606303-mqrkl07p.png",
     "sourceTitle": "Examcademy PL-300 Question 108",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/108-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-109",
@@ -3912,7 +3912,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 109",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/109-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-110",
@@ -3929,7 +3929,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 110",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/110-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-111",
@@ -3965,7 +3965,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 111",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/111-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-112",
@@ -3983,7 +3983,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785751616381-pwfnyur5.jpg",
     "sourceTitle": "Examcademy PL-300 Question 112",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/112-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-113",
@@ -4020,7 +4020,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783732307910-4g8z0lf9.png",
     "sourceTitle": "Examcademy PL-300 Question 113",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/113-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-114",
@@ -4056,7 +4056,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 114",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/114-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-115",
@@ -4074,7 +4074,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785751612607-1ui6hler.jpg",
     "sourceTitle": "Examcademy PL-300 Question 115",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/115-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-116",
@@ -4115,7 +4115,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 116",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/116-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-117",
@@ -4151,7 +4151,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 117",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/117-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-118",
@@ -4187,7 +4187,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 118",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/118-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-119",
@@ -4205,7 +4205,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783745251723-9q294ohp.png",
     "sourceTitle": "Examcademy PL-300 Question 119",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/119-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-120",
@@ -4281,7 +4281,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783733381848-8ooh4ri8.png",
     "sourceTitle": "Examcademy PL-300 Question 120",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/120-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-121",
@@ -4317,7 +4317,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 121",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/121-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-122",
@@ -4353,7 +4353,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 122",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/122-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-123",
@@ -4371,7 +4371,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730116305-u2jjgkqn.jpg",
     "sourceTitle": "Examcademy PL-300 Question 123",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/123-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-124",
@@ -4403,7 +4403,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 124",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/124-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-125",
@@ -4420,7 +4420,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 125",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/125-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-126",
@@ -4438,7 +4438,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730662709-17ua0ufh.png",
     "sourceTitle": "Examcademy PL-300 Question 126",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/126-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-127",
@@ -4513,7 +4513,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 127",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/127-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-128",
@@ -4549,7 +4549,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 128",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/128-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-129",
@@ -4567,7 +4567,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205966603-8a6wqve7.png",
     "sourceTitle": "Examcademy PL-300 Question 129",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/129-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-130",
@@ -4585,7 +4585,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785752192737-jroq4gtv.png",
     "sourceTitle": "Examcademy PL-300 Question 130",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/130-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-131",
@@ -4617,7 +4617,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 131",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/131-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-132",
@@ -4653,7 +4653,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 132",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/132-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-133",
@@ -4690,7 +4690,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783746018865-hrracnps.png",
     "sourceTitle": "Examcademy PL-300 Question 133",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/133-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-134",
@@ -4758,7 +4758,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783731106119-yf2awx7m.jpg",
     "sourceTitle": "Examcademy PL-300 Question 134",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/134-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-135",
@@ -4847,7 +4847,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 135",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/135-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-136",
@@ -4936,7 +4936,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 136",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/136-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-137",
@@ -4972,7 +4972,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 137",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/137-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-138",
@@ -5004,7 +5004,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 138",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/138-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-139",
@@ -5044,7 +5044,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 139",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/139-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-140",
@@ -5081,7 +5081,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730275212-4fcvg83r.jpg",
     "sourceTitle": "Examcademy PL-300 Question 140",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/140-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-141",
@@ -5117,7 +5117,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 141",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/141-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-142",
@@ -5155,7 +5155,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783740441843-byok8bck.png",
     "sourceTitle": "Examcademy PL-300 Question 142",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/142-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-143",
@@ -5191,7 +5191,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 143",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/143-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-144",
@@ -5209,7 +5209,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785752192416-aqvnt9wz.png",
     "sourceTitle": "Examcademy PL-300 Question 144",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/144-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-145",
@@ -5284,7 +5284,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 145",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/145-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-146",
@@ -5320,7 +5320,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 146",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/146-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-147",
@@ -5358,7 +5358,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742188888-wn0tjh0x.png",
     "sourceTitle": "Examcademy PL-300 Question 147",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/147-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-148",
@@ -5394,7 +5394,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 148",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/148-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-149",
@@ -5435,7 +5435,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 149",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/149-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-150",
@@ -5452,7 +5452,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 150",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/150-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-151",
@@ -5470,7 +5470,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205965645-83yajtcl.png",
     "sourceTitle": "Examcademy PL-300 Question 151",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/151-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-152",
@@ -5487,7 +5487,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 152",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/152-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.456Z"
   },
   {
     "id": "pl300-153",
@@ -5560,7 +5560,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 153",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/153-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-154",
@@ -5596,7 +5596,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 154",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/154-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-155",
@@ -5632,7 +5632,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 155",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/155-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-156",
@@ -5669,7 +5669,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783735454433-uarwp1bj.png",
     "sourceTitle": "Examcademy PL-300 Question 156",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/156-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-157",
@@ -5752,7 +5752,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 157",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/157-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-158",
@@ -5839,7 +5839,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 158",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/158-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-159",
@@ -5875,7 +5875,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 159",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/159-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-160",
@@ -5911,7 +5911,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 160",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/160-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-161",
@@ -5948,7 +5948,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 161",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/161-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-162",
@@ -5985,7 +5985,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783741898388-82ph1g1u.png",
     "sourceTitle": "Examcademy PL-300 Question 162",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/162-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-163",
@@ -6003,7 +6003,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205956260-yl3rvzot.png",
     "sourceTitle": "Examcademy PL-300 Question 163",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/163-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-164",
@@ -6085,7 +6085,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730257814-d81abzj6.png",
     "sourceTitle": "Examcademy PL-300 Question 164",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/164-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-165",
@@ -6113,7 +6113,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 165",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/165-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-166",
@@ -6141,7 +6141,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 166",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/166-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-167",
@@ -6169,7 +6169,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 167",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/167-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-168",
@@ -6197,7 +6197,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 168",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/168-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-169",
@@ -6233,7 +6233,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 169",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/169-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-170",
@@ -6270,7 +6270,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742671306-95x1tghj.png",
     "sourceTitle": "Examcademy PL-300 Question 170",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/170-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-171",
@@ -6307,7 +6307,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730787243-7pr6wjxx.jpg",
     "sourceTitle": "Examcademy PL-300 Question 171",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/171-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-172",
@@ -6343,7 +6343,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 172",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/172-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-173",
@@ -6360,7 +6360,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 173",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/173-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-174",
@@ -6396,7 +6396,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 174",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/174-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-175",
@@ -6434,7 +6434,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730623951-85kgw6ca.png",
     "sourceTitle": "Examcademy PL-300 Question 175",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/175-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-176",
@@ -6451,7 +6451,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 176",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/176-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-177",
@@ -6526,7 +6526,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 177",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/177-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-178",
@@ -6544,7 +6544,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730526816-btlt12z1.png",
     "sourceTitle": "Examcademy PL-300 Question 178",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/178-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-179",
@@ -6580,7 +6580,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 179",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/179-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-180",
@@ -6616,7 +6616,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 180",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/180-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-181",
@@ -6652,7 +6652,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 181",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/181-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-182",
@@ -6688,7 +6688,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 182",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/182-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-183",
@@ -6724,7 +6724,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 183",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/183-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-184",
@@ -6766,7 +6766,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730011033-a8saguv8.jpg",
     "sourceTitle": "Examcademy PL-300 Question 184",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/184-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-185",
@@ -6798,7 +6798,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 185",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/185-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-186",
@@ -6815,7 +6815,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 186",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/186-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-187",
@@ -6833,7 +6833,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730766375-zj3j8a97.png",
     "sourceTitle": "Examcademy PL-300 Question 187",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/187-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-188",
@@ -6861,7 +6861,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 188",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/188-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-189",
@@ -6889,7 +6889,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 189",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/189-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-190",
@@ -6917,7 +6917,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 190",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/190-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-191",
@@ -6945,7 +6945,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 191",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/191-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-192",
@@ -6981,7 +6981,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 192",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/192-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-193",
@@ -7017,7 +7017,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 193",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/193-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-194",
@@ -7035,7 +7035,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783738921698-45l4lug2.png",
     "sourceTitle": "Examcademy PL-300 Question 194",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/194-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-195",
@@ -7071,7 +7071,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 195",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/195-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-196",
@@ -7112,7 +7112,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 196",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/196-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-197",
@@ -7149,7 +7149,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730128307-b04phki6.png",
     "sourceTitle": "Examcademy PL-300 Question 197",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/197-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-198",
@@ -7167,7 +7167,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785751829880-7nzmsm02.png",
     "sourceTitle": "Examcademy PL-300 Question 198",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/198-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-199",
@@ -7203,7 +7203,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 199",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/199-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-200",
@@ -7244,7 +7244,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 200",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/200-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-201",
@@ -7281,7 +7281,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 201",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/201-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-202",
@@ -7318,7 +7318,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742181585-xpdd8975.png",
     "sourceTitle": "Examcademy PL-300 Question 202",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/202-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-203",
@@ -7346,7 +7346,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 203",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/203-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-204",
@@ -7374,7 +7374,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 204",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/204-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-205",
@@ -7402,7 +7402,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 205",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/205-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-206",
@@ -7430,7 +7430,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 206",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/206-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-207",
@@ -7472,7 +7472,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783732318552-069dmo85.png",
     "sourceTitle": "Examcademy PL-300 Question 207",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/207-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-208",
@@ -7508,7 +7508,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 208",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/208-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-209",
@@ -7526,7 +7526,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742666168-t3rfbuam.png",
     "sourceTitle": "Examcademy PL-300 Question 209",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/209-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-210",
@@ -7562,7 +7562,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 210",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/210-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-211",
@@ -7580,7 +7580,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206194488-wby7ck4b.png",
     "sourceTitle": "Examcademy PL-300 Question 211",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/211-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-212",
@@ -7616,7 +7616,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 212",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/212-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-213",
@@ -7653,7 +7653,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730630446-86jvkwyo.jpg",
     "sourceTitle": "Examcademy PL-300 Question 213",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/213-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-214",
@@ -7689,7 +7689,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 214",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/214-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-215",
@@ -7721,7 +7721,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 215",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/215-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-216",
@@ -7758,7 +7758,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783729790649-fallvvg5.png",
     "sourceTitle": "Examcademy PL-300 Question 216",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/216-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-217",
@@ -7776,7 +7776,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742667210-eiffgcwl.png",
     "sourceTitle": "Examcademy PL-300 Question 217",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/217-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-218",
@@ -7812,7 +7812,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 218",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/218-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-219",
@@ -7848,7 +7848,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 219",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/219-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-220",
@@ -7876,7 +7876,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 220",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/220-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-221",
@@ -7904,7 +7904,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 221",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/221-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-222",
@@ -7932,7 +7932,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 222",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/222-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-223",
@@ -7960,7 +7960,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 223",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/223-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-224",
@@ -7988,7 +7988,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 224",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/224-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-225",
@@ -8016,7 +8016,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 225",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/225-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-226",
@@ -8044,7 +8044,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 226",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/226-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-227",
@@ -8134,7 +8134,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730145100-sjla017q.png",
     "sourceTitle": "Examcademy PL-300 Question 227",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/227-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.457Z"
   },
   {
     "id": "pl300-228",
@@ -8170,7 +8170,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 228",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/228-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-229",
@@ -8187,7 +8187,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 229",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/229-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-230",
@@ -8223,7 +8223,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 230",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/230-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-231",
@@ -8240,7 +8240,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 231",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/231-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-232",
@@ -8287,7 +8287,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 232",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/232-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-233",
@@ -8305,7 +8305,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742370262-r48m00xv.png",
     "sourceTitle": "Examcademy PL-300 Question 233",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/233-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-234",
@@ -8341,7 +8341,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 234",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/234-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-235",
@@ -8431,7 +8431,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783729995230-up0pi6oy.jpg",
     "sourceTitle": "Examcademy PL-300 Question 235",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/235-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-236",
@@ -8467,7 +8467,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 236",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/236-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-237",
@@ -8503,7 +8503,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 237",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/237-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-238",
@@ -8539,7 +8539,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 238",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/238-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-239",
@@ -8576,7 +8576,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783731104592-r9ir3pje.jpg",
     "sourceTitle": "Examcademy PL-300 Question 239",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/239-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-240",
@@ -8617,7 +8617,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 240",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/240-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-241",
@@ -8653,7 +8653,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 241",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/241-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-242",
@@ -8690,7 +8690,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 242",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/242-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-243",
@@ -8757,7 +8757,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 243",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/243-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-244",
@@ -8789,7 +8789,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 244",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/244-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-245",
@@ -8837,7 +8837,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783745254247-l0na5ya4.png",
     "sourceTitle": "Examcademy PL-300 Question 245",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/245-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-246",
@@ -8873,7 +8873,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 246",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/246-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-247",
@@ -8909,7 +8909,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 247",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/247-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-248",
@@ -8950,7 +8950,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 248",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/248-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-249",
@@ -8968,7 +8968,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742672295-8d7kpmhw.png",
     "sourceTitle": "Examcademy PL-300 Question 249",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/249-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-250",
@@ -9004,7 +9004,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 250",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/250-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-251",
@@ -9022,7 +9022,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783729791256-jw3c5tqy.jpg",
     "sourceTitle": "Examcademy PL-300 Question 251",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/251-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-252",
@@ -9106,7 +9106,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742671040-8i7ec5om.png",
     "sourceTitle": "Examcademy PL-300 Question 252",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/252-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-253",
@@ -9142,7 +9142,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 253",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/253-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-254",
@@ -9179,7 +9179,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783735458084-bur46zb6.png",
     "sourceTitle": "Examcademy PL-300 Question 254",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/254-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-255",
@@ -9196,7 +9196,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 255",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/255-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-256",
@@ -9277,7 +9277,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 256",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/256-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-257",
@@ -9313,7 +9313,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 257",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/257-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-258",
@@ -9395,7 +9395,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783746018807-iioeyodm.png",
     "sourceTitle": "Examcademy PL-300 Question 258",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/258-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-259",
@@ -9432,7 +9432,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783740526797-x0ldc4nn.png",
     "sourceTitle": "Examcademy PL-300 Question 259",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/259-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-260",
@@ -9468,7 +9468,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 260",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/260-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-261",
@@ -9509,7 +9509,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 261",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/261-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-262",
@@ -9546,7 +9546,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730649086-k1ww97nb.jpg",
     "sourceTitle": "Examcademy PL-300 Question 262",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/262-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-263",
@@ -9582,7 +9582,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 263",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/263-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-264",
@@ -9618,7 +9618,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 264",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/264-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-265",
@@ -9659,7 +9659,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 265",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/265-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-266",
@@ -9700,7 +9700,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 266",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/266-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-267",
@@ -9736,7 +9736,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 267",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/267-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-268",
@@ -9772,7 +9772,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 268",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/268-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-269",
@@ -9809,7 +9809,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 269",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/269-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-270",
@@ -9826,7 +9826,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 270",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/270-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-271",
@@ -9844,7 +9844,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205958444-mf9tjjqe.png",
     "sourceTitle": "Examcademy PL-300 Question 271",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/271-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-272",
@@ -9880,7 +9880,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 272",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/272-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-273",
@@ -9912,7 +9912,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 273",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/273-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-274",
@@ -9930,7 +9930,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742180022-942hzgqe.png",
     "sourceTitle": "Examcademy PL-300 Question 274",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/274-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-275",
@@ -9978,7 +9978,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783729806834-dero17cq.jpg",
     "sourceTitle": "Examcademy PL-300 Question 275",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/275-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-276",
@@ -10014,7 +10014,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 276",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/276-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-277",
@@ -10050,7 +10050,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 277",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/277-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-278",
@@ -10086,7 +10086,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 278",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/278-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-279",
@@ -10128,7 +10128,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 279",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/279-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-280",
@@ -10176,7 +10176,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783733347198-dftredx2.png",
     "sourceTitle": "Examcademy PL-300 Question 280",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/280-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-281",
@@ -10213,7 +10213,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742682191-vl6fsrgu.png",
     "sourceTitle": "Examcademy PL-300 Question 281",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/281-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-282",
@@ -10249,7 +10249,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 282",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/282-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-283",
@@ -10285,7 +10285,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 283",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/283-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-284",
@@ -10313,7 +10313,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 284",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/284-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-285",
@@ -10341,7 +10341,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 285",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/285-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-286",
@@ -10369,7 +10369,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 286",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/286-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-287",
@@ -10397,7 +10397,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 287",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/287-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-288",
@@ -10433,7 +10433,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 288",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/288-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-289",
@@ -10450,7 +10450,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 289",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/289-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-290",
@@ -10539,7 +10539,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 290",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/290-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-291",
@@ -10614,7 +10614,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 291",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/291-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-292",
@@ -10650,7 +10650,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 292",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/292-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-293",
@@ -10694,7 +10694,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 293",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/293-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-294",
@@ -10712,7 +10712,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742176380-9nbqzuzc.png",
     "sourceTitle": "Examcademy PL-300 Question 294",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/294-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-295",
@@ -10730,7 +10730,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783735458837-brsajxxo.png",
     "sourceTitle": "Examcademy PL-300 Question 295",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/295-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-296",
@@ -10767,7 +10767,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783736224667-ksq3jp7z.png",
     "sourceTitle": "Examcademy PL-300 Question 296",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/296-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-297",
@@ -10784,7 +10784,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 297",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/297-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-298",
@@ -10820,7 +10820,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 298",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/298-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-299",
@@ -10868,7 +10868,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205971481-ybd27r0w.png",
     "sourceTitle": "Examcademy PL-300 Question 299",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/299-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-300",
@@ -10904,7 +10904,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 300",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/300-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-301",
@@ -10921,7 +10921,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 301",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/301-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-302",
@@ -10939,7 +10939,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742685542-9kyw1xwc.png",
     "sourceTitle": "Examcademy PL-300 Question 302",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/302-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-303",
@@ -10957,7 +10957,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785752649707-nufbf56t.png",
     "sourceTitle": "Examcademy PL-300 Question 303",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/303-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-304",
@@ -10975,7 +10975,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730526856-v0r3i568.jpg",
     "sourceTitle": "Examcademy PL-300 Question 304",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/304-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-305",
@@ -10992,7 +10992,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 305",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/305-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-306",
@@ -11010,7 +11010,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783732323058-ynfq07w4.png",
     "sourceTitle": "Examcademy PL-300 Question 306",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/306-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-307",
@@ -11047,7 +11047,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783738918737-9d56lul2.png",
     "sourceTitle": "Examcademy PL-300 Question 307",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/307-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-308",
@@ -11079,7 +11079,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 308",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/308-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-309",
@@ -11097,7 +11097,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206198695-uqdosgtv.png",
     "sourceTitle": "Examcademy PL-300 Question 309",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/309-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-310",
@@ -11184,7 +11184,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 310",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/310-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-311",
@@ -11201,7 +11201,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 311",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/311-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-312",
@@ -11219,7 +11219,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785751611781-mbaqwx0g.jpg",
     "sourceTitle": "Examcademy PL-300 Question 312",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/312-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-313",
@@ -11302,7 +11302,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 313",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/313-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-314",
@@ -11338,7 +11338,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 314",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/314-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-315",
@@ -11374,7 +11374,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 315",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/315-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-316",
@@ -11410,7 +11410,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 316",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/316-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-317",
@@ -11446,7 +11446,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 317",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/317-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-318",
@@ -11474,7 +11474,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 318",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/318-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-319",
@@ -11502,7 +11502,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 319",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/319-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-320",
@@ -11530,7 +11530,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 320",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/320-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-321",
@@ -11558,7 +11558,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 321",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/321-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-322",
@@ -11575,7 +11575,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 322",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/322-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-323",
@@ -11617,7 +11617,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783729985790-lmkqgzl7.jpg",
     "sourceTitle": "Examcademy PL-300 Question 323",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/323-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-324",
@@ -11659,7 +11659,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783733370242-oasel2kz.png",
     "sourceTitle": "Examcademy PL-300 Question 324",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/324-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-325",
@@ -11696,7 +11696,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783740420532-egd6ym7h.png",
     "sourceTitle": "Examcademy PL-300 Question 325",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/325-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-326",
@@ -11732,7 +11732,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 326",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/326-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-327",
@@ -11768,7 +11768,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 327",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/327-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-328",
@@ -11786,7 +11786,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785752195518-74x29psp.png",
     "sourceTitle": "Examcademy PL-300 Question 328",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/328-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-329",
@@ -11862,7 +11862,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205957899-0kpn3077.png",
     "sourceTitle": "Examcademy PL-300 Question 329",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/329-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-330",
@@ -11904,7 +11904,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742678117-ykt3h634.png",
     "sourceTitle": "Examcademy PL-300 Question 330",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/330-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-331",
@@ -11941,7 +11941,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783745253594-372xvdjg.png",
     "sourceTitle": "Examcademy PL-300 Question 331",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/331-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-332",
@@ -11958,7 +11958,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 332",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/332-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-333",
@@ -11995,7 +11995,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730769804-7kj2g7wx.jpg",
     "sourceTitle": "Examcademy PL-300 Question 333",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/333-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-334",
@@ -12031,7 +12031,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 334",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/334-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.885Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-335",
@@ -12067,7 +12067,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 335",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/335-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-336",
@@ -12085,7 +12085,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742757857-rajun772.png",
     "sourceTitle": "Examcademy PL-300 Question 336",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/336-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-337",
@@ -12167,7 +12167,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783732301781-y400r9er.png",
     "sourceTitle": "Examcademy PL-300 Question 337",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/337-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-338",
@@ -12203,7 +12203,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 338",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/338-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-339",
@@ -12240,7 +12240,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783740962331-cpz85y1z.png",
     "sourceTitle": "Examcademy PL-300 Question 339",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/339-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-340",
@@ -12276,7 +12276,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 340",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/340-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-341",
@@ -12312,7 +12312,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 341",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/341-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-342",
@@ -12329,7 +12329,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 342",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/342-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-343",
@@ -12377,7 +12377,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730621822-hl3ks5ut.png",
     "sourceTitle": "Examcademy PL-300 Question 343",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/343-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-344",
@@ -12459,7 +12459,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783729766549-51h89m7t.png",
     "sourceTitle": "Examcademy PL-300 Question 344",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/344-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-345",
@@ -12477,7 +12477,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785695719842-cfk3s9oh.png",
     "sourceTitle": "Examcademy PL-300 Question 345",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/345-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-346",
@@ -12519,7 +12519,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 346",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/346-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-347",
@@ -12601,7 +12601,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783733330655-kysvd89b.png",
     "sourceTitle": "Examcademy PL-300 Question 347",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/347-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-348",
@@ -12647,7 +12647,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 348",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/348-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-349",
@@ -12683,7 +12683,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 349",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/349-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-350",
@@ -12719,7 +12719,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 350",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/350-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-351",
@@ -12747,7 +12747,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 351",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/351-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-352",
@@ -12775,7 +12775,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 352",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/352-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-353",
@@ -12803,7 +12803,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 353",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/353-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-354",
@@ -12831,7 +12831,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 354",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/354-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-355",
@@ -12868,7 +12868,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730797958-eifcy2q5.jpg",
     "sourceTitle": "Examcademy PL-300 Question 355",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/355-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-356",
@@ -12904,7 +12904,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 356",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/356-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-357",
@@ -12993,7 +12993,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 357",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/357-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-358",
@@ -13029,7 +13029,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 358",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/358-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-359",
@@ -13065,7 +13065,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 359",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/359-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-360",
@@ -13132,7 +13132,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 360",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/360-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-361",
@@ -13168,7 +13168,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 361",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/361-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-362",
@@ -13185,7 +13185,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 362",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/362-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-363",
@@ -13221,7 +13221,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 363",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/363-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-364",
@@ -13257,7 +13257,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 364",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/364-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-365",
@@ -13275,7 +13275,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730013799-ml376y85.jpg",
     "sourceTitle": "Examcademy PL-300 Question 365",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/365-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-366",
@@ -13292,7 +13292,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 366",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/366-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-367",
@@ -13328,7 +13328,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 367",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/367-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-368",
@@ -13369,7 +13369,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 368",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/368-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-369",
@@ -13406,7 +13406,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1786827795875-k47v7cou.png",
     "sourceTitle": "Examcademy PL-300 Question 369",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/369-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-370",
@@ -13473,7 +13473,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 370",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/370-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-371",
@@ -13501,7 +13501,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 371",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/371-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-372",
@@ -13529,7 +13529,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 372",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/372-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-373",
@@ -13557,7 +13557,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 373",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/373-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-374",
@@ -13585,7 +13585,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 374",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/374-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-375",
@@ -13621,7 +13621,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 375",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/375-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-376",
@@ -13639,7 +13639,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783732072678-xk1mhr7u.png",
     "sourceTitle": "Examcademy PL-300 Question 376",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/376-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-377",
@@ -13675,7 +13675,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 377",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/377-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-378",
@@ -13692,7 +13692,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 378",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/378-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-379",
@@ -13728,7 +13728,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 379",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/379-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-380",
@@ -13765,7 +13765,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783740962635-go45cgg8.png",
     "sourceTitle": "Examcademy PL-300 Question 380",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/380-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-381",
@@ -13782,7 +13782,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 381",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/381-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-382",
@@ -13818,7 +13818,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 382",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/382-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-383",
@@ -13859,7 +13859,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 383",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/383-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-384",
@@ -13876,7 +13876,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 384",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/384-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-385",
@@ -13908,7 +13908,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 385",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/385-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-386",
@@ -13990,7 +13990,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783733796287-xqxv6vxu.png",
     "sourceTitle": "Examcademy PL-300 Question 386",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/386-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-387",
@@ -14026,7 +14026,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 387",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/387-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-388",
@@ -14062,7 +14062,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 388",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/388-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-389",
@@ -14099,7 +14099,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730294938-j9m1g1ea.jpg",
     "sourceTitle": "Examcademy PL-300 Question 389",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/389-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-390",
@@ -14186,7 +14186,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 390",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/390-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-391",
@@ -14222,7 +14222,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 391",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/391-manage-and-secure-power-bi",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-392",
@@ -14240,7 +14240,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785751600479-gr3znv17.jpg",
     "sourceTitle": "Examcademy PL-300 Question 392",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/392-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-393",
@@ -14257,7 +14257,7 @@ export const pl300Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy PL-300 Question 393",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/393-model-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-394",
@@ -14361,7 +14361,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730095796-mu1dgrk5.jpg",
     "sourceTitle": "Examcademy PL-300 Question 394",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/394-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-395",
@@ -14398,7 +14398,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783745255864-geuu9k3g.png",
     "sourceTitle": "Examcademy PL-300 Question 395",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/395-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-396",
@@ -14440,7 +14440,7 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730096957-8d3agih4.jpg",
     "sourceTitle": "Examcademy PL-300 Question 396",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/396-prepare-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   },
   {
     "id": "pl300-397",
@@ -14477,6 +14477,6 @@ export const pl300Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783731094230-3besg23s.jpg",
     "sourceTitle": "Examcademy PL-300 Question 397",
     "sourceUrl": "https://examcademy.com/exams/microsoft/pl-300/q/397-visualize-and-analyze-the-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.886Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.458Z"
   }
 ];

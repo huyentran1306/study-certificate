@@ -16,7 +16,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 1",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/1-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-2",
@@ -52,7 +52,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 2",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/2-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-3",
@@ -70,7 +70,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206734677-i0lqs4di.png",
     "sourceTitle": "Examcademy DP-600 Question 3",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/3-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-4",
@@ -88,7 +88,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785601675376-cdz3ctlm.png",
     "sourceTitle": "Examcademy DP-600 Question 4",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/4-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-5",
@@ -129,7 +129,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 5",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/5-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-6",
@@ -210,7 +210,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 6",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/6-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-7",
@@ -246,7 +246,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 7",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/7-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-8",
@@ -282,7 +282,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 8",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/8-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-9",
@@ -319,7 +319,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783712966688-w8j1we3g.png",
     "sourceTitle": "Examcademy DP-600 Question 9",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/9-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-10",
@@ -355,7 +355,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 10",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/10-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-11",
@@ -373,7 +373,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205236522-pvj49rmm.png",
     "sourceTitle": "Examcademy DP-600 Question 11",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/11-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-12",
@@ -409,7 +409,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 12",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/12-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-13",
@@ -445,7 +445,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 13",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/13-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-14",
@@ -485,7 +485,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 14",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/14-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-15",
@@ -533,7 +533,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784226207388-5wadcf1g.png",
     "sourceTitle": "Examcademy DP-600 Question 15",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/15-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-16",
@@ -550,7 +550,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 16",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/16-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-17",
@@ -596,7 +596,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 17",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/17-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-18",
@@ -644,7 +644,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206607019-6vqhr3nd.png",
     "sourceTitle": "Examcademy DP-600 Question 18",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/18-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-19",
@@ -680,7 +680,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 19",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/19-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-20",
@@ -717,7 +717,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783713076063-5lup1f2o.png",
     "sourceTitle": "Examcademy DP-600 Question 20",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/20-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-21",
@@ -758,7 +758,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783709960197-qvh8l0xl.png",
     "sourceTitle": "Examcademy DP-600 Question 21",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/21-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-22",
@@ -775,7 +775,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 22",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/22-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-23",
@@ -792,7 +792,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 23",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/23-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-24",
@@ -809,7 +809,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 24",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/24-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-25",
@@ -826,7 +826,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 25",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/25-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-26",
@@ -863,7 +863,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 26",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/26-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-27",
@@ -904,7 +904,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 27",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/27-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-28",
@@ -940,7 +940,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 28",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/28-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-29",
@@ -976,7 +976,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 29",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/29-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-30",
@@ -1012,7 +1012,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 30",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/30-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-31",
@@ -1048,7 +1048,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 31",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/31-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-32",
@@ -1084,7 +1084,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 32",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/32-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-33",
@@ -1120,7 +1120,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 33",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/33-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.480Z"
   },
   {
     "id": "dp600-34",
@@ -1201,7 +1201,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 34",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/34-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-35",
@@ -1237,7 +1237,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 35",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/35-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-36",
@@ -1273,7 +1273,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 36",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/36-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-37",
@@ -1310,7 +1310,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 37",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/37-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-38",
@@ -1386,7 +1386,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784213065700-x65gp379.png",
     "sourceTitle": "Examcademy DP-600 Question 38",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/38-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-39",
@@ -1483,7 +1483,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 39",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/39-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-40",
@@ -1500,7 +1500,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 40",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/40-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-41",
@@ -1537,7 +1537,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783711380492-giytac6d.png",
     "sourceTitle": "Examcademy DP-600 Question 41",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/41-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-42",
@@ -1585,7 +1585,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206725797-bbj3odfv.png",
     "sourceTitle": "Examcademy DP-600 Question 42",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/42-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-43",
@@ -1621,7 +1621,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 43",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/43-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-44",
@@ -1639,7 +1639,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784226204449-arjeo5fx.png",
     "sourceTitle": "Examcademy DP-600 Question 44",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/44-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-45",
@@ -1675,7 +1675,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 45",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/45-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-46",
@@ -1711,7 +1711,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 46",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/46-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-47",
@@ -1747,7 +1747,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 47",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/47-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-48",
@@ -1783,7 +1783,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 48",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/48-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-49",
@@ -1800,7 +1800,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 49",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/49-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-50",
@@ -1817,7 +1817,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 50",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/50-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-52",
@@ -1834,7 +1834,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 52",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/52-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-53",
@@ -1871,7 +1871,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783710377663-v2ew0kg7.png",
     "sourceTitle": "Examcademy DP-600 Question 53",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/53-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-54",
@@ -1907,7 +1907,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 54",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/54-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-55",
@@ -1943,7 +1943,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 55",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/55-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-56",
@@ -1980,7 +1980,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 56",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/56-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-57",
@@ -2061,7 +2061,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 57",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/57-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-58",
@@ -2097,7 +2097,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 58",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/58-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-59",
@@ -2133,7 +2133,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 59",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/59-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-60",
@@ -2170,7 +2170,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 60",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/60-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-61",
@@ -2188,7 +2188,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205245088-uly4gi5j.png",
     "sourceTitle": "Examcademy DP-600 Question 61",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/61-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-62",
@@ -2224,7 +2224,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 62",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/62-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-63",
@@ -2260,7 +2260,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 63",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/63-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-64",
@@ -2296,7 +2296,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 64",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/64-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-65",
@@ -2333,7 +2333,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 65",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/65-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-66",
@@ -2375,7 +2375,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 66",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/66-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-67",
@@ -2411,7 +2411,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 67",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/67-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-68",
@@ -2429,7 +2429,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205114480-3s9h9oem.png",
     "sourceTitle": "Examcademy DP-600 Question 68",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/68-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-69",
@@ -2465,7 +2465,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 69",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/69-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-70",
@@ -2501,7 +2501,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 70",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/70-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-71",
@@ -2549,7 +2549,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206203910-mmdk8lmi.png",
     "sourceTitle": "Examcademy DP-600 Question 71",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/71-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-73",
@@ -2567,7 +2567,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206720032-o8h1dd29.png",
     "sourceTitle": "Examcademy DP-600 Question 73",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/73-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-74",
@@ -2585,7 +2585,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784213061866-vb6hebxu.png",
     "sourceTitle": "Examcademy DP-600 Question 74",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/74-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-75",
@@ -2603,7 +2603,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205109162-3p3b4url.png",
     "sourceTitle": "Examcademy DP-600 Question 75",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/75-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-76",
@@ -2639,7 +2639,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 76",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/76-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-77",
@@ -2707,7 +2707,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205237231-m41mchv7.png",
     "sourceTitle": "Examcademy DP-600 Question 77",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/77-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-78",
@@ -2743,7 +2743,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 78",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/78-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-79",
@@ -2779,7 +2779,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 79",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/79-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-80",
@@ -2796,7 +2796,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 80",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/80-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-81",
@@ -2832,7 +2832,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 81",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/81-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-82",
@@ -2868,7 +2868,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 82",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/82-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-83",
@@ -2900,7 +2900,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 83",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/83-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-84",
@@ -2918,7 +2918,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784212789541-kfozk6wx.png",
     "sourceTitle": "Examcademy DP-600 Question 84",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/84-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-85",
@@ -2954,7 +2954,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 85",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/85-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-86",
@@ -2972,7 +2972,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205241043-fvml5mv3.png",
     "sourceTitle": "Examcademy DP-600 Question 86",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/86-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-87",
@@ -3068,7 +3068,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205244970-vddi70zt.png",
     "sourceTitle": "Examcademy DP-600 Question 87",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/87-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-88",
@@ -3105,7 +3105,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783710382179-zzfuzs5b.png",
     "sourceTitle": "Examcademy DP-600 Question 88",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/88-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-89",
@@ -3152,7 +3152,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 89",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/89-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-90",
@@ -3170,7 +3170,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206730866-wwwh4x2r.png",
     "sourceTitle": "Examcademy DP-600 Question 90",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/90-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-91",
@@ -3267,7 +3267,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 91",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/91-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-92",
@@ -3304,7 +3304,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783711794218-t1jj4zws.png",
     "sourceTitle": "Examcademy DP-600 Question 92",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/92-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-93",
@@ -3340,7 +3340,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 93",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/93-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-94",
@@ -3377,7 +3377,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 94",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/94-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-95",
@@ -3395,7 +3395,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206738796-xnmy8mvl.png",
     "sourceTitle": "Examcademy DP-600 Question 95",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/95-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-96",
@@ -3443,7 +3443,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206606477-45cujf5e.png",
     "sourceTitle": "Examcademy DP-600 Question 96",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/96-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-97",
@@ -3491,7 +3491,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205116247-oy1igppz.png",
     "sourceTitle": "Examcademy DP-600 Question 97",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/97-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-98",
@@ -3539,7 +3539,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206615208-zyrfv3jk.png",
     "sourceTitle": "Examcademy DP-600 Question 98",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/98-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-99",
@@ -3575,7 +3575,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 99",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/99-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-100",
@@ -3593,7 +3593,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206742797-m7obkwte.png",
     "sourceTitle": "Examcademy DP-600 Question 100",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/100-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-101",
@@ -3629,7 +3629,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 101",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/101-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-102",
@@ -3665,7 +3665,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 102",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/102-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-103",
@@ -3701,7 +3701,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 103",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/103-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-104",
@@ -3718,7 +3718,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 104",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/104-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-105",
@@ -3759,7 +3759,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 105",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/105-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-106",
@@ -3795,7 +3795,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 106",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/106-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-107",
@@ -3831,7 +3831,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 107",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/107-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-108",
@@ -3867,7 +3867,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 108",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/108-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-109",
@@ -3903,7 +3903,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 109",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/109-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-110",
@@ -4012,7 +4012,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 110",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/110-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-111",
@@ -4048,7 +4048,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 111",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/111-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-112",
@@ -4084,7 +4084,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 112",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/112-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-113",
@@ -4125,7 +4125,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 113",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/113-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-114",
@@ -4161,7 +4161,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 114",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/114-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-115",
@@ -4197,7 +4197,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 115",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/115-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-116",
@@ -4265,7 +4265,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784212439031-hd7usks1.png",
     "sourceTitle": "Examcademy DP-600 Question 116",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/116-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-117",
@@ -4313,7 +4313,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784226204305-tz2xln9f.png",
     "sourceTitle": "Examcademy DP-600 Question 117",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/117-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-118",
@@ -4349,7 +4349,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 118",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/118-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-119",
@@ -4445,7 +4445,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206725512-opu2xanu.png",
     "sourceTitle": "Examcademy DP-600 Question 119",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/119-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-120",
@@ -4481,7 +4481,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 120",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/120-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-121",
@@ -4517,7 +4517,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 121",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/121-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-122",
@@ -4558,7 +4558,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 122",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/122-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-123",
@@ -4606,7 +4606,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206195203-qhqiwmhu.png",
     "sourceTitle": "Examcademy DP-600 Question 123",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/123-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-124",
@@ -4642,7 +4642,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 124",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/124-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-125",
@@ -4689,7 +4689,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 125",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/125-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-126",
@@ -4727,7 +4727,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783709928530-rmypyify.png",
     "sourceTitle": "Examcademy DP-600 Question 126",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/126-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-127",
@@ -4744,7 +4744,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 127",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/127-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-128",
@@ -4818,7 +4818,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784276480341-9tffk480.png",
     "sourceTitle": "Examcademy DP-600 Question 128",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/128-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-129",
@@ -4846,7 +4846,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 129",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/129-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-130",
@@ -4874,7 +4874,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 130",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/130-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-131",
@@ -4902,7 +4902,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 131",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/131-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-132",
@@ -4930,7 +4930,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 132",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/132-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-133",
@@ -4978,7 +4978,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205113551-fwn8cwgl.png",
     "sourceTitle": "Examcademy DP-600 Question 133",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/133-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-134",
@@ -5014,7 +5014,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 134",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/134-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-135",
@@ -5050,7 +5050,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 135",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/135-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-136",
@@ -5086,7 +5086,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 136",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/136-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-137",
@@ -5104,7 +5104,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206734055-0axejhue.png",
     "sourceTitle": "Examcademy DP-600 Question 137",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/137-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-138",
@@ -5122,7 +5122,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205106828-vzcqt8it.png",
     "sourceTitle": "Examcademy DP-600 Question 138",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/138-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-139",
@@ -5139,7 +5139,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 139",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/139-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-140",
@@ -5157,7 +5157,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206736566-rpn6toz2.png",
     "sourceTitle": "Examcademy DP-600 Question 140",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/140-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-141",
@@ -5194,7 +5194,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784226204860-822k3ov1.png",
     "sourceTitle": "Examcademy DP-600 Question 141",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/141-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-142",
@@ -5212,7 +5212,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785752056168-fhto1y2c.png",
     "sourceTitle": "Examcademy DP-600 Question 142",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/142-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-143",
@@ -5248,7 +5248,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 143",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/143-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-144",
@@ -5284,7 +5284,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 144",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/144-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-145",
@@ -5301,7 +5301,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 145",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/145-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-146",
@@ -5337,7 +5337,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 146",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/146-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-147",
@@ -5373,7 +5373,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 147",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/147-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-148",
@@ -5409,7 +5409,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 148",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/148-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-149",
@@ -5445,7 +5445,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 149",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/149-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-150",
@@ -5481,7 +5481,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 150",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/150-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-151",
@@ -5517,7 +5517,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 151",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/151-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-152",
@@ -5545,7 +5545,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 152",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/152-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-153",
@@ -5573,7 +5573,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 153",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/153-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-154",
@@ -5601,7 +5601,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 154",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/154-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-155",
@@ -5629,7 +5629,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 155",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/155-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-156",
@@ -5657,7 +5657,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 156",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/156-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-157",
@@ -5693,7 +5693,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 157",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/157-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-158",
@@ -5739,7 +5739,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 158",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/158-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-159",
@@ -5775,7 +5775,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 159",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/159-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-160",
@@ -5816,7 +5816,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 160",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/160-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-161",
@@ -5833,7 +5833,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 161",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/161-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-162",
@@ -5873,7 +5873,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 162",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/162-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-163",
@@ -5909,7 +5909,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 163",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/163-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-164",
@@ -5927,7 +5927,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785752210280-o4beerhf.png",
     "sourceTitle": "Examcademy DP-600 Question 164",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/164-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-165",
@@ -6031,7 +6031,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206194971-cthlihyn.png",
     "sourceTitle": "Examcademy DP-600 Question 165",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/165-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-166",
@@ -6079,7 +6079,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206613106-fdcjpa2y.png",
     "sourceTitle": "Examcademy DP-600 Question 166",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/166-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-167",
@@ -6115,7 +6115,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 167",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/167-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-168",
@@ -6132,7 +6132,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 168",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/168-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-169",
@@ -6168,7 +6168,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 169",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/169-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-170",
@@ -6204,7 +6204,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 170",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/170-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-171",
@@ -6221,7 +6221,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 171",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/171-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-172",
@@ -6304,7 +6304,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 172",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/172-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-173",
@@ -6352,7 +6352,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206719923-5gu4js35.png",
     "sourceTitle": "Examcademy DP-600 Question 173",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/173-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-174",
@@ -6380,7 +6380,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 174",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/174-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-175",
@@ -6408,7 +6408,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 175",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/175-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-176",
@@ -6436,7 +6436,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 176",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/176-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-177",
@@ -6464,7 +6464,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 177",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/177-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-178",
@@ -6504,7 +6504,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 178",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/178-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-179",
@@ -6536,7 +6536,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 179",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/179-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-180",
@@ -6553,7 +6553,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 180",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/180-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-181",
@@ -6589,7 +6589,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 181",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/181-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-182",
@@ -6630,7 +6630,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 182",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/182-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-183",
@@ -6647,7 +6647,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 183",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/183-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-184",
@@ -6664,7 +6664,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 184",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/184-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-185",
@@ -6701,7 +6701,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783713072188-9swfoyew.png",
     "sourceTitle": "Examcademy DP-600 Question 185",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/185-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-186",
@@ -6737,7 +6737,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 186",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/186-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-187",
@@ -6827,7 +6827,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784211720871-2y1e8juc.png",
     "sourceTitle": "Examcademy DP-600 Question 187",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/187-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-188",
@@ -6844,7 +6844,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 188",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/188-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-189",
@@ -6888,7 +6888,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 189",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/189-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-190",
@@ -6906,7 +6906,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206733007-7z8d44km.png",
     "sourceTitle": "Examcademy DP-600 Question 190",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/190-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-191",
@@ -6942,7 +6942,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 191",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/191-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-192",
@@ -6960,7 +6960,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206194372-183zusox.png",
     "sourceTitle": "Examcademy DP-600 Question 192",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/192-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-193",
@@ -6996,7 +6996,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 193",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/193-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-194",
@@ -7032,7 +7032,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 194",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/194-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-195",
@@ -7075,7 +7075,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783710207904-v21tzwh3.png",
     "sourceTitle": "Examcademy DP-600 Question 195",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/195-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-196",
@@ -7156,7 +7156,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 196",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/196-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-197",
@@ -7193,7 +7193,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 197",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/197-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-198",
@@ -7221,7 +7221,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 198",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/198-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-199",
@@ -7249,7 +7249,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 199",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/199-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-200",
@@ -7277,7 +7277,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 200",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/200-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-201",
@@ -7305,7 +7305,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 201",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/201-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-202",
@@ -7341,7 +7341,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 202",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/202-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-203",
@@ -7377,7 +7377,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 203",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/203-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-204",
@@ -7413,7 +7413,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 204",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/204-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-205",
@@ -7449,7 +7449,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 205",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/205-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-206",
@@ -7485,7 +7485,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 206",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/206-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-207",
@@ -7521,7 +7521,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 207",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/207-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-208",
@@ -7538,7 +7538,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 208",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/208-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-209",
@@ -7575,7 +7575,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 209",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/209-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-210",
@@ -7664,7 +7664,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 210",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/210-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-211",
@@ -7681,7 +7681,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 211",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/211-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-212",
@@ -7718,7 +7718,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785600500184-c3wdqmcp.png",
     "sourceTitle": "Examcademy DP-600 Question 212",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/212-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-213",
@@ -7754,7 +7754,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 213",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/213-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-214",
@@ -7771,7 +7771,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 214",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/214-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-215",
@@ -7789,7 +7789,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785752444674-4rn349u9.png",
     "sourceTitle": "Examcademy DP-600 Question 215",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/215-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-216",
@@ -7826,7 +7826,7 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783709764899-y683qi9b.png",
     "sourceTitle": "Examcademy DP-600 Question 216",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/216-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-217",
@@ -7899,7 +7899,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 217",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/217-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-218",
@@ -7940,7 +7940,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 218",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/218-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-219",
@@ -7982,7 +7982,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 219",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/219-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-220",
@@ -8018,7 +8018,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 220",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/220-prepare-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-221",
@@ -8055,7 +8055,7 @@ export const dp600Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy DP-600 Question 221",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/221-implement-and-manage-semantic-models",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   },
   {
     "id": "dp600-222",
@@ -8073,6 +8073,6 @@ export const dp600Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205232538-dbb5gvgl.png",
     "sourceTitle": "Examcademy DP-600 Question 222",
     "sourceUrl": "https://examcademy.com/exams/microsoft/dp-600/q/222-maintain-a-data-analytics-solution",
-    "lastVerifiedAt": "2026-09-15T08:26:42.906Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.481Z"
   }
 ];

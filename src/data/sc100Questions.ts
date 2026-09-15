@@ -16,7 +16,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 1",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/1-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-2",
@@ -52,7 +52,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 2",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/2-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-3",
@@ -69,7 +69,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 3",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/3-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-4",
@@ -86,7 +86,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 4",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/4-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-5",
@@ -126,7 +126,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 5",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/5-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-6",
@@ -166,7 +166,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 6",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/6-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-7",
@@ -203,7 +203,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 7",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/7-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-8",
@@ -239,7 +239,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 8",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/8-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-9",
@@ -256,7 +256,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 9",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/9-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-10",
@@ -273,7 +273,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 10",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/10-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-11",
@@ -309,7 +309,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 11",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/11-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-12",
@@ -326,7 +326,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 12",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/12-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-13",
@@ -343,7 +343,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 13",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/13-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-14",
@@ -383,7 +383,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 14",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/14-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-15",
@@ -400,7 +400,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 15",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/15-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-16",
@@ -437,7 +437,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783896803445-0dt0srdc.png",
     "sourceTitle": "Examcademy SC-100 Question 16",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/16-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-17",
@@ -454,7 +454,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 17",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/17-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-18",
@@ -490,7 +490,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 18",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/18-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-19",
@@ -518,7 +518,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 19",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/19-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-20",
@@ -546,7 +546,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 20",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/20-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-21",
@@ -574,7 +574,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 21",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/21-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-22",
@@ -602,7 +602,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 22",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/22-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-23",
@@ -643,7 +643,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 23",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/23-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-24",
@@ -679,7 +679,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 24",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/24-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-25",
@@ -711,7 +711,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 25",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/25-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-26",
@@ -728,7 +728,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 26",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/26-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-27",
@@ -765,7 +765,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 27",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/27-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-28",
@@ -782,7 +782,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 28",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/28-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-29",
@@ -823,7 +823,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 29",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/29-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-30",
@@ -859,7 +859,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 30",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/30-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-31",
@@ -900,7 +900,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 31",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/31-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-32",
@@ -917,7 +917,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 32",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/32-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-33",
@@ -934,7 +934,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 33",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/33-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-34",
@@ -970,7 +970,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 34",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/34-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-35",
@@ -987,7 +987,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 35",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/35-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-36",
@@ -1004,7 +1004,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 36",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/36-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-37",
@@ -1021,7 +1021,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 37",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/37-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-38",
@@ -1038,7 +1038,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 38",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/38-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-39",
@@ -1074,7 +1074,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 39",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/39-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-40",
@@ -1091,7 +1091,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 40",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/40-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-41",
@@ -1132,7 +1132,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 41",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/41-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-42",
@@ -1168,7 +1168,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 42",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/42-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-43",
@@ -1185,7 +1185,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 43",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/43-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-44",
@@ -1223,7 +1223,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783809452975-tkqsmrdu.png",
     "sourceTitle": "Examcademy SC-100 Question 44",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/44-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-45",
@@ -1264,7 +1264,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783809805078-7i9zsyy7.jpg",
     "sourceTitle": "Examcademy SC-100 Question 45",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/45-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-46",
@@ -1300,7 +1300,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 46",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/46-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-47",
@@ -1342,7 +1342,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 47",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/47-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-48",
@@ -1359,7 +1359,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 48",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/48-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-49",
@@ -1391,7 +1391,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 49",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/49-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-50",
@@ -1431,7 +1431,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 50",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/50-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-51",
@@ -1467,7 +1467,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 51",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/51-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-52",
@@ -1504,7 +1504,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783809457165-3qfyxrzx.jpg",
     "sourceTitle": "Examcademy SC-100 Question 52",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/52-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-53",
@@ -1545,7 +1545,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 53",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/53-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-54",
@@ -1563,7 +1563,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783896792240-b7r354rm.png",
     "sourceTitle": "Examcademy SC-100 Question 54",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/54-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-55",
@@ -1599,7 +1599,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 55",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/55-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-56",
@@ -1616,7 +1616,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 56",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/56-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-57",
@@ -1652,7 +1652,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 57",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/57-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-58",
@@ -1733,7 +1733,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 58",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/58-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-59",
@@ -1750,7 +1750,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 59",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/59-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-60",
@@ -1767,7 +1767,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 60",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/60-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-61",
@@ -1803,7 +1803,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 61",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/61-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-62",
@@ -1839,7 +1839,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 62",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/62-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-63",
@@ -1880,7 +1880,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783899508132-uc0tbq64.png",
     "sourceTitle": "Examcademy SC-100 Question 63",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/63-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-64",
@@ -1939,7 +1939,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 64",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/64-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-65",
@@ -1956,7 +1956,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 65",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/65-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-66",
@@ -1973,7 +1973,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 66",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/66-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-67",
@@ -2005,7 +2005,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 67",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/67-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-68",
@@ -2041,7 +2041,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 68",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/68-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-69",
@@ -2058,7 +2058,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 69",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/69-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-70",
@@ -2147,7 +2147,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 70",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/70-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-71",
@@ -2164,7 +2164,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 71",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/71-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-72",
@@ -2200,7 +2200,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 72",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/72-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-73",
@@ -2237,7 +2237,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 73",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/73-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-74",
@@ -2278,7 +2278,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 74",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/74-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-75",
@@ -2359,7 +2359,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 75",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/75-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-76",
@@ -2376,7 +2376,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 76",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/76-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-77",
@@ -2412,7 +2412,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 77",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/77-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-78",
@@ -2448,7 +2448,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 78",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/78-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-79",
@@ -2485,7 +2485,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783809478690-ycj6w0n5.jpg",
     "sourceTitle": "Examcademy SC-100 Question 79",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/79-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-80",
@@ -2521,7 +2521,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 80",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/80-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-81",
@@ -2563,7 +2563,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 81",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/81-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-82",
@@ -2600,7 +2600,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 82",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/82-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-83",
@@ -2636,7 +2636,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 83",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/83-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-84",
@@ -2653,7 +2653,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 84",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/84-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-85",
@@ -2689,7 +2689,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 85",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/85-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-86",
@@ -2706,7 +2706,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 86",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/86-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-87",
@@ -2747,7 +2747,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 87",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/87-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-88",
@@ -2783,7 +2783,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 88",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/88-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-89",
@@ -2800,7 +2800,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 89",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/89-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-90",
@@ -2817,7 +2817,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 90",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/90-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-91",
@@ -2853,7 +2853,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 91",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/91-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-92",
@@ -2889,7 +2889,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 92",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/92-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-93",
@@ -2926,7 +2926,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783809499193-iyj61xpt.png",
     "sourceTitle": "Examcademy SC-100 Question 93",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/93-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-94",
@@ -2962,7 +2962,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 94",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/94-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-95",
@@ -2979,7 +2979,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 95",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/95-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-96",
@@ -3015,7 +3015,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 96",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/96-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-97",
@@ -3052,7 +3052,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 97",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/97-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-98",
@@ -3088,7 +3088,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 98",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/98-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-99",
@@ -3124,7 +3124,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 99",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/99-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-100",
@@ -3160,7 +3160,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 100",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/100-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-101",
@@ -3177,7 +3177,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 101",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/101-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.923Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-102",
@@ -3194,7 +3194,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 102",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/102-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-103",
@@ -3230,7 +3230,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 103",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/103-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-104",
@@ -3247,7 +3247,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 104",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/104-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-105",
@@ -3264,7 +3264,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 105",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/105-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-106",
@@ -3281,7 +3281,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 106",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/106-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-107",
@@ -3298,7 +3298,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 107",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/107-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-108",
@@ -3334,7 +3334,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 108",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/108-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-109",
@@ -3370,7 +3370,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 109",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/109-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-110",
@@ -3453,7 +3453,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 110",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/110-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-111",
@@ -3489,7 +3489,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 111",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/111-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-112",
@@ -3506,7 +3506,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 112",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/112-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-113",
@@ -3524,7 +3524,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783809487853-b17euu5t.png",
     "sourceTitle": "Examcademy SC-100 Question 113",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/113-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-114",
@@ -3541,7 +3541,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 114",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/114-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-115",
@@ -3577,7 +3577,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 115",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/115-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-116",
@@ -3618,7 +3618,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 116",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/116-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-117",
@@ -3654,7 +3654,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 117",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/117-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-118",
@@ -3690,7 +3690,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 118",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/118-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-119",
@@ -3726,7 +3726,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 119",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/119-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-120",
@@ -3743,7 +3743,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 120",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/120-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-121",
@@ -3760,7 +3760,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 121",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/121-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-122",
@@ -3777,7 +3777,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 122",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/122-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-123",
@@ -3818,7 +3818,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 123",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/123-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-124",
@@ -3858,7 +3858,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 124",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/124-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-125",
@@ -3875,7 +3875,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 125",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/125-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-126",
@@ -3892,7 +3892,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 126",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/126-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-127",
@@ -3909,7 +3909,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 127",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/127-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-128",
@@ -3926,7 +3926,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 128",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/128-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-129",
@@ -3962,7 +3962,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 129",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/129-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-130",
@@ -3998,7 +3998,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 130",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/130-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-131",
@@ -4034,7 +4034,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 131",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/131-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-132",
@@ -4070,7 +4070,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 132",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/132-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-133",
@@ -4106,7 +4106,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 133",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/133-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-134",
@@ -4142,7 +4142,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 134",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/134-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-135",
@@ -4159,7 +4159,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 135",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/135-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-136",
@@ -4195,7 +4195,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 136",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/136-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-137",
@@ -4236,7 +4236,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 137",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/137-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-138",
@@ -4272,7 +4272,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 138",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/138-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-139",
@@ -4289,7 +4289,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 139",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/139-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-140",
@@ -4325,7 +4325,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 140",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/140-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-141",
@@ -4361,7 +4361,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 141",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/141-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-142",
@@ -4397,7 +4397,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 142",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/142-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-143",
@@ -4433,7 +4433,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 143",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/143-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-144",
@@ -4469,7 +4469,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 144",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/144-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-145",
@@ -4536,7 +4536,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 145",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/145-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-146",
@@ -4572,7 +4572,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 146",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/146-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-147",
@@ -4609,7 +4609,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 147",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/147-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-148",
@@ -4626,7 +4626,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 148",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/148-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-149",
@@ -4658,7 +4658,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 149",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/149-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-150",
@@ -4686,7 +4686,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 150",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/150-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-151",
@@ -4714,7 +4714,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 151",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/151-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-152",
@@ -4742,7 +4742,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 152",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/152-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-153",
@@ -4770,7 +4770,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 153",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/153-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-154",
@@ -4787,7 +4787,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 154",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/154-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-155",
@@ -4804,7 +4804,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 155",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/155-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-156",
@@ -4841,7 +4841,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 156",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/156-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-157",
@@ -4858,7 +4858,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 157",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/157-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-158",
@@ -4876,7 +4876,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783886757662-9wtvadnk.png",
     "sourceTitle": "Examcademy SC-100 Question 158",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/158-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-159",
@@ -4908,7 +4908,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 159",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/159-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-160",
@@ -4950,7 +4950,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 160",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/160-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-161",
@@ -4990,7 +4990,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 161",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/161-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-162",
@@ -5026,7 +5026,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 162",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/162-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-163",
@@ -5043,7 +5043,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 163",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/163-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-164",
@@ -5079,7 +5079,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 164",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/164-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-165",
@@ -5115,7 +5115,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 165",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/165-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-166",
@@ -5151,7 +5151,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 166",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/166-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-167",
@@ -5168,7 +5168,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 167",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/167-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-168",
@@ -5249,7 +5249,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 168",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/168-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-169",
@@ -5266,7 +5266,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 169",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/169-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-170",
@@ -5283,7 +5283,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 170",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/170-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-171",
@@ -5330,7 +5330,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 171",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/171-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-172",
@@ -5347,7 +5347,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 172",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/172-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-173",
@@ -5383,7 +5383,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 173",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/173-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-174",
@@ -5419,7 +5419,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 174",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/174-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-175",
@@ -5436,7 +5436,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 175",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/175-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-176",
@@ -5453,7 +5453,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 176",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/176-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-177",
@@ -5489,7 +5489,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 177",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/177-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-178",
@@ -5506,7 +5506,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 178",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/178-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-179",
@@ -5524,7 +5524,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783896799119-7qd4p4kx.png",
     "sourceTitle": "Examcademy SC-100 Question 179",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/179-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-180",
@@ -5541,7 +5541,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 180",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/180-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-181",
@@ -5577,7 +5577,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 181",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/181-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-182",
@@ -5594,7 +5594,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 182",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/182-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-183",
@@ -5667,7 +5667,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 183",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/183-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-184",
@@ -5708,7 +5708,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 184",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/184-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-185",
@@ -5740,7 +5740,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 185",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/185-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-186",
@@ -5776,7 +5776,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 186",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/186-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-187",
@@ -5812,7 +5812,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 187",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/187-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-188",
@@ -5848,7 +5848,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 188",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/188-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-189",
@@ -5865,7 +5865,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 189",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/189-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-190",
@@ -5901,7 +5901,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 190",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/190-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-191",
@@ -5937,7 +5937,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 191",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/191-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-192",
@@ -5955,7 +5955,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783826152202-gd9090nw.png",
     "sourceTitle": "Examcademy SC-100 Question 192",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/192-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-193",
@@ -5991,7 +5991,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 193",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/193-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-194",
@@ -6027,7 +6027,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 194",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/194-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-195",
@@ -6063,7 +6063,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 195",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/195-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-196",
@@ -6080,7 +6080,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 196",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/196-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-197",
@@ -6116,7 +6116,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 197",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/197-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-198",
@@ -6152,7 +6152,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 198",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/198-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-199",
@@ -6193,7 +6193,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 199",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/199-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-200",
@@ -6210,7 +6210,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 200",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/200-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-201",
@@ -6227,7 +6227,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 201",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/201-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-202",
@@ -6263,7 +6263,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 202",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/202-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-203",
@@ -6280,7 +6280,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 203",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/203-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-204",
@@ -6316,7 +6316,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 204",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/204-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-205",
@@ -6357,7 +6357,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 205",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/205-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-206",
@@ -6385,7 +6385,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 206",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/206-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-207",
@@ -6413,7 +6413,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 207",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/207-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-208",
@@ -6441,7 +6441,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 208",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/208-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-209",
@@ -6469,7 +6469,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 209",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/209-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-210",
@@ -6497,7 +6497,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 210",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/210-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-211",
@@ -6525,7 +6525,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 211",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/211-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-212",
@@ -6561,7 +6561,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 212",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/212-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-213",
@@ -6597,7 +6597,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 213",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/213-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-214",
@@ -6614,7 +6614,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 214",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/214-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-215",
@@ -6650,7 +6650,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 215",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/215-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-216",
@@ -6686,7 +6686,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 216",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/216-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-217",
@@ -6722,7 +6722,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 217",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/217-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-218",
@@ -6759,7 +6759,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783809593706-xxek3fwy.jpg",
     "sourceTitle": "Examcademy SC-100 Question 218",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/218-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-219",
@@ -6787,7 +6787,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 219",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/219-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-220",
@@ -6815,7 +6815,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 220",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/220-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-221",
@@ -6843,7 +6843,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 221",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/221-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-222",
@@ -6871,7 +6871,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 222",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/222-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-223",
@@ -6888,7 +6888,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 223",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/223-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-224",
@@ -6924,7 +6924,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 224",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/224-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-225",
@@ -6941,7 +6941,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 225",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/225-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-226",
@@ -6977,7 +6977,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 226",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/226-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-227",
@@ -6994,7 +6994,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 227",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/227-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-228",
@@ -7030,7 +7030,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 228",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/228-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-229",
@@ -7047,7 +7047,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 229",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/229-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-230",
@@ -7083,7 +7083,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 230",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/230-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-231",
@@ -7124,7 +7124,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 231",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/231-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-232",
@@ -7160,7 +7160,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 232",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/232-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-233",
@@ -7177,7 +7177,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 233",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/233-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-234",
@@ -7194,7 +7194,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 234",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/234-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-235",
@@ -7211,7 +7211,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 235",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/235-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-236",
@@ -7228,7 +7228,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 236",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/236-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.501Z"
   },
   {
     "id": "sc100-237",
@@ -7264,7 +7264,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 237",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/237-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-238",
@@ -7282,7 +7282,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783896794557-z8udkzym.png",
     "sourceTitle": "Examcademy SC-100 Question 238",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/238-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-239",
@@ -7318,7 +7318,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 239",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/239-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-240",
@@ -7354,7 +7354,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 240",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/240-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-241",
@@ -7372,7 +7372,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783886028916-oz9g6qs6.png",
     "sourceTitle": "Examcademy SC-100 Question 241",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/241-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-242",
@@ -7408,7 +7408,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 242",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/242-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-243",
@@ -7445,7 +7445,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 243",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/243-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-244",
@@ -7481,7 +7481,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 244",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/244-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-245",
@@ -7498,7 +7498,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 245",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/245-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-246",
@@ -7534,7 +7534,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 246",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/246-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-247",
@@ -7574,7 +7574,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 247",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/247-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-248",
@@ -7610,7 +7610,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 248",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/248-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-249",
@@ -7647,7 +7647,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783810115742-sdr7pjb0.jpg",
     "sourceTitle": "Examcademy SC-100 Question 249",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/249-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-250",
@@ -7664,7 +7664,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 250",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/250-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-251",
@@ -7681,7 +7681,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 251",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/251-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-252",
@@ -7723,7 +7723,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783809592947-aug2rkr2.jpg",
     "sourceTitle": "Examcademy SC-100 Question 252",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/252-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-253",
@@ -7771,7 +7771,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783886187392-k7sd5ny5.png",
     "sourceTitle": "Examcademy SC-100 Question 253",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/253-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-254",
@@ -7788,7 +7788,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 254",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/254-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-255",
@@ -7824,7 +7824,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 255",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/255-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-256",
@@ -7860,7 +7860,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 256",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/256-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-257",
@@ -7896,7 +7896,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 257",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/257-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-258",
@@ -7913,7 +7913,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 258",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/258-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-259",
@@ -7949,7 +7949,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 259",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/259-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-260",
@@ -7985,7 +7985,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 260",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/260-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-261",
@@ -8021,7 +8021,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 261",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/261-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-262",
@@ -8057,7 +8057,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 262",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/262-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-263",
@@ -8074,7 +8074,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 263",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/263-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-264",
@@ -8110,7 +8110,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 264",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/264-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-265",
@@ -8127,7 +8127,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 265",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/265-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-266",
@@ -8144,7 +8144,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 266",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/266-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-267",
@@ -8219,7 +8219,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 267",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/267-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-268",
@@ -8255,7 +8255,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 268",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/268-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-269",
@@ -8300,7 +8300,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 269",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/269-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-270",
@@ -8336,7 +8336,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 270",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/270-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-271",
@@ -8353,7 +8353,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 271",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/271-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-272",
@@ -8370,7 +8370,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 272",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/272-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-273",
@@ -8407,7 +8407,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 273",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/273-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-274",
@@ -8443,7 +8443,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 274",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/274-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-275",
@@ -8484,7 +8484,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783809479753-7i4jat2y.jpg",
     "sourceTitle": "Examcademy SC-100 Question 275",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/275-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-276",
@@ -8520,7 +8520,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 276",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/276-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-277",
@@ -8537,7 +8537,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 277",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/277-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-278",
@@ -8573,7 +8573,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 278",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/278-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-279",
@@ -8609,7 +8609,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 279",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/279-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-280",
@@ -8626,7 +8626,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 280",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/280-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-281",
@@ -8662,7 +8662,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 281",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/281-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-282",
@@ -8698,7 +8698,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 282",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/282-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-283",
@@ -8716,7 +8716,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783809474841-f6t7jow2.jpg",
     "sourceTitle": "Examcademy SC-100 Question 283",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/283-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-284",
@@ -8752,7 +8752,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 284",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/284-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-285",
@@ -8788,7 +8788,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 285",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/285-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-286",
@@ -8805,7 +8805,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 286",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/286-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-287",
@@ -8886,7 +8886,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 287",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/287-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-288",
@@ -8922,7 +8922,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 288",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/288-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-289",
@@ -9003,7 +9003,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 289",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/289-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-290",
@@ -9039,7 +9039,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 290",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/290-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-291",
@@ -9075,7 +9075,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 291",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/291-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-292",
@@ -9111,7 +9111,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 292",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/292-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-293",
@@ -9147,7 +9147,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 293",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/293-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-294",
@@ -9183,7 +9183,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 294",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/294-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-295",
@@ -9200,7 +9200,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 295",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/295-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-296",
@@ -9217,7 +9217,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 296",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/296-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-297",
@@ -9234,7 +9234,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 297",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/297-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-298",
@@ -9270,7 +9270,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 298",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/298-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-299",
@@ -9306,7 +9306,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 299",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/299-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-300",
@@ -9371,7 +9371,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 300",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/300-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-301",
@@ -9389,7 +9389,7 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783809496615-jc1m1tz0.jpg",
     "sourceTitle": "Examcademy SC-100 Question 301",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/301-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-302",
@@ -9406,7 +9406,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 302",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/302-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-303",
@@ -9442,7 +9442,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 303",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/303-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-304",
@@ -9459,7 +9459,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 304",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/304-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-305",
@@ -9495,7 +9495,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 305",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/305-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-306",
@@ -9512,7 +9512,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 306",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/306-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-307",
@@ -9529,7 +9529,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 307",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/307-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-308",
@@ -9565,7 +9565,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 308",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/308-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-309",
@@ -9648,7 +9648,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 309",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/309-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-310",
@@ -9684,7 +9684,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 310",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/310-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-311",
@@ -9721,7 +9721,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 311",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/311-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-312",
@@ -9757,7 +9757,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 312",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/312-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-313",
@@ -9774,7 +9774,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 313",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/313-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-314",
@@ -9811,7 +9811,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 314",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/314-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-315",
@@ -9847,7 +9847,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 315",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/315-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-316",
@@ -9883,7 +9883,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 316",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/316-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-317",
@@ -9900,7 +9900,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 317",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/317-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-318",
@@ -9942,7 +9942,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 318",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/318-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-319",
@@ -9959,7 +9959,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 319",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/319-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-320",
@@ -9976,7 +9976,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 320",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/320-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-321",
@@ -10012,7 +10012,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 321",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/321-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-322",
@@ -10057,7 +10057,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 322",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/322-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-323",
@@ -10093,7 +10093,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 323",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/323-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-324",
@@ -10110,7 +10110,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 324",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/324-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-325",
@@ -10146,7 +10146,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 325",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/325-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-326",
@@ -10186,7 +10186,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 326",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/326-design-solutions-that-align-with-security-best-practices-and",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-327",
@@ -10214,7 +10214,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 327",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/327-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-328",
@@ -10242,7 +10242,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 328",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/328-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-329",
@@ -10270,7 +10270,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 329",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/329-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-330",
@@ -10298,7 +10298,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 330",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/330-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-331",
@@ -10334,7 +10334,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 331",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/331-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-332",
@@ -10351,7 +10351,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 332",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/332-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-333",
@@ -10387,7 +10387,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 333",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/333-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-334",
@@ -10404,7 +10404,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 334",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/334-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-335",
@@ -10440,7 +10440,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 335",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/335-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-336",
@@ -10476,7 +10476,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 336",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/336-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-337",
@@ -10516,7 +10516,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 337",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/337-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-338",
@@ -10533,7 +10533,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 338",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/338-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-339",
@@ -10569,7 +10569,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 339",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/339-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-340",
@@ -10605,7 +10605,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 340",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/340-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-341",
@@ -10641,7 +10641,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 341",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/341-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-342",
@@ -10677,7 +10677,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 342",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/342-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-343",
@@ -10713,7 +10713,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 343",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/343-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-344",
@@ -10730,7 +10730,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 344",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/344-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-345",
@@ -10766,7 +10766,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 345",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/345-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-346",
@@ -10802,7 +10802,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 346",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/346-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-347",
@@ -10838,7 +10838,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 347",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/347-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-348",
@@ -10874,7 +10874,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 348",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/348-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-349",
@@ -10891,7 +10891,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 349",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/349-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-350",
@@ -10927,7 +10927,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 350",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/350-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-351",
@@ -10963,7 +10963,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 351",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/351-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-352",
@@ -10995,7 +10995,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 352",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/352-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-353",
@@ -11031,7 +11031,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 353",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/353-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-354",
@@ -11067,7 +11067,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 354",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/354-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-355",
@@ -11103,7 +11103,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 355",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/355-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-356",
@@ -11139,7 +11139,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 356",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/356-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-357",
@@ -11175,7 +11175,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 357",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/357-design-security-solutions-for-infrastructure",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-358",
@@ -11220,7 +11220,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 358",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/358-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-359",
@@ -11237,7 +11237,7 @@ export const sc100Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-100 Question 359",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/359-design-security-solutions-for-applications-and-data",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   },
   {
     "id": "sc100-360",
@@ -11255,6 +11255,6 @@ export const sc100Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785478469753-1lrmq5hy.png",
     "sourceTitle": "Examcademy SC-100 Question 360",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-100/q/360-design-security-operations-identity-and-compliance-capabilit",
-    "lastVerifiedAt": "2026-09-15T08:26:42.924Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.502Z"
   }
 ];

@@ -415,6 +415,19 @@ export default function App() {
       isVIP: false,
       isDisabled: true,
       badge: 'new'
+    },
+    {
+      id: 'ai-901',
+      name: 'Microsoft Azure AI Fundamentals (AI-901)',
+      code: 'AI-901',
+      description: 'Chinh phục chứng chỉ Microsoft Azure AI Fundamentals (AI-901). Ngân hàng 128 câu hỏi bao quát Khái niệm AI cốt lõi, Trí tuệ Nhân tạo Có trách nhiệm (Responsible AI), Machine Learning, Computer Vision, Natural Language Processing và Generative AI trên Azure.',
+      difficulty: 'Cơ bản',
+      estimatedHours: '8-12 Giờ',
+      colorClass: 'bg-gradient-to-br from-teal-500 to-cyan-700 text-white',
+      iconName: 'Award',
+      isVIP: false,
+      isDisabled: true,
+      badge: 'new'
     }
   ]);
 

@@ -1,6 +1,8 @@
-[
+import { Question } from '../types';
+
+export const ai901Questions: Question[] = [
   {
-    "id": "ai900-1",
+    "id": "ai901-1",
     "questionNumber": 1,
     "text": "You need to transform written customer notifications into natural-sounding spoken audio for playback through a phone system.  \n  \nWhich Azure Speech in Foundry Tools capability should you use?",
     "questionType": "multiple_choice",
@@ -28,15 +30,15 @@
     "explanation": "Tổng hợp giọng nói, còn được gọi là văn bản thành giọng nói, chuyển đổi văn bản viết thành âm thanh giọng nói tổng hợp giống như con người, bao gồm cả để phát lại ứng dụng và hệ thống điện thoại.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 1",
+    "sourceTitle": "Examcademy AI-901 Question 1",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/1-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-2",
+    "id": "ai901-2",
     "questionNumber": 2,
     "text": "You have a Microsoft Foundry project containing a vision-enabled model deployment.  \n  \nYou use the Azure OpenAI Responses API to send a prompt to the model. You need to supply an image for analysis.  \n  \nWhich content item should be included in the request?",
     "questionType": "multiple_choice",
@@ -64,15 +66,15 @@
     "explanation": "Đối với mô hình hỗ trợ tầm nhìn, API phản hồi Azure OpenAI sử dụng mục nội dung `input_image` để cung cấp hình ảnh để phân tích. Trường `image_url` của nó có thể chứa URL hình ảnh hoặc hình ảnh được mã hóa Base64 dưới dạng URL dữ liệu.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 2",
+    "sourceTitle": "Examcademy AI-901 Question 2",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/2-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-3",
+    "id": "ai901-3",
     "questionNumber": 3,
     "text": "For each of the following statements, select **Yes** if the statement is true. Otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -111,15 +113,15 @@
     "explanation": "Lời nhắc hệ thống cung cấp hướng dẫn và ngữ cảnh điều khiển hành vi của mô hình, chẳng hạn như vai trò, giai điệu, ranh giới và định dạng đầu ra. Chúng không xác thực hoặc ủy quyền cho người dùng, điều này phải được thực thi bởi cơ chế nhận dạng và kiểm soát quyền truy cập của ứng dụng. Lời nhắc hệ thống sử dụng mã thông báo ngữ cảnh/đầu vào thay vì giảm giới hạn mã thông báo mỗi phút.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 3",
+    "sourceTitle": "Examcademy AI-901 Question 3",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/3-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-4",
+    "id": "ai901-4",
     "questionNumber": 4,
     "text": "You are building an application that analyzes voicemail recordings by using Azure Content Understanding in Foundry Tools.  \n  \nYou need to extract a transcript and structured data from the recordings.  \n  \nWhich analyzer type should you use?",
     "questionType": "multiple_choice",
@@ -147,15 +149,15 @@
     "explanation": "Bộ phân tích âm thanh trong Nội dung Azure Hiểu về phiên âm âm thanh hội thoại và trích xuất các trường có cấu trúc từ tệp âm thanh, giúp chúng phù hợp cho bản ghi thư thoại.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 4",
+    "sourceTitle": "Examcademy AI-901 Question 4",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/4-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-5",
+    "id": "ai901-5",
     "questionNumber": 5,
     "text": "Select the answer that correctly finishes the sentence.",
     "questionType": "multiple_choice",
@@ -164,15 +166,15 @@
     "explanation": "AI sáng tạo tạo nội dung mới từ lời nhắc của người dùng hoặc đầu vào khác. Hiểu nội dung, trích xuất thông tin và phân tích văn bản thay vào đó diễn giải hoặc lấy thông tin từ nội dung hiện có.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 5",
+    "sourceTitle": "Examcademy AI-901 Question 5",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/5-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-6",
+    "id": "ai901-6",
     "questionNumber": 6,
     "text": "You are reviewing best practices for using AI at your company.  \n  \nWhich Microsoft responsible AI principle does each task demonstrate? Each principle may be used once, more than once, or not at all.",
     "questionType": "matching_drag_drop",
@@ -259,15 +261,15 @@
     "explanation": "Sự công bằng đòi hỏi phải xác định và giảm thiểu các kết quả sai lệch giữa các nhóm nhân khẩu học. Quyền riêng tư và bảo mật bảo vệ dữ liệu nhạy cảm thông qua các biện pháp như mã hóa và kiểm soát truy cập. Tính minh bạch bao gồm việc thông báo cho mọi người khi họ tương tác với AI cũng như truyền đạt các khả năng và hạn chế của nó. Độ tin cậy và an toàn đòi hỏi phải kiểm tra hệ thống AI trong các điều kiện để giảm thiểu lỗi và hành vi không an toàn.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 6",
+    "sourceTitle": "Examcademy AI-901 Question 6",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/6-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-7",
+    "id": "ai901-7",
     "questionNumber": 7,
     "text": "What are two purposes of instructions when you prompt a generative AI model? Each correct answer represents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
     "questionType": "multiple_choice",
@@ -300,15 +302,15 @@
     "explanation": "Hướng dẫn nhanh chóng cung cấp hướng dẫn liên tục về vai trò, hành vi và ranh giới của trợ lý, đồng thời họ có thể chỉ định các ràng buộc kiểm soát hoặc hạn chế phản hồi của trợ lý. Lựa chọn mô hình, vùng suy luận Azure và phân bổ mã thông báo mỗi phút được định cấu hình bên ngoài lời nhắc.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 7",
+    "sourceTitle": "Examcademy AI-901 Question 7",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/7-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-8",
+    "id": "ai901-8",
     "questionNumber": 8,
     "text": "For each statement below, select **Yes** when it is true; otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -347,15 +349,15 @@
     "explanation": "Sân chơi Azure AI Foundry hỗ trợ các lời nhắc đa phương thức chứa nội dung hình ảnh và văn bản. API phản hồi chấp nhận đầu vào hình ảnh dưới dạng URL bên ngoài, URL dữ liệu base64 hoặc ID tệp đã tải lên. Đầu vào hình ảnh được xử lý bằng các mô hình đa phương thức có khả năng hiển thị chứ không phải triển khai chỉ bằng văn bản.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 8",
+    "sourceTitle": "Examcademy AI-901 Question 8",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/8-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-9",
+    "id": "ai901-9",
     "questionNumber": 9,
     "text": "You are developing a voice application that listens for spoken commands and converts them to text by using Azure Speech in Foundry Tools.  \n  \nHow should you complete the Python code?",
     "questionType": "multiple_choice",
@@ -364,15 +366,15 @@
     "explanation": "`recognize_once()` thực hiện nhận dạng giọng nói đồng bộ cho một câu nói và trả về kết quả văn bản được nhận dạng. Nó phù hợp cho một lệnh nói duy nhất; nhận dạng liên tục mang lại âm thanh dài hơn, đa ngôn ngữ.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 9",
+    "sourceTitle": "Examcademy AI-901 Question 9",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/9-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-10",
+    "id": "ai901-10",
     "questionNumber": 10,
     "text": "Question 10",
     "questionType": "multiple_choice",
@@ -381,15 +383,15 @@
     "explanation": "Mô hình GPT hỗ trợ tầm nhìn được triển khai hiển thị điểm cuối suy luận mà ứng dụng gọi để gửi yêu cầu và nhận phản hồi.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 10",
+    "sourceTitle": "Examcademy AI-901 Question 10",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/10-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-11",
+    "id": "ai901-11",
     "questionNumber": 11,
     "text": "You have a Microsoft Foundry project named project1 that contains an Azure OpenAI resource named Resource1.  \n  \nA gpt-4.1-mini model is deployed to Resource1 by using the model deployment named my-mini-gpt.  \n  \nYou need to connect to my-mini-gpt from an application.  \n  \nHow should you complete the Python code? Each value may be used once, more than once, or not at all.",
     "questionType": "matching_drag_drop",
@@ -448,15 +450,15 @@
     "explanation": "Đối với Azure OpenAI v1, URL cơ sở máy khách là điểm cuối tài nguyên Azure OpenAI, có máy chủ bắt đầu bằng tên tài nguyên. Yêu cầu chỉ định tên triển khai của mô hình đã triển khai trong `model`; `my-mini-gpt` là mô hình triển khai, trong khi `gpt-4.1-mini` là mô hình cơ bản.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 11",
+    "sourceTitle": "Examcademy AI-901 Question 11",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/11-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-12",
+    "id": "ai901-12",
     "questionNumber": 12,
     "text": "You have a Microsoft Foundry project with a generative AI model deployment.  \n  \nYou need to ensure that responses generated by the model minimize costs and stay within a defined length.  \n  \nWhich parameter should you configure?",
     "questionType": "multiple_choice",
@@ -484,15 +486,15 @@
     "explanation": "Mã thông báo hoàn thành tối đa đặt giới hạn trên cho các mã thông báo được tạo để hoàn thành, bao gồm đầu ra hiển thị và mã thông báo lý luận. Việc giới hạn mã thông báo được tạo sẽ hạn chế độ dài phản hồi và giúp kiểm soát chi phí tạo dựa trên mã thông báo.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 12",
+    "sourceTitle": "Examcademy AI-901 Question 12",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/12-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-13",
+    "id": "ai901-13",
     "questionNumber": 13,
     "text": "You have a Microsoft Foundry project that includes a vision-enabled model deployment.  \n  \nYou need to build an application that sends a message containing text and an image URL. The solution must provide the fastest response time.  \n  \nWhich message structure should you include in the request?",
     "questionType": "multiple_choice",
@@ -520,15 +522,15 @@
     "explanation": "Yêu cầu trò chuyện hỗ trợ tầm nhìn có thể đặt văn bản và URL hình ảnh cùng nhau dưới dạng các mục nội dung được nhập trong mảng nội dung của tin nhắn người dùng. Việc kết hợp chúng trong một yêu cầu sẽ tránh được hành trình khứ hồi bổ sung cần thiết khi hình ảnh được gửi riêng, giảm thiểu thời gian phản hồi. Thông báo hệ thống cung cấp hướng dẫn về mô hình; đầu vào văn bản và hình ảnh thuộc về tin nhắn của người dùng.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 13",
+    "sourceTitle": "Examcademy AI-901 Question 13",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/13-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-14",
+    "id": "ai901-14",
     "questionNumber": 14,
     "text": "For each statement, select **Yes** when it is true. Otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -567,15 +569,15 @@
     "explanation": "Các mô hình tổng quát được đào tạo trước và sau đó thực hiện suy luận theo yêu cầu của người dùng; họ không được đào tạo lại theo yêu cầu. Chỉ truy xuất văn bản cơ sở dữ liệu cố định không phải là hành vi của tác nhân. Tác nhân AI có thể sử dụng mô hình AI tổng quát để diễn giải đầu vào và chọn hoặc thực hiện các hành động thích hợp.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 14",
+    "sourceTitle": "Examcademy AI-901 Question 14",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/14-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-15",
+    "id": "ai901-15",
     "questionNumber": 15,
     "text": "For each statement below, select **Yes** if it is true. Otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -614,15 +616,15 @@
     "explanation": "Azure AI Voice Live là API hội thoại bằng giọng nói theo thời gian thực tích hợp kết hợp nhận dạng giọng nói, lý luận AI tổng quát và tổng hợp giọng nói. Do đó, nó không chỉ đơn thuần là phiên âm và tránh kết nối riêng biệt các dịch vụ chuyển giọng nói thành văn bản và chuyển văn bản thành giọng nói.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 15",
+    "sourceTitle": "Examcademy AI-901 Question 15",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/15-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-16",
+    "id": "ai901-16",
     "questionNumber": 16,
     "text": "For each statement below, select **Yes** if it is true. Otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -661,15 +663,15 @@
     "explanation": "Sự giám sát của con người hỗ trợ trách nhiệm giải trình đối với các quyết định do AI tạo ra. AI có trách nhiệm vẫn là trách nhiệm vận hành liên tục sau khi triển khai, bao gồm giám sát hiệu suất, sai lệch và các rủi ro mới nổi. Quyền sở hữu rõ ràng của nhóm thiết kế và triển khai hệ thống AI sẽ thiết lập trách nhiệm giải trình cho kết quả đầu ra của nó.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 16",
+    "sourceTitle": "Examcademy AI-901 Question 16",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/16-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-17",
+    "id": "ai901-17",
     "questionNumber": 17,
     "text": "You have a Microsoft Foundry project that includes a generative AI model deployment.  \n  \nYou test the model by using the Foundry playground.  \n  \nYou need to build an application that submits requests to the deployed model.  \n  \nWhich information must the application include to call the model?",
     "questionType": "multiple_choice",
@@ -697,15 +699,15 @@
     "explanation": "Ứng dụng gọi mô hình đã triển khai bằng cách gửi yêu cầu suy luận đã được xác thực đến điểm cuối của quá trình triển khai. Thông tin xác thực cho phép yêu cầu đó; lịch sử sân chơi, dữ liệu đào tạo và tên hiển thị của dự án không cung cấp mục tiêu và ủy quyền yêu cầu.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 17",
+    "sourceTitle": "Examcademy AI-901 Question 17",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/17-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-18",
+    "id": "ai901-18",
     "questionNumber": 18,
     "text": "Select the answer that correctly finishes the sentence.",
     "questionType": "multiple_choice",
@@ -714,15 +716,15 @@
     "explanation": "Trách nhiệm giải trình có nghĩa là mọi người và tổ chức vẫn chịu trách nhiệm về hệ thống AI và kết quả của chúng, bao gồm cả sự giám sát phù hợp của con người đối với các quyết định do AI tạo ra.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 18",
+    "sourceTitle": "Examcademy AI-901 Question 18",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/18-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-19",
+    "id": "ai901-19",
     "questionNumber": 19,
     "text": "Your company stores thousands of recorded customer-support calls in multiple languages as audio files in Azure Storage.  \n  \nYou need to create text transcripts for all of the recordings.  \n  \nWhich Azure Speech in Foundry Tools capability should you use?",
     "questionType": "multiple_choice",
@@ -750,15 +752,15 @@
     "explanation": "Phiên âm hàng loạt lời nói thành văn bản dành cho khối lượng lớn dữ liệu âm thanh được lưu trữ trong bộ lưu trữ. Nó có thể xử lý nhiều tệp hoặc vùng chứa Azure Blob Storage, giúp nó phù hợp với hàng nghìn cuộc gọi được ghi lại trước đó.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 19",
+    "sourceTitle": "Examcademy AI-901 Question 19",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/19-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-20",
+    "id": "ai901-20",
     "questionNumber": 20,
     "text": "You need to create an AI agent in Microsoft Foundry that adheres to a specific role and behavior when responding to users.  \n  \nWhat should you configure?",
     "questionType": "multiple_choice",
@@ -786,15 +788,15 @@
     "explanation": "Hướng dẫn hệ thống xác định mục tiêu, ràng buộc, vai trò và hành vi dự kiến ​​của tác nhân AI. Nhiệt độ kiểm soát tính ngẫu nhiên của đầu ra, mã thông báo mỗi phút là giới hạn công suất và mã thông báo hoàn thành tối đa kiểm soát độ dài phản hồi tối đa. Microsoft Foundry xác định hướng dẫn là thành phần xác định mục tiêu, ràng buộc và hành vi của tác nhân.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 20",
+    "sourceTitle": "Examcademy AI-901 Question 20",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/20-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-21",
+    "id": "ai901-21",
     "questionNumber": 21,
     "text": "You are building an application that converts text to spoken audio and stores the synthesized audio in a file by using Azure Speech in Foundry Tools.  \n  \nHow should you complete the Python code?",
     "questionType": "multiple_choice",
@@ -803,15 +805,15 @@
     "explanation": "`AudioOutputConfig(filename=\"output.wav\")` định cấu hình đầu ra tổng hợp Speech SDK để ghi vào tệp âm thanh được chỉ định. Luồng đầu ra yêu cầu đối tượng luồng, trong khi `AudioStreamFormat` chỉ mô tả định dạng luồng.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 21",
+    "sourceTitle": "Examcademy AI-901 Question 21",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/21-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-22",
+    "id": "ai901-22",
     "questionNumber": 22,
     "text": "You need to compare the costs of large language models (LLMs) for a generative AI solution.  \n  \nWhat should you use in the Microsoft Foundry portal?",
     "questionType": "multiple_choice",
@@ -839,15 +841,15 @@
     "explanation": "Bảng xếp hạng Mô hình so sánh các mô hình theo chi phí ước tính, cùng với chất lượng, độ an toàn và thông lượng. Nó hỗ trợ so sánh chi phí chuẩn và so sánh song song các LLM để lựa chọn mô hình.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 22",
+    "sourceTitle": "Examcademy AI-901 Question 22",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/22-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-23",
+    "id": "ai901-23",
     "questionNumber": 23,
     "text": "You have an Azure subscription.  \n  \nYou need to use Azure Content Understanding in Foundry Tools to extract structured information from invoices.  \n  \nWhat should you provision?",
     "questionType": "multiple_choice",
@@ -875,15 +877,15 @@
     "explanation": "Hiểu nội dung Azure trong Công cụ đúc có sẵn thông qua tài nguyên Microsoft Foundry và có thể trích xuất dữ liệu có cấu trúc do lược đồ xác định từ các tài liệu như hóa đơn.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 23",
+    "sourceTitle": "Examcademy AI-901 Question 23",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/23-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-24",
+    "id": "ai901-24",
     "questionNumber": 24,
     "text": "You have a Microsoft Foundry project that includes a vision-enabled chat model deployment.  \n  \nYou are developing a Python application that sends a request with a user prompt and a local JPEG image.  \n  \nYou need to include the image as binary data in the request. What should the `image_url.ur1` field be set to?",
     "questionType": "multiple_choice",
@@ -911,15 +913,15 @@
     "explanation": "JPEG cục bộ phải được mã hóa dưới dạng Base64 và được cung cấp dưới dạng URL dữ liệu bằng tiền tố `data:image/jpeg;base64,`. Điều này nhúng dữ liệu hình ảnh trực tiếp vào tải trọng yêu cầu; đường dẫn tệp cục bộ không phải là URL có thể truy cập dịch vụ.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 24",
+    "sourceTitle": "Examcademy AI-901 Question 24",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/24-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-25",
+    "id": "ai901-25",
     "questionNumber": 25,
     "text": "You are using the Azure Speech SDK to create a Python application that supports real-time spoken conversations.  \n  \nWhich Azure Speech class should be used to configure the connection to the Azure Speech service?",
     "questionType": "multiple_choice",
@@ -947,15 +949,15 @@
     "explanation": "`SpeechConfig` định cấu hình quyền truy cập vào dịch vụ Azure Speech bằng cách cung cấp chi tiết kết nối và xác thực như khóa đăng ký cùng với khu vực hoặc điểm cuối. `AudioConfig` và `AudioOutputConfig` định cấu hình nguồn hoặc đích âm thanh và `SpeechSynthesizer` sử dụng cấu hình dịch vụ để tổng hợp giọng nói.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 25",
+    "sourceTitle": "Examcademy AI-901 Question 25",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/25-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-26",
+    "id": "ai901-26",
     "questionNumber": 26,
     "text": "Question 26",
     "questionType": "multiple_choice",
@@ -964,15 +966,15 @@
     "explanation": "Nguyên tắc minh bạch của Microsoft là mọi người phải hiểu được hệ thống AI làm gì và tại sao. Bảo vệ dữ liệu nhạy cảm là quyền riêng tư và bảo mật, giảm thiểu sự thiên vị là sự công bằng và sự giám sát của con người là trách nhiệm giải trình.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 26",
+    "sourceTitle": "Examcademy AI-901 Question 26",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/26-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-27",
+    "id": "ai901-27",
     "questionNumber": 27,
     "text": "For each statement below, select **Yes** when it is true; otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -1011,15 +1013,15 @@
     "explanation": "Hiểu nội dung chấp nhận các tệp PDF cũng như hình ảnh, tài liệu Office, văn bản, email và các định dạng được hỗ trợ khác, do đó, nó không giới hạn ở các tệp PDF. API của nó trả về kết quả phân tích JSON có cấu trúc. Nó hỗ trợ trích xuất văn bản dựa trên OCR cho các tài liệu dựa trên hình ảnh và có thể trả về các trường có cấu trúc phù hợp với lược đồ.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 27",
+    "sourceTitle": "Examcademy AI-901 Question 27",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/27-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-28",
+    "id": "ai901-28",
     "questionNumber": 28,
     "text": "You have a Microsoft Foundry project that includes an agent named Agent1.  \n  \nYou need to ensure that Agent1 always invokes an Azure function when it responds to user input.  \n  \nWhat should you set `tool_choice` to for Agent1?",
     "questionType": "multiple_choice",
@@ -1043,15 +1045,15 @@
     "explanation": "Việc đặt `tool_choice` thành `required` yêu cầu mô hình gọi một hoặc nhiều công cụ đã định cấu hình. `auto` cho phép mô hình trả lời mà không cần gọi công cụ và `none` ngăn các cuộc gọi công cụ. [Microsoft Foundry Agent Service tool best practices](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/tool-best-practice)",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 28",
+    "sourceTitle": "Examcademy AI-901 Question 28",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/28-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-29",
+    "id": "ai901-29",
     "questionNumber": 29,
     "text": "For each statement, select **Yes** when it is true. Otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -1090,15 +1092,15 @@
     "explanation": "Suy luận sử dụng một mô hình đã được đào tạo để tạo ra phản hồi cho lời nhắc. Dữ liệu huấn luyện được sử dụng để tìm hiểu các tham số mô hình thay vì được lưu trữ dưới dạng tài liệu nguồn để sao chép trực tiếp. Các mô hình ngôn ngữ tạo sinh tự hồi quy tạo ra văn bản từng mã thông báo một bằng cách dự đoán mã thông báo tiếp theo từ các mẫu thống kê đã học.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 29",
+    "sourceTitle": "Examcademy AI-901 Question 29",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/29-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-30",
+    "id": "ai901-30",
     "questionNumber": 30,
     "text": "Question 30",
     "questionType": "multiple_choice",
@@ -1107,15 +1109,15 @@
     "explanation": "Hiểu nội dung Azure AI sử dụng quy trình phân tích không đồng bộ: gửi nội dung, sau đó truy xuất kết quả hoạt động đã hoàn thành. Nó hỗ trợ nhiều hơn OCR và trả về thông tin được trích xuất và suy luận có cấu trúc.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 30",
+    "sourceTitle": "Examcademy AI-901 Question 30",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/30-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-31",
+    "id": "ai901-31",
     "questionNumber": 31,
     "text": "For each of the following statements, select **Yes** if the statement is true. Otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -1154,15 +1156,15 @@
     "explanation": "Danh mục mô hình hỗ trợ triển khai trực tiếp các mô hình có sẵn; fine-tuning và đào tạo lại là các quy trình tùy chỉnh tùy chọn, không phải là điều kiện tiên quyết để triển khai. Một mô hình phải được triển khai đến điểm cuối trước khi có thể thử nghiệm nó trong sân chơi.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 31",
+    "sourceTitle": "Examcademy AI-901 Question 31",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/31-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-32",
+    "id": "ai901-32",
     "questionNumber": 32,
     "text": "You have a Microsoft Foundry project containing a model deployment.  \n  \nYou are developing an application that sends an image and a user question to the model. You need to send text and image content in the same request so that the model can return an answer.  \n  \nComplete the Python code. Values may be used once, more than once, or not at all.",
     "questionType": "matching_drag_drop",
@@ -1229,15 +1231,15 @@
     "explanation": "API phản hồi chấp nhận đầu vào của người dùng đa phương thức dưới dạng danh sách `content`. Lời nhắc văn bản sử dụng `{\"type\": \"input_text\", \"text\":.}`, trong khi URL hình ảnh sử dụng `{\"type\": \"input_image\", \"image_url\":.}`. `output_text` được API trả về và không phải là loại nội dung đầu vào.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 32",
+    "sourceTitle": "Examcademy AI-901 Question 32",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/32-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-33",
+    "id": "ai901-33",
     "questionNumber": 33,
     "text": "Question 33",
     "questionType": "multiple_choice",
@@ -1246,15 +1248,15 @@
     "explanation": "OCR phát hiện và trích xuất văn bản từ hình ảnh và tài liệu được quét, đây là một nhiệm vụ thị giác máy tính.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 33",
+    "sourceTitle": "Examcademy AI-901 Question 33",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/33-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-34",
+    "id": "ai901-34",
     "questionNumber": 34,
     "text": "For each statement, select **Yes** when it is true. Otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -1293,15 +1295,15 @@
     "explanation": "Nhiệt độ kiểm soát việc tạo tại thời điểm suy luận và được cung cấp theo yêu cầu. Azure OpenAI định tuyến các yêu cầu đến triển khai được đặt tên, không trực tiếp đến tên mô hình. Một mô hình đã triển khai có thể được thực hiện trong sân chơi và được gọi theo chương trình thông qua API hoặc SDK REST.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 34",
+    "sourceTitle": "Examcademy AI-901 Question 34",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/34-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-35",
+    "id": "ai901-35",
     "questionNumber": 35,
     "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
     "questionType": "statement_matrix",
@@ -1340,15 +1342,15 @@
     "explanation": "Trình đánh giá Microsoft Foundry đo lường các phản hồi được tạo ra đối với các rủi ro về chất lượng và an toàn; chúng không thay thế cấu hình giới hạn mã thông báo. Đánh giá tạo ra các phép đo và kết quả chứ không phải tự động đào tạo lại các mô hình đã triển khai.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 35",
+    "sourceTitle": "Examcademy AI-901 Question 35",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/35-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-36",
+    "id": "ai901-36",
     "questionNumber": 36,
     "text": "You are building an application that processes voicemail recordings by using Azure Content Understanding in Foundry Tools.  \n  \nWhich Azure Content Understanding feature converts audio into text?",
     "questionType": "multiple_choice",
@@ -1376,15 +1378,15 @@
     "explanation": "Bộ phân tích âm thanh Hiểu nội dung Azure sử dụng phiên âm để chuyển đổi âm thanh hội thoại thành bản ghi dựa trên văn bản có thể tìm kiếm và phân tích được. Trích xuất cụm từ khóa phân tích văn bản hiện có, OCR trích xuất văn bản từ nội dung trực quan và Voice Live không phải là tính năng chuyển đổi âm thanh thành văn bản.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 36",
+    "sourceTitle": "Examcademy AI-901 Question 36",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/36-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-37",
+    "id": "ai901-37",
     "questionNumber": 37,
     "text": "You need to create an AI solution that produces marketing email drafts from a brief description of a product and its intended audience.  \n  \nWhich AI workload should you use?",
     "questionType": "multiple_choice",
@@ -1412,15 +1414,15 @@
     "explanation": "AI sáng tạo tạo ra nội dung mới, bao gồm văn bản email tiếp thị phù hợp, từ các lời nhắc mô tả sản phẩm và đối tượng mục tiêu của sản phẩm đó.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 37",
+    "sourceTitle": "Examcademy AI-901 Question 37",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/37-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-38",
+    "id": "ai901-38",
     "questionNumber": 38,
     "text": "You are building an AI-powered customer support application.  \n  \nWhich task exemplifies the Microsoft responsible AI principle of inclusiveness?",
     "questionType": "multiple_choice",
@@ -1448,15 +1450,15 @@
     "explanation": "Tính toàn diện đòi hỏi phải thiết kế các hệ thống mà những người có ngôn ngữ, khả năng và nhu cầu đa dạng có thể truy cập và sử dụng. Hỗ trợ nhiều ngôn ngữ và trình đọc màn hình giúp giao diện dễ tiếp cận hơn với nhiều người dùng hơn.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 38",
+    "sourceTitle": "Examcademy AI-901 Question 38",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/38-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-39",
+    "id": "ai901-39",
     "questionNumber": 39,
     "text": "You are building an application that uses Azure Content Understanding in Foundry Tools to extract structured information from several content types.  \n  \nYou need to extract scanned invoices in PDF format and voicemail recordings in WAV format.  \n  \nWhich analyzer type should be used for each content type? Each analyzer type can be used once, multiple times, or not at all.",
     "questionType": "matching_drag_drop",
@@ -1515,15 +1517,15 @@
     "explanation": "Máy phân tích tài liệu trích xuất thông tin có cấu trúc từ nội dung tài liệu, bao gồm các tệp PDF như hóa đơn được quét. Máy phân tích âm thanh xử lý nội dung âm thanh, bao gồm các tệp WAV chẳng hạn như bản ghi thư thoại.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 39",
+    "sourceTitle": "Examcademy AI-901 Question 39",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/39-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-40",
+    "id": "ai901-40",
     "questionNumber": 40,
     "text": "For each of the following statements, select **Yes** if it is true. Otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -1562,15 +1564,15 @@
     "explanation": "Chỉ riêng độ chính xác tổng thể có thể che giấu hiệu suất không đồng đều hoặc sự chênh lệch có hại giữa các nhóm nhân khẩu học, do đó, độ chính xác tổng thể là không đủ để đảm bảo sự công bằng. Đánh giá kết quả đầu ra theo nhóm nhân khẩu học giúp xác định và giảm bớt sự thiên vị. Công bằng liên quan đến việc đối xử công bằng và kết quả theo một định nghĩa công bằng phù hợp; nó không yêu cầu mọi người dùng đều nhận được đầu ra giống hệt nhau.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 40",
+    "sourceTitle": "Examcademy AI-901 Question 40",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/40-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-41",
+    "id": "ai901-41",
     "questionNumber": 41,
     "text": "You are building a web app that processes invoices to calculate expenses.  \n  \nYou need to extract structured fields, including nested values, from the invoices by using a defined schema.  \n  \nWhat should you use?",
     "questionType": "multiple_choice",
@@ -1598,15 +1600,15 @@
     "explanation": "Trình phân tích trong phần Hiểu nội dung Azure trong Công cụ đúc sẽ xác định lược đồ trường để trích xuất dữ liệu tài liệu có cấu trúc. Lược đồ của nó hỗ trợ các trường mảng và đối tượng lồng nhau, chứa các chi tiết hóa đơn như chi tiết đơn hàng và các giá trị liên quan của chúng.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 41",
+    "sourceTitle": "Examcademy AI-901 Question 41",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/41-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-42",
+    "id": "ai901-42",
     "questionNumber": 42,
     "text": "You are developing an application that analyzes invoices by using Azure Content Understanding in Foundry Tools.  \n  \nYou need to ensure that the application retrieves the analysis results after processing is complete. How should you complete the Python code?",
     "questionType": "multiple_choice",
@@ -1615,15 +1617,15 @@
     "explanation": "`begin_analyze` trả về một trình thăm dò hoạt động lâu dài của Azure. Gọi `poller.result()` chờ hoàn thành khi cần và trả về kết quả phân tích đã hoàn thành.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 42",
+    "sourceTitle": "Examcademy AI-901 Question 42",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/42-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-43",
+    "id": "ai901-43",
     "questionNumber": 43,
     "text": "A company processes customer-support emails.  \n  \nAn AI solution must automatically recognize mentions of people, organizations, and locations in those emails. Which text-analysis technique should be used?",
     "questionType": "multiple_choice",
@@ -1651,15 +1653,15 @@
     "explanation": "Nhận dạng thực thể được đặt tên (NER) phát hiện các thực thể được đặt tên trong văn bản phi cấu trúc và phân loại chúng thành các loại như cá nhân, tổ chức và vị trí.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 43",
+    "sourceTitle": "Examcademy AI-901 Question 43",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/43-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-44",
+    "id": "ai901-44",
     "questionNumber": 44,
     "text": "Question 44",
     "questionType": "multiple_choice",
@@ -1668,15 +1670,15 @@
     "explanation": "Sự công bằng đòi hỏi phải xác định và giảm thiểu sự thiên vị để hệ thống AI không tạo ra những kết quả khác nhau một cách vô lý cho các nhóm nhân khẩu học.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 44",
+    "sourceTitle": "Examcademy AI-901 Question 44",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/44-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-45",
+    "id": "ai901-45",
     "questionNumber": 45,
     "text": "Question 45",
     "questionType": "multiple_choice",
@@ -1685,15 +1687,15 @@
     "explanation": "Đầu vào hình ảnh API phản hồi hỗ trợ URL hình ảnh, bao gồm dữ liệu hình ảnh được mã hóa base64 được cung cấp dưới dạng URL dữ liệu. Tệp đính kèm CSV, luồng MP4 và mã thông báo SAS không phải là định dạng dữ liệu hình ảnh cho đầu vào này.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 45",
+    "sourceTitle": "Examcademy AI-901 Question 45",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/45-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-46",
+    "id": "ai901-46",
     "questionNumber": 46,
     "text": "You have a Microsoft Foundry project that includes a vision-enabled model deployment.  \n  \nYou are developing an application that sends images to the model. You need to ensure the model can analyze those images.  \n  \nIn which two formats can you supply the images? Each correct answer presents part of the solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
     "questionType": "multiple_choice",
@@ -1722,15 +1724,15 @@
     "explanation": "Đầu vào mô hình hỗ trợ tầm nhìn hỗ trợ tham chiếu hình ảnh bằng cách sử dụng URL có thể truy cập công khai và chuỗi dữ liệu hình ảnh được mã hóa Base64 được nhúng. Các định dạng này cung cấp tài nguyên hình ảnh thực tế hoặc byte hình ảnh cần thiết để phân tích trực quan.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 46",
+    "sourceTitle": "Examcademy AI-901 Question 46",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/46-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-47",
+    "id": "ai901-47",
     "questionNumber": 47,
     "text": "You need to build an AI solution that creates new product images from written descriptions supplied by users.  \n  \nWhich AI workload should you use?",
     "questionType": "multiple_choice",
@@ -1758,15 +1760,15 @@
     "explanation": "Khối lượng công việc tạo hình ảnh tạo ra hình ảnh mới từ lời nhắc hoặc mô tả bằng văn bản. Phân tích hình ảnh diễn giải các hình ảnh hiện có, phát hiện đối tượng xác định các đối tượng bên trong chúng và OCR trích xuất văn bản từ hình ảnh.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 47",
+    "sourceTitle": "Examcademy AI-901 Question 47",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/47-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-48",
+    "id": "ai901-48",
     "questionNumber": 48,
     "text": "Question 48",
     "questionType": "multiple_choice",
@@ -1775,15 +1777,15 @@
     "explanation": "Azure Content Hiểu sử dụng lược đồ phân tích để chỉ định các trường có cấu trúc cần được trích xuất từ ​​nội dung. Quá trình xử lý chỉ OCR tạo ra văn bản, trong khi danh sách từ khóa và hành vi API đồng bộ không xác định lược đồ trích xuất.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 48",
+    "sourceTitle": "Examcademy AI-901 Question 48",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/48-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-49",
+    "id": "ai901-49",
     "questionNumber": 49,
     "text": "Question 49",
     "questionType": "multiple_choice",
@@ -1792,15 +1794,15 @@
     "explanation": "Danh mục mô hình của Microsoft Foundry cho phép các nhà phát triển khám phá, so sánh và triển khai nhiều lựa chọn mô hình AI tổng hợp.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 49",
+    "sourceTitle": "Examcademy AI-901 Question 49",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/49-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-50",
+    "id": "ai901-50",
     "questionNumber": 50,
     "text": "Question 50",
     "questionType": "multiple_choice",
@@ -1809,15 +1811,15 @@
     "explanation": "Lời nhắc hệ thống cung cấp các hướng dẫn xác định vai trò, hành vi dự kiến ​​và các ràng buộc vận hành của tác nhân AI. Các vị trí triển khai quản lý môi trường triển khai ứng dụng, nhúng các chỉ mục hỗ trợ truy xuất và các công việc fine-tuning tùy chỉnh mô hình thông qua dữ liệu đào tạo thay vì xác định hướng dẫn thời gian chạy của một tác nhân riêng lẻ.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 50",
+    "sourceTitle": "Examcademy AI-901 Question 50",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/50-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-51",
+    "id": "ai901-51",
     "questionNumber": 51,
     "text": "For each statement below, select **Yes** if it is true. Otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -1856,15 +1858,15 @@
     "explanation": "`tool_choice: auto` cho phép mô hình quyết định có nên gọi một công cụ hay không. `tool_choice: none` ngăn việc gọi công cụ thay vì để mô hình quyết định. `tool_choice: required` yêu cầu một hoặc nhiều lệnh gọi công cụ.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 51",
+    "sourceTitle": "Examcademy AI-901 Question 51",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/51-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-52",
+    "id": "ai901-52",
     "questionNumber": 52,
     "text": "You are building an application that extracts fields from PDFs by using Azure Content Understanding in Foundry Tools.  \n  \nYou need to use the Python SDK to submit a PDF for analysis and retrieve the extraction results.  \n  \nWhat should you do?",
     "questionType": "multiple_choice",
@@ -1892,15 +1894,15 @@
     "explanation": "Phân tích Hiểu nội dung Azure sử dụng một hoạt động dài hạn. `begin_analyze()` của Python SDK bắt đầu phân tích và trả về một trình thăm dò, đồng thời `poller.result()` đợi thao tác kết thúc và trả về `AnalysisResult` có cấu trúc chứa các trường được trích xuất.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 52",
+    "sourceTitle": "Examcademy AI-901 Question 52",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/52-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-53",
+    "id": "ai901-53",
     "questionNumber": 53,
     "text": "Question 53",
     "questionType": "multiple_choice",
@@ -1909,15 +1911,15 @@
     "explanation": "Xử lý ngôn ngữ tự nhiên cho phép các ứng dụng diễn giải và trả lời các câu hỏi do người dùng viết. Thị giác máy tính xử lý nội dung trực quan, đồng thời dự báo dự đoán kết quả trong tương lai từ dữ liệu.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 53",
+    "sourceTitle": "Examcademy AI-901 Question 53",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/53-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-54",
+    "id": "ai901-54",
     "questionNumber": 54,
     "text": "Question 54",
     "questionType": "multiple_choice",
@@ -1926,15 +1928,15 @@
     "explanation": "Nguyên tắc về độ tin cậy và an toàn của Microsoft yêu cầu các hệ thống AI phải hoạt động đáng tin cậy, an toàn và nhất quán trong các điều kiện dự kiến. Sự giám sát của con người gắn liền với trách nhiệm giải trình, kết quả công bằng với sự công bằng và giải thích rõ ràng với tính minh bạch.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 54",
+    "sourceTitle": "Examcademy AI-901 Question 54",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/54-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-55",
+    "id": "ai901-55",
     "questionNumber": 55,
     "text": "For each of the following statements, select **Yes** if it is true. Otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -1973,15 +1975,15 @@
     "explanation": "Microsoft Foundry Công cụ phân tích hình ảnh cung cấp OCR và có thể phân tích hình ảnh để tạo chú thích và thẻ. Nó phân tích các hình ảnh hiện có; tạo hình ảnh từ lời nhắc văn bản là một khả năng tạo hình ảnh riêng biệt.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 55",
+    "sourceTitle": "Examcademy AI-901 Question 55",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/55-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-56",
+    "id": "ai901-56",
     "questionNumber": 56,
     "text": "You are building an application that captures a user’s voice and sends the recorded audio to a deployed multimodal model in Microsoft Foundry.  \n  \nYou need to send the user’s request to the model.  \n  \nWhat should the request include?",
     "questionType": "multiple_choice",
@@ -2009,15 +2011,15 @@
     "explanation": "Các mô hình đa phương thức hỗ trợ âm thanh chấp nhận âm thanh đã ghi dưới dạng lời nhắc đầu vào âm thanh, cho phép mô hình xử lý giọng nói trực tiếp. Bản ghi văn bản chỉ cần thiết nếu ứng dụng thực hiện chuyển đổi giọng nói thành văn bản trước tiên.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 56",
+    "sourceTitle": "Examcademy AI-901 Question 56",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/56-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-57",
+    "id": "ai901-57",
     "questionNumber": 57,
     "text": "For each of the following statements, select **Yes** if the statement is true. Otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -2056,15 +2058,15 @@
     "explanation": "Phiên âm hàng loạt được thiết kế cho các tệp âm thanh được ghi trước thay vì đầu vào micrô trực tiếp. Azure Speech không thực hiện các tác vụ thị giác máy tính như phát hiện và gắn nhãn đối tượng trong khung hình video. Dịch giọng nói có thể trả về văn bản đã dịch và cũng có thể tổng hợp giọng nói đã dịch, do đó, đầu ra bằng giọng nói là tùy chọn chứ không phải là kết quả được hỗ trợ duy nhất.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 57",
+    "sourceTitle": "Examcademy AI-901 Question 57",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/57-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-58",
+    "id": "ai901-58",
     "questionNumber": 58,
     "text": "Identifying the source of the data used to train a model is an example of which responsible AI principle?",
     "questionType": "multiple_choice",
@@ -2092,15 +2094,15 @@
     "explanation": "Tính minh bạch yêu cầu mọi người có thể hiểu cách hệ thống AI hoạt động và có thể xác minh nguồn thông tin cũng như cách xử lý dữ liệu của nó. Việc tiết lộ nguồn dữ liệu đào tạo mang lại khả năng hiển thị đó.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 58",
+    "sourceTitle": "Examcademy AI-901 Question 58",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/58-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-59",
+    "id": "ai901-59",
     "questionNumber": 59,
     "text": "For each statement below, select **Yes** when it is true. Otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -2139,15 +2141,15 @@
     "explanation": "Việc xuất bản chuyển tác nhân từ dự án phát triển sang Ứng dụng tác nhân sẵn sàng sản xuất mà người tiêu dùng bên ngoài có thể gọi thông qua điểm cuối ổn định. Fine-tuning không bắt buộc phải xuất bản; một tác nhân có thể sử dụng mô hình đã triển khai hiện có. Việc lưu cấu hình sẽ tạo hoặc duy trì phiên bản tác nhân, trong khi xuất bản là một hành động rõ ràng riêng biệt để hiển thị phiên bản đó cho mục đích sử dụng bên ngoài.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 59",
+    "sourceTitle": "Examcademy AI-901 Question 59",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/59-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-60",
+    "id": "ai901-60",
     "questionNumber": 60,
     "text": "Your company gives users clear details about an AI system’s purpose, functionality, and limitations.  \n  \nWhich Microsoft responsible AI principle does this illustrate?",
     "questionType": "multiple_choice",
@@ -2175,15 +2177,15 @@
     "explanation": "Tính minh bạch yêu cầu truyền đạt rõ ràng mục đích, khả năng và giới hạn của hệ thống AI để mọi người có thể hiểu và sử dụng nó một cách thích hợp.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 60",
+    "sourceTitle": "Examcademy AI-901 Question 60",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/60-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-61",
+    "id": "ai901-61",
     "questionNumber": 61,
     "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
     "questionType": "statement_matrix",
@@ -2222,15 +2224,15 @@
     "explanation": "Các mô hình cơ sở được hỗ trợ có thể được triển khai từ danh mục mô hình. Sân chơi dùng để tương tác và đánh giá một mô hình đã triển khai bằng cách gửi lời nhắc và xem xét phản hồi của mô hình đó, thay vì để tự tạo quá trình triển khai.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 61",
+    "sourceTitle": "Examcademy AI-901 Question 61",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/61-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-62",
+    "id": "ai901-62",
     "questionNumber": 62,
     "text": "For each statement below, select **Yes** when it is true; otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -2269,15 +2271,15 @@
     "explanation": "Các mô hình AI không hỗ trợ phổ biến việc phân tích hình ảnh hoặc tạo hình ảnh; những khả năng như vậy đòi hỏi phải có tầm nhìn phù hợp và/hoặc hỗ trợ mô hình tạo hình ảnh. AI tạo đa phương thức có thể diễn giải hình ảnh đầu vào và kết hợp nội dung hình ảnh và văn bản trong một lời nhắc.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 62",
+    "sourceTitle": "Examcademy AI-901 Question 62",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/62-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-63",
+    "id": "ai901-63",
     "questionNumber": 63,
     "text": "Question 63",
     "questionType": "multiple_choice",
@@ -2286,15 +2288,15 @@
     "explanation": "Phiên âm chuyển đổi nội dung giọng nói trong âm thanh và video thành văn bản. Tính năng ghi nhật ký giúp phân biệt người nói, trích xuất cụm từ khóa xác định các thuật ngữ nổi bật và tổng hợp giọng nói chuyển văn bản thành giọng nói.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 63",
+    "sourceTitle": "Examcademy AI-901 Question 63",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/63-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-64",
+    "id": "ai901-64",
     "questionNumber": 64,
     "text": "Question 64",
     "questionType": "multiple_choice",
@@ -2303,15 +2305,15 @@
     "explanation": "Thị giác máy tính phân tích hình ảnh và video để phát hiện, phân loại và đếm các đối tượng, chẳng hạn như động vật xuất hiện trong nguồn cấp dữ liệu video.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 64",
+    "sourceTitle": "Examcademy AI-901 Question 64",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/64-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-65",
+    "id": "ai901-65",
     "questionNumber": 65,
     "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
     "questionType": "statement_matrix",
@@ -2350,15 +2352,15 @@
     "explanation": "Tính minh bạch làm cho các hệ thống AI và hành vi của chúng trở nên dễ hiểu đối với các bên liên quan. Nó bao gồm mục đích truyền đạt và các hạn chế cũng như đưa ra những giải thích hữu ích về hành vi của hệ thống; hiệu suất và thông lượng là những mối quan tâm kỹ thuật riêng biệt.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 65",
+    "sourceTitle": "Examcademy AI-901 Question 65",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/65-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-66",
+    "id": "ai901-66",
     "questionNumber": 66,
     "text": "Question 66",
     "questionType": "multiple_choice",
@@ -2367,15 +2369,15 @@
     "explanation": "Thị giác máy tính bao gồm nhận dạng ký tự quang học (OCR), giúp phát hiện và trích xuất văn bản in hoặc viết tay từ hình ảnh. AI sáng tạo tạo ra nội dung mới, trong khi xử lý ngôn ngữ tự nhiên chủ yếu phân tích và tạo ra dữ liệu ngôn ngữ.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 66",
+    "sourceTitle": "Examcademy AI-901 Question 66",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/66-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-67",
+    "id": "ai901-67",
     "questionNumber": 67,
     "text": "Question 67",
     "questionType": "multiple_choice",
@@ -2384,15 +2386,15 @@
     "explanation": "Độ tin cậy và an toàn đòi hỏi hệ thống AI phải hoạt động đáng tin cậy và an toàn trong suốt vòng đời của nó, bao gồm cả việc xử lý các điều kiện dự kiến ​​và bất ngờ một cách thích hợp. Đây là điều cần thiết cho xe tự lái.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 67",
+    "sourceTitle": "Examcademy AI-901 Question 67",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/67-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-68",
+    "id": "ai901-68",
     "questionNumber": 68,
     "text": "You are building a simple application that uses the Microsoft Foundry SDK to send chat prompts to a model.  \n  \nWhich three elements must you supply in the code to run the application? Each correct answer represents part of the solution.  \n  \nNOTE: Each correct selection is worth one point.",
     "questionType": "multiple_choice",
@@ -2426,15 +2428,15 @@
     "explanation": "Mã SDK Microsoft Foundry xây dựng `AIProjectClient` với điểm cuối dự án và `DefaultAzureCredential` để xác thực Microsoft Entra ID. Yêu cầu trò chuyện hoặc phản hồi cũng chỉ định tên triển khai mô hình. Tên hiển thị dự án và loại tác vụ không bắt buộc phải nhập cho cấu hình máy khách và lệnh gọi mô hình này.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 68",
+    "sourceTitle": "Examcademy AI-901 Question 68",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/68-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-69",
+    "id": "ai901-69",
     "questionNumber": 69,
     "text": "Which two of the following are types of generative AI models? Each correct answer provides a complete solution.  \n  \n> **Note:** Each correct answer is worth one point.",
     "questionType": "multiple_choice",
@@ -2467,15 +2469,15 @@
     "explanation": "GPT là họ mô hình tổng quát để tạo văn bản và DALL-E là họ mô hình tổng quát để tạo hình ảnh. Thị giác máy tính và xử lý ngôn ngữ tự nhiên là các lĩnh vực có khả năng AI và máy biến áp là kiến ​​trúc mạng thần kinh.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 69",
+    "sourceTitle": "Examcademy AI-901 Question 69",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/69-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-70",
+    "id": "ai901-70",
     "questionNumber": 70,
     "text": "You are building an application that uses the Azure Language SDK with a Microsoft Foundry resource.  \n  \nYou need to return a list of key topics from unstructured text.  \n  \nWhich Python method should you use?",
     "questionType": "multiple_choice",
@@ -2503,15 +2505,15 @@
     "explanation": "Trích xuất cụm từ khóa Ngôn ngữ Azure xác định các khái niệm chính trong văn bản phi cấu trúc. Phương thức máy khách Phân tích văn bản Python `extract_key_phrases()` trả về các cụm từ khóa đó.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 70",
+    "sourceTitle": "Examcademy AI-901 Question 70",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/70-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-71",
+    "id": "ai901-71",
     "questionNumber": 71,
     "text": "Question 71",
     "questionType": "multiple_choice",
@@ -2520,15 +2522,15 @@
     "explanation": "Các mô hình đa phương thức có thể chấp nhận đầu vào hình ảnh cùng với lời nhắc bằng văn bản. Mô hình nhúng tạo ra biểu diễn vectơ, mô hình chuyển giọng nói thành văn bản phiên âm âm thanh và mô hình chỉ văn bản không chấp nhận đầu vào hình ảnh.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 71",
+    "sourceTitle": "Examcademy AI-901 Question 71",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/71-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-72",
+    "id": "ai901-72",
     "questionNumber": 72,
     "text": "Question 72",
     "questionType": "multiple_choice",
@@ -2537,15 +2539,15 @@
     "explanation": "Ngôn ngữ Azure trong Công cụ đúc cung cấp khả năng phân tích văn bản cho các tổng đài viên thông qua máy chủ MCP Ngôn ngữ Azure. Tác nhân cũng cần có kết nối Foundry được định cấu hình để xác thực với điểm cuối Ngôn ngữ Azure.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 72",
+    "sourceTitle": "Examcademy AI-901 Question 72",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/72-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-73",
+    "id": "ai901-73",
     "questionNumber": 73,
     "text": "Which of the Microsoft responsible AI principles is exemplified by transparency?",
     "questionType": "multiple_choice",
@@ -2573,15 +2575,15 @@
     "explanation": "Tính minh bạch cho phép mọi người hiểu hệ thống AI làm gì, tại sao nó hoạt động như vậy và cách nó đưa ra quyết định.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 73",
+    "sourceTitle": "Examcademy AI-901 Question 73",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/73-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-74",
+    "id": "ai901-74",
     "questionNumber": 74,
     "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
     "questionType": "statement_matrix",
@@ -2620,15 +2622,15 @@
     "explanation": "Kiểm soát truy cập làm giảm nguy cơ lộ dữ liệu trái phép. Dữ liệu cá nhân chỉ nên được chia sẻ khi hợp lý và được bảo vệ, không chỉ để cải thiện sự hợp tác. AI có trách nhiệm bao gồm bảo vệ dữ liệu cá nhân và tuân thủ các yêu cầu hiện hành về quyền riêng tư và bảo vệ dữ liệu.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 74",
+    "sourceTitle": "Examcademy AI-901 Question 74",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/74-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-75",
+    "id": "ai901-75",
     "questionNumber": 75,
     "text": "Question 75",
     "questionType": "multiple_choice",
@@ -2637,15 +2639,15 @@
     "explanation": "Nhận dạng thực thể được đặt tên (NER) phát hiện các thực thể được đặt tên trong văn bản, bao gồm vị trí, ngày tháng và số lượng. Trích xuất cụm từ khóa tìm thấy các cụm từ quan trọng, phát hiện ngôn ngữ xác định ngôn ngữ của văn bản và phân tích cảm xúc xác định sự phân cực của quan điểm.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 75",
+    "sourceTitle": "Examcademy AI-901 Question 75",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/75-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-76",
+    "id": "ai901-76",
     "questionNumber": 76,
     "text": "You are building an application called App1 that analyzes customer feedback.  \n  \nApp1 will invoke Azure Language in Foundry Tools from a generative AI agent in Microsoft Foundry.  \n  \nYou need to ensure the agent can access Azure Language text analysis.  \n  \nWhat should you configure?",
     "questionType": "multiple_choice",
@@ -2673,15 +2675,15 @@
     "explanation": "Máy chủ Azure Language MCP kết nối các tác nhân Microsoft Foundry với Ngôn ngữ Azure thông qua Giao thức bối cảnh mô hình và hiển thị phân tích văn bản cũng như các khả năng NLP khác dưới dạng công cụ tác nhân. Việc triển khai mô hình, điểm cuối Giọng nói hoặc chỉ mục Tìm kiếm AI không cung cấp công cụ phân tích văn bản Ngôn ngữ Azure cho tổng đài viên.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 76",
+    "sourceTitle": "Examcademy AI-901 Question 76",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/76-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-77",
+    "id": "ai901-77",
     "questionNumber": 77,
     "text": "For each of the following statements, select **Yes** if the statement is true. Otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -2720,15 +2722,15 @@
     "explanation": "Lời nhắc bằng hình ảnh yêu cầu một mô hình sáng tạo đa phương thức, có khả năng nhìn. Microsoft Foundry hỗ trợ tải lên hình ảnh trong sân chơi và các URL hình ảnh có thể truy cập công khai; trò chuyện tầm nhìn cho phép tối đa 10 hình ảnh trong một yêu cầu trò chuyện.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 77",
+    "sourceTitle": "Examcademy AI-901 Question 77",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/77-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-78",
+    "id": "ai901-78",
     "questionNumber": 78,
     "text": "You deploy a model named `gpt-image-1` in Microsoft Foundry.  \n  \nYou need to ensure that an application can generate an image from a user prompt by using the OpenAI Images API.  \n  \nHow should you complete the Python code?",
     "questionType": "multiple_choice",
@@ -2737,15 +2739,15 @@
     "explanation": "API hình ảnh OpenAI của Microsoft Foundry tạo hình ảnh từ văn bản bằng thao tác `images.generate` của Python SDK. Tên mẫu `gpt-image-1` đã triển khai và lời nhắc người dùng được cung cấp cho cuộc gọi đó.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 78",
+    "sourceTitle": "Examcademy AI-901 Question 78",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/78-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-79",
+    "id": "ai901-79",
     "questionNumber": 79,
     "text": "You have an AI-based system for loan approvals.  \n  \nDuring testing, you find that the system exhibits gender bias.  \n  \nWhich responsible AI principle is violated?",
     "questionType": "multiple_choice",
@@ -2773,15 +2775,15 @@
     "explanation": "Sự công bằng đòi hỏi hệ thống AI phải tránh những kết quả thiên vị và phân biệt đối xử không công bằng. Định kiến ​​giới trong các quyết định phê duyệt khoản vay có thể dẫn đến sự đối xử bất bình đẳng về giới, vi phạm nguyên tắc này.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 79",
+    "sourceTitle": "Examcademy AI-901 Question 79",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/79-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-80",
+    "id": "ai901-80",
     "questionNumber": 80,
     "text": "In which two situations can speech recognition be used? Each correct answer constitutes a complete solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
     "questionType": "multiple_choice",
@@ -2810,15 +2812,15 @@
     "explanation": "Nhận dạng giọng nói là công nghệ chuyển giọng nói thành văn bản: nó có thể tạo bản ghi từ âm thanh cuộc họp hoặc cuộc gọi điện thoại và tạo phụ đề cho cả video trực tiếp và video được ghi trước. Chuyển văn bản thành giọng nói là khả năng thích hợp để đọc to tin nhắn văn bản hoặc tạo thông báo địa chỉ công cộng tự động.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 80",
+    "sourceTitle": "Examcademy AI-901 Question 80",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/80-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-81",
+    "id": "ai901-81",
     "questionNumber": 81,
     "text": "Confirming that machine-learning models do **not** exhibit racial or gender bias is an example of which Microsoft responsible AI principle?",
     "questionType": "multiple_choice",
@@ -2846,15 +2848,15 @@
     "explanation": "Sự công bằng đòi hỏi hệ thống AI phải đối xử công bằng với mọi người và các nhóm có thể so sánh được, đồng thời tránh thành kiến ​​​​có hệ thống. Microsoft xác định việc đánh giá tính công bằng giữa các nhóm nhạy cảm, bao gồm cả giới tính và sắc tộc, là một phần của AI có trách nhiệm.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 81",
+    "sourceTitle": "Examcademy AI-901 Question 81",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/81-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-82",
+    "id": "ai901-82",
     "questionNumber": 82,
     "text": "An AI system is deployed to support hiring decisions.  \n  \nCompany policy requires human reviewers to oversee AI-generated recommendations and to retain responsibility for final hiring decisions.  \n  \nWhich Microsoft responsible AI principle does this illustrate?",
     "questionType": "multiple_choice",
@@ -2882,15 +2884,15 @@
     "explanation": "Trách nhiệm giải trình yêu cầu những người thiết kế và triển khai hệ thống AI phải chịu trách nhiệm về cách thức hoạt động của các hệ thống đó. Trong các quyết định ảnh hưởng đến cuộc sống của con người, chẳng hạn như việc làm, con người nên giữ quyền kiểm soát có ý nghĩa thay vì để hệ thống AI là cơ quan có thẩm quyền cuối cùng.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 82",
+    "sourceTitle": "Examcademy AI-901 Question 82",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/82-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-83",
+    "id": "ai901-83",
     "questionNumber": 83,
     "text": "You are building an application that analyzes uploaded video files by using Azure Content Understanding in Foundry Tools.  \n  \nYou need to ensure that the application extracts structured information from the videos.  \n  \nWhat should the application call?",
     "questionType": "multiple_choice",
@@ -2918,15 +2920,15 @@
     "explanation": "Azure Content Hiểu phân tích video thông qua bộ phân tích được định cấu hình và trả về nội dung và trường được trích xuất trong kết quả JSON có cấu trúc. Hoạt động Phân tích nội dung của Trình phân tích là API gửi video để trích xuất có cấu trúc này.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 83",
+    "sourceTitle": "Examcademy AI-901 Question 83",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/83-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-84",
+    "id": "ai901-84",
     "questionNumber": 84,
     "text": "You are developing an application that analyzes invoices by using Azure Content Understanding in Foundry Tools.  \n  \nYou have a custom analyzer named `invoiceAnalyzer`.  \n  \nYou need to use the analyzer to process invoice files.  \n  \nHow should you complete the Python code?",
     "questionType": "multiple_choice",
@@ -2935,15 +2937,15 @@
     "explanation": "Hiểu nội dung Azure sử dụng `analyzer_id` để chọn bộ phân tích tùy chỉnh cho hoạt động phân tích. Cung cấp `invoiceAnalyzer` làm đối số đó chạy trình phân tích được đặt tên dựa trên URL tài liệu do `input_url` cung cấp.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 84",
+    "sourceTitle": "Examcademy AI-901 Question 84",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/84-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-85",
+    "id": "ai901-85",
     "questionNumber": 85,
     "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
     "questionType": "statement_matrix",
@@ -2982,15 +2984,15 @@
     "explanation": "Tổng hợp giọng nói (chuyển văn bản thành giọng nói) tạo ra âm thanh được nói từ văn bản, trong khi tính năng nhận dạng giọng nói sẽ chuyển đổi âm thanh được nói thành văn bản. Tính năng chuyển văn bản thành giọng nói không dịch văn bản sang ngôn ngữ khác; bản dịch là một khả năng Azure Speech riêng biệt.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 85",
+    "sourceTitle": "Examcademy AI-901 Question 85",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/85-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-86",
+    "id": "ai901-86",
     "questionNumber": 86,
     "text": "Which two situations are examples of a natural language processing workload? Each correct answer provides a complete solution.  \n  \n**NOTE:** Each correct selection is worth one point.",
     "questionType": "multiple_choice",
@@ -3019,15 +3021,15 @@
     "explanation": "Xử lý ngôn ngữ tự nhiên cho phép các hệ thống hiểu và trả lời các câu hỏi bằng ngôn ngữ của con người. Trợ lý giọng nói trả lời các câu hỏi và tác nhân trang web trả lời người dùng một cách tương tác từ cơ sở kiến ​​thức là khối lượng công việc NLP.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 86",
+    "sourceTitle": "Examcademy AI-901 Question 86",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/86-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-87",
+    "id": "ai901-87",
     "questionNumber": 87,
     "text": "You have a Python application that extracts invoice fields by using Azure Content Understanding in Foundry Tools.  \n  \nYou submit a PDF for analysis.  \n  \nWhat must the application do to obtain the results?",
     "questionType": "multiple_choice",
@@ -3055,15 +3057,15 @@
     "explanation": "Phân tích Hiểu nội dung Azure chạy dưới dạng hoạt động lâu dài không đồng bộ. Khách hàng phải thăm dò kết quả hoạt động cho đến khi quá trình phân tích hoàn tất thành công, lúc đó các trường trích xuất có cấu trúc sẽ có sẵn.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 87",
+    "sourceTitle": "Examcademy AI-901 Question 87",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/87-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-88",
+    "id": "ai901-88",
     "questionNumber": 88,
     "text": "You have a Microsoft Foundry project containing a vision-enabled model deployment.  \n  \nYou need to develop an application that uses the Azure OpenAI client library to send prompts to the model.  \n  \nHow should you complete the Python code?",
     "questionType": "multiple_choice",
@@ -3072,15 +3074,15 @@
     "explanation": "API phản hồi Azure OpenAI sử dụng `client.responses.create()` và chấp nhận cả `model` và `input`. Việc triển khai có khả năng hiển thị như GPT-4o có thể nhận được nội dung đa phương thức phù hợp thông qua đầu vào đó.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 88",
+    "sourceTitle": "Examcademy AI-901 Question 88",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/88-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-89",
+    "id": "ai901-89",
     "questionNumber": 89,
     "text": "For each statement, select **Yes** if it is true. Otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -3119,15 +3121,15 @@
     "explanation": "Các mô hình ngôn ngữ sáng tạo tạo ra văn bản bằng cách dự đoán các mã thông báo liên tiếp. Lời nhắc của hệ thống cung cấp các hướng dẫn ảnh hưởng đến hành vi và giọng điệu phản hồi. Nhiệt độ cao hơn làm tăng tính ngẫu nhiên trong việc lựa chọn mã thông báo, khiến kết quả đầu ra trở nên đa dạng hơn và ít mang tính xác định hơn.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 89",
+    "sourceTitle": "Examcademy AI-901 Question 89",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/89-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-90",
+    "id": "ai901-90",
     "questionNumber": 90,
     "text": "Question 90",
     "questionType": "multiple_choice",
@@ -3136,15 +3138,15 @@
     "explanation": "Khối lượng công việc lời nói cung cấp khả năng chuyển lời nói thành văn bản, giúp chuyển các yêu cầu nói của khách hàng thành văn bản viết.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 90",
+    "sourceTitle": "Examcademy AI-901 Question 90",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/90-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-91",
+    "id": "ai901-91",
     "questionNumber": 91,
     "text": "You have a Microsoft Foundry project that includes a vision-enabled GPT model deployment.  \n  \nYou need to build an application that sends an image and a text-based question to the model in one request.  \n  \nWhat should you use?",
     "questionType": "multiple_choice",
@@ -3172,15 +3174,15 @@
     "explanation": "API phản hồi Azure OpenAI hỗ trợ đầu vào đa phương thức cho các mô hình GPT hỗ trợ thị giác bằng cách đặt các phần nội dung `input_text` và `input_image` trong cùng một yêu cầu, cho phép mô hình trả lời câu hỏi văn bản về hình ảnh.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 91",
+    "sourceTitle": "Examcademy AI-901 Question 91",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/91-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-92",
+    "id": "ai901-92",
     "questionNumber": 92,
     "text": "You are developing an AI-based loan approval application.  \n  \nYou must ensure that the application records why a loan is approved or rejected and makes that report available to the applicant.  \n  \nThis is an example of which Microsoft responsible AI principle?",
     "questionType": "multiple_choice",
@@ -3208,15 +3210,15 @@
     "explanation": "Tính minh bạch yêu cầu các hệ thống AI đưa ra những lời giải thích dễ hiểu về hành vi và quyết định của chúng. Microsoft xác định cụ thể việc giải thích lý do tại sao đơn đăng ký khoản vay của khách hàng được phê duyệt hoặc bị từ chối dưới dạng giải thích mô hình cục bộ theo nguyên tắc minh bạch.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 92",
+    "sourceTitle": "Examcademy AI-901 Question 92",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/92-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-93",
+    "id": "ai901-93",
     "questionNumber": 93,
     "text": "You intend to create an AI application that uses Azure OpenAI in Foundry Models. The solution requires a specified amount of throughput to be allocated. Which deployment type should you use?",
     "questionType": "multiple_choice",
@@ -3244,15 +3246,15 @@
     "explanation": "Các hoạt động triển khai được cung cấp sẽ phân bổ một lượng công suất xử lý mô hình cụ thể bằng cách sử dụng các đơn vị thông lượng được cung cấp (PTU), cung cấp công suất cần thiết cho các yêu cầu thông lượng đã xác định.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 93",
+    "sourceTitle": "Examcademy AI-901 Question 93",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/93-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-94",
+    "id": "ai901-94",
     "questionNumber": 94,
     "text": "You are building an application that summarizes customer comments by using Azure Language in Foundry Tools.  \n  \nYou need to install the Azure Language SDK.  \n  \nWhich Python package should be installed?",
     "questionType": "multiple_choice",
@@ -3280,15 +3282,15 @@
     "explanation": "Phân tích và tóm tắt văn bản Ngôn ngữ AI Azure sử dụng thư viện máy khách Phân tích văn bản Azure cho Python, được cài đặt dưới dạng `azure-ai-textanalytics`.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 94",
+    "sourceTitle": "Examcademy AI-901 Question 94",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/94-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-95",
+    "id": "ai901-95",
     "questionNumber": 95,
     "text": "For each of these statements, select **Yes** when the statement is true. Otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -3327,15 +3329,15 @@
     "explanation": "SDK Foundry cung cấp các thư viện máy khách để xử lý các yêu cầu dịch vụ, do đó, việc xây dựng các yêu cầu HTTP điểm cuối mô hình theo cách thủ công là không cần thiết. Ứng dụng có thể sử dụng trực tiếp ứng dụng khách SDK để làm việc với mô hình đã triển khai; một dịch vụ web riêng biệt là không cần thiết. AIProjectClient cung cấp quyền truy cập vào các khả năng của dự án Foundry, bao gồm các hoạt động dựa trên mô hình được triển khai và tài nguyên được kết nối.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 95",
+    "sourceTitle": "Examcademy AI-901 Question 95",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/95-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-96",
+    "id": "ai901-96",
     "questionNumber": 96,
     "text": "Question 96",
     "questionType": "multiple_choice",
@@ -3344,15 +3346,15 @@
     "explanation": "Một mô hình AI tổng quát đã triển khai được truy cập để suy luận thông qua điểm cuối API của nó; ứng dụng khách gọi điểm cuối đó để gửi yêu cầu và nhận phản hồi.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 96",
+    "sourceTitle": "Examcademy AI-901 Question 96",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/96-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-97",
+    "id": "ai901-97",
     "questionNumber": 97,
     "text": "Which three Microsoft guiding principles apply to responsible AI? Each correct answer represents a complete solution.  \n  \n> **NOTE:** Each correct selection is worth one point.",
     "questionType": "multiple_choice",
@@ -3390,15 +3392,15 @@
     "explanation": "Tiêu chuẩn AI có trách nhiệm của Microsoft dựa trên sáu nguyên tắc, bao gồm tính công bằng, độ tin cậy và an toàn cũng như tính toàn diện. Những nguyên tắc này thúc đẩy đối xử công bằng, hành vi hệ thống an toàn và đáng tin cậy cũng như các hệ thống AI phục vụ đầy đủ mọi người. [What is Responsible AI? — Microsoft Learn](https://learn.microsoft.com/en-us/azure/machine-learning/concept-responsible-ai?view=azureml-api-2)",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 97",
+    "sourceTitle": "Examcademy AI-901 Question 97",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/97-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-98",
+    "id": "ai901-98",
     "questionNumber": 98,
     "text": "Which natural language processing feature can identify the primary talking points in customer feedback surveys?",
     "questionType": "multiple_choice",
@@ -3426,15 +3428,15 @@
     "explanation": "Trích xuất cụm từ khóa đánh giá văn bản phi cấu trúc và trả về các cụm từ chính thể hiện các khái niệm hoặc chủ đề chính của văn bản đó, giúp văn bản này phù hợp để xác định các điểm thảo luận chính trong khảo sát phản hồi của khách hàng.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 98",
+    "sourceTitle": "Examcademy AI-901 Question 98",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/98-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-99",
+    "id": "ai901-99",
     "questionNumber": 99,
     "text": "For each statement, select **Yes** when it is true; otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -3473,15 +3475,15 @@
     "explanation": "Các mô hình AI khác nhau tùy theo kiến ​​trúc và đào tạo, vì vậy việc phân tích hình ảnh và tạo hình ảnh không phải là những khả năng phổ biến. AI tổng hợp hỗ trợ thị giác có thể đọc văn bản trong hình ảnh và các mô hình đa phương thức được thiết kế để xử lý các đầu vào như văn bản và hình ảnh cùng nhau.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 99",
+    "sourceTitle": "Examcademy AI-901 Question 99",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/99-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-100",
+    "id": "ai901-100",
     "questionNumber": 100,
     "text": "Match each description with its corresponding Microsoft Foundry tool.  \n  \nEach description may be used once, more than once, or not at all.",
     "questionType": "matching_drag_drop",
@@ -3532,15 +3534,15 @@
     "explanation": "Nhận dạng giọng nói chuyển đổi âm thanh giọng nói thành văn bản, trong khi tổng hợp giọng nói chuyển đổi văn bản thành âm thanh nói. Trích xuất thực thể là một khả năng xử lý ngôn ngữ tự nhiên riêng biệt, không phải chức năng giọng nói.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 100",
+    "sourceTitle": "Examcademy AI-901 Question 100",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/100-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-101",
+    "id": "ai901-101",
     "questionNumber": 101,
     "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
     "questionType": "statement_matrix",
@@ -3579,15 +3581,15 @@
     "explanation": "Thiết kế AI toàn diện đáp ứng nhu cầu và khả năng đa dạng của người dùng. Việc dựa vào một phương thức nhập liệu có thể loại trừ người dùng và chỉ số lượng người dùng không tạo nên một hệ thống toàn diện. Việc cung cấp các tùy chọn ngôn ngữ khác nhau giúp giảm rào cản sử dụng và hỗ trợ tính toàn diện.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 101",
+    "sourceTitle": "Examcademy AI-901 Question 101",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/101-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-102",
+    "id": "ai901-102",
     "questionNumber": 102,
     "text": "You have a Microsoft Foundry project that includes a vision-enabled chat model deployment.  \n  \nYou are building a Python application that uses the responses API. The application sends a request containing a user prompt and a local JPEG image.  \n  \nYou need to include the local image in that request.  \n  \nWhich value should you use for the image input?",
     "questionType": "multiple_choice",
@@ -3615,15 +3617,15 @@
     "explanation": "JPEG cục bộ phải được mã hóa Base64 và được cung cấp dưới dạng URI dữ liệu nội tuyến cho giá trị `input_image`: `data:image/jpeg;base64,`, theo sau là dữ liệu hình ảnh được mã hóa. API phản hồi không sử dụng đường dẫn hệ thống tệp cục bộ hoặc URI `file://` làm URL hình ảnh.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 102",
+    "sourceTitle": "Examcademy AI-901 Question 102",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/102-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-103",
+    "id": "ai901-103",
     "questionNumber": 103,
     "text": "Question 103",
     "questionType": "multiple_choice",
@@ -3632,15 +3634,15 @@
     "explanation": "Các mô hình đa phương thức xử lý và liên kết nhiều phương thức dữ liệu, chẳng hạn như văn bản và hình ảnh. Nhiệm vụ hiểu hình ảnh bao gồm việc phát hiện các đối tượng trong một hình ảnh.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 103",
+    "sourceTitle": "Examcademy AI-901 Question 103",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/103-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-104",
+    "id": "ai901-104",
     "questionNumber": 104,
     "text": "You have a Microsoft Foundry project that includes a deployed generative AI model.  \n  \nYou need to build an application by using the Microsoft Foundry SDK to send chat prompts to that deployed model.  \n  \nWhich information must the application include?",
     "questionType": "multiple_choice",
@@ -3668,15 +3670,15 @@
     "explanation": "Việc gọi mô hình Microsoft Foundry đã triển khai yêu cầu thông tin xác thực, URL điểm cuối của dịch vụ hoặc dự án để định tuyến yêu cầu và tên triển khai mô hình để chọn mô hình đã triển khai. Microsoft Learn chỉ định rằng các yêu cầu trò chuyện sử dụng tên triển khai làm giá trị mô hình và sử dụng quyền truy cập được xác thực dựa trên điểm cuối.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 104",
+    "sourceTitle": "Examcademy AI-901 Question 104",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/104-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-105",
+    "id": "ai901-105",
     "questionNumber": 105,
     "text": "A generative AI model is being deployed to a Microsoft Foundry project.  \n  \nYou allocate a higher tokens-per-minute (TPM) value to the model.  \n  \nWhat is the effect of this change?",
     "questionType": "multiple_choice",
@@ -3704,15 +3706,15 @@
     "explanation": "Phân bổ TPM cao hơn sẽ tăng giới hạn tốc độ mã thông báo của quá trình triển khai, cho phép triển khai xử lý nhiều mã thông báo hơn và khối lượng yêu cầu mỗi phút trước khi điều chỉnh. Nó thay đổi thông lượng và quy mô triển khai, chứ không phải tính sẵn có của khu vực hoặc đặc điểm phản hồi của mô hình.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 105",
+    "sourceTitle": "Examcademy AI-901 Question 105",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/105-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-106",
+    "id": "ai901-106",
     "questionNumber": 106,
     "text": "You intend to deploy a generative AI model to a Microsoft Foundry project in the East US Azure region.  \n  \nWhat should you verify first?",
     "questionType": "multiple_choice",
@@ -3740,15 +3742,15 @@
     "explanation": "Tính khả dụng của mô hình Microsoft Foundry thay đổi tùy theo nhà cung cấp, loại triển khai và khu vực Azure. Một mô hình phải có sẵn ở miền Đông Hoa Kỳ trước khi có thể triển khai ở đó; chi tiết cấu hình như giới hạn mã thông báo, hỗ trợ API và xác thực không khắc phục được việc triển khai khu vực không được hỗ trợ.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 106",
+    "sourceTitle": "Examcademy AI-901 Question 106",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/106-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-107",
+    "id": "ai901-107",
     "questionNumber": 107,
     "text": "You have 100 instructional videos that **do not** contain any audio. Each instructional video includes a script.  \n  \nYou need to create a narration audio file for every video from its script.  \n  \nWhich workload type should you use?",
     "questionType": "multiple_choice",
@@ -3776,15 +3778,15 @@
     "explanation": "Tổng hợp giọng nói chuyển đổi văn bản viết thành âm thanh nói tổng hợp, tạo ra các tệp tường thuật trực tiếp từ tập lệnh video.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 107",
+    "sourceTitle": "Examcademy AI-901 Question 107",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/107-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-108",
+    "id": "ai901-108",
     "questionNumber": 108,
     "text": "Which type of Azure AI workload should be used to create illustrations from an article's text?",
     "questionType": "multiple_choice",
@@ -3812,15 +3814,15 @@
     "explanation": "AI sáng tạo có thể tạo hình ảnh mới từ lời nhắc bằng văn bản, khiến nó trở thành khối lượng công việc phù hợp để tạo hình minh họa dựa trên văn bản của bài viết.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 108",
+    "sourceTitle": "Examcademy AI-901 Question 108",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/108-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-109",
+    "id": "ai901-109",
     "questionNumber": 109,
     "text": "Question 109",
     "questionType": "multiple_choice",
@@ -3829,15 +3831,15 @@
     "explanation": "AIProjectClient là ứng dụng khách trong phạm vi dự án Microsoft Foundry. Nó hiển thị các hoạt động triển khai, tác nhân và chỉ mục; ChatCompletionsClient được sử dụng để suy luận hoàn thành trò chuyện thay vì quản lý các tài nguyên dự án này.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 109",
+    "sourceTitle": "Examcademy AI-901 Question 109",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/109-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-110",
+    "id": "ai901-110",
     "questionNumber": 110,
     "text": "Question 110",
     "questionType": "multiple_choice",
@@ -3846,15 +3848,15 @@
     "explanation": "Azure Speech trong Foundry Tools cung cấp chức năng chuyển giọng nói thành văn bản, chuyển âm thanh được nói thành văn bản.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 110",
+    "sourceTitle": "Examcademy AI-901 Question 110",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/110-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-111",
+    "id": "ai901-111",
     "questionNumber": 111,
     "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
     "questionType": "statement_matrix",
@@ -3893,15 +3895,15 @@
     "explanation": "Hiểu nội dung trả về kết quả JSON có cấu trúc thay vì HTML. Quy trình phân tích REST thông thường của nó là không đồng bộ, trả về Vị trí hoạt động được thăm dò để truy xuất kết quả. Nó hỗ trợ trích xuất đa phương thức từ tài liệu, hình ảnh, âm thanh và video.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 111",
+    "sourceTitle": "Examcademy AI-901 Question 111",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/111-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-112",
+    "id": "ai901-112",
     "questionNumber": 112,
     "text": "For each statement, select **Yes** if it is true; otherwise, select **No**.",
     "questionType": "statement_matrix",
@@ -3940,15 +3942,15 @@
     "explanation": "Whisper thực hiện chuyển lời nói thành văn bản. Các mô hình nhúng tạo ra các biểu diễn vectơ của văn bản cho khối lượng công việc tương tự và tìm kiếm ngữ nghĩa. GPT-4.1 hỗ trợ xử lý văn bản và hình ảnh nhưng các mô hình tạo hình ảnh chuyên dụng được sử dụng để tạo hình ảnh từ lời nhắc.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 112",
+    "sourceTitle": "Examcademy AI-901 Question 112",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/112-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-113",
+    "id": "ai901-113",
     "questionNumber": 113,
     "text": "You are developing a chatbot that will use natural language processing (NLP) to carry out the following actions from a user's text input:  \n  \n- Accept customer orders.  \n- Retrieve support documents.  \n- Retrieve order-status updates.  \n  \nWhich type of NLP should you use?",
     "questionType": "multiple_choice",
@@ -3976,15 +3978,15 @@
     "explanation": "Khả năng hiểu ngôn ngữ xác định mục đích được thể hiện trong văn bản của người dùng, cho phép ứng dụng đàm thoại phân biệt các yêu cầu đặt hàng, truy xuất nội dung hỗ trợ hoặc nhận bản cập nhật trạng thái đơn hàng và định tuyến từng yêu cầu đến hành động thích hợp. Nó cũng có thể trích xuất các chi tiết liên quan cần thiết để thực hiện mục đích đó.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 113",
+    "sourceTitle": "Examcademy AI-901 Question 113",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/113-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-114",
+    "id": "ai901-114",
     "questionNumber": 114,
     "text": "You have a Microsoft Foundry project that includes a vision-enabled model deployment.  \n  \nYou need to create a prompt that makes sure the model generates a relevant, useful response.  \n  \nWhat should the prompt include?",
     "questionType": "multiple_choice",
@@ -4012,15 +4014,15 @@
     "explanation": "Mô tả nhiệm vụ cung cấp cho mô hình hỗ trợ tầm nhìn các hướng dẫn cụ thể và bối cảnh cần thiết để tập trung phân tích và tạo ra phản hồi thích hợp. Microsoft Learn khuyên bạn nên tạo thông báo hệ thống cụ thể cho tác vụ để tránh những phản hồi không hữu ích.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 114",
+    "sourceTitle": "Examcademy AI-901 Question 114",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/114-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-115",
+    "id": "ai901-115",
     "questionNumber": 115,
     "text": "You are building a lightweight application that will call an agent programmatically by using the Microsoft Foundry SDK.  \n  \nYou need to determine the agent ID.  \n  \nWhat should you do?",
     "questionType": "multiple_choice",
@@ -4048,15 +4050,15 @@
     "explanation": "ID tác nhân là mã nhận dạng duy nhất cần có để nhắm mục tiêu một tác nhân cụ thể trong lệnh gọi SDK có lập trình. Chế độ xem Mã được tạo của sân chơi Foundry hiển thị cấu hình tác nhân dưới dạng các biến môi trường, cho phép ứng dụng sử dụng mã định danh đó; Tên mô hình, dự án và công cụ không xác định duy nhất tác nhân.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 115",
+    "sourceTitle": "Examcademy AI-901 Question 115",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/115-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-116",
+    "id": "ai901-116",
     "questionNumber": 116,
     "text": "You need to create an AI solution that answers user queries with detailed written explanations.  \n  \nWhich type of AI model should you use?",
     "questionType": "multiple_choice",
@@ -4084,15 +4086,15 @@
     "explanation": "Các mô hình tạo văn bản tạo ra phản hồi bằng văn bản bằng ngôn ngữ tự nhiên, khiến chúng phù hợp để trả lời các truy vấn của người dùng kèm theo giải thích chi tiết.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 116",
+    "sourceTitle": "Examcademy AI-901 Question 116",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/116-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-117",
+    "id": "ai901-117",
     "questionNumber": 117,
     "text": "You are building an application that continuously transcribes speech from a default microphone by using Azure Speech in Microsoft Foundry Tools.  \n  \nYou need to carry out speech-to-text transcription from the microphone.  \n  \nWhich Python class should you use?",
     "questionType": "multiple_choice",
@@ -4120,15 +4122,15 @@
     "explanation": "`SpeechRecognizer` thực hiện nhận dạng giọng nói thành văn bản và hỗ trợ nhận dạng liên tục. Nó có thể được xây dựng với cấu hình âm thanh sử dụng micrô mặc định; `SpeechConfig` định cấu hình dịch vụ, trong khi cấu hình bộ tổng hợp và đầu ra âm thanh dành cho đầu ra giọng nói.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 117",
+    "sourceTitle": "Examcademy AI-901 Question 117",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/117-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-118",
+    "id": "ai901-118",
     "questionNumber": 118,
     "text": "You are designing an AI system that empowers everyone, including individuals with hearing, visual, and other impairments.  \n  \nWhich Microsoft guiding principle for responsible AI does this illustrate?",
     "questionType": "multiple_choice",
@@ -4156,15 +4158,15 @@
     "explanation": "Tính toàn diện đòi hỏi các hệ thống AI phải được thiết kế và có thể tiếp cận được với đầy đủ những người mà chúng phục vụ, bao gồm cả người khuyết tật và những người bị suy yếu khác.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 118",
+    "sourceTitle": "Examcademy AI-901 Question 118",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/118-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-119",
+    "id": "ai901-119",
     "questionNumber": 119,
     "text": "Which task can be carried out using the Azure Vision in Foundry Tools service?",
     "questionType": "multiple_choice",
@@ -4192,15 +4194,15 @@
     "explanation": "Azure Vision trong Foundry Tools bao gồm Đọc OCR, tính năng này trích xuất văn bản in và viết tay từ hình ảnh và tài liệu, bao gồm cả chữ cái. Điều này cho phép trích xuất dữ liệu từ các chữ viết tay.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 119",
+    "sourceTitle": "Examcademy AI-901 Question 119",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/119-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-120",
+    "id": "ai901-120",
     "questionNumber": 120,
     "text": "You are developing an AI solution that processes customer information.  \n  \nWhich task exemplifies the Microsoft responsible AI principle of privacy and security?",
     "questionType": "multiple_choice",
@@ -4228,15 +4230,15 @@
     "explanation": "Mã hóa dữ liệu khách hàng được lưu trữ và thực thi các biện pháp kiểm soát truy cập dựa trên vai trò bảo vệ thông tin nhạy cảm khỏi bị truy cập trái phép, hỗ trợ trực tiếp quyền riêng tư và bảo mật. Hướng dẫn của Microsoft mô tả mã hóa nội dung của khách hàng ở trạng thái lưu trữ và role-based access control là biện pháp bảo vệ dữ liệu.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 120",
+    "sourceTitle": "Examcademy AI-901 Question 120",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/120-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-121",
+    "id": "ai901-121",
     "questionNumber": 121,
     "text": "In the Microsoft Foundry portal, you create an agent called Agent1 and then deploy it.  \n  \nYou open the Foundry playground to test Agent1.  \n  \nWhat does the playground use to ensure that testing reflects production behavior?",
     "questionType": "multiple_choice",
@@ -4264,15 +4266,15 @@
     "explanation": "Sân chơi kiểm tra tác nhân được triển khai bằng cách sử dụng cấu hình của tác nhân đó, do đó việc lựa chọn mô hình, hướng dẫn, công cụ và hành vi được định cấu hình khác của nó sẽ phù hợp với tác nhân sản xuất được triển khai.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 121",
+    "sourceTitle": "Examcademy AI-901 Question 121",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/121-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-122",
+    "id": "ai901-122",
     "questionNumber": 122,
     "text": "You need to deploy a generative AI model to a Microsoft Foundry project.  \n  \nWhich factor should you use to determine which model type can be deployed to the project?",
     "questionType": "multiple_choice",
@@ -4300,15 +4302,15 @@
     "explanation": "Tính khả dụng của mô hình tùy theo khu vực. Dự án Microsoft Foundry và tài nguyên của nó phải nằm trong khu vực được hỗ trợ để triển khai mô hình đã chọn, do đó, tính khả dụng của khu vực Azure sẽ xác định xem loại mô hình đó có thể được triển khai hay không.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 122",
+    "sourceTitle": "Examcademy AI-901 Question 122",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/122-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-123",
+    "id": "ai901-123",
     "questionNumber": 123,
     "text": "Extracting text from images is an example of which type of AI capability?",
     "questionType": "multiple_choice",
@@ -4336,15 +4338,15 @@
     "explanation": "Nhận dạng ký tự quang học (OCR) phát hiện và chuyển đổi văn bản có trong hình ảnh thành văn bản có thể đọc được bằng máy.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 123",
+    "sourceTitle": "Examcademy AI-901 Question 123",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/123-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-124",
+    "id": "ai901-124",
     "questionNumber": 124,
     "text": "Match responsible-AI principles with the appropriate requirements.  \n  \nA principle may be used once, more than once, or not at all.",
     "questionType": "matching_drag_drop",
@@ -4409,15 +4411,15 @@
     "explanation": "Sự công bằng đòi hỏi hệ thống AI phải tránh sự thiên vị có hệ thống và đối xử khác biệt với những người có thể so sánh được. Quyền riêng tư và bảo mật bảo vệ thông tin cá nhân thông qua các ranh giới dữ liệu và kiểm soát truy cập thích hợp. Tính minh bạch yêu cầu việc ra quyết định phải dễ hiểu và có thể xem xét được, do đó, hồ sơ quyết định tiết lộ lý do đưa ra quyết định tự động đáp ứng nguyên tắc này.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 124",
+    "sourceTitle": "Examcademy AI-901 Question 124",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/124-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-125",
+    "id": "ai901-125",
     "questionNumber": 125,
     "text": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
     "questionType": "statement_matrix",
@@ -4456,15 +4458,15 @@
     "explanation": "Tóm tắt tạo ra sự trình bày ngắn gọn về văn bản hoặc cuộc hội thoại; nó không phải là phiên âm từ giọng nói sang văn bản. Các mô hình hoàn thành cuộc trò chuyện trả về các tin nhắn trò chuyện đã tạo, trong khi các mô hình nhúng tạo ra các vectơ số cho các tác vụ so sánh ngữ nghĩa như tìm kiếm, phân cụm và đề xuất. API nhúng trả về một vectơ đại diện cho đầu vào được cung cấp.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 125",
+    "sourceTitle": "Examcademy AI-901 Question 125",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/125-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-126",
+    "id": "ai901-126",
     "questionNumber": 126,
     "text": "Question 126",
     "questionType": "multiple_choice",
@@ -4473,15 +4475,15 @@
     "explanation": "Các mô hình thị giác máy tính xử lý dữ liệu trực quan để nhận dạng và phát hiện các đối tượng trong hình ảnh.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
-    "sourceTitle": "Examcademy AI-900 Question 126",
+    "sourceTitle": "Examcademy AI-901 Question 126",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/126-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-127",
+    "id": "ai901-127",
     "questionNumber": 127,
     "text": "Consider the following REST API request.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1787372409659-t37ibexi.png)  \n  \nWhich Azure OpenAI model should be used to process this request?",
     "questionType": "multiple_choice",
@@ -4509,16 +4511,16 @@
     "explanation": "DALL-E là mô hình tạo hình ảnh Azure OpenAI. Lời nhắc hình ảnh văn bản có `size`, `n` và kiểu `vivid` là một yêu cầu tạo hình ảnh; `vivid` là tùy chọn kiểu DALL-E 3 và DALL-E 3 yêu cầu `n` được đặt thành 1.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
     "imageUrl": "https://cdn.examcademy.com/images/questions/1787372409659-t37ibexi.png",
-    "sourceTitle": "Examcademy AI-900 Question 127",
+    "sourceTitle": "Examcademy AI-901 Question 127",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/127-implement-ai-solutions-by-using-microsoft-foundry",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   },
   {
-    "id": "ai900-128",
+    "id": "ai901-128",
     "questionNumber": 128,
     "text": "You have the process depicted in the following exhibit.  \n  \n![Question Image](https://cdn.examcademy.com/images/questions/1787372409217-g7ksmkm3.png)  \n  \nWhich type of AI solution is illustrated in the diagram?",
     "questionType": "multiple_choice",
@@ -4546,12 +4548,12 @@
     "explanation": "Giao diện đàm thoại cơ sở tri thức nhận câu hỏi của người dùng, truy vấn cơ sở tri thức thông qua API và trả về câu trả lời. Đây là một giải pháp đại lý (chatbot). Microsoft mô tả QnA Maker cung cấp lớp đàm thoại trên nền tảng kiến ​​thức cho các ứng dụng khách đàm thoại như chatbot.",
     "category": "General",
     "tags": [
-      "AI-900",
+      "AI-901",
       "General"
     ],
     "imageUrl": "https://cdn.examcademy.com/images/questions/1787372409217-g7ksmkm3.png",
-    "sourceTitle": "Examcademy AI-900 Question 128",
+    "sourceTitle": "Examcademy AI-901 Question 128",
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/128-identify-ai-concepts-and-capabilities",
-    "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.549Z"
   }
-]
+];

@@ -67,20 +67,19 @@ const CERTS_CONFIG = [
     badge: 'new'
   },
   {
-    id: 'ai-900',
-    crawlSlug: 'ai-901',
-    name: 'ai900',
-    varName: 'ai900Questions',
-    code: 'AI-900',
+    id: 'ai-901',
+    name: 'ai901',
+    varName: 'ai901Questions',
+    code: 'AI-901',
     title: 'Microsoft Azure AI Fundamentals',
-    description: 'Chinh phục chứng chỉ Microsoft Azure AI Fundamentals (AI-900). Khái niệm trí tuệ nhân tạo, Machine Learning, Computer Vision, Natural Language Processing và Responsible AI trên Azure.',
+    description: 'Chinh phục chứng chỉ Microsoft Azure AI Fundamentals (AI-901). Khái niệm trí tuệ nhân tạo, Machine Learning, Computer Vision, Natural Language Processing và Responsible AI trên Azure.',
     difficulty: 'Cơ bản',
     estimatedHours: '8-12 Giờ',
     colorClass: 'bg-gradient-to-br from-teal-500 to-cyan-600 text-white',
     iconName: 'Award',
     totalQuestions: 128,
-    isDisabled: false,
-    badge: 'verified'
+    isDisabled: true,
+    badge: 'new'
   }
 ];
 

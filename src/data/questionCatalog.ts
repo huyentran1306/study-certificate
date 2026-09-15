@@ -7,7 +7,7 @@ import type { Question } from '../types';
 export const BUILTIN_QUESTION_COUNTS: Record<string, number> = {
   'gh-300': 152,
   'az-900': 323,
-  'ai-900': 128,
+  'ai-900': 5,
   'ai-103': 135,
   'ai-200': 128,
   'cca-f': 90,
@@ -25,6 +25,7 @@ export const BUILTIN_QUESTION_COUNTS: Record<string, number> = {
   'dp-600': 220,
   'sc-100': 360,
   'sc-200': 480,
+  'ai-901': 128,
 };
 
 export const BUILTIN_CERT_IDS = Object.keys(BUILTIN_QUESTION_COUNTS);
@@ -33,6 +34,7 @@ const loaders: Record<string, () => Promise<Question[]>> = {
   'gh-300': async () => (await import('./initialQuestions')).initialQuestions,
   'az-900': async () => (await import('./az900Questions')).az900Questions,
   'ai-900': async () => (await import('./ai900Questions')).ai900Questions,
+  'ai-901': async () => (await import('./ai901Questions')).ai901Questions,
   'ai-103': async () => (await import('./ai103Questions')).ai103Questions,
   'ai-200': async () => (await import('./ai200Questions')).ai200Questions,
   'ab-100': async () => (await import('./ab100Questions')).ab100Questions,

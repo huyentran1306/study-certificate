@@ -35,7 +35,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 1",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/1-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-2",
@@ -71,7 +71,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 2",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/2-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-3",
@@ -107,7 +107,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 3",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/3-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-4",
@@ -124,7 +124,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 4",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/4-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-5",
@@ -141,7 +141,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 5",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/5-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-6",
@@ -177,7 +177,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 6",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/6-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-7",
@@ -194,7 +194,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 7",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/7-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-8",
@@ -230,7 +230,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 8",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/8-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-9",
@@ -271,7 +271,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 9",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/9-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-10",
@@ -288,7 +288,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 10",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/10-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-11",
@@ -324,7 +324,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 11",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/11-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-12",
@@ -360,7 +360,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 12",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/12-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-13",
@@ -396,7 +396,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 13",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/13-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-14",
@@ -432,7 +432,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 14",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/14-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-15",
@@ -468,7 +468,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 15",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/15-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-16",
@@ -485,7 +485,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 16",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/16-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-17",
@@ -521,7 +521,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 17",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/17-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-18",
@@ -557,7 +557,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 18",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/18-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-19",
@@ -574,7 +574,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 19",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/19-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-20",
@@ -591,7 +591,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 20",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/20-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-21",
@@ -608,7 +608,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 21",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/21-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-22",
@@ -644,7 +644,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 22",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/22-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-23",
@@ -661,7 +661,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 23",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/23-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-24",
@@ -697,7 +697,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 24",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/24-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-25",
@@ -733,7 +733,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 25",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/25-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-26",
@@ -769,7 +769,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 26",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/26-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-27",
@@ -801,7 +801,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 27",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/27-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-28",
@@ -818,7 +818,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 28",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/28-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-29",
@@ -854,7 +854,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 29",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/29-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-30",
@@ -943,7 +943,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 30",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/30-manage-security-threats",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-31",
@@ -979,7 +979,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 31",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/31-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-32",
@@ -1015,7 +1015,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 32",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/32-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-33",
@@ -1051,7 +1051,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 33",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/33-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-34",
@@ -1096,7 +1096,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 34",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/34-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-35",
@@ -1113,7 +1113,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 35",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/35-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-36",
@@ -1173,7 +1173,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783733178928-80sdmot6.png",
     "sourceTitle": "Examcademy SC-200 Question 36",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/36-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-37",
@@ -1205,7 +1205,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 37",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/37-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-38",
@@ -1242,7 +1242,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 38",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/38-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-39",
@@ -1278,7 +1278,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 39",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/39-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-40",
@@ -1295,7 +1295,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 40",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/40-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-41",
@@ -1332,7 +1332,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783739295356-zn6cocbt.png",
     "sourceTitle": "Examcademy SC-200 Question 41",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/41-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-42",
@@ -1349,7 +1349,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 42",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/42-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-43",
@@ -1366,7 +1366,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 43",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/43-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-44",
@@ -1383,7 +1383,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 44",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/44-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-45",
@@ -1419,7 +1419,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 45",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/45-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-46",
@@ -1436,7 +1436,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 46",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/46-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-47",
@@ -1472,7 +1472,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 47",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/47-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-48",
@@ -1489,7 +1489,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 48",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/48-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-49",
@@ -1525,7 +1525,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 49",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/49-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-50",
@@ -1561,7 +1561,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 50",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/50-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-51",
@@ -1589,7 +1589,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 51",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/51-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-52",
@@ -1617,7 +1617,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 52",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/52-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-53",
@@ -1645,7 +1645,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 53",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/53-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-54",
@@ -1673,7 +1673,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 54",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/54-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-55",
@@ -1690,7 +1690,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 55",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/55-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-56",
@@ -1738,7 +1738,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783732838563-urcqx1te.png",
     "sourceTitle": "Examcademy SC-200 Question 56",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/56-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-57",
@@ -1755,7 +1755,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 57",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/57-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-58",
@@ -1791,7 +1791,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 58",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/58-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-59",
@@ -1808,7 +1808,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 59",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/59-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-60",
@@ -1844,7 +1844,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 60",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/60-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-61",
@@ -1880,7 +1880,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 61",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/61-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-62",
@@ -1916,7 +1916,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 62",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/62-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-63",
@@ -1952,7 +1952,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 63",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/63-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-64",
@@ -1989,7 +1989,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783741535097-laki34qn.png",
     "sourceTitle": "Examcademy SC-200 Question 64",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/64-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-65",
@@ -2025,7 +2025,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 65",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/65-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-66",
@@ -2062,7 +2062,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783741310705-8gcu52cy.png",
     "sourceTitle": "Examcademy SC-200 Question 66",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/66-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-67",
@@ -2079,7 +2079,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 67",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/67-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-68",
@@ -2096,7 +2096,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 68",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/68-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-69",
@@ -2205,7 +2205,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 69",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/69-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-70",
@@ -2241,7 +2241,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 70",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/70-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-71",
@@ -2258,7 +2258,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 71",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/71-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-72",
@@ -2275,7 +2275,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 72",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/72-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-73",
@@ -2311,7 +2311,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 73",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/73-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-74",
@@ -2347,7 +2347,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 74",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/74-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-75",
@@ -2383,7 +2383,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 75",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/75-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-76",
@@ -2424,7 +2424,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 76",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/76-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-77",
@@ -2460,7 +2460,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 77",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/77-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-78",
@@ -2477,7 +2477,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 78",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/78-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-79",
@@ -2494,7 +2494,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 79",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/79-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-80",
@@ -2530,7 +2530,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 80",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/80-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-81",
@@ -2578,7 +2578,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783741898556-invcta66.png",
     "sourceTitle": "Examcademy SC-200 Question 81",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/81-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-82",
@@ -2614,7 +2614,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 82",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/82-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-83",
@@ -2650,7 +2650,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 83",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/83-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-84",
@@ -2691,7 +2691,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783740192955-60aqo9bb.png",
     "sourceTitle": "Examcademy SC-200 Question 84",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/84-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.919Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-85",
@@ -2727,7 +2727,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 85",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/85-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-86",
@@ -2744,7 +2744,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 86",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/86-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-87",
@@ -2825,7 +2825,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 87",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/87-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-88",
@@ -2861,7 +2861,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 88",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/88-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-89",
@@ -2878,7 +2878,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 89",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/89-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-90",
@@ -2914,7 +2914,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 90",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/90-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-91",
@@ -2950,7 +2950,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 91",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/91-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-92",
@@ -2986,7 +2986,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 92",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/92-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-93",
@@ -3075,7 +3075,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 93",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/93-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-94",
@@ -3092,7 +3092,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 94",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/94-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-95",
@@ -3132,7 +3132,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 95",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/95-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-96",
@@ -3168,7 +3168,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 96",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/96-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-97",
@@ -3204,7 +3204,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 97",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/97-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-98",
@@ -3293,7 +3293,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 98",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/98-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-99",
@@ -3310,7 +3310,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 99",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/99-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-100",
@@ -3346,7 +3346,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 100",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/100-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-101",
@@ -3363,7 +3363,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 101",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/101-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-102",
@@ -3405,7 +3405,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783728840163-z82aewjj.png",
     "sourceTitle": "Examcademy SC-200 Question 102",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/102-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-103",
@@ -3437,7 +3437,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 103",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/103-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-104",
@@ -3473,7 +3473,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 104",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/104-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-105",
@@ -3490,7 +3490,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 105",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/105-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-106",
@@ -3526,7 +3526,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 106",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/106-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-107",
@@ -3607,7 +3607,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 107",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/107-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-108",
@@ -3688,7 +3688,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 108",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/108-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-109",
@@ -3729,7 +3729,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 109",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/109-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-110",
@@ -3770,7 +3770,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 110",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/110-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-111",
@@ -3806,7 +3806,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 111",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/111-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-112",
@@ -3854,7 +3854,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206386645-4zebaq3y.png",
     "sourceTitle": "Examcademy SC-200 Question 112",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/112-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-113",
@@ -3871,7 +3871,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 113",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/113-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-114",
@@ -3907,7 +3907,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 114",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/114-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-115",
@@ -3943,7 +3943,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 115",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/115-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-116",
@@ -3979,7 +3979,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 116",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/116-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-117",
@@ -4015,7 +4015,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 117",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/117-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-118",
@@ -4032,7 +4032,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 118",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/118-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-119",
@@ -4073,7 +4073,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 119",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/119-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-120",
@@ -4109,7 +4109,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 120",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/120-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-121",
@@ -4146,7 +4146,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 121",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/121-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-122",
@@ -4187,7 +4187,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 122",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/122-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-123",
@@ -4205,7 +4205,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742295817-2ceij3lv.png",
     "sourceTitle": "Examcademy SC-200 Question 123",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/123-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-124",
@@ -4241,7 +4241,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 124",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/124-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-125",
@@ -4277,7 +4277,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 125",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/125-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-126",
@@ -4313,7 +4313,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 126",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/126-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-127",
@@ -4349,7 +4349,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 127",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/127-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-128",
@@ -4385,7 +4385,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 128",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/128-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-129",
@@ -4402,7 +4402,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 129",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/129-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-130",
@@ -4438,7 +4438,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 130",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/130-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-131",
@@ -4474,7 +4474,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 131",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/131-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-132",
@@ -4510,7 +4510,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 132",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/132-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-133",
@@ -4538,7 +4538,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 133",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/133-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-134",
@@ -4566,7 +4566,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 134",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/134-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-135",
@@ -4594,7 +4594,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 135",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/135-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-136",
@@ -4622,7 +4622,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 136",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/136-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-137",
@@ -4650,7 +4650,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 137",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/137-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-138",
@@ -4678,7 +4678,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 138",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/138-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-139",
@@ -4706,7 +4706,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 139",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/139-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-140",
@@ -4723,7 +4723,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 140",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/140-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-141",
@@ -4740,7 +4740,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 141",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/141-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-142",
@@ -4776,7 +4776,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 142",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/142-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-143",
@@ -4817,7 +4817,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 143",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/143-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-144",
@@ -4858,7 +4858,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 144",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/144-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-145",
@@ -4894,7 +4894,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 145",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/145-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-146",
@@ -4953,7 +4953,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 146",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/146-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-147",
@@ -4989,7 +4989,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 147",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/147-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-148",
@@ -5007,7 +5007,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742193875-zdiqgk74.png",
     "sourceTitle": "Examcademy SC-200 Question 148",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/148-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-149",
@@ -5043,7 +5043,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 149",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/149-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-150",
@@ -5061,7 +5061,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783744522176-ga4nnn91.png",
     "sourceTitle": "Examcademy SC-200 Question 150",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/150-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-151",
@@ -5078,7 +5078,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 151",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/151-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-152",
@@ -5095,7 +5095,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 152",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/152-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-153",
@@ -5112,7 +5112,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 153",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/153-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-154",
@@ -5130,7 +5130,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205363824-hdhu53z7.png",
     "sourceTitle": "Examcademy SC-200 Question 154",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/154-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-155",
@@ -5166,7 +5166,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 155",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/155-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-156",
@@ -5183,7 +5183,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 156",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/156-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-157",
@@ -5264,7 +5264,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 157",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/157-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-158",
@@ -5305,7 +5305,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 158",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/158-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-159",
@@ -5322,7 +5322,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 159",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/159-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-160",
@@ -5358,7 +5358,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 160",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/160-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-161",
@@ -5394,7 +5394,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 161",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/161-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-162",
@@ -5411,7 +5411,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 162",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/162-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-163",
@@ -5428,7 +5428,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 163",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/163-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-164",
@@ -5464,7 +5464,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 164",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/164-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-165",
@@ -5504,7 +5504,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 165",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/165-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-166",
@@ -5541,7 +5541,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 166",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/166-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-167",
@@ -5559,7 +5559,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205377828-yjgumg34.png",
     "sourceTitle": "Examcademy SC-200 Question 167",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/167-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-168",
@@ -5595,7 +5595,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 168",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/168-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-169",
@@ -5612,7 +5612,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 169",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/169-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-170",
@@ -5693,7 +5693,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 170",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/170-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-171",
@@ -5729,7 +5729,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 171",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/171-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-172",
@@ -5765,7 +5765,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 172",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/172-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-173",
@@ -5801,7 +5801,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 173",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/173-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-174",
@@ -5837,7 +5837,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 174",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/174-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-175",
@@ -5854,7 +5854,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 175",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/175-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-176",
@@ -5871,7 +5871,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 176",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/176-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-177",
@@ -5907,7 +5907,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 177",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/177-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-178",
@@ -5924,7 +5924,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 178",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/178-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-179",
@@ -5960,7 +5960,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 179",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/179-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-180",
@@ -5996,7 +5996,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 180",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/180-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-181",
@@ -6032,7 +6032,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 181",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/181-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-182",
@@ -6049,7 +6049,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 182",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/182-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-183",
@@ -6085,7 +6085,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 183",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/183-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-184",
@@ -6121,7 +6121,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 184",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/184-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-185",
@@ -6157,7 +6157,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 185",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/185-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-186",
@@ -6193,7 +6193,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 186",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/186-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-187",
@@ -6210,7 +6210,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 187",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/187-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-188",
@@ -6227,7 +6227,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 188",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/188-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-189",
@@ -6244,7 +6244,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 189",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/189-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-190",
@@ -6280,7 +6280,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 190",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/190-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-191",
@@ -6297,7 +6297,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 191",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/191-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-192",
@@ -6333,7 +6333,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 192",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/192-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-193",
@@ -6369,7 +6369,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 193",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/193-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-194",
@@ -6405,7 +6405,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 194",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/194-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-195",
@@ -6422,7 +6422,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 195",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/195-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-196",
@@ -6439,7 +6439,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 196",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/196-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-197",
@@ -6476,7 +6476,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783739287866-q72dtxbq.png",
     "sourceTitle": "Examcademy SC-200 Question 197",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/197-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-198",
@@ -6504,7 +6504,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 198",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/198-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-199",
@@ -6532,7 +6532,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 199",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/199-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-200",
@@ -6560,7 +6560,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 200",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/200-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-201",
@@ -6588,7 +6588,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 201",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/201-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-202",
@@ -6632,7 +6632,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 202",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/202-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-203",
@@ -6668,7 +6668,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 203",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/203-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-204",
@@ -6705,7 +6705,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783741319516-onm2jbtw.png",
     "sourceTitle": "Examcademy SC-200 Question 204",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/204-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-205",
@@ -6741,7 +6741,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 205",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/205-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-206",
@@ -6852,7 +6852,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 206",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/206-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-207",
@@ -6888,7 +6888,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 207",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/207-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-208",
@@ -6926,7 +6926,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783729396777-0u4qzyu4.png",
     "sourceTitle": "Examcademy SC-200 Question 208",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/208-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.525Z"
   },
   {
     "id": "sc200-209",
@@ -6962,7 +6962,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 209",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/209-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-210",
@@ -6979,7 +6979,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 210",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/210-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-211",
@@ -7020,7 +7020,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 211",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/211-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-212",
@@ -7056,7 +7056,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 212",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/212-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-213",
@@ -7092,7 +7092,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 213",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/213-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-214",
@@ -7109,7 +7109,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 214",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/214-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-215",
@@ -7145,7 +7145,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 215",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/215-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-216",
@@ -7241,7 +7241,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783729275596-mzkdnk1x.jpg",
     "sourceTitle": "Examcademy SC-200 Question 216",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/216-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-217",
@@ -7258,7 +7258,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 217",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/217-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-218",
@@ -7294,7 +7294,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 218",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/218-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-219",
@@ -7342,7 +7342,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205249825-3blj3l1r.png",
     "sourceTitle": "Examcademy SC-200 Question 219",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/219-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-220",
@@ -7383,7 +7383,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 220",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/220-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-221",
@@ -7401,7 +7401,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785751637211-2m9p5ool.png",
     "sourceTitle": "Examcademy SC-200 Question 221",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/221-manage-security-threats",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-222",
@@ -7437,7 +7437,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 222",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/222-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-223",
@@ -7454,7 +7454,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 223",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/223-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-224",
@@ -7490,7 +7490,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 224",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/224-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-225",
@@ -7526,7 +7526,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 225",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/225-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-226",
@@ -7543,7 +7543,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 226",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/226-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-227",
@@ -7560,7 +7560,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 227",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/227-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-228",
@@ -7596,7 +7596,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 228",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/228-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-229",
@@ -7613,7 +7613,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 229",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/229-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-230",
@@ -7649,7 +7649,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 230",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/230-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-231",
@@ -7685,7 +7685,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 231",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/231-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-232",
@@ -7782,7 +7782,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 232",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/232-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-233",
@@ -7818,7 +7818,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 233",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/233-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-234",
@@ -7835,7 +7835,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 234",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/234-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-235",
@@ -7883,7 +7883,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783735824818-zl9bhxf9.png",
     "sourceTitle": "Examcademy SC-200 Question 235",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/235-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-236",
@@ -7900,7 +7900,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 236",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/236-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-237",
@@ -7936,7 +7936,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 237",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/237-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-238",
@@ -8026,7 +8026,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783730283974-soxgoq4e.png",
     "sourceTitle": "Examcademy SC-200 Question 238",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/238-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-239",
@@ -8043,7 +8043,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 239",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/239-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-240",
@@ -8079,7 +8079,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 240",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/240-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-241",
@@ -8127,7 +8127,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783728835966-7f6jzdxl.jpg",
     "sourceTitle": "Examcademy SC-200 Question 241",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/241-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-242",
@@ -8144,7 +8144,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 242",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/242-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-243",
@@ -8180,7 +8180,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 243",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/243-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-244",
@@ -8239,7 +8239,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 244",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/244-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-245",
@@ -8280,7 +8280,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 245",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/245-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-246",
@@ -8297,7 +8297,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 246",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/246-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-247",
@@ -8345,7 +8345,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783732830412-wdg5y5zb.png",
     "sourceTitle": "Examcademy SC-200 Question 247",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/247-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-248",
@@ -8381,7 +8381,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 248",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/248-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-249",
@@ -8417,7 +8417,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 249",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/249-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-250",
@@ -8458,7 +8458,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 250",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/250-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-251",
@@ -8494,7 +8494,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 251",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/251-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-252",
@@ -8539,7 +8539,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 252",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/252-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-253",
@@ -8607,7 +8607,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783729560181-q2k5op2h.png",
     "sourceTitle": "Examcademy SC-200 Question 253",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/253-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-254",
@@ -8643,7 +8643,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 254",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/254-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-255",
@@ -8679,7 +8679,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 255",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/255-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-256",
@@ -8696,7 +8696,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 256",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/256-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-257",
@@ -8714,7 +8714,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783744521969-cky62vxn.png",
     "sourceTitle": "Examcademy SC-200 Question 257",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/257-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-258",
@@ -8750,7 +8750,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 258",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/258-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-259",
@@ -8786,7 +8786,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 259",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/259-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-260",
@@ -8803,7 +8803,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 260",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/260-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-261",
@@ -8839,7 +8839,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 261",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/261-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-262",
@@ -8875,7 +8875,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 262",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/262-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-263",
@@ -8916,7 +8916,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783744856703-m43lbprw.png",
     "sourceTitle": "Examcademy SC-200 Question 263",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/263-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-264",
@@ -8953,7 +8953,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 264",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/264-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-265",
@@ -8989,7 +8989,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 265",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/265-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-266",
@@ -9025,7 +9025,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 266",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/266-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-267",
@@ -9061,7 +9061,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 267",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/267-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-268",
@@ -9097,7 +9097,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 268",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/268-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-269",
@@ -9137,7 +9137,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 269",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/269-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-270",
@@ -9204,7 +9204,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 270",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/270-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-271",
@@ -9221,7 +9221,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 271",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/271-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-272",
@@ -9238,7 +9238,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 272",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/272-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-273",
@@ -9274,7 +9274,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 273",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/273-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-274",
@@ -9291,7 +9291,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 274",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/274-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-275",
@@ -9339,7 +9339,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742191631-ntjvcefu.png",
     "sourceTitle": "Examcademy SC-200 Question 275",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/275-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-276",
@@ -9420,7 +9420,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 276",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/276-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-277",
@@ -9437,7 +9437,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 277",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/277-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-278",
@@ -9473,7 +9473,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 278",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/278-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-279",
@@ -9509,7 +9509,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 279",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/279-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-280",
@@ -9545,7 +9545,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 280",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/280-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-281",
@@ -9586,7 +9586,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742193388-0tl6khnf.png",
     "sourceTitle": "Examcademy SC-200 Question 281",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/281-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-282",
@@ -9603,7 +9603,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 282",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/282-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-283",
@@ -9639,7 +9639,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 283",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/283-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-284",
@@ -9656,7 +9656,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 284",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/284-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-285",
@@ -9673,7 +9673,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 285",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/285-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-286",
@@ -9690,7 +9690,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 286",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/286-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-287",
@@ -9731,7 +9731,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 287",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/287-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-288",
@@ -9767,7 +9767,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 288",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/288-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-289",
@@ -9811,7 +9811,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 289",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/289-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-290",
@@ -9847,7 +9847,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 290",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/290-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-291",
@@ -9865,7 +9865,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785695719502-vbf3ffpf.jpg",
     "sourceTitle": "Examcademy SC-200 Question 291",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/291-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-292",
@@ -9902,7 +9902,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742350977-x6dobtq5.png",
     "sourceTitle": "Examcademy SC-200 Question 292",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/292-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-293",
@@ -9939,7 +9939,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783744866238-3cjm6oa0.png",
     "sourceTitle": "Examcademy SC-200 Question 293",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/293-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-294",
@@ -10042,7 +10042,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 294",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/294-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-295",
@@ -10086,7 +10086,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 295",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/295-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-296",
@@ -10103,7 +10103,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 296",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/296-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-297",
@@ -10120,7 +10120,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 297",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/297-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-298",
@@ -10156,7 +10156,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 298",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/298-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-299",
@@ -10249,7 +10249,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 299",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/299-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-300",
@@ -10338,7 +10338,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 300",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/300-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-301",
@@ -10427,7 +10427,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 301",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/301-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-302",
@@ -10463,7 +10463,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 302",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/302-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-303",
@@ -10480,7 +10480,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 303",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/303-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-304",
@@ -10497,7 +10497,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 304",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/304-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-305",
@@ -10533,7 +10533,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 305",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/305-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-306",
@@ -10569,7 +10569,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 306",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/306-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-307",
@@ -10586,7 +10586,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 307",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/307-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-308",
@@ -10603,7 +10603,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 308",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/308-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-309",
@@ -10643,7 +10643,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 309",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/309-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-310",
@@ -10679,7 +10679,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 310",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/310-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-311",
@@ -10715,7 +10715,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 311",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/311-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-312",
@@ -10751,7 +10751,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 312",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/312-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-313",
@@ -10787,7 +10787,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 313",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/313-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-314",
@@ -10823,7 +10823,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 314",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/314-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-315",
@@ -10840,7 +10840,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 315",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/315-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-316",
@@ -10858,7 +10858,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783741904501-nvu69hhc.png",
     "sourceTitle": "Examcademy SC-200 Question 316",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/316-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-317",
@@ -10939,7 +10939,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 317",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/317-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-318",
@@ -10975,7 +10975,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 318",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/318-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-319",
@@ -10992,7 +10992,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 319",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/319-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-320",
@@ -11073,7 +11073,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 320",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/320-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-321",
@@ -11090,7 +11090,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 321",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/321-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-322",
@@ -11107,7 +11107,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 322",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/322-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-323",
@@ -11155,7 +11155,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742297910-ax7ezgyv.png",
     "sourceTitle": "Examcademy SC-200 Question 323",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/323-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-324",
@@ -11172,7 +11172,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 324",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/324-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-325",
@@ -11189,7 +11189,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 325",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/325-manage-security-threats",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-326",
@@ -11225,7 +11225,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 326",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/326-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-327",
@@ -11261,7 +11261,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 327",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/327-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-328",
@@ -11297,7 +11297,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 328",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/328-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-329",
@@ -11333,7 +11333,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 329",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/329-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-330",
@@ -11350,7 +11350,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 330",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/330-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-331",
@@ -11388,7 +11388,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783728832767-9hu7354x.png",
     "sourceTitle": "Examcademy SC-200 Question 331",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/331-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-332",
@@ -11424,7 +11424,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 332",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/332-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.920Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-333",
@@ -11514,7 +11514,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783732823566-j2fxevwk.png",
     "sourceTitle": "Examcademy SC-200 Question 333",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/333-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-334",
@@ -11531,7 +11531,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 334",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/334-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-335",
@@ -11572,7 +11572,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 335",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/335-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-336",
@@ -11608,7 +11608,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 336",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/336-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-337",
@@ -11676,7 +11676,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783729531385-zsj5k6xc.png",
     "sourceTitle": "Examcademy SC-200 Question 337",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/337-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-338",
@@ -11694,7 +11694,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1785604148840-lt1t3b01.png",
     "sourceTitle": "Examcademy SC-200 Question 338",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/338-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-339",
@@ -11730,7 +11730,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 339",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/339-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-340",
@@ -11766,7 +11766,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 340",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/340-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-341",
@@ -11783,7 +11783,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 341",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/341-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-342",
@@ -11864,7 +11864,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 342",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/342-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-343",
@@ -11900,7 +11900,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 343",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/343-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-344",
@@ -11917,7 +11917,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 344",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/344-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-345",
@@ -11934,7 +11934,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 345",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/345-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-346",
@@ -11979,7 +11979,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 346",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/346-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-347",
@@ -12015,7 +12015,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 347",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/347-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-348",
@@ -12051,7 +12051,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 348",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/348-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-349",
@@ -12068,7 +12068,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 349",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/349-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-350",
@@ -12104,7 +12104,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 350",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/350-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-351",
@@ -12140,7 +12140,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 351",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/351-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-352",
@@ -12157,7 +12157,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 352",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/352-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-353",
@@ -12193,7 +12193,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 353",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/353-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-354",
@@ -12210,7 +12210,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 354",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/354-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-355",
@@ -12246,7 +12246,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 355",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/355-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-356",
@@ -12274,7 +12274,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 356",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/356-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-357",
@@ -12302,7 +12302,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 357",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/357-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-358",
@@ -12330,7 +12330,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 358",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/358-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-359",
@@ -12358,7 +12358,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 359",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/359-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-360",
@@ -12394,7 +12394,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 360",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/360-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-361",
@@ -12411,7 +12411,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 361",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/361-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-362",
@@ -12452,7 +12452,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783746022293-oqr2adde.png",
     "sourceTitle": "Examcademy SC-200 Question 362",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/362-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-363",
@@ -12469,7 +12469,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 363",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/363-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-364",
@@ -12550,7 +12550,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 364",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/364-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-365",
@@ -12586,7 +12586,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 365",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/365-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-366",
@@ -12622,7 +12622,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 366",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/366-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-367",
@@ -12658,7 +12658,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 367",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/367-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-368",
@@ -12694,7 +12694,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 368",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/368-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-369",
@@ -12730,7 +12730,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 369",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/369-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-370",
@@ -12766,7 +12766,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 370",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/370-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-371",
@@ -12783,7 +12783,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 371",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/371-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-372",
@@ -12819,7 +12819,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 372",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/372-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-373",
@@ -12855,7 +12855,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 373",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/373-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-374",
@@ -12891,7 +12891,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 374",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/374-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-375",
@@ -12928,7 +12928,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 375",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/375-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-376",
@@ -12964,7 +12964,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 376",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/376-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-377",
@@ -13061,7 +13061,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 377",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/377-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-378",
@@ -13078,7 +13078,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 378",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/378-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-379",
@@ -13106,7 +13106,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 379",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/379-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-380",
@@ -13134,7 +13134,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 380",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/380-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-381",
@@ -13151,7 +13151,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 381",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/381-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-382",
@@ -13238,7 +13238,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 382",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/382-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-383",
@@ -13255,7 +13255,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 383",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/383-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-384",
@@ -13272,7 +13272,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 384",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/384-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-385",
@@ -13309,7 +13309,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783741891335-bitlvt36.png",
     "sourceTitle": "Examcademy SC-200 Question 385",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/385-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-386",
@@ -13350,7 +13350,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 386",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/386-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-387",
@@ -13391,7 +13391,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 387",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/387-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-388",
@@ -13408,7 +13408,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 388",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/388-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-389",
@@ -13475,7 +13475,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 389",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/389-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-390",
@@ -13511,7 +13511,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 390",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/390-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-391",
@@ -13547,7 +13547,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 391",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/391-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-392",
@@ -13583,7 +13583,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 392",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/392-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-393",
@@ -13600,7 +13600,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 393",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/393-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-394",
@@ -13617,7 +13617,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 394",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/394-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-395",
@@ -13634,7 +13634,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 395",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/395-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-396",
@@ -13723,7 +13723,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 396",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/396-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-397",
@@ -13740,7 +13740,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 397",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/397-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-398",
@@ -13776,7 +13776,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 398",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/398-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-399",
@@ -13818,7 +13818,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 399",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/399-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-400",
@@ -13854,7 +13854,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 400",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/400-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-401",
@@ -13890,7 +13890,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 401",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/401-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-402",
@@ -13907,7 +13907,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 402",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/402-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-403",
@@ -13955,7 +13955,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784205378529-nzuy0bvs.png",
     "sourceTitle": "Examcademy SC-200 Question 403",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/403-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-404",
@@ -13972,7 +13972,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 404",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/404-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-405",
@@ -13989,7 +13989,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 405",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/405-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-406",
@@ -14006,7 +14006,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 406",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/406-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-407",
@@ -14042,7 +14042,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 407",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/407-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-408",
@@ -14078,7 +14078,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 408",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/408-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-409",
@@ -14115,7 +14115,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 409",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/409-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-410",
@@ -14132,7 +14132,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 410",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/410-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-411",
@@ -14168,7 +14168,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 411",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/411-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-412",
@@ -14185,7 +14185,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 412",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/412-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-413",
@@ -14202,7 +14202,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 413",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/413-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-414",
@@ -14238,7 +14238,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 414",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/414-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-415",
@@ -14255,7 +14255,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 415",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/415-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-416",
@@ -14301,7 +14301,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 416",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/416-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-417",
@@ -14318,7 +14318,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 417",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/417-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-418",
@@ -14366,7 +14366,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1784206386420-z3tr24ly.png",
     "sourceTitle": "Examcademy SC-200 Question 418",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/418-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-419",
@@ -14402,7 +14402,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 419",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/419-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-420",
@@ -14438,7 +14438,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 420",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/420-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-421",
@@ -14474,7 +14474,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 421",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/421-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-422",
@@ -14522,7 +14522,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742293687-hk6911er.png",
     "sourceTitle": "Examcademy SC-200 Question 422",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/422-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-423",
@@ -14558,7 +14558,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 423",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/423-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-424",
@@ -14594,7 +14594,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 424",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/424-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-425",
@@ -14634,7 +14634,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 425",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/425-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-426",
@@ -14651,7 +14651,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 426",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/426-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-427",
@@ -14668,7 +14668,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 427",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/427-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-428",
@@ -14704,7 +14704,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 428",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/428-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-429",
@@ -14740,7 +14740,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 429",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/429-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-430",
@@ -14757,7 +14757,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 430",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/430-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-431",
@@ -14805,7 +14805,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742294965-0ugndusl.png",
     "sourceTitle": "Examcademy SC-200 Question 431",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/431-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-432",
@@ -14822,7 +14822,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 432",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/432-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-433",
@@ -14858,7 +14858,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 433",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/433-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-434",
@@ -14894,7 +14894,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 434",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/434-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-435",
@@ -14941,7 +14941,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 435",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/435-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-436",
@@ -14958,7 +14958,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 436",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/436-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-437",
@@ -15039,7 +15039,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 437",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/437-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-438",
@@ -15075,7 +15075,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 438",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/438-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-439",
@@ -15164,7 +15164,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 439",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/439-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-440",
@@ -15212,7 +15212,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742287089-njb1sx0c.png",
     "sourceTitle": "Examcademy SC-200 Question 440",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/440-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-441",
@@ -15248,7 +15248,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 441",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/441-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-442",
@@ -15329,7 +15329,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 442",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/442-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-443",
@@ -15365,7 +15365,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 443",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/443-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-444",
@@ -15448,7 +15448,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 444",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/444-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-445",
@@ -15484,7 +15484,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 445",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/445-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-446",
@@ -15502,7 +15502,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783742349648-09b7qm6s.png",
     "sourceTitle": "Examcademy SC-200 Question 446",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/446-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-447",
@@ -15538,7 +15538,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 447",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/447-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-448",
@@ -15574,7 +15574,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 448",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/448-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-449",
@@ -15649,7 +15649,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 449",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/449-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-450",
@@ -15666,7 +15666,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 450",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/450-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-451",
@@ -15683,7 +15683,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 451",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/451-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-452",
@@ -15724,7 +15724,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 452",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/452-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-453",
@@ -15761,7 +15761,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783732853918-r3gojnn7.png",
     "sourceTitle": "Examcademy SC-200 Question 453",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/453-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-454",
@@ -15778,7 +15778,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 454",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/454-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-455",
@@ -15796,7 +15796,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783729405427-0yt2vz5v.jpg",
     "sourceTitle": "Examcademy SC-200 Question 455",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/455-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-456",
@@ -15832,7 +15832,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 456",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/456-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-457",
@@ -15927,7 +15927,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 457",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/457-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-458",
@@ -15964,7 +15964,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783735829239-hhw0nn5t.png",
     "sourceTitle": "Examcademy SC-200 Question 458",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/458-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-459",
@@ -16005,7 +16005,7 @@ export const sc200Questions: Question[] = [
     "imageUrl": "https://cdn.examcademy.com/images/questions/1783746021772-8w3c25xu.png",
     "sourceTitle": "Examcademy SC-200 Question 459",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/459-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-460",
@@ -16041,7 +16041,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 460",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/460-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-461",
@@ -16058,7 +16058,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 461",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/461-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-462",
@@ -16094,7 +16094,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 462",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/462-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-463",
@@ -16111,7 +16111,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 463",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/463-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-464",
@@ -16147,7 +16147,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 464",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/464-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-465",
@@ -16183,7 +16183,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 465",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/465-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-466",
@@ -16219,7 +16219,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 466",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/466-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-467",
@@ -16255,7 +16255,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 467",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/467-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-468",
@@ -16272,7 +16272,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 468",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/468-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-469",
@@ -16289,7 +16289,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 469",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/469-manage-a-security-operations-environment",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-470",
@@ -16325,7 +16325,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 470",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/470-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-471",
@@ -16342,7 +16342,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 471",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/471-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-472",
@@ -16378,7 +16378,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 472",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/472-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-473",
@@ -16414,7 +16414,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 473",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/473-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-474",
@@ -16450,7 +16450,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 474",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/474-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-475",
@@ -16486,7 +16486,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 475",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/475-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-476",
@@ -16503,7 +16503,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 476",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/476-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-477",
@@ -16520,7 +16520,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 477",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/477-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-478",
@@ -16537,7 +16537,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 478",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/478-configure-protections-and-detections",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-479",
@@ -16554,7 +16554,7 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 479",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/479-manage-incident-response",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   },
   {
     "id": "sc200-480",
@@ -16590,6 +16590,6 @@ export const sc200Questions: Question[] = [
     ],
     "sourceTitle": "Examcademy SC-200 Question 480",
     "sourceUrl": "https://examcademy.com/exams/microsoft/sc-200/q/480-manage-security-threats",
-    "lastVerifiedAt": "2026-09-15T08:28:01.921Z"
+    "lastVerifiedAt": "2026-09-15T09:30:52.526Z"
   }
 ];
