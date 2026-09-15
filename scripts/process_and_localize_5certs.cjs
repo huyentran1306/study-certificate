@@ -92,6 +92,14 @@ function escapeSql(str) {
   return "'" + String(str).replace(/'/g, "''") + "'";
 }
 
+function toPostgresTextArray(arr) {
+  if (!arr || !Array.isArray(arr) || arr.length === 0) {
+    return 'ARRAY[]::text[]';
+  }
+  const escaped = arr.map(item => escapeSql(String(item)));
+  return `ARRAY[${escaped.join(', ')}]::text[]`;
+}
+
 function convertRawToQuestions(rawList, certConfig) {
   const certIdNoHyphen = certConfig.name;
   return rawList.map((item, idx) => {
@@ -335,10 +343,10 @@ async function processSingleCert(certConfig) {
     }
 
     const optionsJson = escapeSql(JSON.stringify(optionsPayload || []));
-    const correctAns = escapeSql(JSON.stringify(q.correctAnswers || []));
-    const tagsJson = escapeSql(JSON.stringify(q.tags || []));
+    const correctAnswersArr = toPostgresTextArray(q.correctAnswers || []);
+    const tagsArr = toPostgresTextArray(q.tags || [certConfig.code, q.category || 'General']);
 
-    return `  (${escapeSql(q.id)}, ${escapeSql(certConfig.id)}, ${q.questionNumber}, ${escapeSql(q.text)}, ${optionsJson}::jsonb, ${correctAns}::jsonb, ${escapeSql(q.explanation)}, ${escapeSql(q.category)}, ${tagsJson}::jsonb, ${q.imageUrl ? escapeSql(q.imageUrl) : 'NULL'}, 'published')`;
+    return `  (${escapeSql(q.id)}, ${escapeSql(certConfig.id)}, ${q.questionNumber}, ${escapeSql(q.text)}, ${optionsJson}::jsonb, ${correctAnswersArr}, ${escapeSql(q.explanation)}, ${escapeSql(q.category || 'General')}, ${tagsArr}, ${q.imageUrl ? escapeSql(q.imageUrl) : 'NULL'}, 'published')`;
   });
 
   sqlLines.push(valueRows.join(',\n'));
