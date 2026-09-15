@@ -371,9 +371,16 @@ export default function App() {
   const [dbQuestionCounts, setDbQuestionCounts] = useState<Record<string, number>>(() => {
     try {
       const cached = localStorage.getItem('study_cert_question_counts');
-      return cached ? JSON.parse(cached) : {};
+      const parsed = cached ? JSON.parse(cached) : {};
+      const merged: Record<string, number> = { ...BUILTIN_QUESTION_COUNTS };
+      Object.entries(parsed).forEach(([k, v]) => {
+        if (typeof v === 'number') {
+          merged[k] = Math.max(v, merged[k] || 0);
+        }
+      });
+      return merged;
     } catch {
-      return {};
+      return { ...BUILTIN_QUESTION_COUNTS };
     }
   });
   
@@ -828,7 +835,11 @@ export default function App() {
         const counts = await fetchQuestionCountsByCertFromDb();
         if (counts && Object.keys(counts).length > 0) {
           setDbQuestionCounts(prev => {
-            const next = { ...prev, ...counts };
+            const next = { ...prev };
+            Object.entries(counts).forEach(([certId, count]) => {
+              const builtin = BUILTIN_QUESTION_COUNTS[certId] || 0;
+              next[certId] = Math.max(count, builtin, prev[certId] || 0);
+            });
             localStorage.setItem('study_cert_question_counts', JSON.stringify(next));
             return next;
           });
@@ -1813,54 +1824,64 @@ export default function App() {
   const paginatedGuideQuestions = questions.slice(startGuideIndex, startGuideIndex + guidePageSize);
 
   const getCertificateTotalQuestions = (cert: Certificate): number => {
-    // 1. Direct cert.id in DB counts
-    if (dbQuestionCounts[cert.id] && dbQuestionCounts[cert.id] > 0) {
-      return dbQuestionCounts[cert.id];
-    }
+    let maxCount = 0;
 
-    // 2. Normalized cert.id in DB counts (e.g. custom_ai_103_... -> ai-103)
+    // 1. Authoritative BUILTIN_QUESTION_COUNTS matching by id, normalizedId, codeKey, or cleanCode
     const normalizedId = cert.id.toLowerCase().replace(/^custom_/, '').replace(/_\d+$/, '').replace(/_/g, '-');
-    if (dbQuestionCounts[normalizedId] && dbQuestionCounts[normalizedId] > 0) {
-      return dbQuestionCounts[normalizedId];
-    }
-
-    // 3. Normalized cert.code in DB counts (e.g. AI-103 -> ai-103)
     const codeKey = cert.code.toLowerCase().trim().replace(/[^a-z0-9]/g, '-');
-    if (dbQuestionCounts[codeKey] && dbQuestionCounts[codeKey] > 0) {
-      return dbQuestionCounts[codeKey];
+    const cleanCode = cert.code.toUpperCase().replace(/[^A-Z0-9]/g, '');
+
+    const builtinCount = BUILTIN_QUESTION_COUNTS[cert.id]
+      || BUILTIN_QUESTION_COUNTS[normalizedId]
+      || BUILTIN_QUESTION_COUNTS[codeKey]
+      || (cleanCode === 'AI103' ? 135 : 0)
+      || (cleanCode === 'AI200' ? 128 : 0)
+      || (cleanCode === 'AB100' ? 120 : 0)
+      || (cleanCode === 'AZ305' ? 285 : 0)
+      || (cleanCode === 'AZ104' ? 188 : 0)
+      || (cleanCode === 'DP900' ? 322 : 0)
+      || (cleanCode === 'AZ204' ? 348 : 0)
+      || (cleanCode === 'AZ500' ? 347 : 0)
+      || (cleanCode === 'AZ400' ? 495 : 0)
+      || (cleanCode === 'GH300' ? 152 : 0)
+      || (cleanCode === 'AZ900' ? 323 : 0)
+      || (cleanCode === 'AI900' ? 5 : 0)
+      || (cleanCode === 'CCAF' ? 90 : 0)
+      || (cleanCode === 'DP800' ? 134 : 0)
+      || (cleanCode === 'ISTQBAI' ? 119 : 0)
+      || (cleanCode === 'AB731' ? 100 : 0);
+
+    if (builtinCount > maxCount) {
+      maxCount = builtinCount;
     }
 
-    // 4. Check cached localStorage questions
-    const storedQs = getSecureQuestionsCache(cert.id);
-    if (storedQs && storedQs.length > 0) return storedQs.length;
-
-    // 5. BUILTIN_QUESTION_COUNTS matching by id, normalizedId, codeKey, or cleanCode
-    const cleanCode = cert.code.toUpperCase().replace(/[^A-Z0-9]/g, '');
-    if (BUILTIN_QUESTION_COUNTS[cert.id]) return BUILTIN_QUESTION_COUNTS[cert.id];
-    if (BUILTIN_QUESTION_COUNTS[normalizedId]) return BUILTIN_QUESTION_COUNTS[normalizedId];
-    if (BUILTIN_QUESTION_COUNTS[codeKey]) return BUILTIN_QUESTION_COUNTS[codeKey];
-    if (cleanCode === 'AI103') return 135;
-    if (cleanCode === 'AI200') return 128;
-    if (cleanCode === 'AB100') return 120;
-    if (cleanCode === 'AZ305') return 285;
-    if (cleanCode === 'GH300') return 152;
-    if (cleanCode === 'AZ900') return 323;
-    if (cleanCode === 'AI900') return 5;
-    if (cleanCode === 'CCAF') return 90;
-    if (cleanCode === 'DP800') return 134;
-    if (cleanCode === 'ISTQBAI') return 119;
-    if (cleanCode === 'AB731') return 100;
-
-    // 6. Parse from description if specified (e.g. "Bộ 135 câu hỏi", "Bộ 128 câu hỏi", "Bộ 120 câu hỏi", "Bộ 285 câu hỏi")
+    // 2. Parse from description if specified (e.g. "Bộ 135 câu hỏi", "Bộ 128 câu hỏi", "Bộ 120 câu hỏi")
     if (cert.description) {
       const descMatch = cert.description.match(/Bộ\s+(\d+)\s+câu/i) || cert.description.match(/(\d+)\s+câu\s+hỏi/i);
       if (descMatch) {
-        const count = parseInt(descMatch[1] || descMatch[2], 10);
-        if (!isNaN(count) && count > 0) return count;
+        const descCount = parseInt(descMatch[1] || descMatch[2], 10);
+        if (!isNaN(descCount) && descCount > maxCount) {
+          maxCount = descCount;
+        }
       }
     }
 
-    return 0;
+    // 3. Check cached localStorage questions
+    const storedQs = getSecureQuestionsCache(cert.id);
+    if (storedQs && storedQs.length > maxCount) {
+      maxCount = storedQs.length;
+    }
+
+    // 4. DB question counts from Supabase (can be higher if user added extra custom questions to DB)
+    const dbCount = dbQuestionCounts[cert.id]
+      || dbQuestionCounts[normalizedId]
+      || dbQuestionCounts[codeKey]
+      || 0;
+    if (dbCount > maxCount) {
+      maxCount = dbCount;
+    }
+
+    return maxCount;
   };
 
   const getCertificateBadge = (cert: Certificate): CertBadgeType => {
