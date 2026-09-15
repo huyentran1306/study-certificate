@@ -263,7 +263,7 @@ async function crawlExam(certSlug, totalQuestions, concurrency = 6) {
         fs.writeFileSync(outPath, JSON.stringify(sorted, null, 2));
         process.stdout.write(`[${certSlug.toUpperCase()}] Progress: ${done}/${totalQuestions} questions...\r`);
       }
-      await sleep(150);
+      await sleep(250);
     }
   }
 

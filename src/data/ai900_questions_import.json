@@ -1,6 +1,4 @@
-import { Question } from '../types';
-
-export const ai900Questions: Question[] = [
+[
   {
     "id": "ai900-1",
     "questionNumber": 1,
@@ -4556,4 +4554,4 @@ export const ai900Questions: Question[] = [
     "sourceUrl": "https://examcademy.com/exams/microsoft/ai-901/q/128-identify-ai-concepts-and-capabilities",
     "lastVerifiedAt": "2026-09-15T08:30:54.464Z"
   }
-];
+]

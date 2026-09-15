@@ -114,20 +114,31 @@ async function translateText(text, attempt = 1) {
   if (!text || !text.trim()) return '';
 
   const { protectedText, values } = protectTerms(text);
-  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=vi&dt=t&q=${encodeURIComponent(protectedText)}`;
+  const endpoints = [
+    `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=en&tl=vi&q=${encodeURIComponent(protectedText)}`,
+    `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=vi&dt=t&q=${encodeURIComponent(protectedText)}`
+  ];
+  const url = endpoints[(attempt - 1) % endpoints.length];
 
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const payload = await response.json();
-    const translated = payload[0].map(segment => segment[0]).join('');
+    let translated = '';
+    if (typeof payload[0] === 'string') {
+      translated = payload[0];
+    } else if (Array.isArray(payload[0])) {
+      translated = payload[0].map(segment => segment[0]).join('');
+    }
+    if (!translated) throw new Error('Empty translation received');
     return restoreTerms(translated, values);
   } catch (error) {
-    if (attempt >= 4) {
+    if (attempt >= 5) {
       console.warn(`Translation failed after ${attempt} attempts: ${error.message}`);
-      return text; // Fallback to original
+      return ''; // Do not fallback to English
     }
-    await new Promise(resolve => setTimeout(resolve, attempt * 1000));
+    const delay = error.message.includes('429') ? 8000 : attempt * 1200;
+    await new Promise(resolve => setTimeout(resolve, delay));
     return translateText(text, attempt + 1);
   }
 }

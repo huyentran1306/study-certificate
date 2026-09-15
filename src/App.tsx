@@ -363,6 +363,58 @@ export default function App() {
       isVIP: false,
       isDisabled: true,
       badge: 'new'
+    },
+    {
+      id: 'pl-300',
+      name: 'Microsoft Power BI Data Analyst',
+      code: 'PL-300',
+      description: 'Chinh phục chứng chỉ Microsoft Certified: Power BI Data Analyst Associate (PL-300). Chuẩn bị dữ liệu (Power Query), mô hình hóa dữ liệu (DAX, Star Schema), trực quan hóa dữ liệu và báo cáo nâng cao trong Power BI Service.',
+      difficulty: 'Trung cấp',
+      estimatedHours: '16-20 Giờ',
+      colorClass: 'bg-gradient-to-br from-amber-600 via-yellow-700 to-slate-900 text-white',
+      iconName: 'Trophy',
+      isVIP: false,
+      isDisabled: true,
+      badge: 'new'
+    },
+    {
+      id: 'dp-600',
+      name: 'Implementing Analytics Solutions Using Microsoft Fabric',
+      code: 'DP-600',
+      description: 'Chinh phục chứng chỉ Microsoft Certified: Fabric Analytics Engineer Associate (DP-600). Lập kế hoạch, triển khai và quản lý giải pháp phân tích dữ liệu toàn diện với Microsoft Fabric, Lakehouse, Data Warehouse và Direct Lake.',
+      difficulty: 'Nâng cao',
+      estimatedHours: '18-24 Giờ',
+      colorClass: 'bg-gradient-to-br from-teal-600 via-cyan-800 to-slate-950 text-white',
+      iconName: 'Database',
+      isVIP: false,
+      isDisabled: true,
+      badge: 'new'
+    },
+    {
+      id: 'sc-100',
+      name: 'Microsoft Cybersecurity Architect',
+      code: 'SC-100',
+      description: 'Chinh phục chứng chỉ Microsoft Certified: Cybersecurity Architect Expert (SC-100). Thiết kế kiến trúc Zero Trust, chiến lược bảo mật danh tính, dữ liệu, ứng dụng, hạ tầng đám mây và phản ứng sự cố SecOps.',
+      difficulty: 'Nâng cao',
+      estimatedHours: '22-28 Giờ',
+      colorClass: 'bg-gradient-to-br from-purple-700 via-indigo-900 to-slate-950 text-white',
+      iconName: 'ShieldCheck',
+      isVIP: false,
+      isDisabled: true,
+      badge: 'new'
+    },
+    {
+      id: 'sc-200',
+      name: 'Microsoft Security Operations Analyst',
+      code: 'SC-200',
+      description: 'Chinh phục chứng chỉ Microsoft Certified: Security Operations Analyst Associate (SC-200). Phát hiện, điều tra và ứng phó sự cố bảo mật với Microsoft Defender XDR, Microsoft Sentinel và Microsoft Purview.',
+      difficulty: 'Trung cấp',
+      estimatedHours: '18-22 Giờ',
+      colorClass: 'bg-gradient-to-br from-rose-700 via-red-900 to-slate-950 text-white',
+      iconName: 'ShieldCheck',
+      isVIP: false,
+      isDisabled: true,
+      badge: 'new'
     }
   ]);
 
