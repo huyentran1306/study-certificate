@@ -1,7 +1,8 @@
 import { lazy, Suspense, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-  BookOpen, 
+  BookOpen,
+  Timer, 
   Search, 
   HelpCircle, 
   Bookmark, 
@@ -1965,23 +1966,57 @@ export default function App() {
     .replace(/[đĐ]/g, 'd')
     .toLocaleLowerCase('vi')
     .replace(/[^a-z0-9]+/g, '');
+  const [homeCategoryFilter, setHomeCategoryFilter] = useState<'all' | 'azure' | 'ai' | 'data' | 'security'>('all');
   const normalizedCertificateSearchQuery = normalizeCertificateSearch(certificateSearchQuery.trim());
   const visibleHomeCertificates = certificates.filter(certificate => {
     if (certificate.isDisabled) return false;
+
+    // Filter by Category
+    if (homeCategoryFilter === 'azure') {
+      const isAzure = certificate.code.startsWith('AZ-') && certificate.code !== 'AZ-500';
+      if (!isAzure) return false;
+    } else if (homeCategoryFilter === 'ai') {
+      const isAI = certificate.code.startsWith('AI-') || certificate.code.startsWith('AB-') || certificate.code === 'CCA-F' || certificate.code === 'GH-300';
+      if (!isAI) return false;
+    } else if (homeCategoryFilter === 'data') {
+      const isData = certificate.code.startsWith('DP-') || certificate.code.startsWith('PL-');
+      if (!isData) return false;
+    } else if (homeCategoryFilter === 'security') {
+      const isSec = certificate.code.startsWith('SC-') || certificate.code === 'AZ-500' || certificate.code.startsWith('ISTQB');
+      if (!isSec) return false;
+    }
+
     if (!normalizedCertificateSearchQuery) return true;
 
     return normalizeCertificateSearch([
       certificate.code,
       certificate.name,
       certificate.description,
+      certificate.difficulty,
     ].join(' ')).includes(normalizedCertificateSearchQuery);
   });
+
+  const certCounts = {
+    all: certificates.filter(c => !c.isDisabled).length,
+    azure: certificates.filter(c => !c.isDisabled && c.code.startsWith('AZ-') && c.code !== 'AZ-500').length,
+    ai: certificates.filter(c => !c.isDisabled && (c.code.startsWith('AI-') || c.code.startsWith('AB-') || c.code === 'CCA-F' || c.code === 'GH-300')).length,
+    data: certificates.filter(c => !c.isDisabled && (c.code.startsWith('DP-') || c.code.startsWith('PL-'))).length,
+    security: certificates.filter(c => !c.isDisabled && (c.code.startsWith('SC-') || c.code === 'AZ-500' || c.code.startsWith('ISTQB'))).length,
+  };
+
   const lookupScopeCertificate = certificates.find(certificate => certificate.id === lookupCertId);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans flex flex-col antialiased">
-      {/* Top Header bar with clean Swiss look */}
-      <header className="sticky top-0 z-40 bg-white border-b border-slate-200/80 backdrop-blur-md px-3 py-2.5 sm:px-4 sm:py-3 md:px-8">
+    <div className="min-h-screen bg-[#fbf9f5] text-slate-800 font-sans flex flex-col antialiased relative overflow-x-hidden selection:bg-indigo-100 selection:text-indigo-900">
+      {/* Ambient background glows */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute w-[450px] h-[450px] rounded-full bg-indigo-100/50 blur-[90px] -top-20 -left-20 animate-orb" />
+        <div className="absolute w-[380px] h-[380px] rounded-full bg-amber-100/50 blur-[90px] top-[20%] -right-20 animate-orb" style={{ animationDelay: "-6s" }} />
+        <div className="absolute w-[450px] h-[450px] rounded-full bg-sky-100/40 blur-[100px] -bottom-24 left-[20%] animate-orb" style={{ animationDelay: "-12s" }} />
+      </div>
+
+      {/* Top Header bar with clean aesthetic frosted glass */}
+      <header className="sticky top-0 z-40 bg-white/85 border-b border-slate-200/60 backdrop-blur-xl px-3 py-2.5 sm:px-4 sm:py-3 md:px-8 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] transition-all">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
           <div className="flex items-center gap-2">
             {mode !== 'home' && mode !== 'admin' && (
@@ -2306,119 +2341,167 @@ export default function App() {
 
         {/* Certification Hub Home View */}
         {mode === 'home' && (
-          <div className="space-y-5 animate-fadeIn">
-            {/* Compact home overview: keeps the first certificate row above the fold */}
-            <div className="overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-sm">
-              <div className="flex flex-col gap-4 p-5 sm:p-6 md:flex-row md:items-center md:justify-between">
-                <div className="flex items-center gap-3.5 sm:gap-4 min-w-0 text-left">
-                  <img 
-                    src="./app-icon.svg" 
-                    alt="Cert Hub Logo" 
-                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl shadow-md shadow-indigo-500/20 ring-2 ring-indigo-100 object-cover shrink-0" 
-                  />
-                  <div className="min-w-0">
-                    <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-indigo-600">CERT PREP PORTAL</span>
-                    <h2 className="mt-1 text-xl font-black tracking-tight text-slate-900 md:text-2xl">Trung Tâm Ôn Luyện Đa Chứng Chỉ</h2>
-                    <p className="mt-0.5 max-w-2xl text-xs leading-relaxed text-slate-500">
-                      Chọn chứng chỉ bên dưới để luyện tập, thi thử hoặc xem cẩm nang ôn tập.
+          <div className="space-y-6 animate-fade-in">
+            {/* Aesthetic Overview Card */}
+            <div className="overflow-hidden rounded-3xl border border-slate-200/70 bg-gradient-to-br from-white via-indigo-50/25 to-amber-50/20 p-5 sm:p-7 shadow-[0_12px_40px_-10px_rgba(99,102,241,0.06)] backdrop-blur-xl relative">
+              {/* Background watermark badge */}
+              <div className="absolute -right-8 -bottom-8 w-48 h-48 opacity-[0.035] pointer-events-none select-none text-indigo-900" aria-hidden="true">
+                <Award className="w-full h-full" />
+              </div>
+
+              <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between relative z-10">
+                <div className="flex items-start sm:items-center gap-4 min-w-0">
+                  <div className="relative shrink-0">
+                    <img 
+                      src="./app-icon.svg" 
+                      alt="Cert Hub Logo" 
+                      className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl shadow-lg shadow-indigo-500/20 ring-2 ring-white/80 object-cover" 
+                    />
+                    <span className="absolute -bottom-1 -right-1 flex h-4 w-4" title="Hệ thống đang hoạt động">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-white"></span>
+                    </span>
+                  </div>
+                  <div className="min-w-0 space-y-1">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="rounded-full bg-indigo-100/80 px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-widest text-indigo-700">
+                        ✨ CERT PREP PORTAL
+                      </span>
+                      <span className="rounded-full bg-amber-100/80 px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-800">
+                        2026 EDITION
+                      </span>
+                    </div>
+                    <h2 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 font-heading">
+                      Trung Tâm Ôn Luyện Đa Chứng Chỉ
+                    </h2>
+                    <p className="text-xs sm:text-sm text-slate-500 font-medium max-w-xl leading-relaxed">
+                      Bộ đề chuẩn Microsoft Azure, AI Copilot, Data & ISTQB với lời giải chi tiết và thi bấm giờ chuẩn quốc tế.
                     </p>
                   </div>
                 </div>
-                <div className="flex shrink-0 items-center justify-center gap-2 rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2.5">
-                  <div className="min-w-20 text-center px-2">
-                  <span className="block text-[22px] font-black text-slate-900">
-                    {certificates.filter(c => !c.isDisabled).length}
-                  </span>
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Chứng chỉ</span>
-                </div>
-                  <div className="h-8 w-px bg-slate-200" />
-                  <div className="min-w-20 text-center px-2">
-                  <span className="block text-[22px] font-black text-emerald-600">
-                    {certificates.filter(c => !c.isDisabled).reduce((acc, cert) => {
-                      const completed = readProgressCache(cert.id);
-                      if (completed) {
-                        try {
-                          const parsed = JSON.parse(completed);
-                          return acc + (parsed.history?.length || 0);
-                        } catch { return acc; }
-                      }
-                      return acc;
-                    }, 0)}
-                  </span>
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Đã trả lời</span>
+
+                {/* Stat Badges */}
+                <div className="flex items-center gap-3 shrink-0">
+                  <div className="rounded-2xl border border-slate-200/70 bg-white/80 backdrop-blur-md px-4 py-2.5 text-center shadow-xs min-w-[90px]">
+                    <span className="block text-2xl font-black text-slate-900 font-heading">
+                      {certificates.filter(c => !c.isDisabled).length}
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Chứng chỉ</span>
+                  </div>
+                  <div className="rounded-2xl border border-slate-200/70 bg-white/80 backdrop-blur-md px-4 py-2.5 text-center shadow-xs min-w-[90px]">
+                    <span className="block text-2xl font-black text-emerald-600 font-heading">
+                      {certificates.filter(c => !c.isDisabled).reduce((acc, cert) => {
+                        const completed = readProgressCache(cert.id);
+                        if (completed) {
+                          try {
+                            const parsed = JSON.parse(completed);
+                            return acc + (parsed.history?.length || 0);
+                          } catch { return acc; }
+                        }
+                        return acc;
+                      }, 0)}
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Đã trả lời</span>
                   </div>
                 </div>
               </div>
 
               {!username && (
-                <div id="welcome-team-sync-banner" className="border-t border-indigo-100 bg-gradient-to-r from-indigo-50/70 to-blue-50/50 px-4 py-3 sm:px-6">
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="flex min-w-0 items-center gap-3">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-indigo-600 shadow-sm">
-                        <User className="h-4 w-4" />
-                      </div>
-                      <div className="min-w-0">
-                        <h3 className="text-xs font-black text-slate-900">
-                          {learnerName ? `Hồ sơ người học: ${learnerName}` : 'Lưu tiến trình học tập theo tên'}
-                        </h3>
-                        <p className="truncate text-[10px] text-slate-500">
-                          {learnerName
-                            ? 'Tiến độ học, điểm thi thử và câu đã đánh dấu đang được tự động lưu theo tên này.'
-                            : 'Không cần email hay mật khẩu phức tạp: nhập tên để hệ thống lưu riêng tiến trình của bạn.'}
-                        </p>
-                      </div>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setInputLearnerName(learnerName);
-                        setAuthError('');
-                        setAuthIntent('sync');
-                        setShowAuthModal(true);
-                      }}
-                      className="flex min-h-11 shrink-0 items-center justify-center gap-1.5 rounded-xl border border-indigo-200 bg-white px-4 text-xs font-black text-indigo-700 shadow-sm transition hover:bg-indigo-50 active:scale-95 cursor-pointer"
-                    >
-                      {learnerName ? 'Đổi tên người học' : 'Nhập tên người học'}
-                    </button>
+                <div id="welcome-team-sync-banner" className="mt-4 pt-3.5 border-t border-slate-200/60 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 shrink-0">
+                      <User className="h-3.5 w-3.5" />
+                    </span>
+                    <p className="text-xs text-slate-600 truncate">
+                      {learnerName ? (
+                        <>Đang lưu tiến trình theo tên: <strong className="text-slate-900">{learnerName}</strong></>
+                      ) : (
+                        'Đang học với tư cách Khách · Điểm số và tiến độ được lưu tự động trên thiết bị này'
+                      )}
+                    </p>
                   </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setInputLearnerName(learnerName);
+                      setAuthError('');
+                      setAuthIntent('sync');
+                      setShowAuthModal(true);
+                    }}
+                    className="self-start sm:self-auto text-xs font-bold px-3 py-1.5 rounded-xl border border-indigo-200 bg-white text-indigo-700 hover:bg-indigo-50 shadow-xs transition-all cursor-pointer"
+                  >
+                    {learnerName ? 'Đổi tên người học' : 'Nhập tên lưu tiến độ'}
+                  </button>
                 </div>
               )}
             </div>
 
-            <div className="flex flex-col gap-2 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-4">
-              <div className="relative block min-w-0 flex-1">
-                <label className="sr-only" htmlFor="certificate-search">Tìm nhanh bộ đề</label>
-                <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-                <input
-                  id="certificate-search"
-                  type="search"
-                  value={certificateSearchQuery}
-                  onChange={(event) => setCertificateSearchQuery(event.target.value)}
-                  placeholder="Tìm nhanh theo mã hoặc tên chứng chỉ..."
-                  className="min-h-11 w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-10 text-sm font-semibold text-slate-800 outline-none transition placeholder:font-medium placeholder:text-slate-400 focus:border-indigo-400 focus:bg-white focus:ring-2 focus:ring-indigo-100"
-                />
-                {certificateSearchQuery && (
+            {/* Filter and Search Container */}
+            <div className="flex flex-col gap-3">
+              {/* Category Filter Pills */}
+              <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+                {[
+                  { id: 'all', label: 'Tất cả', icon: '✨', count: certCounts.all },
+                  { id: 'azure', label: 'Azure Cloud', icon: '☁️', count: certCounts.azure },
+                  { id: 'ai', label: 'AI & Copilot', icon: '🤖', count: certCounts.ai },
+                  { id: 'data', label: 'Data & DB', icon: '📊', count: certCounts.data },
+                  { id: 'security', label: 'Security & QA', icon: '🛡️', count: certCounts.security },
+                ].map(tab => (
                   <button
-                    type="button"
-                    onClick={() => setCertificateSearchQuery('')}
-                    className="absolute right-1.5 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
-                    aria-label="Xóa từ khóa tìm chứng chỉ"
+                    key={tab.id}
+                    onClick={() => setHomeCategoryFilter(tab.id as any)}
+                    className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${
+                      homeCategoryFilter === tab.id
+                        ? 'bg-slate-900 text-white shadow-md shadow-slate-900/15'
+                        : 'bg-white/80 hover:bg-white text-slate-600 border border-slate-200/70 hover:border-slate-300'
+                    }`}
                   >
-                    <X className="h-4 w-4" />
+                    <span>{tab.icon}</span>
+                    <span>{tab.label}</span>
+                    <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-extrabold ${
+                      homeCategoryFilter === tab.id ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500'
+                    }`}>
+                      {tab.count}
+                    </span>
                   </button>
-                )}
+                ))}
               </div>
-              <p className="shrink-0 px-1 text-[11px] font-bold text-slate-500" aria-live="polite">
-                {certificateSearchQuery.trim()
-                  ? `${visibleHomeCertificates.length} bộ đề phù hợp`
-                  : `${visibleHomeCertificates.length} bộ đề đang có`}
-              </p>
+
+              {/* Search Box */}
+              <div className="flex flex-col gap-2 rounded-2xl border border-slate-200/70 bg-white/90 backdrop-blur-md p-2.5 sm:p-3 shadow-xs sm:flex-row sm:items-center sm:justify-between">
+                <div className="relative block min-w-0 flex-1">
+                  <label className="sr-only" htmlFor="certificate-search">Tìm nhanh bộ đề</label>
+                  <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                  <input
+                    id="certificate-search"
+                    type="search"
+                    value={certificateSearchQuery}
+                    onChange={(event) => setCertificateSearchQuery(event.target.value)}
+                    placeholder="Tìm theo mã (AZ-900, AI-103, GH-300...) hoặc tên chứng chỉ..."
+                    className="min-h-10 w-full rounded-xl border border-transparent bg-slate-50/80 py-2 pl-10 pr-10 text-xs sm:text-sm font-semibold text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-indigo-400 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                  />
+                  {certificateSearchQuery && (
+                    <button
+                      type="button"
+                      onClick={() => setCertificateSearchQuery('')}
+                      className="absolute right-1.5 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
+                      aria-label="Xóa từ khóa tìm chứng chỉ"
+                    >
+                      <X className="h-3.5 w-3.5" />
+                    </button>
+                  )}
+                </div>
+                <p className="shrink-0 px-2 text-[11px] font-bold text-slate-400" aria-live="polite">
+                  {certificateSearchQuery.trim()
+                    ? `${visibleHomeCertificates.length} bộ đề phù hợp`
+                    : `${visibleHomeCertificates.length} bộ đề đang hiển thị`}
+                </p>
+              </div>
             </div>
 
             {/* Certification Grid list */}
             <div id="certificates-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {visibleHomeCertificates.map(cert => {
-                // Get progress and actual total questions for this card
                 const certTotal = getCertificateTotalQuestions(cert);
                 let certProgress = {
                   answeredCount: 0,
@@ -2443,21 +2526,26 @@ export default function App() {
                 const badge = getCertificateBadge(cert);
 
                 return (
-                  <div key={cert.id} className="bg-white border border-slate-150/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
-                    <div className={`${cert.colorClass} p-5 flex items-start justify-between gap-4 relative overflow-hidden`}>
-                      <div className="absolute right-0 top-0 opacity-15 transform translate-x-4 -translate-y-4">
+                  <div 
+                    key={cert.id} 
+                    className="cert-card-hover bg-white/95 border border-slate-200/80 rounded-3xl overflow-hidden shadow-[0_8px_25px_-6px_rgba(0,0,0,0.04)] backdrop-blur-md flex flex-col justify-between group"
+                  >
+                    {/* Top Stage Header */}
+                    <div className={`${cert.colorClass} p-5 sm:p-6 flex items-start justify-between gap-4 relative overflow-hidden`}>
+                      {/* Watermark Icon */}
+                      <div className="absolute right-0 top-0 opacity-15 transform translate-x-3 -translate-y-3 pointer-events-none transition-transform duration-500 group-hover:scale-110">
                         <DynamicIcon name={cert.iconName} className="w-28 h-28" />
                       </div>
                       
-                      <div className="space-y-1 relative z-10">
+                      <div className="space-y-1.5 relative z-10 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-[10px] font-bold uppercase tracking-widest bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded">
+                          <span className="text-[11px] font-black uppercase tracking-wider bg-black/25 backdrop-blur-md text-white px-2.5 py-0.5 rounded-lg border border-white/10 font-mono">
                             {cert.code}
                           </span>
                           {badge === 'verified' && (
                             <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm bg-emerald-400 text-slate-950 font-sans">
                               <CheckCircle className="w-3 h-3 text-slate-950 stroke-[2.5]" />
-                              Đã Xác Thực (Pass)
+                              Đã Xác Thực
                             </span>
                           )}
                           {badge === 'new' && (
@@ -2467,56 +2555,57 @@ export default function App() {
                             </span>
                           )}
                           {cert.isVIP && (
-                            <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full flex items-center gap-1 shadow-xs ${
+                            <span className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-xs ${
                               isLocked 
                                 ? 'bg-amber-400 text-slate-950 animate-pulse' 
                                 : 'bg-emerald-400 text-slate-950'
                             }`}>
                               {isLocked ? <Lock className="w-3 h-3" /> : <Unlock className="w-3 h-3" />}
-                              {isLocked ? 'VIP - Cần Key' : 'VIP - Đã Kích Hoạt'}
+                              {isLocked ? 'VIP Key' : 'VIP Active'}
                             </span>
                           )}
                         </div>
-                        <h3 className="text-base font-extrabold tracking-tight leading-tight pt-1">
+                        <h3 className="text-base sm:text-lg font-black tracking-tight leading-snug pt-1 text-white font-heading">
                           {cert.name}
                         </h3>
                       </div>
                       
-                      <div className="bg-white/25 text-white p-2 rounded-xl backdrop-blur-sm shrink-0">
+                      <div className="bg-white/20 text-white p-2.5 rounded-2xl backdrop-blur-md shrink-0 shadow-xs border border-white/20">
                         <DynamicIcon name={cert.iconName} className="w-5 h-5" />
                       </div>
                     </div>
 
-                    <div className="p-5 flex-1 flex flex-col justify-between gap-4">
-                      <p className="text-xs text-slate-500 leading-relaxed font-medium">
+                    {/* Card Body */}
+                    <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between gap-5">
+                      <p className="text-xs text-slate-600 leading-relaxed font-medium line-clamp-3">
                         {cert.description}
                       </p>
 
-                      <div className="space-y-3 pt-2">
+                      <div className="space-y-3.5">
                         {/* Progress Bar */}
-                        <div className="space-y-1">
-                          <div className="flex justify-between text-[10px] font-bold text-slate-400">
-                            <span>TIẾN ĐỘ ÔN LUYỆN</span>
-                            <span>{certProgress.answeredCount}/{certProgress.total} câu ({completionPercentage}%)</span>
+                        <div className="space-y-1.5">
+                          <div className="flex justify-between text-[11px] font-bold">
+                            <span className="text-slate-400 uppercase tracking-wider text-[10px]">Tiến độ ôn</span>
+                            <span className="text-slate-700">{certProgress.answeredCount}/{certProgress.total} câu ({completionPercentage}%)</span>
                           </div>
-                          <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                          <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden p-0.5">
                             <div 
-                              className="bg-slate-900 h-1.5 rounded-full transition-all duration-300"
+                              className="bg-gradient-to-r from-indigo-500 to-violet-600 h-full rounded-full transition-all duration-500"
                               style={{ width: `${Math.min(completionPercentage, 100)}%` }}
                             />
                           </div>
                         </div>
 
                         {/* Extra Tags */}
-                        <div className="flex flex-wrap gap-1.5 pt-1">
-                          <span className="text-[10px] font-bold px-2 py-0.5 bg-slate-50 text-slate-500 border border-slate-100 rounded-md">
-                            Độ khó: {cert.difficulty}
+                        <div className="flex flex-wrap items-center gap-1.5">
+                          <span className="text-[10px] font-bold px-2.5 py-0.5 bg-slate-100 text-slate-600 rounded-md">
+                            📊 {cert.difficulty}
                           </span>
-                          <span className="text-[10px] font-bold px-2 py-0.5 bg-slate-50 text-slate-500 border border-slate-100 rounded-md">
-                            Ước lượng: {cert.estimatedHours}
+                          <span className="text-[10px] font-bold px-2.5 py-0.5 bg-slate-100 text-slate-600 rounded-md">
+                            ⏱️ {cert.estimatedHours}
                           </span>
                           {certProgress.answeredCount > 0 && (
-                            <span className="text-[10px] font-extrabold px-2 py-0.5 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-md">
+                            <span className="text-[10px] font-extrabold px-2.5 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200/60 rounded-md">
                               Đúng: {Math.round((certProgress.correctCount / certProgress.answeredCount) * 100)}%
                             </span>
                           )}
@@ -2524,23 +2613,33 @@ export default function App() {
                       </div>
 
                       {/* Action buttons */}
-                      <div className="flex items-center gap-2 pt-2 border-t border-slate-100">
+                      <div className="flex items-center gap-2 pt-3 border-t border-slate-100">
                         {isLocked ? (
                           <button
                             onClick={() => handleRequestCertAccess(cert.id)}
-                            className="flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 px-3 text-center text-xs font-black text-white shadow-sm transition-all hover:from-amber-600 hover:to-orange-700"
+                            className="flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 px-3 text-center text-xs font-black text-white shadow-md shadow-amber-500/20 transition-all hover:from-amber-600 hover:to-orange-700 cursor-pointer active:scale-98"
                           >
                             <Key className="w-3.5 h-3.5" />
                             Mở Khóa Bằng Key VIP
                           </button>
                         ) : (
-                          <button
-                            onClick={() => handleRequestCertAccess(cert.id)}
-                            className="flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-xl bg-slate-950 px-3 text-center text-xs font-bold text-white shadow-sm transition-all hover:bg-indigo-600"
-                          >
-                            <BookOpen className="w-3.5 h-3.5" />
-                            Học ngay
-                          </button>
+                          <>
+                            <button
+                              onClick={() => handleRequestCertAccess(cert.id, 'practice')}
+                              className="flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-3 text-center text-xs font-extrabold text-white shadow-md shadow-indigo-600/20 transition-all hover:from-indigo-500 hover:to-violet-500 cursor-pointer active:scale-98"
+                            >
+                              <BookOpen className="w-3.5 h-3.5" />
+                              Luyện tập ngay
+                            </button>
+                            <button
+                              onClick={() => handleRequestCertAccess(cert.id, 'exam')}
+                              className="flex min-h-11 items-center justify-center gap-1 rounded-xl bg-slate-100 hover:bg-slate-200/80 px-3 text-center text-xs font-bold text-slate-700 transition-all cursor-pointer active:scale-98"
+                              title="Vào ngay chế độ thi thử tính giờ"
+                            >
+                              <Timer className="w-3.5 h-3.5 text-slate-500" />
+                              <span>Thi thử</span>
+                            </button>
+                          </>
                         )}
                       </div>
                     </div>
