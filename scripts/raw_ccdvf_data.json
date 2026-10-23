@@ -1,0 +1,2228 @@
+[
+  {
+    "qNum": 1,
+    "questionId": "a4434b73-bf06-4cbe-83fb-c7c3eb929d05",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/1-security-and-safety",
+    "definition": {
+      "stemRaw": "Your Claude application's content policy defines categories of content that it must never produce under any circumstances. The application currently has no way to enforce this policy, and content in these categories is appearing in its output. How would you enforce the content policy?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Enhance the system prompt to contain explicit instructions for the categories to avoid, complete with examples of each category. Treat the strengthened prompt as the primary enforcement mechanism for the application’s content policy across all responses."
+        },
+        {
+          "label": "B",
+          "text": "Remove the content policy entirely and let any output reach users during normal operation, accepting whatever content the application produces in response to incoming traffic."
+        },
+        {
+          "label": "C",
+          "text": "Add deterministic output filtering that checks responses against the content policy before they reach users."
+        },
+        {
+          "label": "D",
+          "text": "Move enforcement to users by asking them to report content policy violations after the violating content has already reached them in the application’s responses."
+        }
+      ],
+      "answers": [
+        "C"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Deterministic output filtering evaluates each generated response against the defined prohibited categories before it is delivered to users, enabling matching content to be blocked consistently. System-prompt instructions may steer model behavior but are not a guaranteed enforcement control.",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Deterministic output filtering evaluates each generated response against the defined prohibited categories before it is delivered to users, enabling matching content to be blocked consistently. System-prompt instructions may steer model behavior but are not a guaranteed enforcement control."
+  },
+  {
+    "qNum": 2,
+    "questionId": "afc7201a-95b2-4918-b4c8-a6f3a69b3522",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/2-security-and-safety",
+    "definition": {
+      "stemRaw": "Your Claude application’s API keys are kept in a secrets manager. The team is considering whether to use the same key in development, staging, and production. How should the keys be handled across environments?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Use a single development key everywhere on the grounds that production keys are too risky to deploy across the application's three environments during normal operation."
+        },
+        {
+          "label": "B",
+          "text": "Use distinct keys for each environment so a compromise in one environment does not affect the others during normal operation across the application’s lifecycle."
+        },
+        {
+          "label": "C",
+          "text": "Rotate the same key across environments at random intervals on the grounds that random rotation provides isolation between environments without requiring distinct keys."
+        },
+        {
+          "label": "D",
+          "text": "Use the same key across all environments for simplicity and treat the propagation of any compromise as a known operational tradeoff for the team's key management approach."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Each environment should use its own API key. Environment-specific credentials isolate compromise, revocation, auditing, permissions, and rotation, so exposure in development or staging does not grant access to production. Anthropic documentation also recommends creating a dedicated API key for direct API use and storing it securely.\n\n**Learn more:** [Claude Code SDK — Authentication](https://docs.anthropic.com/en/docs/claude-code/sdk)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Each environment should use its own API key. Environment-specific credentials isolate compromise, revocation, auditing, permissions, and rotation, so exposure in development or staging does not grant access to production. Anthropic documentation also recommends creating a dedicated API key for direct API use and storing it securely."
+  },
+  {
+    "qNum": 3,
+    "questionId": "e50b7f27-ad2a-4eb6-8850-92c81f8697e9",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/3-tools-and-mcps",
+    "definition": {
+      "stemRaw": "The team is considering whether to implement a new capability as a custom tool or use an existing built-in tool that almost meets the use case but is missing one specific feature. How should you make the decision?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Review the built-in tool’s documentation and assess whether its existing capabilities are sufficient to cover the use case without any modification or extension."
+        },
+        {
+          "label": "B",
+          "text": "Identify whether the team has previously built similar custom tools and use those precedents to determine which approach is more consistent with the existing codebase."
+        },
+        {
+          "label": "C",
+          "text": "Examine the custom tool option by scoping the implementation effort and determining whether the additional flexibility justifies the development and maintenance cost."
+        },
+        {
+          "label": "D",
+          "text": "Evaluate whether the missing feature can be addressed by extending the built-in tool or warrants a custom tool, then choose accordingly."
+        }
+      ],
+      "answers": [
+        "D"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Choose the approach based on whether the built-in tool can be extended to support the missing feature and whether that is preferable to the flexibility, implementation effort, and ongoing maintenance of a custom tool. This evaluates the relevant technical and lifecycle trade-off across both options.",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Choose the approach based on whether the built-in tool can be extended to support the missing feature and whether that is preferable to the flexibility, implementation effort, and ongoing maintenance of a custom tool. This evaluates the relevant technical and lifecycle trade-off across both options."
+  },
+  {
+    "qNum": 4,
+    "questionId": "bd5c292f-7bc3-47a7-8545-1c11d843e8f4",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/4-tools-and-mcps",
+    "definition": {
+      "stemRaw": "A teammate has asked for an explanation of when a Skill is the better choice than an MCP server. The teammate is unsure how the two differ in practice when both can be reused across teams. How would you describe the distinction?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "A Skill is preferable for cross-team reuse because it loads more efficiently than an MCP server during normal operation in the team’s typical multi-team workloads."
+        },
+        {
+          "label": "B",
+          "text": "A Skill bundles prompts, scripts, and data into a package the model loads as a unit while a MCP server exposes resources, tools, and prompts through a standard client interface."
+        },
+        {
+          "label": "C",
+          "text": "A Skill and an MCP server are equivalent extension mechanisms that the team can use interchangeably for any reusable capability that needs to be accessible across teams."
+        },
+        {
+          "label": "D",
+          "text": "A Skill is the older mechanism and an MCP server is the newer one, so the team should prefer an MCP server for any reusable capability that the team builds going forward."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "A Skill packages instructions and optional workflow resources, including scripts, templates, and references, to guide repeatable work. An MCP server exposes live information and controlled actions through a standard client-server interface, including tools, resources, and prompts. Skills can complement MCP servers by defining how to use their capabilities for a workflow.\n\n**Learn more:** [Skills – Plugins | OpenAI Developers](https://developers.openai.com/plugins/concepts/skills) · [MCP server – Plugins | OpenAI Developers](https://developers.openai.com/plugins/concepts/mcp-server)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }A Skill packages instructions and optional workflow resources, including scripts, templates, and references, to guide repeatable work. An MCP server exposes live information and controlled actions through a standard client-server interface, including tools, resources, and prompts. Skills can complement MCP servers by defining how to use their capabilities for a workflow."
+  },
+  {
+    "qNum": 5,
+    "questionId": "ed53ef95-d0df-4cd7-bbbd-e75457f136d1",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/5-prompt-and-context-engineering",
+    "definition": {
+      "stemRaw": "You are creating a system prompt for a Claude application that must generate output in a particular JSON shape. The downstream system will reject any output that fails to conform to the schema. Your prompt would need to ...",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "omit any reference to the format and rely on a post-processing step in the application to reshape Claude’s output."
+        },
+        {
+          "label": "B",
+          "text": "instruct Claude to return JSON sometimes and free text other times so the application's output captures both formats."
+        },
+        {
+          "label": "C",
+          "text": "include explicit constraints describing the required JSON schema and an instruction to produce only output matching that schema."
+        },
+        {
+          "label": "D",
+          "text": "instruct Claude to use whichever output format it considers most appropriate for each request the application handles."
+        }
+      ],
+      "answers": [
+        "C"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "When a downstream system requires a particular JSON schema, the model must receive explicit instructions defining that schema and requiring output only in that format. Clear, specific output-format constraints improve compliance and prevent extra free text or incompatible structures.\n\n**Learn more:** [Anthropic Prompting Best Practices](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prompt-templates-and-variables)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }When a downstream system requires a particular JSON schema, the model must receive explicit instructions defining that schema and requiring output only in that format. Clear, specific output-format constraints improve compliance and prevent extra free text or incompatible structures."
+  },
+  {
+    "qNum": 6,
+    "questionId": "700288bf-aa9b-48ca-8573-3161a7cc2230",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/6-prompt-and-context-engineering",
+    "definition": {
+      "stemRaw": "Your Claude application generates good responses for typical inputs but has difficulty with edge cases. You have several labeled examples of edge-case inputs and the desired response for each. You want to use these examples to improve the model’s treatment of edge cases. What is the best way to use these examples?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Embed the examples in a database for the model to find during inference."
+        },
+        {
+          "label": "B",
+          "text": "Train a custom model on the edge-case examples and deploy that custom model in place of the team’s current Claude integration."
+        },
+        {
+          "label": "C",
+          "text": "Add the labeled edge-case examples to the prompt as few-shot examples so the model can learn the pattern."
+        },
+        {
+          "label": "D",
+          "text": "Tell users to avoid submitting the edge-case inputs to the application by adding warnings in the application’s user interface."
+        }
+      ],
+      "answers": [
+        "C"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Few-shot prompting places representative labeled input-output examples in the prompt so Claude can infer and apply the desired handling pattern. Anthropic recommends relevant, diverse examples that cover edge cases because they improve output accuracy and consistency.\n\n**Learn more:** [Anthropic Prompting Best Practices](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prompt-templates-and-variables)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Few-shot prompting places representative labeled input-output examples in the prompt so Claude can infer and apply the desired handling pattern. Anthropic recommends relevant, diverse examples that cover edge cases because they improve output accuracy and consistency."
+  },
+  {
+    "qNum": 7,
+    "questionId": "cacda85c-c9b5-49bb-9112-c3d26d0e2711",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/7-applications-and-integration",
+    "definition": {
+      "stemRaw": "Your Claude application validates structured output, but it has been treating validation failures as terminal errors. Every validation failure makes the entire user request fail. The team wants to handle validation failures more gracefully. How would you handle the validation failures?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Tell users that validation failures are unavoidable and instruct them to perform manual accuracy checks before relying on outputs."
+        },
+        {
+          "label": "B",
+          "text": "Disable output validation until the underlying cause of validation failures has been identified and addressed in a future release."
+        },
+        {
+          "label": "C",
+          "text": "Treat validation failures as a recognized error path that triggers retry, repair, or fallback logic before failing the user request."
+        },
+        {
+          "label": "D",
+          "text": "Pass validation failures directly to downstream systems and let each downstream system decide how to handle the malformed output."
+        }
+      ],
+      "answers": [
+        "C"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Validation failures should be handled as a recognized error path with bounded recovery: retry generation, repair invalid structured data when safe, or use a valid fallback before failing the user-facing request. Keeping validation in place prevents malformed output from reaching downstream systems while avoiding unnecessary terminal failures.\n\n**Learn more:** [Claude API errors](https://docs.anthropic.com/en/api/errors)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Validation failures should be handled as a recognized error path with bounded recovery: retry generation, repair invalid structured data when safe, or use a valid fallback before failing the user-facing request. Keeping validation in place prevents malformed output from reaching downstream systems while avoiding unnecessary terminal failures."
+  },
+  {
+    "qNum": 8,
+    "questionId": "470e2a17-5608-4d35-b63b-1e8a1f3b6d20",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/8-agents-and-workflows",
+    "definition": {
+      "stemRaw": "You are designing an agent to manage a complex claim-processing workflow. Each claim proceeds through fact extraction, eligibility evaluation, and a decision step. The three subtasks have separate success criteria, and some claims need iteration between fact extraction and eligibility evaluation before a decision can be made.  \n  \nWhich agent pattern would you use?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "A single tool-use loop pattern that gives one agent access to all the tools needed for fact extraction, eligibility evaluation, and decision-making."
+        },
+        {
+          "label": "B",
+          "text": "A graph-based pattern that lets the agent move between subtasks based on the state of each claim, with each subtask evaluated against its own criteria."
+        },
+        {
+          "label": "C",
+          "text": "A linear chain pattern that processes every claim through fact extraction, then eligibility evaluation, then decision, with no return paths between subtasks."
+        },
+        {
+          "label": "D",
+          "text": "A streaming pattern that emits partial decisions as the agent processes each claim, refining the output until a final decision emerges from the stream."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "A graph-based pattern models each subtask as a stateful node with conditional transitions, allowing claims to return from eligibility evaluation to fact extraction when more or corrected facts are needed. It also supports evaluating each specialized subtask against its own success criteria. This flexibility is required for branching and iterative workflows, unlike a fixed sequential chain.\n\n**Learn more:** [Choose a design pattern for your agentic AI system](https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }A graph-based pattern models each subtask as a stateful node with conditional transitions, allowing claims to return from eligibility evaluation to fact extraction when more or corrected facts are needed. It also supports evaluating each specialized subtask against its own success criteria. This flexibility is required for branching and iterative workflows, unlike a fixed sequential chain."
+  },
+  {
+    "qNum": 9,
+    "questionId": "27f7d523-e20b-46a5-b213-52af22b8b99d",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/9-applications-and-integration",
+    "definition": {
+      "stemRaw": "The Anthropic API has deprecated a request parameter that your Claude application uses in approximately 40 locations across the codebase. The deprecation notice provides a six-month window before the parameter is removed and recommends a replacement parameter with slightly different semantics. You would address the deprecation by ...",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "swapping all 40 call sites in a single change right away to prevent drawn-out migration work that will delay ongoing functioning."
+        },
+        {
+          "label": "B",
+          "text": "migrating all 40 call sites in a single change near the removal date to ensure the deprecated parameter continues to work as long as possible."
+        },
+        {
+          "label": "C",
+          "text": "adding regression tests to cover the parameter’s behavior, then migrating call sites in batches that you validate against regression tests."
+        },
+        {
+          "label": "D",
+          "text": "keeping the deprecated parameter in place while writing a wrapper function around it to insulate the rest of the codebase from the eventual change."
+        }
+      ],
+      "answers": [
+        "C"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "When a deprecated API parameter has a replacement with different semantics, regression tests preserve the intended behavior as a migration baseline. Updating call sites in validated batches limits the scope of each change, exposes behavioral differences early, and allows the migration to finish safely before removal. Anthropic recommends thoroughly testing applications with replacements well before a retirement date and updating code promptly.\n\n**Learn more:** [Model deprecations - Claude Platform Docs](https://docs.anthropic.com/en/docs/about-claude/model-deprecations)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }When a deprecated API parameter has a replacement with different semantics, regression tests preserve the intended behavior as a migration baseline. Updating call sites in validated batches limits the scope of each change, exposes behavioral differences early, and allows the migration to finish safely before removal. Anthropic recommends thoroughly testing applications with replacements well before a retirement date and updating code promptly."
+  },
+  {
+    "qNum": 10,
+    "questionId": "05e04efb-8013-4988-a828-b8afa894d9b2",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/10-applications-and-integration",
+    "definition": {
+      "stemRaw": "A Claude application uses structured output that downstream code consumes. The team wants to gracefully handle malformed or unexpected output so that it does not crash downstream systems. The best option for addressing this issue is to ...",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "use the output the model produces and leave schema enforcement to a later phase of production after the application is more complete."
+        },
+        {
+          "label": "B",
+          "text": "apply defensive parsing to handle unexpected fields, missing values, and type mismatches that the downstream code might otherwise crash on."
+        },
+        {
+          "label": "C",
+          "text": "crash on any unexpected output and require manual recovery on affected requests the application handles during normal operation."
+        },
+        {
+          "label": "D",
+          "text": "silently drop any output that does not match expectations so downstream systems do not see the malformed output the application receives from the model."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Defensive parsing validates and safely handles unexpected fields, missing values, and type mismatches at the boundary where model output enters application code, preventing unhandled parsing or runtime failures. Anthropic notes that, without structured outputs, malformed JSON, missing required fields, inconsistent types, and schema violations can occur; robust downstream handling addresses these failure cases.\n\n**Learn more:** [Structured outputs — Claude API Docs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Defensive parsing validates and safely handles unexpected fields, missing values, and type mismatches at the boundary where model output enters application code, preventing unhandled parsing or runtime failures. Anthropic notes that, without structured outputs, malformed JSON, missing required fields, inconsistent types, and schema violations can occur; robust downstream handling addresses these failure cases."
+  },
+  {
+    "qNum": 11,
+    "questionId": "1878a2e9-059e-42a4-8230-07b8af002c41",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/11-tools-and-mcps",
+    "definition": {
+      "stemRaw": "A teammate asks why your Claude agent’s tool definitions contain detailed descriptions even though the tool names are already descriptive. They propose removing those descriptions to make the tool definitions simpler. How would you reply?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Agree with the teammate because tool names are sufficient for the model to choose the right tool on every request the agent handles."
+        },
+        {
+          "label": "B",
+          "text": "Explain that the model uses the tool description to decide when to call the tool, and descriptions disambiguate cases where the tool name is not enough."
+        },
+        {
+          "label": "C",
+          "text": "Suggest moving the descriptions out of the tool definition and into a separate documentation file the team maintains so the tool definitions stay short and the descriptions remain available."
+        },
+        {
+          "label": "D",
+          "text": "Suggest replacing the descriptions with example calls embedded in the tool definition, treating example calls as a complete substitute for the prose description."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Claude uses a tool’s description to understand what the tool does, when it should and should not be called, and how its parameters affect behavior. Detailed descriptions provide context that tool names cannot reliably express, helping Claude distinguish between tools and select the appropriate one. Anthropic identifies detailed tool descriptions as a key factor in tool-use performance.\n\n**Learn more:** [Anthropic: Implement tool use](https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/implement-tool-use)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Claude uses a tool’s description to understand what the tool does, when it should and should not be called, and how its parameters affect behavior. Detailed descriptions provide context that tool names cannot reliably express, helping Claude distinguish between tools and select the appropriate one. Anthropic identifies detailed tool descriptions as a key factor in tool-use performance."
+  },
+  {
+    "qNum": 12,
+    "questionId": "9f48c901-f947-47c8-ad63-65d7f08e54dd",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/12-prompt-and-context-engineering",
+    "definition": {
+      "stemRaw": "You are designing a Claude application that requires structured JSON output for downstream processing. The output schema is clearly defined, and downstream systems will reject malformed JSON. Your application design would ...",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "avoid structured output and use free-form text everywhere instead, on the grounds that free-form text is more flexible and handles edge cases better than structured schemas."
+        },
+        {
+          "label": "B",
+          "text": "structure the prompt to request output in a schema that is described in plain English, with downstream systems parsing whatever shape Claude produces."
+        },
+        {
+          "label": "C",
+          "text": "define a clear schema and structure the prompt to request output in that schema, with downstream systems handling any validation needed."
+        },
+        {
+          "label": "D",
+          "text": "define a clear schema, structure the prompt to request output in that schema, and validate Claude’s output against the schema before passing it downstream."
+        }
+      ],
+      "answers": [
+        "D"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "A defined schema gives the model an unambiguous target format, while validating the returned JSON against that schema prevents malformed JSON, missing required fields, incorrect data types, and other schema violations from reaching systems that reject invalid input. Anthropic’s structured-output guidance likewise identifies schema-conforming JSON as the appropriate mechanism for reliable downstream processing.\n\n**Learn more:** [Structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs?m=1)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }A defined schema gives the model an unambiguous target format, while validating the returned JSON against that schema prevents malformed JSON, missing required fields, incorrect data types, and other schema violations from reaching systems that reject invalid input. Anthropic’s structured-output guidance likewise identifies schema-conforming JSON as the appropriate mechanism for reliable downstream processing."
+  },
+  {
+    "qNum": 13,
+    "questionId": "cfc5bae8-965a-4b03-8bf9-0c8fe22627f9",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/13-prompt-and-context-engineering",
+    "definition": {
+      "stemRaw": "Your Claude application processes 50-page legal contracts and generates summaries with citation references to the source. The team is considering whether to send each contract as a whole or divide it into smaller pieces. The contracts fit within Claude’s context window.  \n  \nInitial testing indicates that whole-document processing produces summaries with better cross-section reasoning, but citation accuracy occasionally drifts in later sections. Chunked processing yields stronger citation accuracy for each chunk but loses cross-section reasoning. The team has not yet decided which property is more important. How would you guide the team’s decision?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Assess the cost and latency implications of both approaches against the application’s performance requirements before recommending which processing strategy to adopt."
+        },
+        {
+          "label": "B",
+          "text": "Examine the use cases where cross-section reasoning failures occur and assess whether whole-document processing meets the application’s accuracy requirements across a representative sample of contracts."
+        },
+        {
+          "label": "C",
+          "text": "Review the citation accuracy results from chunked processing and determine whether the loss of cross-section reasoning produces summaries that still meet the application’s quality bar."
+        },
+        {
+          "label": "D",
+          "text": "Identify which property matters more for the application’s actual use case and let that decision drive the chunking approach, then validate the choice against representative contracts."
+        }
+      ],
+      "answers": [
+        "D"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "The processing approach should be driven by the quality property that is most important to the application’s actual use case: whole-document processing favors reasoning across contract sections, while chunking favors citation precision within each section. The selected approach should then be tested against representative contracts to confirm that it meets the required quality standard.",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }The processing approach should be driven by the quality property that is most important to the application’s actual use case: whole-document processing favors reasoning across contract sections, while chunking favors citation precision within each section. The selected approach should then be tested against representative contracts to confirm that it meets the required quality standard."
+  },
+  {
+    "qNum": 14,
+    "questionId": "a295c295-19df-4272-aa49-e532eb925234",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/14-model-selection-and-optimization",
+    "definition": {
+      "stemRaw": "A teammate has asked you to explain why the team’s Claude application is charged a different rate for output tokens than for input tokens. They had assumed that the two rates were identical.  \n  \nHow would you explain the difference?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Output tokens are typically billed at a higher rate than input tokens, and cost models for the application should reflect both rates separately."
+        },
+        {
+          "label": "B",
+          "text": "Output tokens are typically billed at the same rate as input tokens, and the apparent rate difference is a billing error to report to Anthropic."
+        },
+        {
+          "label": "C",
+          "text": "Output tokens are typically billed at a lower rate than input tokens, because output tokens are cheaper to produce than input tokens are to process."
+        },
+        {
+          "label": "D",
+          "text": "Output tokens are not billed at all, because cost is determined entirely by the input tokens sent to the model on each request."
+        }
+      ],
+      "answers": [
+        "A"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Anthropic prices input and output tokens as separate usage categories, and its model pricing tables generally charge more per output token than per base input token. Cost models must therefore calculate input-token and output-token charges independently using their respective rates.\n\n**Learn more:** [Anthropic Claude API pricing](https://docs.anthropic.com/en/docs/about-claude/pricing)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Anthropic prices input and output tokens as separate usage categories, and its model pricing tables generally charge more per output token than per base input token. Cost models must therefore calculate input-token and output-token charges independently using their respective rates."
+  },
+  {
+    "qNum": 15,
+    "questionId": "adf9fe61-ec79-40e2-bd5e-ff47eef8c023",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/15-prompt-and-context-engineering",
+    "definition": {
+      "stemRaw": "You are designing a multi-step Claude workflow in which certain steps must reason without viewing the complete preceding conversation history. The team wants to keep particular context isolated to particular steps. The context-engineering technique to use is ...",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "context isolation through subagents or multi-step agentic workflows that scope each step’s context to only what the step needs."
+        },
+        {
+          "label": "B",
+          "text": "using a single global prompt that applies to every step in the workflow no matter what each step is reasoning about during its run."
+        },
+        {
+          "label": "C",
+          "text": "embedding the full prior history in each step regardless of whether the step needs the prior history for its reasoning."
+        },
+        {
+          "label": "D",
+          "text": "augmenting the context with all available content at every step so each step has access to the entire prior history of the workflow during its reasoning."
+        }
+      ],
+      "answers": [
+        "A"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Context isolation scopes each subagent or workflow step to only the information needed for its task, preventing irrelevant prior conversation history from being exposed to that step. Anthropic identifies isolated context as a valid use case for subagents in agentic workflows.\n\n**Learn more:** [Anthropic Claude Platform Docs — Prompting best practices](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prompt-templates-and-variables)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Context isolation scopes each subagent or workflow step to only the information needed for its task, preventing irrelevant prior conversation history from being exposed to that step. Anthropic identifies isolated context as a valid use case for subagents in agentic workflows."
+  },
+  {
+    "qNum": 16,
+    "questionId": "eb2441f2-afbb-43f6-8052-9906dde533cc",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/16-security-and-safety",
+    "definition": {
+      "stemRaw": "A teammate is reviewing the team’s threat model for a Claude application and has asked you to identify the AI-specific threat categories the model should cover. The teammate has already listed traditional web-application threats and wants to know which additional categories apply to a Claude application.  \n  \nWhich AI-specific threat categories would you add?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Supply chain attacks on the Claude SDK because the SDK itself is the only point of vulnerability that a Claude application introduces beyond traditional web application threats."
+        },
+        {
+          "label": "B",
+          "text": "Network-level denial of service and physical infrastructure attacks, because these categories cover the threats most likely to affect any Claude application in production."
+        },
+        {
+          "label": "C",
+          "text": "Cross-site scripting and SQL injection, because these traditional web application threats apply with equal weight to any application that uses Claude in any way."
+        },
+        {
+          "label": "D",
+          "text": "Prompt injection, data leakage from prompts or context, jailbreak attempts, and unsafe model output that bypasses application controls."
+        }
+      ],
+      "answers": [
+        "D"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Claude applications have LLM-specific risks: prompt injection can redirect model behavior, prompts and context can disclose sensitive data, jailbreak attempts can circumvent guardrails, and unsafe generated output can bypass or undermine application controls. Anthropic identifies jailbreaks and both direct and indirect prompt injection as distinct threat models, and recommends limiting the model’s access to sensitive data and actions.\n\n**Learn more:** [Mitigate jailbreaks and prompt injections](https://docs.anthropic.com/en/docs/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Claude applications have LLM-specific risks: prompt injection can redirect model behavior, prompts and context can disclose sensitive data, jailbreak attempts can circumvent guardrails, and unsafe generated output can bypass or undermine application controls. Anthropic identifies jailbreaks and both direct and indirect prompt injection as distinct threat models, and recommends limiting the model’s access to sensitive data and actions."
+  },
+  {
+    "qNum": 17,
+    "questionId": "a7864819-fb5f-4641-beef-c156ac4698af",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/17-tools-and-mcps",
+    "definition": {
+      "stemRaw": "A Claude agent can access a tool that retrieves customer records. A teammate observes that the agent sometimes invokes the tool with arguments not declared by its schema, causing the downstream service to return an error each time. The teammate suggests loosening the schema so the tool accepts any arguments the model generates.  \n  \nHow would you respond?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Remove the schema entirely and rely on the downstream service to reject invalid calls, treating the downstream service as the team’s primary enforcement layer."
+        },
+        {
+          "label": "B",
+          "text": "Loosen the schema as the teammate proposed so the downstream service receives every call the agent makes during normal operation."
+        },
+        {
+          "label": "C",
+          "text": "Add a system prompt instruction telling the model to produce schema-conforming arguments, treating the prompt instruction as the primary mechanism for keeping the agent’s tool calls valid."
+        },
+        {
+          "label": "D",
+          "text": "Keep the schema strict, validate arguments before dispatching, and return a structured error so the agent can retry."
+        }
+      ],
+      "answers": [
+        "D"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Tool schemas establish the valid input contract for a tool. Strict pre-dispatch validation prevents malformed or undeclared arguments from reaching the downstream service, and a structured tool error provides feedback the agent can use to make a corrected retry. Prompting can improve behavior but does not replace validation at the system boundary.\n\n**Learn more:** [Anthropic: Implement tool use](https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/implement-tool-use)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Tool schemas establish the valid input contract for a tool. Strict pre-dispatch validation prevents malformed or undeclared arguments from reaching the downstream service, and a structured tool error provides feedback the agent can use to make a corrected retry. Prompting can improve behavior but does not replace validation at the system boundary."
+  },
+  {
+    "qNum": 18,
+    "questionId": "f0b34358-0dc4-4188-8a80-bf0aca13f0ca",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/18-claude-code",
+    "definition": {
+      "stemRaw": "Your Claude agent’s hooks currently fire for every action, substantially slowing the agent even when the actions present no risk. The team wants to scope the hooks more precisely. How should you scope the hooks?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Replace hooks with system prompt instructions on the grounds that prompt instructions can produce the same enforcement effect that hooks produce on the agent’s actions."
+        },
+        {
+          "label": "B",
+          "text": "Scope hooks to only the high-risk actions, such as destructive operations or sensitive data access, and remove hooks from low-risk actions to balance safety with performance."
+        },
+        {
+          "label": "C",
+          "text": "Disable all hooks while the team re-scopes them, treating the period of no hook enforcement as a temporary state during the re-scoping work."
+        },
+        {
+          "label": "D",
+          "text": "Disable the agent during peak hours so the hook overhead does not slow the application down during the busiest periods of the day across the application’s operation."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Claude Code hook configuration supports matchers and conditional filters that restrict a handler to relevant tool calls or subcommands. Applying hooks only to high-risk operations—such as destructive commands or sensitive-data access—maintains deterministic safeguards while avoiding the process overhead of executing them for low-risk actions.\n\n**Learn more:** [Hooks reference — Claude Code Docs](https://code.claude.com/docs/en/hooks)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Claude Code hook configuration supports matchers and conditional filters that restrict a handler to relevant tool calls or subcommands. Applying hooks only to high-risk operations—such as destructive commands or sensitive-data access—maintains deterministic safeguards while avoiding the process overhead of executing them for low-risk actions."
+  },
+  {
+    "qNum": 19,
+    "questionId": "fd7584ad-51b5-4bbe-9eb1-130775edf2cf",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/19-agents-and-workflows",
+    "definition": {
+      "stemRaw": "You are designing an agent for a multi-step research task. You want it to divide the task into smaller parts, delegate each part to a specialized subagent, and consolidate the results. The agent pattern to apply is ...",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "a single tool-use loop that includes every tool the agent might need across all subtasks."
+        },
+        {
+          "label": "B",
+          "text": "an orchestrator and subagent pattern with specialized subagents assigned to each subtask."
+        },
+        {
+          "label": "C",
+          "text": "a memory pattern that stores the entire research history in advance, before any subtask begins execution."
+        },
+        {
+          "label": "D",
+          "text": "a context-window pruning pattern that drops each subtask’s content after the agent moves on."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "A manager/orchestrator pattern uses a central agent to delegate work to specialized agents and synthesize their outputs into a unified result. OpenAI describes this as the manager pattern for coordinated multi-agent workflows.\n\n**Learn more:** [A practical guide to building agents](https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }A manager/orchestrator pattern uses a central agent to delegate work to specialized agents and synthesize their outputs into a unified result. OpenAI describes this as the manager pattern for coordinated multi-agent workflows."
+  },
+  {
+    "qNum": 20,
+    "questionId": "720f8c54-7c12-481e-9271-cc19b27687bb",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/20-agents-and-workflows",
+    "definition": {
+      "stemRaw": "You are creating an agent that must call multiple internal APIs and a database in a structured, repeatable manner. Your team has chosen the Claude Agent SDK instead of building a custom loop. You are configuring the agent’s tool definitions and execution loop. How should you configure the tools and execution loop?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Call the Messages API directly and let the model format its tool calls in plain text."
+        },
+        {
+          "label": "B",
+          "text": "Use the SDK’s tool interface and loop, with conversation history stored in a separate team database."
+        },
+        {
+          "label": "C",
+          "text": "Use the SDK’s tool interface and let the SDK handle the loop, dispatch, and history."
+        },
+        {
+          "label": "D",
+          "text": "Use the SDK’s tool interface and write the loop and history layer in the team’s own code."
+        }
+      ],
+      "answers": [
+        "C"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Claude’s SDK Tool Runner supports SDK-defined tools and automatically manages the agentic loop, including tool dispatch, request/response handling, and conversation-state history. This removes the need to build and maintain a separate custom loop or history layer for the normal tool-use workflow.\n\n**Learn more:** [Tool runner (SDK)](https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-runner)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Claude’s SDK Tool Runner supports SDK-defined tools and automatically manages the agentic loop, including tool dispatch, request/response handling, and conversation-state history. This removes the need to build and maintain a separate custom loop or history layer for the normal tool-use workflow."
+  },
+  {
+    "qNum": 21,
+    "questionId": "525429eb-f046-4dbc-8251-66a3ddbdb0ba",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/21-applications-and-integration",
+    "definition": {
+      "stemRaw": "Your team’s Claude agent has built up several customizations that bypass the SDK defaults, including custom history management, retry logic, and error handling. A new team member proposes reverting every customization to make the codebase easier to maintain. The tech lead disagrees, stating that each customization was introduced for a reason. What would you advise the team?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Revert all customizations to the SDK’s defaults to standardize the codebase."
+        },
+        {
+          "label": "B",
+          "text": "Decide on each customization individually based on its original reason and the SDK’s current capabilities."
+        },
+        {
+          "label": "C",
+          "text": "Keep all customizations, trusting that the tech lead’s original reasoning is still valid."
+        },
+        {
+          "label": "D",
+          "text": "Migrate the agent off the SDK and rebuild it with a custom loop."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Each SDK override should be assessed individually against the need that originally justified it and the SDK’s current capabilities. This preserves custom behavior where it remains necessary while removing overrides that have become redundant, improving maintainability without sacrificing required reliability or functionality.",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Each SDK override should be assessed individually against the need that originally justified it and the SDK’s current capabilities. This preserves custom behavior where it remains necessary while removing overrides that have become redundant, improving maintainability without sacrificing required reliability or functionality."
+  },
+  {
+    "qNum": 22,
+    "questionId": "43a7338c-5c4c-4e64-889e-b4bd65e020fc",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/22-eval-testing-and-debugging",
+    "definition": {
+      "stemRaw": "Your team’s Claude application has been in production for one year, and the team has chosen to formalize its testing strategy. At present, the team writes ad-hoc tests for individual features but lacks an overall testing approach. Which testing approach should be formalized?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Adopt a test-driven development practice where unit tests are written before each feature is implemented and must pass before code is merged."
+        },
+        {
+          "label": "B",
+          "text": "Define unit tests for individual functions, integration tests for the Claude integration, and end-to-end tests for critical user flows, applied consistently across the codebase."
+        },
+        {
+          "label": "C",
+          "text": "Continue writing ad-hoc tests as features ship and introduce a peer review step to ensure each test adequately covers the feature being released."
+        },
+        {
+          "label": "D",
+          "text": "Define a single testing approach that uses end-to-end tests and apply it consistently across all new features as they are added to the codebase."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "A layered test strategy provides fast, focused validation of individual functions through unit tests, verifies the Claude integration with integration tests, and protects the most important user journeys with end-to-end tests. Applying these levels consistently gives the codebase comprehensive and maintainable coverage; relying only on end-to-end tests or continuing ad-hoc testing does not provide that balance.",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }A layered test strategy provides fast, focused validation of individual functions through unit tests, verifies the Claude integration with integration tests, and protects the most important user journeys with end-to-end tests. Applying these levels consistently gives the codebase comprehensive and maintainable coverage; relying only on end-to-end tests or continuing ad-hoc testing does not provide that balance."
+  },
+  {
+    "qNum": 23,
+    "questionId": "fe24011e-41e1-4f57-8b1c-8c40c392d858",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/23-eval-testing-and-debugging",
+    "definition": {
+      "stemRaw": "A teammate submitted a pull request that introduces a Claude-powered feature to your service. The code functions, but its prompt and model choice are hard-coded inline, it lacks error handling, and there are no tests for the integration. What would you request in code review?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Request changes that move prompt and model configuration to a configurable location, add error handling for Claude API failures, and add tests for the integration."
+        },
+        {
+          "label": "B",
+          "text": "Request changes that move prompt and model configuration to a configurable location and add tests, treating the missing error handling as a follow-up release item."
+        },
+        {
+          "label": "C",
+          "text": "Approve the pull request and add the missing pieces yourself in a follow-up commit so the teammate can move on to other work immediately."
+        },
+        {
+          "label": "D",
+          "text": "Approve the pull request as-is, on the grounds that the feature works in the happy path and the missing pieces can be added in follow-up commits."
+        }
+      ],
+      "answers": [
+        "A"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Prompt and model settings should be configurable, Claude API failures require explicit error handling for reliable service behavior, and integration tests are needed to validate the feature and prevent regressions. All three are necessary review changes before approval.",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Prompt and model settings should be configurable, Claude API failures require explicit error handling for reliable service behavior, and integration tests are needed to validate the feature and prevent regressions. All three are necessary review changes before approval."
+  },
+  {
+    "qNum": 24,
+    "questionId": "fd67d6a1-112a-47f7-b320-e1af32c3da29",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/24-prompt-and-context-engineering",
+    "definition": {
+      "stemRaw": "A teammate asks why your Claude application sometimes returns a response that repeats the prompt text, while at other times it rephrases that prompt text. They suspect there is a bug in the application’s request construction. How would you respond?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Explain that LLMs generate output token by token, and variation in how prompt content appears in output is a property of generation, not a bug in request construction."
+        },
+        {
+          "label": "B",
+          "text": "Confirm that the variation is a bug in the application’s request construction and start investigating which part of the application is producing the inconsistent prompt text."
+        },
+        {
+          "label": "C",
+          "text": "Tell the teammate that the variation depends on which Claude model serves the request, and recommend pinning the application to a single model version to make the output behavior consistent."
+        },
+        {
+          "label": "D",
+          "text": "Tell the teammate that the variation is caused by the application sending two different prompts on different runs and propose a code change that pins the system prompt to a single version."
+        }
+      ],
+      "answers": [
+        "A"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Language models generate output as token-by-token continuations of their input context. Normal variation in generation can cause prompt wording to be echoed in one response and restated in another, without indicating a defect in request construction.\n\n**Learn more:** [Anthropic glossary](https://docs.anthropic.com/en/docs/about-claude/glossary)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Language models generate output as token-by-token continuations of their input context. Normal variation in generation can cause prompt wording to be echoed in one response and restated in another, without indicating a defect in request construction."
+  },
+  {
+    "qNum": 25,
+    "questionId": "0ab78029-b271-4671-a751-8950afd1aba2",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/25-applications-and-integration",
+    "definition": {
+      "stemRaw": "The team is considering whether to integrate with the Claude API directly or via a third-party abstraction layer that supports multiple LLM providers. The team has determined that all current and anticipated use cases run on Claude, no internal customer has asked for LLM portability, and the product roadmap contains no multi-provider support over the next two years. The third-party abstraction would add about 15 percent overhead in code complexity and introduce an additional dependency.  \n  \nWhich integration approach would you recommend?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "The third-party abstraction layer, on the grounds that multi-provider support is valuable for any application as a matter of long-term flexibility across vendors."
+        },
+        {
+          "label": "B",
+          "text": "Direct integration with Claude through its SDK, because no multi-provider need exists and abstraction would add complexity that does not pay off."
+        },
+        {
+          "label": "C",
+          "text": "A custom multi-provider abstraction layer the team builds in-house so that the team controls every part of the abstraction the application uses for its API calls."
+        },
+        {
+          "label": "D",
+          "text": "Both integration paths in parallel, where the application uses each path on different runs to compare which performs better in production over time."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "A direct Claude SDK integration meets every identified requirement while avoiding the added code complexity and dependency of a multi-provider abstraction. An abstraction layer is justified only when provider portability or multi-provider support has a concrete expected benefit.",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }A direct Claude SDK integration meets every identified requirement while avoiding the added code complexity and dependency of a multi-provider abstraction. An abstraction layer is justified only when provider portability or multi-provider support has a concrete expected benefit."
+  },
+  {
+    "qNum": 26,
+    "questionId": "ad0e5bb7-198b-419e-9697-9ac393270294",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/26-agents-and-workflows",
+    "definition": {
+      "stemRaw": "You are examining an architectural diagram for a Claude-powered travel-booking system. It depicts a top-level component that interprets user requests and three subordinate components responsible for flights, hotels, and ground transportation. The top-level component routes each request, sequences the subordinate components, and reconciles their outputs into a final itinerary. The diagram also indicates that every subordinate component has its own tool list and its own short conversation history, neither of which is shared with the others. Which architectural pattern does this diagram most closely represent?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "A manager and supervisor pattern with shared context, where the top-level agent and the subagents all share a single conversation history that grows as the request flows through the system."
+        },
+        {
+          "label": "B",
+          "text": "A manager and supervisor pattern with isolated context per subagent, where the top-level agent coordinates specialized subagents that each maintain their own conversation history and tool list."
+        },
+        {
+          "label": "C",
+          "text": "A retrieval-augmented pattern, where the top-level component retrieves relevant context from the subordinate components' indexed data stores before generating each response."
+        },
+        {
+          "label": "D",
+          "text": "A pipeline pattern, where each component processes the user request in sequence and passes the full conversation history along with the request to the next component in the pipeline."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "A manager or supervisor agent coordinates specialized subagents, delegates the relevant parts of a task, sequences their work, and synthesizes their outputs. Separate tool lists and nonshared conversation histories indicate isolated context for each subagent, rather than a shared-context manager pattern or a pipeline that passes the full history between stages. Anthropic’s guidance identifies isolated context and independent workstreams as appropriate uses for subagents.\n\n**Learn more:** [Anthropic Prompting Best Practices — Subagent orchestration](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prompt-templates-and-variables)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }A manager or supervisor agent coordinates specialized subagents, delegates the relevant parts of a task, sequences their work, and synthesizes their outputs. Separate tool lists and nonshared conversation histories indicate isolated context for each subagent, rather than a shared-context manager pattern or a pipeline that passes the full history between stages. Anthropic’s guidance identifies isolated context and independent workstreams as appropriate uses for subagents."
+  },
+  {
+    "qNum": 27,
+    "questionId": "9fd894b9-5621-4da4-b94b-946c33e19d07",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/27-applications-and-integration",
+    "definition": {
+      "stemRaw": "You are designing a Claude application that preserves user sessions across multi-turn conversations. The product team has asked how the application will manage session lifecycle: when sessions should expire, how state is reset, and how it prevents stale context from being carried into new conversations. How would you design the session lifecycle?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Define explicit session expiration rules but rely on users to start new conversations when they want fresh context, with no automatic reset triggers in the application."
+        },
+        {
+          "label": "B",
+          "text": "Define explicit session expiration rules, state reset triggers, and rules for starting fresh sessions so stale context does not leak into new conversations."
+        },
+        {
+          "label": "C",
+          "text": "Define a single short session timeout that applies across all conversations and treat the timeout as the application’s complete session lifecycle mechanism."
+        },
+        {
+          "label": "D",
+          "text": "Define state reset triggers tied to specific application events but apply them across all sessions globally, with no per-session expiration rules."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "A robust session lifecycle defines per-session expiration rules, explicit triggers that clear session state, and conditions for beginning a new session. Together, these controls prevent stale conversational context from leaking into subsequent conversations.",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }A robust session lifecycle defines per-session expiration rules, explicit triggers that clear session state, and conditions for beginning a new session. Together, these controls prevent stale conversational context from leaking into subsequent conversations."
+  },
+  {
+    "qNum": 28,
+    "questionId": "a38b6486-88b3-4745-ac5a-81fbda6e1192",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/28-applications-and-integration",
+    "definition": {
+      "stemRaw": "Your enterprise has an AWS contract requiring Claude API calls to be routed through Amazon Bedrock instead of the direct Anthropic API. Your team is developing a new Claude application and is unfamiliar with this restriction. How should you build the application?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Build two parallel implementations of every call, one for the direct Anthropic API and one for Bedrock, and pick the faster one at runtime."
+        },
+        {
+          "label": "B",
+          "text": "Configure the application to invoke Claude through the Bedrock-compatible API path while keeping the application’s logic provider- agnostic."
+        },
+        {
+          "label": "C",
+          "text": "Build the application against the direct Anthropic API and ignore the contractual requirement to route Claude calls through Amazon Bedrock."
+        },
+        {
+          "label": "D",
+          "text": "Build the application against the direct Anthropic API now and migrate to Bedrock in a follow-up release once the team has more experience with the Bedrock API."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Claude requests must be sent through Amazon Bedrock to meet the contractual routing requirement. Anthropic supports invoking Claude on Bedrock through its Bedrock integration and SDKs, allowing the application’s higher-level Claude interaction logic to remain decoupled from the underlying provider while the configured invocation path uses Bedrock.\n\n**Learn more:** [Claude on Amazon Bedrock](https://docs.anthropic.com/en/api/claude-on-amazon-bedrock)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Claude requests must be sent through Amazon Bedrock to meet the contractual routing requirement. Anthropic supports invoking Claude on Bedrock through its Bedrock integration and SDKs, allowing the application’s higher-level Claude interaction logic to remain decoupled from the underlying provider while the configured invocation path uses Bedrock."
+  },
+  {
+    "qNum": 29,
+    "questionId": "59a692ee-79b2-437c-a2e3-a44fe0db2e11",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/29-eval-testing-and-debugging",
+    "definition": {
+      "stemRaw": "You have recently deployed a new Claude-powered application to production. Development is finished, and the system is now actively used by internal teams. The system’s next phase of work is ...",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "operating and maintaining the system, including monitoring, responding to issues, and planning evolution."
+        },
+        {
+          "label": "B",
+          "text": "handing the system over to a separate operations team that will manage it independently of the development team going forward."
+        },
+        {
+          "label": "C",
+          "text": "retiring the system, since shipping is the final lifecycle stage for any application that reaches production."
+        },
+        {
+          "label": "D",
+          "text": "running a formal post-deployment review that assesses the development phase before the team does any further work on the system."
+        }
+      ],
+      "answers": [
+        "A"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "A production application proceeds into ongoing operations and maintenance, including monitoring, incident response, and planning or delivering future evolution.",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }A production application proceeds into ongoing operations and maintenance, including monitoring, incident response, and planning or delivering future evolution."
+  },
+  {
+    "qNum": 30,
+    "questionId": "c48c700f-e7f6-4718-8679-3fb0978e21e8",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/30-claude-code",
+    "definition": {
+      "stemRaw": "You are setting up Claude Code for a new project. The team must configure permissions, default model selections, and environment-specific behavior at the project level so that the configuration remains consistent for every developer working in the repository. Which Claude Code mechanism would you use?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "environment variables that each developer sets on their own machine when working with Claude Code on the project."
+        },
+        {
+          "label": "B",
+          "text": "a shared spreadsheet that lists configuration values for team members to reference and update by hand as the project evolves."
+        },
+        {
+          "label": "C",
+          "text": "the settings.json file, scoped at the project level so the configuration applies consistently across developers and persists with the repository."
+        },
+        {
+          "label": "D",
+          "text": "a system prompt embedded in every Claude Code conversation by each developer at the start of every session in the project."
+        }
+      ],
+      "answers": [
+        "C"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "The project-scoped `.claude/settings.json` file is version-controlled with the repository and shared across collaborators. It supports configuration such as permissions, environment variables, and model defaults, providing consistent project-level Claude Code behavior.\n\n**Learn more:** [Claude Code settings](https://code.claude.com/docs/en/configuration) · [Explore the .claude directory](https://code.claude.com/docs/en/claude-directory)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }The project-scoped `.claude/settings.json` file is version-controlled with the repository and shared across collaborators. It supports configuration such as permissions, environment variables, and model defaults, providing consistent project-level Claude Code behavior."
+  },
+  {
+    "qNum": 31,
+    "questionId": "e9a882ee-3a93-464c-a24c-a3f73746e801",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/31-tools-and-mcps",
+    "definition": {
+      "stemRaw": "You are developing a Claude application that must keep a persistent connection to a service streaming real-time updates. The team is uncertain which communication pattern to use. Which communication pattern would you choose?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "A single long HTTP request the server holds open indefinitely, with no standard websocket framing on the connection."
+        },
+        {
+          "label": "B",
+          "text": "File-based communication where the service writes new updates to disk and the application polls the file system for changes."
+        },
+        {
+          "label": "C",
+          "text": "A websocket, because websockets are designed for bidirectional, persistent, real-time communication between the client and the streaming service."
+        },
+        {
+          "label": "D",
+          "text": "Repeated short-lived HTTP polling requests, where the application opens a new HTTP connection each time it checks for updates."
+        }
+      ],
+      "answers": [
+        "C"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "WebSockets are designed for persistent, bidirectional, real-time communication between a client and a streaming service, avoiding the overhead and latency of repeated polling requests.",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }WebSockets are designed for persistent, bidirectional, real-time communication between a client and a streaming service, avoiding the overhead and latency of repeated polling requests."
+  },
+  {
+    "qNum": 32,
+    "questionId": "de31f815-8694-43ed-b0aa-27a1ed7574b0",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/32-prompt-and-context-engineering",
+    "definition": {
+      "stemRaw": "Your Claude application’s prompt was authored months ago and has not been updated. The team has learned through evaluations that the prompt performs well for common cases but performs poorly for a particular category of inputs whose volume has increased. How should you respond?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Replace the prompt with a new one aligned to the underperforming category, treating any common-case performance change as a known tradeoff."
+        },
+        {
+          "label": "B",
+          "text": "Tell users to avoid the underperforming category by adding warnings in the application's user interface about handled inputs."
+        },
+        {
+          "label": "C",
+          "text": "Iterate on the prompt to address the underperforming category, validate the change with evals, and continue refining as needed."
+        },
+        {
+          "label": "D",
+          "text": "Add the underperforming category to a separate Claude application with its own prompt so the original prompt does not change."
+        }
+      ],
+      "answers": [
+        "C"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Prompt engineering should be an iterative process: update the prompt to improve performance for the growing failure category, validate the update with evaluations that also protect common-case performance, and continue refining based on the results.",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Prompt engineering should be an iterative process: update the prompt to improve performance for the growing failure category, validate the update with evaluations that also protect common-case performance, and continue refining based on the results."
+  },
+  {
+    "qNum": 33,
+    "questionId": "c0da13c4-5168-47b4-a785-33966903f487",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/33-applications-and-integration",
+    "definition": {
+      "stemRaw": "You are developing a Claude application that must provide model output to end users as it is produced, rather than waiting for the entire response to finish. The Claude API mechanism to use is ...",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "structured JSON output, which delivers responses only after the model has finalized the JSON shape across the entire response."
+        },
+        {
+          "label": "B",
+          "text": "prompt caching, which speeds up the cost profile of future requests and does not affect the delivery timing of the first response."
+        },
+        {
+          "label": "C",
+          "text": "streaming responses, which deliver tokens incrementally as the model generates them so users see output progressively."
+        },
+        {
+          "label": "D",
+          "text": "the batch API, which delivers full responses after a delay suitable for non-interactive workloads."
+        }
+      ],
+      "answers": [
+        "C"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Claude streaming sends Messages API responses incrementally through server-sent events, including text deltas as generation proceeds. This lets an application display output progressively instead of waiting for the completed response.\n\n**Learn more:** [Streaming Messages — Claude API](https://docs.anthropic.com/en/api/streaming)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Claude streaming sends Messages API responses incrementally through server-sent events, including text deltas as generation proceeds. This lets an application display output progressively instead of waiting for the completed response."
+  },
+  {
+    "qNum": 34,
+    "questionId": "2bf13d36-cb25-4ecc-8d47-a4aea9eb264f",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/34-agents-and-workflows",
+    "definition": {
+      "stemRaw": "You are designing a Claude application that processes customer-support tickets in two stages: a triage stage that classifies tickets and a response stage that drafts replies. The team is considering either one Claude call for both stages or separate Claude calls for each stage. How would you structure the application?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Use separate Claude calls for triage and response, because each stage has distinct inputs, outputs, and success criteria that benefit from focused prompts."
+        },
+        {
+          "label": "B",
+          "text": "Use a single Claude call for triage and then use a non-Claude rule-based system for response generation, on the grounds that rule-based systems are more reliable for drafting replies."
+        },
+        {
+          "label": "C",
+          "text": "Use multiple Claude calls in parallel that each draft a complete ticket reply, then have a fourth Claude call select the best one to send to the customer."
+        },
+        {
+          "label": "D",
+          "text": "Use a single Claude call for both stages, on the grounds that a single call is cheaper than multiple calls in any production Claude application setup."
+        }
+      ],
+      "answers": [
+        "A"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Separate Claude calls let the triage stage use a focused classification prompt and produce an intermediate result that can be inspected, evaluated, routed, or constrained before a response-specific prompt drafts the reply. Explicit prompt chaining is appropriate when an application needs a defined sequential pipeline and observable intermediate outputs.\n\n**Learn more:** [Prompting best practices](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prompt-templates-and-variables)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Separate Claude calls let the triage stage use a focused classification prompt and produce an intermediate result that can be inspected, evaluated, routed, or constrained before a response-specific prompt drafts the reply. Explicit prompt chaining is appropriate when an application needs a defined sequential pipeline and observable intermediate outputs."
+  },
+  {
+    "qNum": 35,
+    "questionId": "4fc72e6a-056e-48b0-9c06-e7ba30606f2e",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/35-agents-and-workflows",
+    "definition": {
+      "stemRaw": "The product team has expressed a new Claude feature in business terms: “agents should help our analysts create client memos more quickly.” You need to translate this into actionable technical requirements for the engineering team. Your first step would be to …",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "ask the analysts about the current memo production process to see where they think Claude could be introduced as a prompt-driven drafting step."
+        },
+        {
+          "label": "B",
+          "text": "examine what model capabilities and tier options are available and determine which best supports the memo drafting workflow described by the product team."
+        },
+        {
+          "label": "C",
+          "text": "assess what similar agent-based features have been built internally or in the industry and use those precedents to scope the technical approach."
+        },
+        {
+          "label": "D",
+          "text": "interpret the functional and infrastructure requirements implied by the business goal."
+        }
+      ],
+      "answers": [
+        "D"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Business goals must first be interpreted as functional requirements, such as the agent’s required memo-drafting tasks and user interactions, and infrastructure or nonfunctional requirements, such as performance, security, integration, and reliability constraints. Those requirements provide the basis for later workflow discovery, model selection, and technical scoping.",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Business goals must first be interpreted as functional requirements, such as the agent’s required memo-drafting tasks and user interactions, and infrastructure or nonfunctional requirements, such as performance, security, integration, and reliability constraints. Those requirements provide the basis for later workflow discovery, model selection, and technical scoping."
+  },
+  {
+    "qNum": 36,
+    "questionId": "cc1b461a-5ad6-459d-9d5a-b69b38b61080",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/36-eval-testing-and-debugging",
+    "definition": {
+      "stemRaw": "Your team is getting ready to deploy a configuration change that updates several prompt versions across a Claude application used by multiple downstream systems. The change has already been tested in staging, but the team has not evaluated how the prompt change will affect every downstream system that relies on the application's output. What should you do before deploying the change?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Document the prompt version changes in the application changelog and proceed with the rollout, treating the staging test results as sufficient evidence of impact across all downstream systems."
+        },
+        {
+          "label": "B",
+          "text": "Limit the rollout to systems that were explicitly included in staging testing, and defer all other downstream systems until a later release cycle."
+        },
+        {
+          "label": "C",
+          "text": "Notify downstream system owners that a change is coming and schedule the rollout for the following week, without conducting a formal impact assessment."
+        },
+        {
+          "label": "D",
+          "text": "Assess the configuration impact on each downstream system before rolling out, and coordinate with downstream system owners as needed."
+        }
+      ],
+      "answers": [
+        "D"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "A prompt-version change can change the output contract, behavior, format, or quality consumed by dependent systems. Each downstream dependency therefore requires an impact assessment before deployment, with coordination from its owners where needed. Anthropic’s evaluation guidance recommends rerunning the full evaluation set after a prompt update to determine how the new prompt affects performance across test cases.\n\n**Learn more:** [Anthropic: Use the Evaluation Tool](https://docs.anthropic.com/en/docs/test-and-evaluate/eval-tool)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }A prompt-version change can change the output contract, behavior, format, or quality consumed by dependent systems. Each downstream dependency therefore requires an impact assessment before deployment, with coordination from its owners where needed. Anthropic’s evaluation guidance recommends rerunning the full evaluation set after a prompt update to determine how the new prompt affects performance across test cases."
+  },
+  {
+    "qNum": 37,
+    "questionId": "60f00473-626b-445d-b379-c02627e820b6",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/37-applications-and-integration",
+    "definition": {
+      "stemRaw": "Your Claude application makes a high volume of API calls during business hours and very few calls overnight. The team is concerned about remaining within rate limits at peak hours and wants to understand how the Claude API applies those limits. How should you proceed?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Examine the peak-hour request patterns in your application logs and smooth traffic by distributing requests more evenly across the business-hours window."
+        },
+        {
+          "label": "B",
+          "text": "Assess the average payload size of current API calls and consolidate requests where possible to reduce the total number of calls made during peak hours."
+        },
+        {
+          "label": "C",
+          "text": "Review the API documentation for streaming endpoints and evaluate whether migrating peak-hour calls to streaming reduces exposure to rate limit enforcement."
+        },
+        {
+          "label": "D",
+          "text": "Identify the rate limits, design the application to stay within them during peak hours, and use exponential backoff when limits are reached."
+        }
+      ],
+      "answers": [
+        "D"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "The Claude API enforces organization-level limits for requests per minute, input tokens per minute, and output tokens per minute, including over short intervals through a token-bucket mechanism. Applications should identify their applicable limits, keep peak-hour traffic within them, and handle rate-limit responses by waiting and retrying with exponential backoff. A 429 rate-limit response supplies a `retry-after` header indicating when retrying may succeed.\n\n**Learn more:** [Anthropic Claude API rate limits](https://platform.claude.com/docs/en/api/rate-limits)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }The Claude API enforces organization-level limits for requests per minute, input tokens per minute, and output tokens per minute, including over short intervals through a token-bucket mechanism. Applications should identify their applicable limits, keep peak-hour traffic within them, and handle rate-limit responses by waiting and retrying with exponential backoff. A 429 rate-limit response supplies a `retry-after` header indicating when retrying may succeed."
+  },
+  {
+    "qNum": 38,
+    "questionId": "bdd504c8-f59c-4f50-aba5-0facc4a8fbcc",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/38-prompt-and-context-engineering",
+    "definition": {
+      "stemRaw": "A teammate asks you to explain the distinction between context engineering and prompt engineering. They have heard the terms used interchangeably and are uncertain how each applies to a Claude application that handles long-running, multi-step tasks. How would you describe the difference?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Prompt engineering focuses on the model's response, while context engineering focuses on the user’s input across many sessions in a long-running multi-step Claude application."
+        },
+        {
+          "label": "B",
+          "text": "Prompt engineering and context engineering each address content the team gives Claude, but the team can group them under a single workflow because the practices use overlapping techniques."
+        },
+        {
+          "label": "C",
+          "text": "Prompt engineering is the older term for prompt design, while context engineering is the newer term that has replaced it in modern Claude applications across the industry."
+        },
+        {
+          "label": "D",
+          "text": "Prompt engineering shapes individual prompts for specific outputs, while context engineering manages how content flows across turns and steps and takes steps to keep relevant state visible."
+        }
+      ],
+      "answers": [
+        "D"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Prompt engineering shapes the instructions, examples, constraints, and output format of an individual model interaction. Context engineering manages the relevant information and state supplied throughout a multi-step, long-horizon workflow, including continuity across turns or context windows, so the model retains the information needed for subsequent work.\n\n**Learn more:** [Anthropic Claude Platform Docs — Prompting best practices](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prompt-templates-and-variables)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Prompt engineering shapes the instructions, examples, constraints, and output format of an individual model interaction. Context engineering manages the relevant information and state supplied throughout a multi-step, long-horizon workflow, including continuity across turns or context windows, so the model retains the information needed for subsequent work."
+  },
+  {
+    "qNum": 39,
+    "questionId": "08f280dc-676e-4ad7-9a76-4a07fb5e5aeb",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/39-eval-testing-and-debugging",
+    "definition": {
+      "stemRaw": "A Claude application sometimes declines to answer questions that should be within scope, including questions it has previously answered correctly. You want to investigate this behavior. What should be the first step of the investigation?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Identify which questions have been refused and compare them against previously answered questions to determine what changed between the successful and refused interactions."
+        },
+        {
+          "label": "B",
+          "text": "Test whether removing or adjusting those instructions resolves the behavior."
+        },
+        {
+          "label": "C",
+          "text": "Assess whether the refusals cluster around specific input patterns, question types, or time periods by analyzing the distribution of refused requests in the logs."
+        },
+        {
+          "label": "D",
+          "text": "Examine traces of the refused requests to identify what triggers the refusal, whether input patterns, system prompt content, or other context."
+        }
+      ],
+      "answers": [
+        "D"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Request traces expose the complete context of each refusal, allowing the specific trigger—such as the input pattern, system-prompt content, or other request context—to be identified before making changes or performing aggregate analysis. Claude identifies safety refusals with a `refusal` stop reason, so request-level inspection is the appropriate starting point for diagnosing them.\n\n**Learn more:** [Handling stop reasons — Anthropic](https://docs.anthropic.com/pt/api/handling-stop-reasons)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Request traces expose the complete context of each refusal, allowing the specific trigger—such as the input pattern, system-prompt content, or other request context—to be identified before making changes or performing aggregate analysis. Claude identifies safety refusals with a `refusal` stop reason, so request-level inspection is the appropriate starting point for diagnosing them."
+  },
+  {
+    "qNum": 40,
+    "questionId": "96a456fd-134a-4db3-b275-84bf9791c01e",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/40-model-selection-and-optimization",
+    "definition": {
+      "stemRaw": "A new Claude model release provides performance improvements for several reasoning tasks, but it changes how it responds to system prompts containing multi-section instructions. Your application relies extensively on multi-section system prompts. An initial evaluation using the application’s real workload finds that the new model performs 8 percent better on reasoning tasks, but its format change causes malformed output on approximately 3 percent of requests. The team is considering whether to upgrade.  \n  \nHow would you make the decision?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Upgrade and add a downstream validation step that catches the 3 percent malformed output before it reaches users, treating the validation step as the team’s mitigation for the format change."
+        },
+        {
+          "label": "B",
+          "text": "Adapt the application’s system prompt to the new model’s format expectations and re-evaluate, then upgrade only if the adapted prompt eliminates the malformed output while preserving the reasoning improvements."
+        },
+        {
+          "label": "C",
+          "text": "Stay on the previous model permanently to avoid the malformed output rate and any future format changes that subsequent model releases might introduce in the application."
+        },
+        {
+          "label": "D",
+          "text": "Upgrade immediately, because the 8 percent reasoning improvement outweighs the 3 percent malformed output rate across the application’s typical request distribution."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "A model upgrade should be validated with the application’s actual prompts and workload. When a regression is caused by changed response formatting for multi-section system prompts, adapting the prompt to the new model’s documented formatting and instruction conventions, followed by re-evaluation, directly tests whether compatibility can be restored without losing the measured reasoning benefit. Claude’s prompting guidance recommends clear, explicit output requirements and structured prompts for complex instructions, and its migration guidance calls for updating prompts and configurations when moving between model generations.\n\n**Learn more:** [Anthropic Claude Platform Docs — Prompting best practices](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prompt-templates-and-variables)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }A model upgrade should be validated with the application’s actual prompts and workload. When a regression is caused by changed response formatting for multi-section system prompts, adapting the prompt to the new model’s documented formatting and instruction conventions, followed by re-evaluation, directly tests whether compatibility can be restored without losing the measured reasoning benefit. Claude’s prompting guidance recommends clear, explicit output requirements and structured prompts for complex instructions, and its migration guidance calls for updating prompts and configurations when moving between model generations."
+  },
+  {
+    "qNum": 41,
+    "questionId": "a648eccb-862f-4fd4-ab5e-f3a27de5909a",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/41-claude-code",
+    "definition": {
+      "stemRaw": "You are establishing the configuration-management approach for a new Claude Code project. Your team will use `CLAUDE.md` files and `settings.json` files to control behavior, and you want to ensure that changes are tracked and reviewable. The configuration-management approach would ...",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "version-control CLAUDE.md alongside the project’s source code and settings.json files in a separate repository from the project’s source code."
+        },
+        {
+          "label": "B",
+          "text": "version-control CLAUDE.md and settings.json files alongside the project’s source code, with changes reviewed through standard pull request workflows the team applies."
+        },
+        {
+          "label": "C",
+          "text": "duplicate CLAUDE.md and settings.json files in multiple repositories to provide redundancy, on the grounds that a single source of truth is risky for project configuration."
+        },
+        {
+          "label": "D",
+          "text": "version-control CLAUDE.md and settings.json files in a separate repository from the project’s source code, so configuration evolves independently from the application code over time."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Project-level `CLAUDE.md` instructions are team-shared through source control, and shared project settings belong with the repository they configure. Keeping both alongside the application source provides one reviewable history and lets standard pull-request controls govern changes to code and its Claude Code configuration.\n\n**Learn more:** [How Claude remembers your project](https://code.claude.com/docs/en/memory) · [Claude Code settings](https://code.claude.com/docs/en/settings)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Project-level `CLAUDE.md` instructions are team-shared through source control, and shared project settings belong with the repository they configure. Keeping both alongside the application source provides one reviewable history and lets standard pull-request controls govern changes to code and its Claude Code configuration."
+  },
+  {
+    "qNum": 42,
+    "questionId": "dfc9360a-3843-4b80-8844-6d13c576b829",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/42-prompt-and-context-engineering",
+    "definition": {
+      "stemRaw": "You are launching a new Claude application and have a small set of well-labeled examples that show the required output format. You want to use these examples to steer Claude’s behavior. How would you guide the application’s behavior?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Embed the examples in a database and retrieve them at runtime as reference material for the team."
+        },
+        {
+          "label": "B",
+          "text": "Use zero-shot prompting and rely on the model’s general capability to produce the desired output format consistently across all incoming requests."
+        },
+        {
+          "label": "C",
+          "text": "Train a custom model on the labeled examples before deployment so that the application does not need to include the examples in any prompt during operation."
+        },
+        {
+          "label": "D",
+          "text": "Use multi-shot prompting by including the labeled examples in the prompt so Claude can match the desired output format on each request."
+        }
+      ],
+      "answers": [
+        "D"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Multi-shot prompting includes labeled examples in the prompt, allowing Claude to recognize and reproduce the intended output format for each request. Anthropic identifies well-crafted few-shot or multi-shot examples as a reliable way to steer output format and improve consistency.\n\n**Learn more:** [Anthropic Claude Platform Docs: Prompting best practices](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prompt-templates-and-variables)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Multi-shot prompting includes labeled examples in the prompt, allowing Claude to recognize and reproduce the intended output format for each request. Anthropic identifies well-crafted few-shot or multi-shot examples as a reliable way to steer output format and improve consistency."
+  },
+  {
+    "qNum": 43,
+    "questionId": "23669104-4a46-489d-a7f4-8cba9c53478a",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/43-prompt-and-context-engineering",
+    "definition": {
+      "stemRaw": "A Claude application produces outputs that progressively drift from the expected JSON format after several conversation turns. The initial few turns generate correctly formatted output, but later turns gradually lose structure. How would you address this drift?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Truncate every response to the first few characters, validate that the truncated output matches the expected JSON structure, and log any mismatches for review."
+        },
+        {
+          "label": "B",
+          "text": "Identify the failure mode as format drift, examine how the conversation context evolves over turns, and address the drift through context management or output validation."
+        },
+        {
+          "label": "C",
+          "text": "Switch to a smaller Claude model and re-test the application to determine whether the drift persists across conversation turns."
+        },
+        {
+          "label": "D",
+          "text": "Restart the application after every turn and monitor whether the format remains consistent across subsequent interactions."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Format drift in a multi-turn application is addressed by examining how accumulated conversation context affects instruction adherence, managing that context, and validating outputs against the required JSON structure. Explicit output-format constraints and structured prompting help maintain consistent formatting, while validation detects outputs that fail the required schema.\n\n**Learn more:** [Prompting best practices - Claude Platform Docs](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prompt-templates-and-variables)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Format drift in a multi-turn application is addressed by examining how accumulated conversation context affects instruction adherence, managing that context, and validating outputs against the required JSON structure. Explicit output-format constraints and structured prompting help maintain consistent formatting, while validation detects outputs that fail the required schema."
+  },
+  {
+    "qNum": 44,
+    "questionId": "fa2d10dc-d326-4840-9b9b-f7b353995c0d",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/44-claude-code",
+    "definition": {
+      "stemRaw": "Your team uses Claude Code across several repositories. You want team rules and general coding standards to apply to every repository, while other rules should apply only to particular repositories. The team currently duplicates instructions in each repository’s `CLAUDE.md` file. How would you handle this?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Use a CLAUDE.md hierarchy that scopes general standards broadly and project-specific context within each repository’s local CLAUDE.md."
+        },
+        {
+          "label": "B",
+          "text": "Stop using CLAUDE.md altogether and ask each developer to configure Claude Code manually for each project they work on."
+        },
+        {
+          "label": "C",
+          "text": "Move all instructions to a separate documentation site that developers consult during Claude Code sessions across all repositories."
+        },
+        {
+          "label": "D",
+          "text": "Use a single repository’s CLAUDE.md as the central source of truth and link to it from every other repository’s CLAUDE.md file."
+        }
+      ],
+      "answers": [
+        "A"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Claude Code reads `CLAUDE.md` files hierarchically, allowing broadly scoped instructions to provide shared standards and repository-local files to add project-specific rules. This centralizes common guidance without losing repository-specific context.\n\n**Learn more:** [Manage Claude Code memory](https://docs.anthropic.com/en/docs/claude-code/memory)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Claude Code reads `CLAUDE.md` files hierarchically, allowing broadly scoped instructions to provide shared standards and repository-local files to add project-specific rules. This centralizes common guidance without losing repository-specific context."
+  },
+  {
+    "qNum": 45,
+    "questionId": "9f826c3e-8fd1-4b3c-8b6f-43e6c34353bb",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/45-agents-and-workflows",
+    "definition": {
+      "stemRaw": "A team has deployed a multi-agent system where a primary agent breaks down user requests and assigns subtasks to three specialized subagents: one for data retrieval, one for analysis, and one for report generation. In production, the team finds that subagents make redundant tool calls, sometimes exceed token budgets, and occasionally produce contradictory outputs—all of which the primary agent forwards without detecting. What is the most appropriate way to resolve these failures?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Strengthen the primary agent’s management layer to enforce per-subagent tool budgets, validate outputs against a defined schema before passing them forward, and establish explicit handoff contracts between stages."
+        },
+        {
+          "label": "B",
+          "text": "Give each subagent read access to the other subagents’ outputs so they can identify and resolve contradictions without routing back through the primary agent."
+        },
+        {
+          "label": "C",
+          "text": "Add retry logic to each subagent so that when a tool call fails, the subagent retries automatically before escalating – and configure each subagent to log its tool calls and outputs to a shared trace so the team can audit redundancy and contradictions after the fact."
+        },
+        {
+          "label": "D",
+          "text": "Collapse the three subagents into a single large-context model call that handles retrieval, analysis, and generation in one pass."
+        }
+      ],
+      "answers": [
+        "A"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "A primary orchestration layer should govern specialized agents through enforceable per-agent resource limits, structured output validation, and explicit contracts for information passed between stages. These controls prevent unnecessary tool use and token overruns, reject malformed or incompatible outputs before propagation, and make responsibilities and expected data formats clear enough to reduce contradictions.",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }A primary orchestration layer should govern specialized agents through enforceable per-agent resource limits, structured output validation, and explicit contracts for information passed between stages. These controls prevent unnecessary tool use and token overruns, reject malformed or incompatible outputs before propagation, and make responsibilities and expected data formats clear enough to reduce contradictions."
+  },
+  {
+    "qNum": 46,
+    "questionId": "88d7bb43-fbab-4128-8e21-90b747583f53",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/46-eval-testing-and-debugging",
+    "definition": {
+      "stemRaw": "Your Claude application produces inconsistent outputs for similar inputs, even when it uses the same model and prompt. You want to troubleshoot the issue systematically. Your debugging approach would ...",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "retry every request that produces an unexpected output and log the results to identify whether repeated calls converge on a consistent response pattern."
+        },
+        {
+          "label": "B",
+          "text": "lower the model’s temperature and re-run the inconsistent inputs to determine whether the parameter change reduces output variability across runs."
+        },
+        {
+          "label": "C",
+          "text": "capture full traces of input, system prompt, user messages, model output, and parameters, then analyze the differences between consistent and inconsistent runs."
+        },
+        {
+          "label": "D",
+          "text": "assume inconsistent outputs reflect normal LLM non-determinism and document the variability as an accepted characteristic of the application’s behavior."
+        }
+      ],
+      "answers": [
+        "C"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Full request-and-response traces make runs reproducible and comparable. Recording the input, system prompt, user messages, model output, and parameters exposes hidden contextual or configuration differences that can account for inconsistent behavior. Anthropic’s documentation supports logging and inspecting intermediate API outputs when diagnosing application behavior.\n\n**Learn more:** [Prompting best practices](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prompt-templates-and-variables) · [Claude on Amazon Bedrock — Activity logging](https://docs.anthropic.com/en/api/claude-on-amazon-bedrock)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Full request-and-response traces make runs reproducible and comparable. Recording the input, system prompt, user messages, model output, and parameters exposes hidden contextual or configuration differences that can account for inconsistent behavior. Anthropic’s documentation supports logging and inspecting intermediate API outputs when diagnosing application behavior."
+  },
+  {
+    "qNum": 47,
+    "questionId": "20e3d7ff-bc81-4fde-b934-d78021903cfc",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/47-model-selection-and-optimization",
+    "definition": {
+      "stemRaw": "You are choosing among Claude models for a task. The team has identified three relevant tradeoff dimensions: quality, latency, and cost. The appropriate model is the one that ...",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "fits the task’s quality, latency, and cost requirements together, recognizing that improving one dimension typically affects the others."
+        },
+        {
+          "label": "B",
+          "text": "meets the task’s cost target within a defined latency budget, with quality validated against a representative sample of inputs after the model is selected."
+        },
+        {
+          "label": "C",
+          "text": "meets the task’s quality requirements at an acceptable latency, with cost reviewed separately once the quality and latency bar has been established."
+        },
+        {
+          "label": "D",
+          "text": "satisfies the task’s latency requirement first, then evaluated against quality and cost thresholds to confirm the selection is acceptable across all three dimensions."
+        }
+      ],
+      "answers": [
+        "A"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Claude model selection should satisfy the task’s quality, latency, and cost requirements jointly, because model capability, response time, and token pricing are interdependent tradeoffs. Selecting by one dimension first and evaluating the others only afterward can produce a model that is unsuitable for the overall workload. Anthropic’s model pricing documentation also shows that Claude models have materially different costs, reinforcing that cost must be considered alongside performance requirements.\n\n**Learn more:** [Anthropic Claude pricing](https://docs.anthropic.com/en/docs/about-claude/pricing)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Claude model selection should satisfy the task’s quality, latency, and cost requirements jointly, because model capability, response time, and token pricing are interdependent tradeoffs. Selecting by one dimension first and evaluating the others only afterward can produce a model that is unsuitable for the overall workload. Anthropic’s model pricing documentation also shows that Claude models have materially different costs, reinforcing that cost must be considered alongside performance requirements."
+  },
+  {
+    "qNum": 48,
+    "questionId": "e4b3c1c7-d529-42e1-9be8-9616c8b95f1c",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/48-claude-code",
+    "definition": {
+      "stemRaw": "You are using Claude Code in an automated continuous-integration pipeline. The pipeline must have Claude Code perform a set of clearly defined tasks without asking for confirmation, and its output must be captured for downstream processing. How should the pipeline be configured?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Disable Claude Code’s confirmation prompts globally across all environments so the pipeline runs without interruption from any prompt."
+        },
+        {
+          "label": "B",
+          "text": "Run Claude Code in headless mode with the required permissions configured in settings.json and capture its output for downstream processing."
+        },
+        {
+          "label": "C",
+          "text": "Replace Claude Code with a different tool that does not require any configuration to operate without confirmation prompts in the pipeline."
+        },
+        {
+          "label": "D",
+          "text": "Run Claude Code in interactive mode and have a developer manually approve every confirmation prompt while the pipeline executes its tasks."
+        }
+      ],
+      "answers": [
+        "B"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Claude Code supports non-interactive/headless execution with print mode (`-p`) for scripts and CI pipelines. Preconfiguring the permitted tools in `settings.json` allows the defined actions to run without manual approval, and JSON or stream-JSON output can be captured for downstream processing.\n\n**Learn more:** [Claude Code CLI reference](https://docs.anthropic.com/en/docs/claude-code/cli-usage) · [Claude Code common workflows](https://docs.anthropic.com/en/docs/claude-code/common-tasks)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Claude Code supports non-interactive/headless execution with print mode (`-p`) for scripts and CI pipelines. Preconfiguring the permitted tools in `settings.json` allows the defined actions to run without manual approval, and JSON or stream-JSON output can be captured for downstream processing."
+  },
+  {
+    "qNum": 49,
+    "questionId": "a7096852-6f16-41bb-bdd8-93cf878bf17d",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/49-prompt-and-context-engineering",
+    "definition": {
+      "stemRaw": "The Claude application your team built has expanded over six months, and its prompt-handling code has built up duplication and convoluted control flow. The functionality works, but adding new features is becoming more difficult. How should you address this?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Move all the prompt-handling code into a single large function to reduce the number of files developers have to navigate when reading the code."
+        },
+        {
+          "label": "B",
+          "text": "Continue adding features and plan a refactoring pass after the next two release cycles when the team has more bandwidth for internal work."
+        },
+        {
+          "label": "C",
+          "text": "Plan a refactoring pass to consolidate duplicated logic, separate concerns, and simplify control flow before adding new features."
+        },
+        {
+          "label": "D",
+          "text": "Refactor the prompt-handling code in small increments as part of each new feature ticket, treating the cleanup as a side effect of feature work."
+        }
+      ],
+      "answers": [
+        "C"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "A planned refactoring pass removes the technical debt that is making further development difficult. Consolidating duplicated logic, separating concerns, and simplifying control flow improves maintainability and establishes a safer foundation for new features.",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }A planned refactoring pass removes the technical debt that is making further development difficult. Consolidating duplicated logic, separating concerns, and simplifying control flow improves maintainability and establishes a safer foundation for new features."
+  },
+  {
+    "qNum": 50,
+    "questionId": "e39942e8-323c-410b-8800-f34b8c31baf8",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/50-prompt-and-context-engineering",
+    "definition": {
+      "stemRaw": "You are configuring a Claude application that will handle a mix of multi-turn conversations and one-off requests. You want to use caching methods to lower token costs where applicable. A teammate also proposes caching the model’s output so the application need not make duplicate Claude calls when similar queries arrive. You would use prompt caching for ...",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "the model’s output, treating the response from each request as cacheable content the application can return on similar future queries."
+        },
+        {
+          "label": "B",
+          "text": "nothing, because prompt caching does not affect cost in any application that mixes multi-turn conversations and one-off requests in a single deployment."
+        },
+        {
+          "label": "C",
+          "text": "only the user’s input portion of each request because user input is the part of the prompt that varies the most across the application's normal operation."
+        },
+        {
+          "label": "D",
+          "text": "the static portions of prompts that are repeated across requests, such as system prompts, instructions, or shared context."
+        }
+      ],
+      "answers": [
+        "D"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Prompt caching reuses an identical prefix of an API prompt to reduce input-token processing time and cost. The reusable prefix should contain static content that recurs across requests, including system prompts, instructions, shared context, examples, and tool definitions. It does not cache generated model output; application-level response caching is a separate technique.\n\n**Learn more:** [Anthropic Claude Platform Docs: Prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Prompt caching reuses an identical prefix of an API prompt to reduce input-token processing time and cost. The reusable prefix should contain static content that recurs across requests, including system prompts, instructions, shared context, examples, and tool definitions. It does not cache generated model output; application-level response caching is a separate technique."
+  },
+  {
+    "qNum": 51,
+    "questionId": "8bd21169-14f1-4eb0-bb3c-6b364a01f183",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/51-agents-and-workflows",
+    "definition": {
+      "stemRaw": "Your Claude application uses multi-step workflows in which each step’s output is required only briefly before the agent continues. Cumulative tool output is filling the context window with content that is no longer relevant. How would you manage the accumulating tool output?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Apply prompt caching to the accumulated tool outputs so the application does not re-pay for the older content on each subsequent step."
+        },
+        {
+          "label": "B",
+          "text": "Keep every tool output in the context indefinitely so the agent has the full record of every step it has executed during the workflow."
+        },
+        {
+          "label": "C",
+          "text": "Switch to a smaller Claude model that processes context more efficiently and treat any quality loss as a tradeoff for the cost reduction."
+        },
+        {
+          "label": "D",
+          "text": "Apply tool output pruning to remove tool outputs that are no longer needed by later steps in the workflow."
+        }
+      ],
+      "answers": [
+        "D"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "Tool output pruning removes results that later workflow steps no longer require, preventing obsolete tool-result content from consuming the context window. Tool-result blocks contribute to the input tokens sent to Claude, so caching retained results does not solve context bloat.\n\n**Learn more:** [Anthropic API pricing: Tool use pricing](https://docs.anthropic.com/en/docs/about-claude/pricing)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }Tool output pruning removes results that later workflow steps no longer require, preventing obsolete tool-result content from consuming the context window. Tool-result blocks contribute to the input tokens sent to Claude, so caching retained results does not solve context bloat."
+  },
+  {
+    "qNum": 52,
+    "questionId": "50442b10-8e40-4653-ae60-3681055ba63b",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/52-tools-and-mcps",
+    "definition": {
+      "stemRaw": "You are deciding between STDIO-based and HTTP-based communication for an MCP server. The server will be started by a locally running Claude Code session. Which communication pattern should you use?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "HTTP on the grounds that HTTP is preferable to STDIO in any context the application might encounter during normal operation."
+        },
+        {
+          "label": "B",
+          "text": "HTTP polling against the MCP server, treating HTTP as a substitute for the standard MCP communication patterns."
+        },
+        {
+          "label": "C",
+          "text": "STDIO and HTTP simultaneously for redundancy, with the team running two communication patterns at the same time across Claude Code sessions."
+        },
+        {
+          "label": "D",
+          "text": "STDIO because STDIO is well-suited to local process communication and avoids unnecessary network setup."
+        }
+      ],
+      "answers": [
+        "D"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "STDIO is appropriate for a local, process-spawned MCP server: the client launches the server as a subprocess and exchanges JSON-RPC messages through standard input and output. This avoids the unnecessary network endpoint and configuration required by HTTP transport. [MCP Transport Specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports)\n\n**Learn more:** [MCP Transport Specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports) · [Claude Code MCP documentation](https://docs.anthropic.com/en/docs/claude-code/mcp)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }STDIO is appropriate for a local, process-spawned MCP server: the client launches the server as a subprocess and exchanges JSON-RPC messages through standard input and output. This avoids the unnecessary network endpoint and configuration required by HTTP transport. [MCP Transport Specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports)"
+  },
+  {
+    "qNum": 53,
+    "questionId": "f76a0978-c468-4f59-9003-4a84f199c288",
+    "category": "General",
+    "url": "https://examcademy.com/exams/anthropic/ccdv-f/q/53-model-selection-and-optimization",
+    "definition": {
+      "stemRaw": "You are explaining to a stakeholder why executing the same Claude prompt twice may yield slightly different results. The stakeholder is worried that this indicates the application is broken. How would you respond to the stakeholder’s concern?",
+      "type": "multiple_choice",
+      "choices": [
+        {
+          "label": "A",
+          "text": "Tell the stakeholder the variation is caused by Claude being updated continuously by Anthropic, and that switching to a fixed model snapshot will eliminate the variation entirely."
+        },
+        {
+          "label": "B",
+          "text": "Tell the stakeholder the variation comes from network latency and that switching to a faster network connection will produce more consistent results across runs."
+        },
+        {
+          "label": "C",
+          "text": "Tell the stakeholder the variation is a bug that the team will fix in the next release of the application, then create a work ticket to fix the bug."
+        },
+        {
+          "label": "D",
+          "text": "Explain that LLMs are non-deterministic by default due to sampling, and describe how the application handles this through validation, retries, or temperature adjustment."
+        }
+      ],
+      "answers": [
+        "D"
+      ],
+      "blanks": [],
+      "statements": [],
+      "columns": [],
+      "slots": [],
+      "items": [],
+      "template": "",
+      "templateMode": "",
+      "answerText": "",
+      "explanation": "LLM generation is probabilistic: sampling can select different plausible tokens for identical inputs, so minor variation across runs is expected and does not by itself indicate an application defect. Production applications should manage this variability with measures such as output validation, retries, and—where supported by the selected model—sampling controls such as temperature. Anthropic notes that API outputs can remain non-deterministic even at temperature 0.\n\n**Learn more:** [Claude Platform Docs — Glossary](https://docs.anthropic.com/en/docs/about-claude/glossary)",
+      "reuse": false
+    },
+    "finalExplanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-yellow) { background-color: color-mix(in srgb, var(--accent) 55%, #000); color: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { background-color: color-mix(in srgb, var(--accent) 65%, #fff); color: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { background-color: color-mix(in srgb, var(--accent) 35%, #fff); color: #172033; }LLM generation is probabilistic: sampling can select different plausible tokens for identical inputs, so minor variation across runs is expected and does not by itself indicate an application defect. Production applications should manage this variability with measures such as output validation, retries, and—where supported by the selected model—sampling controls such as temperature. Anthropic notes that API outputs can remain non-deterministic even at temperature 0."
+  }
+]

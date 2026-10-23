@@ -7,6 +7,9 @@ const cache = fs.existsSync(cachePath) ? JSON.parse(fs.readFileSync(cachePath, '
 
 // Comprehensive technical glossary to protect from awkward machine translation
 const glossary = [
+  'Model Context Protocol', 'MCP', 'Claude 3.5 Sonnet', 'Claude 3 Opus', 'Claude 3 Haiku', 'Claude 3',
+  'Claude Code CLI', 'Claude Code', 'Prompt Caching', 'Message Batches API', 'Computer Use',
+  'Tool use', 'Tool calling', 'Few-shot', 'Chain of thought', 'Anthropic',
   'Microsoft Copilot Studio', 'Copilot Studio', 'Microsoft Foundry', 'Foundry Agent Service',
   'Azure OpenAI Service', 'Azure OpenAI', 'Prompt Shields', 'Spotlighting', 'Document Intelligence',
   'Azure AI Search', 'Azure Cognitive Search', 'Azure Machine Learning', 'Azure AI services',

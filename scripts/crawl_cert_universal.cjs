@@ -214,7 +214,7 @@ function parseQuestionPage(html, qNum, url, certSlug) {
   };
 }
 
-async function crawlExam(certSlug, totalQuestions, concurrency = 6) {
+async function crawlExam(certSlug, totalQuestions, concurrency = 4, provider = 'microsoft') {
   const certIdNoHyphen = certSlug.replace(/-/g, '');
   const outPath = path.join(__dirname, `raw_${certIdNoHyphen}_data.json`);
 
@@ -237,14 +237,14 @@ async function crawlExam(certSlug, totalQuestions, concurrency = 6) {
     return Array.from(existingMap.values()).sort((a, b) => a.qNum - b.qNum);
   }
 
-  console.log(`[${certSlug.toUpperCase()}] Crawling ${pending.length} pending questions with concurrency ${concurrency}...`);
+  console.log(`[${certSlug.toUpperCase()}] Crawling ${pending.length} pending questions with concurrency ${concurrency} from provider ${provider}...`);
   let cursor = 0;
   let done = existingMap.size;
 
   async function worker() {
     while (cursor < pending.length) {
       const qNum = pending[cursor++];
-      const url = `https://examcademy.com/exams/microsoft/${certSlug}/q/${qNum}`;
+      const url = `https://examcademy.com/exams/${provider}/${certSlug}/q/${qNum}`;
       try {
         const res = await fetchUrl(url);
         if (res.statusCode === 200 && res.data) {

@@ -2,2260 +2,338 @@ import { Question } from '../types';
 
 export const ccaQuestions: Question[] = [
   {
-    "id": "cca1",
+    "id": "cca-1",
     "questionNumber": 1,
-    "text": "Your structured data extraction system processes real estate listing documents. When listings describe property size with informal terms like \"spacious\" or \"generous open-plan living area\" instead of exact measurements, the model frequently fabricates numeric square footage values. Which approach would most effectively reduce these hallucinated values while preserving extraction accuracy for documents that contain explicit measurements?",
+    "text": "Your `send_notification` tool invokes third-party messaging APIs. If these services time out during delivery, you cannot tell whether the message was actually sent. At present, the tool returns `is_error: true` with a generic “Notification failed” message for every timeout. Production monitoring shows that agents automatically retry these failures, often causing users to receive duplicate notifications. How should you change the error response?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "Making the square_footage field required in the schema and adding a post-extraction validation step that rejects non-numeric values"
+        "text": "Return is_error: true with a structured field retry_safe: true for timeouts, distinguishing them from permanent failures that should not be retried."
       },
       {
         "key": "B",
-        "text": "Removing the square_footage field from the extraction schema entirely to eliminate the possibility of fabrication"
+        "text": "Return is_error: true with a message communicating uncertainty: “Timeout – status unknown. Message may have been sent. Avoid retry.”"
       },
       {
         "key": "C",
-        "text": "Providing few-shot examples that demonstrate returning null for square footage when documents use informal descriptions, alongside examples that correctly extract explicit numeric measurements"
+        "text": "Return is_error: true with a message encouraging retry: “Delivery service temporarily unavailable. Please retry the notification.”"
       },
       {
         "key": "D",
-        "text": "Adding the instruction \"only extract values you are certain about\" to the system prompt"
+        "text": "Return is_error: true with the original message content echoed back."
       }
     ],
     "correctAnswers": [
-      "C"
+      "B"
     ],
-    "category": "Prompt Engineering",
-    "explanation": "Cung cấp các ví dụ few-shot chỉ ra việc trả về 'null' cho các mô tả không chính thức là cách hiệu quả nhất để dạy cho LLM biết khi nào cần bỏ qua trường này, thay vì tự bịa đặt (hallucinate) dữ liệu số.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Thời gian chờ sau khi yêu cầu gửi sẽ tạo ra tình trạng không xác định được kết quả thay vì xác nhận gửi không thành công. Vì thông báo có thể đã được gửi nên việc thử lại tự động có thể tạo ra một bản sao; lỗi phải nêu rõ rằng trạng thái không xác định và khuyên bạn không nên thử lại.",
+    "category": "General",
     "tags": [
-      "Few-shot",
-      "Structured Data",
-      "Hallucination"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 1",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/1-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.879Z"
   },
   {
-    "id": "cca2",
+    "id": "cca-2",
     "questionNumber": 2,
-    "text": "A customer support agent calls the process_refund MCP tool, which fails because the requested refund amount exceeds the customer's original order total. Currently the tool returns a generic \"Operation failed\" message, preventing the agent from explaining the issue to the customer. How should the tool's error response be restructured to enable appropriate handling?",
+    "text": "You configured the system so that all four subagents can access the full set of 18 tools. During testing, agents often invoke tools outside their specialization—the synthesis agent performs web searches, and the report generator attempts document analysis. What is the main cause of this poor tool-selection behavior?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "Return an error with errorCategory: \"validation\", isRetryable: false, and a description explaining the refund amount exceeds the order total"
+        "text": "Choosing from 18 tools instead of 4-5 relevant ones increases decision complexity beyond reliable selection thresholds."
       },
       {
         "key": "B",
-        "text": "Return a successful empty result with a warning field embedded in the response content indicating the amount was too high"
+        "text": "The tool definitions consume too much context window space, leaving insufficient room for task content."
       },
       {
         "key": "C",
-        "text": "Return an error with errorCategory: \"permission\", isRetryable: true, and a description indicating the operation requires supervisor-level access"
+        "text": "The agents’ role descriptions in their system prompts conflict with having access to tools outside that role."
       },
       {
         "key": "D",
-        "text": "Return an error with errorCategory: \"transient\", isRetryable: true, and a description suggesting the agent retry with the same parameters after a delay"
+        "text": "The coordinator cannot track which capabilities each subagent has, leading to misrouted tasks."
       }
     ],
     "correctAnswers": [
       "A"
     ],
-    "category": "Model Context Protocol",
-    "explanation": "Lỗi logic nghiệp vụ không được thử lại (như vượt quá số tiền) cần được phân loại là lỗi kiểm định đầu vào ('validation') với 'isRetryable: false' để tác nhân hiểu được nguyên nhân gốc rễ và xử lý phù hợp thay vì tự động chạy lại.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Cấp cho mọi tác nhân chuyên biệt quyền truy cập vào tất cả 18 công cụ sẽ mở rộng không gian ra quyết định với nhiều lựa chọn không liên quan. Sự phức tạp trong lựa chọn ngày càng tăng này làm cho việc lựa chọn công cụ đáng tin cậy trở nên khó khăn hơn và khiến các tác nhân sử dụng các khả năng nằm ngoài chuyên môn dự định của họ.",
+    "category": "General",
     "tags": [
-      "MCP Tools",
-      "Error Handling",
-      "Validation"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 2",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/2-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
   },
   {
-    "id": "cca3",
+    "id": "cca-3",
     "questionNumber": 3,
-    "text": "A developer asks Claude to generate a complex recursive algorithm, and then within the same conversation asks Claude to review the generated code for correctness. Claude reports no issues, but a peer reviewer later finds a subtle logic error. What best explains why the same-session review failed to catch this bug?",
+    "text": "You’re implementing escalation logic for when the agent should invoke `escalate_to_human`. Your team has proposed four different ways to trigger escalation. Which approach will most reliably identify cases that truly need human intervention?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "The review prompt did not include explicit criteria for checking recursive boundary conditions"
+        "text": "Implement sentiment analysis that monitors for frustration indicators (negative language, repeated questions, exclamation marks) and trigger escalation when the frustration score exceeds a configured threshold."
       },
       {
         "key": "B",
-        "text": "The generated code consumed most of the context window, leaving insufficient tokens for a thorough review"
+        "text": "Configure the agent to escalate after three consecutive tool calls that fail to resolve the customer’s stated issue, ensuring a reasonable attempt before involving a human."
       },
       {
         "key": "C",
-        "text": "The model defaults to positive assessments to maintain conversational coherence with the user"
+        "text": "Instruct the agent to escalate when the customer requests a human, when the issue requires policy exceptions, or when the agent cannot make meaningful progress."
       },
       {
         "key": "D",
-        "text": "The model retains its reasoning context from generation, making it less likely to question its own prior decisions in the same session"
+        "text": "Build a rules engine that maps specific issue types, customer segments, and product categories to escalation decisions, removing the need for model judgment calls."
       }
     ],
     "correctAnswers": [
-      "D"
+      "C"
     ],
-    "category": "Evaluation & Bias",
-    "explanation": "Do mô hình giữ nguyên ngữ cảnh suy luận từ quá trình tạo trước đó, nó dễ gặp phải thiên kiến xác nhận (confirmation bias) và khó khăn trong việc độc lập rà soát lại lỗi logic của chính nó trong cùng một phiên hội thoại.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc chuyển cấp con người là đáng tin cậy nhất khi nó được kích hoạt bởi các điều kiện rõ ràng, liên quan đến nhiệm vụ: khách hàng yêu cầu một cách rõ ràng về con người, giải pháp cần thiết liên quan đến ngoại lệ chính sách hoặc tổng đài viên không thể đạt được tiến bộ đáng kể. Những điều kiện này phản ánh trực tiếp nhu cầu đánh giá hoặc hỗ trợ của con người, không giống như ngưỡng cảm tính, số lần thử lại cố định hoặc ánh xạ danh mục cứng nhắc.",
+    "category": "General",
     "tags": [
-      "Confirmation Bias",
-      "Self-Review",
-      "Context"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 3",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/3-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
   },
   {
-    "id": "cca4",
+    "id": "cca-4",
     "questionNumber": 4,
-    "text": "The coordinator agent in the research platform is about to invoke the findings synthesis agent using a stateless agent call (so subagents do not inherit prior conversation context). Both the web search agent and the document analysis agent have already returned their results. How should the coordinator provide these prior findings to the synthesis agent?",
+    "text": "Production reviews show that uncertainty is handled inconsistently in final reports. At times, conflicting subagent findings are combined into one confident statement, losing nuance; at other times, reports use so many qualifications that they become unhelpful. When the web-search agent reports “industry analysts estimate $50B market size (methodology varies)” and the document-analysis agent reports “peer-reviewed study estimates $35B (±$7B, 95% CI),” the coordinator either arbitrarily selects one or produces vague wording such as “the market may be $35B-$50B depending on factors.” What systematic approach best resolves this?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "Store the findings in an external database and give the synthesis agent credentials to query the results on its own"
+        "text": "Configure subagents to only report findings meeting a high-confidence threshold, filtering uncertain information before it reaches the coordinator."
       },
       {
         "key": "B",
-        "text": "Include the complete findings from both agents directly in the synthesis agent's prompt so it has full access to all gathered information"
+        "text": "Add a verification subagent that cross-references findings across sources, only passing claims to synthesis that are corroborated by at least two independent sources."
       },
       {
         "key": "C",
-        "text": "Instruct the synthesis agent to re-invoke the web search and document analysis agents independently to collect the information it needs"
+        "text": "Instruct the synthesis agent to structure reports with explicit sections distinguishing well-established findings from contested ones, preserving original source characterizations and methodological context."
       },
       {
         "key": "D",
-        "text": "Pass only a brief thematic summary to keep the synthesis agent's context lean and avoid exceeding token limits"
+        "text": "Implement a confidence calibration layer that normalizes subagent uncertainty expressions to standardized probability scores (0.0-1.0), then weight-average findings by their calibrated confidence."
       }
     ],
     "correctAnswers": [
-      "B"
+      "C"
     ],
-    "category": "Agentic Architecture",
-    "explanation": "Do các tác nhân con chạy không trạng thái (stateless) và không kế thừa ngữ cảnh, tác nhân điều phối (orchestrator) phải thu thập toàn bộ dữ liệu thô thu được và đưa trực tiếp vào prompt của tác nhân tổng hợp kế tiếp.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Báo cáo phải phân biệt các kết luận được xác lập rõ ràng với những kết luận vẫn còn gây tranh cãi, đồng thời duy trì tính không chắc chắn, phương pháp và đặc điểm bằng chứng đã nêu của mỗi nguồn. Điều này thể hiện sự bất đồng thực sự mà không tùy tiện chọn kết quả, san bằng sự không chắc chắn thành một con số duy nhất hoặc che khuất bối cảnh hữu ích bằng phòng ngừa rủi ro chung.",
+    "category": "General",
     "tags": [
-      "Orchestrator-Worker",
-      "Subagents",
-      "Context Transfer"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 4",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/4-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
   },
   {
-    "id": "cca5",
+    "id": "cca-5",
     "questionNumber": 5,
-    "text": "During a prolonged codebase exploration session, an agent begins referencing \"typical patterns\" and giving vague descriptions instead of citing the specific classes and method signatures it discovered in earlier turns. What technique most effectively counteracts this context degradation?",
+    "text": "Your multi-agent research pipeline crashed after processing 12 of 28 documents. The web-search agent had identified relevant sources, the document analyzer had partly completed extraction, and the synthesizer had started identifying patterns.  \n  \nYou need to resume processing without duplicating work or losing fidelity from earlier findings. Which state-management approach best balances information fidelity and context efficiency when restoring agent state?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "Have the agent maintain a scratchpad file that records key findings such as class names, method signatures, and file paths, and reference it when answering subsequent questions"
+        "text": "Have each agent persist a structured export to a known location. On resume, the coordinator loads the manifest and injects relevant state into agent prompts."
       },
       {
         "key": "B",
-        "text": "Increase the max_tokens parameter so the agent can generate longer, more detailed responses"
+        "text": "Index all agent outputs in a shared vector store. When resuming, each agent queries the store using semantic search to retrieve relevant prior findings."
       },
       {
         "key": "C",
-        "text": "Restart the exploration session from scratch whenever the agent's responses become vague to ensure a clean context"
+        "text": "Have each agent maintain its own persistent state file and reload it independently at the start of each session."
       },
       {
         "key": "D",
-        "text": "Use /compact repeatedly throughout the session to free up context space for new discoveries"
+        "text": "Persist the coordinator’s conversation log containing all task delegations and responses, providing this to agents when resuming."
       }
     ],
     "correctAnswers": [
       "A"
     ],
-    "category": "Prompt Engineering",
-    "explanation": "Hiện tượng suy thoái ngữ cảnh (context rot) trong các phiên chat dài hạn được xử lý tốt nhất bằng cách lưu trữ các thông tin cốt lõi (như tên lớp, hàm, đường dẫn) vào một file nháp (scratchpad) để neo thông tin một cách ổn định.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc xuất tác nhân có cấu trúc và bền vững sẽ giữ lại các kết quả trung gian chính xác, trong khi bảng kê khai điều phối viên ghi lại những gì đã hoàn thành và thành phần lạ nào thuộc về từng nhiệm vụ. Khi khôi phục, điều phối viên chỉ có thể khôi phục trạng thái liên quan vào bối cảnh làm việc của từng tổng đài viên, tránh xử lý trùng lặp cũng như tình trạng cồng kềnh và mơ hồ khi phát lại nhật ký hội thoại hoàn chỉnh.",
+    "category": "General",
     "tags": [
-      "Context Rot",
-      "Scratchpad",
-      "Memory"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 5",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/5-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
   },
   {
-    "id": "cca6",
+    "id": "cca-6",
     "questionNumber": 6,
-    "text": "In the research automation platform, the orchestrator agent runs an agentic loop that sends requests to Claude, receives responses, and decides whether to continue or stop. What mechanism does the loop use to determine whether it should execute another tool call or present the final response?",
+    "text": "After the web-search agent locates 25 sources (120K tokens of raw content), the document-analysis agent identifies key insights (15K tokens), and the synthesis agent creates a coherent narrative draft (3K tokens), the coordinator must provide context to the report-generation agent for the final output with proper source citations. Which context-passing strategy best balances completeness and efficiency?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "The model includes a boolean \"continue\" field in its JSON response body that the loop evaluates after each iteration"
+        "text": "Pass the full accumulated context from all prior agents."
       },
       {
         "key": "B",
-        "text": "The loop counts the number of tool calls made and stops after reaching a predefined maximum"
+        "text": "Pass the synthesis draft along with a structured source index that maps key claims to their source URLs and relevant excerpts."
       },
       {
         "key": "C",
-        "text": "The system prompt includes a termination keyword that the model outputs when it has finished processing"
+        "text": "Pass only the synthesis draft and have a separate post-processing pipeline match claims to sources and insert citations after the report is generated."
       },
       {
         "key": "D",
-        "text": "The stop_reason field in the API response indicates \"tool_use\" when the model wants to call a tool and \"end_turn\" when it considers the task complete"
+        "text": "Pass a condensed summary of all prior stages that preserves the main findings and attributes them to sources by name only."
       }
     ],
     "correctAnswers": [
-      "D"
+      "B"
     ],
-    "category": "Agentic Architecture",
-    "explanation": "Sử dụng trường 'stop_reason' của Messages API là giải pháp chính thống và tin cậy nhất. Giá trị 'tool_use' nghĩa là vòng lặp cần gọi công cụ và tiếp tục, còn 'end_turn' nghĩa là tác nhân đã hoàn thành.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Bản nháp tổng hợp cung cấp cho trình tạo báo cáo bản tường thuật vốn đã mạch lạc, trong khi chỉ mục nguồn có cấu trúc liên kết các tuyên bố quan trọng với các URL hỗ trợ chính xác và các đoạn trích có liên quan. Điều này giữ lại nguồn gốc trích dẫn có thể kiểm chứng mà không chuyển toàn bộ bối cảnh nghiên cứu thô hoặc yêu cầu bước tái tạo trích dẫn không đáng tin cậy sau khi tạo.",
+    "category": "General",
     "tags": [
-      "Agentic Loop",
-      "stop_reason",
-      "Flow Control"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 6",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/6-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
   },
   {
-    "id": "cca7",
+    "id": "cca-7",
     "questionNumber": 7,
-    "text": "After the coordinator collects web search results, it invokes the findings synthesis agent to combine all research. However, the synthesis output shows no awareness of the previously gathered search findings, even though they are clearly present in the coordinator's conversation history. What is the most likely cause?",
+    "text": "Your `control_device` tool controls smart-home devices through external APIs. If a device fails to respond within the timeout period, the tool returns an error. Production logs indicate that the agent only tells users, “the device is not responding,” without providing useful next steps. Which error-response structure would best allow the agent to provide helpful follow-up?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "The coordinator's context window exceeded its limit, causing the search results to be silently dropped before the synthesis agent was invoked"
+        "text": "Set is_error: true with a structured technical error containing the device ID, timeout duration, and raw API response code for debugging purposes."
       },
       {
         "key": "B",
-        "text": "The synthesis agent's system prompt contains an instruction that explicitly excludes externally sourced data"
+        "text": "Set is_error: true with a brief “Device offline” message and provide a separate tool the agent can call to retrieve context-specific troubleshooting suggestions."
       },
       {
         "key": "C",
-        "text": "The search results were returned in an encoding format that the synthesis agent cannot process"
+        "text": "Set is_error: false with an optimistic message indicating the command was dispatched successfully but device acknowledgment is still pending."
       },
       {
         "key": "D",
-        "text": "Subagents do not automatically inherit the coordinator's conversation history, so the search findings were never part of the synthesis agent's context"
+        "text": "Set is_error: true with a message explaining the likely cause and suggesting troubleshooting steps the agent can offer the user."
       }
     ],
     "correctAnswers": [
       "D"
     ],
-    "category": "Agentic Architecture",
-    "explanation": "Do kiến trúc cô lập ngữ cảnh giữa các subagents để chống tràn token và nhiễu dữ liệu, các tác nhân con không tự thừa hưởng lịch sử chat từ điều phối viên trừ khi nó được truyền thủ công trong prompt.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Phản hồi lỗi phải báo hiệu chính xác thời gian chờ đồng thời cung cấp bối cảnh hữu ích và phù hợp với người dùng. Việc bao gồm nguyên nhân có thể xảy ra và các bước khắc phục sự cố được đề xuất sẽ cung cấp cho tổng đài viên thông tin có thể ngay lập tức biến thành hướng dẫn tiếp theo hữu ích.",
+    "category": "General",
     "tags": [
-      "Context Isolation",
-      "Subagents",
-      "Data Passing"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 7",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/7-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
   },
   {
-    "id": "cca8",
+    "id": "cca-8",
     "questionNumber": 8,
-    "text": "While implementing the orchestrator agent's agentic loop for the research platform, a developer decides to check whether the assistant's response text contains the phrase \"research complete\" to determine when the loop should terminate. Why is this approach considered an anti-pattern?",
+    "text": "The synthesis agent receives summarized findings from the web-search and document-analysis agents, then sends a consolidated summary to the report generator. During testing, you find that generated reports make factual claims without proper citations—the report generator cannot trace statements to their original sources because metadata was lost during summarization. What is the most effective approach for ensuring proper source attribution in the final reports?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "It relies on parsing non-deterministic natural language output instead of using the reliable stop_reason field, which may produce inconsistent termination behavior"
+        "text": "Have the report generator query the web search agent to re-locate sources for claims in the final report."
       },
       {
         "key": "B",
-        "text": "It prevents the model from generating tool_use content blocks during subsequent loop iterations"
+        "text": "Have each agent output structured data separating content summaries from source metadata (URLs, document names, page numbers)."
       },
       {
         "key": "C",
-        "text": "It causes the API to return an error because response text cannot be inspected until the full conversation is complete"
+        "text": "Skip summarization and pass full raw outputs from web search and document analysis directly to the report generator."
       },
       {
         "key": "D",
-        "text": "It forces the model to always output the phrase before it can use any tools, adding unnecessary latency to every iteration"
+        "text": "Instruct the synthesis agent to embed source references inline within its summary text using a consistent citation format."
       }
     ],
     "correctAnswers": [
-      "A"
+      "B"
     ],
-    "category": "Agentic Architecture",
-    "explanation": "Ngôn ngữ tự nhiên có tính phi xác định (non-deterministic). Việc dựa vào phân tích cú pháp chuỗi thô để phát hiện điều kiện dừng vòng lặp là rất dễ gãy hỏng, thay vào đó cần dùng 'stop_reason' có tính chất xác định.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Kết quả đầu ra có cấu trúc giúp tách biệt các bản tóm tắt nội dung với siêu dữ liệu xuất xứ—chẳng hạn như URL, tên tài liệu và số trang—duy trì khả năng truy nguyên qua các giai đoạn tóm tắt. Sau đó, trình tạo báo cáo có thể liên kết các tuyên bố thực tế với các nguồn ban đầu của chúng và tạo ra các trích dẫn chính xác.",
+    "category": "General",
     "tags": [
-      "Anti-Pattern",
-      "Determinism",
-      "stop_reason"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 8",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/8-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
   },
   {
-    "id": "cca9",
+    "id": "cca-9",
     "questionNumber": 9,
-    "text": "Your document extraction pipeline uses a two-step process: first, it calls extract_metadata to determine the document type, then calls extract_fields with a type-specific schema. You plan to migrate this pipeline to the Message Batches API to reduce costs on a nightly run of 500 documents. What limitation of the batch API requires you to redesign this workflow?",
+    "text": "The agent confirms customer identity through a multi-step process before resetting passwords. During testing, after the customer answers the third verification question, the agent asks for their name again, as though the earlier exchange never occurred. What is the most likely reason for this behavior?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "The Message Batches API does not support multi-turn tool calling within a single request, so you cannot execute a tool and return its result mid-request for a second tool call"
+        "text": "The verification tool is clearing the agent’s internal state after each successful validation step."
       },
       {
         "key": "B",
-        "text": "The Message Batches API limits each submission to a maximum of 100 requests per batch"
+        "text": "Claude’s memory retention is limited to two conversational turns by default, requiring explicit configuration to extend it."
       },
       {
         "key": "C",
-        "text": "The Message Batches API does not support forced tool selection, allowing only tool_choice set to auto"
+        "text": "The conversation history isn’t being passed in subsequent API requests."
       },
       {
         "key": "D",
-        "text": "The Message Batches API requires all requests in a batch to share the same system prompt and tool definitions"
+        "text": "The prompt lacks instructions telling Claude to remember information across multiple exchanges."
       }
     ],
     "correctAnswers": [
-      "A"
+      "C"
     ],
-    "category": "Message Batches API",
-    "explanation": "Message Batches API chỉ hỗ trợ xử lý không trạng thái một lượt (single-turn) bất đồng bộ. Nó không thể thực hiện chuỗi hội thoại nhiều lượt (gọi công cụ thứ nhất, đợi kết quả phản hồi rồi mới quyết định gọi tiếp công cụ thứ hai).",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }API Tin nhắn Claude yêu cầu ứng dụng cung cấp tin nhắn trợ lý và người dùng có liên quan trước đó với mỗi yêu cầu mới để duy trì bối cảnh hội thoại. Khi các yêu cầu tiếp theo bỏ qua lịch sử cuộc trò chuyện, Claude có quyền truy cập no vào thông tin được thiết lập trong các lần trao đổi trước đó và có thể yêu cầu lại thông tin đó.",
+    "category": "General",
     "tags": [
-      "Batch API",
-      "Limitations",
-      "Single-Turn"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 9",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/9-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
   },
   {
-    "id": "cca10",
+    "id": "cca-10",
     "questionNumber": 10,
-    "text": "You spent yesterday investigating a bug in the customer service agent's refund flow. You named that investigation session \"refund-trace\" and identified several promising leads. Today you want to continue exactly where you left off, preserving the full conversation history from yesterday. Which command correctly resumes your named session?",
+    "text": "In production, final reports often include claims that lack proper source attribution. An investigation finds that web-search and document-analysis agents correctly attach citations to their outputs, but the synthesis agent loses track of which sources support each conclusion when it combines findings. What is the most effective architectural change?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "claude --session refund-trace --continue"
-      },
-      {
-        "key": "B",
-        "text": "claude --load refund-trace"
-      },
-      {
-        "key": "C",
-        "text": "claude --fork refund-trace"
-      },
-      {
-        "key": "D",
-        "text": "claude --resume refund-trace"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Claude Code CLI",
-    "explanation": "Trong Claude Code CLI, lệnh chuẩn xác để mở lại một phiên làm việc đã lưu trữ theo tên là 'claude --resume <tên_phiên>' (hoặc '-r <tên_phiên>').",
-    "tags": [
-      "CLI Commands",
-      "Claude Code",
-      "Session Management"
-    ]
-  },
-  {
-    "id": "cca11",
-    "questionNumber": 11,
-    "text": "Your multi-agent system queries a documentation database containing thousands of technical articles organized by product area and topic. Agents currently make numerous exploratory tool calls to discover what documentation is available before performing their targeted searches, consuming significant tokens and increasing latency. What is the recommended approach to reduce these exploratory calls?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Cache the results of exploratory tool calls in a shared database that all agents query before initiating new searches"
-      },
-      {
-        "key": "B",
-        "text": "Increase each agent's max_tokens allocation to accommodate the additional exploratory tool call results"
-      },
-      {
-        "key": "C",
-        "text": "Expose a content catalog as an MCP resource that provides a browsable hierarchy of available documentation topics and article summaries"
-      },
-      {
-        "key": "D",
-        "text": "Pre-load complete summaries of all documentation articles into the system prompt for every agent invocation"
-      }
-    ],
-    "correctAnswers": [
-      "C"
-    ],
-    "category": "Model Context Protocol",
-    "explanation": "Khai báo danh mục nội dung (content catalog) như một tài nguyên MCP (MCP Resource) cung cấp cấu trúc cây giúp tác nhân có cái nhìn bao quát từ trước, tránh các cuộc gọi công cụ thăm dò tốn kém và mất thời gian.",
-    "tags": [
-      "MCP Resources",
-      "Optimization",
-      "Latency"
-    ]
-  },
-  {
-    "id": "cca12",
-    "questionNumber": 12,
-    "text": "Your team asks Claude Code to transform legacy configuration files from an INI format into YAML. Despite detailed prose instructions describing the mapping rules, Claude Code produces inconsistent key naming and indentation across different files. What is the most effective technique to resolve this inconsistency?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Add a general instruction in CLAUDE.md that says \"always be consistent when transforming configuration formats\""
-      },
-      {
-        "key": "B",
-        "text": "Increase the length of the prose instructions by adding more detailed paragraphs explaining each mapping rule"
-      },
-      {
-        "key": "C",
-        "text": "Switch to plan mode and ask Claude Code to outline its transformation approach before applying any changes"
-      },
-      {
-        "key": "D",
-        "text": "Provide 2–3 concrete input/output examples showing the exact transformation from specific INI sections to the expected YAML output"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Prompt Engineering",
-    "explanation": "Cung cấp các mẫu ví dụ vào/ra cụ thể (few-shot examples) là biện pháp tin cậy hàng đầu khi thực hiện các tác vụ định dạng hoặc chuyển đổi nghiêm ngặt, giúp mô hình bám sát cấu trúc mong muốn hơn văn bản mô tả.",
-    "tags": [
-      "Few-Shot",
-      "Configuration",
-      "Consistency"
-    ]
-  },
-  {
-    "id": "cca13",
-    "questionNumber": 13,
-    "text": "A team added \"only report high-confidence findings\" to their CI code review prompt after developers complained about too many low-value findings. The false positive rate, however, has not improved. What is the most likely reason this instruction failed to reduce false positives?",
-    "options": [
-      {
-        "key": "A",
-        "text": "The instruction conflicts with the default tool_choice setting, which forces the model to report all detected issues"
-      },
-      {
-        "key": "B",
-        "text": "The instruction does not define specific categories of issues to report or skip, so the model has no actionable criteria for filtering"
-      },
-      {
-        "key": "C",
-        "text": "The model always treats every finding as high-confidence because it cannot calibrate certainty without labeled training data"
-      },
-      {
-        "key": "D",
-        "text": "The CI pipeline's non-interactive mode prevents the model from processing system prompt instructions"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Prompt Engineering",
-    "explanation": "Các chỉ thị mang tính chủ quan, mơ hồ như 'high-confidence' hay 'be conservative' không đem lại tác dụng thực tế vì mô hình thiếu tiêu chí khách quan để lọc. Cần chỉ ra danh mục hoặc trường hợp cụ thể được phép hoặc bị cấm báo cáo.",
-    "tags": [
-      "Vague Instructions",
-      "CI/CD",
-      "Signal-to-Noise"
-    ]
-  },
-  {
-    "id": "cca14",
-    "questionNumber": 14,
-    "text": "When a web search subagent in a multi-agent research pipeline encounters a database timeout and returns the generic message \"search unavailable\" to the coordinator, what is the primary problem this creates?",
-    "options": [
-      {
-        "key": "A",
-        "text": "It causes the coordinator to immediately terminate the entire research workflow"
-      },
-      {
-        "key": "B",
-        "text": "It prevents the coordinator from distinguishing between a transient timeout and a permanent access restriction, limiting its ability to choose an appropriate recovery strategy"
-      },
-      {
-        "key": "C",
-        "text": "It forces the coordinator to retry the same query indefinitely until the service becomes available"
-      },
-      {
-        "key": "D",
-        "text": "It causes all other subagents to halt their processing until the error is resolved"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Agentic Architecture",
-    "explanation": "Lỗi chung chung ẩn giấu bản chất của sự cố. Việc che giấu này khiến tác nhân điều phối không thể phân biệt lỗi tạm thời (cần thử lại) với lỗi vĩnh viễn (cần bỏ qua hoặc chuyển hướng), làm giảm độ tin cậy của hệ thống.",
-    "tags": [
-      "Error Context",
-      "Recovery Strategy",
-      "Subagents"
-    ]
-  },
-  {
-    "id": "cca15",
-    "questionNumber": 15,
-    "text": "You need to locate all migration script files across a large monorepo. These files follow the naming convention YYYYMMDD_description.sql and are distributed across multiple service directories at various nesting levels. Which built-in tool is the most appropriate choice for this task?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Read, loading each service directory to manually scan for migration files"
-      },
-      {
-        "key": "B",
-        "text": "Grep, searching file contents for SQL migration keywords like CREATE TABLE or ALTER TABLE"
-      },
-      {
-        "key": "C",
-        "text": "Bash, running a custom script that parses directory listings and filters by file extension"
-      },
-      {
-        "key": "D",
-        "text": "Glob, using a pattern like **/_.sql to match migration file paths across all directories"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Claude Code CLI",
-    "explanation": "Công cụ 'Glob' được thiết kế chuyên biệt để duyệt và khớp tên file/đường dẫn một cách đệ quy trong thư mục dự án theo mẫu định sẵn, giúp tối ưu hóa hiệu suất và tiết kiệm cửa sổ ngữ cảnh hơn là quét nội dung hoặc dùng Bash.",
-    "tags": [
-      "Glob Tool",
-      "File Navigation",
-      "Claude Code"
-    ]
-  },
-  {
-    "id": "cca16",
-    "questionNumber": 16,
-    "text": "The document analysis agent returns its findings as narrative text that blends source citations into flowing paragraphs. When the coordinator passes these results to the synthesis agent, the final report frequently contains misattributed or missing source references. Which change to the inter-agent data format would best address this problem?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Have the document analysis agent return findings in a structured format that separates each claim from its metadata, including source URLs, document names, and page numbers"
-      },
-      {
-        "key": "B",
-        "text": "Instruct the synthesis agent to search the original documents again to independently verify all citations before generating the report"
-      },
-      {
-        "key": "C",
-        "text": "Add a post-processing regular expression step that extracts citations from the narrative paragraphs after synthesis is complete"
-      },
-      {
-        "key": "D",
-        "text": "Increase the synthesis agent's context window budget so it can process longer narrative passages without losing citation details"
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Agentic Architecture",
-    "explanation": "Áp dụng định dạng truyền tin có cấu trúc (như JSON) giữa các tác nhân giúp chia tách rõ ràng giữa nội dung khẳng định và siêu dữ liệu (trích dẫn), ngăn chặn việc mô hình bị nhầm lẫn hoặc thất lạc trích dẫn gốc.",
-    "tags": [
-      "Structured Handoffs",
-      "JSON",
-      "Citations"
-    ]
-  },
-  {
-    "id": "cca17",
-    "questionNumber": 17,
-    "text": "Your repository contains Python database migration files in three unrelated directories: db/migrations/, services/auth/migrations/, and tools/data/migrations/. All migration files must follow identical conventions for transaction handling and rollback patterns. What is the most maintainable approach to enforce these conventions?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Add all migration conventions to the root CLAUDE.md so they are always available, even when editing non-migration files"
-      },
-      {
-        "key": "B",
-        "text": "Place a CLAUDE.md file with identical content in each of the three migration directories"
-      },
-      {
-        "key": "C",
-        "text": "Create a shared migration-rules.md file and use @import in three separate subdirectory CLAUDE.md files to reference it"
-      },
-      {
-        "key": "D",
-        "text": "Create a single file in .claude/rules/ with a glob pattern like globs: [\"**/migrations/**/*.py\"] that matches migration files across all locations"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Claude Code CLI",
-    "explanation": "Cách tối ưu nhất trong Claude Code là tạo một file quy tắc duy nhất trong thư mục '.claude/rules/' kèm thuộc tính 'globs' để tự động nạp chỉ khi tác nhân sửa các file Python nằm trong bất cứ thư mục migration nào.",
-    "tags": [
-      "Project Configuration",
-      "Memory rules",
-      "Claude Code"
-    ]
-  },
-  {
-    "id": "cca18",
-    "questionNumber": 18,
-    "text": "A customer contacts your agent with a vague complaint: \"Something is wrong with my account. I've been overcharged and I think someone else has accessed it.\" The scope of each concern is unclear until initial lookups are performed. Which task decomposition strategy is most appropriate for handling this type of open-ended, multi-concern request?",
-    "options": [
-      {
-        "key": "A",
-        "text": "A predefined decision tree that maps each keyword in the customer's message to a specific tool call sequence"
-      },
-      {
-        "key": "B",
-        "text": "A fixed sequential pipeline that always runs fetch_customer, then get_order for the last 10 orders, then issue_refund for any billing discrepancy found"
-      },
-      {
-        "key": "C",
-        "text": "Dynamic adaptive decomposition that investigates each concern based on what is discovered at each step, generating follow-up subtasks as findings emerge"
-      },
-      {
-        "key": "D",
-        "text": "A single comprehensive prompt that includes all available customer data and asks the agent to resolve every concern in one turn"
-      }
-    ],
-    "correctAnswers": [
-      "C"
-    ],
-    "category": "Agentic Architecture",
-    "explanation": "Với các yêu cầu phức tạp và mơ hồ, chiến lược 'Dynamic adaptive decomposition' giúp tác nhân suy luận từng bước, tự khám phá manh mối và sinh các tiểu tác vụ tiếp nối dựa trên kết quả trung gian thu được.",
-    "tags": [
-      "Task Decomposition",
-      "Adaptive Agents",
-      "Reasoning"
-    ]
-  },
-  {
-    "id": "cca19",
-    "questionNumber": 19,
-    "text": "In the research platform, the report generation agent must only produce a final report after the synthesis agent has confirmed that all research areas have adequate coverage. A developer enforces this ordering with a system prompt instruction telling the report agent to wait for synthesis confirmation. Why is a programmatic prerequisite gate a better choice?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Programmatic prerequisite gates provide deterministic enforcement, whereas prompt-based instructions have a non-zero failure rate and cannot guarantee compliance"
-      },
-      {
-        "key": "B",
-        "text": "System prompts cannot reference other agents, so the report agent has no way to know the synthesis step exists"
-      },
-      {
-        "key": "C",
-        "text": "Prompt instructions are only evaluated at the start of a session and are ignored during subsequent tool calls"
-      },
-      {
-        "key": "D",
-        "text": "Programmatic gates run faster than prompt-based instructions, reducing overall pipeline latency"
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Security & Guardrails",
-    "explanation": "Do mô hình mang tính chất xác suất, việc hướng dẫn bằng prompt không thể đảm bảo 100% tuân thủ trong các logic luồng công việc nghiêm ngặt. Rào chắn bằng mã lập trình (code-level gate) đem lại sự thực thi tuyệt đối mang tính xác định.",
-    "tags": [
-      "Deterministic Gate",
-      "Reliability",
-      "Workflow Guardrails"
-    ]
-  },
-  {
-    "id": "cca20",
-    "questionNumber": 20,
-    "text": "A team provides four few-shot examples showing Claude how to distinguish acceptable defensive null-check patterns from genuine error-handling bugs during code review. After deployment, the agent correctly identifies a problematic error-handling pattern in a codebase written in a different language than any of the examples. What best explains this behavior?",
-    "options": [
-      {
-        "key": "A",
-        "text": "The model defaulted to flagging the unfamiliar pattern because it did not match any known acceptable examples"
-      },
-      {
-        "key": "B",
-        "text": "The few-shot examples taught the model the underlying judgment criteria for evaluating error handling which it generalized to the structurally similar but previously unseen pattern"
-      },
-      {
-        "key": "C",
-        "text": "The model recognized the specific language syntax from its pre-training data and applied language-specific review rules"
-      },
-      {
-        "key": "D",
-        "text": "The model decomposed the novel pattern into exact sub-patterns that matched elements from the few-shot examples"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Evaluation & Bias",
-    "explanation": "Mẫu few-shot không chỉ hướng dẫn cú pháp mà còn truyền đạt các tiêu chuẩn phán đoán trừu tượng (judgment criteria), cho phép mô hình học được khái niệm cốt lõi và suy luận rộng ra các ngôn ngữ lập trình khác.",
-    "tags": [
-      "Generalization",
-      "In-Context Learning",
-      "Few-Shot"
-    ]
-  },
-  {
-    "id": "cca21",
-    "questionNumber": 21,
-    "text": "The get_order tool in your customer service agent sometimes fails in two distinct ways: a temporary database timeout that resolves on retry, and a business policy violation when a customer requests a refund on a non-returnable item. Currently, both failures return a generic message: \"Operation failed.\" Why is returning structured error metadata with distinct error categories critical for these two scenarios?",
-    "options": [
-      {
-        "key": "A",
-        "text": "The MCP protocol requires every tool error to include a specific error category before the agent is allowed to continue the conversation"
-      },
-      {
-        "key": "B",
-        "text": "Without structured metadata distinguishing transient errors from business rule violations, the agent cannot determine whether to retry the call or explain the policy to the customer, leading to wasted retries or poor customer communication"
-      },
-      {
-        "key": "C",
-        "text": "Structured error metadata reduces token usage in the conversation history by replacing verbose error messages with compact error codes"
-      },
-      {
-        "key": "D",
-        "text": "Structured error metadata is primarily for logging and observability purposes and does not change how the agent responds to the customer"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Model Context Protocol",
-    "explanation": "Nếu không có siêu dữ liệu cấu trúc phân biệt giữa lỗi tạm thời (timeout) và lỗi nghiệp vụ (vi phạm chính sách), tác nhân sẽ không biết khi nào cần thử lại (retry) hoặc giải thích từ chối cho khách hàng.",
-    "tags": [
-      "MCP Tools",
-      "Structured Errors",
-      "Reliability"
-    ]
-  },
-  {
-    "id": "cca22",
-    "questionNumber": 22,
-    "text": "Your invoice extraction pipeline processes documents from multiple international vendors. Dates appear in varied formats across vendors, including \"15 March 2024,\" \"03/15/2024,\" and \"2024.03.15.\" The JSON schema enforces ISO 8601 format for date fields via tool_use, yet extracted dates occasionally retain the vendor's original format. What is the most effective way to ensure consistent date normalization across all vendor documents?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Adding a regex pattern constraint to the date field in the JSON schema to enforce the YYYY-MM-DD format"
-      },
-      {
-        "key": "B",
-        "text": "Including explicit format normalization rules in the extraction prompt and also enforcing the ISO 8601 date format in the output/tool schema (e.g., using format: \"date\" or strict tool use) so the model both normalizes and is validated"
-      },
-      {
-        "key": "C",
-        "text": "Creating a separate extraction schema for each vendor's known date format"
-      },
-      {
-        "key": "D",
-        "text": "Implementing a validation-retry loop that rejects extractions containing any non-ISO 8601 date"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Prompt Engineering",
-    "explanation": "Cách tiếp cận đa tầng là hiệu quả nhất: Hướng dẫn rõ ràng việc chuyển đổi định dạng trong prompt (để định hướng suy luận) kết hợp với ràng buộc cấu trúc kiểu 'format: \"date\"' trong schema để kiểm định đầu ra.",
-    "tags": [
-      "Normalization",
-      "JSON Schema",
-      "Multi-layered validation"
-    ]
-  },
-  {
-    "id": "cca23",
-    "questionNumber": 23,
-    "text": "Your team's project-level CLAUDE.md has grown to over 500 lines, covering testing conventions, API design standards, deployment procedures, and security policies. Engineers find it difficult to maintain, and Claude Code occasionally overlooks relevant guidelines. What is the recommended approach to improve organization and reliability of these configuration instructions?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Consolidate all guidelines into the system prompt configuration of the project's MCP servers"
-      },
-      {
-        "key": "B",
-        "text": "Move all content to user-level ~/.claude/CLAUDE.md so each engineer can maintain a personal copy of the instructions"
-      },
-      {
-        "key": "C",
-        "text": "Split the content into focused topic-specific files in .claude/rules/, such as testing.md, api-conventions.md, and deployment.md"
-      },
-      {
-        "key": "D",
-        "text": "Duplicate the full CLAUDE.md into every subdirectory of the project to ensure Claude Code always finds nearby instructions"
-      }
-    ],
-    "correctAnswers": [
-      "C"
-    ],
-    "category": "Claude Code CLI",
-    "explanation": "Tách nhỏ tệp CLAUDE.md khổng lồ thành các file quy tắc chuyên biệt và đặt trong '.claude/rules/' giúp nạp thông tin động và đúng lúc, tối ưu cửa sổ ngữ cảnh và tăng sự tuân thủ quy định.",
-    "tags": [
-      "Project Configuration",
-      "rules",
-      "Claude Code"
-    ]
-  },
-  {
-    "id": "cca24",
-    "questionNumber": 24,
-    "text": "Your customer support agent inconsistently decides when to escalate cases to human agents. Adding instructions like \"only escalate high-confidence cases\" and \"be conservative about escalation\" to the system prompt has not improved consistency. What approach would most effectively produce reliable escalation behavior?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Require the agent to attempt autonomous resolution for at least three turns before allowing any escalation"
-      },
-      {
-        "key": "B",
-        "text": "Implement sentiment analysis on customer messages and trigger escalation when negative sentiment exceeds a defined threshold"
-      },
-      {
-        "key": "C",
-        "text": "Have the agent self-report a confidence score on each turn and escalate whenever it falls below 60%"
-      },
-      {
-        "key": "D",
-        "text": "Add explicit escalation criteria and include few-shot examples in the prompt (for example, in the first user message) that demonstrate specific scenarios where the agent should escalate versus resolve autonomously"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Prompt Engineering",
-    "explanation": "Thay thế các hướng dẫn chung chung bằng tiêu chí phân loại rõ ràng và kèm các ví dụ few-shot chỉ ra ranh giới giữa việc tự xử lý và việc cần chuyển giao cho con người là phương án tối ưu.",
-    "tags": [
-      "Escalation",
-      "Few-Shot",
-      "Decision Boundaries"
-    ]
-  },
-  {
-    "id": "cca25",
-    "questionNumber": 25,
-    "text": "Your team must replace the project's logging library across 60+ source files. The migration involves auditing current usage patterns, selecting appropriate replacement APIs for different log levels, and applying consistent changes. What is the recommended workflow for completing this task in Claude Code?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Start 60 separate Claude Code sessions in parallel, one per file, each using direct execution independently"
-      },
-      {
-        "key": "B",
-        "text": "Use plan mode for the full duration of the migration, including both the investigation phase and every individual file modification"
-      },
-      {
-        "key": "C",
-        "text": "Use direct execution for the entire migration, processing each file one at a time without any upfront investigation"
-      },
-      {
-        "key": "D",
-        "text": "Start with plan mode to audit usage patterns and design the migration strategy, then switch to direct execution to apply the changes according to the plan"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Claude Code CLI",
-    "explanation": "Quy trình chuẩn 'Khám phá -> Lên kế hoạch -> Thực thi' là tối ưu nhất. Lập kế hoạch trước qua '/plan' (đọc hiểu kiến trúc không sửa đổi), sau đó chuyển sang thực thi trực tiếp để viết code nhất quán.",
-    "tags": [
-      "Plan Mode",
-      "Workflow",
-      "Refactoring"
-    ]
-  },
-  {
-    "id": "cca26",
-    "questionNumber": 26,
-    "text": "After the web search agent executes a tool and receives results during its agentic loop, the developer appends the tool results to the conversation history before sending the next API request. What is the primary purpose of including these results in the conversation?",
-    "options": [
-      {
-        "key": "A",
-        "text": "To allow the API to deduplicate repeated tool calls and reduce unnecessary computation"
-      },
-      {
-        "key": "B",
-        "text": "To enable the API to cache the tool results server-side for faster processing of subsequent requests"
-      },
-      {
-        "key": "C",
-        "text": "To satisfy an API validation rule that requires strictly alternating message roles in the conversation array"
-      },
-      {
-        "key": "D",
-        "text": "To enable the model to incorporate the new information into its reasoning and determine the appropriate next action in the loop"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Agentic Architecture",
-    "explanation": "Bằng cách chèn nội dung 'tool_result' như một tin nhắn mới của người dùng, mô hình nhận được đầu ra thực tế của công cụ để đưa vào suy luận tiếp nối, quyết định xem nhiệm vụ đã hoàn tất chưa.",
-    "tags": [
-      "Tool Integration",
-      "Loop Reasoning",
-      "Messages API"
-    ]
-  },
-  {
-    "id": "cca27",
-    "questionNumber": 27,
-    "text": "One of your engineers creates a slash command that scaffolds a new REST API endpoint with standardized error handling and validation. The team agrees this command should be available to all developers working on the project without requiring any manual setup on individual machines. Which configuration achieves this goal?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Define the command inline within the root CLAUDE.md file using @import syntax"
-      },
-      {
-        "key": "B",
-        "text": "Place the command file in the project's .claude/commands/ directory and commit it to version control"
-      },
-      {
-        "key": "C",
-        "text": "Place the command file in ~/.claude/commands/ on the engineer's machine and share the file path in a wiki"
-      },
-      {
-        "key": "D",
-        "text": "Add the command as a SKILL.md file in ~/.claude/skills/ with argument-hint frontmatter configured"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Claude Code CLI",
-    "explanation": "Claude Code cho phép lưu trữ các lệnh custom theo cấp dự án trong thư mục '.claude/commands/'. Khi đẩy lên Git, toàn bộ các thành viên khác nạp về đều tự động sử dụng được mà không cần cài đặt lại.",
-    "tags": [
-      "Custom Commands",
-      "Collaboration",
-      "Claude Code"
-    ]
-  },
-  {
-    "id": "cca28",
-    "questionNumber": 28,
-    "text": "Your customer service agent connects to fetch_customer and get_order through MCP. The fetch_customer tool returns created_date as a Unix timestamp (e.g., 1718200000), while get_order returns order_date in ISO 8601 format (e.g., \"2024-06-12T15:00:00Z\"). The agent sometimes misinterprets these inconsistent formats when reasoning about order timelines. What is the recommended approach to ensure consistent date handling before the agent processes these results?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Use few-shot examples in the prompt showing the agent how to correctly interpret both Unix timestamps and ISO 8601 dates"
-      },
-      {
-        "key": "B",
-        "text": "Implement a PostToolUse hook that normalizes date formats from both tools into a consistent representation before the agent processes the results"
-      },
-      {
-        "key": "C",
-        "text": "Add instructions to the system prompt telling the agent to mentally convert all dates to a single format before reasoning about timelines"
-      },
-      {
-        "key": "D",
-        "text": "Modify each MCP tool server's internal implementation to always return dates in the same format"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Model Context Protocol",
-    "explanation": "Chuẩn hóa dữ liệu tại gốc (ngay trong máy chủ MCP) là giải pháp bền vững và hiệu quả nhất, loại bỏ gánh nặng suy luận logic ngày tháng khỏi LLM và giúp tiết kiệm token.",
-    "tags": [
-      "Data Normalization",
-      "MCP Server",
-      "Best Practices"
-    ]
-  },
-  {
-    "id": "cca29",
-    "questionNumber": 29,
-    "text": "Your automated code review agent flags too many false positives when checking whether code comments are accurate. Developers have started ignoring the agent's output entirely. Which prompt modification would most effectively reduce false positives in the comment accuracy checks?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Specifying \"flag comments only when the described behavior directly contradicts the actual code logic\""
-      },
-      {
-        "key": "B",
-        "text": "Adding \"only report high-confidence findings about comment accuracy\" to the system prompt"
-      },
-      {
-        "key": "C",
-        "text": "Instructing the agent to \"be conservative and avoid flagging minor comment issues\""
-      },
-      {
-        "key": "D",
-        "text": "Including a general instruction to \"prioritize precision over recall when reviewing code comments\""
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Prompt Engineering",
-    "explanation": "Sử dụng quy tắc hành vi khách quan và chặt chẽ ('chỉ báo lỗi khi comment mâu thuẫn trực tiếp với logic code') giúp mô hình bỏ qua các phàn nàn nhỏ về câu từ hay phong cách, từ đó giảm thiểu false positives.",
-    "tags": [
-      "Constraint Design",
-      "False Positives",
-      "Code Review"
-    ]
-  },
-  {
-    "id": "cca30",
-    "questionNumber": 30,
-    "text": "In a multi-agent research system, the synthesis subagent is responsible for combining findings from other agents into a cohesive report. During testing, you observe that this subagent frequently initiates its own web searches and document retrievals instead of synthesizing the provided findings. The synthesis agent currently has access to all 18 tools in the system. What is the most effective way to resolve this behavior?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Increase the amount of context provided to the synthesis agent so it has less reason to perform its own searches"
-      },
-      {
-        "key": "B",
-        "text": "Restrict the synthesis agent's allowedTools to only those relevant to its synthesis role removing search and retrieval tools"
-      },
-      {
-        "key": "C",
-        "text": "Configure tool_choice: \"any\" so the synthesis agent is forced to call a tool rather than returning text reducing off-task behavior"
-      },
-      {
-        "key": "D",
-        "text": "Add detailed prompt instructions telling the synthesis agent to focus only on combining findings and not to use search tools"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Agentic Architecture",
-    "explanation": "Áp dụng nguyên tắc Đặc quyền tối thiểu (Principle of Least Privilege). Bằng cách giới hạn danh sách công cụ ('allowedTools') của tác nhân tổng hợp, bạn chặn đứng khả năng nó đi thực hiện các hành vi sai mục đích.",
-    "tags": [
-      "Principle of Least Privilege",
-      "Tool Scoping",
-      "Off-task behavior"
-    ]
-  },
-  {
-    "id": "cca31",
-    "questionNumber": 31,
-    "text": "An engineer asks Claude Code to fix a bug where a single function throws an error when receiving a null input. The stack trace clearly identifies the file and line number, and the fix requires adding one conditional check. Which mode should the engineer use for this task?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Direct execution combined with the Explore subagent to verify no other functions have the same issue before making the change"
-      },
-      {
-        "key": "B",
-        "text": "Plan mode, because every code change benefits from an investigation phase before implementation"
-      },
-      {
-        "key": "C",
-        "text": "Plan mode, because null handling requires evaluating multiple valid implementation strategies across the codebase"
-      },
-      {
-        "key": "D",
-        "text": "Direct execution, because the task is well-scoped with a clear fix in a single file and does not require architectural exploration"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Claude Code CLI",
-    "explanation": "Với các sửa đổi nhỏ, rõ ràng và đã biết trước vị trí, chế độ Thực thi trực tiếp (Direct execution) là nhanh chóng và tiết kiệm nhất, không cần thiết phải chạy qua chế độ lập kế hoạch quy mô lớn.",
-    "tags": [
-      "Execution Mode",
-      "Claude Code",
-      "Efficiency"
-    ]
-  },
-  {
-    "id": "cca32",
-    "questionNumber": 32,
-    "text": "Your team wants the customer service agent to audit the resolution quality of 50 past support tickets. Each ticket involves different product categories, refund amounts, and escalation decisions. You need the agent to evaluate each ticket's handling individually and then identify systemic patterns across the full set. Which prompt chaining pattern best supports this workflow?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Send all 50 tickets in a single prompt and instruct the agent to evaluate quality and identify patterns in one pass"
-      },
-      {
-        "key": "B",
-        "text": "Randomly sample five tickets, evaluate them in a single prompt, and extrapolate the findings to the remaining 45 tickets"
-      },
-      {
-        "key": "C",
-        "text": "Have the agent process tickets in pairs, comparing each pair for similarities before aggregating all pair comparisons at the end"
-      },
-      {
-        "key": "D",
-        "text": "Run per-ticket analysis passes that evaluate each ticket individually, then run a separate cross-ticket synthesis pass to identify systemic patterns across all evaluations"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Prompt Engineering",
-    "explanation": "Đây là mô hình Map-Reduce nổi tiếng trong prompt chaining: Phân tích từng thực thể riêng biệt (Map) để tránh loãng sự chú ý, sau đó chạy lượt tổng hợp (Reduce) để rút ra các mô thức toàn cục.",
-    "tags": [
-      "Map-Reduce",
-      "Prompt Chaining",
-      "Batch Audit"
-    ]
-  },
-  {
-    "id": "cca33",
-    "questionNumber": 33,
-    "text": "Your CI code review system generates structured JSON findings for pull requests, and developers can dismiss findings they consider incorrect. Over the past quarter, the dismissal rate has risen to 40%, but you cannot determine which types of code constructs are triggering the most dismissed findings. What should you add to each structured finding to enable systematic analysis of why developers are dismissing specific results?",
-    "options": [
-      {
-        "key": "A",
-        "text": "A review_instance_id field linking each finding to the specific Claude session that generated it"
-      },
-      {
-        "key": "B",
-        "text": "A detected_pattern field describing the specific code construct that triggered the finding enabling correlation between dismissed findings and recurring pattern types"
-      },
-      {
-        "key": "C",
-        "text": "A timestamp field recording when the finding was generated to correlate dismissals with time of day"
-      },
-      {
-        "key": "D",
-        "text": "A confidence_score field with a numeric value so dismissed findings can be filtered by the model's self-reported certainty"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Security & Guardrails",
-    "explanation": "Bổ sung trường 'detected_pattern' chỉ ra chính xác loại lỗi mã nguồn giúp bạn phân loại và thống kê xem lỗi nào thường bị nhà phát triển bỏ qua nhất, từ đó tinh chỉnh lại prompt hệ thống có trọng tâm.",
-    "tags": [
-      "Telemetry",
-      "Review Accuracy",
-      "JSON Feedback"
-    ]
-  },
-  {
-    "id": "cca34",
-    "questionNumber": 34,
-    "text": "A customer-facing support agent built with the Claude Agent SDK handles multi-issue sessions where customers raise several complaints in one conversation. After many turns, the agent begins confusing order details between different issues, such as applying the wrong refund amount to the wrong order. What is the most effective approach to prevent this problem?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Instruct the agent in the system prompt to carefully track all issue details throughout the conversation"
-      },
-      {
-        "key": "B",
-        "text": "Extract structured issue data such as order IDs, amounts, and statuses into a persistent case facts block included in each prompt"
-      },
-      {
-        "key": "C",
-        "text": "Summarize the full conversation every five turns to keep context usage low"
-      },
-      {
-        "key": "D",
-        "text": "Limit multi-issue sessions to a maximum of two issues and require the customer to start new sessions for additional complaints"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Prompt Engineering",
-    "explanation": "Trích xuất và duy trì một vùng thông tin thực tế dạng cấu trúc cứng ('case facts block') ở đầu mỗi prompt là cách hiệu quả nhất để giữ mô hình không bị nhầm lẫn dữ liệu qua các lượt chat dài.",
-    "tags": [
-      "State Management",
-      "Case Facts",
-      "SDK Best Practices"
-    ]
-  },
-  {
-    "id": "cca35",
-    "questionNumber": 35,
-    "text": "Your project enforces specific conventions for all Jest test files, including fixture usage patterns and assertion styles. These test files are distributed across dozens of directories throughout the repository (e.g., src/components/, src/services/, src/utils/, lib/helpers/). You need these conventions to load automatically only when Claude Code edits a test file. Which configuration correctly implements this?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Place the conventions in a user-level ~/.claude/CLAUDE.md file and instruct each developer to add them manually"
-      },
-      {
-        "key": "B",
-        "text": "Create a file in .claude/rules/ with YAML frontmatter containing paths: [\"**/*.test.ts\", \"**/*.test.tsx\"] to target test files across all directories"
-      },
-      {
-        "key": "C",
-        "text": "Add the testing conventions to the project-level CLAUDE.md so they are loaded during every interaction regardless of file type"
-      },
-      {
-        "key": "D",
-        "text": "Create a CLAUDE.md file inside each directory that contains test files, repeating the conventions in every location"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Claude Code CLI",
-    "explanation": "Sử dụng quy tắc định vị theo đường dẫn (path-scoped rules) qua frontmatter YAML trong thư mục '.claude/rules/' giúp các chỉ thị luôn nằm im và chỉ kích hoạt khi nạp đúng các file kiểm thử tương ứng.",
-    "tags": [
-      "Path Scoped Rules",
-      "Project Rules",
-      "Claude Code"
-    ]
-  },
-  {
-    "id": "cca36",
-    "questionNumber": 36,
-    "text": "After submitting 200 document extraction requests to the Message Batches API, you discover that 15 requests failed because the source documents exceeded context limits. You need to resubmit only the failed requests after chunking those documents into smaller sections. How should you identify which specific documents need resubmission?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Use the custom_id field assigned to each request to correlate failures back to the specific source documents"
-      },
-      {
-        "key": "B",
-        "text": "Query the batch status endpoint with the batch_id to retrieve an ordered index list of failed requests"
-      },
-      {
-        "key": "C",
-        "text": "Parse the error response bodies to extract document filenames from the original prompt text"
-      },
-      {
-        "key": "D",
-        "text": "Compare the count of successful results against the original ordered submission list to determine which entries are missing"
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Message Batches API",
-    "explanation": "Do kết quả trả về từ Batch API không bảo đảm thứ tự ban đầu, việc định danh duy nhất thông qua 'custom_id' cho mỗi yêu cầu là cơ chế chuẩn để khớp kết quả hoặc phát hiện lỗi của từng tài liệu.",
-    "tags": [
-      "custom_id",
-      "Batch Correlation",
-      "Error Tracking"
-    ]
-  },
-  {
-    "id": "cca37",
-    "questionNumber": 37,
-    "text": "Within the research automation platform, the web search agent discovers a set of URLs that the document analysis agent needs to process. Which approach correctly follows the hub-and-spoke orchestration pattern?",
-    "options": [
-      {
-        "key": "A",
-        "text": "The web search agent writes URLs to a shared memory store that the document analysis agent reads concurrently during its own execution"
-      },
-      {
-        "key": "B",
-        "text": "Both agents independently poll a shared message queue where the web search agent deposits URLs for the document analysis agent to consume"
-      },
-      {
-        "key": "C",
-        "text": "The web search agent invokes the document analysis agent directly through a peer-to-peer call, passing the URLs without coordinator involvement"
-      },
-      {
-        "key": "D",
-        "text": "The coordinator receives the URLs from the web search agent and includes them in the prompt when delegating work to the document analysis agent"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Agentic Architecture",
-    "explanation": "Trong mô hình hình sao (hub-and-spoke / orchestrator-worker), các tác nhân con không trao đổi trực tiếp mà bắt buộc phải định tuyến thông tin qua điều phối viên trung tâm để kiểm soát luồng.",
-    "tags": [
-      "Hub-and-Spoke",
-      "Orchestration",
-      "Subagents"
-    ]
-  },
-  {
-    "id": "cca38",
-    "questionNumber": 38,
-    "text": "A customer reaches your support agent and immediately says, \"I would like to speak with a real person, please.\" The agent has access to tools that could likely resolve the customer's underlying billing issue quickly. What is the correct agent behavior in this situation?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Inform the customer that billing issues can typically be resolved faster by the automated agent and proceed with investigation"
-      },
-      {
-        "key": "B",
-        "text": "Acknowledge the customer's request and immediately escalate to a human agent"
-      },
-      {
-        "key": "C",
-        "text": "Ask the customer to describe their issue so the agent can attempt a quick resolution before transferring"
-      },
-      {
-        "key": "D",
-        "text": "Investigate the billing issue silently and then escalate, providing the human agent with a complete resolution summary"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Security & Guardrails",
-    "explanation": "Best practice hàng đầu của tác nhân hỗ trợ khách hàng là tuyệt đối tôn trọng yêu cầu trò chuyện với con người ngay khi được nhắc tới, tránh kéo dài thời gian gây bực bội cho người dùng.",
-    "tags": [
-      "Human Handoff",
-      "Agent Design",
-      "UX Guidelines"
-    ]
-  },
-  {
-    "id": "cca39",
-    "questionNumber": 39,
-    "text": "A user submits a simple factual question to the research automation platform that can be fully answered with a single web lookup. The coordinator has access to the web search, document analysis, synthesis, and report generation subagents. How should the coordinator handle this query differently than a complex multi-faceted research topic?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Always invoke the full pipeline of all four subagents to ensure consistent and thorough output regardless of query complexity"
-      },
-      {
-        "key": "B",
-        "text": "Analyze the query requirements and invoke only the web search agent, skipping document analysis, synthesis, and report generation when they are unnecessary"
-      },
-      {
-        "key": "C",
-        "text": "Forward the question to the user interface without involving any subagents since it is a simple query"
-      },
-      {
-        "key": "D",
-        "text": "Route the query to the synthesis agent first so it can assess whether additional subagents are needed"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Agentic Architecture",
-    "explanation": "Định tuyến động (dynamic routing) giúp tối ưu hóa chi phí và tốc độ bằng cách chỉ kích hoạt các subagents thực sự cần thiết cho độ phức tạp của câu hỏi hiện tại, lược bỏ các bước cồng kềnh thừa thãi.",
-    "tags": [
-      "Dynamic Routing",
-      "Cost Optimization",
-      "Orchestrator"
-    ]
-  },
-  {
-    "id": "cca40",
-    "questionNumber": 40,
-    "text": "After completing an initial analysis of your customer service agent's escalation logic, you want to evaluate two alternative strategies: one using threshold-based triggers and another using policy-gap detection. Both strategies should build on the same baseline understanding of the current codebase without repeating the initial analysis. Which session management approach allows you to explore both independently from the shared baseline?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Start two new sessions from scratch and re-run the codebase analysis in each before exploring the respective strategy"
-      },
-      {
-        "key": "B",
-        "text": "Copy the session transcript into two new prompts manually and start fresh sessions with the pasted context"
-      },
-      {
-        "key": "C",
-        "text": "Resume the original session with --resume and explore both approaches sequentially, using /compact between them to clear context"
-      },
-      {
-        "key": "D",
-        "text": "Use fork_session to create two independent branches from the shared analysis baseline, exploring each strategy in its own branch"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Claude Code CLI",
-    "explanation": "Tính năng chia nhánh phiên 'fork_session' (hoặc lệnh fork tương tự trong CLI) cho phép rẽ nhánh cuộc hội thoại từ một điểm mốc cố định, giúp thử nghiệm các chiến lược khác nhau mà không phải chạy lại từ đầu.",
-    "tags": [
-      "fork_session",
-      "Claude Code",
-      "Experimentation"
-    ]
-  },
-  {
-    "id": "cca41",
-    "questionNumber": 41,
-    "text": "Your team's automated code review pipeline generates hundreds of findings weekly, but developers report that many are low-value. With limited reviewer bandwidth, which approach best ensures human reviewers focus on the findings most likely to be actionable?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Filter findings by source file directory and route only findings in security-critical paths to human reviewers"
-      },
-      {
-        "key": "B",
-        "text": "Run a verification pass where the model self-reports a confidence score alongside each finding then use confidence thresholds to route uncertain findings to human reviewers first"
-      },
-      {
-        "key": "C",
-        "text": "Count the lines of code affected by each finding and prioritize findings with the largest code surface area for review"
-      },
-      {
-        "key": "D",
-        "text": "Aggregate all findings by category and present only one representative example per category to reduce total reviewer volume"
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Security & Guardrails",
-    "explanation": "Lọc cảnh báo dựa trên mức độ rủi ro (như các thư mục nhạy cảm chứa code thanh toán, xác thực) là cách thiết thực nhất để điều tiết băng thông rà soát của con người vào các chỗ trọng yếu.",
-    "tags": [
-      "Risk-based Filtering",
-      "Noise Reduction",
-      "Code Review"
-    ]
-  },
-  {
-    "id": "cca42",
-    "questionNumber": 42,
-    "text": "Within your customer service system, the agent has four well-described MCP tools: fetch_customer, get_order, issue_refund, and handoff_to_human. Despite clear tool descriptions, whenever a customer mentions the word \"refund,\" the agent consistently calls handoff_to_human instead of issue_refund, even for straightforward cases within policy. After reviewing the configuration, you find the system prompt includes: \"When a customer mentions a refund, always ensure a human is involved.\" What is the most likely cause of this behavior and how should it be resolved?",
-    "options": [
-      {
-        "key": "A",
-        "text": "The handoff_to_human tool description overlaps with issue_refund, so both tools should be renamed to more distinctive names"
-      },
-      {
-        "key": "B",
-        "text": "The issue_refund tool description needs to explicitly state that it should be selected over handoff_to_human for standard refund requests"
-      },
-      {
-        "key": "C",
-        "text": "The keyword-sensitive instruction in the system prompt creates an unintended association that overrides the tool descriptions, so the prompt should be revised to specify precise conditions requiring human involvement"
-      },
-      {
-        "key": "D",
-        "text": "The agent's tool_choice setting should be changed to forced selection of issue_refund whenever refund-related keywords are detected in the input"
-      }
-    ],
-    "correctAnswers": [
-      "C"
-    ],
-    "category": "Prompt Engineering",
-    "explanation": "Do chỉ thị trong prompt hệ thống có trọng số rất cao, một luật quá tuyệt đối về từ khóa ('luôn có người tham gia khi nhắc tới refund') sẽ đè lên mô tả chi tiết của công cụ. Cần tinh chỉnh prompt rõ ràng hơn.",
-    "tags": [
-      "System Prompt weight",
-      "Keyword Associations",
-      "Tool selection conflict"
-    ]
-  },
-  {
-    "id": "cca43",
-    "questionNumber": 43,
-    "text": "A document analysis subagent encounters a timeout when accessing one of three external data sources, but it successfully retrieves data from the other two. Which error handling approach represents a best practice for this situation?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Queue the failed query for background retry and block the coordinator from proceeding until the retry completes or times out"
-      },
-      {
-        "key": "B",
-        "text": "Terminate the entire analysis workflow and report the timeout failure to the user"
-      },
-      {
-        "key": "C",
-        "text": "Return the results from the two successful sources as if all three queries succeeded, omitting any indication that one source failed"
-      },
-      {
-        "key": "D",
-        "text": "Attempt local recovery for the transient failure, and if unresolved, propagate structured error context with partial results to the coordinator"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Agentic Architecture",
-    "explanation": "Trong hệ thống tác nhân phức tạp, chiến lược phục hồi lỗi tốt nhất là thử tự sửa chữa cục bộ, và nếu không được, trả về kết quả một phần kèm siêu dữ liệu mô tả phần lỗi để hệ thống hạ cấp mượt mà.",
-    "tags": [
-      "Graceful Degradation",
-      "Error Propagation",
-      "Subagents"
-    ]
-  },
-  {
-    "id": "cca44",
-    "questionNumber": 44,
-    "text": "While updating a large configuration file, Claude Code's Edit tool fails with an error indicating the target text appears in multiple locations within the file. The specific section that needs modification contains boilerplate text identical to several other sections. What is the recommended fallback approach?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Use Bash to run a sed command that targets the specific line number for replacement"
-      },
-      {
-        "key": "B",
-        "text": "Use Read to load the full file contents, apply the modification, and then use Write to save the complete updated file"
-      },
-      {
-        "key": "C",
-        "text": "Split the configuration file into smaller files so that each section contains unique text for Edit to match"
-      },
-      {
-        "key": "D",
-        "text": "Retry the Edit tool with a larger context window setting to improve text matching precision"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Claude Code CLI",
-    "explanation": "Edit dựa trên cơ chế so khớp chuỗi duy nhất. Nếu chuỗi bị trùng lặp nhiều nơi, phương án fallback an toàn và chuẩn mực nhất là đọc toàn bộ file ('Read'), thực hiện chỉnh sửa trong bộ nhớ rồi ghi đè lại ('Write').",
-    "tags": [
-      "Edit Fallback",
-      "Read-Write",
-      "Claude Code"
-    ]
-  },
-  {
-    "id": "cca45",
-    "questionNumber": 45,
-    "text": "A user sends a single request to the research platform asking it to investigate three distinct subtopics: market size projections, regulatory developments, and competitive landscape. Which strategy should the coordinator agent use to handle this multi-faceted request efficiently?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Decompose the request into three distinct research items, delegate each to appropriate subagents for parallel investigation, then synthesize the results into a unified response"
-      },
-      {
-        "key": "B",
-        "text": "Ask the user to resubmit the request as three separate queries so each can be routed to the correct subagent independently"
-      },
-      {
-        "key": "C",
-        "text": "Route the full request to the synthesis agent, which determines what information it needs and delegates research accordingly"
-      },
-      {
-        "key": "D",
-        "text": "Forward the entire request to the web search agent and have it address all three subtopics sequentially within a single invocation"
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Agentic Architecture",
-    "explanation": "Chiến lược phân tách công việc (decomposing) và giao cho các subagents xử lý song song, sau đó gộp kết quả là cách vận hành chuẩn mực giúp giảm thời gian chờ đợi (latency) đáng kể.",
-    "tags": [
-      "Task Decomposition",
-      "Parallel Execution",
-      "Orchestrator"
-    ]
-  },
-  {
-    "id": "cca46",
-    "questionNumber": 46,
-    "text": "Your extraction system has the model output field-level confidence scores to route low-confidence extractions to human review. However, reviewers report that many supposedly high-confidence extractions contain errors, while some flagged low-confidence ones are correct. What is the most effective way to improve the accuracy of this routing?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Lower the confidence threshold significantly so that nearly all extractions are routed to human review"
-      },
-      {
-        "key": "B",
-        "text": "Replace field-level confidence scores with a single document-level confidence score to simplify the routing logic"
-      },
-      {
-        "key": "C",
-        "text": "Remove confidence scoring entirely and instead route all extractions from specific document types known to be error-prone to human review"
-      },
-      {
-        "key": "D",
-        "text": "Calibrate the confidence score thresholds using a labeled validation set of known-correct extractions to align reported confidence with actual accuracy"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Evaluation & Bias",
-    "explanation": "Mức độ tự tin tự khai báo (self-reported confidence) của LLM thường chưa được căn chỉnh chuẩn xác (uncalibrated). Việc đo đạc trên tập dữ liệu kiểm định nhãn chuẩn để hiệu chỉnh lại ngưỡng phân phối là chuẩn mực khoa học.",
-    "tags": [
-      "Calibration",
-      "Confidence Scores",
-      "Human-in-the-loop"
-    ]
-  },
-  {
-    "id": "cca47",
-    "questionNumber": 47,
-    "text": "A team needs to integrate Claude's output with a downstream inventory management system that requires strictly valid JSON conforming to a predefined schema. They are evaluating different approaches to ensure the output never contains JSON syntax errors such as missing brackets, trailing commas, or unescaped characters. Which approach provides the strongest guarantee of schema-compliant, syntax-error-free output?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Defining the required structure as a tool's JSON schema input parameters and extracting data from the tool_use response"
-      },
-      {
-        "key": "B",
-        "text": "Providing a detailed JSON template in the system prompt with instructions to replicate the exact structure"
-      },
-      {
-        "key": "C",
-        "text": "Appending few-shot examples of correctly formatted JSON to every extraction prompt"
-      },
-      {
-        "key": "D",
-        "text": "Parsing the model's freeform text response with a JSON validator and requesting corrections when syntax errors are detected"
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Security & Guardrails",
-    "explanation": "Sử dụng 'Tool Use' (hoặc Structured Outputs của API) kích hoạt chế độ giải mã ràng buộc (constrained decoding), cam đoan về mặt toán học rằng văn bản sinh ra khớp 100% với JSON schema đã định nghĩa.",
-    "tags": [
-      "Constrained Decoding",
-      "Structured Outputs",
-      "JSON Schema"
-    ]
-  },
-  {
-    "id": "cca48",
-    "questionNumber": 48,
-    "text": "A developer productivity agent has access to a generic fetch_url tool that can retrieve content from any URL on the internet. During testing, the agent occasionally fetches unrelated external websites when it should only load internal API documentation hosted on the company's documentation server. Which approach most reliably prevents this misuse?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Add a system prompt instruction specifying that fetch_url should only be used for internal documentation URLs"
-      },
-      {
-        "key": "B",
-        "text": "Set tool_choice to force fetch_url on every turn so the agent always uses the tool in a predictable manner"
-      },
-      {
-        "key": "C",
-        "text": "Replace fetch_url with a load_internal_docs tool that validates URLs against the internal documentation domain before making the request"
-      },
-      {
-        "key": "D",
-        "text": "Implement a PostToolUse hook that checks the fetched content and discards results from non-documentation domains"
-      }
-    ],
-    "correctAnswers": [
-      "C"
-    ],
-    "category": "Security & Guardrails",
-    "explanation": "Quy tắc an ninh tối thượng: Đừng dựa vào prompt để phòng chống lạm dụng. Hãy thay thế công cụ vạn năng bằng công cụ có phạm vi cực kỳ hẹp và kiểm soát tên miền (allowlist) trực tiếp trong mã code nghiệp vụ.",
-    "tags": [
-      "Tool Securing",
-      "Security Boundaries",
-      "Guardrails"
-    ]
-  },
-  {
-    "id": "cca49",
-    "questionNumber": 49,
-    "text": "You are building an invoice extraction pipeline where Claude extracts line items and totals from scanned invoices. Occasionally, extracted line item amounts do not add up to the extracted total, but both values exist in the source document. Which schema design most effectively enables automatic detection of these arithmetic discrepancies?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Include both a \"calculated_total\" field for the sum of extracted line items and a \"stated_total\" field for the document's printed total, then compare them programmatically to flag mismatches"
-      },
-      {
-        "key": "B",
-        "text": "Include a \"confidence_score\" field for the total amount and reject any extraction where the confidence falls below 0.9"
-      },
-      {
-        "key": "C",
-        "text": "Add a required \"total_verified\" boolean that the model must set to true after confirming the total matches the line items"
-      },
-      {
-        "key": "D",
-        "text": "Require the model to extract the total amount in two separate fields and average the two values to improve accuracy"
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Evaluation & Bias",
-    "explanation": "Do LLM làm toán rất kém và mang tính xác suất, thiết kế schema yêu cầu trích xuất dữ liệu thô (stated_total và line items) để nhường quyền tính toán và đối chiếu logic kiểm soát lại cho mã lập trình phía sau.",
-    "tags": [
-      "Arithmetic Validation",
-      "Schema Design",
-      "Reliability"
-    ]
-  },
-  {
-    "id": "cca50",
-    "questionNumber": 50,
-    "text": "The agent in your customer service system has a single MCP tool called manage_account that handles profile updates, password resets, subscription changes, and account deactivation. During testing, the agent frequently sends incorrect parameters because it conflates these distinct operations. What is the recommended approach to improve the agent's tool selection reliability?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Implement a PostToolUse hook that validates the parameters after each manage_account call and retries with corrected parameters if the operation type was wrong"
-      },
-      {
-        "key": "B",
-        "text": "Use tool_choice forced selection to always call manage_account and add a required \"operation_type\" enum parameter to disambiguate the intended action"
-      },
-      {
-        "key": "C",
-        "text": "Add a comprehensive description to manage_account that lists all four operations with their respective required parameters and usage conditions"
-      },
-      {
-        "key": "D",
-        "text": "Split manage_account into purpose-specific tools such as update_profile, reset_password, change_subscription, and deactivate_account, each with clearly defined input/output contracts"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Model Context Protocol",
-    "explanation": "Khuyến nghị cốt lõi của Anthropic về thiết kế công cụ: Tránh các siêu công cụ tích hợp quá nhiều thứ (all-in-one). Hãy phân tách thành các công cụ đơn chức năng, có tên rõ ràng và hợp đồng tham số đơn giản.",
-    "tags": [
-      "Tool Design",
-      "Single-purpose Tools",
-      "MCP Tools"
-    ]
-  },
-  {
-    "id": "cca51",
-    "questionNumber": 51,
-    "text": "Your team's CI/CD pipeline is configured to run Claude Code for automated code review on every pull request. During the first test run, the pipeline job hangs indefinitely and eventually times out without producing any output. What is the most likely cause of this behavior?",
-    "options": [
-      {
-        "key": "A",
-        "text": "The pull request diff exceeded the context window limit causing Claude Code to fail silently"
-      },
-      {
-        "key": "B",
-        "text": "Claude Code is waiting for interactive input because the -p flag was not included in the command"
-      },
-      {
-        "key": "C",
-        "text": "The CLAUDE.md file is missing review criteria causing Claude Code to loop indefinitely while searching for instructions"
-      },
-      {
-        "key": "D",
-        "text": "The --output-format flag was not specified preventing Claude Code from writing output to stdout"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Claude Code CLI",
-    "explanation": "Khi chạy trong môi trường CI/CD (không tương tác), Claude Code cần có cờ '-p' (hoặc '--print') để kích hoạt chế độ in trực tiếp và thoát ngay sau khi hoàn tất, tránh bị treo chờ nhập phím.",
-    "tags": [
-      "CI/CD Flags",
-      "Claude Code",
-      "Troubleshooting"
-    ]
-  },
-  {
-    "id": "cca52",
-    "questionNumber": 52,
-    "text": "Your company policy requires that any refund exceeding $500 must be approved by a human supervisor before processing. During testing, you discover that prompt instructions alone occasionally fail to prevent the agent from calling issue_refund for amounts above the threshold. Which implementation guarantees this business rule is enforced without exception?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Implement a tool call interception hook that inspects the amount parameter on issue_refund calls, blocks those exceeding $500, and redirects the workflow to handoff_to_human"
-      },
-      {
-        "key": "B",
-        "text": "Strengthen the system prompt by adding explicit instructions with bold emphasis: \"NEVER issue refunds above $500 without human approval\""
-      },
-      {
-        "key": "C",
-        "text": "Include three few-shot examples in the prompt demonstrating correct escalation for high-value refunds"
-      },
-      {
-        "key": "D",
-        "text": "Set the issue_refund tool's JSON schema to define a maximum value constraint of 500 on the amount field"
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Security & Guardrails",
-    "explanation": "Để kiểm soát tuyệt đối không sai sót, giải pháp là chặn đầu cuộc gọi công cụ (programmatic interception hook) tại tầng ứng dụng để phân tích tham số, từ chối thực thi và chuyển giao sang người hỗ trợ.",
-    "tags": [
-      "Interception Hook",
-      "Deterministic Safety",
-      "Guardrails"
-    ]
-  },
-  {
-    "id": "cca53",
-    "questionNumber": 53,
-    "text": "Your team needs to connect Claude Code to both Jira for issue tracking and a proprietary internal approval workflow system that is unique to your organization. A developer proposes building custom MCP servers for both integrations to keep the codebase consistent. What is the recommended approach?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Use a community MCP server for Jira and build a custom MCP server only for the proprietary approval workflow"
-      },
-      {
-        "key": "B",
-        "text": "Build a single custom MCP server that consolidates both Jira and approval workflow interactions behind a unified interface"
-      },
-      {
-        "key": "C",
-        "text": "Use community MCP servers for both integrations by adapting the proprietary approval workflow API to match an existing community server's interface"
-      },
-      {
-        "key": "D",
-        "text": "Build custom MCP servers for both integrations to ensure consistent implementation patterns and full control over tool behavior"
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Model Context Protocol",
-    "explanation": "Cách tiếp cận lai (hybrid approach) được khuyên dùng trong hệ sinh thái MCP: Tiết kiệm tài nguyên bằng cách tận dụng các dự án cộng đồng cho công cụ phổ biến (Jira), và chỉ viết code custom cho hệ thống nội bộ.",
-    "tags": [
-      "Community Server",
-      "MCP Architecture",
-      "Best Practices"
-    ]
-  },
-  {
-    "id": "cca54",
-    "questionNumber": 54,
-    "text": "Your multi-agent research system produces a synthesis report that combines findings from web search and document analysis subagents. Two credible sources provide conflicting market size statistics, and the synthesis subagent must produce the final output. How should the report handle this conflict?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Average the two statistics to produce a single balanced figure and cite both sources"
-      },
-      {
-        "key": "B",
-        "text": "Omit the market size data point entirely to avoid presenting potentially inaccurate information"
-      },
-      {
-        "key": "C",
-        "text": "Present both statistics with full source attribution in a section that explicitly distinguishes contested findings from well-established ones, preserving each source's methodological context"
-      },
-      {
-        "key": "D",
-        "text": "Select the statistic from the most authoritative source based on publication recency and discard the conflicting value"
-      }
-    ],
-    "correctAnswers": [
-      "C"
-    ],
-    "category": "Evaluation & Bias",
-    "explanation": "Tính trung thực tri thức (intellectual honesty) đòi hỏi tác nhân phải hiển thị cả hai số liệu mâu thuẫn kèm trích dẫn nguồn riêng biệt, thay vì bịa ra con số trung bình hoặc tự ý xóa bỏ thông tin có ích.",
-    "tags": [
-      "Conflict Resolution",
-      "Synthesis",
-      "Factual Accuracy"
-    ]
-  },
-  {
-    "id": "cca55",
-    "questionNumber": 55,
-    "text": "Your team wants to enforce a universal rule that all generated TypeScript code must use named exports instead of default exports. This standard should apply automatically every time Claude Code writes or modifies any TypeScript file in the project. Where should this convention be defined?",
-    "options": [
-      {
-        "key": "A",
-        "text": "In a user-scoped command under ~/.claude/commands/ that each developer runs at the start of their session"
-      },
-      {
-        "key": "B",
-        "text": "In the project-level CLAUDE.md or a .claude/rules/ file so it is always loaded for every interaction"
-      },
-      {
-        "key": "C",
-        "text": "In a custom slash command stored in .claude/commands/ that developers must remember to call before each task"
-      },
-      {
-        "key": "D",
-        "text": "In a skill file under .claude/skills/ with a SKILL.md that engineers invoke on demand before writing code"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Claude Code CLI",
-    "explanation": "Các tiêu chuẩn dự án mang tính tự động hóa và bao trùm cần phải được viết tại tệp CLAUDE.md ở gốc dự án hoặc các quy tắc '.claude/rules/' chung để được nạp vô điều kiện trong mọi phiên làm việc.",
-    "tags": [
-      "Named Exports",
-      "Global Configuration",
-      "Claude Code"
-    ]
-  },
-  {
-    "id": "cca56",
-    "questionNumber": 56,
-    "text": "Currently, your customer service agent has access to fetch_customer and get_order, but both tools have minimal one-line descriptions: \"Fetches customer data\" and \"Gets order information.\" When a customer asks about a recent purchase, the agent inconsistently alternates between calling fetch_customer and get_order. What is the primary reason for this unreliable tool selection?",
-    "options": [
-      {
-        "key": "A",
-        "text": "The tool names are too similar in length, causing the model to confuse them regardless of their descriptions"
-      },
-      {
-        "key": "B",
-        "text": "Tool descriptions are the primary mechanism the model uses for tool selection, and the minimal descriptions do not provide enough information to differentiate when each tool should be used"
-      },
-      {
-        "key": "C",
-        "text": "The model requires tool_choice to be set to forced selection before it can reliably distinguish between any two tools"
-      },
-      {
-        "key": "D",
-        "text": "The agent's context window is exhausted by other content, leaving insufficient space to load both tool definitions simultaneously"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Model Context Protocol",
-    "explanation": "Mô tả công cụ (tool description) là đầu mối thông tin quan trọng nhất để LLM quyết định kích hoạt. Việc viết mô tả hời hợt, một dòng sẽ trực tiếp làm suy giảm khả năng phân biệt ngữ cảnh sử dụng của tác nhân.",
-    "tags": [
-      "Tool Selection",
-      "Descriptions",
-      "MCP Tools"
-    ]
-  },
-  {
-    "id": "cca57",
-    "questionNumber": 57,
-    "text": "A CI pipeline needs to run Claude Code to analyze pull requests and produce machine-parseable review findings that a downstream script posts as inline comments. Which combination of CLI flags ensures the output conforms to a predefined JSON structure?",
-    "options": [
-      {
-        "key": "A",
-        "text": "--output-format json combined with --json-schema"
-      },
-      {
-        "key": "B",
-        "text": "-p combined with --json-schema only"
-      },
-      {
-        "key": "C",
-        "text": "--output-format structured combined with --schema-file"
-      },
-      {
-        "key": "D",
-        "text": "--format json-strict combined with --validate-output"
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Claude Code CLI",
-    "explanation": "Định dạng chuẩn để nhận được JSON có cấu trúc cứng từ Claude Code CLI là sự kết hợp của cờ '--output-format json' cùng định nghĩa '--json-schema' đi kèm.",
-    "tags": [
-      "Structured JSON",
-      "CLI Flags",
-      "Claude Code"
-    ]
-  },
-  {
-    "id": "cca58",
-    "questionNumber": 58,
-    "text": "Your support agent calls a lookup_order MCP tool that returns over 40 fields per order, including shipping carrier details, warehouse codes, and internal tracking metadata. The agent only needs 5 fields to process a return. After several order lookups in one session, response quality noticeably declines. Which approach best addresses this issue?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Switch to a model with a larger context window so verbose tool outputs can be accommodated without impacting quality"
-      },
-      {
-        "key": "B",
-        "text": "Limit the agent to a maximum of three order lookups per session to prevent excessive context accumulation"
-      },
-      {
-        "key": "C",
-        "text": "Trim the tool output to include only return-relevant fields before appending the result to conversation context"
-      },
-      {
-        "key": "D",
-        "text": "Summarize the entire conversation history periodically using progressive summarization to reclaim token budget"
-      }
-    ],
-    "correctAnswers": [
-      "C"
-    ],
-    "category": "Model Context Protocol",
-    "explanation": "Phương án tối ưu là chủ động rút gọn (trim) dữ liệu trả về từ công cụ ngay trước khi đẩy vào ngữ cảnh hội thoại, chỉ giữ lại các trường hữu ích, loại bỏ rác thông tin để chống loãng suy luận.",
-    "tags": [
-      "Context Optimization",
-      "Tool Output Trim",
-      "Tokens"
-    ]
-  },
-  {
-    "id": "cca59",
-    "questionNumber": 59,
-    "text": "Your team is using Claude Code to implement a new CSV parsing module that must handle complex edge cases, including quoted delimiters, multiline fields, and malformed rows. Requirements are well-defined but numerous. Which approach best supports iterative refinement of the implementation?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Describe all edge cases in a single prompt and request that Claude Code generate both the implementation and tests in one pass"
-      },
-      {
-        "key": "B",
-        "text": "Write a comprehensive test suite covering expected behavior, edge cases, and malformed input handling first, then iterate by sharing test failures with Claude Code to guide corrections"
-      },
-      {
-        "key": "C",
-        "text": "Implement the module first without tests, then ask Claude Code to review its own output for issues in the same session"
-      },
-      {
-        "key": "D",
-        "text": "Generate the implementation with Claude Code, manually test each edge case by running the code, and file separate bug reports for each failure"
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Claude Code CLI",
-    "explanation": "Phát triển hướng kiểm thử (TDD) là cực kỳ hoàn hảo khi kết hợp với các tác nhân AI. Việc có bộ test xác thực rõ ràng giúp tạo lập vòng phản hồi chất lượng cao cho tác nhân tự sửa chữa code hiệu quả.",
-    "tags": [
-      "TDD",
-      "Iterative Refinement",
-      "Claude Code"
-    ]
-  },
-  {
-    "id": "cca60",
-    "questionNumber": 60,
-    "text": "A new engineer on the team reports that Claude Code is not following the project's API naming conventions during code generation, even though other engineers on the same repository see the conventions applied correctly. What is the most effective first diagnostic step to identify the cause of this inconsistency?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Reinstall Claude Code on the engineer's machine to clear any corrupted cached configurations"
-      },
-      {
-        "key": "B",
-        "text": "Add the API naming conventions as inline comments in every source file so Claude Code reads them directly"
-      },
-      {
-        "key": "C",
-        "text": "Move all project configuration from .claude/rules/ into a single root-level CLAUDE.md to simplify the file structure"
-      },
-      {
-        "key": "D",
-        "text": "Ask the engineer to run the /memory command to verify which memory files are currently loaded in their session"
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Claude Code CLI",
-    "explanation": "Lệnh '/memory' là lệnh chẩn đoán tối ưu để xác minh xem tác nhân có đang nạp đúng và đủ các tệp cấu hình của dự án (như CLAUDE.md hoặc .claude/rules/) trên máy hiện tại hay không.",
-    "tags": [
-      "/memory",
-      "Diagnostics",
-      "Claude Code"
-    ]
-  },
-  {
-    "id": "cca61",
-    "questionNumber": 61,
-    "text": "Based on the prompt caching architecture shown in the diagram, how should you structure your API requests to Claude 3.5 Sonnet to maximize cache hit rates and reduce overall API latency?",
-    "imageUrl": "/assets/cca_q61.jpg",
-    "options": [
-      {
-        "key": "A",
-        "text": "Place frequently changing dynamic user messages at the beginning of the prompt, and the static system prompt and tools at the very end."
-      },
-      {
-        "key": "B",
-        "text": "Keep the system prompt, tools, and heavy reference documents static at the beginning of the request, and mark the end of the static segment with 'cache_control': {'type': 'ephemeral'}."
-      },
-      {
-        "key": "C",
-        "text": "Randomize the ordering of messages in each API call to allow the cache server to dynamically re-index all blocks."
-      },
-      {
-        "key": "D",
-        "text": "Prompt caching is automatically managed by the API gateway on any arbitrary message layout, requiring no explicit payload design."
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Architecture & Optimization",
-    "explanation": "Để tận dụng tối đa Prompt Caching của Anthropic, các khối dữ liệu tĩnh, kích thước lớn (như system prompt, định nghĩa tools, tài liệu hướng dẫn hoặc lịch sử hội thoại ổn định) phải được xếp ở đầu yêu cầu và được đánh dấu bộ nhớ đệm (ví dụ: 'cache_control': {'type': 'ephemeral'}). Bất kỳ thay đổi nhỏ nào ở phần trước điểm cache cũng sẽ làm mất hiệu lực bộ nhớ đệm (cache invalidation).",
-    "tags": [
-      "Prompt Caching",
-      "API Design",
-      "Optimization"
-    ]
-  },
-  {
-    "id": "cca62",
-    "questionNumber": 62,
-    "text": "You are designing an enterprise desktop application that integrates Claude Code with multiple distinct data sources (local files, a relational database, and an external API). Based on the Model Context Protocol (MCP) architecture shown in the diagram, what is the correct protocol flow for tool invocation?",
-    "imageUrl": "/assets/cca_q62.jpg",
-    "options": [
-      {
-        "key": "A",
-        "text": "The MCP Servers directly fetch user instructions from the LLM via webhooks, execute them, and return the output directly to the end-user UI."
-      },
-      {
-        "key": "B",
-        "text": "The client application communicates with the LLM. When the LLM decides to use a tool, it returns a tool use block to the Client. The Client routes this call to the respective MCP Server via standard JSON-RPC, receives the tool output, and sends it back to the LLM."
-      },
-      {
-        "key": "C",
-        "text": "Each MCP Server contains a localized instance of Claude that independently synthesizes user prompts before syncing via peer-to-peer WebSockets."
-      },
-      {
-        "key": "D",
-        "text": "The Client bypasses the LLM entirely, using local heuristic models to map user queries to MCP Server endpoints."
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Model Context Protocol",
-    "explanation": "MCP hoạt động theo mô hình Client-Server trong đó Client (như Claude Code, Claude Desktop) giữ vai trò trung gian điều phối. Server không bao giờ tự ý nói chuyện trực tiếp với LLM; thay vào đó, LLM trả về yêu cầu 'tool use' cho Client, Client gọi MCP Server tương ứng qua JSON-RPC (qua stdio/SSE) rồi gửi lại kết quả của công cụ về cho LLM.",
-    "tags": [
-      "MCP Architecture",
-      "JSON-RPC",
-      "Tool Invocation"
-    ]
-  },
-  {
-    "id": "cca63",
-    "questionNumber": 63,
-    "text": "You are implementing a multi-agent workflow in an editor application using Claude 3.5 Sonnet. Based on the Orchestrator-Workers design pattern illustrated in the diagram, how should the Router/Supervisor agent coordinate the sub-agents to compile a comprehensive documentation portal?",
-    "imageUrl": "/assets/cca_q63.jpg",
-    "options": [
-      {
-        "key": "A",
-        "text": "Provide all sub-agents with full read/write access to a shared global state, and let them execute concurrently without a supervisor."
-      },
-      {
-        "key": "B",
-        "text": "The Router agent analyzes the high-level task, breaks it down into structured sub-tasks, dynamically delegates each sub-task to specialized, isolated worker agents, gathers their individual outputs, and synthesizes the final comprehensive portal."
-      },
-      {
-        "key": "C",
-        "text": "Configure a single agent instance to run in a continuous loop, progressively mutating the same system prompt to simulate different personas."
-      },
-      {
-        "key": "D",
-        "text": "Force a strict circular chain workflow where each sub-agent must wait for the output of the previous agent regardless of task relevance."
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Agent Architecture",
-    "explanation": "Mô hình Orchestrator-Workers (hay Supervisor-Subagents) cực kỳ tối ưu cho các tác vụ phức tạp cần chia nhỏ. Tác nhân Router đóng vai trò phân rã bài toán lớn, giao việc cho các Sub-agents chuyên trách (được thiết kế prompts và tools riêng biệt để đạt độ chính xác cao), sau đó tổng hợp kết quả để tránh hiện tượng loãng ngữ cảnh và giảm sai sót.",
-    "tags": [
-      "Multi-Agent",
-      "Orchestrator Pattern",
-      "Workflows"
-    ]
-  },
-  {
-    "id": "cca64",
-    "questionNumber": 64,
-    "text": "You are designing an AI customer support platform using Claude. To ensure enterprise compliance and prevent prompt injection or hallucinated policy violations, you implement safety guardrails as shown in the diagram. Which statement accurately describes the processing pipeline?",
-    "imageUrl": "/assets/cca_q64.jpg",
-    "options": [
-      {
-        "key": "A",
-        "text": "Input guardrails classify user prompts for safety before sending them to Claude; output guardrails run synchronously on Claude's generated text to validate compliance before final rendering."
-      },
-      {
-        "key": "B",
-        "text": "Input guardrails dynamically rewrite user queries to include pre-approved responses, bypassing Claude entirely for any complex query."
-      },
-      {
-        "key": "C",
-        "text": "Output guardrails are executed asynchronously after the response is delivered to the user to avoid introducing latency."
-      },
-      {
-        "key": "D",
-        "text": "Guardrails replace Claude's core neural network weights dynamically during inference depending on the user's role."
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Evaluation & Bias",
-    "explanation": "Một đường ống Guardrails an toàn, toàn diện bao gồm: 1) Input Guardrails chặn lọc mã độc, prompt injection và nội dung độc hại ngay trước khi gửi tới LLM, và 2) Output Guardrails kiểm tra đồng bộ câu trả lời sinh ra từ LLM (về độ chính xác, chính sách bảo mật, thông tin nhạy cảm) trước khi hiển thị cho người dùng cuối.",
-    "tags": [
-      "Guardrails",
-      "AI Safety",
-      "Compliance"
-    ]
-  },
-  {
-    "id": "cca65",
-    "questionNumber": 65,
-    "text": "You are building an advanced Retrieval-Augmented Generation (RAG) system for corporate policy documents using Claude. Based on the processing pipeline shown in the diagram, how does the integration of Hybrid Search and a Reranking model optimize the generation quality?",
-    "imageUrl": "/assets/cca_q65.jpg",
-    "options": [
-      {
-        "key": "A",
-        "text": "Hybrid Search combines vector similarity (dense) with keyword matching (sparse) to capture both semantic meaning and exact jargon. The Reranker then filters and re-orders the top results, ensuring only the most relevant, high-signal contexts are injected into Claude's prompt."
-      },
-      {
-        "key": "B",
-        "text": "Hybrid Search replaces the vector database entirely, while the Reranker dynamically modifies Claude's system temperature settings."
-      },
-      {
-        "key": "C",
-        "text": "The Reranker translates user queries into multiple languages, while Hybrid Search performs parallel web lookups."
-      },
-      {
-        "key": "D",
-        "text": "The pipeline relies solely on keyword search, using the Reranker to randomly shuffle documents to introduce response variety."
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Architecture & Optimization",
-    "explanation": "Tìm kiếm lai (Hybrid Search) phối hợp sức mạnh của Dense Retrieval (tìm kiếm ngữ nghĩa bằng vector embeddings) và Sparse Retrieval (tìm kiếm từ khóa chính xác BM25). Bộ tái sắp xếp (Reranker) đánh giá lại mức độ khớp thông tin thực tế, chỉ lọc và đẩy các tài liệu có độ tương quan cao nhất vào prompt gửi đến Claude, giảm thiểu nhiễu thông tin và ngăn ngừa hiện tượng ảo tưởng (hallucination).",
-    "tags": [
-      "RAG",
-      "Hybrid Search",
-      "Reranker",
-      "Claude Context"
-    ]
-  },
-  {
-    "id": "cca66",
-    "questionNumber": 66,
-    "text": "Analysis reveals the coordinator invokes the web search subagent, waits for its response, then invokes the document analysis subagent and waits again. These tasks are independent—neither requires the other's output. How should you modify the system to run these subagents concurrently?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Switch both subagents to use a Haiku-tier model instead of Sonnet to reduce their individual execution time."
-      },
-      {
-        "key": "B",
-        "text": "Create an async orchestration layer outside the agent that spawns parallel threads, each running a separate coordinator-subagent pair, then aggregates results."
-      },
-      {
-        "key": "C",
-        "text": "Structure the coordinator to emit both Task tool calls (for web search and document analysis) in a single response message rather than across separate conversation turns."
-      },
-      {
-        "key": "D",
-        "text": "Add detailed instructions to the coordinator's system prompt explaining the performance benefits of parallel execution and requesting it invoke both subagents at the same time."
-      }
-    ],
-    "correctAnswers": [
-      "C"
-    ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "In Claude's agent architecture, subagents run concurrently when the coordinator emits multiple Task tool calls in a single assistant message — the harness executes parallel tool_use blocks from the same turn simultaneously.",
-    "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
-  },
-  {
-    "id": "cca67",
-    "questionNumber": 67,
-    "text": "The coordinator agent has AgentDefinitions configured for all four specialized subagents, each with appropriate descriptions, prompts, and tool restrictions. During testing, you notice the coordinator correctly reasons about when to delegate—it generates messages like \"I'll ask the web search agent to find sources on this topic\"—but no subagent execution ever occurs. The coordinator then proceeds as if the delegation happened and continues with incomplete information. Logs show no errors. What is the most likely cause?",
-    "options": [
-      {
-        "key": "A",
-        "text": "The AgentDefinitions are configured correctly, but the coordinator's system prompt doesn't explicitly list the available subagent types, preventing the model from knowing they can be invoked."
-      },
-      {
-        "key": "B",
-        "text": "Subagent context isolation means task descriptions from the coordinator don't automatically reach subagents; you need to configure explicit context forwarding in ClaudeAgentOptions."
-      },
-      {
-        "key": "C",
-        "text": "The coordinator's max_tokens setting is too low, causing the Task tool invocation to be truncated before the subagent type parameter can be specified."
-      },
-      {
-        "key": "D",
-        "text": "The coordinator's allowedTools configuration doesn't include \"Task\", so while it can reason about delegation, it cannot invoke the tool required to spawn subagents."
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "In the Claude Agent SDK, subagents defined via AgentDefinitions are launched through the Task tool; if allowedTools omits \"Task\", the coordinator can still verbally reason about delegating but has no mechanism to actually spawn subagents, and it silently continues without them.",
-    "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
-  },
-  {
-    "id": "cca68",
-    "questionNumber": 68,
-    "text": "A landmark case citing 12 precedents takes over 3 minutes to analyze completely. What's the most effective way to reduce this latency while preserving the coordinator's ability to monitor and debug the system?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Have the coordinator spawn parallel document analysis subagents, each handling a subset of precedents, then aggregate results before synthesis"
-      },
-      {
-        "key": "B",
-        "text": "Enable the document analysis subagent to spawn its own specialized subagents dynamically when it encounters cases with many citations"
-      },
-      {
-        "key": "C",
-        "text": "Create a recursive agent hierarchy where analysis agents subdivide work among child agents until reaching single-precedent granularity"
-      },
-      {
-        "key": "D",
-        "text": "Implement a message queue where precedent analysis tasks are processed asynchronously by a pool of worker agents"
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "Anthropic's recommended multi-agent design is the orchestrator-worker pattern with a flat hierarchy: the coordinator itself spawns parallel subagents and aggregates their results, which cuts latency through parallelism while keeping all spawning, monitoring, and debugging centralized in one place.",
-    "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
-  },
-  {
-    "id": "cca69",
-    "questionNumber": 69,
-    "text": "Investigation shows that while the web search and document analysis agents correctly attach citations to their outputs, the synthesis agent loses track of which sources support which conclusions when combining findings. What's the most effective architectural change?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Have the coordinator inject source identifier prefixes into text before each handoff, then parse these prefixes at report generation to reconstruct citations."
+        "text": "Require all subagents to output structured claim-source mappings that the synthesis agent must preserve and merge when combining findings from multiple sources."
       },
       {
         "key": "B",
@@ -2263,223 +341,1583 @@ export const ccaQuestions: Question[] = [
       },
       {
         "key": "C",
-        "text": "Require all subagents to output structured claim-source mappings that the synthesis agent must preserve and merge when combining findings from multiple sources."
-      },
-      {
-        "key": "D",
         "text": "Add a verification step where the report generator uses semantic similarity matching against original sources to reconstruct which claims came from which documents."
-      }
-    ],
-    "correctAnswers": [
-      "C"
-    ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "The failure is information loss at the synthesis stage, so the fix is to carry attribution as structured data end-to-end: subagents emit explicit claim-source mappings and the synthesis agent is required to preserve and merge them.",
-    "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
-  },
-  {
-    "id": "cca70",
-    "questionNumber": 70,
-    "text": "Users report that final reports sometimes lack depth on specific subtopics. Investigation shows that the document analysis agent frequently identifies gaps—for instance, noting \"the retrieved sources discuss API authentication but lack details on token refresh patterns\"—but under the current strict pipeline, this insight isn't actionable since search has already completed. What's the most effective architectural change?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Have the coordinator review analysis output for gap indicators and re-invoke search with gapinformed queries when gaps are detected."
-      },
-      {
-        "key": "B",
-        "text": "Have the synthesis agent attach confidence scores to each section and flag areas with insufficient coverage for manual review."
-      },
-      {
-        "key": "C",
-        "text": "Add a research planning agent before the search phase that decomposes topics into specific sub- questions."
       },
       {
         "key": "D",
-        "text": "Have the analysis agent report specific gaps to the coordinator, which triggers targeted searches and re-invokes analysis until sufficient."
-      }
-    ],
-    "correctAnswers": [
-      "D"
-    ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "The core problem is a rigid one-way pipeline where gap insights arrive after search is finished, so the fix is a closed feedback loop: the analysis agent surfaces its specific gaps as structured output to the coordinator, which triggers targeted follow-up searches and re-runs analysis iteratively until coverage is sufficient.",
-    "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
-  },
-  {
-    "id": "cca71",
-    "questionNumber": 71,
-    "text": "Your pipeline reviews every PR using a single API call with a static prompt containing the diff and full text of each changed file — unchanged files are not included. Reviews are posted asynchronously and don't block PR creation. Developers report that reviews consistently miss bugs involving cross-file interactions — for example, a PR renames a function's parameters but the review doesn't flag callers in unchanged files that still use the old argument order. Evaluation shows cross-file bugs account for 35% of production incidents from reviewed PRs. What is the most effective change to your review design?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Redesign the review as a turn-limited agentic task where the model can read files and search the codebase via tools, following references to verify cross-file findings."
-      },
-      {
-        "key": "B",
-        "text": "Add chain-of-thought instructions asking the model to list all external references in the diff, then reason step-by-step about how each change might affect callers in other files."
-      },
-      {
-        "key": "C",
-        "text": "Run parallel review passes per changed file with direct dependents included in each pass, then aggregate and deduplicate findings using a final summarization call."
-      },
-      {
-        "key": "D",
-        "text": "Use static analysis to build a dependency graph of changed code, then expand the prompt to include all files within two dependency hops of any changed file."
+        "text": "Have the coordinator inject source identifier prefixes into text before each handoff, then parse these prefixes at report generation to reconstruct citations."
       }
     ],
     "correctAnswers": [
       "A"
     ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "The failure is a missing-context problem: callers live in unchanged files the static prompt never includes, so chain-of-thought (B) cannot help the model reason about code it cannot see, and static heuristics (C, D) bloat context while still missing dynamic or multi-hop references. Anthropic's agent guidance favors agentic search — letting the model retrieve exactly the context it needs via file-read/search tools — and the asynchronous, nonblocking review pipeline tolerates the added latency, while a turn limit bounds cost.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Ánh xạ xác nhận quyền sở hữu tới nguồn có cấu trúc rõ ràng bảo toàn nguồn gốc trích dẫn thông qua quá trình tổng hợp và cho phép báo cáo kết hợp giữ lại các nguồn hỗ trợ chính xác cho mọi kết luận. Việc cố gắng suy ra sự ghi công sau đó từ bản ghi, độ tương tự về ngữ nghĩa hoặc tiền tố văn bản sẽ kém tin cậy hơn so với việc mang xuất xứ dưới dạng siêu dữ liệu có cấu trúc hạng nhất.",
+    "category": "General",
     "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 10",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/10-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
   },
   {
-    "id": "cca72",
-    "questionNumber": 72,
-    "text": "An engineer asks your agent to add comprehensive tests to a legacy codebase with 200 files and minimal existing test coverage. The engineer hasn't specified which modules to prioritize. How should the agent decompose this open-ended task?",
+    "id": "cca-11",
+    "questionNumber": 11,
+    "text": "A customer comes back **4 hours** after the original session about the same billing dispute. The prior **32-turn** session includes `lookup_order` results stating: “Status: PENDING, Expected resolution: 24-48 hours.” During testing, you find that, when sessions with stale tool results are resumed, the agent frequently cites the outdated information in its responses (for example, “I see your refund is still being processed”) even after later fresh tool calls return different details. What approach most reliably supports returning customers?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "Systematically read all 200 files to create a complete function inventory before writing any tests, ensuring the testing plan accounts for every function before beginning."
+        "text": "Start a new session, inject a structured summary of the previous interaction (issue type, actions taken, resolution status), then make fresh tool calls before engaging."
       },
       {
         "key": "B",
-        "text": "Create a fixed testing schedule upfront based on directory structure, allocating equal effort to each top-level directory regardless of code complexity or business importance."
+        "text": "Resume with full history but filter out previous tool_result messages before resuming, keeping only the human/assistant turns so the agent must re-fetch needed data."
       },
       {
         "key": "C",
-        "text": "Start writing tests for the first module alphabetically, using test failures and imports to discover related files organically."
+        "text": "Resume with full history and configure the agent to automatically re-call all previously-used tools at session start to ensure data freshness."
       },
       {
         "key": "D",
-        "text": "Use Glob and Grep to map codebase structure, identify heavily-coupled modules, create a prioritized plan for high-impact areas, and revise as dependencies are discovered."
+        "text": "Resume with full history and add a system prompt instruction telling the agent to always prefer the most recent tool results when multiple calls to the same tool exist in context."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Bắt đầu một phiên mới bằng bản tóm tắt có cấu trúc sẽ duy trì bối cảnh lâu dài như vấn đề, hành động đã hoàn thành và trạng thái giải pháp trước đó mà không giữ lại các quan sát cũ của công cụ. Việc thực hiện lệnh gọi công cụ mới trước khi phản hồi sẽ làm cho trạng thái bên ngoài hiện tại trở thành dữ liệu hoạt động duy nhất có sẵn cho tổng đài viên, tránh xung đột với các kết quả cũ hơn và các xác nhận trước đó không được hỗ trợ.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 11",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/11-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
+  },
+  {
+    "id": "cca-12",
+    "questionNumber": 12,
+    "text": "During a billing-dispute resolution, your agent successfully retrieves customer information through `get_customer` and order details through `lookup_order`, but receives a timeout error when it attempts to call `process_refund`. The agent has sufficient information to explain the charges and confirm refund eligibility, but cannot process the refund because of the backend failure. What approach best balances first-contact resolution with appropriate error handling?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Explain the billing confirm refund eligibility, acknowledge the system issue preventing immediate processing, and offer escalation or retry later"
+      },
+      {
+        "key": "B",
+        "text": "Confirm the refund will be processed and close the conversation, since the system has all necessary information to complete it automatically"
+      },
+      {
+        "key": "C",
+        "text": "Implement automatic retries with exponential backoff for process_refund, keeping the conversation open until the refund is successfully processed"
+      },
+      {
+        "key": "D",
+        "text": "Escalate immediately to a human agent since the refund action cannot be completed"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Khi lỗi phụ trợ ngăn cản việc thực hiện khoản tiền hoàn lại đủ điều kiện, nhân viên hỗ trợ phải giải thích thông tin thanh toán có sẵn và kết quả đủ điều kiện, nêu rõ rằng sự cố hệ thống ngăn cản việc xử lý ngay lập tức và cung cấp tùy chọn tiếp theo như chuyển lên cấp cao hơn hoặc thử lại sau. Điều này duy trì tính minh bạch và nâng cao khả năng giải quyết của khách hàng mà không xác nhận sai rằng khoản hoàn trả chưa hoàn tất đã được xử lý.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 12",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/12-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
+  },
+  {
+    "id": "cca-13",
+    "questionNumber": 13,
+    "text": "Your content-curation agent finds articles, evaluates each one for relevance, and then adds chosen articles to themed collections. Using separate `discover_articles(topic)`, `analyze_article(id)`, and `add_to_collection(article_id, collection_id)` tools, you observe 18+ sequential tool calls per request, creating latency problems. The agent must make editorial decisions about which articles match a collection’s theme—this requires viewing all candidates and their analysis scores at the same time to choose a cohesive set. Which tool composition best improves efficiency while retaining editorial judgment?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep all tools separate but implement response caching for analyze_article calls."
+      },
+      {
+        "key": "B",
+        "text": "Create a curate_collection(topic, collection_id) tool that handles discovery, analysis, and selection internally using configurable quality thresholds."
+      },
+      {
+        "key": "C",
+        "text": "Create a discover_and_analyze(topic) composite tool that returns all candidates with their analysis scores, keeping add_to_collection separate for selective calls."
+      },
+      {
+        "key": "D",
+        "text": "Add a preview_curation(topic, collection_id) tool that shows what would be added based on predefined rules, with an approve_curation() tool to confirm."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Hoạt động khám phá và phân tích tổng hợp có thể thu thập và chấm điểm tất cả các bài viết phù hợp trong một quy trình làm việc, giảm chi phí gọi công cụ trong khi cung cấp cho tổng đài viên bộ so sánh hoàn chỉnh cần thiết để đưa ra lựa chọn biên tập gắn kết. Việc giữ riêng biệt thao tác thêm sẽ duy trì khả năng của tổng đài viên trong việc chọn chính xác ứng viên đã ghi điểm nào được thêm vào thay vì ủy quyền lựa chọn cho các ngưỡng cố định hoặc quy tắc được xác định trước.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 13",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/13-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
+  },
+  {
+    "id": "cca-14",
+    "questionNumber": 14,
+    "text": "Production monitoring indicates that follow-up queries such as “summarize what we learned about market trends” consistently require more than 40 seconds. Investigation shows that the coordinator launches the synthesis subagent for every summarization request and passes it 80K+ tokens of accumulated findings. The coordinator already retains these findings in its context from coordinating the research. What is the most effective approach to improve response time for these follow-up summaries?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable prompt caching on the synthesis subagent to reduce the overhead of repeatedly transferring the same research findings."
+      },
+      {
+        "key": "B",
+        "text": "Have the coordinator handle straightforward summarization requests directly using its existing context, reserving subagent spawning for complex analysis."
+      },
+      {
+        "key": "C",
+        "text": "Pre-generate and cache summaries at multiple granularities whenever new findings accumulate."
+      },
+      {
+        "key": "D",
+        "text": "Spawn the synthesis subagent with reduced context and have it request specific findings from the coordinator on-demand."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc xử lý tóm tắt thông thường trong điều phối viên sẽ tránh được độ trễ và chi phí xử lý mã thông báo khi tạo ra tác nhân phụ tổng hợp và truyền lại hơn 80K mã thông báo mà điều phối viên đã có trong ngữ cảnh. Việc tạo ra tác nhân phụ có thể được dành riêng cho các nhiệm vụ cần phân tích bổ sung hoặc phức tạp.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 14",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/14-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
+  },
+  {
+    "id": "cca-15",
+    "questionNumber": 15,
+    "text": "After the web-search agent and document-analysis agent complete their tasks, the coordinator invokes the synthesis agent. However, the synthesis agent reports that it cannot complete the task because no research findings were supplied. What is the most likely cause of this problem?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "The subagents need to share a single API connection to enable automatic context sharing between invocations."
+      },
+      {
+        "key": "B",
+        "text": "The synthesis agent needs tools that can fetch results directly from the other agents’ conversation histories."
+      },
+      {
+        "key": "C",
+        "text": "The coordinator did not include the outputs from the previous agents in the synthesis agent’s prompt."
+      },
+      {
+        "key": "D",
+        "text": "The synthesis agent’s context window is not large enough to hold the combined outputs from both previous agents."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Đầu ra của tác nhân không tự động được đưa vào lệnh gọi mô hình riêng biệt. Điều phối viên phải cung cấp những phát hiện của tác nhân trước đó làm bối cảnh đầu vào cho tác nhân tổng hợp; mặt khác, nó có tài liệu nghiên cứu no để tổng hợp.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 15",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/15-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
+  },
+  {
+    "id": "cca-16",
+    "questionNumber": 16,
+    "text": "A document-extraction tool uses ML models to extract invoice fields (vendor, amount, date). The models return confidence scores (0.0–1.0) for each extracted field. In production, you observe:  \n  \n1. The agent proceeds with low-confidence extractions that are incorrect 23% of the time.  \n2. The agent requests unnecessary human review for 31% of extractions that were actually correct.  \n  \nHow should the tool’s output be restructured?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Return fields with their raw confidence scores and add detailed few-shot examples to your system prompt demonstrating how to interpret different confidence ranges and when to request human review."
+      },
+      {
+        "key": "B",
+        "text": "Return fields with confidence scores, plus a request_review boolean computed using your tested confidence thresholds, along with a review_reasons array explaining which fields triggered review."
+      },
+      {
+        "key": "C",
+        "text": "Compute an aggregate extraction_quality score across all fields and return it alongside the extracted values. Include a text summary describing the overall extraction reliability."
+      },
+      {
+        "key": "D",
+        "text": "Return fields organized into verified and needs_verification objects based on confidence thresholds."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các ngưỡng tin cậy đã kiểm tra phải được mã hóa dưới dạng quyết định xem xét rõ ràng để hành vi tiếp theo không phụ thuộc vào việc tác nhân diễn giải điểm số thô một cách không nhất quán. Việc trả về điểm tin cậy, một boolean `request_review` và các lý do đánh giá theo từng trường cụ thể sẽ duy trì khả năng kiểm tra trong khi chỉ định tuyến một cách đáng tin cậy các trích xuất kích hoạt ngưỡng để con người xem xét.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 16",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/16-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
+  },
+  {
+    "id": "cca-17",
+    "questionNumber": 17,
+    "text": "Once the web-search and document-analysis subagents have finished their tasks, the coordinator must spawn a synthesis subagent to combine the findings. What is the correct way to give the synthesis subagent the information it requires?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Spawn the subagent with only a brief task description, relying on automatic context inheritance from the coordinator"
+      },
+      {
+        "key": "B",
+        "text": "Provide the subagent with tool definitions that allow it to request outputs from other subagents via callbacks"
+      },
+      {
+        "key": "C",
+        "text": "Pass reference identifiers and configure the subagent with read access to a shared memory store where other subagents deposited their results"
+      },
+      {
+        "key": "D",
+        "text": "Include the complete findings from both subagents directly in the synthesis subagent’s prompt"
       }
     ],
     "correctAnswers": [
       "D"
     ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "Anthropic's agent best practices favor efficient context gathering with search tools (Glob/Grep) over exhaustively reading every file, which would waste context and time. Prioritizing high-impact, heavily-coupled modules and iteratively revising the plan as dependencies surface is the correct way to decompose an open-ended task; A is wasteful, B ignores impact/complexity, and C is arbitrary and unplanned.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Một tác nhân con tổng hợp được tạo ra cần các kết quả nghiên cứu có liên quan được cung cấp rõ ràng trong ngữ cảnh nhiệm vụ của nó. Việc bao gồm các phát hiện đầy đủ từ các tác nhân phụ tìm kiếm trên web và phân tích tài liệu trong dấu nhắc của nó sẽ cung cấp cho nó tất cả bằng chứng cần thiết để tổng hợp chúng; bối cảnh từ điều phối viên không được kế thừa đầy đủ.",
+    "category": "General",
     "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 17",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/17-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.880Z"
   },
   {
-    "id": "cca73",
-    "questionNumber": 73,
-    "text": "An engineer submits two requests: • Request A: \"Rename the getUserData function to fetchUserProfile everywhere it's used.\" • Request B: \"Improve error handling throughout the data processing module—add try/catch blocks, meaningful error messages, and ensure failures don't silently corrupt data.\" For which request does specifying an explicit multi-phase workflow (such as analyze propose implement with review) most improve outcome quality?",
+    "id": "cca-18",
+    "questionNumber": 18,
+    "text": "An expense-reimbursement agent processes employee requests through a `process_reimbursement` tool. Company policy requires manager approval before funds are disbursed for reimbursements above $500. The agent handles hundreds of requests each day, and the threshold enforcement must be tamper-proof regardless of how the agent is prompted.  \n  \nWhich design ensures that the $500 approval threshold cannot be bypassed?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "Request B, the error handling task"
+        "text": "The process_reimbursement tool accepts amount and details, and internally enforces the threshold: amounts <$500 are auto-disbursed and the tool returns a success confirmation; amounts >$500 cause the tool to create a pending approval request and return a status indicating manager review is pending."
       },
       {
         "key": "B",
-        "text": "Both requests benefit equally"
+        "text": "The process_reimbursement tool accepts an approved_by_manager: boolean parameter. The system prompt instructs the agent to only set this to true after confirming that a manager has approved the request. A nightly audit script reviews all reimbursements where approved_by_manager was set to true."
       },
       {
         "key": "C",
+        "text": "Provide two tools: auto_reimburse (hard-coded limit of $500) and request_manager_approval. Include detailed system prompt instructions telling the agent to check the amount and call the appropriate tool. Add a PostToolUse hook that logs which tool was called for auditing."
+      },
+      {
+        "key": "D",
+        "text": "Implement the threshold check in a PreToolUse hook that inspects the amount parameter before process_reimbursement executes. If the amount exceeds $500, the hook modifies the tool call to add a requires_approval: true flag, which the tool checks before disbursing."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Một công cụ hoàn trả đáng tin cậy phải tự thực thi quy tắc ủy quyền trước khi giải ngân tiền. Bằng cách chuyển đổi bất kỳ khoản hoàn trả nào trên 500 đô la thành yêu cầu phê duyệt của người quản lý đang chờ xử lý thay vì giải ngân, quy tắc vẫn có hiệu lực ngay cả khi đại lý bị buộc phải đưa ra lệnh gọi công cụ không an toàn. Lời nhắc về mô hình, trường phê duyệt do mô hình cung cấp, hướng dẫn lựa chọn công cụ và nhật ký kiểm tra không cung cấp cùng một ranh giới thực thi. Tài liệu API của OpenAI cũng hướng dẫn người triển khai xác thực các đối số hàm được tạo trong mã ứng dụng trước khi gọi hàm.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 18",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/18-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-19",
+    "questionNumber": 19,
+    "text": "Your `post_content` tool needs user confirmation before publishing. The current workflow shows “Ready to post to social media. Confirm?”, and analytics indicate that users approve 98% of requests within 2 seconds. Post-mortems identify incidents in which posts were sent to incorrect accounts, scheduled for incorrect times, or contained errors—all approved by users who did not notice the mistakes. How should the confirmation workflow be redesigned?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Auto-approve routine posts and only require explicit confirmation for unusual patterns like posting to new accounts or large audiences"
+      },
+      {
+        "key": "B",
+        "text": "Require users to type a confirmation phrase instead of clicking a button"
+      },
+      {
+        "key": "C",
+        "text": "Add a mandatory waiting period before the confirm option becomes available"
+      },
+      {
+        "key": "D",
+        "text": "Include the complete post text, target account, scheduled time, and platform in the confirmation request"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Một xác nhận có ý nghĩa phải trình bày các tham số quan trọng của hành động để người dùng có thể xác minh chúng trước khi phê duyệt: toàn bộ nội dung bài đăng, tài khoản mục tiêu, thời gian đã lên lịch và nền tảng. Điều này làm cho việc xác nhận trở thành một sự xem xét có hiểu biết về hành động không thể đảo ngược hoặc do hậu quả hơn là một sự thừa nhận mang tính phản ánh.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 19",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/19-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-20",
+    "questionNumber": 20,
+    "text": "The `update_user_profile` tool accepts a required `user_id` and an optional `fields_to_update` object. During testing, Claude often leaves out `user_id` or supplies improperly structured data. What is most important to help Claude understand which parameter values it should provide?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Strict JSON Schema type constraints marking user_id as required and defining fields_to_update as an object type"
+      },
+      {
+        "key": "B",
+        "text": "Verbose parameter names encoding format hints, such as user_id_string_uuid_format"
+      },
+      {
+        "key": "C",
+        "text": "Detailed error responses explaining why invalid parameter values were rejected"
+      },
+      {
+        "key": "D",
+        "text": "Clear parameter descriptions explaining expected format, such as “user_id: UUID of the user to update (required)”"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Mô tả tham số chi tiết cung cấp cho Claude bối cảnh ngữ nghĩa cần thiết để cung cấp mã định danh cần thiết và định dạng chính xác. Hướng dẫn sử dụng công cụ của Anthropic xác định các mô tả chi tiết là yếu tố quan trọng nhất đối với hiệu suất của công cụ và đề xuất giải thích ý nghĩa của từng tham số cũng như cách nó ảnh hưởng đến hoạt động của công cụ.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 20",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/20-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-21",
+    "questionNumber": 21,
+    "text": "An agent is managing a billing dispute. After calling `get_customer` and `lookup_order`, it determines that the dispute concerns a promotional-pricing error that requires manager approval—beyond the agent’s authorization level. How should the workflow manage this mid-process escalation?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Compile a structured handoff with customer details, order info, and the identified issue before calling escalate_to_human."
+      },
+      {
+        "key": "B",
+        "text": "Persist the complete conversation and tool response history to a database, then call escalate_to_human with a reference ID."
+      },
+      {
+        "key": "C",
+        "text": "Call escalate_to_human passing only the customer’s original message."
+      },
+      {
+        "key": "D",
+        "text": "Attempt the refund with process_refund anyway, escalating only if the system rejects the transaction."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc leo thang ở ranh giới ủy quyền phải cung cấp cho người đánh giá một bản chuyển giao có cấu trúc, hữu ích bao gồm thông tin chi tiết về khách hàng, thông tin đặt hàng và vấn đề đã xác định. Điều này duy trì bối cảnh cần thiết để người quản lý đánh giá và giải quyết ngoại lệ về giá khuyến mãi mà không cần đại lý thực hiện hành động hoàn tiền trái phép.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 21",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/21-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-22",
+    "questionNumber": 22,
+    "text": "A web search agent has collected several relevant sources for a research topic. The document analysis agent must now review those sources. How does information usually flow between these two specialized subagents?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "The agents communicate through an event-driven message queue, with the document analysis agent subscribing to web search completion events."
+      },
+      {
+        "key": "B",
+        "text": "The web search agent directly invokes the document analysis agent, passing the discovered sources as parameters."
+      },
+      {
+        "key": "C",
+        "text": "The coordinator agent receives the web search agent’s output and includes relevant findings in the prompt when invoking the document analysis agent."
+      },
+      {
+        "key": "D",
+        "text": "Both agents access a shared memory store where the web search agent writes findings and the document analysis agent reads them."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Trong quy trình làm việc đa tác nhân dựa trên điều phối viên, điều phối viên quản lý từng lệnh gọi tác nhân chuyên biệt. Nó lấy kết quả của tác nhân tìm kiếm trên web và đặt các phát hiện có liên quan vào bối cảnh đầu vào của tác nhân phân tích tài liệu để tác nhân có thể kiểm tra chúng.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 22",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/22-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-23",
+    "questionNumber": 23,
+    "text": "Users report that final reports occasionally lack depth on particular subtopics. Investigation reveals that the document-analysis agent often identifies gaps—for example, noting, “the retrieved sources discuss API authentication but lack details on token refresh patterns”—but in the current strict pipeline, this insight cannot be acted on because search has already finished. What is the most effective architectural change?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a research planning agent before the search phase that decomposes topics into specific sub-questions."
+      },
+      {
+        "key": "B",
+        "text": "Have the analysis agent report specific gaps to the coordinator, which triggers targeted searches and re-invokes analysis until sufficient."
+      },
+      {
+        "key": "C",
+        "text": "Have the coordinator review analysis output for gap indicators and re-invoke search with gap-informed queries when gaps are detected."
+      },
+      {
+        "key": "D",
+        "text": "Have the synthesis agent attach confidence scores to each section and flag areas with insufficient coverage for manual review."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Vòng phản hồi lặp lại cho phép tác nhân phân tích gửi các khoảng trống phạm vi được xác định rõ ràng của mình cho điều phối viên, điều phối viên này có thể khởi chạy các tìm kiếm tiếp theo được nhắm mục tiêu và chạy lại phân tích cho đến khi đạt được độ sâu cần thiết. Điều này chuyển đổi việc phát hiện khoảng trống sau truy xuất thành việc thu thập bằng chứng bổ sung có trọng tâm.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 23",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/23-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-24",
+    "questionNumber": 24,
+    "text": "The document analysis agent has one `analyze_documnet` tool that accepts a document and a free-text instruction parameter. During evaluation, requests such as “extract the key financial metrics” frequently produce narrative summaries, whereas “summarize the methodology” occasionally produces raw data tables. The synthesis agent reports that 35% of analysis results need re-requests with clarified instructions. What is the most effective way to improve reliability?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Have the coordinator pre-classify each analysis request before passing instructions to the document analysis agent"
+      },
+      {
+        "key": "B",
+        "text": "Keep the single tool but add an analyze_type enum parameter requiring explicit selection between extraction, summarization, and verification modes"
+      },
+      {
+        "key": "C",
+        "text": "Enhance the tool description with detailed examples showing how different instruction phrasings should map to different output formats"
+      },
+      {
+        "key": "D",
+        "text": "Split the generic tool into purpose-specific tools – extract_data_points, summarize_content, verify_claim_against_source – each with defined input/output contracts"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các công cụ dành riêng cho mục đích làm cho hoạt động dự định trở nên rõ ràng và cung cấp các hợp đồng đầu vào/đầu ra riêng biệt để trích xuất, tóm tắt và xác minh. Điều này loại bỏ sự mơ hồ vốn có trong việc suy ra các chế độ đầu ra riêng biệt từ các hướng dẫn văn bản tự do và làm cho kết quả xuôi dòng dễ dự đoán hơn.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 24",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/24-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-25",
+    "questionNumber": 25,
+    "text": "A customer brings up three distinct issues in one session: a refund inquiry (turns 1–15), a subscription question (turns 16–30), and a payment-method update (turns 31–45). At turn 48, the customer asks, “What happened with my refund?” The conversation is nearing context limits. Which strategy best preserves the agent’s ability to handle all issues during the session?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Extract and persist structured issue data (order IDs, amounts, statuses) into a separate context layer."
+      },
+      {
+        "key": "B",
+        "text": "Summarize earlier turns into a narrative description, preserving full message history only for the active issue."
+      },
+      {
+        "key": "C",
+        "text": "Rely on MCP tools to re-fetch relevant information on demand when the customer references earlier issues."
+      },
+      {
+        "key": "D",
+        "text": "Implement sliding window context that retains the most recent 30 turns."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Một lớp ngữ cảnh có cấu trúc riêng biệt bảo tồn trạng thái chính xác và thông tin quan trọng cho mọi vấn đề, bao gồm ID đơn đặt hàng, số tiền và trạng thái, ngay cả khi lịch sử hội thoại phải được nén hoặc cắt bớt. Điều này cho phép truy xuất chính xác các chi tiết hoàn tiền trước đó khi vấn đề đó được nêu ra lần nữa.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 25",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/25-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-26",
+    "questionNumber": 26,
+    "text": "Your conversational assistant often produces several clarifying questions when users submit ambiguous requests. When a user asks, “Can you help me with the report?”, the assistant replies: “I’d be happy to help! Could you tell me: 1) Which report? 2) What kind of help – drafting, reviewing, or formatting? 3) What’s your deadline?”  \n  \nUser analytics indicate a 40% conversation-abandonment rate after these multi-question replies. What is the most effective way to reduce friction while still handling ambiguity appropriately?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Limit the assistant to one clarifying question per turn, using conversation history to accumulate answers over multiple exchanges rather than requesting everything upfront."
+      },
+      {
+        "key": "B",
+        "text": "Add a preprocessing step using a smaller model to classify request ambiguity on a 1-5 scale, routing high-ambiguity requests to a clarification dialog and low-ambiguity requests directly to the assistant."
+      },
+      {
+        "key": "C",
+        "text": "Modify the system prompt to instruct the assistant to make reasonable assumptions from available context, state those assumptions explicitly, and offer to adjust if the interpretation is wrong."
+      },
+      {
+        "key": "D",
+        "text": "Create a lookup table of common request patterns with predefined default interpretations, having the assistant respond with those defaults without stating the assumptions made."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Đối với các yêu cầu không rõ ràng nhưng có mức độ rủi ro thấp, trợ lý phải đưa ra cách diễn giải hợp lý dựa trên ngữ cảnh có sẵn, tiết lộ cách diễn giải đó và đề nghị chỉnh sửa. Điều này cho phép người dùng nhận được trợ giúp ngay lập tức trong khi vẫn duy trì quyền kiểm soát nếu mục đích giả định không chính xác, tránh việc bỏ qua do bảng câu hỏi trả trước gây ra.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 26",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/26-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-27",
+    "questionNumber": 27,
+    "text": "After the agent calls `lookup_order` and receives order details indicating that the item was bought 45 days ago, how does the agentic loop decide whether to next call `process_refund` or `escalate_to_human`?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "The orchestration layer automatically routes to the next tool based on the order’s status field."
+      },
+      {
+        "key": "B",
+        "text": "The order details are added to the conversation and the model reasons about which action to take."
+      },
+      {
+        "key": "C",
+        "text": "The agent executes the remaining steps in a tool sequence planned at the start of the request."
+      },
+      {
+        "key": "D",
+        "text": "The agent follows a pre-configured decision tree mapping order attributes to specific tool calls."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Đầu ra của công cụ được tích hợp vào bối cảnh mô hình đang diễn ra, cho phép mô hình suy luận về các chi tiết đơn hàng được trả về cũng như các hướng dẫn hoặc biện pháp bảo vệ có thể áp dụng trước khi chọn hành động tiếp theo. Vòng lặp tác nhân tự động chọn các công cụ theo trạng thái hiện tại của quy trình làm việc thay vì yêu cầu một trình tự cố định hoặc cây quyết định được cấu hình sẵn.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 27",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/27-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-28",
+    "questionNumber": 28,
+    "text": "Production logs show inconsistent error handling: when `lookup_order` fails, the agent sometimes retries 5+ times (wasteful when the order ID does not exist), sometimes escalates immediately (premature for temporary network issues), and sometimes asks users for clarification (inappropriate when the issue is a backend permission error). Investigation shows that your MCP tool returns uniform error responses: `\\{\"isError\": true, \"content\": [\\{\"type\": \"text\", \"text\": \"Operation failed\"\\}]\\}`. The agent cannot differentiate among error types. What is the most effective improvement?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an analyze_error MCP tool the agent calls after any failure to determine the error category and recommended action."
+      },
+      {
+        "key": "B",
+        "text": "Add few-shot examples to the system prompt demonstrating how to interpret error message patterns and select appropriate responses for each."
+      },
+      {
+        "key": "C",
+        "text": "Enhance error responses with structured metadata: include errorCategory (transient/validation/permission), isRetryable boolean, and a description of what caused the failure."
+      },
+      {
+        "key": "D",
+        "text": "Implement retry logic with exponential backoff in your MCP server for all errors, returning to the agent only after retries are exhausted."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Lỗi thực thi công cụ MCP sẽ cung cấp phản hồi hữu ích cho mô hình ngôn ngữ. Siêu dữ liệu có cấu trúc xác định danh mục lỗi, liệu nó có thể thử lại hay không và nguyên nhân của nó cho phép xử lý nhất quán: thử lại các lỗi tạm thời, tránh thử lại các lỗi xác thực như ID đơn đặt hàng không tồn tại và các vấn đề về quyền hiển thị thông qua đường dẫn báo cáo thích hợp.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 28",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/28-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-29",
+    "questionNumber": 29,
+    "text": "After 30+ turns, your conversational assistant has noticeably slower responses and sometimes produces less coherent outputs. Investigation shows:  \n  \n1. Average conversations reach 50,000 tokens by turn 35.  \n2. Production logs show that 94% of user messages reference only the preceding 3–5 exchanges.  \n3. The 6% of queries that reference earlier context generally ask about information the user could easily re-state.  \n  \nYour goal is to improve response speed and quality while preserving a good user experience. What is the most effective approach?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable prompt caching and continue sending the complete conversation history, using cached prefixes to reduce per-request costs while preserving all context."
+      },
+      {
+        "key": "B",
+        "text": "Build a retrieval system that stores all conversation turns and uses semantic search to pull in relevant historical context only when the current query appears to reference past information."
+      },
+      {
+        "key": "C",
+        "text": "Implement a summarization layer that progressively compresses older conversation turns into a running summary while keeping the most recent 5-6 turns verbatim, maintaining full historical context in condensed form."
+      },
+      {
+        "key": "D",
+        "text": "Implement a sliding window keeping only the system prompt and last 8-10 turns. When users reference earlier context, acknowledge the limitation and ask them to re-state the relevant information."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Cửa sổ ngữ cảnh trượt giúp lời nhắc tập trung vào các trao đổi gần đây mà gần như tất cả các yêu cầu thực sự cần, giảm đáng kể độ trễ suy luận và hạn chế bối cảnh lịch sử không liên quan có thể làm giảm tính mạch lạc. Vì các yêu cầu theo ngữ cảnh trước đó không phổ biến liên quan đến các chi tiết mà người dùng có thể dễ dàng lặp lại, nên chỉ yêu cầu thông tin đó khi cần sẽ là sự cân bằng giữa tốc độ và chất lượng tốt hơn so với việc liên tục giữ lại, tóm tắt hoặc truy xuất toàn bộ lịch sử cuộc trò chuyện.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 29",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/29-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-30",
+    "questionNumber": 30,
+    "text": "Your order management system needs tools for three distinct operations: issuing refunds (requiring an amount and reason), canceling orders (requiring a reason), and requesting reshipments (requiring a shipping address). Every operation shares an `order_id` parameter but has different additional requirements. During testing, you observe that the agent often omits required parameters or supplies irrelevant ones with the current unified-tool design. Which design change would most effectively improve parameter accuracy?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep one unified tool with a nested operation_details object parameter whose internal structure varies by operation type, documented in the tool description."
+      },
+      {
+        "key": "B",
+        "text": "Keep one unified tool but add JSON Schema if-then-else conditionals to enforce that parameters like amount are required only when the operation type is “refund”."
+      },
+      {
+        "key": "C",
+        "text": "Split into three separate tools (issue_refund, cancel_order, request_reshipment), each defining only the parameters required for that specific operation."
+      },
+      {
+        "key": "D",
+        "text": "Keep one unified tool with all parameters marked optional, but add detailed few-shot examples in the system prompt showing correct parameter combinations for each operation type."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các công cụ riêng biệt, dành riêng cho hoạt động cung cấp sơ đồ hẹp cho từng hành động: khoản tiền hoàn lại yêu cầu `order_id`, số tiền và lý do; việc hủy bỏ yêu cầu `order_id` và lý do; việc gửi lại yêu cầu `order_id` và địa chỉ giao hàng. Việc xóa các trường có điều kiện và không liên quan khỏi mỗi định nghĩa công cụ sẽ làm giảm sự mơ hồ và làm cho các tham số bắt buộc trở nên rõ ràng cho thao tác đã chọn.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 30",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/30-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-31",
+    "questionNumber": 31,
+    "text": "The synthesis agent finishes its initial pass but identifies that three key research questions are still unanswered because the web-search and document-analysis agents did not locate relevant information on those specific subtopics. The coordinator currently moves directly to report generation, resulting in reports with incomplete coverage. Which change would most effectively improve research completeness?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Have the report generation agent note which research questions couldn’t be answered, so users understand the limitations of the final output."
+      },
+      {
+        "key": "B",
+        "text": "Increase the initial breadth of queries sent to web search and document analysis to reduce the probability of missing relevant information."
+      },
+      {
+        "key": "C",
+        "text": "Have the coordinator evaluate synthesis output for gaps, then re-delegate to web search and document analysis with targeted queries before invoking synthesis again."
+      },
+      {
+        "key": "D",
+        "text": "Give the synthesis agent direct access to web search tools so it can autonomously fill knowledge gaps without returning control to the coordinator."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Tính hoàn chỉnh của nghiên cứu được cải thiện bằng cách sử dụng vòng phản hồi: điều phối viên xem xét kết quả tổng hợp cho những khoảng trống chưa được giải quyết, chỉ định các tìm kiếm tiếp theo được nhắm mục tiêu và phân tích tài liệu cho những khoảng trống đó và chạy lại tổng hợp trước khi tạo báo cáo. Điều này duy trì sự điều phối tập trung trong khi đảm bảo các câu hỏi chưa được trả lời đã được xác định nhận được nghiên cứu tập trung.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 31",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/31-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-32",
+    "questionNumber": 32,
+    "text": "Your `get_portfolio_value` tool returns the overall value of a user’s investment portfolio. You are choosing between returning a structured JSON object with explicit fields or returning the information as a formatted text string. What is the main advantage of using structured output with defined fields?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "JSON schemas automatically validate that the underlying API returned correct data before the agent processes it."
+      },
+      {
+        "key": "B",
+        "text": "Structured JSON consumes significantly fewer tokens than natural language, substantially reducing API costs."
+      },
+      {
+        "key": "C",
+        "text": "Structured JSON is processed deterministically by the model, significantly improving accuracy when extracting values."
+      },
+      {
+        "key": "D",
+        "text": "The agent can reliably extract specific values without parsing free-form text, reducing errors in subsequent operations."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các trường được xác định sẽ tạo ra một hợp đồng dữ liệu có thể dự đoán được, cho phép tác nhân hoặc mã xuôi dòng truy xuất trực tiếp một giá trị danh mục cụ thể thay vì phân tích cú pháp chuỗi được định dạng tự do. Điều này làm giảm sai sót trích xuất trong các hoạt động sau này. Đầu ra có cấu trúc được thiết kế để làm cho dữ liệu được tạo tuân theo lược đồ được cung cấp, thay vì xác thực tính chính xác thực tế của phản hồi API cơ bản.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 32",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/32-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-33",
+    "questionNumber": 33,
+    "text": "A customer says: “I’ve been going back and forth on this return for days. I just want to speak to someone who can actually help me.” The agent has confirmed through `lookup_order` that the return is straightforward—within policy and eligible for immediate processing. What should the agent do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Process the refund via process_refund to resolve the underlying issue, then inform them it’s complete"
+      },
+      {
+        "key": "B",
+        "text": "Acknowledge frustration, inform them this is resolvable now, and offer to complete it or escalate"
+      },
+      {
+        "key": "C",
+        "text": "Call escalate_to_human immediately to honor the customer’s request"
+      },
+      {
+        "key": "D",
+        "text": "Ask what specifically hasn’t worked in previous attempts before deciding whether to escalate or resolve automatically"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Khách hàng đã yêu cầu một cách rõ ràng về con người và đại diện đã biết rằng việc trả lại có thể được giải quyết ngay lập tức. Động thái đúng đắn kết hợp sự đồng cảm, minh bạch và kiểm soát khách hàng: thừa nhận sự thất vọng, chia sẻ thông tin mới rằng việc hoàn trả nằm trong chính sách và có thể được hoàn thành ngay bây giờ, đồng thời để khách hàng lựa chọn giữa giải quyết ngay lập tức và leo thang. Việc đơn phương xử lý khoản hoàn trả sẽ thực hiện một hành động mang tính hệ quả mà không có sự đồng ý của khách hàng và bỏ qua yêu cầu đã nêu của họ, đồng thời leo thang ngay lập tức che giấu thực tế là có giải pháp nhanh nhất và thêm một biện pháp xử lý khác - chính sự chậm trễ dẫn đến sự thất vọng. Yêu cầu khách hàng kể lại những gì đã thất bại trong những lần thử trước đó sẽ gây thêm xích mích mà không thay đổi những gì nhân viên nên làm. Việc đưa ra lựa chọn tôn trọng yêu cầu leo ​​thang đồng thời mang lại cho khách hàng con đường nhanh nhất để đạt được điều họ thực sự muốn.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 33",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/33-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-34",
+    "questionNumber": 34,
+    "text": "Your product-search tool queries an external catalog API and returns matching items. In production, the agent often retries searches immediately after receiving zero results, treating “no matches found” as a failure that requires a retry. The external API returns HTTP 200 with an empty results array—a valid response. How should you reorganize the tool’s result so the agent correctly interprets empty result sets?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a suggestions field containing alternative search strategies when results are empty, helping guide the agent toward more productive follow-up queries."
+      },
+      {
+        "key": "B",
+        "text": "Return a natural language string describing the outcome, allowing the agent to interpret the result contextually based on the message content."
+      },
+      {
+        "key": "C",
+        "text": "Return a result object with isError: true and a message explaining no products matched."
+      },
+      {
+        "key": "D",
+        "text": "Return a structured result with a success boolean and results array, reserving isError: true for actual execution failures only."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Yêu cầu danh mục thành công có thể trả lại hợp lệ các sản phẩm phù hợp no. Phản hồi có cấu trúc chứa boolean thành công và mảng kết quả thể hiện rõ ràng kết quả đó là thành công với dữ liệu trống, trong khi `isError: true` chỉ nên biểu thị các lỗi thực thi công cụ thực tế.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 34",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/34-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-35",
+    "questionNumber": 35,
+    "text": "The coordinator gives the web-search subagent detailed, step-by-step directions, including exact search queries, source priorities, and date filters. Production monitoring identifies three problems:  \n  \n1. When the pre-specified searches fail, the subagent reports “insufficient results” instead of attempting alternatives.  \n2. Research quality declines for emerging topics that do not fit expected patterns.  \n3. The subagent seldom identifies valuable tangential sources.  \n  \nWhat is the most effective way to improve the subagent’s adaptability?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Implement a topic classification step where the coordinator categorizes requests as “well-defined” or “exploratory” and uses different instruction styles for each category."
+      },
+      {
+        "key": "B",
+        "text": "Add explicit fallback directives to the detailed instructions: “If specified searches yield fewer than N results, attempt alternative query formulations before reporting failure.”"
+      },
+      {
+        "key": "C",
+        "text": "Remove procedural details entirely, delegating with simple goals like “research X thoroughly” and relying on the subagent’s general capabilities."
+      },
+      {
+        "key": "D",
+        "text": "Specify research goals and quality criteria (coverage breadth, source diversity, recency) rather than procedural steps, letting the subagent determine its search strategy."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc ủy ​​quyền các mục tiêu nghiên cứu và tiêu chí chất lượng có thể đo lường—chẳng hạn như phạm vi bao phủ, tính đa dạng của nguồn và mức độ gần đây—đặt ra kết quả cần thiết mà không khóa tác nhân phụ vào một quy trình cố định. Do đó, tác nhân phụ có thể định dạng lại các tìm kiếm, điều chỉnh theo các chủ đề không quen thuộc và theo đuổi bằng chứng tiếp tuyến có liên quan trong khi vẫn được đánh giá theo các tiêu chuẩn rõ ràng.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 35",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/35-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-36",
+    "questionNumber": 36,
+    "text": "An MCP server provides `archive_file(file_id)` and `delete_file(file_id)` tools. Production logs indicate that the agent invokes `delete_file` when users request to “remove old backups,” yet company policy requires backup files to be archived. Both tools presently have minimal descriptions: “Archives a file” and “Deletes a file.” Which change most directly improves tool selection in this scenario?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Expand tool descriptions to clarify use cases, adding guidance like “Do not use for backup files” to delete_file."
+      },
+      {
+        "key": "B",
+        "text": "Add a confirmation step that requires users to type “CONFIRM DELETE” before delete_file executes."
+      },
+      {
+        "key": "C",
+        "text": "Implement server-side validation that rejects delete_file calls for files tagged as backups, returning an error message suggesting archive_file."
+      },
+      {
+        "key": "D",
+        "text": "Add few-shot examples to the system prompt demonstrating that requests involving “backup” or “old” should use archive_file."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Mô tả công cụ được trình bày cho mô hình dưới dạng hướng dẫn mà con người có thể đọc được và có thể đóng vai trò là gợi ý giúp mô hình nâng cao hiểu biết về từng công cụ có sẵn. Việc tuyên bố rõ ràng rằng không được sử dụng `delete_file` cho các tệp sao lưu sẽ phân biệt các công cụ tại thời điểm lựa chọn, chuyển các yêu cầu liên quan đến sao lưu tới `archive_file`.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 36",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/36-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-37",
+    "questionNumber": 37,
+    "text": "A customer says: “This is frustrating. I’ve explained my issue twice and nothing is being resolved. I want to talk to a real person NOW.” The agent has not yet used any tools to investigate the customer’s account. What should the agent do?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Immediately call escalate_to_human with the conversation history."
+      },
+      {
+        "key": "B",
+        "text": "Briefly explain what the agent can help with and offer to resolve the issue quickly, escalating only if the customer repeats their request."
+      },
+      {
+        "key": "C",
+        "text": "First call get_customer and lookup_order to gather account context, then escalate to a human agent."
+      },
+      {
+        "key": "D",
+        "text": "Acknowledge the frustration and ask one targeted question to understand the specific issue before escalating."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Yêu cầu rõ ràng đối với một nhân viên hỗ trợ, đặc biệt là sau nhiều lần cố gắng không được giải quyết và thấy rõ sự thất vọng, cần được chuyển lên cấp cao hơn ngay lập tức. Trì hoãn báo cáo để thu thập ngữ cảnh, giải thích khả năng hoặc đặt một câu hỏi khác là coi thường yêu cầu đã nêu của khách hàng.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 37",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/37-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-38",
+    "questionNumber": 38,
+    "text": "Your agent has invoked `lookup_order` several times while investigating a customer’s return requests. Each response contains 40+ fields (items, shipping details, payment info, status history). Tool outputs now make up most of the conversation context. The customer mentions two additional orders they want to discuss. What is the most effective approach before performing more lookups?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Move all tool responses to a vector database with semantic indexing, retrieving relevant portions as the conversation continues"
+      },
+      {
+        "key": "B",
+        "text": "Proceed with additional lookups without modifying the existing tool output context"
+      },
+      {
+        "key": "C",
+        "text": "Have the model generate a natural language summary of each order’s key details, replacing structured responses with prose descriptions"
+      },
+      {
+        "key": "D",
+        "text": "Extract only the return-relevant fields (items, purchase date, return window, status) from each existing order response, removing verbose details"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc trích xuất các trường có cấu trúc liên quan đến việc trả lại hàng—mặt hàng, ngày mua, thời hạn trả lại hàng và trạng thái—giữ lại dữ liệu thực tế cần thiết để đánh giá việc trả lại hàng trong khi loại bỏ kết quả dài dòng không liên quan khỏi ngữ cảnh của mô hình. Điều này kiểm soát sự phát triển của bối cảnh mà không làm mất đi độ chính xác cần thiết cho nhiệm vụ.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 38",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/38-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-39",
+    "questionNumber": 39,
+    "text": "After investigating a billing dispute for more than 25 turns, you have determined that duplicate charges resulted from a payment-gateway timeout that triggered retry logic. The required refund ($847) is above your $500 authorization limit. You need to call `escalate_to_human`, and the human agent will not have access to your conversation transcript. What context should you provide to enable an effective resolution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "A structured summary: customer ID, root cause, refund amount, and recommended action."
+      },
+      {
+        "key": "B",
+        "text": "Your diagnosis and the refund amount only."
+      },
+      {
+        "key": "C",
+        "text": "The customer’s original complaint verbatim plus the tool result excerpts showing duplicate transactions."
+      },
+      {
+        "key": "D",
+        "text": "The complete conversation transcript with all tool results."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Bàn giao leo thang phải cung cấp cho đại lý nhận thông tin cần thiết để xác định khách hàng, hiểu nguyên nhân cốt lõi đã được xác nhận, biết số tiền tài chính liên quan và thực hiện hành động thích hợp tiếp theo. Bản tóm tắt có cấu trúc bao gồm ID khách hàng, nguyên nhân cốt lõi, số tiền hoàn lại $847 và hành động được đề xuất sẽ hoàn chỉnh và hiệu quả khi không có bản ghi.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 39",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/39-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-40",
+    "questionNumber": 40,
+    "text": "An agent uses three tools: `get_property_details(property_id)`, which returns data including a street address; `get_price_history(property_id)`, which returns historical pricing; and `get_neighborhood_info(address)`, which returns area statistics.  \n  \nYou observe that `get_neighborhood_info` always requires `get_property_details` to run first solely to extract the address, even when users identify the property by ID. This introduces unnecessary latency and failure coupling—if the first call fails, the neighborhood request fails as well. What tool-design change best resolves this?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a lookup_address(property_id) helper tool for retrieving addresses."
+      },
+      {
+        "key": "B",
+        "text": "Add retry logic and timeout handling to get_property_details."
+      },
+      {
+        "key": "C",
+        "text": "Change get_neighborhood_info to accept property_id, resolving the address internally."
+      },
+      {
+        "key": "D",
+        "text": "Consolidate into a single get_property_with_neighborhood(property_id) tool returning both datasets."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }`get_neighborhood_info` phải chấp nhận `property_id` và thực hiện mọi giải pháp địa chỉ cần thiết trong nội bộ. Điều này cho phép người gọi sử dụng mã định danh mà họ đã có, loại bỏ sự phụ thuộc vào công cụ được điều phối bên ngoài không cần thiết và ngăn chặn việc gọi chi tiết địa chỉ không chặn việc tra cứu vùng lân cận.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 40",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/40-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-41",
+    "questionNumber": 41,
+    "text": "The `process_refund` tool returns two error categories: transient technical errors (`503 Service Unavailable`, `Connection timeout`) affecting 5% of calls, and permanent business errors (`Order exceeds 30 day return window`, `Item already refunded`) affecting 12% of calls. Monitoring shows that the agent wastes 3–4 turns retrying business errors that can never succeed. At present, both error types return only a plain-text message to Claude.  \n  \nWhat is the most effective way to reduce wasted retries while improving the quality of customer-facing responses?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Implement automatic retry logic at the tool level for technical errors only, passing business errors to Claude without retries."
+      },
+      {
+        "key": "B",
+        "text": "Add few-shot examples showing how to distinguish retriable from non-retriable errors by parsing error message text."
+      },
+      {
+        "key": "C",
+        "text": "Return structured error responses with retriable: false for business errors and a customer-friendly explanation for Claude to use."
+      },
+      {
+        "key": "D",
+        "text": "Add a check_refund_eligibility tool that must be called before process_refund to prevent business rule violations."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Phản hồi lỗi có cấu trúc có thể chỉ ra rõ ràng rằng các lỗi trong quy tắc kinh doanh không thể truy xuất được, ngăn chặn các vòng lặp thử lại vô ích. Bao gồm lời giải thích thân thiện với khách hàng cũng mang lại cho đại lý ngôn ngữ phù hợp để truyền đạt kết quả lâu dài cho khách hàng.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 41",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/41-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-42",
+    "questionNumber": 42,
+    "text": "The `track_shipment(tracking_id)` tool calls an external logistics API that can occasionally fail—the API may be temporarily unavailable, the tracking ID may be malformed, or the shipment may not exist. The tool currently raises a Python exception when an error occurs. Users report that the agent gives unhelpful replies such as “I’m having trouble with that request,” rather than suggesting alternatives like checking the tracking-number format or looking up the shipment by order number. How should errors in tool results be handled?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Return a generic error response (e.g., {\"success\": false, \"error\": \"lookup_failed\"}) for all failure cases to maintain a consistent schema and avoid exposing internal error details."
+      },
+      {
+        "key": "B",
+        "text": "Return structured error information as normal tool output including error type, recoverability status, and actionable context for the user."
+      },
+      {
+        "key": "C",
+        "text": "Create dedicated error-recovery tools (retry_tracking_lookup, search_by_order_number) that the model can invoke after the primary tracking tool returns a failure indicator."
+      },
+      {
+        "key": "D",
+        "text": "Implement retry logic with exponential backoff inside the tool implementation so transient errors are automatically handled and only return a result after all retry attempts are exhausted."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Đầu ra lỗi có cấu trúc cho phép tác nhân phân biệt lỗi dịch vụ tạm thời với ID theo dõi không hợp lệ và lô hàng bị thiếu, xác định xem có thể khôi phục hay không và cung cấp cho người dùng bước tiếp theo thích hợp. Việc bao gồm danh mục lỗi, chỉ báo khả năng khôi phục và ngữ cảnh có thể thực hiện sẽ lưu giữ thông tin hữu ích mà không cần dựa vào các ngoại lệ như giao diện đối mặt với tác nhân.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 42",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/42-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-43",
+    "questionNumber": 43,
+    "text": "The coordinator agent has `AgentDefinitions` configured for each of the four specialized subagents, with suitable descriptions, prompts, and tool restrictions. During testing, the coordinator correctly identifies when delegation is needed—it produces messages such as “I’ll ask the web search agent to find sources on this topic”—but no subagent execution ever takes place. The coordinator then acts as though delegation occurred and continues using incomplete information. Logs show no errors. What is the most likely cause?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "The coordinator’s max_tokens setting is too low, causing the Task tool invocation to be truncated before the subagent type parameter can be specified."
+      },
+      {
+        "key": "B",
+        "text": "The coordinator’s allowedTools configuration doesn’t include “Task”, so while it can reason about delegation, it cannot invoke the tool required to spawn subagents."
+      },
+      {
+        "key": "C",
+        "text": "The AgentDefinitions are configured correctly, but the coordinator’s system prompt doesn’t explicitly list the available subagent types, preventing the model from knowing they can be invoked."
+      },
+      {
+        "key": "D",
+        "text": "Subagent context isolation means task descriptions from the coordinator don’t automatically reach subagents; you need to configure explicit context forwarding in ClaudeAgentOptions."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }`AgentDefinitions` cung cấp các loại tác nhân phụ để định cấu hình nhưng việc ủy ​​quyền yêu cầu điều phối viên gọi công cụ `Task`. Khi `Task` không được bao gồm trong cấu hình công cụ được phép của điều phối viên, nó không thể gửi công việc đến tác nhân phụ ngay cả khi lý do của nó xác định rằng việc ủy ​​quyền là phù hợp. Quyền của công cụ kiểm soát liệu một công cụ được định cấu hình có thể được gọi hay không.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 43",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/43-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-44",
+    "questionNumber": 44,
+    "text": "While implementing the `lookup_order` MCP tool, the backend occasionally returns errors (for example, “Order not found” or temporary database failures). What is the correct pattern for communicating these errors to the agent?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Throw an exception from the tool handler so the agent framework can catch and log it"
+      },
+      {
+        "key": "B",
+        "text": "Return the error message in the tool result content with the isError flag set to true"
+      },
+      {
+        "key": "C",
+        "text": "Log the error server-side and return an empty result to avoid confusing the model"
+      },
+      {
+        "key": "D",
+        "text": "Return a success response with a “status” field indicating the error type"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các lỗi thực thi công cụ MCP, bao gồm lỗi API và lỗi logic nghiệp vụ chẳng hạn như thiếu đơn hàng, phải được trả về trong `content` của kết quả công cụ với `isError: true`. Điều này hiển thị phản hồi có thể thực hiện được cho tổng đài viên để họ có thể phản hồi phù hợp hoặc thử lại.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 44",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/44-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-45",
+    "questionNumber": 45,
+    "text": "Compliance requires that refunds exceeding $500 automatically escalate to a human agent; this rule cannot be left to model discretion. Despite clear system-prompt instructions, production logs show that the agent occasionally processes high-value refunds directly, with a 3% failure rate. How can guaranteed compliance be achieved?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Modify the refund tool to return an error with message “Amount exceeds policy limit – please escalate” when threshold is exceeded."
+      },
+      {
+        "key": "B",
+        "text": "Add few-shot examples to the prompt showing correct escalation behavior at various refund amounts ($400, $500, $600)."
+      },
+      {
+        "key": "C",
+        "text": "Implement a hook to intercept tool calls; when the refund process amount exceeds $500, block it and invoke human escalation."
+      },
+      {
+        "key": "D",
+        "text": "Strengthen the system prompt with emphatic language: “CRITICAL POLICY: Refunds over $500 MUST trigger human escalation. NEVER process these directly.”"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Một hook trước khi thực thi mang tính xác định sẽ thực thi chính sách ngoài phạm vi quyền quyết định của mô hình: nó có thể kiểm tra số tiền hoàn lại được yêu cầu, chặn bất kỳ số tiền nào trên 500 USD và gọi đường dẫn báo cáo con người bắt buộc. Từ ngữ và ví dụ nhanh chóng không thể đảm bảo vì hành vi của mô hình không phải là ranh giới ủy quyền cứng.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 45",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/45-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-46",
+    "questionNumber": 46,
+    "text": "An MCP server implements a `check_availability` tool that queries an external calendar API. During testing, three error conditions occur:  \n  \n1. The tool is invoked with a malformed request that lacks the required `user_email` parameter.  \n2. The calendar API returns a 404 because the specified user does not exist in the calendar system.  \n3. The calendar API returns a 503 because the service is temporarily unavailable.  \n  \nHow should each error be reported under MCP’s error-handling design?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Report all three as tool results with isError: true."
+      },
+      {
+        "key": "B",
+        "text": "Report errors 1 and 2 as JSON-RPC protocol errors; report error 3 as a tool result with isError: true."
+      },
+      {
+        "key": "C",
+        "text": "Report error 1 as a JSON-RPC protocol error; report errors 2 and 3 as tool results with isError: true."
+      },
+      {
+        "key": "D",
+        "text": "Report all three as JSON-RPC protocol errors."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Theo đặc tả MCP hiện tại, các lỗi giao thức JSON-RPC được dành riêng cho các vấn đề với chính yêu cầu ở cấp giao thức: các công cụ không xác định, các yêu cầu không thực hiện được lược đồ CallToolRequest và lỗi máy chủ. Mọi vấn đề xảy ra khi xử lý một công cụ/lệnh gọi đúng định dạng đều là lỗi thực thi công cụ được trả về trong kết quả với `isError: true`. Điều đó rõ ràng bao gồm các lỗi xác thực đầu vào, chẳng hạn như thiếu đối số bắt buộc đối với inputSchema của công cụ và các lỗi API, chẳng hạn như 404 đối với người dùng không xác định hoặc 503 từ dịch vụ không khả dụng. Việc trả về cả ba dưới dạng kết quả công cụ cho phép mô hình đọc thông báo và tự sửa, chẳng hạn như bằng cách cung cấp user_email hoặc thử lại sau.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 46",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/46-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-47",
+    "questionNumber": 47,
+    "text": "Your team's CLAUDE.md includes a rule: \"Use 4-space indentation and always run Prettier formatting.\" Despite this, code reviews reveal that roughly 30% of files Claude Code generates use inconsistent formatting — sometimes 2-space indentation, sometimes missing trailing commas.  \n  \nAdding emphasis (\"IMPORTANT: You MUST use Prettier formatting\") reduces violations to about 15%, but doesn't eliminate them.  \n  \nWhat is the most effective way to ensure all generated code is consistently formatted?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure a PostToolUse hook with an Edit|Write matcher that automatically runs Prettier on each file Claude modifies."
+      },
+      {
+        "key": "B",
+        "text": "Split the formatting rules into path-scoped .claude/rules/files that load when Claude works on matching file types."
+      },
+      {
+        "key": "C",
+        "text": "Extract the formatting rules into a dedicated skill that Claude loads automatically when generating code, with more detailed examples of correct formatting."
+      },
+      {
+        "key": "D",
+        "text": "Add a Stop hook with a prompt-based check that evaluates whether generated code follows formatting standards and prompts Claude to fix violations."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Một hook PostToolUse được định cấu hình bằng trình so khớp Edit|Write chạy tự động và xác định sau khi Claude ghi hoặc chỉnh sửa bất kỳ tệp nào, gọi trực tiếp một trình định dạng như Prettier trên đường dẫn tệp thông qua lệnh shell. Bởi vì việc thực thi này diễn ra bên ngoài quá trình tạo mô hình ngôn ngữ nên nó đảm bảo định dạng nhất quán 100% bất kể mô hình tạo ra gì, không giống như các hướng dẫn dựa trên lời nhắc (quy tắc CLAUDE.md, nhấn mạnh, tệp quy tắc hoặc kỹ năng) chỉ ảnh hưởng đến việc tạo một cách xác suất và vẫn có thể bị bỏ qua. Móc dừng có kiểm tra dựa trên lời nhắc cũng không đáng tin cậy vì nó vẫn phụ thuộc vào bước đánh giá và hiệu chỉnh LLM thay vì gọi công cụ xác định.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 47",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/47-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-48",
+    "questionNumber": 48,
+    "text": "You are building developer productivity tools using the Claude Agent SDK. The agent helps engineers explore unfamiliar codebases, understand legacy systems, generate boilerplate code, and automate repetitive tasks. It relies on the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nYour code review assistant must analyze pull requests and provide feedback on three aspects:  \n  \n- Code style compliance  \n- Potential security issues  \n- Documentation completeness  \n  \nEach aspect requires reading files, running analysis tools, and generating a report section. The review process follows this same three-step workflow for every PR.  \n  \nWhich task decomposition pattern is most appropriate for this workflow?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Routing – classify each PR by type (feature, bugfix, refactor) first, then route to different review prompts optimized for that category."
+      },
+      {
+        "key": "B",
+        "text": "Prompt chaining – break the review into sequential steps where each aspect (style, security, documentation) is analyzed separately, with outputs combined in a final synthesis step."
+      },
+      {
+        "key": "C",
+        "text": "Single comprehensive prompt – include all instructions in one prompt and let the model handle all three aspects simultaneously."
+      },
+      {
+        "key": "D",
+        "text": "Orchestrator-workers – have a central LLM analyze each PR to dynamically determine which checks are needed, then delegate to specialized worker LLMs for each identified subtask."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Quy trình làm việc này luôn thực hiện ba khía cạnh đánh giá giống nhau theo cùng một thứ tự cố định cho mọi yêu cầu kéo, với quá trình phân tích của từng khía cạnh (đọc tệp, chạy công cụ, tạo một phần) tiến hành độc lập trước khi kết quả được hợp nhất vào báo cáo cuối cùng. Đây là đặc điểm xác định của mẫu chuỗi nhắc nhở: phân tách một nhiệm vụ thành một chuỗi các bước gọi LLM cố định (tùy chọn có kiểm tra theo chương trình giữa chúng) khi nhiệm vụ phân tách rõ ràng thành các nhiệm vụ phụ ổn định, có thể dự đoán được. Bởi vì các nhiệm vụ phụ ở đây (kiểu, bảo mật, tài liệu) đều được biết trước và nhất quán trong mọi PR, nên no cần có sự ủy quyền năng động, dựa trên đầu vào — đây là điểm phân biệt người điều phối-nhân viên, trong đó LLM trung tâm phải tự động xác định các nhiệm vụ phụ không thể đoán trước trên mỗi đầu vào. Chuỗi nhắc nhở cũng cho phép xác thực đầu ra của từng bước phân tích và sau đó kết hợp trong bước tổng hợp cuối cùng, khớp với quy trình làm việc được mô tả của các phần riêng biệt mà cuối cùng được hợp nhất thành báo cáo đánh giá.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 48",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/48-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-49",
+    "questionNumber": 49,
+    "text": "A critical bug is affecting production users. The error logs show exceptions occurring in the OrderProcessing module, with a clear stack trace pointing to a specific function. You have not previously worked with this module. What is the most effective approach to take?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Start with direct execution to gather initial information, then switch to plan mode to design a comprehensive solution before implementing any changes."
+      },
+      {
+        "key": "B",
+        "text": "Enter plan mode to explore the module’s architecture and dependencies before attempting any fixes."
+      },
+      {
+        "key": "C",
+        "text": "Use plan mode to analyze the error in context of the module’s design, enumerate potential root causes, and prioritize fixes systematically."
+      },
+      {
+        "key": "D",
+        "text": "Use direct execution to examine the stack trace, read the relevant code, and implement a fix once you identify the root cause."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Khi xử lý lỗi nghiêm trọng trong quá trình sản xuất trong một mô-đun không quen thuộc, chiến lược hiệu quả nhất là sử dụng chế độ lập kế hoạch để giải thích lỗi trong bối cảnh thiết kế của mô-đun, xác định và liệt kê nhiều nguyên nhân gốc rễ tiềm ẩn, sau đó ưu tiên các biện pháp khắc phục cần theo đuổi một cách có hệ thống. Điều này tránh việc khắc phục sớm ở cấp độ triệu chứng mà phương pháp thực thi trực tiếp có thể tạo ra khi kỹ sư chưa quen với kiến ​​trúc rộng hơn, các phần phụ thuộc và các trường hợp biên của mô-đun — giảm nguy cơ khắc phục không đầy đủ hoặc không chính xác trong sự cố sản xuất có nguy cơ cao.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 49",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/49-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-50",
+    "questionNumber": 50,
+    "text": "Your team is configuring MCP servers in Claude Code. You want to add a shared venue lookup server that all team members should have access to, and you personally want to add an experimental music playlist server that only you are testing.  \n  \nWhich configuration approach correctly applies MCP server scopes?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add both servers to your local ~/.claude.json"
+      },
+      {
+        "key": "B",
+        "text": "Add venue server to ~/.claude.json and playlist server to .mcp.json"
+      },
+      {
+        "key": "C",
+        "text": "Add venue server to .mcp.json and playlist server to ~/.claude.json."
+      },
+      {
+        "key": "D",
+        "text": "Add both servers to the project-level .mcp.json file"
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Phạm vi dự án của Claude Code lưu trữ các định nghĩa máy chủ MCP trong tệp.mcp.json nhằm kiểm tra phiên bản và chia sẻ với toàn bộ nhóm, biến nó thành vị trí chính xác cho máy chủ mà mọi người đều có thể sử dụng, chẳng hạn như máy chủ tra cứu địa điểm dùng chung. Ngược lại, các máy chủ cục bộ/trong phạm vi người dùng được lưu trữ trong tệp ~/.claude.json của cá nhân và vẫn ở chế độ riêng tư đối với người dùng đó trong các dự án của riêng họ. Đây là nơi thích hợp cho máy chủ cá nhân, thử nghiệm như máy chủ danh sách phát nhạc mà chỉ một người đang thử nghiệm và không được chuyển cho đồng đội thông qua cấu hình dự án chung.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 50",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/50-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-51",
+    "questionNumber": 51,
+    "text": "You are building developer productivity tools using the Claude Agent SDK. The agent assists engineers with exploring unfamiliar codebases, understanding legacy systems, generating boilerplate code, and automating repetitive tasks. It relies on the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nAn engineer submits two requests:  \n  \n- Request A: \"Rename the `getUserData` function to `fetchUserProfile` everywhere it's used.\"  \n- Request B: \"Improve error handling throughout the data processing module — add try/catch blocks, meaningful error messages, and ensure failures don't silently corrupt data.\"  \n  \nFor which request does specifying an explicit multi-phase workflow (such as analyze → propose → implement with review) most improve the quality of the outcome?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Neither request benefits significantly"
+      },
+      {
+        "key": "B",
         "text": "Request A, the function rename task"
       },
       {
-        "key": "D",
-        "text": "Neither request benefits significantly"
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "Request B is open-ended and judgment-heavy — \"improve error handling\" requires analyzing current behavior, deciding where try/catch belongs, and choosing meaningful messages, so an explicit analyze propose implement-with-review workflow materially raises quality and catches bad design before code changes. Request A is a mechanical, well-defined rename that a simple find-and-replace-style execution handles fine, so the multi-phase structure adds little.",
-    "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
-  },
-  {
-    "id": "cca74",
-    "questionNumber": 74,
-    "text": "Your code review assistant needs to analyze pull requests and provide feedback on three aspects: code style compliance, potential security issues, and documentation completeness. Each aspect requires reading files, running analysis tools, and generating a report section. The review process follows the same three-step workflow for every PR. Which task decomposition pattern is most appropriate for this workflow?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Single comprehensive prompt—include all instructions in one prompt and let the model handle all three aspects simultaneously."
-      },
-      {
-        "key": "B",
-        "text": "Routing—classify each PR by type (feature, bugfix, refactor) first, then route to different review prompts optimized for that category."
-      },
-      {
         "key": "C",
-        "text": "Prompt chaining—break the review into sequential steps where each aspect (style, security, documentation) is analyzed separately, with outputs combined in a final synthesis step."
+        "text": "Both requests benefit equally"
       },
       {
         "key": "D",
-        "text": "Orchestrator-workers—have a central LLM analyze each PR to dynamically determine which checks are needed, then delegate to specialized worker LLMs for each identified subtask."
-      }
-    ],
-    "correctAnswers": [
-      "C"
-    ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "The scenario explicitly states the review \"follows the same three-step workflow for every PR,\" which per Anthropic's \"Building Effective Agents\" guidance is the textbook case for the prompt chaining workflow: a fixed, predictable sequence of subtasks each handled by a focused prompt, then synthesized. Orchestrator-workers (D) is only warranted when the needed subtasks vary unpredictably per input, and routing (B) applies when inputs fall into distinct categories needing different handling—neither fits a fixed, identical workflow.",
-    "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
-  },
-  {
-    "id": "cca75",
-    "questionNumber": 75,
-    "text": "Your multi-agent research pipeline crashed after processing 12 of 28 documents. The web search agent had identified relevant sources, the document analyzer had partially completed extraction, and the synthesizer had begun pattern identification. You need to resume processing without repeating work or losing fidelity of prior findings. What state management approach best balances information fidelity with context efficiency when restoring agent state?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Have each agent maintain its own persistent state file and reload it independently at the start of each session."
-      },
-      {
-        "key": "B",
-        "text": "Persist the coordinator's conversation log containing all task delegations and responses, providing this to agents when resuming."
-      },
-      {
-        "key": "C",
-        "text": "Index all agent outputs in a shared vector store. When resuming, each agent queries the store using semantic search to retrieve relevant prior findings."
-      },
-      {
-        "key": "D",
-        "text": "Have each agent persist a structured export to a known location. On resume, the coordinator loads the manifest and injects relevant state into agent prompts."
+        "text": "Request B, the error handling task"
       }
     ],
     "correctAnswers": [
       "D"
     ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "Anthropic's multi-agent best practices recommend persisting structured artifacts to external storage and having the orchestrator selectively re-inject only the relevant state into each subagent's context. This preserves fidelity (lossless structured exports plus a manifest of completed work) while staying context-efficient, whereas A lacks coordinated resume logic, B floods agents with an entire conversation log, and C's semantic search is lossy and may miss or garble prior findings.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Tác vụ đổi tên mang tính cơ học và có kết quả có thể xác minh rõ ràng: tìm mọi cách sử dụng ký hiệu và cập nhật nó một cách nhất quán, công cụ tìm kiếm tích hợp sẵn (Grep/Glob) xử lý tốt mà không cần quy trình phức tạp theo giai đoạn. Ngược lại, việc cải thiện việc xử lý lỗi trên một mô-đun đòi hỏi nhiều phán đoán và có phạm vi rộng — nó yêu cầu phân tích các điểm lỗi và luồng dữ liệu hiện có, quyết định lỗi nào quan trọng, điều gì cấu thành thông báo 'có ý nghĩa' và cách tránh âm thầm làm hỏng dữ liệu, sau đó đề xuất chiến lược đó trước khi áp dụng các chỉnh sửa trên diện rộng. Quy trình phân tích rõ ràng → đề xuất → triển khai cùng với đánh giá sẽ đưa ra kế hoạch và giả định của tác nhân để con người xác thực trước khi thực hiện các thay đổi mã rộng, giảm nguy cơ xử lý ngoại lệ không nhất quán hoặc quá rộng và đảm bảo các bản sửa lỗi thực sự giải quyết được các chế độ lỗi thực sự của mô-đun. Đây là lý do tại sao quy trình làm việc nhiều giai đoạn rõ ràng mang lại sự cải thiện chất lượng lớn nhất cho yêu cầu xử lý lỗi thay vì đổi tên đơn giản.",
+    "category": "General",
     "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 51",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/51-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
   },
   {
-    "id": "cca76",
-    "questionNumber": 76,
-    "text": "Your agent has analyzed a complex service module—reading 23 source files, tracing request flows, and identifying error handling patterns. A developer wants to compare two testing strategies before committing to one: end-to-end tests with mocked external services vs. snapshot tests capturing expected outputs. They need to independently develop both approaches to evaluate trade-offs. How should you manage the sessions?",
+    "id": "cca-52",
+    "questionNumber": 52,
+    "text": "You are building developer productivity tools with the Claude Agent SDK. The agent helps engineers explore unfamiliar codebases, understand legacy systems, generate boilerplate code, and automate repetitive tasks. It relies on the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nYesterday, an engineer used the agent to analyze a legacy authentication module and identified two distinct refactoring approaches:  \n  \n- Extracting a microservice  \n- Refactoring in-place  \n  \nToday, the engineer wants to explore both approaches in depth — having the agent propose specific code changes for each — before deciding which one to implement.  \n  \nWhat is the most effective way to structure this exploration?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "Export the analysis session's key findings to a file, then create two new sessions that reference this file."
+        "text": "Start two fresh sessions, manually providing a summary of yesterday’s analysis findings to establish context."
+      },
+      {
+        "key": "B",
+        "text": "Resume yesterday’s session and explore both approaches sequentially within the same conversation thread."
+      },
+      {
+        "key": "C",
+        "text": "Resume yesterday’s session to explore the first approach, then start a new session for the second, manually recreating the original context."
+      },
+      {
+        "key": "D",
+        "text": "Use fork_session to create two branches from yesterday’s analysis, exploring one approach in each fork."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }SDK tác nhân Claude cung cấp khả năng fork_session, kết hợp với việc tiếp tục phiên trước đó, tạo ra các nhánh phiên độc lập mới kế thừa toàn bộ bản ghi/ngữ cảnh của phiên ban đầu cho đến điểm tiếp tục, trong khi vẫn giữ nguyên phiên ban đầu. Điều này cho phép kỹ sư duy trì phân tích mô-đun xác thực của ngày hôm qua dưới dạng ngữ cảnh được chia sẻ, sau đó khám phá phương pháp trích xuất vi dịch vụ và phương pháp tái cấu trúc tại chỗ trong hai nhánh phân nhánh độc lập, riêng biệt — tránh lây nhiễm chéo giữa hai dữ liệu khám phá (không giống như tiếp tục tuần tự trong một chuỗi) và tránh tình trạng thiếu hiệu quả và mất độ trung thực khi thiết lập lại bối cảnh theo cách thủ công trong các phiên mới.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 52",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/52-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-53",
+    "questionNumber": 53,
+    "text": "Your team frequently migrates React components to Vue, and you have written a step-by-step workflow for Claude Code to follow during each migration. You want every developer on the team to be able to invoke this workflow by typing `/migrate-component`, and you want the workflow to stay in sync as the team continues to iterate on it.  \n  \nWhere should you place the skill file?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "In ~/.claude/skills/migrate-component/SKILL.md on each developer’s machine"
+      },
+      {
+        "key": "B",
+        "text": "In .claude/skills/migrate-component/SKILL.md at the project root, committed to version control"
+      },
+      {
+        "key": "C",
+        "text": "In the project’s.claude/settings.json using a skillOverrides entry to register and define the workflow"
+      },
+      {
+        "key": "D",
+        "text": "As a detailed instruction block in the project’s root CLAUDE.md file"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các kỹ năng Claude Code được xác định trong tệp `SKILL.md` bên trong thư mục được đặt tên theo kỹ năng và tên thư mục của kỹ năng trở thành tên lệnh gạch chéo của nó (ví dụ: một kỹ năng trong `migrate-component/SKILL.md` được gọi bằng `/migrate-component`). Việc đặt kỹ năng trong thư mục `.claude/skills/` của dự án ở thư mục gốc của dự án và đưa nó vào kiểm soát phiên bản sẽ đảm bảo rằng kỹ năng đó là kỹ năng cấp dự án (không phải cá nhân): mọi nhà phát triển sao chép hoặc kéo kho lưu trữ sẽ tự động nhận được kỹ năng tương tự và mọi cập nhật do đồng đội thực hiện đều được chọn vào lần tiếp theo họ kéo, giữ cho quy trình làm việc được đồng bộ hóa trong toàn nhóm. Các kỹ năng cá nhân trong `~/.claude/skills/` là cục bộ trên máy của một nhà phát triển và không được chia sẻ, `settings.json` không hỗ trợ xác định các kỹ năng thông qua trường `skillOverrides` và CLAUDE.md nhằm mục đích hướng dẫn dự án theo ngữ cảnh liên tục thay vì để xác định quy trình làm việc lệnh gạch chéo không thể viện dẫn.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 53",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/53-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-54",
+    "questionNumber": 54,
+    "text": "You are building developer productivity tools with the Claude Agent SDK. The agent assists engineers in exploring unfamiliar codebases, understanding legacy systems, generating boilerplate code, and automating repetitive tasks. It relies on the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nSuppose your agent has already analyzed a complex service module by:  \n  \n- Reading 23 source files  \n- Tracing request flows  \n- Identifying error handling patterns  \n  \nA developer now wants to compare two different testing strategies before committing to one:  \n  \n1. End-to-end tests with mocked external services  \n2. Snapshot tests capturing expected outputs  \n  \nThey need to develop both approaches independently so they can evaluate the trade-offs between them.  \n  \nHow should you manage the sessions in this case?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Start two fresh sessions, having each re-read the relevant source files before beginning."
       },
       {
         "key": "B",
@@ -2487,7 +1925,7 @@ export const ccaQuestions: Question[] = [
       },
       {
         "key": "C",
-        "text": "Start two fresh sessions, having each re-read the relevant source files before beginning."
+        "text": "Export the analysis session's key findings to a file, then create two new sessions that reference this file."
       },
       {
         "key": "D",
@@ -2497,53 +1935,169 @@ export const ccaQuestions: Question[] = [
     "correctAnswers": [
       "B"
     ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "Resuming the analysis session with fork_session branches the session into new session IDs while preserving the full analysis context and leaving the original intact.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc phân tách phiên trong SDK tác nhân Claude (sử dụng sơ yếu lý lịch với fork_session=True hoặc trình trợ giúp fork_session()) sẽ tạo một phiên mới bắt đầu với lịch sử thông báo đầy đủ của phiên phân tích gốc nhưng sau đó sẽ phân tách độc lập từ thời điểm đó trở đi. Điều này cho phép bạn duy trì và sử dụng lại quá trình điều tra trả trước tốn kém (đọc 23 tệp, theo dõi luồng, xác định mẫu lỗi) trong khi tạo hai nhánh riêng biệt — một nhánh cho mỗi chiến lược thử nghiệm — để nhà phát triển có thể đánh giá song song cả hai phương pháp tiếp cận mà không cần khám phá hoặc quyết định của nhánh nào ảnh hưởng đến nhánh kia cũng như không cần chạy lại bản phân tích hoặc thiết lập lại bối cảnh theo cách thủ công thông qua các ghi chú đã xuất.",
+    "category": "General",
     "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 54",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/54-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
   },
   {
-    "id": "cca77",
-    "questionNumber": 77,
-    "text": "Your codebase exploration tool stores session IDs to allow engineers to continue investigations across work sessions. An engineer spent an hour yesterday analyzing a legacy authentication module, building context about its architecture and dependencies. They want to continue today. The session ID is valid, but version control shows 3 of the 12 files the agent previously read were modified overnight by a teammate's merge. What approach best balances efficiency and accuracy?",
+    "id": "cca-55",
+    "questionNumber": 55,
+    "text": "$38",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "Resume the session and immediately have the agent re-read all 12 previously analyzed files"
+        "text": "Enable the tool search tool with defer_loading on the six new tools, keeping the original four always loaded, so the agent dynamically discovers specialized tools only when needed."
       },
       {
         "key": "B",
-        "text": "Start a fresh session to ensure the agent works with current codebase state without stale assumptions"
+        "text": "Split the tools across two sub-agents – a “financial resolution” agent with process_refund , issue_credit ,and apply_promo_code , and a “delivery operations” agent with the remaining delivery tools – with a coordinator routing between them."
       },
       {
         "key": "C",
-        "text": "Resume the session and inform the agent which specific files changed for targeted re-analysis"
+        "text": "Add few-shot examples to the system prompt demonstrating correct selection for each ambiguous tool pair, such as showing when issue_credit applies versus when process_refund is appropriate."
       },
       {
         "key": "D",
-        "text": "Resume the session without informing the agent about the changed files"
+        "text": "Consolidate semantically overlapping tools – merge issue_credit and process_refund into a single resolve_compensation tool with an action parameter, and fold check_delivery_status into lookup_order with an optional include_tracking flag."
       }
     ],
     "correctAnswers": [
-      "C"
+      "D"
     ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "Resuming the session preserves the hour of accumulated context about the module's architecture, while telling the agent exactly which 3 files changed allows targeted re-reading of only the stale files.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Lỗi xuất phát từ việc có nhiều công cụ riêng biệt có thể xử lý cùng một hành động cơ bản một cách hợp lý, buộc tác nhân phải đoán giữa chúng. Việc bật tải công cụ trì hoãn, phân tách công cụ trên các tác nhân phụ hoặc thêm các ví dụ few-shot đều giải quyết được sự mơ hồ này mà không xóa nó - các công cụ chồng chéo vẫn tồn tại dưới dạng các tùy chọn cạnh tranh, riêng biệt bất cứ khi nào chúng hiển thị với mô hình. Việc hợp nhất issue_credit và process_refund vào một công cụ Resolve_compensation duy nhất (với một tham số hành động) và gộp check_delivery_status vào lookup_order (thông qua cờ include_tracking) sẽ loại bỏ hoàn toàn các định nghĩa công cụ dư thừa, do đó, no có nhiều lựa chọn hơn để thực hiện giữa hai công cụ tương tự — tác nhân chọn một công cụ và thể hiện ý định thông qua các tham số. Điều này trực tiếp đề cập đến phương pháp thực hành tốt nhất được ghi lại cho thiết kế công cụ tác nhân nhằm hợp nhất chức năng chồng chéo nhằm giảm sự mơ hồ trong lựa chọn công cụ, thay vì bù đắp cho điều đó thông qua định tuyến, kiểm soát khả năng hiển thị hoặc nhắc nhở.",
+    "category": "General",
     "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 55",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/55-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
   },
   {
-    "id": "cca78",
-    "questionNumber": 78,
-    "text": "During testing, you observe that in extended exploration sessions (30+ minutes), the agent starts giving inconsistent answers about code structure it discussed earlier. Engineers report having to repeat context about modules they've already explored. What's the most effective approach to address this?",
+    "id": "cca-56",
+    "questionNumber": 56,
+    "text": "While testing an agent, you notice that when a customer states, \"I need a refund for my recent purchase,\" the agent immediately invokes process_refund — but supplies the required order_id parameter with a plausible-looking value that it made up, rather than first calling lookup_order to retrieve the actual order ID. As a result, the refund call fails because the invented order ID does not correspond to any real order.  \n  \nWhich change would directly address the root cause of the agent inventing the order_id value?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "Have the agent maintain a scratchpad file that records key findings, referencing it for subsequent questions."
+        "text": "Switch tool_choice from “auto” to “any” to force the agent to make a tool call on every turn."
+      },
+      {
+        "key": "B",
+        "text": "Update the process_refund tool description to explicitly state that order_id must be obtained from a prior lookup_order call and must never be assumed or invented."
+      },
+      {
+        "key": "C",
+        "text": "Pre-parse incoming customer messages to extract any order IDs mentioned, and inject them into the conversation context before passing to Claude."
+      },
+      {
+        "key": "D",
+        "text": "Add server-side validation that checks whether the order_id exists in your database before executing the refund, returning an error to the agent if not found."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Theo hướng dẫn chính thức của Anthropic về việc xác định công cụ cho Claude, mô tả công cụ là cơ chế chính để mô hình tìm hiểu chức năng của công cụ, thời điểm sử dụng và cách điền từng tham số — bao gồm mọi phần phụ thuộc vào các công cụ khác. Nếu mô tả của công cụ process_refund không nêu rõ rằng order_id phải được truy xuất thông qua lệnh gọi lookup_order trước đó và không bao giờ được giả định, đoán hoặc bịa đặt, thì mô hình có cơ sở no để tránh điền tham số bắt buộc bằng một giá trị được phát minh. Việc cập nhật mô tả để nêu rõ ràng buộc rõ ràng này trực tiếp nhắm vào quá trình suy luận dẫn đến việc bịa đặt, trong khi buộc tool use ở mọi lượt, trích xuất trước ID từ văn bản người dùng hoặc xác thực phía máy chủ ID không giải quyết được lý do tại sao mô hình phát minh ra giá trị ngay từ đầu hoặc chỉ phát hiện được sự cố sau khi sự cố đã xảy ra.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 56",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/56-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-57",
+    "questionNumber": 57,
+    "text": "Anthropic's tool use documentation advises: \"Write instructive error messages. Instead of generic errors like 'failed', include what went wrong and what Claude should try next.\"  \n  \nA billing dispute agent uses a `lookup_order` tool that catches all exceptions and always returns a tool result with `is_error: true` and the message \"Tool execution failed\". Monitoring reveals two distinct failure patterns:  \n  \n- The agent repeatedly retries the identical call until it hits the turn limit.  \n- The agent immediately calls `escalate_to_human` without attempting any alternative tool.  \n  \nWhich change follows the documented recommendation and gives Claude the information it needs to choose the correct recovery action for each type of error?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Implement retry logic with exponential backoff inside each tool implementation so transient errors are resolved transparently within the tool before any failure result is surfaced to Claude in the agentic loop."
+      },
+      {
+        "key": "B",
+        "text": "Add an error classification step in the agentic loop that intercepts tool errors before Claude sees them, tags each as “retry,” “try_alternative,” or “escalate,” and appends that recommendation to the tool result."
+      },
+      {
+        "key": "C",
+        "text": "Remove is_error: true and return the error details as normal tool content, so Claude reasons about the response as data rather than treating it as a flagged failure condition that biases retry behavior."
+      },
+      {
+        "key": "D",
+        "text": "Return error-type-specific messages with is_error: true, e.g., “Order not found-try get_customer to search by phone” for data errors and “Database timeout (transient)-retry should succeed” for infrastructure errors."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Tài liệu của Anthropic về cách xử lý lỗi công cụ hướng dẫn cụ thể các nhà phát triển viết các thông báo lỗi mang tính hướng dẫn, khác biệt thay vì các thông báo lỗi chung chung vì Claude hoàn toàn dựa vào văn bản trong nội dung tool_result để quyết định cách khôi phục — no có thông tin chi tiết khác về lý do cuộc gọi không thành công. Một chuỗi chung duy nhất như \"Thực thi công cụ không thành công\" thu gọn các danh mục lỗi riêng biệt (thứ tự không tồn tại so với thời gian chờ cơ sở dữ liệu tạm thời) thành một tín hiệu không thể phân biệt được, do đó, Claude thử lại một thao tác không bao giờ có thể thành công (lỗi không tìm thấy dữ liệu) hoặc từ bỏ và báo cáo lỗi tạm thời mà lẽ ra việc thử lại có thể giải quyết được. Bằng cách trả về các thông báo dành riêng cho loại lỗi, vừa giải thích sự cố vừa nêu những gì cần thử tiếp theo (ví dụ: trỏ tới `get_customer` để biết lỗi không tìm thấy hoặc chỉ ra rằng thời gian chờ là nhất thời và đáng để thử lại), trong khi vẫn đặt `is_error: true` để Claude nhận ra chính xác kết quả là điều kiện lỗi, công cụ này sẽ cung cấp cho Claude chính xác bối cảnh có thể hành động mà tài liệu yêu cầu, cho phép nó chọn thử lại, try-an-alternative-tool hoặc chuyển lên cấp cao hơn cho phù hợp với từng loại lỗi.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 57",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/57-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-58",
+    "questionNumber": 58,
+    "text": "A customer reaches out about a warranty claim on a power drill. Resolving the request requires multiple sequential tool calls: `get_customer` to look up their account, `lookup_order` to find the purchase details, and then either `process_refund` or `escalate_to_human` depending on warranty eligibility.  \n  \nYou are implementing the agentic loop that orchestrates these steps using the Claude API. What is the primary mechanism your application uses to determine whether to continue the loop or stop?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "You manually set the tool_choice parameter to “none” after the final expected tool call to force Claude to stop requesting tools."
+      },
+      {
+        "key": "B",
+        "text": "You check whether Claude's response contains a text content block – if text is present, the agent has produced its final answer and the loop should exit."
+      },
+      {
+        "key": "C",
+        "text": "You track the number of tool calls made and exit the loop once a preconfigured maximum is reached."
+      },
+      {
+        "key": "D",
+        "text": "You check the stop_reason field in each API response – the loop continues while it equals “tool_use” and exits when it changes to “end_turn” or another terminal value."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Trong mẫu sử dụng công cụ (vòng lặp tác nhân) của API Claude, mỗi phản hồi API bao gồm trường `stop_reason` cho biết lý do mô hình ngừng tạo. Khi Claude muốn gọi một công cụ, phản hồi có `stop_reason: \"tool_use\"`. Ứng dụng điều phối phải kiểm tra trường này sau mỗi lệnh gọi API: miễn là `stop_reason` là `\"tool_use\"`, nó sẽ thực thi (các) công cụ được yêu cầu, gửi lại kết quả của công cụ dưới dạng thông báo người dùng mới và gọi lại API. Khi `stop_reason` thay đổi thành `\"end_turn\"` (hoặc một giá trị đầu cuối khác như `\"max_tokens\"` hoặc `\"stop_sequence\"`), Claude đã kết thúc lượt của mình và thoát khỏi vòng lặp. Việc kiểm tra sự hiện diện của khối văn bản là không đáng tin cậy vì Claude có thể phát ra văn bản cùng với khối tool_use trong cùng một phản hồi (ví dụ: giải thích hành động tiếp theo của nó) mà không có nghĩa là nó đã hoàn thành. Đặt `tool_choice` thành \"không\" là một cách để ngăn các cuộc gọi công cụ theo một yêu cầu cụ thể, không phải là tín hiệu dừng động và việc theo dõi số lượng cuộc gọi tối đa chỉ là giới hạn an toàn chứ không phải cơ chế điều khiển chính.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 58",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/58-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-59",
+    "questionNumber": 59,
+    "text": "You are building developer productivity tools with the Claude Agent SDK. The agent helps engineers explore unfamiliar codebases, understand legacy systems, generate boilerplate code, and automate repetitive tasks. It relies on the built-in tools (Read, Write, Bash, Grep, Glob) and also integrates with Model Context Protocol (MCP) servers.  \n  \nDuring testing, you notice that in extended exploration sessions lasting 30 or more minutes, the agent begins giving inconsistent answers about code structure it already discussed earlier. Engineers report having to re-explain context about modules they have already had the agent explore.  \n  \nWhat is the most effective approach to address this issue?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Implement automatic context clearing every 15 minutes to ensure the agent starts with fresh, uncontaminated context."
       },
       {
         "key": "B",
@@ -2551,227 +2105,471 @@ export const ccaQuestions: Question[] = [
       },
       {
         "key": "C",
-        "text": "Implement automatic context clearing every 15 minutes to ensure the agent starts with fresh, uncontaminated context."
-      },
-      {
-        "key": "D",
         "text": "Create summaries of all source files before exploration begins, loading only these compressed representations into context."
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "A scratchpad offloads findings to durable storage the agent can re-read on demand, giving it a stable 'memory' independent of how crowded the context window gets.",
-    "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
-  },
-  {
-    "id": "cca79",
-    "questionNumber": 79,
-    "text": "An engineer used the agent yesterday to analyze a legacy authentication module, identifying two distinct refactoring approaches: extracting a microservice versus refactoring in-place. Today, they want to explore both approaches in depth—having the agent propose specific code changes for each—before deciding which to implement. What's the most effective way to structure this exploration?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Resume yesterday's session to explore the first approach, then start a new session for the second, manually recreating the original context."
-      },
-      {
-        "key": "B",
-        "text": "Start two fresh sessions, manually providing a summary of yesterday's analysis findings to establish context."
-      },
-      {
-        "key": "C",
-        "text": "Resume yesterday's session and explore both approaches sequentially within the same conversation thread."
       },
       {
         "key": "D",
-        "text": "Use fork_session to create two branches from yesterday's analysis, exploring one approach in each fork."
+        "text": "Have the agent maintain a scratchpad file that records key findings, referencing it for subsequent questions."
       }
     ],
     "correctAnswers": [
       "D"
     ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "Forking from yesterday's session gives each approach its own independent context starting from the same analysis baseline — clean, parallel, no contamination.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Mẫu được đề xuất cho các tác nhân mã hóa chạy trong thời gian dài là đưa các phát hiện chính vào một tệp cố định (bảng ghi chép, tệp ghi chú hoặc kho lưu trữ được hỗ trợ bởi công cụ bộ nhớ) thay vì chỉ dựa vào lịch sử hội thoại trong ngữ cảnh ngày càng tăng. Khi tác nhân khám phá các mô-đun, nó ghi lại những gì đã học được—vị trí tệp, mối quan hệ mô-đun, quyết định kiến ​​trúc—vào tệp này và đọc lại tệp đó trước khi trả lời các câu hỏi tiếp theo. Điều này giúp các câu trả lời nhất quán trong một phiên dài và cho phép tác nhân khôi phục trạng thái chính xác ngay cả khi ngữ cảnh thô bị cắt bớt hoặc nén mà không cần phải khám phá lại cơ sở mã. Việc tích cực xóa bối cảnh theo lịch trình cố định (cứ sau 15 phút) sẽ loại bỏ sự hiểu biết tích lũy và tái tạo trực tiếp triệu chứng được báo cáo là các kỹ sư phải giải thích lại các mô-đun đã được khám phá. Việc chỉ nâng cấp lên mô hình ngữ cảnh lớn hơn sẽ gây chậm trễ nhưng không giải quyết được vấn đề cơ bản là thông tin không được theo dõi lâu dài và không đảm bảo tính nhất quán. Việc tóm tắt trước mọi tệp nguồn trước khi bắt đầu khám phá là không thực tế để khám phá các cơ sở mã lạ hoặc cũ mà mức độ liên quan không được biết trước và nó sẽ loại bỏ chi tiết mà tác nhân sẽ tự động thu thập trong quá trình khám phá. Mẫu sổ ghi chú/ghi chú này được Anthropic ghi lại dưới dạng 'ghi chú có cấu trúc' và được chính thức hóa thông qua công cụ bộ nhớ, hỗ trợ rõ ràng việc xây dựng kiến ​​thức dự án theo thời gian và duy trì trạng thái trong suốt phiên mà không giữ mọi thứ trong cửa sổ ngữ cảnh đang hoạt động.",
+    "category": "General",
     "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 59",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/59-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
   },
   {
-    "id": "cca80",
-    "questionNumber": 80,
-    "text": "An engineer asks your agent to identify untested code paths in a legacy payment processing module spanning 45 files. After reading the first 8 source files, the agent's responses are becoming noticeably less accurate—it's forgetting previously discussed code patterns and hasn't yet located all test files or traced critical payment flows. What's the most effective approach to complete this investigation?",
+    "id": "cca-60",
+    "questionNumber": 60,
+    "text": "You need to add a date validation check to ensure that event dates fall in the future. This change requires adding a conditional statement to one existing function within a single file. What is the most appropriate approach to make this change?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "Document all current findings in a summary report, clear context completely, then use that report as the sole reference for continuing the investigation."
+        "text": "Enter plan mode first to create a detailed implementation strategy before making the change."
       },
       {
         "key": "B",
-        "text": "Spawn subagents to investigate specific questions while the main agent coordinates findings and preserves high-level understanding."
+        "text": "Enter plan mode to analyze how the validation might impact other parts of the reservation flow."
       },
       {
         "key": "C",
-        "text": "Clear context with /clear, then selectively re-read only the most critical files discovered so far, writing key findings to a scratchpad file that persists between context resets."
+        "text": "Use direct execution to make the change."
       },
       {
         "key": "D",
-        "text": "Switch to using Grep to search for specific function names instead of reading full files, reducing the content loaded into context for remaining exploration."
+        "text": "Start with extended thinking mode enabled to ensure thorough reasoning about the validation logic."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Chế độ kế hoạch của Claude Code được thiết kế cho các nhiệm vụ lớn hơn hoặc mơ hồ hơn — những nhiệm vụ liên quan đến nhiều tệp, quyết định kiến ​​trúc hoặc một số phương pháp triển khai hợp lệ cần được đánh giá trước khi viết bất kỳ mã nào. Việc thực thi trực tiếp nhằm mục đích dành cho các thay đổi có phạm vi rõ ràng, được hiểu rõ, chẳng hạn như thêm một kiểm tra có điều kiện duy nhất vào một hàm trong một tệp, trong đó phương pháp triển khai rõ ràng và không yêu cầu lập kế hoạch trước. Bởi vì thay đổi xác thực ngày này được giới hạn trong phạm vi hẹp đối với một điều kiện duy nhất trong một hàm/tệp hiện có, nên nó không đáp ứng ngưỡng có thể biện minh cho việc chuyển sang chế độ kế hoạch hoặc gọi chế độ tư duy mở rộng; nó có thể được thực hiện trực tiếp và hiệu quả.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 60",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/60-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-61",
+    "questionNumber": 61,
+    "text": "You want to implement a complex graph traversal algorithm that has specific performance requirements and must correctly handle edge cases such as disconnected nodes, cycles, and weighted edges. You want to structure your workflow so that you can efficiently and progressively refine the implementation with Claude across multiple iterations.  \n  \nWhich approach would most effectively enable this kind of progressive improvement across iterations?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Have Claude extensively research the algorithm and create a detailed implementation plan using extended thinking, then implement the complete solution based on that plan."
+      },
+      {
+        "key": "B",
+        "text": "Provide Claude with a reference implementation from documentation, then ask it to rewrite the code to match your codebase style and add the required edge case handling, comparing outputs against the reference."
+      },
+      {
+        "key": "C",
+        "text": "Provide Claude with a detailed natural language specification of the algorithm, including all requirements and edge cases. Review each output manually and provide descriptive feedback on what behavior needs to change."
+      },
+      {
+        "key": "D",
+        "text": "Write a test suite covering expected behavior, edge cases, and performance requirements before implementation. Ask Claude to write code that passes the tests, then iterate by sharing test failures with each refinement request."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc viết các bài kiểm tra trước khi triển khai sẽ thiết lập các tiêu chí thành công cụ thể, khách quan cho hành vi dự kiến ​​của thuật toán, các trường hợp biên bắt buộc (nút bị ngắt kết nối, chu trình, các cạnh có trọng số) và các yêu cầu về hiệu suất. Điều này cho phép Claude nhận được phản hồi chính xác, rõ ràng dưới dạng kết quả kiểm tra đạt/không đạt thay vì mô tả bằng ngôn ngữ tự nhiên chủ quan, cho phép Claude tự động lặp lại — chạy thử nghiệm, phân tích lỗi và điều chỉnh quá trình triển khai — cho đến khi đáp ứng tất cả các yêu cầu. Quy trình phát triển dựa trên thử nghiệm này (viết các bài kiểm tra → xác nhận chúng thất bại → triển khai → lặp lại các lỗi) là phương pháp hay nhất được ghi lại của Anthropic để mã hóa tác nhân bằng Claude Code, vì mỗi chu kỳ từ đỏ sang xanh lục cung cấp tín hiệu rõ ràng, có thể kiểm chứng giúp hướng dẫn hội tụ hiệu quả và cũng bảo vệ chống lại hành vi thay đổi âm thầm của Claude thay vì sửa lỗi triển khai, vì các thử nghiệm được cam kết trước đóng vai trò là một điểm kiểm tra ổn định.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 61",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/61-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-62",
+    "questionNumber": 62,
+    "text": "You have documented API error-handling conventions in a CLAUDE.md file at your project root, specifying that endpoint handlers should use a custom ApiError class. After several sessions, you notice that Claude Code sometimes follows these conventions and sometimes instead uses generic try/catch blocks with string messages. This inconsistency appears random across different coding sessions.  \n  \nWhat is the most efficient first diagnostic step to take?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a more detailed code examples to your CLAUDE.md showing the exact ApiError usage pattern for different endpoint types."
+      },
+      {
+        "key": "B",
+        "text": "Run /memory to check which memory files are loaded and verify your CLAUDE.md is included."
+      },
+      {
+        "key": "C",
+        "text": "Search for conflicting instructions in ~/.claude/CLauDe.md or ~/.claude/rules/ that might override your project conventions."
+      },
+      {
+        "key": "D",
+        "text": "Create path-specific rules in .claude/rules/handlers.md with YAML frontmatter scoping the error handling instructions to your API handler files."
       }
     ],
     "correctAnswers": [
       "B"
     ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "Delegate well-scoped investigations to subagents with fresh context, while the main agent keeps the architectural overview.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Lệnh /memory là công cụ Claude Code tích hợp sẵn để kiểm tra chính xác các tệp CLAUDE.md, CLAUDE.local.md và quy tắc hiện đang được tải trong một phiên, cùng với thứ tự tải của chúng. Do việc tải bộ nhớ Claude Code phụ thuộc vào các yếu tố như thư mục làm việc hiện tại, duyệt đệ quy lên cây thư mục và tải tệp thư mục con theo yêu cầu, nên hành vi không nhất quán giữa các phiên được chẩn đoán hiệu quả nhất bằng cách trước tiên xác nhận xem dự án CLAUDE.md có thực sự được tải hay không, thay vì suy đoán về các tệp quy tắc xung đột, không đủ chi tiết hoặc cần các tệp quy tắc trong phạm vi đường dẫn mới.",
+    "category": "General",
     "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 62",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/62-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
   },
   {
-    "id": "cca81",
-    "questionNumber": 81,
-    "text": "When researching \"renewable energy adoption,\" the web search agent returns recent statistics (2024: 35% adoption) while the document analysis agent extracts data from internal reports (2022: 18% adoption). The synthesis agent incorrectly flags these as contradictory sources rather than recognizing the data shows growth over time. What change would best enable the synthesis agent to correctly interpret such temporal differences?",
+    "id": "cca-63",
+    "questionNumber": 63,
+    "text": "Your team has connected a custom MCP server that provides DevOps workflow templates. This server exposes several MCP prompts (such as deploy_checklist and incident_response) in addition to tools.  \n  \nHow do these MCP prompts become accessible within Claude Code?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "Require subagents to include publication or data collection dates in their structured outputs."
+        "text": "They are surfaced as @ -mentionable resources alongside files, fetched and attached to your message when referenced."
       },
       {
         "key": "B",
-        "text": "Add a conflict resolution agent that automatically discards older data when newer data exists for the same metric."
+        "text": "They are automatically prepended to every conversation as additional system-level context, influencing Claude’s behavior throughout the session."
       },
       {
         "key": "C",
-        "text": "Configure the web search agent to only return results from the past 6 months."
+        "text": "They are added to Claude Code’s tool registry alongside the server’s tools, invoked automatically by the model when relevant to the task."
       },
       {
         "key": "D",
-        "text": "Instruct the synthesis agent to always treat the most recent data as authoritative and place older findings in a separate historical appendix."
+        "text": "They appear as slash commands (e.g., mcp_servername_deploy_checklist) that you can invoke, with arguments passed after the command name."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Máy chủ MCP có thể hiển thị lời nhắc dưới dạng một trong ba loại nguyên thủy MCP (công cụ, tài nguyên và lời nhắc). Trong Claude Code, lời nhắc MCP hiển thị dưới dạng lệnh gạch chéo bằng cách sử dụng quy ước đặt tên /mcp__servername__promptname — ví dụ: /mcp__devops__deploy_checklist — và bất kỳ tham số nào mà lời nhắc xác định đều được cung cấp dưới dạng đối số được nhập sau tên lệnh, giống như các đối số được truyền cho lệnh dấu gạch chéo tùy chỉnh. Điều này khác với các tài nguyên MCP, thay vào đó được hiển thị dưới dạng các mục có thể đề cập @ được tìm nạp và đính kèm vào thư, đồng thời khác với các công cụ MCP, nằm trong sổ đăng ký công cụ và được mô hình tự động gọi trong khi thực hiện một tác vụ. Vì lời nhắc có thể tái sử dụng, các mẫu được kích hoạt rõ ràng bởi người dùng (không phải lệnh gọi công cụ tự động hoặc ngữ cảnh hệ thống được chèn), Claude Code hiển thị chúng thông qua giao diện lệnh gạch chéo thay vì tự động gọi hoặc tự động chèn chúng.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 63",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/63-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-64",
+    "questionNumber": 64,
+    "text": "You're implementing a new payment processing module that needs to follow your project's established patterns for database transactions, error handling, and audit logging. You've identified three existing modules that exemplify these patterns:  \n  \n- db_utils.py  \n- error_handlers.py  \n- audit_logger.py  \n  \nThis is a one-off integration task, and these patterns are already well documented in your team wiki, so they don't need additional project-level documentation. What is the most effective approach?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add documentation of each pattern to your CLAUDE.md file, establishing them as project conventions that Claude will apply automatically."
+      },
+      {
+        "key": "B",
+        "text": "Describe the patterns from the three modules in natural language in your prompt, explaining the transaction handling approach, error format, and logging conventions Claude should follow."
+      },
+      {
+        "key": "C",
+        "text": "Ask Claude to explore your codebase to find and understand the transaction, error handling, and logging patterns before generating the new module."
+      },
+      {
+        "key": "D",
+        "text": "Use @ references to include the three modules directly in your prompt, giving Claude concrete code examples of the patterns to follow."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Hướng dẫn chính thức của Claude Code khuyên bạn nên sử dụng tham chiếu tệp `@` để kéo trực tiếp nội dung chính xác của các tệp có liên quan vào lời nhắc để Claude có mã cụ thể để làm theo, thay vì mô tả vị trí tồn tại của mã hoặc chức năng của mã. Điều này được nêu rõ ràng trong phần 'Cung cấp nội dung phong phú' của các phương pháp hay nhất của Claude Code: 'Tệp tham chiếu có @ thay vì mô tả vị trí tồn tại của mã. Claude đọc hồ sơ trước khi trả lời.” Vì nhiệm vụ này là tích hợp một lần và nhà phát triển đã biết chính xác ba mô-đun nào minh họa cho các mẫu được yêu cầu nên no cần thêm thông tin này vào CLAUDE.md — CLAUDE.md dành cho các quy ước liên tục, trên toàn dự án nên áp dụng trong mọi phiên (theo hướng dẫn của Anthropic, một chỉnh sửa CLAUDE.md được đảm bảo cho một quy ước định kỳ hoặc lỗi lặp đi lặp lại, không phải một lần sửa chữa). Yêu cầu Claude khám phá cơ sở mã (option C) sẽ lãng phí bối cảnh và thời gian để khám phá lại các tệp mà nhà phát triển đã xác định. Việc mô tả các mẫu bằng ngôn ngữ tự nhiên (option B) kém chính xác và đáng tin cậy hơn so với việc cung cấp mã thực tế, vì Claude hoạt động tốt hơn khi đưa ra các ví dụ cụ thể thay vì mô tả các quy ước được diễn giải. Việc bao gồm trực tiếp ba tệp thông qua tham chiếu @ mang lại cho Claude khả năng xử lý giao dịch, định dạng lỗi và quy ước ghi nhật ký kiểm tra chính xác để phản ánh khi tạo mô-đun xử lý thanh toán mới.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 64",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/64-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-65",
+    "questionNumber": 65,
+    "text": "Your team has three requirements for how Claude Code should behave in your project:  \n  \n1. Claude must never modify files in the `db/migrations/` directory.  \n2. Claude should prefer your custom logging module over `console.log`.  \n3. All TypeScript files must be auto-formatted with Prettier after every edit.  \n  \nAll three requirements are currently written as instructions inside your project's CLAUDE.md file. During a complex refactoring session, a developer discovers that Claude edited a migration file, violating requirement #1.  \n  \nHow should you restructure these requirements across Claude Code's configuration mechanisms?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add Edit(./db/migrations/**) to permissions.deny in the project settings, keep the logging preference in CLAUDE.md, and add a PostToolUse hook on the Edit tool that runs Prettier on changed TypeScript files."
+      },
+      {
+        "key": "B",
+        "text": "Move all three requirements into .claude/rules/ as path-scoped rules: one targeting db/migrations/** that forbids editing those files, and others targeting **/*.ts for the logging convention and formatting instruction."
+      },
+      {
+        "key": "C",
+        "text": "Rewrite all three requirements in CLAUDE.md using stronger directive language and add few-shot examples that demonstrate Claude refusing to edit migration files and running Prettier after edits."
+      },
+      {
+        "key": "D",
+        "text": "Configure hooks for all three: a PreToolUse hook script that blocks Edit calls targeting db/migrations/,a PreToolUse hook script that adds logging convention context before edits, and a PostToolUse hook that runs Prettier after TypeScript edits."
       }
     ],
     "correctAnswers": [
       "A"
     ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "The synthesis agent misreads the data because it never sees the dates. Making each data point carry its own timestamp in the structured output lets synthesis reason about trends instead of contradictions.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Nội dung CLAUDE.md được tải vào ngữ cảnh của mô hình dưới dạng hướng dẫn tư vấn, do đó, mô hình vẫn có thể đi chệch khỏi bối cảnh đó—đặc biệt là trong các phiên dài và phức tạp—đó chính xác là lý do tại sao tệp di chuyển đã được chỉnh sửa bất chấp hướng dẫn. Tài liệu chính thức của Claude Code phân biệt các lớp thực thi xác định với hướng dẫn theo ngữ cảnh: các quy tắc cấp phép (permissions.deny trong settings.json) được đánh giá bởi chính bộ khai thác Claude Code và chặn lệnh gọi công cụ phù hợp (ví dụ: Edit(./db/migrations/**)) trước khi nó có thể chạy, đưa ra một ranh giới cứng được đảm bảo, trong khi CLAUDE.md được ghi rõ ràng là 'không phải là ranh giới bảo mật cứng'. Tài liệu về hook nêu rõ hơn rằng đối với việc chặn dựa trên đường dẫn tĩnh, bạn nên \"sử dụng hệ thống cấp phép thay vì hook để thực thi một sự cho phép hoặc từ chối cứng nhắc\", vì hook là nỗ lực tốt nhất trong khi các quy tắc cấp phép mang tính quyết định và được thực thi bằng phán quyết no LLM có liên quan. Trong khi đó, tùy chọn mô-đun ghi nhật ký là một quy ước về phong cách rất phù hợp với CLAUDE.md, nơi mô hình có thể áp dụng phán đoán. Yêu cầu định dạng Prettier là một hành động chỉnh sửa sau có thể lặp lại, xác định, là trường hợp sử dụng tiêu chuẩn cho hook PostToolUse (khớp với các công cụ Chỉnh sửa/Ghi) gọi Prettier trên tệp đã thay đổi—Hướng dẫn hook của Claude Code đưa ra mẫu chính xác này làm ví dụ điển hình. Ánh xạ này—hạn chế cứng đối với Pers.deny, ưu tiên mềm đối với CLAAUDE.md, tự động hóa xác định đối với PostToolUse hook—giải quyết chính xác lỗi tuân thủ đã được chứng minh bằng cách chuyển quy tắc quan trọng về an toàn sang một cơ chế thực thi mà hành vi của mô hình không thể bỏ qua.",
+    "category": "General",
     "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 65",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/65-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
   },
   {
-    "id": "cca82",
-    "questionNumber": 82,
-    "text": "Production reviews reveal inconsistent handling of uncertainty in final reports. Sometimes conflicting subagent findings are synthesized into a single confident statement (losing nuance), while other times reports over-hedge with excessive qualifications (becoming unhelpful). When the web search agent returns \"industry analysts estimate $50B market size (methodology varies)\" and the document analysis agent returns \"peer-reviewed study estimates 35B(±7B, 95% CI),\" the coordinator either picks one arbitrarily or produces vague statements like \"the market may be 35B−50B depending on factors.\" What systematic approach best addresses this?",
+    "id": "cca-66",
+    "questionNumber": 66,
+    "text": "You've asked Claude to write a data migration script, but the initial output doesn't correctly handle records with null values in required fields. What is the most effective way to iterate toward a working solution?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "Configure subagents to only report findings meeting a high-confidence threshold, filtering uncertain information before it reaches the coordinator."
+        "text": "Manually edit the generated code to fix the null handling, then continue working with Claude on other parts."
       },
       {
         "key": "B",
-        "text": "Implement a confidence calibration layer that normalizes subagent uncertainty expressions to standardized probability scores (0.0-1.0), then weight-average findings by their calibrated confidence."
+        "text": "Add “think harder about edge cases” to your prompt and request a complete rewrite of the migration logic."
       },
       {
         "key": "C",
-        "text": "Instruct the synthesis agent to structure reports with explicit sections distinguishing well-established findings from contested ones, preserving original source characterizations and methodological context."
+        "text": "Describe the null value problem in detail and ask Claude to regenerate the entire script with improved edge case handling."
       },
       {
         "key": "D",
-        "text": "Add a verification subagent that cross-references findings across sources, only passing claims to synthesis that are corroborated by at least two independent sources."
+        "text": "Provide a test case with example input containing null values and the expected output, then ask Claude to fix it."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc cung cấp một trường hợp kiểm thử cụ thể — đầu vào cụ thể chứa các giá trị null cùng với đầu ra dự kiến ​​— mang lại cho Claude một mục tiêu chính xác, có thể kiểm chứng để gỡ lỗi. Cách tiếp cận dựa trên thử nghiệm này cho phép Claude suy luận về tình trạng lỗi chính xác và xác nhận cách khắc phục đã giải quyết được nó, thay vì dựa vào các hướng dẫn mơ hồ (chẳng hạn như 'nghĩ kỹ hơn'), mô tả vấn đề chỉ bằng lời nói có nguy cơ tái tạo không hoàn chỉnh hoặc bỏ qua Claude để vá mã theo cách thủ công, điều này làm mất đi lợi ích của việc yêu cầu trợ lý hiểu và sửa lỗi logic của chính nó.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 66",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/66-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-67",
+    "questionNumber": 67,
+    "text": "You have a rough idea for implementing a caching layer for API responses to speed up the `/products` endpoint — using Redis with a 5-minute TTL — but you are new to production caching and are not sure what other considerations a robust implementation requires.  \n  \nWhat is the most effective way to start your iterative workflow?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Start with a minimal request: “Add Redis caching to /products with 5-minute TTL.” Add features and fix issues through follow-up prompts as problems surface during testing."
+      },
+      {
+        "key": "B",
+        "text": "Write a specification with your known requirements and “TBD” markers for uncertain areas, having Claude propose solutions for each TBD as it implements."
+      },
+      {
+        "key": "C",
+        "text": "Ask Claude to interview you about the caching requirements before implementing, surfacing considerations like invalidation strategies, cache layers, consistency guarantees, and failure modes."
+      },
+      {
+        "key": "D",
+        "text": "Use plan mode to analyze the current/products endpoint implementation, then provide your caching requirements once Claude explains how the existing code is structured."
       }
     ],
     "correctAnswers": [
       "C"
     ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "Report structure that keeps methodological context and separates settled vs. contested claims is how you get nuance without over-hedging.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Khi bạn thiếu kiến ​​thức chuyên môn về miền để biết một giải pháp mạnh mẽ cần cân nhắc những gì — chẳng hạn như chiến lược vô hiệu hóa bộ nhớ đệm, nhiều lớp bộ nhớ đệm, đảm bảo tính nhất quán và chế độ lỗi/dự phòng cho lớp bộ nhớ đệm — bước đầu tiên hiệu quả nhất là yêu cầu Claude chủ động đặt các câu hỏi làm rõ (một 'cuộc phỏng vấn') trước khi viết bất kỳ thông số kỹ thuật hoặc mã nào. Điều này làm nổi bật những điều chưa biết mà bạn chưa thể tự trình bày rõ ràng, đảm bảo kế hoạch kết quả và việc triển khai giải quyết các mối quan ngại ở cấp độ sản xuất ngay từ đầu, thay vì bị phát hiện một cách phản ứng thông qua việc lặp lại thử và sai, được đoán thông qua các điểm đánh dấu TBD chưa được giải quyết hoặc bị bỏ qua bằng cách chỉ tập trung vào cấu trúc mã của điểm cuối hiện có.",
+    "category": "General",
     "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 67",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/67-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
   },
   {
-    "id": "cca83",
-    "questionNumber": 83,
-    "text": "You're building a security scanning workflow. When engineers need to locate all occurrences of a dangerous function like eval() across a large codebase, which tool should your agent use for content search?",
+    "id": "cca-68",
+    "questionNumber": 68,
+    "text": "Your team wants Claude to follow a detailed code review checklist (8 items covering API changes, test coverage, documentation, security, etc.) whenever it reviews pull requests. The team also relies on Claude extensively for other tasks, including:  \n  \n- Writing new features  \n- Debugging production issues  \n- Generating documentation  \n  \nCurrently, developers manually paste the checklist at the start of each review session.  \n  \nWhich approach best addresses this workflow need?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "Use Glob with a pattern like /*eval* to find files, then Read each matching file."
+        "text": "Create a /review slash command containing the checklist, invoked when starting reviews."
       },
       {
         "key": "B",
-        "text": "Use Grep to search for the pattern \"eval(\" across all files in the codebase."
+        "text": "Create a dedicated review subagent with the checklist embedded in its configuration."
       },
       {
         "key": "C",
-        "text": "Read the project's main entry file and follow import statements to trace where eval might be used."
+        "text": "Configure plan mode as the default for code review sessions."
       },
       {
         "key": "D",
-        "text": "Use Bash to run ls -R | grep eval to recursively list files containing eval."
+        "text": "Add the checklist to the project’s CLAUDE.md file under a “Code Review” section."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các lệnh gạch chéo tùy chỉnh trong Claude Code là các mẫu lời nhắc có thể sử dụng lại được lưu trữ dưới dạng tệp đánh dấu (ví dụ: trong.claude/commands/) được gọi theo yêu cầu bằng cách nhập lệnh như /review. Điều này cho phép nhóm mã hóa toàn bộ danh sách kiểm tra gồm 8 mục một lần và chỉ đưa nó vào ngữ cảnh khi phiên đánh giá được bắt đầu một cách rõ ràng, thay thế bước sao chép-dán thủ công. Ngược lại, nội dung được đặt trong CLAUDE.md được tải tự động vào ngữ cảnh của mỗi phiên bất kể loại nhiệm vụ, do đó, việc đưa danh sách kiểm tra dành riêng cho đánh giá vào đó sẽ đưa nó vào các công việc không liên quan như phát triển tính năng, gỡ lỗi hoặc tạo tài liệu một cách không cần thiết. Tác nhân phụ chuyên dụng hoặc cài đặt chế độ kế hoạch mặc định không phù hợp với nhu cầu đơn giản là chỉ kích hoạt danh sách kiểm tra tĩnh cụ thể cho các phiên đánh giá, khiến lệnh gạch chéo trở thành giải pháp hiệu quả và có mục tiêu nhất.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 68",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/68-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-69",
+    "questionNumber": 69,
+    "text": "You are building developer productivity tools using the Claude Agent SDK. The agent helps engineers explore unfamiliar codebases, understand legacy systems, generate boilerplate code, and automate repetitive tasks. It uses the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nAn engineer encounters an unfamiliar error message, \"SYNC_CONFLICT: entity version mismatch detected,\" in the production logs, but does not know which of the 12 services in the codebase produces it. They ask the agent to help find the source of this error.  \n  \nWhich exploration approach will most efficiently locate the responsible code?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use Glob to find files in directories commonly associated with error handling (such as errors/, exceptions/,or handlers/) across all services, then Read each matching file."
+      },
+      {
+        "key": "B",
+        "text": "Read the project’s README and service configuration files to understand the architecture, then systematically Read source files in each service directory."
+      },
+      {
+        "key": "C",
+        "text": "Use Grep to search for distinctive text from the error message (like “SYNC_CONFLICT” or “entity version mismatch”), then Read the matching files to understand context."
+      },
+      {
+        "key": "D",
+        "text": "Use Grep to find all files that import the project’s error handling module, then Read those files to locate custom error definitions."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Grep cung cấp khả năng tìm kiếm nhanh, dựa trên nội dung trên toàn bộ cơ sở mã, do đó, việc tìm kiếm một chuỗi ký tự đặc biệt từ thông báo lỗi (chẳng hạn như \"SYNC_CONFLICT\" hoặc \"phiên bản thực thể không khớp\") sẽ trực tiếp hiển thị (các) tệp chính xác nơi lỗi đó được xác định hoặc phát sinh, bất kể lỗi đó nằm trong dịch vụ hoặc thư mục nào. Điều này hiệu quả hơn nhiều so với việc giả định một quy ước thư mục (có thể không nhất quán trên tất cả 12 dịch vụ), đọc các tệp trên phạm vi rộng trong toàn bộ dự án hoặc tìm kiếm gián tiếp để nhập một hoạt động xử lý lỗi mô-đun. Sau khi Grep xác định được (các) tệp trùng khớp, việc Đọc chúng sẽ cung cấp ngữ cảnh xung quanh cần thiết để hiểu và khắc phục sự cố. Điều này phản ánh thực tiễn mã hóa tác nhân tiêu chuẩn để tìm kiếm văn bản đặc biệt, duy nhất trước khi mở rộng tìm kiếm.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 69",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/69-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-70",
+    "questionNumber": 70,
+    "text": "You are building developer productivity tools using the Claude Agent SDK. The agent helps engineers explore unfamiliar codebases, understand legacy systems, generate boilerplate code, and automate repetitive tasks. It uses built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nA developer asks the agent to investigate why a specific API endpoint intermittently returns 500 errors. The codebase contains 200+ files, and the developer does not know which components are involved. The agent must trace the error through the routing, middleware, business logic, and database layers.  \n  \nWhich task decomposition approach would be most effective?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Have the agent dynamically generate investigation subtasks based on what it discovers at each step, adapting its exploration plan as new information about the error path emerges."
+      },
+      {
+        "key": "B",
+        "text": "Have the agent first create a comprehensive plan mapping all code paths through the endpoint before beginning any file exploration or code reading."
+      },
+      {
+        "key": "C",
+        "text": "Run parallel worker agents that simultaneously investigate all four layers, then synthesize their findings to identify where the error originates."
+      },
+      {
+        "key": "D",
+        "text": "Define a fixed sequence of investigation steps upfront – grep for error patterns, then read error handlers, then check database queries, then examine middleware – executing each step regardless of intermediate findings."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Khi không thể biết trước phạm vi của một cuộc điều tra — chẳng hạn như việc truy tìm một lỗi không liên tục thông qua một cơ sở mã nhiều lớp, không quen thuộc — thì cách tiếp cận hiệu quả nhất là phân tách nhiệm vụ thích ứng: tác nhân tạo và tinh chỉnh các nhiệm vụ phụ điều tra dựa trên nội dung mà mỗi bước khám phá phát hiện (ví dụ: lần truy cập grep, nhật ký lỗi, đường dẫn mã đáng ngờ), thay vì cam kết thực hiện một kế hoạch hoặc trình tự bước cứng nhắc trước khi bất kỳ hoạt động khám phá nào diễn ra. Điều này phản ánh hướng dẫn của Anthropic dành cho hệ thống tác nhân: tránh chỉ định quá mức các nhiệm vụ ngay từ đầu, để tác nhân lặp lại và tự sửa, đồng thời sử dụng lý luận xen kẽ sau mỗi kết quả của công cụ để đánh giá kết quả phát hiện, xác định các lỗ hổng và quyết định hành động tiếp theo. Không thể tạo ra một bản đồ được lập kế hoạch trước đầy đủ về tất cả các đường dẫn mã trước khi khám phá mã, một chuỗi cố định cứng nhắc bỏ qua bằng chứng được thu thập trong quá trình thực hiện (lãng phí nỗ lực vào các lớp không liên quan) và việc điều tra song song cả bốn lớp là không hiệu quả vì các lớp bị xâu chuỗi theo nguyên nhân (một lỗi trong một lớp thường tạo ra triệu chứng được quan sát thấy ở lớp khác), làm cho một dấu vết thích ứng duy nhất hiệu quả hơn so với các phát hiện song song được tổng hợp độc lập.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 70",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/70-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-71",
+    "questionNumber": 71,
+    "text": "You are building developer productivity tools with the Claude Agent SDK. The agent helps engineers explore unfamiliar codebases, understand legacy systems, generate boilerplate code, and automate repetitive tasks. It relies on the built-in tools (Read, Write, Bash, Grep, Glob) and also integrates with Model Context Protocol (MCP) servers.  \n  \nAn engineer asks the agent to identify untested code paths in a legacy payment processing module that spans 45 files. After the agent has read the first 8 source files, its responses start becoming noticeably less accurate: it is forgetting code patterns discussed earlier, and it still hasn't located all the relevant test files or traced the critical payment flows.  \n  \nWhat is the most effective approach to complete this investigation?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Switch to using Grep to search for specific function names instead of reading full files, reducing the content loaded into context for remaining exploration."
+      },
+      {
+        "key": "B",
+        "text": "Spawn subagents to investigate specific questions (e.g., “find all test files for payment processing,” “trace refund flow dependencies”) while the main agent coordinates findings and preserves high-level understanding."
+      },
+      {
+        "key": "C",
+        "text": "Document all current findings in a summary report, clear context completely, then use that report as the sole reference for continuing the investigation."
+      },
+      {
+        "key": "D",
+        "text": "Clear context with /clear, then selectively re-read only the most critical files discovered so far, writing key findings to a scratchpad file that persists between context resets."
       }
     ],
     "correctAnswers": [
       "B"
     ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "Grep is the purpose-built content-search tool (ripgrep-based) for finding patterns inside file contents across a large codebase, which is exactly what locating all eval( call sites requires.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc ủy ​​quyền các câu hỏi phụ tập trung cho các tác nhân phụ cho phép mỗi tác nhân khám phá bằng cửa sổ ngữ cảnh rõ ràng của riêng mình (ví dụ: một tác nhân phụ định vị tất cả các tệp thử nghiệm để xử lý thanh toán, một tác nhân khác theo dõi các phụ thuộc của luồng hoàn tiền), trong khi tác nhân chính/điều phối chỉ giữ lại những phát hiện tổng hợp và hiểu biết cấp cao thay vì nội dung thô của mỗi tệp. Điều này ngăn chặn tình trạng xuống cấp ngữ cảnh do tích lũy lượng lớn nội dung tệp trong một cửa sổ ngữ cảnh duy nhất và cho phép công việc khám phá còn lại tiến hành một cách hiệu quả và song song, giải quyết trực tiếp cả hai hiện tượng được mô tả: độ chính xác giảm sút do quá tải ngữ cảnh và việc phát hiện không đầy đủ các tệp thử nghiệm cũng như dấu vết luồng thanh toán.",
+    "category": "General",
     "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 71",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/71-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
   },
   {
-    "id": "cca84",
-    "questionNumber": 84,
-    "text": "This currently requires manually copy-pasting content into conversations. The team wants the agent to access this standard Jira ticket data directly. What's the most effective approach?",
+    "id": "cca-72",
+    "questionNumber": 72,
+    "text": "You are developing developer productivity tools with the Claude Agent SDK. The agent assists engineers in exploring unfamiliar codebases, understanding legacy systems, generating boilerplate code, and automating repetitive tasks. It relies on the built-in tools (Read, Write, Bash, Grep, Glob) and can integrate with Model Context Protocol (MCP) servers.  \n  \nAn engineer asks the agent to locate every file in the monorepo that imports the `@company/auth` package, in order to understand how authentication is used across services.  \n  \nWhich built-in tool is most suitable for this task?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "Export Jira tickets to markdown files in the repository that the agent accesses using the Read tool."
-      },
-      {
-        "key": "B",
-        "text": "Build a custom MCP server wrapping Jira's API with tools designed specifically for this team's code review workflow."
-      },
-      {
-        "key": "C",
-        "text": "Integrate an existing Jira MCP server that exposes tickets, comments, and metadata through discoverable tool interfaces."
-      },
-      {
-        "key": "D",
-        "text": "Use the Bash tool with curl to call Jira's REST API, including authentication headers and parsing JSON responses inline."
-      }
-    ],
-    "correctAnswers": [
-      "C"
-    ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "For standard third-party service data like Jira tickets, Anthropic's recommended practice is to integrate an existing MCP server, which provides discoverable, typed tool interfaces with managed authentication.",
-    "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
-  },
-  {
-    "id": "cca85",
-    "questionNumber": 85,
-    "text": "Developer Productivity An engineer asks the agent to find all files in the monorepo that import the @company/auth package to understand how authentication is used across services. Which built-in tool is most appropriate for this task?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Bash, to execute find . -type d -name \"*auth*\" and explore matching directories"
-      },
-      {
-        "key": "B",
         "text": "Read, starting with package.json files to trace dependency declarations"
+      },
+      {
+        "key": "B",
+        "text": "Glob, to find files with “auth” in their filename or path"
       },
       {
         "key": "C",
@@ -2779,177 +2577,2252 @@ export const ccaQuestions: Question[] = [
       },
       {
         "key": "D",
-        "text": "Glob, to find files with \"auth\" in their filename or path"
+        "text": "Bash, to execute find. –type d –name “*auth*” and explore matching directories"
       }
     ],
     "correctAnswers": [
       "C"
     ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "The task is to find every file whose contents contain an import of @company/auth, which is a content- search problem — exactly what the built-in Grep tool (ripgrep-based) is designed for.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc xác định các tệp nhập một gói cụ thể yêu cầu tìm kiếm nội dung văn bản của tệp để tìm mẫu câu lệnh nhập (ví dụ: `import. from '@company/auth'` hoặc `require('@company/auth')`), chứ không chỉ khớp với tên tệp hoặc thư mục. Công cụ Grep được xây dựng có mục đích để tìm kiếm nội dung nhanh chóng, dựa trên mẫu trên nhiều tệp, khiến công cụ này trở thành lựa chọn thích hợp cho loại tác vụ khám phá cách sử dụng mã này. Glob chỉ khớp với đường dẫn/tên tệp, Đọc sẽ yêu cầu kiểm tra từng tệp riêng lẻ mà không có cơ chế tìm kiếm và lệnh find của Bash chỉ định vị các tệp/thư mục theo tên thay vì kiểm tra nội dung của chúng.",
+    "category": "General",
     "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 72",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/72-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
   },
   {
-    "id": "cca86",
-    "questionNumber": 86,
-    "text": "Your productivity agent connects to three MCP servers: an issue tracker (search_issues, get_issue, create_comment), a documentation wiki (search_docs, get_page, list_spaces), and a database explorer (run_query, get_schema, list_databases). When engineers ask cross-system questions like \"What database tables are affected by the authentication refactor in PROJ-1234?\", monitoring shows the agent makes 8-10 sequential tool calls, frequently issues exploratory calls because it lacks visibility into what content each server contains, and exhausts context space before completing complex investigations. What architectural change best leverages MCP capabilities to address these issues?",
+    "id": "cca-73",
+    "questionNumber": 73,
+    "text": "You are building a multi-agent research system with the Claude Agent SDK. A coordinator agent delegates to specialized subagents: one that searches the web, one that analyzes documents, one that synthesizes findings, and one that generates reports. The system researches topics and produces comprehensive, cited reports.  \n  \nIn production, you observe the following:  \n  \n- Simple fact-checking queries (e.g., \"What year was the Paris Climate Agreement signed?\") traverse all four subagents sequentially, consuming 40+ seconds and significant tokens per query.  \n- Complex comparative research benefits from running the full pipeline.  \n- Your query distribution is diverse and continually evolving as users discover new applications.  \n  \nWhat is the most effective approach to optimize the system for this varying query complexity?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
+        "text": "Create a fast-path for factual questions that bypasses subagents entirely, routing all other queries through the complete pipeline to ensure research thoroughness."
+      },
+      {
+        "key": "B",
+        "text": "Implement pattern-based routing that categorizes queries by structure (single-fact vs. comparative vs. analytical) and maps each category to a predefined subagent combination."
+      },
+      {
+        "key": "C",
+        "text": "Train a query complexity classifier on labeled historical data to predict optimal subagent combinations, retraining periodically as query patterns evolve."
+      },
+      {
+        "key": "D",
+        "text": "Have the coordinator analyze each query and dynamically decide which subagents to invoke based on its assessment of query requirements."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Mẫu điều phối/điều phối viên-nhân viên của Claude Agent SDK được thiết kế sao cho tác nhân điều phối tự suy luận về từng truy vấn đến và tự động xác định tác nhân phụ nào thực sự cần thiết, thay vì dựa vào một bộ quy tắc, danh mục được mã hóa cứng cố định hoặc một trình phân loại được đào tạo riêng biệt. Các phương pháp tiếp cận tĩnh — phân chia đường dẫn nhanh/đường dẫn đầy đủ nhị phân, ánh xạ từ mẫu đến tác nhân phụ được xác định trước hoặc trình phân loại độ phức tạp được đào tạo lại định kỳ — tất cả đều yêu cầu bảo trì thủ công liên tục và phải vật lộn để theo kịp phân phối truy vấn đa dạng và liên tục phát triển khi người dùng tìm thấy các trường hợp sử dụng mới. Việc cho phép điều phối viên đánh giá các yêu cầu truy vấn trong thời gian chạy và chỉ gọi các tác nhân phụ cần thiết (ví dụ: bỏ qua phân tích và tổng hợp tài liệu để tra cứu thực tế đơn giản, nhưng chạy chuỗi báo cáo-phân tích-tổng hợp-tổng hợp tìm kiếm đầy đủ cho nghiên cứu so sánh) sẽ duy trì cả hiệu quả cho các truy vấn đơn giản và tính kỹ lưỡng cho các truy vấn phức tạp, đồng thời nó tự động tổng quát hóa thành các loại truy vấn mới mà không yêu cầu thiết kế lại quy tắc định tuyến hoặc đào tạo lại mô hình. Điều này phản ánh hướng dẫn của Anthropic rằng việc ra quyết định động, dựa trên mô hình được ưu tiên hơn so với các quy trình công việc cứng nhắc được xác định trước khi tính đa dạng của nhiệm vụ và tính khó đoán trước cao.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 73",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/73-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-74",
+    "questionNumber": 74,
+    "text": "You are building a multi-agent research system with the Claude Agent SDK. A coordinator agent delegates work to specialized subagents: one for web search, one for document analysis, one for synthesizing findings, and one for generating reports. The system researches topics and produces comprehensive, cited reports.  \n  \nWhen the system analyzes complex legal cases that cite multiple precedents, the document-analysis subagent currently processes each precedent sequentially. For a landmark case citing 12 precedents, this takes over 3 minutes to complete.  \n  \nWhat is the most effective way to reduce this latency while still preserving the coordinator's ability to monitor and debug the system?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a recursive agent hierarchy where analysis agents subdivide work among child agents until reaching single-precedent granularity"
+      },
+      {
+        "key": "B",
+        "text": "Have the coordinator spawn parallel document analysis subagents, each handling a subset of precedents, then aggregate results before synthesis"
+      },
+      {
+        "key": "C",
+        "text": "Enable the document analysis subagent to spawn its own specialized subagents dynamically when it encounters cases with many citations"
+      },
+      {
+        "key": "D",
+        "text": "Implement a message queue where precedent analysis tasks are processed asynchronously by a pool of worker agents"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Bởi vì 12 tiền lệ có thể được phân tích độc lập với nhau, đây là trường hợp điển hình cho mẫu điều phối-worker (fan-out/fan-in): bản thân điều phối viên sinh ra nhiều tác nhân phụ phân tích tài liệu song song, phân tách các tiền lệ giữa chúng và sau đó tổng hợp kết quả đầu ra của chúng trước khi chuyển sang bước tổng hợp. Giữ điều phối viên làm thực thể sinh ra và theo dõi các tác nhân phụ (thay vì để tác nhân phụ sinh ra tác nhân con của chính nó, xây dựng hệ thống phân cấp đệ quy sâu hoặc phân phối nhiệm vụ sang hàng đợi bên ngoài) duy trì một điểm hiển thị tập trung, duy nhất đối với tất cả các tác nhân đang hoạt động, điều này cần thiết để theo dõi tiến trình và gỡ lỗi — trong khi vẫn đạt được mức giảm độ trễ khi thực thi song song.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 74",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/74-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-75",
+    "questionNumber": 75,
+    "text": "You are expanding a multi-agent research system beyond its original single web search agent by adding specialized data sources:  \n  \n- A **financial API agent** that returns structured JSON containing revenue, margins, and growth rates  \n- A **news monitoring agent** that returns prose summaries of recent developments  \n- A **patent analysis agent** that returns structured lists of technology areas  \n  \nThe synthesis agent combines the outputs from these subagents into executive briefings. Currently, the synthesis agent converts everything into bullet points, which causes:  \n  \n- Financial comparisons to lose their tabular clarity  \n- News summaries to lose their narrative flow  \n  \nWhat change would most improve the quality of the briefings?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Update the synthesis agent to render each content type appropriately – financial data as tables, news as prose"
+      },
+      {
+        "key": "B",
+        "text": "Standardize all subagent outputs to prose summaries with inline citations"
+      },
+      {
+        "key": "C",
+        "text": "Standardize all subagent outputs to JSON with fields for claim, evidence, source, and confidence"
+      },
+      {
+        "key": "D",
+        "text": "Add a format conversion layer between subagents and synthesis that transforms all outputs to a common intermediate representation"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Vấn đề được mô tả là một định dạng đầu ra thống nhất duy nhất (dấu đầu dòng) đang được áp dụng cho các loại nội dung khác nhau về cơ bản, phá hủy các đặc điểm cấu trúc giúp mỗi loại trở nên hữu ích — các bảng truyền tải những so sánh định lượng (doanh thu, tỷ suất lợi nhuận, tốc độ tăng trưởng) tốt hơn nhiều so với các đầu dòng, trong khi văn xuôi vẫn duy trì dòng tường thuật về diễn biến tin tức. Cách khắc phục chính xác là làm cho tác nhân tổng hợp nhận biết được định dạng: hiển thị từng loại nội dung trong cách trình bày phù hợp nhất với nó (bảng dành cho dữ liệu tài chính/bằng sáng chế có cấu trúc, văn xuôi cho tin tức tường thuật) thay vì làm phẳng mọi thứ thành một định dạng chung. Việc tiêu chuẩn hóa tất cả các tác nhân phụ thành một định dạng đầu ra duy nhất (văn xuôi hoặc JSON) chỉ chuyển vấn đề không khớp thay vì giải quyết nó, vì nó sẽ buộc dữ liệu tài chính chuyển sang dạng tường thuật (mất độ chính xác/khả năng so sánh) hoặc tin tức vào các trường có cấu trúc cứng nhắc (mất luồng tường thuật). Việc chèn một lớp biểu diễn chung trung gian cũng không giải quyết được vấn đề cơ bản vì bước tổng hợp vẫn cần logic để quyết định cách hiển thị từng loại nội dung một cách thích hợp — cách khắc phục nằm trong chính logic tổng hợp/kết xuất, điều chỉnh định dạng đầu ra cho phù hợp với loại nội dung.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 75",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/75-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-76",
+    "questionNumber": 76,
+    "text": "Production logs indicate that, when the agent manages complex billing disputes requiring 6+ tool calls, it sometimes reaches its `max_turns` limit after collecting data but before resolving the issue or escalating it. The team wants to guarantee that every customer interaction ends in either a completed resolution or a human handoff, regardless of how the agent loop ends. Which approach provides this guarantee?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add system prompt instructions telling the agent to call escalate_to_human with a summary of its findings whenever it determines it cannot complete resolution within its remaining actions."
+      },
+      {
+        "key": "B",
+        "text": "Split the workflow into two sequential agent invocations – a first agent gathers information via get_customer and lookup_order, then a second agent receives that data and handles process_refund or escalate_to_human, each with separate turn budgets."
+      },
+      {
+        "key": "C",
+        "text": "Add orchestration-layer code that checks the agent’s outcome after each loop termination – if the loop ended without a completed resolution or escalation, programmatically call escalate_to_human with the accumulated conversation context and tool results."
+      },
+      {
+        "key": "D",
+        "text": "Implement a pre-tool-use hook that counts tool invocations and terminates the loop with an automatic escalation once the agent reaches 80% of its max_turns limit."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Kiểm tra trạng thái đầu cuối của lớp điều phối xác định có thể xử lý cả kết thúc vòng lặp bình thường và đặc biệt. Khi no đã hoàn tất quá trình giải quyết hoặc báo cáo trước đó được ghi lại, nó có thể tạo ra sự chuyển giao của con người theo chương trình với bối cảnh hội thoại đã thu thập và kết quả của công cụ. Việc vượt quá giới hạn `max_turns` của một lần chạy tổng đài viên sẽ tạo ra ngoại lệ `MaxTurnsExceeded`, do đó, hành vi dựa trên lời nhắc hoặc chỉ riêng ngân sách chuyển lượt tổng đài viên riêng biệt không thể đảm bảo kết quả cuối cùng được yêu cầu.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 76",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/76-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-77",
+    "questionNumber": 77,
+    "text": "You are developing developer-productivity tools with the Claude Agent SDK. The agent assists engineers in exploring unfamiliar codebases, understanding legacy systems, generating boilerplate code, and automating repetitive tasks. It uses the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nAn engineer asks the agent to understand how the caching layer functions before adding a new cache-invalidation trigger. After initial Grep searches, the agent has determined that caching logic spans 15 files—including decorators, middleware, and service classes—covering approximately 8,000 lines total. What is the most effective next step to build understanding while managing context constraints?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use the Read tool to sequentially load all 15 files, building complete understanding across the full caching implementation."
+      },
+      {
+        "key": "B",
+        "text": "Use Glob to find files matching common caching patterns (cache.py, caching/), prioritize the largest files by reading them first, then check smaller files for gaps."
+      },
+      {
+        "key": "C",
+        "text": "Analyze imports and class hierarchies to identify the base cache class, Read that file to understand the interface, then trace specific invalidation implementations."
+      },
+      {
+        "key": "D",
+        "text": "Use Grep to search for “invalidate” and “expire” patterns across all files, then Read only those specific line ranges with minimal surrounding context."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc truy tìm từ lớp bộ đệm cơ sở sẽ thiết lập giao diện bộ đệm, trách nhiệm của nó và các mối quan hệ mà việc triển khai cụ thể phải tuân theo. Sau đó, tác nhân chỉ có thể kiểm tra các hoạt động triển khai vô hiệu hóa quan trọng, duy trì bối cảnh trong khi vẫn giữ lại thông tin kiến ​​trúc cần thiết để thêm trình kích hoạt chính xác.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 77",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/77-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-78",
+    "questionNumber": 78,
+    "text": "You are creating developer-productivity tools with the Claude Agent SDK. The agent assists engineers in exploring unfamiliar codebases, understanding legacy systems, generating boilerplate code, and automating repetitive work. It uses the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nYour codebase-exploration tool saves session IDs so engineers can continue investigations across work sessions. Yesterday, an engineer spent an hour analyzing a legacy authentication module and building context about its architecture and dependencies. They want to continue today. The session ID is valid, but version control indicates that a teammate's merge modified 3 of the 12 files the agent previously read overnight. Which approach best balances efficiency and accuracy?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Start fresh session to ensure the agent works with current codebase state without stale assumptions"
+      },
+      {
+        "key": "B",
+        "text": "Resume the session and inform the agent which specific files changed for targeted re-analysis"
+      },
+      {
+        "key": "C",
+        "text": "Resume the session and immediately have the agent re-read all 12 previously analyzed files"
+      },
+      {
+        "key": "D",
+        "text": "Resume the session without informing the agent about the changed files"
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các phiên Claude được tiếp tục sẽ lưu giữ lịch sử cuộc trò chuyện của họ, do đó, việc giữ lại bản phân tích trước đó sẽ tránh được công việc trùng lặp. Những thay đổi đã biết đối với ba tệp đã đọc trước đó chỉ có thể làm mất hiệu lực ngữ cảnh hoặc kết luận phụ thuộc vào các tệp đó; việc xác định rõ ràng chúng cho phép tác nhân đọc lại và đánh giá lại các khu vực bị ảnh hưởng trong khi vẫn duy trì phân tích hợp lệ của chín tệp còn lại. Điều này cân bằng độ chính xác của mã hiện tại với việc tái sử dụng ngữ cảnh phiên một cách hiệu quả.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 78",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/78-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-79",
+    "questionNumber": 79,
+    "text": "You are developing developer-productivity tools with the Claude Agent SDK. The agent assists engineers in exploring unfamiliar codebases, understanding legacy systems, generating boilerplate code, and automating repetitive tasks. It uses the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nYour agent must insert a new helper function into the middle of a 150-line utility module, between two existing functions. The Edit tool fails because its `old_string` parameter cannot locate unique text to match—the file contains repetitive docstrings, variable names, and structural patterns. What is the most reliable way to perform this insertion?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use Edit with an extremely long old_string capturing 30+ lines of context to guarantee uniqueness"
+      },
+      {
+        "key": "B",
+        "text": "Use Bash to append the function definition to the end of the file using heredoc syntax"
+      },
+      {
+        "key": "C",
+        "text": "Use Edit’s replace_all parameter to target a common pattern and embed the new function in the replacement text"
+      },
+      {
+        "key": "D",
+        "text": "Use Read to load the file, add the function at the appropriate location, then Write the updated file"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Công cụ chỉnh sửa tác nhân được quản lý thực hiện thay thế chuỗi và thường yêu cầu `old_string` xảy ra chính xác một lần. Khi tồn tại neo duy nhất đáng tin cậy no, việc tải tệp hoàn chỉnh bằng Đọc, chèn trình trợ giúp vào vị trí được yêu cầu trong nội dung và thay thế tệp thông qua Ghi sẽ tạo ra kết quả xác định. Công cụ Viết chấp nhận nội dung tệp đầy đủ, trong khi `replace_all` sẽ ảnh hưởng đến mọi lần xuất hiện trùng khớp.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 79",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/79-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-80",
+    "questionNumber": 80,
+    "text": "The infrastructure-as-code repository contains Terraform modules (`/terraform/`), Kubernetes manifests (`/kubernetes/`), and CI/CD pipeline scripts (`/pipelines/`). Each needs distinct conventions, yet the single root `CLAUDE.md` has grown beyond 500 lines. When developers work on Kubernetes files, Terraform-specific rules are unnecessarily loaded into context and consume tokens.  \n  \nWhat is the best way to reorganize this so that only relevant guidance loads when editing particular file types?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Split content into subdirectory CLAUDE.md files (/terraform/CLAUDE.md, /kubernetes/CLAUDE.md), so Claude loads directory-specific guidance."
+      },
+      {
+        "key": "B",
+        "text": "Keep the root CLAUDE.md and use @path/to/import syntax to modularly include tool-specific guidance files from separate documents."
+      },
+      {
+        "key": "C",
+        "text": "Restructure the root CLAUDE.md into clearly labeled sections with headers (e.g, “## Terraform Conventions”), improving organization and readability."
+      },
+      {
+        "key": "D",
+        "text": "Create files in .claude/rules/ with YAML frontmatter path-scoping (e.g., paths: [“terraform/**/*”]), loading rules only when editing matching files."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Claude Code hỗ trợ các quy tắc Markdown trong `.claude/rules/` với `paths` YAML frontmatter, đưa từng quy tắc vào các tệp phù hợp. Điều này giữ cho các hướng dẫn dành riêng cho Terraform-, Kubernetes- và quy trình nằm ngoài ngữ cảnh trừ khi Claude đang làm việc với các đường dẫn áp dụng. Việc nhập `@` cải thiện tổ chức nhưng được mở rộng và tải khi khởi động, do đó chúng không làm giảm bối cảnh không liên quan.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 80",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/80-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-81",
+    "questionNumber": 81,
+    "text": "You are developing developer-productivity tools with the Claude Agent SDK. The agent assists engineers in exploring unfamiliar codebases, understanding legacy systems, generating boilerplate code, and automating repetitive tasks. It uses the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nAfter you add an MCP server containing specialized code-refactoring tools (`extract_function`, `rename_variable`, `inline_function`), you notice the agent still performs refactoring through basic text manipulation using Write and Bash `sed` commands. The MCP server is connected and healthy. On reviewing the configuration, you find that every MCP tool has only a minimal description, such as “extract_function: Extracts a function from code.”  \n  \nWhat is the most effective way to increase adoption of the MCP refactoring tools?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Implement a request classifier that detects refactoring intent and automatically routes those requests to the MCP server before the agent processes them."
+      },
+      {
+        "key": "B",
+        "text": "Remove the Write tool from the agent’s configuration for refactoring sessions so it must use the MCP tools for code modifications."
+      },
+      {
+        "key": "C",
+        "text": "Accept this as expected behavior since simpler tools like sed are more predictable than specialized refactoring tools."
+      },
+      {
+        "key": "D",
+        "text": "Enhance the MCP tool descriptions to explain when each tool is preferable to text manipulation and clarify expected inputs and outputs."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Mô tả công cụ là phần chính của định nghĩa công cụ LLM: chúng phải giải thích công cụ này làm gì, khi nào nên sử dụng và cách thức hoạt động của công cụ đó. Các mô tả giúp phân biệt tái cấu trúc ngữ nghĩa với thao tác văn bản chung và chỉ định đầu vào và đầu ra dự kiến ​​sẽ cung cấp cho mô hình bối cảnh cần thiết để chọn các công cụ MCP chuyên dụng một cách thích hợp.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 81",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/81-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-82",
+    "questionNumber": 82,
+    "text": "$36",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create .claude/rules/ files for each standard with YAML frontmatter paths listing every package directory where that standard should apply."
+      },
+      {
+        "key": "B",
+        "text": "Put all standards in the root CLAUDE.md with override instructions like “ignore security-rules.md when working in packages that don’t handle user data.”"
+      },
+      {
+        "key": "C",
+        "text": "Create a shared-stendards.md that uses @imports to combine all three standards, then have each package’s CLAUDE.md import that combined file."
+      },
+      {
+        "key": "D",
+        "text": "Use @imports in each package’s CLAUDE.md to reference only the specific standard files relevant to that package, based on the maintainer’s domain knowledge."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các tệp `CLAUDE.md` theo gói cục bộ có thể sử dụng `@imports` để chỉ bao gồm các tiêu chuẩn chung áp dụng cho gói đó. Điều này bảo toàn một nguồn thông tin chính xác duy nhất cho từng tiêu chuẩn, tránh các hướng dẫn không liên quan và cho phép người bảo trì áp dụng kiến ​​thức về miền của họ trong đó đường dẫn thư mục không tiết lộ liệu gói có xử lý dữ liệu người dùng hay hiển thị API hay không.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 82",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/82-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-83",
+    "questionNumber": 83,
+    "text": "You are creating developer-productivity tools with the Claude Agent SDK. The agent assists engineers in exploring unfamiliar codebases, understanding legacy systems, generating boilerplate code, and automating repetitive work. It uses the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nYour agent has spent 25 minutes examining a game engine’s rendering subsystem—reading shader code, buffer management, and frame-synchronization logic. An engineer now asks it to understand how the physics engine integrates with rendering for collision debug overlays. You notice that recent responses refer to “typical rendering patterns” rather than to the specific VulkanPipeline and FrameGraph classes it found earlier.  \n  \nWhat is the most effective approach?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Continue in the current context with more targeted prompts referencing the specific classes by name."
+      },
+      {
+        "key": "B",
+        "text": "Summarize key rendering findings, then spawn a sub-agent for physics exploration with that summary in its initial context."
+      },
+      {
+        "key": "C",
+        "text": "Spawn a sub-agent to explore physics independently, then manually synthesize its findings with the rendering knowledge accumulated in the main conversation."
+      },
+      {
+        "key": "D",
+        "text": "Use /clear to reset context completely, then start fresh with physics exploration using file paths from the project's CLAUDE.md."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Bản tóm tắt tập trung chuyển các thông tin kết xuất cần thiết để điều tra việc tích hợp lớp phủ va chạm, trong khi tác nhân phụ thực hiện khám phá vật lý mới trong cửa sổ ngữ cảnh của chính nó. Điều này hạn chế nhiễu thăm dò bổ sung trong bối cảnh chính và giữ lại các chi tiết hiển thị cụ thể cần thiết để kết nối hai hệ thống con. Anthropic ghi lại các tác nhân phụ như một cách để bảo toàn ngữ cảnh bằng cách tách riêng hoạt động khám phá và chỉ trả về một bản tóm tắt.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 83",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/83-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-84",
+    "questionNumber": 84,
+    "text": "After integrating a local MCP server that provides code-analysis tools (`analyze_dependencies`, `find_dead_code`, `calculate _complexity`), you confirm that the server is healthy and that the tools appear in the `tools/list` response. However, the agent consistently uses Grep to search for import statements instead of calling `analyze_dependencies`—even when users explicitly ask about “code dependencies.”  \n  \nReviewing the tool definitions shows:  \n  \n- MCP: `analyze_ dependencies` – “Analyzes dependency graph”  \n- Built-in: Grep – “Search file contents for a pattern using regular expressions. Returns matching lines with line numbers and surrounding context.”  \n  \nWhat is the most effective way to improve the agent’s selection of MCP tools?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add routing instructions to the system prompt specifying that dependency-related questions should use MCP tools rather than Grep."
+      },
+      {
+        "key": "B",
+        "text": "Remove Grep from available tools when the MCP server is connected to eliminate functional overlap."
+      },
+      {
+        "key": "C",
+        "text": "Split analyze_dependencies into granular tools ( list_imports, resolve_transitive_deps, detect_circular_deps) so each has a focused purpose less likely to overlap with Grep."
+      },
+      {
+        "key": "D",
+        "text": "Expand MCP tool descriptions to detail capabilities and outputs – e.g., “Builds dependency graph showing direct imports, transitive dependencies, and cycles.”"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Mô tả công cụ hướng dẫn mô hình quyết định thời điểm và cách thức gọi một công cụ. Mô tả rằng `analyze_dependencies` xây dựng biểu đồ phụ thuộc và trả về các thao tác nhập trực tiếp, phụ thuộc bắc cầu và chu trình giúp phân biệt rõ ràng nó với một công cụ tìm kiếm văn bản và cho phép lựa chọn phù hợp cho các yêu cầu phân tích phụ thuộc.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 84",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/84-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-85",
+    "questionNumber": 85,
+    "text": "You are developing a multi-agent research system with the Claude Agent SDK. A coordinator agent assigns work to specialized subagents: one searches the web, one analyzes documents, one synthesizes findings, and one produces reports. The system researches topics and generates comprehensive, cited reports.  \n  \nWhile researching “renewable energy adoption,” the web-search agent returns recent statistics (2024: 35% adoption), while the document-analysis agent extracts data from internal reports (2021: 18% adoption). The synthesis agent mistakenly identifies these as conflicting sources instead of recognizing that the data indicates growth over time. What change would best allow the synthesis agent to correctly interpret these temporal differences?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Instruct the synthesis agent to always treat the most recent data as authoritative and place older findings in a separate historical appendix."
+      },
+      {
+        "key": "B",
+        "text": "Add a conflict resolution agent that automatically discards older data when newer data exists for the same metric."
+      },
+      {
+        "key": "C",
+        "text": "Require subagents to include publication or data collection dates in their structured outputs."
+      },
+      {
+        "key": "D",
+        "text": "Configure the web search agent to only return results from the past 6 months."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Ngày tháng là siêu dữ liệu xuất xứ cần thiết cho các phát hiện định lượng. Việc đưa ngày xuất bản hoặc ngày thu thập dữ liệu của mỗi nguồn vào đầu ra tác nhân phụ có cấu trúc cho phép quá trình tổng hợp phân biệt các quan sát từ các giai đoạn khác nhau, sắp xếp chúng theo thứ tự thời gian và xác định sự thay đổi theo thời gian thay vì mâu thuẫn. Đầu ra có cấu trúc Claude hỗ trợ các trường do lược đồ xác định, bao gồm các trường chuỗi được định dạng ngày, cho phép siêu dữ liệu này được yêu cầu một cách nhất quán.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 85",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/85-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-86",
+    "questionNumber": 86,
+    "text": "You are using Claude Code to speed up software development. Your team uses it for code generation, refactoring, debugging, and documentation. You need to incorporate it into your development workflow with custom slash commands, `CLAUDE.md` configurations, and an understanding of when to use plan mode versus direct execution.  \n  \nYou have asked Claude Code to create a PDF report-generation feature. The initial implementation queries the database correctly, but its output has formatting problems: table columns are too narrow and truncate content, dates are displayed without proper formatting, and page-break handling is wrong. You have noticed that these issues interact—altering column widths affects date rendering, and page breaks depend on content height.  \n  \nWhat is the most effective approach for iterating toward a working solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Show Claude an example of a correctly formatted report and ask it to match that output, rather than listing the specific technical issues."
+      },
+      {
+        "key": "B",
+        "text": "Address the column width issue first with specific measurements, verify it works, then fix date formatting within the corrected columns, then adjust page breaks – testing after each change."
+      },
+      {
+        "key": "C",
+        "text": "Provide all three issues in a single detailed message with exact specifications for each, allowing Claude to address them together in one update."
+      },
+      {
+        "key": "D",
+        "text": "Start fresh with a detailed prompt specifying all formatting requirements upfront."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các vấn đề về bố cục phụ thuộc phải được giải quyết theo thứ tự phụ thuộc và được xác thực sau mỗi thay đổi. Việc sửa độ rộng cột trước tiên sẽ thiết lập không gian sẵn có cho việc định dạng ngày tháng; chiều cao nội dung thu được sau đó có thể được sử dụng để điều chỉnh ngắt trang. Thử nghiệm gia tăng sẽ tách biệt nguồn của từng hồi quy và tránh kết hợp các thay đổi tương tác thành một bản cập nhật đơn lẻ không rõ ràng.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 86",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/86-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-87",
+    "questionNumber": 87,
+    "text": "You are using Claude Code to speed up software development. Your team uses it for code generation, refactoring, debugging, and documentation. You need to incorporate it into your development workflow with custom slash commands, `CLAUDE.md` configurations, and an understanding of when to use plan mode versus direct execution.  \n  \nYou have been tasked with adding real-time updates to the application. This could use WebSockets, Server-Sent Events, or polling, each with different complexity, browser support, and infrastructure requirements.  \n  \nWhat is the most effective way to start this task?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use direct execution with a prompt asking Claude to analyze all approaches and implement the one it determines is best."
+      },
+      {
+        "key": "B",
+        "text": "Use direct execution to implement polling first, then evaluate whether to upgrade to WebSockets later."
+      },
+      {
+        "key": "C",
+        "text": "Enter plan mode to explore the architecture, evaluate trade-offs, and present options for team approval before implementing."
+      },
+      {
+        "key": "D",
+        "text": "Start direct execution with WebSockets, then refactor if infrastructure issues arise."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Chế độ kế hoạch cho phép Claude Code phân tích cơ sở mã và phát triển kế hoạch triển khai mà không cần sửa đổi tệp hoặc chạy lệnh. Khi lựa chọn trong số các kiến ​​trúc giao tiếp thời gian thực có sự đánh đổi đáng kể, việc sử dụng kiến ​​trúc đó để khám phá kiến ​​trúc và đưa ra các giải pháp thay thế để nhóm phê duyệt sẽ thiết lập thiết kế trước khi bắt đầu triển khai.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 87",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/87-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-88",
+    "questionNumber": 88,
+    "text": "You are using Claude Code to speed up software development. Your team uses it for code generation, refactoring, debugging, and documentation. You need to incorporate it into your development workflow with custom slash commands, `CLAUDE.md` configurations, and an understanding of when to use plan mode versus direct execution.  \n  \nA security audit requires upgrading your authentication library from v2 to v3. The migration guide describes breaking changes: `authenticate()` now returns a Promise rather than accepting a callback, the `User` type has reorganized fields, and three deprecated methods have been removed. Grep indicates that the library is imported in 45 files across several modules.  \n  \nWhat is the most effective approach?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Update the dependency version, run the test suite, and use Claude Code to fix each failure as it appears."
+      },
+      {
+        "key": "B",
+        "text": "Paste the migration guide's breaking changes into your prompt and use direct execution to update all usages across the 45 files."
+      },
+      {
+        "key": "C",
+        "text": "Create a custom slash command encapsulating the migration transformations, then execute it against each file without prior codebase exploration."
+      },
+      {
+        "key": "D",
+        "text": "Enter plan mode to explore library usage across modules, map affected code paths, then create a migration strategy before implementing."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Để di chuyển thư viện xác thực trên diện rộng với các thay đổi về API, loại và phương thức bị xóa không đồng bộ, hãy phân tích cơ sở mã trước khi chỉnh sửa để xác định mọi cách sử dụng, ranh giới mô-đun bị ảnh hưởng và đường dẫn thời gian chạy. Chiến lược di chuyển dựa trên khoảng không quảng cáo đó hỗ trợ các chuyển đổi nhất quán và xác thực có mục tiêu, bao gồm cả các đường dẫn mà bộ thử nghiệm có thể không bao gồm. Chế độ kế hoạch Claude Code phù hợp cho giai đoạn phân tích này vì nó có thể kiểm tra cơ sở mã mà không cần sửa đổi tệp hoặc thực thi lệnh.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 88",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/88-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-89",
+    "questionNumber": 89,
+    "text": "You are creating developer-productivity tools with the Claude Agent SDK. The agent assists engineers with exploring unfamiliar codebases, understanding legacy systems, generating boilerplate code, and automating repetitive tasks. It uses the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nAn engineer asks the agent to add comprehensive tests to a legacy codebase containing 200 files and very little existing test coverage. The engineer has not indicated which modules should be prioritized.  \n  \nHow should the agent break down this open-ended task?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Start writing tests for the first module alphabetically, using test failures and imports to discover related files organically."
+      },
+      {
+        "key": "B",
+        "text": "Use Glob and Grep to map codebase structure, identify heavily-coupled modules, create a prioritized plan for high-impact areas, and revise as dependencies are discovered."
+      },
+      {
+        "key": "C",
+        "text": "Systematically read all 200 files to create a complete function inventory before writing any tests, ensuring the testing plan accounts for every function before beginning."
+      },
+      {
+        "key": "D",
+        "text": "Create a fixed testing schedule upfront based on directory structure, allocating equal effort to each top-level directory regardless of code complexity or business importance."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Đối với một cơ sở mã kế thừa lớn có mức độ ưu tiên đã nêu của no, nhân viên hỗ trợ nên khám phá kho lưu trữ để hiểu cấu trúc và các phần phụ thuộc của nó, xác định các mô-đun có tính kết hợp cao hoặc có tác động cao, đồng thời tạo một kế hoạch thử nghiệm gia tăng có thể được cập nhật khi tìm hiểu thêm. Glob và Grep hỗ trợ việc khám phá kho lưu trữ hiệu quả, trong khi kế hoạch có thể sửa đổi sẽ tránh được việc phân bổ tùy tiện hoặc có tỷ trọng bằng nhau mà bỏ qua rủi ro kỹ thuật và tác động kinh doanh.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 89",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/89-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-90",
+    "questionNumber": 90,
+    "text": "You are developing developer-productivity tools with the Claude Agent SDK. The agent assists engineers in exploring unfamiliar codebases, understanding legacy systems, generating boilerplate code, and automating repetitive work. It uses the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nYou have configured your Claude agent with three MCP servers: one for git operations, one for Jira ticket management, and one for documentation search.  \n  \nWhen a user asks the agent to “create a branch for JIRA-123 and add documentation links to the ticket,” how does the agent access tools across these servers?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Tools from all configured MCP servers are discovered at connection time and available simultaneously to the agent."
+      },
+      {
+        "key": "B",
+        "text": "The agent automatically selects the most relevant server based on the request and loads only that server's tools."
+      },
+      {
+        "key": "C",
+        "text": "The agent queries each server sequentially to determine which handles each tool, routing calls based on tool name prefixes."
+      },
+      {
+        "key": "D",
+        "text": "You must specify which MCP server to use for each turn, and the agent can only access one server's tools at a time."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các máy chủ MCP đã định cấu hình có thể được kết nối trong một yêu cầu bằng bộ công cụ MCP cho mỗi máy chủ. Các công cụ được kích hoạt của họ có sẵn cho tác nhân, tác nhân này sẽ chọn các công cụ git và Jira có khả năng được mô tả phù hợp với công việc được yêu cầu; nó không bị giới hạn ở một máy chủ duy nhất trong một lượt.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 90",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/90-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-91",
+    "questionNumber": 91,
+    "text": "You are creating developer-productivity tools with the Claude Agent SDK. The agent helps engineers explore unfamiliar codebases, understand legacy systems, generate boilerplate code, and automate repetitive work. It uses the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nAn engineer’s exploration subagent spent 30 minutes analyzing a legacy payment system, read 47 files, and documented data flows. The session was interrupted when the engineer’s connection dropped. During the absence, a teammate merged a PR that renamed two utility functions. The engineer wants to continue the same exploration.  \n  \nWhat is the most effective approach?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Resume the subagent from its previous transcript without mentioning the changes – the architecture understanding remains valid."
+      },
+      {
+        "key": "B",
+        "text": "Launch a fresh subagent and include the prior transcript in the initial prompt for context."
+      },
+      {
+        "key": "C",
+        "text": "Launch a fresh subagent with a summary of prior findings."
+      },
+      {
+        "key": "D",
+        "text": "Resume the subagent from its previous transcript and inform it about the renamed functions."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc nối lại phiên sẽ giữ lại bối cảnh khám phá được tích lũy trên 47 tệp và luồng dữ liệu được ghi lại. Các chức năng tiện ích được đổi tên là một thay đổi kho lưu trữ có liên quan, do đó, tác nhân được tiếp tục cần có bản cập nhật đó trong lời nhắc tiếp tục để kiểm tra lại các tham chiếu bị ảnh hưởng dựa trên cơ sở mã hiện tại. Tài liệu CLI và SDK của Anthropic hỗ trợ tiếp tục cuộc trò chuyện theo ID phiên cho công việc nhiều lượt.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 91",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/91-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-92",
+    "questionNumber": 92,
+    "text": "You are developing developer-productivity tools with the Claude Agent SDK. The agent helps engineers explore unfamiliar codebases, understand legacy systems, generate boilerplate code, and automate repetitive tasks. It uses the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nAn engineer used Claude Code yesterday to investigate authentication flows in a legacy monolith, accumulating significant context during a 2-hour session. Today, she wants to continue that same investigation. She has worked on three other codebases since then and knows the session was named `auth-deep-dive`.  \n  \nHow should she resume?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use `--resume auth-deep-dive` to load that specific session by name"
+      },
+      {
+        "key": "B",
+        "text": "Use `--continue` to pick up where the most recent conversation left off"
+      },
+      {
+        "key": "C",
+        "text": "Start fresh and re-read the same files"
+      },
+      {
+        "key": "D",
+        "text": "Use `--session-id` with the UUID from yesterday's session transcript file"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Claude Code hỗ trợ tiếp tục một phiên cụ thể trước đó bằng tên hiển thị của nó với `claude --resume <name>`. Do đó, phiên có tên `auth-deep-dive` có thể được tiếp tục trực tiếp với `--resume auth-deep-dive`. Thay vào đó, `--continue` tải cuộc hội thoại gần đây nhất trong thư mục hiện tại, do đó, nó sẽ không chọn cuộc điều tra xác thực trước đó một cách đáng tin cậy.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 92",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/92-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-93",
+    "questionNumber": 93,
+    "text": "You are developing developer-productivity tools with the Claude Agent SDK. The agent assists engineers in exploring unfamiliar codebases, understanding legacy systems, generating boilerplate code, and automating repetitive work. It uses the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nAn engineer asks the agent to locate every caller of a function before it is removed. The function is defined in a core library, but it is also exposed through wrapper modules that rename the function for domain-specific usage (for example, `calculateTax` in the library becomes `computeOrderTax` in the orders module).  \n  \nWhich exploration strategy will most reliably identify all callers?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Search for the function name in project documentation to understand intended usage patterns and navigate to documented integration points."
+      },
+      {
+        "key": "B",
+        "text": "Use Grep to find all files that import from the library or wrapper modules, then read each file to check whether it uses the function."
+      },
+      {
+        "key": "C",
+        "text": "Use Grep to search for the function's original name across the codebase."
+      },
+      {
+        "key": "D",
+        "text": "Read the library and wrapper modules to identify all exposed names for the function, then Grep for each name across the codebase."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Tất cả tên công khai đề cập đến cùng một cách triển khai phải được xác định trước khi tìm kiếm cách sử dụng. Mô-đun trình bao bọc có thể đổi tên hàm, do đó, việc tìm kiếm giới hạn ở mã định danh ban đầu có thể bỏ sót người gọi bằng bí danh dành riêng cho tên miền. Đọc thư viện và trình bao bọc để liệt kê các tên được hiển thị, sau đó là tìm kiếm trên toàn cơ sở mã cho từng tên, bao gồm các trang web gọi trực tiếp và dựa trên trình bao bọc.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 93",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/93-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-94",
+    "questionNumber": 94,
+    "text": "You are developing a structured data-extraction system with Claude. The system extracts information from unstructured documents, validates the output with JavaScript Object Notation (JSON) schemas, and maintains high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nYour extraction pipeline processes restaurant menus and must produce structured JSON containing item names, descriptions, prices, and dietary tags. Some menus have inconsistent formatting—for example, prices may appear as \"$12\" or \"12.00\", and dietary information may be represented by icons or text.  \n  \nWhat is the most reliable approach?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Define a strict output schema and include format normalization rules in your prompt."
+      },
+      {
+        "key": "B",
+        "text": "Extract data as-is and normalize formats in post-processing code after Claude returns."
+      },
+      {
+        "key": "C",
+        "text": "Use separate extraction calls for each field to ensure consistent handling of each type."
+      },
+      {
+        "key": "D",
+        "text": "Request multiple extraction attempts per document and select the most common format."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Lược đồ đầu ra nghiêm ngặt thực thi các trường và loại JSON bắt buộc, đồng thời các quy tắc chuẩn hóa rõ ràng trong lời nhắc trích xuất sẽ thiết lập một cách trình bày chuẩn cho các dữ liệu đầu vào không nhất quán như giá cả và nhãn chế độ ăn uống. Điều này tạo ra dữ liệu đã được xác thực, sẵn sàng xuôi dòng tại điểm trích xuất.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 94",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/94-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-95",
+    "questionNumber": 95,
+    "text": "You are developing a structured data-extraction system with Claude. The system pulls information from unstructured documents, validates output with JavaScript Object Notation (JSON) schemas, and preserves high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nYour system has operated with 100% human review for 3 months. Analysis indicates that extractions with model confidence ≥90% achieve 97% accuracy overall. To lower reviewer workload, you intend to automate high-confidence extractions.  \n  \nBefore deployment, which validation step is most critical?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Verify that 97% accuracy meets requirements for all downstream systems that consume the extracted data."
+      },
+      {
+        "key": "B",
+        "text": "Analyze accuracy by document type and field to verify high-confidence extractions perform consistently across all segments, not just in aggregate."
+      },
+      {
+        "key": "C",
+        "text": "Compare accuracy at different confidence thresholds (85%, 90%, 96%) to find the optimal cutoff that maximizes automation while minimizing errors."
+      },
+      {
+        "key": "D",
+        "text": "Run a two-week pilot routing 25% of high-confidence extractions directly to downstream systems and monitor error reports."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Độ chính xác tổng hợp không chứng minh được rằng ngưỡng tin cậy là đáng tin cậy cho mọi loại tài liệu, trường được trích xuất và phân đoạn trường hợp biên. Tỷ lệ tổng thể cao có thể che giấu các lỗi tập trung trong một phân đoạn mà các hệ thống hạ nguồn có thể phụ thuộc vào, do đó, hiệu suất phải được đánh giá bởi các phân đoạn đó trước khi tự động hóa các đầu ra có độ tin cậy cao. Hướng dẫn đánh giá của Anthropic nhấn mạnh vào việc thử nghiệm trên các tình huống và xem xét kết quả qua các trường hợp thử nghiệm để tìm ra các mẫu hiệu suất.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 95",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/95-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-96",
+    "questionNumber": 96,
+    "text": "You are developing a structured-data extraction system with Claude. The system pulls information from unstructured documents, validates its output with JavaScript Object Notation (JSON) schemas, and preserves high accuracy. It must manage edge cases gracefully and integrate with downstream systems.  \n  \nYour schema contains a `skills: string[]` field. Production monitoring identifies three consistency problems:  \n  \n1. Compound phrases such as \"Python and SQL\" are sometimes retained as a single entry and sometimes split.  \n2. Implied but unmentioned skills occasionally appear in extracted results.  \n3. Similar documents yield dramatically different array lengths (5–10 versus 40+ entries).  \n  \nYour prompt currently states, \"Extract all skills mentioned.\"  \n  \nWhat is the most effective improvement?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add few-shot examples demonstrating compound phrase handling, explicit mention criteria, and appropriate entry granularity."
+      },
+      {
+        "key": "B",
+        "text": "Add post-extraction normalization that maps skills to a canonical taxonomy and deduplicates similar entries."
+      },
+      {
+        "key": "C",
+        "text": "Enrich the schema to `{skill: string, confidence: float, source_quote: string}[]` to capture extraction metadata."
+      },
+      {
+        "key": "D",
+        "text": "Add constraints: \"Extract 10-20 skills maximum, one skill per entry, only explicitly named skills.\""
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các ví dụ Few-shot thiết lập chính sách trích xuất dự định bằng cách hiển thị cách trình bày các kỹ năng kết hợp, yêu cầu đề cập bằng văn bản rõ ràng và minh họa mức độ chi tiết mục nhập thích hợp. Các ví dụ đa dạng, có liên quan—bao gồm cả các trường hợp đặc biệt—cải thiện độ chính xác và tính nhất quán trong trích xuất của Claude một cách đáng tin cậy hơn so với chỉ một hướng dẫn mơ hồ. Số lượng tối đa tùy ý không xác định ranh giới trích xuất chính xác và có thể loại trừ các kỹ năng hợp lệ.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 96",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/96-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-97",
+    "questionNumber": 97,
+    "text": "You are developing a structured data-extraction system using Claude. The system pulls information from unstructured documents, validates its output with JavaScript Object Notation (JSON) schemas, and preserves high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nYour system extracts event metadata (date, location, organizer, attendee_count) from news articles by using a JSON schema in which every field is nullable. During evaluation, you find that the model often produces plausible but incorrect values for fields that are not mentioned in the article—for example, returning \"500\" for attendee_count when the source has no attendance information.  \n  \nWhat is the most effective approach to reduce these false extractions?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add prompt instructions to return null for any field where information is not directly stated in the source."
+      },
+      {
+        "key": "B",
+        "text": "Make all schema fields required (non-nullable) with strict validation rules to ensure the model only outputs verifiable data."
+      },
+      {
+        "key": "C",
+        "text": "Add a post-processing step using a second LLM call to verify each extracted value exists in the source document."
+      },
+      {
+        "key": "D",
+        "text": "Upgrade to a more capable model tier with improved instruction-following to reduce hallucination tendencies."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Một hướng dẫn rõ ràng để trả về `null` bất cứ khi nào nguồn không nêu trực tiếp giá trị trường sẽ thiết lập quy tắc bỏ phiếu trắng đối với bằng chứng bị thiếu và sử dụng lược đồ có thể rỗng như dự định. Điều này làm giảm các trích xuất không được hỗ trợ mà không buộc phải tạo ra giá trị khác null. Anthropic khuyến nghị hạn chế Claude trong phạm vi thông tin có trong tài liệu được cung cấp và cho phép Claude thể hiện sự không chắc chắn để giảm ảo giác.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 97",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/97-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-98",
+    "questionNumber": 98,
+    "text": "You are developing a structured data-extraction system with Claude. The system pulls information from unstructured documents, validates its output with JavaScript Object Notation (JSON) schemas, and preserves high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nYour system has operated for 3 weeks, and human reviewers have corrected 847 extractions. Analysis identifies a recurring pattern: when recipes contain informal measurements such as “a handful” or “a splash,” the model either fabricates specific quantities or leaves fields blank—representing 23% of all corrections.  \n  \nHow should this feedback be used to improve extraction accuracy?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Update your JSON schema to add a \"measurement_type\" enum field (precise/informal)."
+      },
+      {
+        "key": "B",
+        "text": "Implement a post-processing layer that uses pattern matching to detect informal measurement phrases in source text and automatically populate values when the extraction is empty."
+      },
+      {
+        "key": "C",
+        "text": "Add few-shot examples to your prompt demonstrating correct handling of informal measurements – extracting them verbatim rather than converting or omitting them."
+      },
+      {
+        "key": "D",
+        "text": "Fine-tune the model on the 847 corrected extractions."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các ví dụ Few-shot cho thấy các phép đo không chính thức được trích xuất nguyên văn cung cấp sự điều chỉnh trực tiếp, có mục tiêu cho mẫu lỗi được quan sát trong khi vẫn lưu giữ thông tin nguồn. Hướng dẫn nhắc nhở của Anthropic nêu rõ rằng các ví dụ đa dạng, phù hợp sẽ cải thiện độ chính xác và tính nhất quán, đặc biệt là khi chúng bao gồm các trường hợp khó khăn.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 98",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/98-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-99",
+    "questionNumber": 99,
+    "text": "You are creating a structured-data extraction system with Claude. The system extracts information from unstructured documents, validates its output with JavaScript Object Notation (JSON) schemas, and preserves high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nYour pipeline uses a tool named `extract_metadata` with a JSON schema for paper details. You have also defined `lookup_citations` and `verify_doi` tools for enrichment. During testing, you observe that when users make requests such as “extract the metadata and tell me how cited it is,” Claude sometimes calls `lookup_citations` first, which fails because it requires the DOI that `extract_metadata` would supply.  \n  \nWhat is the most effective way to ensure structured metadata extraction occurs first?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Set `tool_choice` to `{\"type\": \"tool\", \"name\": \"extract_metadata\"}` for every API call in the pipeline, ensuring Claude always extracts metadata before any enrichment can occur."
+      },
+      {
+        "key": "B",
+        "text": "Set `tool_choice` to `{\"type\": \"tool\", \"name\": \"extract_metadata\"}` and process the enrichment requests in subsequent turns after receiving the extracted metadata."
+      },
+      {
+        "key": "C",
+        "text": "Set `tool_choice` to `\"auto\"` and reorder the tool definitions so `extract_metadata` appears first in the tools array, since Claude prioritizes earlier-listed tools."
+      },
+      {
+        "key": "D",
+        "text": "Set `tool_choice` to `\"any\"` so Claude must use a tool, combined with system prompt instructions prioritizing `extract_metadata`."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Lựa chọn công cụ được đặt tên bắt buộc đảm bảo rằng `extract_metadata` được gọi cho yêu cầu trích xuất. Sau khi kết quả công cụ của nó cung cấp DOI, lượt tiếp theo có thể thực hiện tra cứu trích dẫn hoặc xác minh DOI với đầu vào được yêu cầu. `tool_choice` có tên áp dụng cho yêu cầu API riêng lẻ của nó, trong khi `auto` cho phép Claude chọn và `any` chỉ yêu cầu một số công cụ chứ không phải công cụ trích xuất. [Anthropic’s tool-use documentation](https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools) tuyên bố rằng `tool` buộc một công cụ cụ thể, trong khi `auto` và `any` không bắt buộc một công cụ cụ thể.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 99",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/99-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-100",
+    "questionNumber": 100,
+    "text": "You are developing a structured data-extraction system using Claude. The system extracts information from unstructured documents, validates output with JavaScript Object Notation (JSON) schemas, and preserves high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nTesting shows that when source documents lack certain specifications, the model invents plausible-sounding values to fulfill your schema’s required fields. For example, a document that mentions only dimensions is returned with a fabricated `\"weight: 2.3 kg\"` in the extraction output.  \n  \nWhich schema-design change most effectively addresses this hallucination behavior?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Change fields that may not exist in source documents from required to optional, allowing the model to omit them"
+      },
+      {
+        "key": "B",
+        "text": "Add explicit instructions to the prompt stating \"only extract information explicitly stated in the document; use placeholder text for missing values\""
+      },
+      {
+        "key": "C",
+        "text": "Add a \"confidence\" field alongside each specification where the model self-reports its certainty, then filter out low-confidence extractions"
+      },
+      {
+        "key": "D",
+        "text": "Implement semantic validation that verifies each extracted value appears in or can be inferred from the source document text"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các thông số kỹ thuật có thể không có trong tài liệu nguồn phải là tùy chọn thay vì bắt buộc. Điều này cho phép đầu ra trích xuất bỏ qua thông tin không có sẵn thay vì buộc mô hình chỉ tạo ra một giá trị hợp lý để đáp ứng xác thực lược đồ.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 100",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/100-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-101",
+    "questionNumber": 101,
+    "text": "You are developing a structured data-extraction system using Claude. The system pulls information from unstructured documents, validates outputs with JavaScript Object Notation (JSON) schemas, and preserves high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nYour extraction pipeline validates outputs against JSON schemas, but limited reviewer capacity means human reviewers can handle approximately 5% of the total extraction volume.  \n  \nWhat is the most effective basis for choosing which extractions to send for human review?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Randomly sample 5% of extractions for review."
+      },
+      {
+        "key": "B",
+        "text": "Route extractions where the model indicates low confidence or where source documents contain ambiguous or contradictory information."
+      },
+      {
+        "key": "C",
+        "text": "Route extractions for review only when downstream systems report data quality issues or processing failures."
+      },
+      {
+        "key": "D",
+        "text": "Route extractions containing specific high-priority entity types (e.g., financial figures, dates) for human review, regardless of extraction confidence."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc đánh giá của con người có giá trị nhất khi hướng tới các hồ sơ có rủi ro trích xuất không chính xác được ước tính cao nhất. Độ tin cậy của mô hình thấp và tài liệu nguồn không rõ ràng hoặc mâu thuẫn là những chỉ báo trực tiếp về sự không chắc chắn, do đó, việc định tuyến các mục đó sẽ tập trung khả năng xem xét hạn chế vào các trường hợp mà nó có thể cải thiện độ chính xác nhất và giải quyết các trường hợp khó khăn một cách an toàn.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 101",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/101-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-102",
+    "questionNumber": 102,
+    "text": "You are developing a structured data-extraction system with Claude. The system pulls information from unstructured documents, validates its output with JavaScript Object Notation (JSON) schemas, and preserves high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nThe system must extract candidate information—name, contact details, skills, work experience, and education—from uploaded resumes. The extracted data must strictly conform to a predefined JSON schema, because missing required fields or incorrect data types will cause downstream validation failures.  \n  \nWhat is the most dependable approach for ensuring Claude’s output consistently conforms to the schema?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Make two separate API calls – first extracting information as text, then asking Claude to format that text as JSON."
+      },
+      {
+        "key": "B",
+        "text": "Define a tool with an input schema matching your required JSON structure and extract the data from Claude's tool_use response."
+      },
+      {
+        "key": "C",
+        "text": "Parse Claude's text response with regex patterns to extract JSON objects, using retry logic for malformed responses."
+      },
+      {
+        "key": "D",
+        "text": "Include detailed JSON formatting instructions and a template example in the system prompt, asking Claude to output only valid JSON."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Claude tool use chấp nhận `input_schema` được biểu thị dưới dạng Lược đồ JSON và trả về các đối số công cụ trong khối `tool_use`. Việc xác định lược đồ đó cho bản ghi ứng cử viên sẽ cung cấp tải trọng trích xuất có cấu trúc để ứng dụng sử dụng, tránh việc phân tích cú pháp dễ vỡ của văn bản mô hình dạng tự do.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 102",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/102-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-103",
+    "questionNumber": 103,
+    "text": "You are developing a structured-data extraction system with Claude. The system pulls information from unstructured documents, validates its output with JavaScript Object Notation (JSON) schemas, and maintains high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nThe system sends documents with extraction confidence below 85% for human review. A quarterly audit finds that 12% of high-confidence extractions (≥85%) also contain errors, in which the model identifies plausible but incorrect values. Sources of error differ: comparison tables that display competitor specifications, appendices that refer to other product variants, and ambiguous wording that the model misunderstands. You need a sustainable method to identify these high-confidence errors and determine over time whether improvements reduce the error rate.  \n  \nWhat approach is most effective?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a verification pass that re-extracts from each high-confidence document, flagging cases where the two extraction attempts produce different results"
+      },
+      {
+        "key": "B",
+        "text": "Lower the confidence threshold from 85% to 70%, routing a larger volume of extractions to human review."
+      },
+      {
+        "key": "C",
+        "text": "Implement stratified random sampling reviewing a fixed percentage of high-confidence extractions weekly, enabling error rate measurement and novel pattern detection."
+      },
+      {
+        "key": "D",
+        "text": "Implement heuristic rules that flag documents containing comparison tables or appendices for review regardless of confidence score."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc lấy mẫu ngẫu nhiên phân tầng của các trích xuất có độ tin cậy cao tạo ra một tập hợp đánh giá của con người mang tính đại diện, có thể lặp lại để ước tính tỷ lệ lỗi còn lại và theo dõi tỷ lệ đó theo thời gian. Việc xem xét các mẫu đó cũng cho thấy các chế độ lỗi không được dự đoán trước bởi các quy tắc cố định, bao gồm các trích xuất hợp lý nhưng không chính xác mà việc chấm điểm độ tin cậy không nắm bắt được.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 103",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/103-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-104",
+    "questionNumber": 104,
+    "text": "You are developing a structured data-extraction system with Claude. The system pulls information from unstructured documents, validates its output with JavaScript Object Notation (JSON) schemas, and preserves high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nYour extraction pipeline processes invoices and extracts line items, subtotals, tax amounts, and grand totals. During evaluation, you find that in 18% of extractions, the total of extracted line-item amounts does not match the extracted grand total—sometimes because of OCR errors in the source document and sometimes because of model extraction errors. Downstream accounting systems reject records whose totals do not match.  \n  \nWhat is the most effective way to improve extraction reliability?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add few-shot examples demonstrating invoices where extracted line items sum correctly to the stated total, encouraging the model to produce mathematically consistent extractions."
+      },
+      {
+        "key": "B",
+        "text": "Add a \"calculated-total\" field where the model sums extracted line items alongside a \"stated_total\" field. Flag records for human review when values differ."
+      },
+      {
+        "key": "C",
+        "text": "Extract line items and totals independently, then use a separate validation model to reconcile discrepancies by determining which extracted values are most likely correct."
+      },
+      {
+        "key": "D",
+        "text": "Implement post-processing that automatically adjusts line item amounts proportionally when their sum doesn't match the stated total."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Có thể so sánh tổng số được tính toán xác định từ các mục hàng được trích xuất với tổng số được nêu riêng được trích xuất. Việc giữ lại cả giá trị và sự khác biệt về định tuyến để con người đánh giá sẽ phát hiện cả lỗi OCR và lỗi trích xuất trong khi bảo toàn bằng chứng nguồn và tránh các điều chỉnh tài chính bịa đặt trước khi hồ sơ đến hệ thống kế toán.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 104",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/104-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-105",
+    "questionNumber": 105,
+    "text": "You are developing a structured data-extraction system with Claude. The system extracts information from unstructured documents, validates output with JavaScript Object Notation (JSON) schemas, and maintains high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nYour extraction pipeline processes contracts that commonly include amendments. When a contract contains both original terms and later amendments (e.g., an original clause specifies \"30-day payment terms\" while Amendment 1 changes this to \"45 days\"), the model inconsistently extracts either value without indicating which one applies.  \n  \nWhat is the most effective approach for improving extraction accuracy for documents containing amendments?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Preprocess documents with a classifier that identifies and removes superseded sections before the main extraction step."
+      },
+      {
+        "key": "B",
+        "text": "Implement post-extraction validation using pattern matching to detect amendments and flag those extractions for manual review"
+      },
+      {
+        "key": "C",
+        "text": "Redesign the schema so amended fields capture multiple values, each with source location and effective date."
+      },
+      {
+        "key": "D",
+        "text": "Add prompt instructions to always extract the most recent amendment value and ignore superseded original terms."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các hợp đồng sửa đổi yêu cầu trình bày cả điều khoản ban đầu và điều khoản đã sửa đổi, cùng với bối cảnh xuất xứ và thời gian. Việc thu thập nhiều giá trị trường cùng với vị trí nguồn và ngày hiệu lực của chúng sẽ lưu giữ lịch sử sửa đổi, hỗ trợ xác định điều khoản áp dụng và cung cấp đầu ra có cấu trúc có thể kiểm tra được cho các hệ thống hạ nguồn. Khả năng trích dẫn của Claude hỗ trợ trả về vị trí nguồn cho các phát biểu được trích xuất từ ​​tài liệu được cung cấp.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 105",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/105-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-106",
+    "questionNumber": 106,
+    "text": "You are developing a structured data-extraction system with Claude. The system pulls information from unstructured documents, validates its output with JavaScript Object Notation (JSON) schemas, and preserves high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nMonitoring indicates that 12% of extractions fail Pydantic validation with specific errors such as \"expected float for quantity, got '2 to 3'\". Retrying these requests unchanged results in the same failures.  \n  \nWhat is the most effective method to recover from these validation failures?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Send a follow-up request including the validation error, asking the model to correct its output"
+      },
+      {
+        "key": "B",
+        "text": "Implement a secondary pipeline using a larger model tier to reprocess documents that fail validation"
+      },
+      {
+        "key": "C",
+        "text": "Pre-process source documents to standardize problematic formats before sending them for extraction"
+      },
+      {
+        "key": "D",
+        "text": "Set temperature to 0 to eliminate output variability and ensure consistent formatting"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Phản hồi về lỗi xác thực cung cấp cho mô hình ràng buộc bị vi phạm chính xác và cho phép mô hình sửa kết quả đầu ra có cấu trúc trước đó. Việc thử lại không thay đổi không có khả năng khắc phục được lỗi diễn giải hoặc loại xác định, chẳng hạn như trả về một phạm vi số lượng trong đó lược đồ yêu cầu số float.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 106",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/106-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-107",
+    "questionNumber": 107,
+    "text": "You are developing a structured-data extraction system with Claude. The system pulls information from unstructured documents, validates its output with JavaScript Object Notation (JSON) schemas, and preserves high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nYour system needs to extract event details from calendar invitations and produce JSON that strictly conforms to a schema containing fields for title, date, time, location, and attendees. Downstream systems reject any malformed or non-conformant JSON.  \n  \nWhich approach delivers the most reliable schema compliance?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Include detailed JSON formatting instructions and the target schema in your prompt, then parse Claude's text response as JSON."
+      },
+      {
+        "key": "B",
+        "text": "Define a tool with your target schema as input parameters and have Claude call it with the extracted data."
+      },
+      {
+        "key": "C",
+        "text": "Append instructions like \"Output only valid JSON matching the schema exactly\" and implement retry logic to re-prompt when JSON parsing fails."
+      },
+      {
+        "key": "D",
+        "text": "Pre-fill Claude's response with an opening brace to force JSON output, then complete and parse the response."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Định nghĩa công cụ chấp nhận `input_schema` được biểu thị dưới dạng Lược đồ JSON, do đó, Claude trả về các trường được trích xuất dưới dạng đầu vào của công cụ có cấu trúc thay vì dựa vào việc tạo văn bản không bị ràng buộc. Điều này đáng tin cậy hơn đối với các hệ thống hạ nguồn yêu cầu JSON tuân thủ lược đồ hơn là nhắc, phân tích cú pháp, thử lại hoặc điền trước đầu ra văn bản.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 107",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/107-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-108",
+    "questionNumber": 108,
+    "text": "You are developing a structured data-extraction system using Claude. The system extracts information from unstructured documents, validates output with JavaScript Object Notation (JSON) schemas, and maintains high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nYour extraction uses tool use with a JSON schema in which `property_type` is defined as an enum: `['house', 'apartment', 'condo', 'townhouse']`. After deployment, 8% of extractions fail schema validation. Investigation shows that listings mention many uncommon property types—\"studio\", \"loft\", \"duplex\", \"mobile home\", \"tiny house\", \"converted warehouse\"—and new types continue to appear regularly.  \n  \nWhat is the most effective long-term solution?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Continuously expand the enum to include newly observed property types and add monitoring for additional edge cases."
+      },
+      {
+        "key": "B",
+        "text": "Change `property_type` from an enum to a free-form string and implement a normalization step in post-processing."
+      },
+      {
+        "key": "C",
+        "text": "Add an \"other\" value to your enum with a separate `property_type_detail` string field for specifics when \"other\" is selected."
+      },
+      {
+        "key": "D",
+        "text": "Add few-shot examples to your prompt demonstrating how to map unexpected property types to the closest existing enum value."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Giá trị enum `other` với trường chi tiết đi kèm giữ `property_type` trong một tập hợp ổn định, hợp lệ theo lược đồ cho người tiêu dùng tiếp theo trong khi vẫn duy trì loại thuộc tính cụ thể không được nhận dạng. Điều này xử lý một tập hợp các giá trị hợp pháp có kết thúc mở, đang phát triển mà không buộc phải ánh xạ không chính xác hoặc liên tục mở rộng enum được kiểm soát. Các lược đồ công cụ Claude xác định hình dạng đầu vào có cấu trúc dự kiến, do đó thiết kế này vẫn giữ được các lợi ích của đầu ra bị ràng buộc bởi lược đồ trong khi vẫn đáp ứng được các trường hợp biên.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 108",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/108-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-109",
+    "questionNumber": 109,
+    "text": "You are developing a structured data-extraction system with Claude. The system pulls information from unstructured documents, validates its output with JavaScript Object Notation (JSON) schemas, and preserves high accuracy. It must gracefully manage edge cases and integrate with downstream systems.  \n  \nYour extraction system uses `tool_use` with a JSON schema that has 12 fields and detailed descriptions, totaling about 2,500 tokens for the full tool definition. Processing documents below 150K tokens achieves 98% accuracy. For documents from 175–190K tokens, accuracy falls to 71%, and information in the final third is consistently missed. The model has a 200K-token context window.  \n  \nWhat is the most likely cause?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "The model distributes attention proportionally across input length, causing fields mentioned only once near the document's end to receive insufficient processing focus."
+      },
+      {
+        "key": "B",
+        "text": "Very long documents exceed the model's effective attention span regardless of context limits, causing accuracy degradation for content farther from the prompt instructions."
+      },
+      {
+        "key": "C",
+        "text": "Schemas exceeding 8-10 fields increase decision complexity during parameter generation, reducing extraction accuracy independent of document length."
+      },
+      {
+        "key": "D",
+        "text": "Tool definitions consume input context tokens. Combined with system prompts and document content, the total approaches the context limit, degrading end-of-document processing."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Định nghĩa công cụ—bao gồm tên, mô tả và lược đồ—là mã thông báo đầu vào và Claude cũng thêm mã thông báo nhắc hệ thống sử dụng công cụ. Các mã thông báo đó, cùng với các hướng dẫn hệ thống, nội dung tài liệu và đầu ra được tạo, sẽ tiêu tốn dung lượng ngữ cảnh hữu hạn của mô hình. Do đó, một tài liệu dài có thể đạt đến giới hạn 200K mã thông báo ngay cả khi chỉ riêng mã thông báo tài liệu của nó xuất hiện dưới ngưỡng đó, khiến thông tin tài liệu đến muộn có khả năng bị mất hoặc bị cắt bớt một cách không tương xứng.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 109",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/109-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-110",
+    "questionNumber": 110,
+    "text": "You are creating a structured data-extraction system with Claude. The system extracts information from unstructured documents, validates its output with JavaScript Object Notation (JSON) schemas, and preserves high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nAfter the daily batch of 10,000 documents finishes, 300 documents (3%) fail with `context_length_exceeded` errors. The results file identifies every failed item by `custom_id`.  \n  \nWhat is the most cost-effective way to process these failures?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Resubmit only the 300 failed documents after chunking them into smaller pieces, then combine the partial extractions"
+      },
+      {
+        "key": "B",
+        "text": "Reprocess the entire batch with prompt caching enabled to reduce the cost of retrying requests with identical system prompts"
+      },
+      {
+        "key": "C",
+        "text": "Increase the max_tokens parameter for the 300 failed documents and resubmit them in a new batch"
+      },
+      {
+        "key": "D",
+        "text": "Resubmit the entire 10,000 document batch using a model tier with a larger context window"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Lỗi về độ dài ngữ cảnh được giải quyết bằng cách giảm kích thước của từng yêu cầu bị ảnh hưởng, chẳng hạn như bằng cách chia nhỏ các tài liệu bị lỗi và kết hợp việc trích xuất một phần của chúng. Chỉ gửi lại các yêu cầu được xác định bởi `custom_id` sẽ tránh xử lý lại 9.700 tài liệu thành công. Việc tăng `max_tokens` không thu hẹp ngữ cảnh quá khổ, trong khi prompt caching chỉ giảm chi phí cho nội dung lời nhắc có thể sử dụng lại và tầng mô hình ngữ cảnh lớn hơn có thể phải chịu thêm chi phí ngữ cảnh dài.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 110",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/110-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-111",
+    "questionNumber": 111,
+    "text": "You are creating a structured data-extraction system with Claude. The system extracts information from unstructured documents, validates output with JavaScript Object Notation (JSON) schemas, and maintains high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nYour extraction system handles two document types: standard monthly reports, which are archived after processing, and urgent exception reports, which must trigger business alerts within 30 minutes of receipt. Both use the same JSON schema. You want to minimize API costs while satisfying latency requirements.  \n  \nHow should you design the processing pipeline?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Submit all documents to the Batch API with custom_ids for tracking. When results arrive, immediately process urgent documents and trigger delayed alerts for exceptions."
+      },
+      {
+        "key": "B",
+        "text": "Queue all documents and submit hourly batches, flagging urgent documents for expedited handling when batch results return."
+      },
+      {
+        "key": "C",
+        "text": "Submit all documents to the real-time Messages API to ensure consistent processing latency across document types."
+      },
+      {
+        "key": "D",
+        "text": "Route standard reports to the Batch API for 50% cost savings, and route urgent exception reports to the real-time Messages API."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }API hàng loạt của Anthropic được thiết kế để xử lý không đồng bộ, không nhạy cảm về thời gian và cung cấp mức giảm giá 50% cho cả mã thông báo đầu vào và đầu ra. Báo cáo tiêu chuẩn hàng tháng có thể sử dụng nó để giảm chi phí. Báo cáo ngoại lệ khẩn cấp phải được xử lý thông qua API tin nhắn theo thời gian thực để việc tạo cảnh báo có thể đáp ứng yêu cầu 30 phút.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 111",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/111-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-112",
+    "questionNumber": 112,
+    "text": "You are developing a structured data-extraction system with Claude. The system extracts information from unstructured documents, validates its output with JavaScript Object Notation (JSON) schemas, and preserves high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nYour extraction system processes e-commerce product descriptions to pull specifications, such as dimensions, weight, and materials, into JSON. Although the schema is well defined, the model extracts the `\"materials\"` field inconsistently—sometimes returning `\"cotton blend\"`, at other times `\"Cotton/Polyester mix\"`, and occasionally leaving out the field when material information is clearly present in the source.  \n  \nWhat is the most effective method to improve extraction consistency?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add few-shot examples showing 2-3 complete input-output pairs with standardized material description formats"
+      },
+      {
+        "key": "B",
+        "text": "Switch to a more capable model tier since inconsistent extraction indicates insufficient model capability"
+      },
+      {
+        "key": "C",
+        "text": "Make the \"materials\" field required instead of optional in the schema to force the model to always extract a value"
+      },
+      {
+        "key": "D",
+        "text": "Set temperature to 0 to eliminate randomness and ensure deterministic outputs"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các ví dụ Few-shot ghép văn bản sản phẩm đại diện với các giá trị tài liệu chuẩn bắt buộc sẽ dạy trực tiếp quy ước trích xuất và chuẩn hóa. Điều này giải quyết cả cách diễn đạt biến thể và các trường hợp thông tin quan trọng sẽ được đưa vào trường. Lược đồ JSON xác thực cấu trúc nhưng không thiết lập ánh xạ ngữ nghĩa từ cách diễn đạt nguồn đến giá trị được tiêu chuẩn hóa. Hướng dẫn kỹ thuật nhắc nhở của Anthropic lưu ý rằng Claude chú ý đến các ví dụ và chi tiết của chúng, vì vậy các ví dụ phải phản ánh nhất quán hành vi được khuyến khích.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 112",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/112-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-113",
+    "questionNumber": 113,
+    "text": "You are developing a structured-data extraction system using Claude. The system extracts information from unstructured documents, validates its output with JavaScript Object Notation (JSON) schemas, and maintains high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nAfter you implement tool use with strict schema definitions, JSON syntax errors are eliminated, but 5% of extractions still produce valid JSON containing empty arrays or null values for required fields such as citations and methodology. Spot checks show that the source documents contain this information, but in varied forms—inline citations versus bibliographies, and methodology sections versus details embedded in introductions.  \n  \nWhat is the most effective way to address these failures?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Build a regex-based post-processing layer that scans source documents for citation patterns and methodology keywords, populating empty fields when the model fails to extract."
+      },
+      {
+        "key": "B",
+        "text": "Implement retry logic that re-sends requests when validation detects empty required fields."
+      },
+      {
+        "key": "C",
+        "text": "Add few-shot examples demonstrating extractions from documents with varied structures – showing how to identify citations in different formats and locate methodology details across section types."
+      },
+      {
+        "key": "D",
+        "text": "Modify your schema to make citations and methodology optional, and flag incomplete records for manual review rather than failing validation."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các ví dụ Few-shot bao gồm nhiều cấu trúc tài liệu dạy mô hình cách nhận biết các trích dẫn và phương pháp khi cùng một thông tin xuất hiện ở các định dạng hoặc phần khác nhau. Điều này giải quyết lỗ hổng trích xuất ngữ nghĩa trong khi vẫn duy trì xác thực lược đồ nghiêm ngặt để có dữ liệu xuôi dòng hoàn chỉnh, có cấu trúc đáng tin cậy.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 113",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/113-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-114",
+    "questionNumber": 114,
+    "text": "You are developing a structured data-extraction system with Claude. The system pulls information from unstructured documents, validates its output with JavaScript Object Notation (JSON) schemas, and preserves high accuracy. It must gracefully handle edge cases and integrate with downstream systems.  \n  \nFollowing deployment, you discover that 12% of extractions have semantic errors that still pass JSON schema validation (for example, a duration such as \"30 minutes\" is incorrectly entered in an ingredient-quantity field). Human reviewers can examine only 20% of extractions.  \n  \nWhich approach most effectively directs reviewer attention?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Prioritize review of all extractions where required fields are empty or explicitly marked as not found."
+      },
+      {
+        "key": "B",
+        "text": "Have the model output field-level confidence scores, then calibrate review thresholds using a labeled validation set."
+      },
+      {
+        "key": "C",
+        "text": "Review all extractions from documents with formatting anomalies such as unusual layouts or mixed content types."
+      },
+      {
+        "key": "D",
+        "text": "Randomly sample 20% of extractions for review, using corrections to track accuracy and identify error patterns."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Xác thực lược đồ JSON có thể xác minh cấu trúc của đầu ra và các loại dữ liệu được phép, nhưng nó không chứng minh được rằng giá trị hợp lệ về mặt cú pháp phù hợp về mặt ngữ nghĩa cho trường của nó. Việc hiệu chỉnh điểm tin cậy ở cấp độ trường do mô hình tạo dựa trên tập hợp xác thực được gắn nhãn làm cho những điểm đó có ý nghĩa đối với xếp hạng rủi ro, do đó, ngưỡng đánh giá có thể ưu tiên các trích xuất có nhiều khả năng chứa lỗi ngữ nghĩa nhất trong khi vẫn tôn trọng khả năng đánh giá 20%. Hướng dẫn đánh giá của Anthropic hỗ trợ sử dụng các trường hợp thử nghiệm và đánh giá chất lượng để đánh giá kết quả đầu ra và cải thiện lời nhắc.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 114",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/114-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-115",
+    "questionNumber": 115,
+    "text": "You are developing a multi-agent research system with the Claude Agent SDK. A coordinator agent delegates work to specialized subagents: one performs web searches, one analyzes documents, one synthesizes findings, and one produces reports. The system researches topics and generates comprehensive, cited reports.  \n  \nProduction monitoring indicates that the research phase is taking longer than anticipated. Analysis shows that the coordinator calls the web-search subagent and waits for its response, then calls the document-analysis subagent and waits again. These tasks are independent—neither needs the other’s output.  \n  \nHow should you change the system so these subagents run concurrently?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an async orchestration layer outside the agent that spawns parallel threads, each running a separate coordinator-subagent pair, then aggregates results."
+      },
+      {
+        "key": "B",
+        "text": "Add detailed instructions to the coordinator's system prompt explaining the performance benefits of parallel execution and requesting it invoke both subagents at the same time."
+      },
+      {
+        "key": "C",
+        "text": "Switch both subagents to use a Haiku-tier model instead of Sonnet to reduce their individual execution time."
+      },
+      {
+        "key": "D",
+        "text": "Structure the coordinator to emit both Task tool calls (for web search and document analysis) in a single response message rather than across separate conversation turns."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các tác vụ của công cụ độc lập hoặc tác nhân phụ có thể chạy đồng thời khi các lệnh gọi của chúng được đưa vào cùng nhau trong một phản hồi trợ lý duy nhất. Việc phát ra cả hai lệnh gọi Tác vụ trong cùng một phản hồi cho phép thời gian chạy tác nhân thực hiện công việc tìm kiếm trên web và phân tích tài liệu song song và trả về kết quả của chúng để tổng hợp sau này.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 115",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/115-agentic-architecture-orchestration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-116",
+    "questionNumber": 116,
+    "text": "You are integrating Claude Code into your Continuous Integration/Continuous Deployment (CI/CD) pipeline. The system conducts automated code reviews, generates test cases, and gives feedback on pull requests. You must design prompts that deliver actionable feedback while minimizing false positives.  \n  \nYour CI pipeline conducts security-focused code reviews on approximately 50 PRs each day, currently costing $150/day with the synchronous API. Reviews are non-blocking—developers merge once tests pass and address findings in follow-up commits. You are evaluating the Message Batches API for its 50% cost reduction.  \n  \nWhich factor most determines whether batch processing is suitable for this use case?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Whether review feedback arriving up to 24 hours after PR creation remains actionable."
+      },
+      {
+        "key": "B",
+        "text": "Whether your result processing can handle reviews arriving in a different order than submitted."
+      },
+      {
+        "key": "C",
+        "text": "Whether you can structure each review as a single request without multi-turn refinement."
+      },
+      {
+        "key": "D",
+        "text": "Whether reducing per-review latency from 30-60 seconds to near-instant matters for your workflow."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Message Batches API xử lý các yêu cầu một cách không đồng bộ; mặc dù hầu hết các lô hoàn thành trong vòng chưa đầy một giờ, quá trình xử lý có thể kéo dài cho đến hết 24 giờ. Việc xử lý hàng loạt chỉ phù hợp khi phản hồi đánh giá vẫn có thể thực hiện được sau sự chậm trễ có thể xảy ra đó. Kết quả có thể được so khớp với `custom_id` mặc dù phân phối không theo thứ tự và các yêu cầu hàng loạt hỗ trợ các cuộc hội thoại nhiều lượt.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 116",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/116-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-117",
+    "questionNumber": 117,
+    "text": "You are integrating Claude Code into your Continuous Integration/Continuous Deployment (CI/CD) pipeline. The system performs automated code reviews, generates test cases, and provides pull-request feedback. You must design prompts that deliver actionable feedback while minimizing false positives.  \n  \nYour pipeline runs:  \n  \n```  \nPROMPT=\"You are a code reviewer.\"  \nPROMPT=\"$PROMPT Analyze the provided diff\"  \nPROMPT=\"$PROMPT for bugs, security issues,\"  \nPROMPT=\"$PROMPT and style violations.\" claude -p \\ -- dangerously-skip-permissions \\ --system-prompt \"$PROMPT\" \\ < diff.txt  \n```  \n  \nThe reviews finish and return feedback, but Claude comments only on the diff text piped in—it never reads surrounding files in the checked-out repository to gain broader context, even when the diff changes a function called by many other modules.  \n  \nWhich invocation change will make Claude read related repository files while still applying your custom review instructions?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Replace `--system-prompt` with `--append-system-prompt` so your review instructions are added to Claude Code's default prompt instead of overwriting the built-in guidance for using file-reading and code navigation tools."
+      },
+      {
+        "key": "B",
+        "text": "Stop piping the diff via stdin and instead embed the diff contents inside the prompt string, so Claude Code treats the invocation as an agentic session rather than a stream-processing one."
+      },
+      {
+        "key": "C",
+        "text": "Remove `--system-prompt` entirely and place the review instructions in a `CLAUDE.md` file at the repo root, since `--system-prompt` is incompatible with tool use under `-p`."
+      },
+      {
+        "key": "D",
+        "text": "Keep `--system-prompt` and add `-allowedTools \"Read,Glob,Grep\"` so that the non-interactive `-p` mode permits file system tools that it otherwise disables."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }`--append-system-prompt` thêm hướng dẫn tùy chỉnh vào lời nhắc hệ thống mặc định của Claude Code, trong khi `--system-prompt` thay thế nó. Việc giữ lại lời nhắc mặc định sẽ duy trì hướng dẫn tích hợp của Claude Code để sử dụng các công cụ đọc tệp và điều hướng mã, cho phép kiểm tra bối cảnh kho lưu trữ trong quá trình xem xét. Anthropic ghi lại cả hai cờ cho chế độ in và phân biệt việc thêm vào lời nhắc hệ thống mặc định với việc thay thế nó.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 117",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/117-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-118",
+    "questionNumber": 118,
+    "text": "You are integrating Claude Code into your Continuous Integration/Continuous Deployment (CI/CD) pipeline. The system performs automated code reviews, generates test cases, and provides feedback on pull requests. You need to design prompts that deliver actionable feedback while minimizing false positives.  \n  \nYour pipeline reviews every PR with a single API call using a static prompt that contains the diff and the full text of every changed file; unchanged files are excluded. Reviews are posted asynchronously and do not block PR creation. Developers report that reviews repeatedly miss bugs involving cross-file interactions—for example, when a PR renames a function's parameters, the review does not flag callers in unchanged files that still use the old argument order. Evaluation shows that cross-file bugs make up 35% of production incidents from reviewed PRs.  \n  \nWhat is the most effective change to your review design?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Redesign the review as a turn-limited agentic task where the model can read files and search the codebase via tools, following references to verify cross-file findings."
+      },
+      {
+        "key": "B",
+        "text": "Run parallel review passes per changed file with direct dependents included in each pass, then aggregate and deduplicate findings using a final summarization call."
+      },
+      {
+        "key": "C",
+        "text": "Add chain-of-thought instructions asking the model to list all external references in the diff, then reason step-by-step about how each change might affect callers in other files."
+      },
+      {
+        "key": "D",
+        "text": "Use static analysis to build a dependency graph of changed code, then expand the prompt to include all files within two dependency hops of any changed file."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Một quá trình đánh giá tác nhân có giới hạn có thể sử dụng các công cụ tìm kiếm và đọc kho lưu trữ để theo dõi các ký hiệu đã thay đổi thành các tệp người gọi không thay đổi và xác thực hành vi trên nhiều tệp trước khi báo cáo phát hiện. Điều này cung cấp bối cảnh còn thiếu đằng sau các sự cố sản xuất được quan sát, trong khi giới hạn lần lượt sẽ hạn chế việc điều tra. Claude Code hỗ trợ tự động hóa không tương tác trong các đường dẫn CI và các quyền của công cụ có thể định cấu hình, bao gồm các công cụ đọc và ra lệnh, giúp thiết kế này phù hợp với quy trình đánh giá tự động.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 118",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/118-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-119",
+    "questionNumber": 119,
+    "text": "You are incorporating Claude Code into your Continuous Integration/Continuous Deployment (CI/CD) pipeline. The system performs automated code reviews, creates test cases, and gives feedback on pull requests. You must design prompts that deliver actionable feedback while minimizing false positives.  \n  \nA developer uses Claude Code to refactor a function during a development session. Before committing, they ask that same Claude session to review the code for issues. Later, an independent automated CI review finds several bugs that the same-session review missed.  \n  \nWhat most effectively explains this discrepancy?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "The CI review uses a more specific prompt tailored for catching bugs, while the developer's request was too general"
+      },
+      {
+        "key": "B",
+        "text": "The extended session length caused the context window to fill with conversation history, leaving less room for thorough analysis"
+      },
+      {
+        "key": "C",
+        "text": "The CI environment has access to the full codebase context while the local session only sees the current file"
+      },
+      {
+        "key": "D",
+        "text": "Claude retains context about its prior reasoning in the session, making it less likely to question its own decisions"
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc đánh giá được thực hiện trong cùng một phiên sẽ đưa ra bối cảnh triển khai và lý do trước đó. Bối cảnh trước đó có thể gắn mô hình vào các lựa chọn của chính nó, khiến nó ít có khả năng thách thức các quyết định đó một cách độc lập và xác định các khiếm khuyết. Quá trình đánh giá CI riêng biệt bắt đầu từ bối cảnh độc lập, có thể phát hiện ra các lỗi bị bỏ sót trong quá trình tự đánh giá. Claude Code hỗ trợ tiếp tục các phiên cụ thể để duy trì bối cảnh hội thoại.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 119",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/119-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-120",
+    "questionNumber": 120,
+    "text": "You are incorporating Claude Code into your Continuous Integration/Continuous Deployment (CI/CD) pipeline. The system performs automated code reviews, creates test cases, and gives feedback on pull requests. You need to craft prompts that deliver actionable feedback while minimizing false positives.  \n  \nYour pipeline has a release-notes-generation step that classifies and summarizes approximately 200 commits at the end of each weekly release cycle. Each commit is presently sent as an individual Messages API call using a Sonnet-tier Claude model. The release notes are not required until the following morning (results can have approximately 12 hours of latency). Your team must lower the per-token API cost for this step while retaining the same model and prompts (with no change to model tier or output quality).  \n  \nWhich approach meets all of these constraints?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Issue the 200 Messages API requests in parallel using concurrent connections, since concurrency lowers the per-token price charged by the API."
+      },
+      {
+        "key": "B",
+        "text": "Concatenate all 200 commit messages into a single Messages API request and have the model return all summaries in one response, since fewer requests always reduces total token cost."
+      },
+      {
+        "key": "C",
+        "text": "Submit the 200 requests to the Message Batches API with unique custom_ids and retrieve results once the batch ends, which applies a 50% discount to all input and output tokens."
+      },
+      {
+        "key": "D",
+        "text": "Switch the summarization calls from the Sonnet-tier model to a Haiku-tier model to take advantage of Haiku's lower per-token rates."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Anthropic của Message Batches API xử lý không đồng bộ khối lượng lớn yêu cầu và áp dụng giảm giá 50% cho cả mã thông báo đầu vào và đầu ra. Việc gửi từng cam kết dưới dạng yêu cầu hàng loạt với `custom_id` duy nhất sẽ duy trì mô hình Sonnet hiện tại và lời nhắc trong khi điều chỉnh khối lượng công việc có thể chấp nhận được kết quả bị trì hoãn.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 120",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/120-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-121",
+    "questionNumber": 121,
+    "text": "You are integrating Claude Code into your Continuous Integration/Continuous Deployment (CI/CD) pipeline. The system performs automated code reviews, creates test cases, and gives feedback on pull requests. You need to design prompts that deliver actionable feedback while minimizing false positives.  \n  \nAfter deploying automated code review, developers report that roughly 35% of flagged findings are false positives with recurring patterns: style recommendations conflict with team conventions, security warnings concern patterns that are safe in your deployment context, and performance recommendations would harm your particular use case. You want to lower false positives while retaining the ability to identify genuine issues.  \n  \nWhich approach best allows the model to generalize its judgment to new code patterns it has not encountered before?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a comprehensive written specification of all patterns that should not be flagged, then include this full documentation in the system prompt."
+      },
+      {
+        "key": "B",
+        "text": "Implement post-processing that uses keyword matching to filter out findings containing terms like \"convention,\" \"context-dependent,\" or \"trade-off.\""
+      },
+      {
+        "key": "C",
+        "text": "Include few-shot examples in your prompt showing annotated code snippets that distinguish acceptable patterns from genuine issues in each category."
+      },
+      {
+        "key": "D",
+        "text": "Add instructions to your system prompt to \"be conservative,\" \"only flag definite issues,\" and \"consider that some patterns may be intentional.\""
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các ví dụ Few-shot với mã có vấn đề và có thể chấp nhận được chú thích sẽ dạy cho mô hình ranh giới quyết định theo ngữ cảnh cho từng danh mục đánh giá. Các ví dụ đa dạng, phù hợp sẽ cải thiện độ chính xác và tính nhất quán, cho phép mô hình áp dụng những điểm khác biệt đã học được vào các mẫu tương tự chưa được nhìn thấy thay vì chỉ đơn thuần loại bỏ các phạm trù phát hiện rộng lớn.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 121",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/121-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-122",
+    "questionNumber": 122,
+    "text": "You are integrating Claude Code into your Continuous Integration/Continuous Deployment (CI/CD) pipeline. The system performs automated code reviews, creates test cases, and gives feedback on pull requests. You need to design prompts that give actionable feedback and reduce false positives.  \n  \nYour automated review produces many findings per PR, but developer feedback indicates that about half are dismissed as “not worth addressing.” Analysis shows that dismissed findings are frequently technically accurate, but concern minor style preferences or patterns that are acceptable in your codebase.  \n  \nBefore introducing infrastructure complexity, which prompt-design change would most effectively reduce dismissals while preserving detection of genuine issues?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add explicit criteria defining which issues to report (bugs, security) versus skip (minor style, local patterns)"
+      },
+      {
+        "key": "B",
+        "text": "Add instructions asking Claude to rate each finding's confidence (1-10) and only include findings rated 8 or higher"
+      },
+      {
+        "key": "C",
+        "text": "Append instructions to \"only report findings you are highly confident are genuine problems\""
+      },
+      {
+        "key": "D",
+        "text": "Implement a secondary classification model that filters Claude's findings based on predicted developer acceptance"
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các tiêu chí báo cáo rõ ràng và bỏ qua sẽ điều chỉnh kết quả đánh giá phù hợp với định nghĩa của nhóm về một vấn đề có thể xử lý được. Chúng tiếp tục báo cáo các lỗi và vấn đề bảo mật trong khi loại trừ các tùy chọn kiểu có giá trị về mặt kỹ thuật nhưng không thể thực hiện được và các mẫu cục bộ được chấp nhận. Hướng dẫn Claude Code hỗ trợ xác định các tiêu chuẩn mã hóa, tiêu chí đánh giá và quy tắc dành riêng cho dự án để tùy chỉnh hành vi đánh giá.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 122",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/122-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-123",
+    "questionNumber": 123,
+    "text": "You are integrating Claude Code into your Continuous Integration/Continuous Deployment (CI/CD) pipeline. The system performs automated code reviews, generates test cases, and gives feedback on pull requests. You need to design prompts that deliver actionable feedback and reduce false positives.  \n  \nYour test-generation process creates unit tests for new code, but reviews show that 55% are low-value: trivial assertions that merely confirm functions do not throw exceptions, tests that duplicate existing coverage, or tests that disregard your team’s fixture conventions.  \n  \nHow can you reduce the rate of low-value tests being generated in the first place?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Document testing standards in CLAUDE.md including valuable test criteria, available fixtures with intended use cases, and examples distinguishing meaningful behavioral tests from trivial assertions."
+      },
+      {
+        "key": "B",
+        "text": "Restrict test generation to directories where historical quality metrics show higher acceptance rates, disabling it for areas where generated tests consistently require heavy editing."
+      },
+      {
+        "key": "C",
+        "text": "Implement a two-phase generation where a second Claude call scores each test against quality criteria, filtering out low-scoring tests before presenting results to developers."
+      },
+      {
+        "key": "D",
+        "text": "Add post-generation coverage analysis that automatically filters out any generated test that doesn't increase line coverage beyond what existing tests provide."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Kho lưu trữ `CLAUDE.md` cung cấp các hướng dẫn được chia sẻ, dành riêng cho dự án mà Claude Code tải dưới dạng ngữ cảnh. Việc ghi lại các tiêu chí chất lượng thử nghiệm cụ thể, các thiết bị cố định đã được phê duyệt và mục đích sử dụng của chúng cũng như các ví dụ về các thử nghiệm hành vi có ý nghĩa sẽ cung cấp cho mô hình hướng dẫn cần thiết để tránh các thử nghiệm tầm thường, trùng lặp hoặc vi phạm quy ước trong quá trình tạo. Anthropic khuyên bạn nên sử dụng `CLAUDE.md` để có hướng dẫn dự án được chia sẻ theo nhóm cũng như hướng dẫn cụ thể về các quy ước và quy trình làm việc.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 123",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/123-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-124",
+    "questionNumber": 124,
+    "text": "You are integrating Claude Code into a Continuous Integration/Continuous Deployment (CI/CD) pipeline. The system performs automated code reviews, generates test cases, and gives feedback on pull requests. You need to design prompts that deliver actionable feedback while minimizing false positives.  \n  \nDuring initial testing of the automated review pipeline, you find that reviews of large PRs (50+ changed files) sometimes require more than 20 minutes and cost $8-12 per run because of extensive agentic loops – Claude reads files, runs analysis tools, and iterates repeatedly. Your team requires each invocation to abort when it reaches a fixed iteration count and a fixed dollar amount, enforced by Claude Code itself rather than by the surrounding job runner.  \n  \nWhich configuration change directly enforces both per-invocation caps?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Set `--permission-mode dontAsk` to auto-deny any tool permission requests not in the explicitly allowed set."
+      },
+      {
+        "key": "B",
+        "text": "Add `--max-turns 10 --max-budget-usd 2.00` to the `claude -p` invocation to cap iterations and spend."
+      },
+      {
+        "key": "C",
+        "text": "Switch the `--model` flag to a smaller, cheaper model so each iteration uses fewer tokens and lower per-call cost."
+      },
+      {
+        "key": "D",
+        "text": "Set `timeout-minutes: 5` on the GitHub Actions job step and monitor per-run costs via the Anthropic Console usage dashboard."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Trong chế độ in Claude Code, `--max-turns` giới hạn số lần quay và thoát tác nhân khi đạt đến giới hạn đó, trong khi `--max-budget-usd` đặt mức chi tiêu lệnh gọi API tối đa trước khi dừng thực thi. Việc áp dụng cả hai cờ cho cùng một lệnh gọi `claude -p` sẽ thực thi giới hạn số lần lặp và đô la trong Claude Code.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 124",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/124-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-125",
+    "questionNumber": 125,
+    "text": "You are integrating Claude Code into your Continuous Integration/Continuous Deployment (CI/CD) pipeline. The system performs automated code reviews, generates test cases, and provides feedback on pull requests. You need to design prompts that give actionable feedback and minimize false positives.  \n  \nThe automated review repeatedly flags patterns that your team intentionally uses—force-unwrapping optionals in test files, using large coordinator classes that follow your established architecture, and importing internally maintained modules marked as deprecated in the public SDK. Developers dismiss approximately 30% of all findings as project-specific false positives.  \n  \nWhich approach prevents the model from producing these findings in the first place by providing the project’s conventions as persistent context on every review?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Have developers add inline suppress-comments at flagged lines and preprocess diffs to exclude suppressed lines before sending code to the model."
+      },
+      {
+        "key": "B",
+        "text": "Build post-processing keyword filters that suppress findings containing terms like \"force unwrap,\" \"large class,\" or \"deprecated import\" before results reach developers."
+      },
+      {
+        "key": "C",
+        "text": "Document the team's accepted patterns and intentional conventions in the project's CLAUDE.md file so the model receives this context during every review."
+      },
+      {
+        "key": "D",
+        "text": "Configure the review to analyze only the changed lines in the diff without surrounding file context, reducing the amount of code the model evaluates per review."
+      }
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }`CLAUDE.md` cấp dự án cung cấp các hướng dẫn dùng chung, chẳng hạn như tiêu chuẩn mã hóa, tiêu chí đánh giá, quy tắc dành riêng cho dự án và các mẫu ưa thích, dưới dạng bối cảnh dự án liên tục. Việc ghi lại các quy ước có chủ ý được chấp nhận ở đó cho phép Claude Code phân biệt chúng với các vấn đề thực sự trước khi tạo ra kết quả đánh giá.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 125",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/125-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-126",
+    "questionNumber": 126,
+    "text": "You are incorporating Claude Code into your Continuous Integration/Continuous Deployment (CI/CD) pipeline. The system performs automated code reviews, produces test cases, and gives feedback on pull requests. You must design prompts that deliver actionable feedback while minimizing false positives.  \n  \nYour automated review CI jobs require 18 seconds to initialize before Claude starts analyzing code. Profiling shows that the delay results from auto-discovery of hooks, MCP servers, plugins, skills, and multiple nested CLAUDE.md files across your monorepo. You need to reduce startup time while ensuring reviews continue to enforce your team's coding standards, which are documented in your root-level CLAUDE.md file.  \n  \nWhat is the most effective approach?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Replace the default prompt entirely using --system-prompt-file ./CLAUDE.md, which bypasses default prompt assembly and loads only your project rules."
+      },
+      {
+        "key": "B",
+        "text": "Run with --bare mode and pass --append-system-prompt-file ./CLAUDE.md to explicitly load your project standards while skipping all auto-discovery."
+      },
+      {
+        "key": "C",
+        "text": "Run with --bare mode and specify all review criteria directly in the -p prompt argument for each CI invocation, without referencing any external files."
+      },
+      {
+        "key": "D",
+        "text": "Keep the default initialization and add --exclude-dynamic-system-prompt-sections to reduce per-machine prompt variability and improve prompt cache hit rates across runners."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Chế độ `--bare` của Claude Code bỏ qua tính năng tự động phát hiện các hook, kỹ năng, lệnh tùy chỉnh, tác nhân phụ, plugin, máy chủ MCP, bộ nhớ tự động và tệp CLAUDE.md, giảm chi phí khởi tạo. Việc thêm CLAUDE.md gốc với `--append-system-prompt-file` cung cấp rõ ràng các tiêu chuẩn mã hóa của nhóm trong khi vẫn giữ nguyên hướng dẫn mặc định theo lời nhắc của hệ thống.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 126",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/126-claude-code-configuration-workflows",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-127",
+    "questionNumber": 127,
+    "text": "You are incorporating Claude Code into your Continuous Integration/Continuous Deployment (CI/CD) pipeline. The system performs automated code reviews, creates test cases, and gives feedback on pull requests. You must design prompts that deliver actionable feedback while minimizing false positives.  \n  \nYour automated code review is failing to report genuine bugs in pull requests. An investigation shows that the review prompt says: “Only flag critical issues that would definitely cause production failures. Ignore minor concerns and anything you're uncertain about.” Developers confirm that some missed bugs are real logic errors that the model investigated but decided not to report. The team requires review output to remain structured, with each finding tagged with metadata, and actionable.  \n  \nWhich prompt modification both eliminates the cause of the suppressed findings and retains structured, tagged output for downstream filtering?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a second review pass that re-reads the diff using the same prompt, looking for anything the first pass may have missed."
+      },
+      {
+        "key": "B",
+        "text": "Enable extended thinking and instruct the model to reason step-by-step about each code change before producing its review."
+      },
+      {
+        "key": "C",
+        "text": "Remove all severity-related instructions from the prompt and let the model use its default judgment about what to report."
+      },
+      {
+        "key": "D",
+        "text": "Instruct the model to report all findings with a confidence level and severity tag, deferring filtering to a downstream step."
+      }
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Chính sách báo cáo yêu cầu sự chắc chắn và tác động quan trọng đến hoạt động sẽ ngăn chặn những phát hiện hợp lệ theo thiết kế. Việc đưa ra tất cả các phát hiện với siêu dữ liệu đáng tin cậy và mức độ nghiêm trọng sẽ bảo tồn từng lỗi tiềm ẩn để xem xét đồng thời cho phép hệ thống hạ nguồn áp dụng các ngưỡng và bộ lọc của riêng nó. Claude Code hỗ trợ đầu ra JSON có cấu trúc để tự động hóa theo chương trình.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 127",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/127-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-128",
+    "questionNumber": 128,
+    "text": "You are integrating Claude Code into your Continuous Integration/Continuous Deployment (CI/CD) pipeline. The system performs automated code reviews, generates test cases, and supplies feedback on pull requests. You need to design prompts that deliver actionable feedback while minimizing false positives.  \n  \nIn addition to your CI pipeline, your organization has enabled Claude's managed Code Review (via the Claude GitHub App) for this repository, and reviews run automatically on each PR. Reviews average 18 findings per PR. Developer feedback identifies three categories of unwanted noise:  \n  \n1. Style and formatting issues that your linter already enforces in CI  \n2. Findings on auto-generated template code under `src/gen/`  \n3. Rendering helper patterns that are intentional project conventions but are flagged because they resemble common anti-patterns  \n  \nOnly about 4 findings per PR are real logic bugs.  \n  \nWhat is the most effective way to reduce this noise while preserving detection of real issues?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a REVIEW.md at the repository root with skip rules for CI-enforced checks and generated files, and a verification requirement that rendering-related findings must cite a specific line demonstrating incorrect behavior."
+      },
+      {
+        "key": "B",
+        "text": "Add custom review instructions to a GitHub Actions workflow file, using the action's prompt parameter to suppress lint-duplicate findings, ignore generated template code, and apply stricter evidence requirements for rendering-related issues."
+      },
+      {
+        "key": "C",
+        "text": "Add detailed explanations to the project's CLAUDE.md describing which patterns are intentional, that linting is handled separately by CI, and that the src/gen/ directory contains autogenerated template code."
+      },
+      {
+        "key": "D",
+        "text": "Configure separate GitHub Action workflow files for each code area, one for generated code with findings suppressed, one for rendering code with custom review instructions, and a general workflow for everything else."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Đánh giá Claude Code được quản lý sử dụng `REVIEW.md` gốc kho lưu trữ để hướng dẫn chỉ dành cho đánh giá. Nó hỗ trợ bỏ qua các quy tắc cho đường dẫn và tìm kiếm danh mục, bao gồm mã được tạo và các bước kiểm tra đã được CI thực thi, đồng thời nó có thể yêu cầu bằng chứng `file:line` nguồn trước khi phát hiện liên quan đến hành vi được đăng. Các quy tắc nhắm mục tiêu này sẽ ngăn chặn tiếng ồn đã xác định trong khi vẫn duy trì việc xem xét các vấn đề về tính chính xác thực sự. [Claude Code Code Review documentation](https://code.claude.com/docs/en/code-review)",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 128",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/128-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.881Z"
+  },
+  {
+    "id": "cca-129",
+    "questionNumber": 129,
+    "text": "You are integrating Claude Code into your Continuous Integration/Continuous Deployment (CI/CD) pipeline. The system performs automated code reviews, creates test cases, and gives feedback on pull requests. You must design prompts that deliver actionable feedback while minimizing false positives.  \n  \nYour automated reviewer uses one prompt for security issues, API design, and business-logic correctness. Your evaluation suite shows strong recall for API-design findings (82%) but weak recall for business-logic edge cases in quiz scoring (34%). After you add few-shot examples of logic bugs to the prompt, logic recall rises to 41% but API-design recall falls to 68%.  \n  \nHow should you address this trade-off to improve detection across both categories?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Provide the full repository as context instead of just the changed files and surrounding code, giving the model deeper visibility into business logic patterns."
+      },
+      {
+        "key": "B",
+        "text": "Split the review into separate focused prompts – one for security and API design, another for business logic – each with dedicated examples, then consolidate findings before posting."
+      },
+      {
+        "key": "C",
+        "text": "Upgrade to a more capable model tier, since its stronger reasoning will handle both concern types in a single prompt and eliminate the recall tradeoff."
+      },
+      {
+        "key": "D",
+        "text": "Replace the few-shot examples with a detailed checklist of specific logic edge cases to verify, such as division-by-zero in score calculations and boundary conditions in grading thresholds."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Các phương diện đánh giá độc lập được hưởng lợi từ lời nhắc đánh giá tập trung với hướng dẫn dành riêng cho từng nhiệm vụ và ví dụ tiêu biểu. Việc chạy các đánh giá logic nghiệp vụ và bảo mật/thiết kế API và logic nghiệp vụ riêng biệt sẽ ngăn các ví dụ logic nghiệp vụ mới chuyển sự chú ý khỏi thiết kế API; việc hợp nhất các kết quả đầu ra của họ sẽ duy trì một quy trình phản hồi yêu cầu kéo duy nhất. Hướng dẫn đánh giá của Anthropic hỗ trợ so sánh các biến thể nhanh chóng với các trường hợp thử nghiệm để xác định và lặp lại những khác biệt về hiệu suất đó.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 129",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/129-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.882Z"
+  },
+  {
+    "id": "cca-130",
+    "questionNumber": 130,
+    "text": "You are incorporating Claude Code into your Continuous Integration/Continuous Deployment (CI/CD) pipeline. The system performs automated code reviews, creates test cases, and gives feedback on pull requests. You must design prompts that deliver actionable feedback while minimizing false positives.  \n  \nYour automated review invokes the Claude API for each PR, using `tool_use` with a `report_findings` tool that returns a JSON array of finding objects (each containing `file_path`, `line_number`, `severity`, `category`, and `description`). During testing of a large PR that changes 30+ files, the response reaches the `max_tokens` limit and is truncated in the middle of the JSON, causing the pipeline parser to fail.  \n  \nWhat is the most effective way to address this?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Split the review into multiple API calls that each analyze a subset of the changed files, then merge the resulting findings arrays."
+      },
+      {
+        "key": "B",
+        "text": "Add retry logic that detects truncated JSON and re-sends the request with instructions to report only critical and high severity findings."
+      },
+      {
+        "key": "C",
+        "text": "Switch from tool_use to prompting Claude to return findings as a markdown list."
+      },
+      {
+        "key": "D",
+        "text": "Increase `max_tokens` to the model's maximum and instruct Claude to keep finding descriptions under 50 words each."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Việc phân vùng một yêu cầu kéo lớn thành các tập hợp con tệp nhỏ hơn sẽ giới hạn từng phản hồi `report_findings` có cấu trúc, tránh JSON không đầy đủ trong khi vẫn giữ lại các phát hiện trên toàn bộ PR. Các mảng kết quả có thể được hợp nhất sau mỗi phản hồi của công cụ hợp lệ. Điểm dừng `max_tokens` có thể cắt bớt khối sử dụng công cụ chưa hoàn chỉnh, do đó, một phản hồi có cấu trúc quá khổ duy nhất không phải là một thiết kế đáng tin cậy.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 130",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/130-prompt-engineering-structured-output",
+    "lastVerifiedAt": "2026-10-23T08:04:16.882Z"
+  },
+  {
+    "id": "cca-131",
+    "questionNumber": 131,
+    "text": "You are creating developer-productivity tools with the Claude Agent SDK. The agent assists engineers in exploring unfamiliar codebases, understanding legacy systems, generating boilerplate code, and automating repetitive tasks. It uses the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nDuring reviews, engineers often ask the agent to cross-reference code changes against Jira tickets—checking ticket descriptions, acceptance criteria, and recent comments. At present, this requires manually copying and pasting content into conversations. The team wants the agent to access this standard Jira ticket data directly.  \n  \nWhat is the most effective approach?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Integrate an existing Jira MCP server that exposes tickets, comments, and metadata through discoverable tool interfaces."
+      },
+      {
+        "key": "B",
+        "text": "Use the Bash tool with `curl` to call Jira's REST API, including authentication headers and parsing JSON responses inline."
+      },
+      {
+        "key": "C",
+        "text": "Build a custom MCP server wrapping Jira's API with tools designed specifically for this team's code review workflow."
+      },
+      {
+        "key": "D",
+        "text": "Export Jira tickets to markdown files in the repository that the agent accesses using the Read tool."
+      }
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }MCP chuẩn hóa cách tác nhân kết nối với các nguồn dữ liệu và công cụ bên ngoài, thể hiện các khả năng thông qua các giao diện có thể khám phá. Máy chủ Jira MCP hiện tại cung cấp quyền truy cập trực tiếp vào vé, nhận xét và siêu dữ liệu tiêu chuẩn cần thiết, đồng thời tránh việc triển khai riêng, xử lý xác thực, phân tích cú pháp JSON và bảo trì liên tục theo yêu cầu của tích hợp REST tùy chỉnh hoặc máy chủ tùy chỉnh.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 131",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/131-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.882Z"
+  },
+  {
+    "id": "cca-132",
+    "questionNumber": 132,
+    "text": "You are creating developer-productivity tools with the Claude Agent SDK. The agent assists engineers in exploring unfamiliar codebases, understanding legacy systems, generating boilerplate code, and automating repetitive work. It uses the built-in tools (Read, Write, Bash, Grep, Glob) and connects with Model Context Protocol (MCP) servers.  \n  \nAn engineer who has just joined the team asks the agent to help them understand the authentication and authorization architecture before making security improvements. The codebase contains 800+ files across multiple services.  \n  \nWhich exploration strategy will most effectively build understanding, considering Claude built-in tools and context limits?",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Read all files containing \"auth\", \"login\", \"permission\", or \"token\" in their content or filename."
+      },
+      {
+        "key": "B",
+        "text": "Use Grep to find authentication entry points, read those files, then follow imports and function calls to map the auth flow incrementally."
+      },
+      {
+        "key": "C",
+        "text": "Launch parallel subagents to explore different services simultaneously, then synthesize their findings into an architectural overview."
+      },
+      {
+        "key": "D",
+        "text": "Read any CLAUDE.md and README files first, then ask the engineer to specify which 10-15 files are most important for understanding the auth system."
+      }
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Cấu trúc xác thực được hiểu rõ nhất bằng cách định vị các điểm nhập xác thực thực bằng tìm kiếm được nhắm mục tiêu, đọc các hoạt động triển khai đó và theo dõi quá trình nhập cũng như lệnh gọi hàm của chúng thông qua hệ thống. Điều này dần dần tuân theo luồng xác thực thực thi trong khi hạn chế nội dung tệp không liên quan và duy trì ngữ cảnh cho các mối quan hệ quan trọng. Tài liệu SDK của Anthropic hỗ trợ sử dụng theo chương trình các công cụ có sẵn, bao gồm quy trình làm việc theo định hướng tìm kiếm và đọc tệp.",
+    "category": "General",
+    "tags": [
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 132",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/132-context-management-reliability",
+    "lastVerifiedAt": "2026-10-23T08:04:16.882Z"
+  },
+  {
+    "id": "cca-133",
+    "questionNumber": 133,
+    "text": "$36",
+    "questionType": "multiple_choice",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add an orchestrator that routes questions to a single server based on keywords"
+      },
+      {
+        "key": "B",
+        "text": "Expose each server's content catalog as MCP resources – issue summaries, documentation hierarchy, database schemas"
+      },
+      {
+        "key": "C",
         "text": "Consolidate all three servers into a unified MCP server with cross-referencing capabilities"
       },
       {
-        "key": "B",
-        "text": "Expose each server's content catalog as MCP resources—issue summaries, documentation hierarchy, database schemas"
-      },
-      {
-        "key": "C",
+        "key": "D",
         "text": "Add a prepare_investigation tool to each server that accepts a natural language question and returns relevant content summaries"
-      },
-      {
-        "key": "D",
-        "text": "Add an orchestrator that routes questions to a single server based on keywords"
       }
     ],
     "correctAnswers": [
       "B"
     ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "MCP resources are the protocol primitive designed for exactly this problem: servers expose browsable, application-controlled context that the agent can discover and read without exploratory tool-call round trips.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Tài nguyên MCP cho phép máy chủ hiển thị dữ liệu theo ngữ cảnh để khách hàng khám phá, liệt kê và đọc. Việc cung cấp danh mục tóm tắt vấn đề, cấu trúc tài liệu và lược đồ cơ sở dữ liệu giúp hiển thị nội dung có liên quan trước khi chọn lệnh gọi công cụ hướng hành động, giảm các lệnh gọi khám phá và sử dụng ngữ cảnh không cần thiết trong khi vẫn giữ được quyền truy cập vào cả ba hệ thống.",
+    "category": "General",
     "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
+      "CCA-F",
+      "General"
+    ],
+    "sourceTitle": "Examcademy CCA-F Question 133",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/133-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.882Z"
   },
   {
-    "id": "cca87",
-    "questionNumber": 87,
-    "text": "During testing, agents frequently call tools outside their specialization—the synthesis agent attempts web searches, and the report generator tries to analyze documents. What is the primary cause of this poor tool selection behavior?",
+    "id": "cca-134",
+    "questionNumber": 134,
+    "text": "You are creating developer-productivity tools with the Claude Agent SDK. The agent helps engineers explore unfamiliar codebases, understand legacy systems, generate boilerplate code, and automate repetitive work. It uses the built-in tools (Read, Write, Bash, Grep, Glob) and integrates with Model Context Protocol (MCP) servers.  \n  \nYou are building a security-scanning workflow.  \n  \nWhen engineers must find every occurrence of a dangerous function such as `eval()` throughout a large codebase, which tool should the agent use to search file contents?",
+    "questionType": "multiple_choice",
     "options": [
       {
         "key": "A",
-        "text": "Choosing from 18 tools instead of 4-5 relevant ones increases decision complexity beyond reliable selection thresholds."
+        "text": "Use Glob with a pattern like `**/*eval*` to find files, then Read each matching file."
       },
       {
         "key": "B",
-        "text": "The coordinator cannot track which capabilities each subagent has, leading to misrouted tasks."
+        "text": "Use Bash to run `Is -R | grep eval` to recursively list files containing eval."
       },
       {
         "key": "C",
-        "text": "The agents' role descriptions in their system prompts conflict with having access to tools outside that role."
+        "text": "Read the project's main entry file and follow import statements to trace where eval might be used."
       },
       {
         "key": "D",
-        "text": "The tool definitions consume too much context window space, leaving insufficient room for task content."
+        "text": "Use Grep to search for the pattern \"eval(\" across all files in the codebase."
       }
     ],
     "correctAnswers": [
-      "A"
+      "D"
     ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "Anthropic's agent best practices recommend giving each subagent only a small, role-relevant tool set, because tool selection accuracy degrades as the number of available (especially irrelevant) tools grows.",
+    "explanation": "[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb- yellow) { màu nền: color-mix(in srgb, var(--accent) 55%, #000); màu sắc: #ffffff; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-green) { màu nền: color-mix(in srgb, var(--accent) 65%, #fff); màu: #172033; }\n[data-question-highlight-id=\"question-marker-R16ajmlfiv5tpfiv5uadb\"]::highlight(question-marker-R16ajmlfiv5tpfiv5uadb-pink) { màu nền: color-mix(in srgb, var(--accent) 35%, #fff); màu: #172033; }Grep tìm kiếm nội dung của các tệp theo mẫu được chỉ định trên cơ sở mã, biến nó thành công cụ tích hợp thích hợp để định vị mọi hoạt động sử dụng `eval(`. Glob khớp với đường dẫn tệp, trong khi Đọc dùng để kiểm tra các tệp đã chọn.",
+    "category": "General",
     "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
-  },
-  {
-    "id": "cca88",
-    "questionNumber": 88,
-    "text": "A customer returns 4 hours after their initial session about the same billing dispute. The previous 32-turn session contains lookup_order results showing \"Status: PENDING, Expected resolution: 24-48 hours.\" In testing, you observe that when resuming sessions with stale tool results, the agent often references the outdated data in responses (e.g., \"I see your refund is still being processed\") even after subsequent fresh tool calls return different information. What approach most reliably handles returning customers?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Resume with full history but filter out previous tool_result messages before resuming, keeping only the human/assistant turns so the agent must re-fetch needed data."
-      },
-      {
-        "key": "B",
-        "text": "Start a new session, inject a structured summary of the previous interaction (issue type, actions taken, resolution status), then make fresh tool calls before engaging."
-      },
-      {
-        "key": "C",
-        "text": "Resume with full history and add a system prompt instruction telling the agent to always prefer the most recent tool results when multiple calls to the same tool exist in context."
-      },
-      {
-        "key": "D",
-        "text": "Resume with full history and configure the agent to automatically re-call all previously-used tools at session start to ensure data freshness."
-      }
+      "CCA-F",
+      "General"
     ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "A clean session with a summary keeps the narrative continuity while guaranteeing the agent isn't reasoning over stale tool results.",
-    "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
-  },
-  {
-    "id": "cca89",
-    "questionNumber": 89,
-    "text": "You're implementing the escalation logic for when the agent should call escalate_to_human. Your team proposes four different approaches for triggering escalation. Which approach will most reliably identify cases that genuinely require human intervention?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Instruct the agent to escalate when the customer requests a human, when the issue requires policy exceptions, or when the agent cannot make meaningful progress."
-      },
-      {
-        "key": "B",
-        "text": "Configure the agent to escalate after three consecutive tool calls that fail to resolve the customer's stated issue, ensuring a reasonable attempt before involving a human."
-      },
-      {
-        "key": "C",
-        "text": "Implement sentiment analysis that monitors for frustration indicators (negative language, repeated questions, exclamation marks) and trigger escalation when the frustration score exceeds a configured threshold."
-      },
-      {
-        "key": "D",
-        "text": "Build a rules engine that maps specific issue types, customer segments, and product categories to escalation decisions, removing the need for model judgment calls."
-      }
-    ],
-    "correctAnswers": [
-      "A"
-    ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "Escalation decisions are judgment calls about intent and progress — exactly what LLMs are good at. Clear criteria in natural language outperform rigid rules for the long tail.",
-    "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
-  },
-  {
-    "id": "cca90",
-    "questionNumber": 90,
-    "text": "After investigating a billing dispute over 25+ turns, you've identified that duplicate charges occurred due to a payment gateway timeout triggering retry logic. The required refund ($847) exceeds your $500 authorization limit. You need to call escalate_to_human, and the human agent won't have access to your conversation transcript. What context should you pass to enable effective resolution?",
-    "options": [
-      {
-        "key": "A",
-        "text": "The customer's original complaint verbatim plus the tool result excerpts showing duplicate transactions."
-      },
-      {
-        "key": "B",
-        "text": "A structured summary: customer ID, root cause, refund amount, and recommended action."
-      },
-      {
-        "key": "C",
-        "text": "The complete conversation transcript with all tool results."
-      },
-      {
-        "key": "D",
-        "text": "Your diagnosis and the refund amount only."
-      }
-    ],
-    "correctAnswers": [
-      "B"
-    ],
-    "category": "Claude Architecture & Best Practices",
-    "explanation": "A structured handoff with identifiers, cause, amount, and recommended action is what a human agent needs to pick up the case instantly without re-investigating.",
-    "tags": [
-      "Claude Certified Architect",
-      "CCAF"
-    ]
+    "sourceTitle": "Examcademy CCA-F Question 134",
+    "sourceUrl": "https://examcademy.com/exams/anthropic/cca-f/q/134-tool-design-mcp-integration",
+    "lastVerifiedAt": "2026-10-23T08:04:16.882Z"
   }
 ];

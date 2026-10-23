@@ -217,6 +217,45 @@ export default function App() {
       badge: 'verified'
     },
     {
+      id: 'ccao-f',
+      name: 'Claude Certified Associate — Foundations',
+      code: 'CCAO-F',
+      description: 'Chinh phục chứng chỉ Claude Certified Associate (Foundations). Bao quát kiến thức nền tảng về mô hình Claude, prompt engineering cơ bản, khả năng đa phương thức và ứng dụng AI có trách nhiệm.',
+      difficulty: 'Cơ bản',
+      estimatedHours: '8-12 Giờ',
+      colorClass: 'bg-gradient-to-br from-amber-500 via-orange-600 to-amber-900 text-white',
+      iconName: 'Award',
+      isVIP: false,
+      isDisabled: true,
+      badge: 'new'
+    },
+    {
+      id: 'ccdv-f',
+      name: 'Claude Certified Developer — Foundations',
+      code: 'CCDV-F',
+      description: 'Chinh phục chứng chỉ Claude Certified Developer (Foundations). Phát triển ứng dụng với Anthropic API, cấu trúc tin nhắn, gọi hàm (Tool Use / Tool Calling), quản lý ngữ cảnh và triển khai SDK.',
+      difficulty: 'Trung cấp',
+      estimatedHours: '10-15 Giờ',
+      colorClass: 'bg-gradient-to-br from-orange-600 via-amber-700 to-amber-950 text-white',
+      iconName: 'Cpu',
+      isVIP: false,
+      isDisabled: true,
+      badge: 'new'
+    },
+    {
+      id: 'ccar-p',
+      name: 'Claude Certified Architect — Professional',
+      code: 'CCAR-P',
+      description: 'Chinh phục chứng chỉ cấp cao Claude Certified Architect (Professional). Thiết kế hệ thống AI quy mô doanh nghiệp, quản trị rủi ro & an toàn bảo mật, tối ưu hóa độ trễ/chi phí và điều phối tác nhân đa luồng.',
+      difficulty: 'Nâng cao',
+      estimatedHours: '18-24 Giờ',
+      colorClass: 'bg-gradient-to-br from-orange-700 via-red-800 to-slate-950 text-white',
+      iconName: 'ShieldCheck',
+      isVIP: false,
+      isDisabled: true,
+      badge: 'new'
+    },
+    {
       id: 'dp-800',
       name: 'Developing AI-Enabled Database Solutions',
       code: 'DP-800',
